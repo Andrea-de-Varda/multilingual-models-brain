@@ -1,0 +1,36 @@
+# all embeddings and coefficients folders recursively
+**/embeddings/**
+**/coefficients/**
+
+# variants
+**/embeddings_*/**
+# split_context sits inside those directories, so it is already excluded
+
+# sound-data folders
+sound_data/**
+confirmatory/sound_data/**
+
+# coefficients
+results/coefficients/**
+
+# the three additional_analyses sub-trees
+additional_analyses/control/embeddings/**
+additional_analyses/MECO/embeddings/**
+additional_analyses/NaturalStories/embeddings/**
+
+# confirmatory embeddings
+confirmatory/embeddings/**
+
+# big archives or legacy folders
+**/old/**
+**/*.zip
+additional_analyses/**/TimeSeries_*.csv
+
+# Pereira.parquet.gzip
+additional_analyses/pereira/Pereira.parquet.gzip
+
+# large MECO CSV file
+additional_analyses/MECO/Meco_l1.csv
+
+# wav files
+*.wav

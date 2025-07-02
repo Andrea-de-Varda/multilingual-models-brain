@@ -1,0 +1,874 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Jan  7 12:14:23 2024
+
+@author: dev
+"""
+import numpy as np
+import numpy.ma as ma
+import pandas as pd
+import re
+from os import chdir
+import os
+import pickle
+from sklearn.linear_model import RidgeCV
+from sklearn.model_selection import KFold
+from tqdm import tqdm
+from scipy.stats import pearsonr, norm
+from math import sqrt
+import matplotlib.pyplot as plt
+from time import sleep
+import seaborn as sns
+from adjustText import adjust_text
+from math import sqrt
+import matplotlib.pyplot as plt
+from matplotlib.ticker import MaxNLocator
+from matplotlib.lines import Line2D
+import seaborn as sns
+import copy
+import itertools
+
+chdir("/home/dev/Documents/PhD/Alice")
+
+def load(name):
+    with open("embeddings/"+name, 'rb') as handle:
+        file = pickle.load(handle)
+    return file
+
+def save(file, name):
+    with open(name, 'wb') as handle:
+        pickle.dump(file, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+def load_predictions(name):
+    with open(f"results/predictions/{name}", 'rb') as handle:
+        file = pickle.load(handle)
+    return file
+
+def fullseries_r(langs, model_prefix, n_layers, random = False, random_prefix = ""):
+    layerwise_dict = {}
+    for n in range(n_layers+1):
+        print(f"Processing layer {n}")
+        m = []
+        for idx, lang in enumerate(langs):
+            if random:
+                y_tot, pred = load_predictions(f"random_sequential_{model_prefix}_{lang}_{n}")
+            else:
+                y_tot, pred = load_predictions(f"sequential_{model_prefix}_{lang}_{n}")
+            r = pearsonr(pred, y_tot)[0]
+            m.append(r)
+        #########################
+        sd = [0] * len(m)
+        df = pd.DataFrame(zip(langs, m, sd), columns=["lang", "m", "sd"])
+        layerwise_dict[n] = df
+    save(layerwise_dict, f"results/sanity_check/{random_prefix}monolingual_{model_prefix}")
+    return layerwise_dict
+
+# all_langs = ['Italian', 'Catalan', 'Japanese', 'English', 'Spanish', 'Marathi', 'Afrikaans', 'Vietnamese', 'Tamil', 'Lithuanian', 'Turkish', 'Dutch', 'Norwegian', 'Farsi', 'French', 'Romanian']
+# all_codes = ["ita", "ca", "ja", "en", "es", "mr", "af", "vi", "ta", "lt", "tr", "nl", "no", "fa", "fr", "ro"]
+
+all_langs = ['Spanish', 'Marathi', 'Afrikaans', 'Vietnamese', 'Tamil', 'Lithuanian', 'Turkish', 'Dutch', 'Norwegian', 'Farsi', 'French', 'Romanian']
+all_codes = ["es", "mr", "af", "vi", "ta", "lt", "tr", "nl", "no", "fa", "fr", "ro"]
+
+lang_code_dict = {k : v for k, v in zip(all_codes, all_langs)}
+lang_code_d_reversed = {v : k for k, v in lang_code_dict.items()}
+
+
+# xglm_langs = ["ca", "ja", "en", "es", "vi", "ta", "tr", "fr", "ita"]
+xglm_langs = ["es", "vi", "ta", "tr", "fr"]
+mgpt_langs   = ["af", "fa", "fr", "lt", "mr", "ro", "es", "ta", "tr", "vi"]
+
+xglm_small  = fullseries_r(xglm_langs, "xglm_small", 24)
+xglm_med    = fullseries_r(xglm_langs, "xglm_med", 24)
+xglm_large  = fullseries_r(xglm_langs, "xglm_large", 48)
+xglm_xl     = fullseries_r(xglm_langs, "xglm_xl", 48)
+mbert       = fullseries_r(all_codes, "bert_base", 12)
+distilmbert = fullseries_r(all_codes, "distilmbert", 6)
+xlmr_base   = fullseries_r(all_codes, "xlmr_base", 12)
+xlmr_large  = fullseries_r(all_codes, "xlmr_large", 24)
+mt5_small   = fullseries_r(all_codes, "mt5_small", 8)
+mt5_base    = fullseries_r(all_codes, "mt5_base", 12)
+mt5_large   = fullseries_r(all_codes, "mt5_large", 24)
+mdeberta    = fullseries_r(all_codes, "mdeberta", 12)
+xlm_align   = fullseries_r(all_codes, "xlm_align", 12)
+infx_base   = fullseries_r(all_codes, "infoxlm_base", 12)
+infx_large  = fullseries_r(all_codes, "infoxlm_large", 24)
+mminilm     = fullseries_r(all_codes, "multiminilm", 12)
+nllb200d_60 = fullseries_r(all_codes, "nllb200_distilled_600M", 12)
+nllb200d_1b = fullseries_r(all_codes, "nllb200_distilled_1B", 24)
+nllb_1b     = fullseries_r(all_codes, "nllb200_1B", 24)
+mgpt        = fullseries_r(mgpt_langs, "mgpt", 24)
+
+# random
+xglm_small  = fullseries_r(xglm_langs, "xglm_small", 24, random = True, random_prefix = "random_")
+xglm_med    = fullseries_r(xglm_langs, "xglm_med", 24, random = True, random_prefix = "random_")
+xglm_large  = fullseries_r(xglm_langs, "xglm_large", 48, random = True, random_prefix = "random_")
+xglm_xl     = fullseries_r(xglm_langs, "xglm_xl", 48, random = True, random_prefix = "random_")
+mbert       = fullseries_r(all_codes, "bert_base", 12, random = True, random_prefix = "random_")
+distilmbert = fullseries_r(all_codes, "distilmbert", 6, random = True, random_prefix = "random_")
+xlmr_base   = fullseries_r(all_codes, "xlmr_base", 12, random = True, random_prefix = "random_")
+xlmr_large  = fullseries_r(all_codes, "xlmr_large", 24, random = True, random_prefix = "random_")
+mt5_small   = fullseries_r(all_codes, "mt5_small", 8, random = True, random_prefix = "random_")
+mt5_base    = fullseries_r(all_codes, "mt5_base", 12, random = True, random_prefix = "random_")
+mt5_large   = fullseries_r(all_codes, "mt5_large", 24, random = True, random_prefix = "random_")
+mdeberta    = fullseries_r(all_codes, "mdeberta", 12, random = True, random_prefix = "random_")
+xlm_align   = fullseries_r(all_codes, "xlm_align", 12, random = True, random_prefix = "random_")
+infx_base   = fullseries_r(all_codes, "infoxlm_base", 12, random = True, random_prefix = "random_")
+infx_large  = fullseries_r(all_codes, "infoxlm_large", 24, random = True, random_prefix = "random_")
+mminilm     = fullseries_r(all_codes, "multiminilm", 12, random = True, random_prefix = "random_")
+nllb200d_60 = fullseries_r(all_codes, "nllb200_distilled_600M", 12, random = True, random_prefix = "random_")
+nllb200d_1b = fullseries_r(all_codes, "nllb200_distilled_1B", 24, random = True, random_prefix = "random_")
+nllb_1b     = fullseries_r(all_codes, "nllb200_1B", 24, random = True, random_prefix = "random_")
+mgpt        = fullseries_r(mgpt_langs, "mgpt", 24, random = True, random_prefix = "random_")
+
+###############################################################################
+# plot ########################################################################
+###############################################################################
+
+def load(model_prefix, monol = True, split_context = False, random = False, md = False, rh = False):
+    if monol:
+        if split_context:
+            with open(f"results/sanity_check/split_context_monolingual_{model_prefix}", 'rb') as handle:
+                file = pickle.load(handle)
+        elif md:
+            with open(f"results/sanity_check/md_monolingual_{model_prefix}", 'rb') as handle:
+                file = pickle.load(handle) # MD network
+        elif rh:
+            with open(f"results/sanity_check/rh_monolingual_{model_prefix}", 'rb') as handle:
+                file = pickle.load(handle) # right hemisphere
+        else:
+            if random:
+                with open(f"results/sanity_check/random_monolingual_{model_prefix}", 'rb') as handle:
+                    file = pickle.load(handle)
+            else:
+                with open(f"results/sanity_check/monolingual_{model_prefix}", 'rb') as handle:
+                    file = pickle.load(handle)
+    else:
+        raise ValueError('No multilingual sequential split')
+    return file
+
+def find_median_index(lst):
+    sorted_lst = sorted(lst)
+    mid_point = len(lst) // 2
+    if len(lst) % 2 == 1:  # If odd, take the middle value
+        median = sorted_lst[mid_point]
+    else:  # If even, take the lower of the two middle values
+        median = sorted_lst[mid_point - 1]
+    return lst.index(median)
+
+def get_best_layerwise(res_dict, colname = "m", give_mean = True, give_all = False):
+    mean_results = [value[colname].mean() for key, value in res_dict.items()]
+    sd_results   = [value[colname].std() for key, value in res_dict.items()]
+    idx_max = np.argmax(mean_results)
+    print(f"Best layer is {idx_max}")
+    if give_all:
+        best = res_dict[idx_max][colname].tolist()
+    else:
+        if give_mean:
+            best = mean_results[idx_max]
+        else:
+            best = sd_results[idx_max] # so the SD is the cross-lingual variation for the best layer
+    return best
+
+def get_median_layerwise(res_dict, colname = "m", give_mean = True, give_all = False):
+    mean_results = [value[colname].mean() for key, value in res_dict.items()]
+    sd_results   = [value[colname].std() for key, value in res_dict.items()]
+    idx_median = find_median_index(mean_results)
+    if give_all:
+        median = res_dict[idx_median][colname].tolist()
+    else:
+        if give_mean:
+            median = mean_results[idx_median]
+        else:
+            median = sd_results[idx_median] # so the SD is the cross-lingual variation for the best layer
+    return median
+
+def plot_aggregate(df, title, ylim=None, ylimstart=None, sig=[]):
+    plt.figure(figsize=(18*.7, 11.5*.7), dpi = 300)
+    sns.set_context("talk")
+    palette = sns.color_palette("tab10")  # Colorblind-friendly palette
+    ax = sns.barplot(x='Model', y='Score', hue='Family', data=df,
+                     dodge=False, palette=palette, edgecolor='.2')
+    for i in range(len(df['Score'])):
+        plt.errorbar(i, df['Score'][i], yerr=df['sd'][i]/sqrt(df["n"][i]), fmt='none', capsize=5, ecolor='black', capthick=2)
+
+    # significance asterisks
+    for i, value in enumerate(df['Score']):
+        if i < len(sig):
+            y = value + df['sd'][i]/sqrt(df["n"][i]) + 0.02
+            plt.text(i, y, sig[i], ha='center', va='bottom', color='black', fontsize=20, weight='bold')
+
+    plt.title(title, fontsize=30, weight='bold', pad=20)
+    plt.xlabel('Model', fontsize=27, labelpad=20)
+    plt.ylabel('R', fontsize=27, labelpad=20)
+    plt.ylim(ylimstart, ylim)
+    plt.xticks(rotation=45, ha='right', fontsize=18)
+    plt.yticks(fontsize=23)
+    # leg = plt.legend(title='Model Family', title_fontsize='20', fontsize='18', loc='upper left', bbox_to_anchor=(1, 1))
+    # for legobj in leg.legendHandles:
+    #     legobj.set_linewidth(4.0)
+    sns.despine()
+    plt.tight_layout(rect=[0, 0, 0.85, 1])
+    ax.get_legend().remove()
+    plt.show()
+
+# Specifying model names
+
+# Specifying model names
+
+model_names = ["nllb200_distilled_600M", "nllb200_distilled_1B", "nllb200_1B", "xlm_align", "infoxlm_base", "infoxlm_large", "multiminilm", "xlmr_base", "xlmr_large", "distilmbert", "bert_base", "mdeberta", "mt5_small", "mt5_base", "mt5_large", "mgpt","xglm_small", "xglm_med", "xglm_large", "xglm_xl"]
+
+names_formatted = ["NLLB$_{d-small}$", "NLLB$_{d-large}$", "NLLB$_{large}$", "XLM-Align", "InfoXLM$_{small}$", "InfoXLM$_{large}$", "mMiniLM", "XLM-R$_{base}$", "XLM-R$_{large}$", "DistilmBERT", "mBERT", "mDeBERTa", "mT5$_{small}$", "mT5$_{base}$", "mT5$_{large}$", "mGPT", "XGLM$_{small}$", "XGLM$_{med}$", "XGLM$_{large}$", "XGLM$_{xl}$"]
+
+model_family = ["NLLB", "NLLB", "NLLB", "XLM-Align", "InfoXLM", "InfoXLM", "XLM-R", "XLM-R", "XLM-R", "BERT", "BERT", "DeBERTa", "mT5", "mT5", "mT5", "mGPT", "XGLM", "XGLM", "XGLM", "XGLM"]
+n_langs = [12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 10, 5, 5, 5, 5] # n langs by model
+
+names_nice_dict = {name : nice for name, nice in zip(model_names, names_formatted)}
+class_dict = {name : theclass for name, theclass in zip(model_names, model_family)}
+class_dict_nice = {name : theclass for name, theclass in zip(names_formatted, model_family)}
+
+# Specifying language names
+
+# langs = ['ita', 'ja', 'fr', 'ta', 'ca', 'es', 'tr', 'vi', 'en', 'mr', 'af', 'nl', 'no', 'fa', 'ro', 'lt']
+# langs_nice = ['Italian', 'Japanese', 'French', 'Tamil', 'Catalan', 'Spanish', 'Turkish', 'Vietnamese', 'English', 'Marathi', 'Afrikaans', 'Dutch', 'Norwegian', 'Farsi', 'Romanian', 'Lithuanian']
+langs = ['fr', 'ta', 'es', 'tr', 'vi', 'mr', 'af', 'nl', 'no', 'fa', 'ro', 'lt']
+langs_nice = ['French', 'Tamil', 'Spanish', 'Turkish', 'Vietnamese', 'Marathi', 'Afrikaans', 'Dutch', 'Norwegian', 'Farsi', 'Romanian', 'Lithuanian']
+
+lang_dict = {k : v for k, v in zip(langs, langs_nice)}
+
+###############################################################################
+########################
+# SIGNIFICANCE TESTING #
+########################
+
+def r_to_z(r1, r2, n = 130):    
+    # fisher r-to-z transformation
+    z_1 = np.arctanh(r1)
+    z_2 = np.arctanh(r2)
+    z_diff = z_1 - z_2
+    # standard error of difference
+    se_diff = np.sqrt(2*(1/(n-3)))
+    z_stat = z_diff / se_diff
+    p = 2 * (1 - norm.cdf(np.abs(z_stat))) # two tailed
+    return z_stat, p
+
+# stouffer method
+def combine_z_statistics(z_stats):
+    # combine Zs taking accounting for their signs
+    z_combined = np.sum(z_stats) / np.sqrt(len(z_stats))
+    combined_pvalue = 2 * norm.cdf(-abs(z_combined))
+    return combined_pvalue
+
+# asterisks for plotting
+def add_significance_asterisks(data):
+    significance_levels = [(0.001, '***'), (0.01, '**'), (0.05, '*')]
+    for item in data:
+        model, p_value = item
+        asterisk = '' # default non-sig
+        for threshold, symbol in significance_levels:
+            if p_value < threshold:
+                asterisk = symbol
+                break
+        item.append(asterisk)
+    return data
+
+
+p_values_best = []
+for model in model_names:
+    test = get_best_layerwise(load(model), give_all = True)
+    rand = get_best_layerwise(load(model, random=True), give_all = True)
+    zs = [] # fisher's p values
+    for t, r in zip(test, rand):
+        z, p = r_to_z(t, r)
+        zs.append(z)
+    p = combine_z_statistics(zs)
+    p_values_best.append([model, p])
+p_values_best = add_significance_asterisks(p_values_best)
+p_values_best = pd.DataFrame(p_values_best, columns = ["model", "p", "asterisk"])
+    
+p_values_median = []
+for model in model_names:
+    test = get_median_layerwise(load(model), give_all = True)
+    rand = get_median_layerwise(load(model, random=True), give_all = True)
+    zs = [] # fisher's p values
+    for t, r in zip(test, rand):
+        z, p = r_to_z(t, r)
+        zs.append(z)
+    p = combine_z_statistics(zs)
+    p_values_median.append([model, p])
+p_values_median = add_significance_asterisks(p_values_median)
+p_values_median = pd.DataFrame(p_values_median, columns = ["model", "p", "asterisk"])
+
+###########################
+# barplot with best layer #
+###########################
+
+# monolingual, best layer #####################################################
+best_monol = [get_best_layerwise(load(model)) for model in model_names]
+best_monol_sd = [get_best_layerwise(load(model), give_mean = False) for model in model_names]
+
+best_layer = pd.DataFrame({
+    'Model': names_formatted,
+    'Score': best_monol,
+    'Family': model_family,
+    'sd' : best_monol_sd,
+    'n' : n_langs
+})
+
+plot_aggregate(best_layer, "",  ylim = .85, ylimstart = -.1)#, sig = p_values_best["asterisk"])
+
+###############################################################################
+###############################################################################
+
+#########################
+# DEFINITIVE FINAL PLOT #
+#########################
+
+df = best_layer
+title = ""
+ylimstart = 0
+ylim = 0.75
+
+def add_bracket(ax, pos1, pos2, text, y_offset=0.05, weight = "normal"):
+    """Adds a bracket and text annotation on the plot"""
+    mid = (pos1 + pos2) / 2
+    y = max(df['Score']) + y_offset  # Adjust based on your data
+    ax.plot([pos1, pos1, pos2, pos2], [y, y + 0.02, y + 0.02, y], color='black', lw=2)
+    ax.text(mid, y + 0.03, text, ha='center', va='bottom', fontsize=19, weight=weight)
+
+plt.figure(figsize=(24*.7, 11.5*.7), dpi = 300)
+sns.set_context("talk")
+palette = sns.color_palette("tab20", n_colors = 9)
+palette_d = {'BERT' : "steelblue",
+             'DeBERTa' : "teal",
+             'InfoXLM' : "firebrick",
+             'NLLB' : "tomato",
+             'XGLM' : "forestgreen",
+             'XLM-Align' : "firebrick",
+             'XLM-R' : "lightsteelblue",
+             'mGPT' : "yellowgreen",
+             'mT5' : "darkorange"}
+df["color"] = df["Family"].map(palette_d)
+
+ax = plt.gca()
+bar_positions = [1,2,3,
+                 4.5, 5.5, 6.5,
+                 9, 10, 11, 12, 13, 14, 15.5, 16.5, 17.5, 19, 20, 21, 22, 23]
+bars = ax.bar(bar_positions, df['Score'], yerr=[df['sd'][i] / sqrt(df['n'][i]) for i in range(len(df))],
+              capsize=5, color=df["color"], edgecolor='.2', alpha = 0.8, lw = 3)
+
+add_bracket(ax, bar_positions[0], bar_positions[2], 'translation', y_offset = -.14)
+add_bracket(ax, bar_positions[3], bar_positions[5], 'contrastive', y_offset = -.10)
+add_bracket(ax, bar_positions[0], bar_positions[5], 'explicit', y_offset = -.01, weight = "bold")
+add_bracket(ax, bar_positions[6], bar_positions[11], 'masked LM', y_offset = -.07)
+add_bracket(ax, bar_positions[12], bar_positions[14], 'span corr.', y_offset = -.05)
+add_bracket(ax, bar_positions[15], bar_positions[19], 'causal LM', y_offset = +.12)
+add_bracket(ax, bar_positions[6], bar_positions[19], 'implicit', y_offset = +.21, weight = "bold")
+
+plt.title(title, fontsize=30, weight='bold', pad=20)
+plt.xlabel('Model', fontsize=27, labelpad=20)
+plt.ylabel('R', fontsize=27, labelpad=20)
+plt.ylim(ylimstart, ylim)
+plt.xticks(bar_positions, labels = df["Model"], rotation=45, ha='right', fontsize=22)
+plt.yticks([.1, .2, .3, .4, .5, .6, .7], fontsize=23)
+sns.despine()
+plt.tight_layout(rect=[0, 0, 0.85, 1])
+plt.show()
+#####################
+##########################################################
+###############################################################################
+
+# monolingual, median layer ###################################################
+median_monol = [get_median_layerwise(load(model)) for model in model_names]
+median_monol_sd = [get_median_layerwise(load(model), give_mean = False) for model in model_names]
+
+median_layer = pd.DataFrame({
+    'Model': names_formatted,
+    'Score': median_monol,
+    'Family': model_family,
+    'sd' : median_monol_sd,
+    'n' : n_langs
+})
+plot_aggregate(median_layer, "", ylim = .85, ylimstart = -.1)#, sig = p_values_median["asterisk"])
+
+# random, best layer ##########################################################
+best_monol_random = [get_best_layerwise(load(model, random=True)) for model in model_names]
+best_monol_sd_random = [get_best_layerwise(load(model, random=True), give_mean = False) for model in model_names]
+
+best_layer_random = pd.DataFrame({
+    'Model': names_formatted,
+    'Score': best_monol_random,
+    'Family': model_family,
+    'sd' : best_monol_sd_random,
+    'n' : n_langs
+})
+
+plot_aggregate(best_layer_random, "",  ylim = .85, ylimstart = -.1)
+
+# random, median layer ########################################################
+median_monol_random = [get_median_layerwise(load(model, random=True)) for model in model_names]
+median_monol_sd_random = [get_median_layerwise(load(model, random=True), give_mean = False) for model in model_names]
+
+median_layer_random = pd.DataFrame({
+    'Model': names_formatted,
+    'Score': median_monol_random,
+    'Family': model_family,
+    'sd' : median_monol_sd_random,
+    'n' : n_langs
+})
+
+plot_aggregate(median_layer_random, "",  ylim = .85, ylimstart = -.1)
+
+###############################################################################
+
+colname = "m"
+out_dfs = []
+for modelname in model_names:
+    name_nice = names_nice_dict[modelname]
+    model_class = class_dict[modelname]
+    results_dict = load(modelname)
+    layers = max(results_dict.keys())
+    res_layer = pd.DataFrame([[key / layers, value[colname].mean(), name_nice, model_class] for key, value in results_dict.items()], columns = ["l", "m", "Model", "Class"])
+    out_dfs.append(res_layer)
+out_dfs = pd.concat(out_dfs)
+
+sns.set_style('whitegrid')
+sns.set_context('talk')
+plt.figure(figsize=(14*.7, 12*.7), dpi = 300)
+n_classes = out_dfs['Class'].nunique()
+palette = sns.color_palette("tab10", n_colors=n_classes)
+ax = sns.lineplot(
+    data=out_dfs,
+    x='l', 
+    y='m', 
+    hue='Class',  # Color by class
+    style='Model',  # Different markers for each name
+    markers=True, 
+    dashes=False, 
+    palette=palette
+)
+ax.set_xlabel('Layer position', fontsize=27, labelpad=15)
+ax.set_ylabel('R', fontsize=27, labelpad=15)
+ax.set_title('Monolingual encoding by layer', fontsize=30, weight='bold', pad=20)
+ax.tick_params(axis='both', which='major', labelsize=20)
+plt.legend(title_fontsize='22', fontsize='18', loc='center left', bbox_to_anchor=(1, 0.5), frameon=True)
+ax.set_xlim([out_dfs['l'].min()-.02, out_dfs['l'].max()+.02])
+ax.set_ylim(-.1, .4)
+plt.show()
+
+###############################################################################
+
+colname = "m"
+sequential = True # change accordingly
+out_dfs = []
+for modelname in model_names:
+    name_nice = names_nice_dict[modelname]
+    model_class = class_dict[modelname]
+    results_dict = load(modelname)
+    layers = max(results_dict.keys())
+    res_layer = pd.DataFrame([[key / layers, value[colname].mean(), name_nice, model_class] for key, value in results_dict.items()], columns = ["l", "m", "Model", "Class"])
+    out_dfs.append(res_layer)
+out_dfs = pd.concat(out_dfs)
+#model_colors = {model: color for model, color in zip(['BERT', 'XGLM', 'XLM-R', 'mT5'], sns.color_palette("tab10", n_colors=4))}
+model_markers = {model: marker for model, marker in zip(names_nice_dict.values(), ['>', '1', '^', 's', 'o', '<', 'p', '*', 'h', 'H', 'D', 'X', ',', "8", "2", "v", "4", "3", "P", "."])}
+out_dfs['color'] = out_dfs['Class'].map(palette_d)
+out_dfs['marker'] = out_dfs['Model'].map(model_markers)
+
+sns.set_style('whitegrid')
+sns.set_context('talk')
+n_classes = out_dfs['Class'].nunique()
+palette = sns.color_palette("tab10", n_colors=n_classes)
+
+n_cols = 3
+n_rows = (n_classes + n_cols - 1) // n_cols
+
+# Create a figure with subplots
+fig, axes = plt.subplots(n_rows, n_cols, figsize=(9*1.2, 8*1.2), dpi=300)
+axes = axes.flatten() 
+
+class_order = ['NLLB', 'XLM-Align', 'InfoXLM', 'XLM-R', 'BERT', 'DeBERTa', 'mT5', 'mGPT', 'XGLM']
+for i, model_class in enumerate(class_order):
+    ax = axes[i]
+    group_data = out_dfs[out_dfs['Class'] == model_class]
+    for model in group_data['Model'].unique():
+        model_data = group_data[group_data['Model'] == model]
+        sns.lineplot(
+            data=model_data,
+            x='l', 
+            y='m',
+            color=model_data['color'].iloc[0],
+            marker=model_data['marker'].iloc[0],
+            label=model,
+            ax=ax
+        )
+    #ax.legend(title='Model', fontsize=13, title_fontsize=20, loc='upper left', bbox_to_anchor=(1, 1))
+    ax.set_title(model_class, fontsize=25)
+    ax.set_xlabel('')
+    ax.set_xticks([.2, .4, .6, .8])
+    ax.tick_params(axis='x', labelsize=20)
+    ax.tick_params(axis='y', labelsize=20)
+    ax.set_ylabel('')
+    ax.set_xlim([group_data['l'].min()-.02, group_data['l'].max()+.02])
+    ax.set_ylim(-.1, .55)
+    ax.get_legend().remove()
+fig.text(0.56, 0.04, 'Layer position', ha='center', va='center', fontsize=23)
+fig.text(0.04, 0.5, 'R', ha='center', va='center', rotation='vertical', fontsize=23)
+
+legend_handles = [Line2D([0], [0], color=palette_d[class_dict_nice[model]], marker=model_markers[model], label=model, linestyle='-', markersize=10) for model in out_dfs['Model'].unique()]
+
+fig.legend(handles=legend_handles, loc='upper right', fontsize=18, title_fontsize=24, title='Model', bbox_to_anchor=(1.25, .95))
+fig.tight_layout(rect=[0.05, 0.05, 1, 0.95])
+plt.show()
+
+################################
+# Encoding results by language #
+################################
+
+colname = "m"
+sequential = True
+r_lang = {lang : [] for lang in langs}
+sd_lang = {lang : [] for lang in langs}
+for model in model_names:
+    res_dict = load(model)
+    # first selecting best layer
+    mean_results = [value[colname].mean() for key, value in res_dict.items()]
+    idx_max = np.argmax(mean_results)
+    df = res_dict[idx_max]
+    for lang in langs:
+        try:
+            therow = df[df.lang == lang]
+            r = therow.values[0][1]
+            sd = therow.values[0][2]
+            r_lang[lang].append(r)
+            sd_lang[lang].append(sd)
+        except IndexError: # xglm models miss some languages
+            r_lang[lang].append(0)
+            sd_lang[lang].append(0)
+
+data = pd.DataFrame(r_lang)
+data1 = pd.DataFrame(sd_lang) # IMPORTANT: here the SD is the variation across languages
+
+fig, axes = plt.subplots(20, 1, figsize=(10*.9, 24*.9), dpi=300)
+yticks = [0, .5, 1]
+for i, ax in enumerate(axes):
+    ax.bar(data.columns, data.iloc[i], color='indianred', yerr=data1.iloc[i])
+    for j, value in enumerate(data.iloc[i]):
+        if value == 0:
+            ax.text(j, 0, 'NA', ha='center', va='bottom', fontsize=15, color='black')
+    ax.set_ylim(-.45, 1)
+    ax.set_yticks(yticks)  # Set the y-ticks to [0, 0.3, 0.6, 1]
+    ax.axhline(y=0, color='black',lw=2)
+    # grid
+    ax.xaxis.grid(False)
+    ax.set_ylabel(names_formatted[i], rotation=0, ha='right', va='center')
+    if i < len(axes) - 1:
+        ax.set_xticklabels([])  # Hide x-tick labels
+    else:
+        ax.set_xticklabels([lang_dict[l] for l in data.columns], rotation=45, ha="right")
+plt.suptitle('', y=.97, fontsize=26, weight="bold")
+plt.tight_layout()
+plt.show()
+
+######################################################
+# relatioship between signal in fMRI (pairwise corr) #
+######################################################
+
+corrs = pd.read_csv("results/correlations/correlation_participants_new.csv")
+corrs = corrs[["lang", "r", "p"]]
+corrs = corrs[(corrs["r"] > 0) & (corrs["p"] < .05)]
+corrs["code"] = corrs.lang.map(lang_code_d_reversed)
+
+n_rows = 5
+n_cols = 4
+fig, axes = plt.subplots(n_rows, n_cols, figsize=(7, 8), dpi=300)
+axes = axes.flatten()
+
+left_plot_idx = [0, 4, 8, 12, 16]
+bottom_plot_idx = [16, 17, 18, 19]
+avg_corr = []
+for idx, model_name in enumerate(model_names):
+    ax = axes[idx]
+    r_dict_temp = {k: v[idx] for k, v in r_lang.items()}
+    corrs[model_name] = corrs["code"].map(r_dict_temp)
+    corrs = corrs[corrs[model_name] != 0].dropna()
+    print(len(corrs))
+    r_ = pearsonr(corrs["r"], corrs[model_name])[0]
+    r = round(r_, 2)
+    avg_corr.append(r_)
+    sns.regplot(x=corrs["r"], y=corrs[model_name], ci=95, scatter_kws={'s': 20}, ax=ax)
+    if model_name == "xlmr_large":
+        ax.annotate(f"r = {r}", (0.27, -.15), fontsize=12, alpha=1)
+    else:
+        ax.annotate(f"r = {r}", (0.3, -.15), fontsize=12, alpha=1)
+    # y
+    if idx in left_plot_idx:
+        ax.set_yticks([0, 0.5])
+    else:
+        ax.set_yticks([])
+        ax.tick_params(axis='y', labelsize=0)
+    # x
+    if idx in bottom_plot_idx:
+        ax.set_xticks([0.25, 0.5])
+    else:
+        ax.set_xticks([])
+        ax.tick_params(axis='x', labelsize=0)
+    ax.set_ylim(-0.25, 0.9)
+    ax.set_xlim(0.17, 0.53)
+    ax.set_xlabel("")
+    ax.set_ylabel("")
+    ax.set_title(names_nice_dict[model_name])
+
+for ax in axes[len(model_names):]:
+    ax.axis('off')
+
+#fig.suptitle('Encoding performance and signal reliability', fontsize=20)
+fig.text(0.5, 0, 'Correlation in fMRI response', ha='center', va='center', fontsize=18)
+fig.text(0, 0.5, 'Encoding performance', ha='center', va='center', rotation='vertical', fontsize=18)
+
+plt.tight_layout()
+plt.show()
+
+print(np.mean(avg_corr))
+
+###############################################################################
+###############################################################################
+###############################################################################
+
+# SPLIT CONTEXT
+
+def fullseries_r_splitcontext(langs, model_prefix, n_layers, random = False, random_prefix = ""):
+    layerwise_dict = {}
+    for n in range(n_layers+1):
+        print(f"Processing layer {n}")
+        m = []
+        for idx, lang in enumerate(langs):
+            if random:
+                y_tot, pred = load_predictions(f"random_chunked_{model_prefix}_{lang}_{n}")
+            else:
+                y_tot, pred = load_predictions(f"chunked_{model_prefix}_{lang}_{n}")
+            r = pearsonr(pred, y_tot)[0]
+            m.append(r)
+        #########################
+        sd = [0] * len(m)
+        df = pd.DataFrame(zip(langs, m, sd), columns=["lang", "m", "sd"])
+        layerwise_dict[n] = df
+    save(layerwise_dict, f"results/sanity_check/split_context_{random_prefix}monolingual_{model_prefix}")
+    return layerwise_dict
+    
+    
+xglm_small  = fullseries_r_splitcontext(xglm_langs, "xglm_small", 24)
+xglm_med    = fullseries_r_splitcontext(xglm_langs, "xglm_med", 24)
+xglm_large  = fullseries_r_splitcontext(xglm_langs, "xglm_large", 48)
+xglm_xl     = fullseries_r_splitcontext(xglm_langs, "xglm_xl", 48)
+mbert       = fullseries_r_splitcontext(all_codes, "bert_base", 12)
+distilmbert = fullseries_r_splitcontext(all_codes, "distilmbert", 6)
+xlmr_base   = fullseries_r_splitcontext(all_codes, "xlmr_base", 12)
+xlmr_large  = fullseries_r_splitcontext(all_codes, "xlmr_large", 24)
+mt5_small   = fullseries_r_splitcontext(all_codes, "mt5_small", 8)
+mt5_base    = fullseries_r_splitcontext(all_codes, "mt5_base", 12)
+mt5_large   = fullseries_r_splitcontext(all_codes, "mt5_large", 24)
+mdeberta    = fullseries_r_splitcontext(all_codes, "mdeberta", 12)
+xlm_align   = fullseries_r_splitcontext(all_codes, "xlm_align", 12)
+infx_base   = fullseries_r_splitcontext(all_codes, "infoxlm_base", 12)
+infx_large  = fullseries_r_splitcontext(all_codes, "infoxlm_large", 24)
+mminilm     = fullseries_r_splitcontext(all_codes, "multiminilm", 12)
+nllb200d_60 = fullseries_r_splitcontext(all_codes, "nllb200_distilled_600M", 12)
+nllb200d_1b = fullseries_r_splitcontext(all_codes, "nllb200_distilled_1B", 24)
+nllb_1b     = fullseries_r_splitcontext(all_codes, "nllb200_1B", 24)
+mgpt        = fullseries_r_splitcontext(mgpt_langs, "mgpt", 24)
+
+# monolingual, best layer #####################################################
+best_monol_split = [get_best_layerwise(load(model, split_context = True)) for model in model_names]
+best_monol_sd_split = [get_best_layerwise(load(model, split_context = True), give_mean = False) for model in model_names]
+
+best_layer_split = pd.DataFrame({
+    'Model': names_formatted,
+    'Score': best_monol_split,
+    'Family': model_family,
+    'sd' : best_monol_sd_split,
+    'n' : n_langs
+})
+
+plot_aggregate(best_layer_split, "",  ylim = .85, ylimstart = -.1)
+
+# monolingual, median layer ###################################################
+median_monol = [get_median_layerwise(load(model, split_context = True)) for model in model_names]
+median_monol_sd = [get_median_layerwise(load(model), give_mean = False) for model in model_names]
+
+median_layer = pd.DataFrame({
+    'Model': names_formatted,
+    'Score': median_monol,
+    'Family': model_family,
+    'sd' : median_monol_sd,
+    'n' : n_langs
+})
+plot_aggregate(median_layer, "", ylim = .85, ylimstart = -.1)
+
+###############################################################################
+
+############################
+# MULTIPLE DEMANDS NETWORK #
+############################
+
+def fullseries_r_other(langs, model_prefix, n_layers, prefix = "md"):
+    layerwise_dict = {}
+    for n in range(n_layers+1):
+        print(f"Processing layer {n}")
+        m = []
+        for idx, lang in enumerate(langs):
+            y_tot, pred = load_predictions(f"{prefix}_sequential_{model_prefix}_{lang}_{n}")
+            r = pearsonr(pred, y_tot)[0]
+            m.append(r)
+        #########################
+        sd = [0] * len(m)
+        df = pd.DataFrame(zip(langs, m, sd), columns=["lang", "m", "sd"])
+        layerwise_dict[n] = df
+    save(layerwise_dict, f"results/sanity_check/{prefix}_monolingual_{model_prefix}")
+    return layerwise_dict
+
+def plot_md(MD, L, title, ylim=None, ylimstart=None, sig = [], name0 = "MD", name1 = "L", color0 = "tomato", color1 = "navy", colname = "Network"):
+    MD[colname] = name0
+    L[colname] = name1
+    df_combined = pd.concat([MD, L], axis=0).reset_index(drop=True)
+
+    plt.figure(figsize=(17*.7, 10*.7), dpi=300)
+    sns.set_context("talk")
+    palette = {name0 : color0, name1 : color1}
+    
+    ax = sns.barplot(x='Model', y='Score', hue=colname, data=df_combined, dodge=True, palette=palette, edgecolor='.2')
+
+    num_models = len(df_combined['Model'].unique())
+    model_positions = np.arange(num_models)
+    dodge_width = 0.35
+
+    for i, model in enumerate(df_combined['Model'].unique()):
+        for j, Network_ in enumerate([name0, name1]):
+            row = df_combined[(df_combined['Model'] == model) & (df_combined[colname] == Network_)]
+            xpos = model_positions[i] + (j - 0.5) * dodge_width
+            yerr = row['sd'].values[0] / np.sqrt(row['n'].values[0])
+            plt.errorbar(xpos, row['Score'].values[0], yerr=yerr, fmt='none', capsize=5, ecolor='black', capthick=2)
+    
+    for i, value in enumerate(L['Score']):
+        if i < len(sig):
+            y = value + L['sd'][i]/sqrt(L["n"][i]) + 0.02
+            plt.text(i, y, sig[i], ha='center', va='bottom', color='black', fontsize=16, weight='bold')
+            
+    plt.title(title, fontsize=30, weight='bold', pad=20)
+    plt.xlabel('', fontsize=0, labelpad=0)
+    plt.ylabel('R', fontsize=27, labelpad=20)
+    if ylimstart is not None and ylim is not None:
+        plt.ylim(ylimstart, ylim)
+    plt.xticks(rotation=45, ha='right', fontsize=18)
+    plt.yticks(fontsize=23)
+    sns.despine()
+    plt.tight_layout(rect=[0, 0, 0.85, 1])
+    #ax.get_legend().remove()  # Optionally remove the legend
+    plt.show()
+
+xglm_small  = fullseries_r_other(xglm_langs, "xglm_small", 24)
+xglm_med    = fullseries_r_other(xglm_langs, "xglm_med", 24)
+xglm_large  = fullseries_r_other(xglm_langs, "xglm_large", 48)
+xglm_xl     = fullseries_r_other(xglm_langs, "xglm_xl", 48)
+mbert       = fullseries_r_other(all_codes, "bert_base", 12)
+distilmbert = fullseries_r_other(all_codes, "distilmbert", 6)
+xlmr_base   = fullseries_r_other(all_codes, "xlmr_base", 12)
+xlmr_large  = fullseries_r_other(all_codes, "xlmr_large", 24)
+mt5_small   = fullseries_r_other(all_codes, "mt5_small", 8)
+mt5_base    = fullseries_r_other(all_codes, "mt5_base", 12)
+mt5_large   = fullseries_r_other(all_codes, "mt5_large", 24)
+mdeberta    = fullseries_r_other(all_codes, "mdeberta", 12)
+xlm_align   = fullseries_r_other(all_codes, "xlm_align", 12)
+infx_base   = fullseries_r_other(all_codes, "infoxlm_base", 12)
+infx_large  = fullseries_r_other(all_codes, "infoxlm_large", 24)
+mminilm     = fullseries_r_other(all_codes, "multiminilm", 12)
+nllb200d_60 = fullseries_r_other(all_codes, "nllb200_distilled_600M", 12)
+nllb200d_1b = fullseries_r_other(all_codes, "nllb200_distilled_1B", 24)
+nllb_1b     = fullseries_r_other(all_codes, "nllb200_1B", 24)
+mgpt        = fullseries_r_other(mgpt_langs, "mgpt", 24)
+
+# significance testing (md vs lang)
+
+p_values_best_md = []
+for model in model_names:
+    test = get_best_layerwise(load(model), give_all = True)
+    rand = get_best_layerwise(load(model, md=True), give_all = True)
+    zs = [] # fisher's p values
+    for t, r in zip(test, rand):
+        z, p = r_to_z(t, r)
+        zs.append(z)
+    p = combine_z_statistics(zs)
+    p_values_best_md.append([model, p])
+p_values_best_md = add_significance_asterisks(p_values_best_md)
+p_values_best_md = pd.DataFrame(p_values_best_md, columns = ["model", "p", "asterisk"])
+
+###############################################################################
+
+best_md = [get_best_layerwise(load(model, md=True)) for model in model_names]
+best_md_sd = [get_best_layerwise(load(model, md=True), give_mean = False) for model in model_names]
+
+best_layer_md = pd.DataFrame({
+    'Model': names_formatted,
+    'Score': best_md,
+    'Family': model_family,
+    'sd' : best_md_sd,
+    'n' : n_langs
+})
+
+plot_md(best_layer_md, best_layer, "", ylim = .65, ylimstart = -.1, sig = p_values_best_md["asterisk"])
+
+###############################################################################
+
+########################
+# L - RIGHT HEMISPHERE #
+########################
+
+xglm_small  = fullseries_r_other(xglm_langs, "xglm_small", 24, prefix = "rh")
+xglm_med    = fullseries_r_other(xglm_langs, "xglm_med", 24, prefix = "rh")
+xglm_large  = fullseries_r_other(xglm_langs, "xglm_large", 48, prefix = "rh")
+xglm_xl     = fullseries_r_other(xglm_langs, "xglm_xl", 48, prefix = "rh")
+mbert       = fullseries_r_other(all_codes, "bert_base", 12, prefix = "rh")
+distilmbert = fullseries_r_other(all_codes, "distilmbert", 6, prefix = "rh")
+xlmr_base   = fullseries_r_other(all_codes, "xlmr_base", 12, prefix = "rh")
+xlmr_large  = fullseries_r_other(all_codes, "xlmr_large", 24, prefix = "rh")
+mt5_small   = fullseries_r_other(all_codes, "mt5_small", 8, prefix = "rh")
+mt5_base    = fullseries_r_other(all_codes, "mt5_base", 12, prefix = "rh")
+mt5_large   = fullseries_r_other(all_codes, "mt5_large", 24, prefix = "rh")
+mdeberta    = fullseries_r_other(all_codes, "mdeberta", 12, prefix = "rh")
+xlm_align   = fullseries_r_other(all_codes, "xlm_align", 12, prefix = "rh")
+infx_base   = fullseries_r_other(all_codes, "infoxlm_base", 12, prefix = "rh")
+infx_large  = fullseries_r_other(all_codes, "infoxlm_large", 24, prefix = "rh")
+mminilm     = fullseries_r_other(all_codes, "multiminilm", 12, prefix = "rh")
+nllb200d_60 = fullseries_r_other(all_codes, "nllb200_distilled_600M", 12, prefix = "rh")
+nllb200d_1b = fullseries_r_other(all_codes, "nllb200_distilled_1B", 24, prefix = "rh")
+nllb_1b     = fullseries_r_other(all_codes, "nllb200_1B", 24, prefix = "rh")
+mgpt        = fullseries_r_other(mgpt_langs, "mgpt", 24, prefix = "rh")
+
+# significance testing (rh vs lh)
+
+p_values_best_rh = []
+for model in model_names:
+    test = get_best_layerwise(load(model), give_all = True)
+    rand = get_best_layerwise(load(model, rh=True), give_all = True)
+    zs = [] # fisher's p values
+    for t, r in zip(test, rand):
+        z, p = r_to_z(t, r)
+        zs.append(z)
+    p = combine_z_statistics(zs)
+    p_values_best_rh.append([model, p])
+p_values_best_rh = add_significance_asterisks(p_values_best_rh)
+p_values_best_rh = pd.DataFrame(p_values_best_rh, columns = ["model", "p", "asterisk"])
+
+###############################################################################
+
+best_rh = [get_best_layerwise(load(model, rh=True)) for model in model_names]
+best_rh_sd = [get_best_layerwise(load(model, rh=True), give_mean = False) for model in model_names]
+
+best_layer_rh = pd.DataFrame({
+    'Model': names_formatted,
+    'Score': best_rh,
+    'Family': model_family,
+    'sd' : best_rh_sd,
+    'n' : n_langs
+})
+
+plot_md(best_layer_rh, best_layer, "", ylim = .75, ylimstart = 0, sig = p_values_best_rh["asterisk"], name0 = "Right", name1 = "Left", color0 = "cornflowerblue", colname = "Hemisphere")

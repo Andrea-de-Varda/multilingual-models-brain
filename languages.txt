@@ -1,0 +1,207 @@
+#######################################
+# Languages with correlations p < .05 #
+#######################################
+
+Russian TeraSpace/whisper-medium-russian
+Bulgarian shripadbhat/whisper-medium-bg
+German
+Romanian
+Hungarian
+Turkish
+Spanish
+Ukrainian
+Lithuanian
+English
+Latvian
+Basque # not supported by whisper
+Vietnamese
+Tamil
+Mandarin # chinese in whisper
+Afrikaans
+
+# download story sounds at https://evlab.mit.edu/aliceloc/alicelanguageslist/
+
+##################################
+# languages supported by whisper #
+##################################
+Afrikaans, Arabic, Armenian, Azerbaijani, Belarusian, Bosnian, Bulgarian, Catalan, Chinese, Croatian, Czech, Danish, Dutch, English, Estonian, Finnish, French, Galician, German, Greek, Hebrew, Hindi, Hungarian, Icelandic, Indonesian, Italian, Japanese, Kannada, Kazakh, Korean, Latvian, Lithuanian, Macedonian, Malay, Marathi, Maori, Nepali, Norwegian, Persian, Polish, Portuguese, Romanian, Russian, Serbian, Slovak, Slovenian, Spanish, Swahili, Swedish, Tagalog, Tamil, Thai, Turkish, Ukrainian, Urdu, Vietnamese, and Welsh.
+
+
+
+
+
+# XGLM
+
+Russian 
+Bulgarian 
+German 
+Romanian NO!
+Hungarian NO!
+Turkish
+Spanish
+Ukrainian NO!
+Lithuanian NO!
+English
+Latvian NO!
+Basque NO!
+Vietnamese
+Tamil
+Mandarin
+Afrikaans NO!
+
+
+
+Story: 4 min 20 sec, padded with silence or trimmed at the end.
+In time-series,
+12 language ROIs.
+
+What I need to know:
+- to what fROI correspond the 12 parcels?
+- why time series have 142 datapoints? If stories are 260 seconds long, and TR = 2sec, there should be 130 datapoints (or 125, since the first 10 s of each run were excluded to allow for steady-state magnetization).
+
+Sound data:
+http://web.mit.edu/evlab//aliceloc/
+
+Else:
+https://osf.io/cw89s/files/osfstorage
+
+
+# all 45 in mBERT (102) pretraining
+- Mandarin / chinese
+
+# 44 in XLM-R (100) pretraining
+    NO Tagalog!
+- serbian instead of serbocroatian, same language
+- farsi / persian, same language
+- mandarin / chinese
+
+# 21 in XGLM
+(English, Russian, Chinese, German, Spanish, French, Japanese, Italian, Portuguese, Greek, Korean, Finnish, XXIndonesian, Turkish, Arabic, Vietnamese, XXthai, XXbulgarian, catalan, hindi, XXestonian, XXBengali, Tamil, XXUrdu, Swahili, Telugu, Basque, XXburmese, XXhaitian, XXquechua) (XX is for langs in XGLM not in neuro)
+
+# 36 in mGPT
+   NO Irish, Catalan, Norwegian, Czech, Serbo-croatian, Slovene, Gujarati, Nepali, Tagalog,
+https://github.com/ai-forever/mgpt
+
+
+
+Other models I could consider
+# https://mr-nlp.github.io/posts/2022/07/multilingual-tptlms-list/ (!!!!)
+- important: they're not all standard LMs (e.g., InfoXLM combines translation language modeling, masked language modeling, and cross-lingual contrast (which basically classifies translation sentences. InfoXLM lists a lot of models in intro, e.g. LaBSE!!)
+
+Bloom!
+multilingual-e5-large (text embeddings, base/large/small)
+mT5
+mT5 for summarization mT5_multilingual_XLSum
+
+########################
+# Speech transcription #
+########################
+
+Massively multilingual speech
+https://github.com/facebookresearch/fairseq/tree/main/examples/mms
+https://github.com/facebookresearch/fairseq/blob/main/examples/mms/data_prep/README.md (for forced alignment)
+
+Whisper timestamped (multilingual speech recognition)
+https://github.com/linto-ai/whisper-timestamped
+
+Montreal forced alignment (since already have the text)
+https://montreal-forced-aligner.readthedocs.io/en/latest/first_steps/index.html#first-steps-align-pretrained
+(check available pronunciation dictionaries and acoustic models)
+
+
+Languages:
+## Indo-european
+Armenian
+Irish
+Greek
+Catalan
+French
+Italian
+Portuguese
+Romanian
+Spanish
+Afrikaans
+Danish
+Dutch
+English
+German
+Norwegian
+Swedish
+
+Belarusian
+Bulgarian
+Czech
+Latvian
+Lithuanian
+Polish
+Russian
+Serbocroatian
+Slovene
+Ukrainian
+
+Farsi
+Gujarati
+Hindi
+Marathi
+Nepali
+
+# Afro-asiatic
+Arabic
+Hebrew
+
+# Austro-asiatic
+Vietnamese
+
+# Austronesian
+Tagalog
+
+# Dravidian
+Tamil
+Telugu
+
+# Japonic
+Japanese
+
+# Koreanic
+Korean
+
+# Atlantic-Congo
+Swahili
+
+# Sino-tibetan
+Mandarin
+
+# Uralic
+Finnish
+Hungarian
+
+# Turkic
+Turkish
+
+# Isolate
+Basque
+
+
+
+###########
+# NewData #
+###########
+
+'Catalan'
+'Japanese'
+'English'
+'Spanish'
+'Marathi'
+'Afrikaans'
+'Vietnamese'
+'Tamil'
+'Lithuanian'
+'Turkish'
+'Dutch'
+'Norwegian'
+'Farsi'
+'French'
+'Romanian'
+
+# XGLM
+en ru zh de es fr ja it pt el ko fi id tr ar vi th bg ca hi et bn ta ur sw te eu my ht qu
