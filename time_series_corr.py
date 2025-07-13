@@ -82,6 +82,52 @@ print(corrs[(corrs["r"] > 0) & (corrs["p"] < 0.05)])
 print(corrs[(corrs["r"] > 0) & (corrs["p"] < 0.05)]["r"].mean())
 
 ##########################################################################################
+# asked by reviewers: fROI-based analyses
+
+froi_d = {}
+for l in set(data["Language"]):
+    temp = data[data.Language == l]
+    if len(temp) == 24:
+        sub1, sub2 = list(set(temp.UID))
+        part1 = temp[(temp.UID == sub1) & (temp.ROI.isin(rois))]
+        part2 = temp[(temp.UID == sub2) & (temp.ROI.isin(rois))]
+
+        froi_d.setdefault(l, {})
+
+        # participant 1
+        p1_data = {}
+        for roi in rois:
+            roi_data = part1[part1.ROI == roi].iloc[:, 7:]
+            p1_data[roi] = roi_data.values[0][9:-3]  # row per ROI
+        all_avg = np.mean(np.stack(list(p1_data.values())), axis=0)
+        p1_data["all"] = all_avg
+        froi_d[l][sub1] = p1_data
+
+        # participant 2
+        p2_data = {}
+        for roi in rois:
+            roi_data = part2[part2.ROI == roi].iloc[:, 7:]
+            p2_data[roi] = roi_data.values[0][9:-3]
+        all_avg = np.mean(np.stack(list(p2_data.values())), axis=0)
+        p2_data["all"] = all_avg
+        froi_d[l][sub2] = p2_data
+
+with open("data/dict_fROI", 'wb') as handle:
+    pickle.dump(froi_d, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+# check correlations across fROIs within parts
+roi_corrs_within = []
+for lang in froi_d:
+    for participant in froi_d[lang]:
+        rois_only = [roi for roi in froi_d[lang][participant] if roi != "all"]
+        for roi1, roi2 in combinations(rois_only, 2):
+            ts1 = froi_d[lang][participant][roi1]
+            ts2 = froi_d[lang][participant][roi2]
+            r, p = pearsonr(ts1, ts2)
+            roi_corrs_within.append((lang, participant, roi1, roi2, r, p))
+df_within_participant = pd.DataFrame(roi_corrs_within, columns=["Language", "Participant", "ROI_1", "ROI_2", "r", "p"])
+
+##########################################################################################
 
 langs = ['Afrikaans', 'Dutch', 'Farsi', 'French', 'Lithuanian', 'Marathi', 'Norwegian', 'Romanian', 'Spanish', 'Tamil', 'Turkish', 'Vietnamese']
 
@@ -158,6 +204,40 @@ for key, value in lang_dict_rh.items():
 with open("data/dict_fMRI_rh", 'wb') as handle:
     pickle.dump(fmri_d_rh, handle, protocol=pickle.HIGHEST_PROTOCOL)
     
+################################################################################
+# asked by reviewers: fROIs
+
+froi_d_rh = {}
+for l in set(data["Language"]):
+    temp = data[data.Language == l]
+    if len(temp) == 24:
+        sub1, sub2 = list(set(temp.UID))
+        part1 = temp[(temp.UID == sub1) & (temp.ROI.isin(rois_rh))]
+        part2 = temp[(temp.UID == sub2) & (temp.ROI.isin(rois_rh))]
+
+        froi_d_rh.setdefault(l, {})
+
+        # participant 1
+        p1_data = {}
+        for roi in rois_rh:
+            roi_data = part1[part1.ROI == roi].iloc[:, 7:]
+            p1_data[roi] = roi_data.values[0][9:-3]
+        all_avg = np.mean(np.stack(list(p1_data.values())), axis=0)
+        p1_data["all"] = all_avg
+        froi_d_rh[l][sub1] = p1_data
+
+        # participant 2
+        p2_data = {}
+        for roi in rois_rh:
+            roi_data = part2[part2.ROI == roi].iloc[:, 7:]
+            p2_data[roi] = roi_data.values[0][9:-3]
+        all_avg = np.mean(np.stack(list(p2_data.values())), axis=0)
+        p2_data["all"] = all_avg
+        froi_d_rh[l][sub2] = p2_data
+
+with open("data/dict_fROI_rh", 'wb') as handle:
+    pickle.dump(froi_d_rh, handle, protocol=pickle.HIGHEST_PROTOCOL)
+    
 # plot correlations with right hem
 
 corrs_rh = []
@@ -230,7 +310,41 @@ for key, value in lang_dict_md.items():
     
 with open("data/dict_fMRI_md", 'wb') as handle:
     pickle.dump(fmri_d_md, handle, protocol=pickle.HIGHEST_PROTOCOL)
-    
+
+###############################################################################
+# asked by reviewers
+
+froi_d_md = {}
+for l in set(data_md["Language"]):
+    temp = data_md[data_md.Language == l]
+    if len(temp) == 40:  # 20 ROIs x 2 participants
+        sub1, sub2 = list(set(temp.UID))
+        part1 = temp[(temp.UID == sub1) & (temp.ROI.isin(rois_md))]
+        part2 = temp[(temp.UID == sub2) & (temp.ROI.isin(rois_md))]
+
+        froi_d_md.setdefault(l, {})
+
+        # participant 1
+        p1_data = {}
+        for roi in rois_md:
+            roi_data = part1[part1.ROI == roi].iloc[:, 6:]
+            p1_data[roi] = roi_data.values[0][9:-3]
+        all_avg = np.mean(np.stack(list(p1_data.values())), axis=0)
+        p1_data["all"] = all_avg
+        froi_d_md[l][sub1] = p1_data
+
+        # participant 2
+        p2_data = {}
+        for roi in rois_md:
+            roi_data = part2[part2.ROI == roi].iloc[:, 6:]
+            p2_data[roi] = roi_data.values[0][9:-3]
+        all_avg = np.mean(np.stack(list(p2_data.values())), axis=0)
+        p2_data["all"] = all_avg
+        froi_d_md[l][sub2] = p2_data
+
+with open("data/dict_fROI_md", 'wb') as handle:
+    pickle.dump(froi_d_md, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
 ################################
 # correlation between MD and L #
 ################################
