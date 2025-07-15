@@ -117,43 +117,71 @@ def monolingual_encoding(langs, model_prefix, n_layers, d, shuffle=False, prefix
 
 def multilingual_encoding(langs, model_prefix, n_layers, d, prefix = "", overwrite = False):
     # This function trains encoding models in a set of languages (all but one) and evaluates the encoding in the left-out language
-    layerwise_dict = {}
-    if os.path.isfile(f"results/multilingual_{prefix}{model_prefix}") and overwrite == False:
+    kf = KFold(n_splits=10, shuffle=False)
+    if os.path.isfile(f"results/multilingual_{prefix}{model_prefix}_all") and overwrite == False:
         print(f"Encoding for {model_prefix} already done")
     else:
-        for n in range(n_layers+1):
-            print(f"Processing layer {n}")
-            fmri_data = [preproc_align(lang, load(f"{model_prefix}_{lang}")[n]) for lang in langs]
-            ############################
-            out_predictions = []
-            for i in tqdm(range(len(langs))):
-                X_data = fmri_data[:i] + fmri_data[i+1:] # Training data (X) excludes lang_i
-                X_train = np.concatenate(X_data)
-                y_names = langs[:i] + langs[i+1:]
-                y_train = np.concatenate([d[lang_code_dict[name]] for name in y_names])
-                X_test = fmri_data[i]
-                y_test = d[lang_code_dict[langs[i]]]
-                #print(f"{langs[i]} --- {y_names}")
-                # scaling (normalization parameters are estimated on training data only)
-                X_scaler = StandardScaler()
-                y_scaler = StandardScaler()
-                X_train = X_scaler.fit_transform(X_train)
-                X_test = X_scaler.transform(X_test)
-                y_train = y_scaler.fit_transform(y_train.reshape(-1, 1)).flatten()
-                y_test = y_scaler.transform(y_test.reshape(-1, 1)).flatten()
-                # fitting
-                reg = KernelRidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
-                reg.fit(X_train, y_train)
-                y_pred = reg.predict(X_test)
-                r, p = pearsonr(y_test, y_pred)
-                print(langs[i], r)
-                out_predictions.append([langs[i], r])
-            ############################
-            out_predictions = pd.DataFrame(out_predictions, columns = ["lang", "r"])
-            layerwise_dict[n] = out_predictions
-            mean_r = np.mean(out_predictions["r"])
-            print(f"Mean r = {mean_r} ({model_prefix} - {n})")
-        save(layerwise_dict, f"results/multilingual_{prefix}{model_prefix}")
+        kf = KFold(n_splits=10, shuffle=False)
+        frois = list(d[lang_code_dict[langs[0]]][list(d[lang_code_dict[langs[0]]].keys())[0]].keys())
+        for froi_idx, froi in enumerate(frois):
+            layerwise_dict = {}
+            print(f"\n\nProcessing {froi} ({froi_idx+1}/{len(frois)})")
+            for n in range(n_layers+1):
+                print(f"Processing layer {n}")
+                fmri_data = [preproc_align(lang, load(f"{model_prefix}_{lang}")[n]) for lang in langs]
+                ############################
+                out_predictions = []
+                for i in tqdm(range(len(langs))): # for each language, train (KF) in that language
+                    results_d_singlelang = {}
+                    for train_index, test_index in kf.split(fmri_data[0]):
+                        # train on 9/10 of the data in one language
+                        y_name = langs[i]
+                        part1, part2 = d[lang_code_dict[y_name]].keys()
+                        X_train_ = fmri_data[i][train_index] # Training data (X) includes only lang_i
+                        y_train_1 = d[lang_code_dict[y_name]][part1][froi][train_index] # two participants -- train on both
+                        y_train_2 = d[lang_code_dict[y_name]][part2][froi][train_index]
+                        X_train = np.concatenate([X_train_, X_train_])
+                        y_train = np.concatenate([y_train_1, y_train_2])
+                        # scaling (using for test directly)
+                        X_scaler = StandardScaler()
+                        y_scaler = StandardScaler()
+                        X_train = X_scaler.fit_transform(X_train)
+                        y_train = y_scaler.fit_transform(y_train.reshape(-1, 1)).flatten()
+                        reg = KernelRidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
+                        reg.fit(X_train, y_train)
+                        for j in range(len(langs)):
+                            #if j != i: # !! otherwise, train-test in same lang # on second thought, keeping it to have square matrices and aligned dims
+                            test_lang = langs[j]
+                            part1, part2 = d[lang_code_dict[test_lang]].keys()
+                            X_test = fmri_data[j][test_index]
+                            y_test_1 = d[lang_code_dict[test_lang]][part1][froi][test_index]
+                            y_test_2 = d[lang_code_dict[test_lang]][part2][froi][test_index]
+                            # y_test = np.mean([y_test_1, y_test_2], axis = 0)
+                            X_test = X_scaler.transform(X_test)
+                            y_test_1 = y_scaler.transform(y_test_1.reshape(-1, 1)).flatten()
+                            y_test_2 = y_scaler.transform(y_test_2.reshape(-1, 1)).flatten()
+                            y_pred = reg.predict(X_test)
+                            try:
+                                results_d_singlelang[test_lang]["prediction"].extend(y_pred.tolist())
+                                results_d_singlelang[test_lang]["target1"].extend(y_test_1.tolist())
+                                results_d_singlelang[test_lang]["target2"].extend(y_test_2.tolist())
+                            except KeyError:
+                                results_d_singlelang[test_lang] = {"prediction" : y_pred.tolist(), 
+                                                                   "target1" : y_test_1.tolist(),
+                                                                   "target2" : y_test_2.tolist()}
+                    # 1 X participant
+                    d_corr1 = {lang : pearsonr(results_d_singlelang[lang]["prediction"], results_d_singlelang[lang]["target1"])[0] for lang in langs}
+                    d_corr2 = {lang : pearsonr(results_d_singlelang[lang]["prediction"], results_d_singlelang[lang]["target2"])[0] for lang in langs}
+                    d_avg = {k: (d_corr1[k] + d_corr2[k]) / 2 for k in d_corr1.keys()} # avg over 2 participants in y_test
+                    d_avg["target_lang"] = y_name
+                    mean_other = sum(v for k, v in d_avg.items() if k != y_name and k != "r" and k != "target_lang") / (len(d_avg) - 2)
+                    d_avg["r"] = mean_other
+                    out_predictions.append(d_avg)
+                out_predictions = pd.DataFrame(out_predictions)
+                layerwise_dict[n] = out_predictions
+                mean_r = out_predictions["r"].mean()
+                print(f"Mean r = {mean_r} ({model_prefix} - {n})")
+            save(layerwise_dict, f"results/multilingual_{prefix}{model_prefix}_{froi}")
     return layerwise_dict
 
 ###############################################################################
@@ -173,8 +201,8 @@ mgpt_langs   = ["af", "fa", "fr", "lt", "mr", "ro", "es", "ta", "tr", "vi"]
 #############################
 # Non-shuffled (monol only) #
 #############################
-from time import sleep
-sleep(200)
+# from time import sleep
+# sleep(200)
 xglm_small  = monolingual_encoding(xglm_langs, "xglm_small", 24, d)
 xglm_med    = monolingual_encoding(xglm_langs, "xglm_med", 24, d)
 xglm_large  = monolingual_encoding(xglm_langs, "xglm_large", 48, d)
