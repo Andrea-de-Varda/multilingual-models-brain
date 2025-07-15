@@ -4,11 +4,15 @@ import pandas as pd
 from os import chdir
 import os
 import pickle
-from sklearn.linear_model import RidgeCV
+# from sklearn.linear_model import RidgeCV
+# from himalaya.ridge import RidgeCV ## Apparently Kernel Ridge is faster -->  Solving ridge is slower than solving kernel ridge when n_samples < n_features (here 117 < 1024). Using a linear kernel in himalaya.kernel_ridge.KernelRidgeCV or himalaya.kernel_ridge.solve_kernel_ridge_cv_eigenvalues would be faster. ---- default kernel is linear
+from himalaya.kernel_ridge import KernelRidgeCV
 from sklearn.model_selection import KFold
 from sklearn.preprocessing import StandardScaler
 from tqdm import tqdm
 from scipy.stats import pearsonr
+import warnings
+warnings.filterwarnings("ignore", category=RuntimeWarning)
 
 chdir("/home/dev/Documents/PhD/Alice")
 
@@ -46,65 +50,69 @@ def preproc_align(lang, embeddings):
     embedded_words = embed_words(embeddings, words_id)
     return embedded_words
 
-def test_model_Ridge(X, y, n, saveto, save_results = True, shuffle=False, prefix = ""):
+def test_model_Ridge(X, y_part1, y_part2, n, saveto, save_results = True, shuffle=False, prefix = ""):
     if shuffle: # note that shuffling might artificially increase the encoding scores. Default is non-shuffled. All the analyses now are w/o shuffling.
         kf = KFold(n_splits=n, shuffle=True, random_state = 0)
     else:
         kf = KFold(n_splits=n, shuffle=False)
     out_reg = []
-    out_coefs = []
     out_pred = []; y_tot = []
     X_scaler = StandardScaler()
     y_scaler = StandardScaler()
-    for train_index, test_index in tqdm(kf.split(X), total=n):
+    for train_index, test_index in kf.split(X): # tqdm(kf.split(X), total=n):
         # Normalizing embedding and responses. The normalization parameters are always estimated on the training data and transferred to the test data
         X_train = X_scaler.fit_transform(X[train_index])
         X_test = X_scaler.transform(X[test_index])
-        y_train = y_scaler.fit_transform(y[train_index].reshape(-1, 1)).flatten()
-        y_test = y_scaler.transform(y[test_index].reshape(-1, 1)).flatten()
-        reg = RidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000)) # Alpha values log spaced. Alpha chosen with leave-one-out nested CV
+        y_train = y_scaler.fit_transform(y_part1[train_index].reshape(-1, 1)).flatten()
+        y_test = y_scaler.transform(y_part2[test_index].reshape(-1, 1)).flatten()
+        reg = KernelRidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000)) # Alpha values log spaced. Alpha chosen with leave-one-out nested CV
         reg.fit(X_train, y_train)
         y_pred = reg.predict(X_test)
         r, _ = pearsonr(y_test, y_pred)
         out_pred.extend(y_pred.tolist())
         y_tot.extend(y_test.tolist())
-        coefs = reg.coef_#; print(coefs)
-        out_coefs.append(coefs)
         out_reg.append(r)
     #print(round(np.mean(out_reg), 4))
     r_tot = pearsonr(out_pred, y_tot)[0]
-    print(round(r_tot, 4))
+    # print(round(r_tot, 4))
     out_predictions = [y_tot, out_pred]
     if save_results:
         save(r_tot, f"results/rs/{prefix}{saveto}")
         save(out_reg, f"results/out_reg/{prefix}{saveto}") # saving all rs and coefficients for later use
-        save(out_coefs, f"results/coefficients/{prefix}{saveto}")
         save(out_predictions, f"results/predictions/{prefix}{saveto}")
     return r_tot
 
 def monolingual_encoding(langs, model_prefix, n_layers, d, shuffle=False, prefix = "", overwrite = False):
     # This simply repeats the process for (a) all the languages in the sample and (b) all the layers of a given model from which embeddings are available
     layerwise_dict = {}
-    if os.path.isfile(f"results/monolingual_{prefix}{model_prefix}") and overwrite == False:
+    if os.path.isfile(f"results/monolingual_{prefix}{model_prefix}_all") and overwrite == False:
         print(f"Encoding for {model_prefix} already done")
     else:
         # Encoding evaluated layer by layer
-        for n in range(n_layers+1):
-            print(f"Processing layer {n}")
-            fmri_data = [preproc_align(lang, load(f"{model_prefix}_{lang}")[n]) for lang in langs]
-            #########################
-            m = []
-            for idx, lang in enumerate(langs):
-                the_r = test_model_Ridge(fmri_data[idx], d[lang_code_dict[lang]], 10, saveto = f"{model_prefix}_{lang}_{n}", shuffle=shuffle, prefix = prefix)
-                m.append(the_r)
-            #########################
-            mean_r = np.mean(m)
-            #print(f"All rs = {m}")
-            print(f"Mean r = {round(mean_r, 4)} ({model_prefix} - {n})")
-            #########################
-            df = pd.DataFrame(zip(langs, m), columns=["lang", "m"])
-            layerwise_dict[n] = df
-        save(layerwise_dict, f"results/monolingual_{prefix}{model_prefix}")
+        frois = list(d[lang_code_dict[langs[0]]][list(d[lang_code_dict[langs[0]]].keys())[0]].keys())
+        for froi_idx, froi in enumerate(frois):
+            print(f"\n\nProcessing {froi} ({froi_idx+1}/{len(frois)})")
+            for n in range(n_layers+1):
+                # print(f"Processing layer {n}")
+                fmri_data = [preproc_align(lang, load(f"{model_prefix}_{lang}")[n]) for lang in langs]
+                #########################
+                m1 = []; m2 = []
+                for idx, lang in enumerate(langs):
+                    part1, part2 = d[lang_code_dict[lang]].keys()
+                    ts1, ts2 = d[lang_code_dict[lang]][part1][froi], d[lang_code_dict[lang]][part2][froi]
+                    the_r1 = test_model_Ridge(fmri_data[idx], ts1, ts2, 10, saveto = f"{model_prefix}_{lang}_{froi}_part1_{n}", shuffle=shuffle, prefix = prefix) # trying in both directions
+                    the_r2 = test_model_Ridge(fmri_data[idx], ts2, ts1, 10, saveto = f"{model_prefix}_{lang}_{froi}_part1_{n}", shuffle=shuffle, prefix = prefix)
+                    m1.append(the_r1)
+                    m2.append(the_r2)
+                #########################
+                mean_r = np.mean(m1+m2)
+                #print(f"All rs = {m}")
+                print(f"Mean r = {round(mean_r, 4)} ({model_prefix} - {froi} - {n})")
+                #########################
+                df = pd.DataFrame(zip(langs, m1, m2), columns=["lang", "m1", "m2"])
+                df["m"] = df[["m1", "m2"]].mean(axis=1)
+                layerwise_dict[n] = df
+            save(layerwise_dict, f"results/monolingual_{prefix}{model_prefix}_{froi}")
     return layerwise_dict
 
 def multilingual_encoding(langs, model_prefix, n_layers, d, prefix = "", overwrite = False):
@@ -134,7 +142,7 @@ def multilingual_encoding(langs, model_prefix, n_layers, d, prefix = "", overwri
                 y_train = y_scaler.fit_transform(y_train.reshape(-1, 1)).flatten()
                 y_test = y_scaler.transform(y_test.reshape(-1, 1)).flatten()
                 # fitting
-                reg = RidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
+                reg = KernelRidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
                 reg.fit(X_train, y_train)
                 y_pred = reg.predict(X_test)
                 r, p = pearsonr(y_test, y_pred)
@@ -151,7 +159,7 @@ def multilingual_encoding(langs, model_prefix, n_layers, d, prefix = "", overwri
 ###############################################################################
 
 # load fMRI data
-with open("data/dict_fMRI", 'rb') as handle:
+with open("data/dict_fROI", 'rb') as handle:
     d = pickle.load(handle)
 
 all_langs = ['Afrikaans', 'Dutch', 'Farsi', 'French', 'Lithuanian', 'Marathi', 'Norwegian', 'Romanian', 'Spanish', 'Tamil', 'Turkish', 'Vietnamese']
@@ -161,6 +169,32 @@ lang_code_dict = {k : v for k, v in zip(all_codes, all_langs)}
 
 xglm_langs  = ["es", "vi", "ta", "tr", "fr"]
 mgpt_langs   = ["af", "fa", "fr", "lt", "mr", "ro", "es", "ta", "tr", "vi"]
+
+#############################
+# Non-shuffled (monol only) #
+#############################
+from time import sleep
+sleep(200)
+xglm_small  = monolingual_encoding(xglm_langs, "xglm_small", 24, d)
+xglm_med    = monolingual_encoding(xglm_langs, "xglm_med", 24, d)
+xglm_large  = monolingual_encoding(xglm_langs, "xglm_large", 48, d)
+xglm_xl     = monolingual_encoding(xglm_langs, "xglm_xl", 48, d)
+mbert       = monolingual_encoding(all_codes, "bert_base", 12, d)
+distilmbert = monolingual_encoding(all_codes, "distilmbert", 6, d)
+xlmr_base   = monolingual_encoding(all_codes, "xlmr_base", 12, d)
+xlmr_large  = monolingual_encoding(all_codes, "xlmr_large", 24, d)
+mt5_small   = monolingual_encoding(all_codes, "mt5_small", 8, d)
+mt5_base    = monolingual_encoding(all_codes, "mt5_base", 12, d)
+mt5_large   = monolingual_encoding(all_codes, "mt5_large", 24, d)
+mdeberta      = monolingual_encoding(all_codes, "mdeberta", 12, d)
+xlm_align     = monolingual_encoding(all_codes, "xlm_align", 12, d)
+infoxlm       = monolingual_encoding(all_codes, "infoxlm_base", 12, d)
+infoxlm_large = monolingual_encoding(all_codes, "infoxlm_large", 24, d)
+multiminilm   = monolingual_encoding(all_codes, "multiminilm", 12, d)
+nllb_d_600m   = monolingual_encoding(all_codes, "nllb200_distilled_600M", 12, d)
+nllb_d_1b     = monolingual_encoding(all_codes, "nllb200_distilled_1B", 24, d)
+nllb_1b       = monolingual_encoding(all_codes, "nllb200_1B", 24, d) 
+mgpt          = monolingual_encoding(mgpt_langs, "mgpt", 24, d)
 
 ##################
 # MODEL TRANSFER #
@@ -186,31 +220,6 @@ nllb_d_600m_multi   = multilingual_encoding(all_codes, "nllb200_distilled_600M",
 nllb_d_1b_multi     = multilingual_encoding(all_codes, "nllb200_distilled_1B", 24, d)
 nllb_1b_multi       = multilingual_encoding(all_codes, "nllb200_1B", 24, d)
 mgpt_multi          = multilingual_encoding(mgpt_langs, "mgpt", 24, d)
-
-#############################
-# Non-shuffled (monol only) #
-#############################
-
-xglm_small  = monolingual_encoding(xglm_langs, "xglm_small", 24, d)
-xglm_med    = monolingual_encoding(xglm_langs, "xglm_med", 24, d)
-xglm_large  = monolingual_encoding(xglm_langs, "xglm_large", 48, d)
-xglm_xl     = monolingual_encoding(xglm_langs, "xglm_xl", 48, d)
-mbert       = monolingual_encoding(all_codes, "bert_base", 12, d)
-distilmbert = monolingual_encoding(all_codes, "distilmbert", 6, d)
-xlmr_base   = monolingual_encoding(all_codes, "xlmr_base", 12, d)
-xlmr_large  = monolingual_encoding(all_codes, "xlmr_large", 24, d)
-mt5_small   = monolingual_encoding(all_codes, "mt5_small", 8, d)
-mt5_base    = monolingual_encoding(all_codes, "mt5_base", 12, d)
-mt5_large   = monolingual_encoding(all_codes, "mt5_large", 24, d)
-mdeberta      = monolingual_encoding(all_codes, "mdeberta", 12, d)
-xlm_align     = monolingual_encoding(all_codes, "xlm_align", 12, d)
-infoxlm       = monolingual_encoding(all_codes, "infoxlm_base", 12, d)
-infoxlm_large = monolingual_encoding(all_codes, "infoxlm_large", 24, d)
-multiminilm   = monolingual_encoding(all_codes, "multiminilm", 12, d)
-nllb_d_600m   = monolingual_encoding(all_codes, "nllb200_distilled_600M", 12, d)
-nllb_d_1b     = monolingual_encoding(all_codes, "nllb200_distilled_1B", 24, d)
-nllb_1b       = monolingual_encoding(all_codes, "nllb200_1B", 24, d) 
-mgpt          = monolingual_encoding(mgpt_langs, "mgpt", 24, d)
 
 ###############################################################################
 
