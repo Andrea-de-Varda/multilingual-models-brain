@@ -34,3 +34,4 @@ additional_analyses/MECO/Meco_l1.csv
 
 # wav files
 *.wav
+additional_analyses/NaturalStories/NaturalStories_TimeSeries_20220615.csv
