@@ -1,0 +1,18 @@
+# .rsync-filter
+
+# exclude everything by default
+- */
+
+# include specific folders
++ /embeddings/
++ /data/
+
+# but exclude specific subfolder of embeddings
+- /embeddings/split_context/
+
+# include all files in the root dir
++ /*
+
+# default rule --- exclude everything else
+- *
+
