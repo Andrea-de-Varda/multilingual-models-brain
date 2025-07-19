@@ -13,13 +13,15 @@ from tqdm import tqdm
 from scipy.stats import pearsonr
 import warnings
 warnings.filterwarnings("ignore", category=RuntimeWarning)
+warnings.filterwarnings("ignore", category=DeprecationWarning, message=".*numpy\\.core\\.numeric is deprecated.*")
 
 chdir("/home/dev/Documents/PhD/Alice")
 
 def save(file, name):
     with open(name, 'wb') as handle:
         pickle.dump(file, handle, protocol=pickle.HIGHEST_PROTOCOL)
-        
+
+
 def load(name):
     with open("embeddings/"+name, 'rb') as handle:
         file = pickle.load(handle)
@@ -50,7 +52,7 @@ def preproc_align(lang, embeddings):
     embedded_words = embed_words(embeddings, words_id)
     return embedded_words
 
-def test_model_Ridge(X, y_part1, y_part2, n, saveto, save_results = True, shuffle=False, prefix = ""):
+def test_model_Ridge(X, y_part1, y_part2, n, saveto, save_results = False, shuffle=False, prefix = ""):
     if shuffle: # note that shuffling might artificially increase the encoding scores. Default is non-shuffled. All the analyses now are w/o shuffling.
         kf = KFold(n_splits=n, shuffle=True, random_state = 0)
     else:
@@ -131,7 +133,7 @@ def multilingual_encoding(langs, model_prefix, n_layers, d, prefix = "", overwri
                 fmri_data = [preproc_align(lang, load(f"{model_prefix}_{lang}")[n]) for lang in langs]
                 ############################
                 out_predictions = []
-                for i in tqdm(range(len(langs))): # for each language, train (KF) in that language
+                for i in range(len(langs)): # for each language, train (KF) in that language
                     results_d_singlelang = {}
                     for train_index, test_index in kf.split(fmri_data[0]):
                         # train on 9/10 of the data in one language
@@ -183,6 +185,89 @@ def multilingual_encoding(langs, model_prefix, n_layers, d, prefix = "", overwri
                 print(f"Mean r = {mean_r} ({model_prefix} - {n})")
             save(layerwise_dict, f"results/multilingual_{prefix}{model_prefix}_{froi}")
     return layerwise_dict
+
+def multilingual_encoding_circshift(langs, model_prefix, n_layers, d, prefix = "", overwrite = False, shift_vals = (26, 52, 78, 104)):
+    kf = KFold(n_splits=10, shuffle=False)
+    frois = list(d[lang_code_dict[langs[0]]][list(d[lang_code_dict[langs[0]]].keys())[0]].keys())
+    for froi_idx, froi in enumerate(frois):
+        out_all_shifts = {}
+        filepath = f"results/multilingual_{prefix}{model_prefix}_{froi}_circshift"
+        if os.path.isfile(filepath) and not overwrite:
+            print(f"Encoding for {model_prefix} – {froi} already done")
+            continue
+        print(f"\n\nProcessing {froi} ({froi_idx+1}/{len(frois)})")
+        for shift in shift_vals:
+            print(f"\n  >>> Circular shift = {shift}")
+            layerwise_dict = {}
+            # pre‑compute fmri reps (X) for all layers & langs to avoid recomputation per split
+            fmri_layers = {
+                n: [preproc_align(lang, load(f"{model_prefix}_{lang}")[n]) for lang in langs]
+                for n in range(n_layers + 1)
+            }
+            for n in range(n_layers + 1):
+                # print(f"    Layer {n}")
+                fmri_data = fmri_layers[n]
+                out_predictions = []
+                for i in range(len(langs)): # training language
+                    y_name = langs[i]
+                    results_d_singlelang = {}
+                    for train_idx, test_idx in kf.split(fmri_data[0]):
+                        part1, part2 = d[lang_code_dict[y_name]].keys()
+                        # X train
+                        X_train_ = fmri_data[i][train_idx]
+                        # y train (both participants) + circular shift
+                        y1 = d[lang_code_dict[y_name]][part1][froi][train_idx]
+                        y2 = d[lang_code_dict[y_name]][part2][froi][train_idx]
+                        y_train = np.concatenate([y1, y2])
+                        y_train = np.roll(y_train, shift)
+                        # scaling
+                        X_scaler = StandardScaler()
+                        y_scaler = StandardScaler()
+                        X_train = X_scaler.fit_transform(np.concatenate([X_train_, X_train_]))
+                        y_train = y_scaler.fit_transform(y_train.reshape(-1, 1)).flatten()
+                        reg = KernelRidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01,
+                                                    0.1, 1, 10, 100, 1000, 10000))
+                        reg.fit(X_train, y_train)
+                        # evaluate on every language
+                        for j, test_lang in enumerate(langs):
+                            part1_t, part2_t = d[lang_code_dict[test_lang]].keys()
+                            X_test  = X_scaler.transform(fmri_data[j][test_idx])
+                            y_t1    = d[lang_code_dict[test_lang]][part1_t][froi][test_idx]
+                            y_t2    = d[lang_code_dict[test_lang]][part2_t][froi][test_idx]
+                            y_t1    = np.roll(y_t1, shift)  # same shift for test targets
+                            y_t2    = np.roll(y_t2, shift)
+                            y_t1    = y_scaler.transform(y_t1.reshape(-1,1)).flatten()
+                            y_t2    = y_scaler.transform(y_t2.reshape(-1,1)).flatten()
+                            y_pred  = reg.predict(X_test)
+                            try:
+                                rds = results_d_singlelang[test_lang]
+                                rds["prediction"].extend(y_pred.tolist())
+                                rds["target1"].extend(y_t1.tolist())
+                                rds["target2"].extend(y_t2.tolist())
+                            except KeyError:
+                                results_d_singlelang[test_lang] = {
+                                    "prediction": y_pred.tolist(),
+                                    "target1":    y_t1.tolist(),
+                                    "target2":    y_t2.tolist()
+                                }
+                    # correlations (avg over two participants)
+                    d_corr1 = {lang: pearsonr(rds["prediction"], rds["target1"])[0]
+                               for lang, rds in results_d_singlelang.items()}
+                    d_corr2 = {lang: pearsonr(rds["prediction"], rds["target2"])[0]
+                               for lang, rds in results_d_singlelang.items()}
+                    d_avg   = {k: (d_corr1[k] + d_corr2[k]) / 2 for k in d_corr1}
+                    d_avg["target_lang"] = y_name
+                    mean_other = np.mean([v for k,v in d_avg.items()
+                                          if k not in {y_name, "target_lang", "r"}])
+                    d_avg["r"] = mean_other
+                    out_predictions.append(d_avg)
+                df_layer = pd.DataFrame(out_predictions)
+                layerwise_dict[n] = df_layer
+                mean_r = df_layer["r"].mean()
+                print(f"     {model_prefix} | shift={shift} | layer={n} | mean r={mean_r:.3f}")
+            out_all_shifts[shift] = layerwise_dict
+        save(out_all_shifts, filepath)
+    return out_all_shifts
 
 ###############################################################################
 
@@ -249,13 +334,35 @@ nllb_d_1b_multi     = multilingual_encoding(all_codes, "nllb200_distilled_1B", 2
 nllb_1b_multi       = multilingual_encoding(all_codes, "nllb200_1B", 24, d)
 mgpt_multi          = multilingual_encoding(mgpt_langs, "mgpt", 24, d)
 
+# random
+xglm_small_multi  = multilingual_encoding_circshift(xglm_langs, "xglm_small", 24, d)
+xglm_med_multi    = multilingual_encoding_circshift(xglm_langs, "xglm_med", 24, d)
+xglm_large_multi  = multilingual_encoding_circshift(xglm_langs, "xglm_large", 48, d)
+xglm_xl_multi     = multilingual_encoding_circshift(xglm_langs, "xglm_xl", 48, d)
+mbert_multi       = multilingual_encoding_circshift(all_codes, "bert_base", 12, d)
+distilmbert_multi = multilingual_encoding_circshift(all_codes, "distilmbert", 6, d)
+xlmr_base_multi   = multilingual_encoding_circshift(all_codes, "xlmr_base", 12, d)
+xlmr_large_multi  = multilingual_encoding_circshift(all_codes, "xlmr_large", 24, d)
+mt5_small_multi   = multilingual_encoding_circshift(all_codes, "mt5_small", 8, d)
+mt5_base_multi    = multilingual_encoding_circshift(all_codes, "mt5_base", 12, d)
+mt5_large_multi   = multilingual_encoding_circshift(all_codes, "mt5_large", 24, d)
+mdeberta_multi      = multilingual_encoding_circshift(all_codes, "mdeberta", 12, d)
+xlm_align_multi     = multilingual_encoding_circshift(all_codes, "xlm_align", 12, d)
+infoxlm_base_multi  = multilingual_encoding_circshift(all_codes, "infoxlm_base", 12, d)
+infoxlm_large_multi = multilingual_encoding_circshift(all_codes, "infoxlm_large", 24, d)
+multiminilm_multi   = multilingual_encoding_circshift(all_codes, "multiminilm", 12, d)
+nllb_d_600m_multi   = multilingual_encoding_circshift(all_codes, "nllb200_distilled_600M", 12, d)
+nllb_d_1b_multi     = multilingual_encoding_circshift(all_codes, "nllb200_distilled_1B", 24, d)
+nllb_1b_multi       = multilingual_encoding_circshift(all_codes, "nllb200_1B", 24, d)
+mgpt_multi          = multilingual_encoding_circshift(mgpt_langs, "mgpt", 24, d)
+
 ###############################################################################
 
 ####################
 # Right hemisphere #
 ####################
 
-with open("data/dict_fMRI_rh", 'rb') as handle:
+with open("data/dict_fROI_rh", 'rb') as handle:
     d_rh = pickle.load(handle)
 
 # sequential split
@@ -307,7 +414,7 @@ mgpt_multi          = multilingual_encoding(mgpt_langs, "mgpt", 24, d_rh, prefix
 # MD NETWORK #
 ##############
 
-with open("data/dict_fMRI_md", 'rb') as handle:
+with open("data/dict_fROI_md", 'rb') as handle:
     d_md = pickle.load(handle)
 
 xglm_small  = monolingual_encoding(xglm_langs, "xglm_small", 24, d_md, prefix = "md_")
