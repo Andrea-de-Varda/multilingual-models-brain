@@ -129,7 +129,7 @@ def multilingual_encoding(langs, model_prefix, n_layers, d, prefix = "", overwri
             layerwise_dict = {}
             print(f"\n\nProcessing {froi} ({froi_idx+1}/{len(frois)})")
             for n in range(n_layers+1):
-                print(f"Processing layer {n}")
+                # print(f"Processing layer {n}")
                 fmri_data = [preproc_align(lang, load(f"{model_prefix}_{lang}")[n]) for lang in langs]
                 ############################
                 out_predictions = []
@@ -199,7 +199,7 @@ def multilingual_encoding_circshift(langs, model_prefix, n_layers, d, prefix = "
         for shift in shift_vals:
             print(f"\n  >>> Circular shift = {shift}")
             layerwise_dict = {}
-            # pre‑compute fmri reps (X) for all layers & langs to avoid recomputation per split
+            # pre‑compute fmri reps (X) for all layers and langs to avoid recomputation per split
             fmri_layers = {
                 n: [preproc_align(lang, load(f"{model_prefix}_{lang}")[n]) for lang in langs]
                 for n in range(n_layers + 1)
