@@ -89,6 +89,7 @@ def monolingual_encoding(langs, model_prefix, n_layers, d, shuffle=False, prefix
     layerwise_dict = {}
     if os.path.isfile(f"results/monolingual_{prefix}{model_prefix}_all") and overwrite == False:
         print(f"Encoding for {model_prefix} already done")
+        return
     else:
         # Encoding evaluated layer by layer
         frois = list(d[lang_code_dict[langs[0]]][list(d[lang_code_dict[langs[0]]].keys())[0]].keys())
@@ -109,7 +110,8 @@ def monolingual_encoding(langs, model_prefix, n_layers, d, shuffle=False, prefix
                 #########################
                 mean_r = np.mean(m1+m2)
                 #print(f"All rs = {m}")
-                print(f"Mean r = {round(mean_r, 4)} ({model_prefix} - {froi} - {n})")
+                # print(f"Mean r = {round(mean_r, 4)} ({model_prefix} - {froi} - {n})")
+                print(f"WITHIN     {model_prefix} | fROI={froi} | layer={n} | mean r={mean_r:.3f}")
                 #########################
                 df = pd.DataFrame(zip(langs, m1, m2), columns=["lang", "m1", "m2"])
                 df["m"] = df[["m1", "m2"]].mean(axis=1)
@@ -122,6 +124,7 @@ def multilingual_encoding(langs, model_prefix, n_layers, d, prefix = "", overwri
     kf = KFold(n_splits=10, shuffle=False)
     if os.path.isfile(f"results/multilingual_{prefix}{model_prefix}_all") and overwrite == False:
         print(f"Encoding for {model_prefix} already done")
+        return
     else:
         kf = KFold(n_splits=10, shuffle=False)
         frois = list(d[lang_code_dict[langs[0]]][list(d[lang_code_dict[langs[0]]].keys())[0]].keys())
@@ -182,11 +185,46 @@ def multilingual_encoding(langs, model_prefix, n_layers, d, prefix = "", overwri
                 out_predictions = pd.DataFrame(out_predictions)
                 layerwise_dict[n] = out_predictions
                 mean_r = out_predictions["r"].mean()
-                print(f"Mean r = {mean_r} ({model_prefix} - {n})")
+                # print(f"Mean r = {mean_r} ({model_prefix} - {n})")
+                print(f"ACROSS     {model_prefix} | fROI={froi} | layer={n} | mean r={mean_r:.3f}")
             save(layerwise_dict, f"results/multilingual_{prefix}{model_prefix}_{froi}")
     return layerwise_dict
 
-def multilingual_encoding_circshift(langs, model_prefix, n_layers, d, prefix = "", overwrite = False, shift_vals = (26, 52, 78, 104)):
+def monolingual_encoding_circshift(langs, model_prefix, n_layers, d, prefix="", overwrite=False, shift_vals=(26, 52, 78, 104), shuffle=False):
+    kf = KFold(n_splits=10, shuffle=False)
+    frois = list(d[lang_code_dict[langs[0]]][list(d[lang_code_dict[langs[0]]].keys())[0]].keys())
+    for froi_idx, froi in enumerate(frois):
+        filepath = f"results/monolingual_{prefix}{model_prefix}_{froi}_circshift"
+        if os.path.isfile(filepath) and not overwrite:
+            print(f"Encoding for {model_prefix} – {froi} already done")
+            continue
+        print(f"\n\nProcessing {froi} ({froi_idx + 1}/{len(frois)})")
+        out_all_shifts = {}
+        for shift in shift_vals:
+            print(f"\n  >>> Circular shift = {shift}")
+            layerwise_dict = {}
+            fmri_layers = {n: [preproc_align(lang, load(f"{model_prefix}_{lang}")[n]) for lang in langs] for n in range(n_layers + 1)}
+            for n in range(n_layers + 1):
+                fmri_data = fmri_layers[n]
+                m1, m2 = [], []
+                for idx, lang in enumerate(langs):
+                    part1, part2 = d[lang_code_dict[lang]].keys()
+                    y1 = np.roll(d[lang_code_dict[lang]][part1][froi], shift)
+                    y2 = np.roll(d[lang_code_dict[lang]][part2][froi], shift)
+                    r1 = test_model_Ridge(fmri_data[idx], y1, y2, 10, saveto=f"{model_prefix}_{lang}_{froi}_part1_{n}_shift{shift}", shuffle=shuffle, prefix=prefix,)
+                    r2 = test_model_Ridge(fmri_data[idx], y2, y1, 10, saveto=f"{model_prefix}_{lang}_{froi}_part2_{n}_shift{shift}", shuffle=shuffle, prefix=prefix,)
+                    m1.append(r1)
+                    m2.append(r2)
+                df = pd.DataFrame(zip(langs, m1, m2), columns=["lang", "m1", "m2"])
+                df["m"] = df[["m1", "m2"]].mean(axis=1)
+                layerwise_dict[n] = df
+                mean_r = df["m"].mean()
+                print(f"WITHIN‑CIRC {model_prefix} | shift={shift} | fROI={froi} | layer={n} | mean r={mean_r:.3f}")
+            out_all_shifts[shift] = layerwise_dict
+        save(out_all_shifts, filepath)
+    return out_all_shifts
+
+def multilingual_encoding_circshift(langs, model_prefix, n_layers, d, prefix = "", overwrite = True, shift_vals = (26, 52, 78, 104)):
     kf = KFold(n_splits=10, shuffle=False)
     frois = list(d[lang_code_dict[langs[0]]][list(d[lang_code_dict[langs[0]]].keys())[0]].keys())
     for froi_idx, froi in enumerate(frois):
@@ -218,8 +256,9 @@ def multilingual_encoding_circshift(langs, model_prefix, n_layers, d, prefix = "
                         # y train (both participants) + circular shift
                         y1 = d[lang_code_dict[y_name]][part1][froi][train_idx]
                         y2 = d[lang_code_dict[y_name]][part2][froi][train_idx]
-                        y_train = np.concatenate([y1, y2])
-                        y_train = np.roll(y_train, shift)
+                        # y_train = np.concatenate([y1, y2])
+                        # y_train = np.roll(y_train, shift)
+                        y_train = np.concatenate([np.roll(y1, shift), np.roll(y2, shift)])
                         # scaling
                         X_scaler = StandardScaler()
                         y_scaler = StandardScaler()
@@ -264,7 +303,7 @@ def multilingual_encoding_circshift(langs, model_prefix, n_layers, d, prefix = "
                 df_layer = pd.DataFrame(out_predictions)
                 layerwise_dict[n] = df_layer
                 mean_r = df_layer["r"].mean()
-                print(f"     {model_prefix} | shift={shift} | layer={n} | mean r={mean_r:.3f}")
+                print(f"ACROSS-CIRC     {model_prefix} | shift={shift} | layer={n} | mean r={mean_r:.3f}")
             out_all_shifts[shift] = layerwise_dict
         save(out_all_shifts, filepath)
     return out_all_shifts
