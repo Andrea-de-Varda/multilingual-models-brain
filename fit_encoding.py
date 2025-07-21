@@ -1,3 +1,4 @@
+print(">>> SCRIPT LAUNCHED", flush=True)
 import numpy as np
 import numpy.ma as ma
 import pandas as pd
@@ -23,6 +24,7 @@ def save(file, name):
         pickle.dump(file, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 def load(name):
+    # print(f"Loading {name}", flush=True)
     with open("embeddings/"+name, 'rb') as handle:
         file = pickle.load(handle)
     return file
@@ -111,7 +113,7 @@ def monolingual_encoding(langs, model_prefix, n_layers, d, shuffle=False, prefix
                 mean_r = np.mean(m1+m2)
                 #print(f"All rs = {m}")
                 # print(f"Mean r = {round(mean_r, 4)} ({model_prefix} - {froi} - {n})")
-                print(f"WITHIN     {model_prefix} | fROI={froi} | layer={n} | mean r={mean_r:.3f}")
+                print(f"WITHIN     {model_prefix} | fROI={froi} | layer={n} | mean r={mean_r:.3f}", flush=True)
                 #########################
                 df = pd.DataFrame(zip(langs, m1, m2), columns=["lang", "m1", "m2"])
                 df["m"] = df[["m1", "m2"]].mean(axis=1)
@@ -186,7 +188,7 @@ def multilingual_encoding(langs, model_prefix, n_layers, d, prefix = "", overwri
                 layerwise_dict[n] = out_predictions
                 mean_r = out_predictions["r"].mean()
                 # print(f"Mean r = {mean_r} ({model_prefix} - {n})")
-                print(f"ACROSS     {model_prefix} | fROI={froi} | layer={n} | mean r={mean_r:.3f}")
+                print(f"ACROSS     {model_prefix} | fROI={froi} | layer={n} | mean r={mean_r:.3f}", flush=True)
             save(layerwise_dict, f"results/multilingual_{prefix}{model_prefix}_{froi}")
     return layerwise_dict
 
@@ -219,7 +221,7 @@ def monolingual_encoding_circshift(langs, model_prefix, n_layers, d, prefix="", 
                 df["m"] = df[["m1", "m2"]].mean(axis=1)
                 layerwise_dict[n] = df
                 mean_r = df["m"].mean()
-                print(f"WITHIN‑CIRC {model_prefix} | shift={shift} | fROI={froi} | layer={n} | mean r={mean_r:.3f}")
+                print(f"WITHIN‑CIRC {model_prefix} | shift={shift} | fROI={froi} | layer={n} | mean r={mean_r:.3f}", flush=True)
             out_all_shifts[shift] = layerwise_dict
         save(out_all_shifts, filepath)
     return out_all_shifts
@@ -302,7 +304,7 @@ def multilingual_encoding_circshift(langs, model_prefix, n_layers, d, prefix = "
                 df_layer = pd.DataFrame(out_predictions)
                 layerwise_dict[n] = df_layer
                 mean_r = df_layer["r"].mean()
-                print(f"ACROSS-CIRC     {model_prefix} | shift={shift} | layer={n} | mean r={mean_r:.3f}")
+                print(f"ACROSS-CIRC     {model_prefix} | shift={shift} | layer={n} | mean r={mean_r:.3f}", flush=True)
             out_all_shifts[shift] = layerwise_dict
         save(out_all_shifts, filepath)
     return out_all_shifts
@@ -320,10 +322,12 @@ parser.add_argument(
           "MD      --> MD‑network analyses only"),
 )
 MODE = parser.parse_args().mode
+print(f">>> STARTING JOB in mode: {MODE}", flush=True)
 
 # load fMRI data
 with open("data/dict_fROI", 'rb') as handle:
     d = pickle.load(handle)
+print(f">>> Loaded fMRI data", flush=True)
 
 all_langs = ['Afrikaans', 'Dutch', 'Farsi', 'French', 'Lithuanian', 'Marathi', 'Norwegian', 'Romanian', 'Spanish', 'Tamil', 'Turkish', 'Vietnamese']
 all_codes = ["af", "nl", "fa", "fr", "lt", "mr", "no", "ro", "es", "ta", "tr", "vi"]
@@ -339,6 +343,7 @@ mgpt_langs   = ["af", "fa", "fr", "lt", "mr", "ro", "es", "ta", "tr", "vi"]
 # from time import sleep
 # sleep(200)
 if MODE == "within":
+    print("Processing - WITHIN mode")
     xglm_small  = monolingual_encoding(xglm_langs, "xglm_small", 24, d)
     xglm_med    = monolingual_encoding(xglm_langs, "xglm_med", 24, d)
     xglm_large  = monolingual_encoding(xglm_langs, "xglm_large", 48, d)
@@ -386,6 +391,7 @@ if MODE == "within":
 # MODEL TRANSFER #
 ##################
 elif MODE == "across":
+    print("Processing - ACROSS mode")
     xglm_small_multi  = multilingual_encoding(xglm_langs, "xglm_small", 24, d)
     xglm_med_multi    = multilingual_encoding(xglm_langs, "xglm_med", 24, d)
     xglm_large_multi  = multilingual_encoding(xglm_langs, "xglm_large", 48, d)
@@ -436,7 +442,7 @@ elif MODE == "across":
 ####################
 
 elif MODE == "RH":
-
+    print("Processing - RH mode")
     with open("data/dict_fROI_rh", 'rb') as handle:
         d_rh = pickle.load(handle)
 
@@ -490,7 +496,7 @@ elif MODE == "RH":
 ##############
 
 elif MODE == "MD":
-
+    print("Processing - MD mode")
     with open("data/dict_fROI_md", 'rb') as handle:
         d_md = pickle.load(handle)
 

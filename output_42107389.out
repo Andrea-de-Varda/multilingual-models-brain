@@ -1,0 +1,1950 @@
+>>> SCRIPT LAUNCHED
+>>> STARTING JOB in mode: RH
+>>> Loaded fMRI data
+Processing - RH mode
+Encoding for xglm_small already done
+Encoding for xglm_med already done
+Encoding for xglm_large already done
+Encoding for xglm_xl already done
+Encoding for bert_base already done
+Encoding for distilmbert already done
+Encoding for xlmr_base already done
+Encoding for xlmr_large already done
+Encoding for mt5_small already done
+Encoding for mt5_base already done
+Encoding for mt5_large already done
+Encoding for mdeberta already done
+Encoding for xlm_align already done
+Encoding for infoxlm_base already done
+Encoding for infoxlm_large already done
+Encoding for multiminilm already done
+Encoding for nllb200_distilled_600M already done
+
+
+Processing Lang_RH_AntTemp (1/6)
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=0 | mean r=0.050
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=1 | mean r=0.039
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=2 | mean r=0.069
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=3 | mean r=0.073
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=4 | mean r=0.073
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=5 | mean r=0.076
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=6 | mean r=0.083
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=7 | mean r=0.082
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=8 | mean r=0.076
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=9 | mean r=0.080
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=10 | mean r=0.078
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=11 | mean r=0.098
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=12 | mean r=0.099
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=13 | mean r=0.101
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=14 | mean r=0.114
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=15 | mean r=0.125
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=16 | mean r=0.137
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=17 | mean r=0.126
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=18 | mean r=0.134
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=19 | mean r=0.131
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=20 | mean r=0.140
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=21 | mean r=0.110
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=22 | mean r=0.105
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=23 | mean r=0.097
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=24 | mean r=0.088
+
+
+Processing Lang_RH_IFG (2/6)
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=0 | mean r=0.090
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=1 | mean r=0.081
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=2 | mean r=0.122
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=3 | mean r=0.118
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=4 | mean r=0.122
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=5 | mean r=0.144
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=6 | mean r=0.114
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=7 | mean r=0.114
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=8 | mean r=0.126
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=9 | mean r=0.128
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=10 | mean r=0.132
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=11 | mean r=0.124
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=12 | mean r=0.138
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=13 | mean r=0.140
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=14 | mean r=0.150
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=15 | mean r=0.140
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=16 | mean r=0.136
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=17 | mean r=0.154
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=18 | mean r=0.151
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=19 | mean r=0.138
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=20 | mean r=0.125
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=21 | mean r=0.118
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=22 | mean r=0.106
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=23 | mean r=0.108
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=24 | mean r=0.110
+
+
+Processing Lang_RH_IFGorb (3/6)
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=0 | mean r=0.055
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=1 | mean r=0.085
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=2 | mean r=0.078
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=3 | mean r=0.040
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=4 | mean r=0.061
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=5 | mean r=0.053
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=6 | mean r=0.049
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=7 | mean r=0.042
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=8 | mean r=0.033
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=9 | mean r=0.030
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=10 | mean r=0.025
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=11 | mean r=0.023
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=12 | mean r=0.018
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=13 | mean r=0.027
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=14 | mean r=0.041
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=15 | mean r=0.021
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=16 | mean r=0.042
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=17 | mean r=0.033
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=18 | mean r=0.034
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=19 | mean r=0.034
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=20 | mean r=0.032
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=21 | mean r=0.023
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=22 | mean r=0.029
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=23 | mean r=0.021
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=24 | mean r=-0.011
+
+
+Processing Lang_RH_MFG (4/6)
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=0 | mean r=0.033
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=1 | mean r=0.036
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=2 | mean r=0.034
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=3 | mean r=0.038
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=4 | mean r=0.038
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=5 | mean r=0.045
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=6 | mean r=0.031
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=7 | mean r=0.017
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=8 | mean r=0.030
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=9 | mean r=0.035
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=10 | mean r=0.033
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=11 | mean r=0.035
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=12 | mean r=0.035
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=13 | mean r=0.024
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=14 | mean r=0.039
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=15 | mean r=0.053
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=16 | mean r=0.050
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=17 | mean r=0.055
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=18 | mean r=0.050
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=19 | mean r=0.049
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=20 | mean r=0.039
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=21 | mean r=0.043
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=22 | mean r=0.030
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=23 | mean r=0.020
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=24 | mean r=0.012
+
+
+Processing Lang_RH_PostTemp (5/6)
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=0 | mean r=0.066
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=1 | mean r=0.053
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=2 | mean r=0.081
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=3 | mean r=0.070
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=4 | mean r=0.071
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=5 | mean r=0.081
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=6 | mean r=0.077
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=7 | mean r=0.084
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=8 | mean r=0.098
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=9 | mean r=0.108
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=10 | mean r=0.118
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=11 | mean r=0.118
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=12 | mean r=0.124
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=13 | mean r=0.118
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=14 | mean r=0.119
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=15 | mean r=0.118
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=16 | mean r=0.125
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=17 | mean r=0.125
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=18 | mean r=0.131
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=19 | mean r=0.129
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=20 | mean r=0.123
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=21 | mean r=0.118
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=22 | mean r=0.118
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=23 | mean r=0.116
+WITHIN     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=24 | mean r=0.102
+
+
+Processing all (6/6)
+WITHIN     nllb200_distilled_1B | fROI=all | layer=0 | mean r=0.068
+WITHIN     nllb200_distilled_1B | fROI=all | layer=1 | mean r=0.093
+WITHIN     nllb200_distilled_1B | fROI=all | layer=2 | mean r=0.106
+WITHIN     nllb200_distilled_1B | fROI=all | layer=3 | mean r=0.104
+WITHIN     nllb200_distilled_1B | fROI=all | layer=4 | mean r=0.117
+WITHIN     nllb200_distilled_1B | fROI=all | layer=5 | mean r=0.103
+WITHIN     nllb200_distilled_1B | fROI=all | layer=6 | mean r=0.093
+WITHIN     nllb200_distilled_1B | fROI=all | layer=7 | mean r=0.086
+WITHIN     nllb200_distilled_1B | fROI=all | layer=8 | mean r=0.096
+WITHIN     nllb200_distilled_1B | fROI=all | layer=9 | mean r=0.095
+WITHIN     nllb200_distilled_1B | fROI=all | layer=10 | mean r=0.094
+WITHIN     nllb200_distilled_1B | fROI=all | layer=11 | mean r=0.092
+WITHIN     nllb200_distilled_1B | fROI=all | layer=12 | mean r=0.102
+WITHIN     nllb200_distilled_1B | fROI=all | layer=13 | mean r=0.105
+WITHIN     nllb200_distilled_1B | fROI=all | layer=14 | mean r=0.099
+WITHIN     nllb200_distilled_1B | fROI=all | layer=15 | mean r=0.102
+WITHIN     nllb200_distilled_1B | fROI=all | layer=16 | mean r=0.113
+WITHIN     nllb200_distilled_1B | fROI=all | layer=17 | mean r=0.109
+WITHIN     nllb200_distilled_1B | fROI=all | layer=18 | mean r=0.114
+WITHIN     nllb200_distilled_1B | fROI=all | layer=19 | mean r=0.106
+WITHIN     nllb200_distilled_1B | fROI=all | layer=20 | mean r=0.113
+WITHIN     nllb200_distilled_1B | fROI=all | layer=21 | mean r=0.101
+WITHIN     nllb200_distilled_1B | fROI=all | layer=22 | mean r=0.100
+WITHIN     nllb200_distilled_1B | fROI=all | layer=23 | mean r=0.081
+WITHIN     nllb200_distilled_1B | fROI=all | layer=24 | mean r=0.077
+
+
+Processing Lang_RH_AntTemp (1/6)
+WITHIN     nllb200_1B | fROI=Lang_RH_AntTemp | layer=0 | mean r=0.063
+WITHIN     nllb200_1B | fROI=Lang_RH_AntTemp | layer=1 | mean r=0.046
+WITHIN     nllb200_1B | fROI=Lang_RH_AntTemp | layer=2 | mean r=0.046
+WITHIN     nllb200_1B | fROI=Lang_RH_AntTemp | layer=3 | mean r=0.051
+WITHIN     nllb200_1B | fROI=Lang_RH_AntTemp | layer=4 | mean r=0.064
+WITHIN     nllb200_1B | fROI=Lang_RH_AntTemp | layer=5 | mean r=0.075
+WITHIN     nllb200_1B | fROI=Lang_RH_AntTemp | layer=6 | mean r=0.093
+WITHIN     nllb200_1B | fROI=Lang_RH_AntTemp | layer=7 | mean r=0.100
+WITHIN     nllb200_1B | fROI=Lang_RH_AntTemp | layer=8 | mean r=0.095
+WITHIN     nllb200_1B | fROI=Lang_RH_AntTemp | layer=9 | mean r=0.124
+WITHIN     nllb200_1B | fROI=Lang_RH_AntTemp | layer=10 | mean r=0.111
+WITHIN     nllb200_1B | fROI=Lang_RH_AntTemp | layer=11 | mean r=0.128
+WITHIN     nllb200_1B | fROI=Lang_RH_AntTemp | layer=12 | mean r=0.117
+WITHIN     nllb200_1B | fROI=Lang_RH_AntTemp | layer=13 | mean r=0.129
+WITHIN     nllb200_1B | fROI=Lang_RH_AntTemp | layer=14 | mean r=0.124
+WITHIN     nllb200_1B | fROI=Lang_RH_AntTemp | layer=15 | mean r=0.100
+WITHIN     nllb200_1B | fROI=Lang_RH_AntTemp | layer=16 | mean r=0.105
+WITHIN     nllb200_1B | fROI=Lang_RH_AntTemp | layer=17 | mean r=0.104
+WITHIN     nllb200_1B | fROI=Lang_RH_AntTemp | layer=18 | mean r=0.099
+WITHIN     nllb200_1B | fROI=Lang_RH_AntTemp | layer=19 | mean r=0.105
+WITHIN     nllb200_1B | fROI=Lang_RH_AntTemp | layer=20 | mean r=0.117
+WITHIN     nllb200_1B | fROI=Lang_RH_AntTemp | layer=21 | mean r=0.123
+WITHIN     nllb200_1B | fROI=Lang_RH_AntTemp | layer=22 | mean r=0.113
+WITHIN     nllb200_1B | fROI=Lang_RH_AntTemp | layer=23 | mean r=0.108
+WITHIN     nllb200_1B | fROI=Lang_RH_AntTemp | layer=24 | mean r=0.119
+
+
+Processing Lang_RH_IFG (2/6)
+WITHIN     nllb200_1B | fROI=Lang_RH_IFG | layer=0 | mean r=0.097
+WITHIN     nllb200_1B | fROI=Lang_RH_IFG | layer=1 | mean r=0.089
+WITHIN     nllb200_1B | fROI=Lang_RH_IFG | layer=2 | mean r=0.111
+WITHIN     nllb200_1B | fROI=Lang_RH_IFG | layer=3 | mean r=0.111
+WITHIN     nllb200_1B | fROI=Lang_RH_IFG | layer=4 | mean r=0.105
+WITHIN     nllb200_1B | fROI=Lang_RH_IFG | layer=5 | mean r=0.101
+WITHIN     nllb200_1B | fROI=Lang_RH_IFG | layer=6 | mean r=0.095
+WITHIN     nllb200_1B | fROI=Lang_RH_IFG | layer=7 | mean r=0.117
+WITHIN     nllb200_1B | fROI=Lang_RH_IFG | layer=8 | mean r=0.116
+WITHIN     nllb200_1B | fROI=Lang_RH_IFG | layer=9 | mean r=0.114
+WITHIN     nllb200_1B | fROI=Lang_RH_IFG | layer=10 | mean r=0.114
+WITHIN     nllb200_1B | fROI=Lang_RH_IFG | layer=11 | mean r=0.126
+WITHIN     nllb200_1B | fROI=Lang_RH_IFG | layer=12 | mean r=0.138
+WITHIN     nllb200_1B | fROI=Lang_RH_IFG | layer=13 | mean r=0.137
+WITHIN     nllb200_1B | fROI=Lang_RH_IFG | layer=14 | mean r=0.132
+WITHIN     nllb200_1B | fROI=Lang_RH_IFG | layer=15 | mean r=0.125
+WITHIN     nllb200_1B | fROI=Lang_RH_IFG | layer=16 | mean r=0.120
+WITHIN     nllb200_1B | fROI=Lang_RH_IFG | layer=17 | mean r=0.127
+WITHIN     nllb200_1B | fROI=Lang_RH_IFG | layer=18 | mean r=0.142
+WITHIN     nllb200_1B | fROI=Lang_RH_IFG | layer=19 | mean r=0.129
+WITHIN     nllb200_1B | fROI=Lang_RH_IFG | layer=20 | mean r=0.123
+WITHIN     nllb200_1B | fROI=Lang_RH_IFG | layer=21 | mean r=0.122
+WITHIN     nllb200_1B | fROI=Lang_RH_IFG | layer=22 | mean r=0.118
+WITHIN     nllb200_1B | fROI=Lang_RH_IFG | layer=23 | mean r=0.124
+WITHIN     nllb200_1B | fROI=Lang_RH_IFG | layer=24 | mean r=0.125
+
+
+Processing Lang_RH_IFGorb (3/6)
+WITHIN     nllb200_1B | fROI=Lang_RH_IFGorb | layer=0 | mean r=0.080
+WITHIN     nllb200_1B | fROI=Lang_RH_IFGorb | layer=1 | mean r=0.094
+WITHIN     nllb200_1B | fROI=Lang_RH_IFGorb | layer=2 | mean r=0.113
+WITHIN     nllb200_1B | fROI=Lang_RH_IFGorb | layer=3 | mean r=0.110
+WITHIN     nllb200_1B | fROI=Lang_RH_IFGorb | layer=4 | mean r=0.100
+WITHIN     nllb200_1B | fROI=Lang_RH_IFGorb | layer=5 | mean r=0.085
+WITHIN     nllb200_1B | fROI=Lang_RH_IFGorb | layer=6 | mean r=0.074
+WITHIN     nllb200_1B | fROI=Lang_RH_IFGorb | layer=7 | mean r=0.066
+WITHIN     nllb200_1B | fROI=Lang_RH_IFGorb | layer=8 | mean r=0.047
+WITHIN     nllb200_1B | fROI=Lang_RH_IFGorb | layer=9 | mean r=0.052
+WITHIN     nllb200_1B | fROI=Lang_RH_IFGorb | layer=10 | mean r=0.054
+WITHIN     nllb200_1B | fROI=Lang_RH_IFGorb | layer=11 | mean r=0.061
+WITHIN     nllb200_1B | fROI=Lang_RH_IFGorb | layer=12 | mean r=0.057
+WITHIN     nllb200_1B | fROI=Lang_RH_IFGorb | layer=13 | mean r=0.058
+WITHIN     nllb200_1B | fROI=Lang_RH_IFGorb | layer=14 | mean r=0.061
+WITHIN     nllb200_1B | fROI=Lang_RH_IFGorb | layer=15 | mean r=0.057
+WITHIN     nllb200_1B | fROI=Lang_RH_IFGorb | layer=16 | mean r=0.053
+WITHIN     nllb200_1B | fROI=Lang_RH_IFGorb | layer=17 | mean r=0.044
+WITHIN     nllb200_1B | fROI=Lang_RH_IFGorb | layer=18 | mean r=0.053
+WITHIN     nllb200_1B | fROI=Lang_RH_IFGorb | layer=19 | mean r=0.036
+WITHIN     nllb200_1B | fROI=Lang_RH_IFGorb | layer=20 | mean r=0.034
+WITHIN     nllb200_1B | fROI=Lang_RH_IFGorb | layer=21 | mean r=0.028
+WITHIN     nllb200_1B | fROI=Lang_RH_IFGorb | layer=22 | mean r=0.021
+WITHIN     nllb200_1B | fROI=Lang_RH_IFGorb | layer=23 | mean r=0.024
+WITHIN     nllb200_1B | fROI=Lang_RH_IFGorb | layer=24 | mean r=0.015
+
+
+Processing Lang_RH_MFG (4/6)
+WITHIN     nllb200_1B | fROI=Lang_RH_MFG | layer=0 | mean r=0.032
+WITHIN     nllb200_1B | fROI=Lang_RH_MFG | layer=1 | mean r=0.042
+WITHIN     nllb200_1B | fROI=Lang_RH_MFG | layer=2 | mean r=0.056
+WITHIN     nllb200_1B | fROI=Lang_RH_MFG | layer=3 | mean r=0.058
+WITHIN     nllb200_1B | fROI=Lang_RH_MFG | layer=4 | mean r=0.056
+WITHIN     nllb200_1B | fROI=Lang_RH_MFG | layer=5 | mean r=0.054
+WITHIN     nllb200_1B | fROI=Lang_RH_MFG | layer=6 | mean r=0.046
+WITHIN     nllb200_1B | fROI=Lang_RH_MFG | layer=7 | mean r=0.053
+WITHIN     nllb200_1B | fROI=Lang_RH_MFG | layer=8 | mean r=0.047
+WITHIN     nllb200_1B | fROI=Lang_RH_MFG | layer=9 | mean r=0.037
+WITHIN     nllb200_1B | fROI=Lang_RH_MFG | layer=10 | mean r=0.046
+WITHIN     nllb200_1B | fROI=Lang_RH_MFG | layer=11 | mean r=0.062
+WITHIN     nllb200_1B | fROI=Lang_RH_MFG | layer=12 | mean r=0.058
+WITHIN     nllb200_1B | fROI=Lang_RH_MFG | layer=13 | mean r=0.058
+WITHIN     nllb200_1B | fROI=Lang_RH_MFG | layer=14 | mean r=0.064
+WITHIN     nllb200_1B | fROI=Lang_RH_MFG | layer=15 | mean r=0.067
+WITHIN     nllb200_1B | fROI=Lang_RH_MFG | layer=16 | mean r=0.056
+WITHIN     nllb200_1B | fROI=Lang_RH_MFG | layer=17 | mean r=0.060
+WITHIN     nllb200_1B | fROI=Lang_RH_MFG | layer=18 | mean r=0.046
+WITHIN     nllb200_1B | fROI=Lang_RH_MFG | layer=19 | mean r=0.050
+WITHIN     nllb200_1B | fROI=Lang_RH_MFG | layer=20 | mean r=0.046
+WITHIN     nllb200_1B | fROI=Lang_RH_MFG | layer=21 | mean r=0.047
+WITHIN     nllb200_1B | fROI=Lang_RH_MFG | layer=22 | mean r=0.045
+WITHIN     nllb200_1B | fROI=Lang_RH_MFG | layer=23 | mean r=0.038
+WITHIN     nllb200_1B | fROI=Lang_RH_MFG | layer=24 | mean r=0.043
+
+
+Processing Lang_RH_PostTemp (5/6)
+WITHIN     nllb200_1B | fROI=Lang_RH_PostTemp | layer=0 | mean r=0.074
+WITHIN     nllb200_1B | fROI=Lang_RH_PostTemp | layer=1 | mean r=0.055
+WITHIN     nllb200_1B | fROI=Lang_RH_PostTemp | layer=2 | mean r=0.035
+WITHIN     nllb200_1B | fROI=Lang_RH_PostTemp | layer=3 | mean r=0.031
+WITHIN     nllb200_1B | fROI=Lang_RH_PostTemp | layer=4 | mean r=0.021
+WITHIN     nllb200_1B | fROI=Lang_RH_PostTemp | layer=5 | mean r=0.040
+WITHIN     nllb200_1B | fROI=Lang_RH_PostTemp | layer=6 | mean r=0.036
+WITHIN     nllb200_1B | fROI=Lang_RH_PostTemp | layer=7 | mean r=0.042
+WITHIN     nllb200_1B | fROI=Lang_RH_PostTemp | layer=8 | mean r=0.043
+WITHIN     nllb200_1B | fROI=Lang_RH_PostTemp | layer=9 | mean r=0.055
+WITHIN     nllb200_1B | fROI=Lang_RH_PostTemp | layer=10 | mean r=0.047
+WITHIN     nllb200_1B | fROI=Lang_RH_PostTemp | layer=11 | mean r=0.054
+WITHIN     nllb200_1B | fROI=Lang_RH_PostTemp | layer=12 | mean r=0.063
+WITHIN     nllb200_1B | fROI=Lang_RH_PostTemp | layer=13 | mean r=0.066
+WITHIN     nllb200_1B | fROI=Lang_RH_PostTemp | layer=14 | mean r=0.067
+WITHIN     nllb200_1B | fROI=Lang_RH_PostTemp | layer=15 | mean r=0.051
+WITHIN     nllb200_1B | fROI=Lang_RH_PostTemp | layer=16 | mean r=0.046
+WITHIN     nllb200_1B | fROI=Lang_RH_PostTemp | layer=17 | mean r=0.047
+WITHIN     nllb200_1B | fROI=Lang_RH_PostTemp | layer=18 | mean r=0.055
+WITHIN     nllb200_1B | fROI=Lang_RH_PostTemp | layer=19 | mean r=0.047
+WITHIN     nllb200_1B | fROI=Lang_RH_PostTemp | layer=20 | mean r=0.045
+WITHIN     nllb200_1B | fROI=Lang_RH_PostTemp | layer=21 | mean r=0.053
+WITHIN     nllb200_1B | fROI=Lang_RH_PostTemp | layer=22 | mean r=0.046
+WITHIN     nllb200_1B | fROI=Lang_RH_PostTemp | layer=23 | mean r=0.043
+WITHIN     nllb200_1B | fROI=Lang_RH_PostTemp | layer=24 | mean r=0.040
+
+
+Processing all (6/6)
+WITHIN     nllb200_1B | fROI=all | layer=0 | mean r=0.087
+WITHIN     nllb200_1B | fROI=all | layer=1 | mean r=0.112
+WITHIN     nllb200_1B | fROI=all | layer=2 | mean r=0.117
+WITHIN     nllb200_1B | fROI=all | layer=3 | mean r=0.132
+WITHIN     nllb200_1B | fROI=all | layer=4 | mean r=0.121
+WITHIN     nllb200_1B | fROI=all | layer=5 | mean r=0.123
+WITHIN     nllb200_1B | fROI=all | layer=6 | mean r=0.105
+WITHIN     nllb200_1B | fROI=all | layer=7 | mean r=0.111
+WITHIN     nllb200_1B | fROI=all | layer=8 | mean r=0.091
+WITHIN     nllb200_1B | fROI=all | layer=9 | mean r=0.096
+WITHIN     nllb200_1B | fROI=all | layer=10 | mean r=0.084
+WITHIN     nllb200_1B | fROI=all | layer=11 | mean r=0.098
+WITHIN     nllb200_1B | fROI=all | layer=12 | mean r=0.113
+WITHIN     nllb200_1B | fROI=all | layer=13 | mean r=0.113
+WITHIN     nllb200_1B | fROI=all | layer=14 | mean r=0.113
+WITHIN     nllb200_1B | fROI=all | layer=15 | mean r=0.108
+WITHIN     nllb200_1B | fROI=all | layer=16 | mean r=0.108
+WITHIN     nllb200_1B | fROI=all | layer=17 | mean r=0.104
+WITHIN     nllb200_1B | fROI=all | layer=18 | mean r=0.102
+WITHIN     nllb200_1B | fROI=all | layer=19 | mean r=0.097
+WITHIN     nllb200_1B | fROI=all | layer=20 | mean r=0.096
+WITHIN     nllb200_1B | fROI=all | layer=21 | mean r=0.089
+WITHIN     nllb200_1B | fROI=all | layer=22 | mean r=0.092
+WITHIN     nllb200_1B | fROI=all | layer=23 | mean r=0.097
+WITHIN     nllb200_1B | fROI=all | layer=24 | mean r=0.085
+
+
+Processing Lang_RH_AntTemp (1/6)
+WITHIN     mgpt | fROI=Lang_RH_AntTemp | layer=0 | mean r=0.069
+WITHIN     mgpt | fROI=Lang_RH_AntTemp | layer=1 | mean r=0.064
+WITHIN     mgpt | fROI=Lang_RH_AntTemp | layer=2 | mean r=0.090
+WITHIN     mgpt | fROI=Lang_RH_AntTemp | layer=3 | mean r=0.082
+WITHIN     mgpt | fROI=Lang_RH_AntTemp | layer=4 | mean r=0.075
+WITHIN     mgpt | fROI=Lang_RH_AntTemp | layer=5 | mean r=0.090
+WITHIN     mgpt | fROI=Lang_RH_AntTemp | layer=6 | mean r=0.104
+WITHIN     mgpt | fROI=Lang_RH_AntTemp | layer=7 | mean r=0.115
+WITHIN     mgpt | fROI=Lang_RH_AntTemp | layer=8 | mean r=0.111
+WITHIN     mgpt | fROI=Lang_RH_AntTemp | layer=9 | mean r=0.128
+WITHIN     mgpt | fROI=Lang_RH_AntTemp | layer=10 | mean r=0.119
+WITHIN     mgpt | fROI=Lang_RH_AntTemp | layer=11 | mean r=0.131
+WITHIN     mgpt | fROI=Lang_RH_AntTemp | layer=12 | mean r=0.138
+WITHIN     mgpt | fROI=Lang_RH_AntTemp | layer=13 | mean r=0.132
+WITHIN     mgpt | fROI=Lang_RH_AntTemp | layer=14 | mean r=0.136
+WITHIN     mgpt | fROI=Lang_RH_AntTemp | layer=15 | mean r=0.123
+WITHIN     mgpt | fROI=Lang_RH_AntTemp | layer=16 | mean r=0.120
+WITHIN     mgpt | fROI=Lang_RH_AntTemp | layer=17 | mean r=0.130
+WITHIN     mgpt | fROI=Lang_RH_AntTemp | layer=18 | mean r=0.123
+WITHIN     mgpt | fROI=Lang_RH_AntTemp | layer=19 | mean r=0.117
+WITHIN     mgpt | fROI=Lang_RH_AntTemp | layer=20 | mean r=0.110
+WITHIN     mgpt | fROI=Lang_RH_AntTemp | layer=21 | mean r=0.108
+WITHIN     mgpt | fROI=Lang_RH_AntTemp | layer=22 | mean r=0.108
+WITHIN     mgpt | fROI=Lang_RH_AntTemp | layer=23 | mean r=0.109
+WITHIN     mgpt | fROI=Lang_RH_AntTemp | layer=24 | mean r=0.115
+
+
+Processing Lang_RH_IFG (2/6)
+WITHIN     mgpt | fROI=Lang_RH_IFG | layer=0 | mean r=0.178
+WITHIN     mgpt | fROI=Lang_RH_IFG | layer=1 | mean r=0.200
+WITHIN     mgpt | fROI=Lang_RH_IFG | layer=2 | mean r=0.217
+WITHIN     mgpt | fROI=Lang_RH_IFG | layer=3 | mean r=0.209
+WITHIN     mgpt | fROI=Lang_RH_IFG | layer=4 | mean r=0.211
+WITHIN     mgpt | fROI=Lang_RH_IFG | layer=5 | mean r=0.200
+WITHIN     mgpt | fROI=Lang_RH_IFG | layer=6 | mean r=0.226
+WITHIN     mgpt | fROI=Lang_RH_IFG | layer=7 | mean r=0.239
+WITHIN     mgpt | fROI=Lang_RH_IFG | layer=8 | mean r=0.243
+WITHIN     mgpt | fROI=Lang_RH_IFG | layer=9 | mean r=0.240
+WITHIN     mgpt | fROI=Lang_RH_IFG | layer=10 | mean r=0.243
+WITHIN     mgpt | fROI=Lang_RH_IFG | layer=11 | mean r=0.244
+WITHIN     mgpt | fROI=Lang_RH_IFG | layer=12 | mean r=0.251
+WITHIN     mgpt | fROI=Lang_RH_IFG | layer=13 | mean r=0.249
+WITHIN     mgpt | fROI=Lang_RH_IFG | layer=14 | mean r=0.258
+WITHIN     mgpt | fROI=Lang_RH_IFG | layer=15 | mean r=0.265
+WITHIN     mgpt | fROI=Lang_RH_IFG | layer=16 | mean r=0.269
+WITHIN     mgpt | fROI=Lang_RH_IFG | layer=17 | mean r=0.269
+WITHIN     mgpt | fROI=Lang_RH_IFG | layer=18 | mean r=0.272
+WITHIN     mgpt | fROI=Lang_RH_IFG | layer=19 | mean r=0.268
+WITHIN     mgpt | fROI=Lang_RH_IFG | layer=20 | mean r=0.268
+WITHIN     mgpt | fROI=Lang_RH_IFG | layer=21 | mean r=0.263
+WITHIN     mgpt | fROI=Lang_RH_IFG | layer=22 | mean r=0.258
+WITHIN     mgpt | fROI=Lang_RH_IFG | layer=23 | mean r=0.262
+WITHIN     mgpt | fROI=Lang_RH_IFG | layer=24 | mean r=0.260
+
+
+Processing Lang_RH_IFGorb (3/6)
+WITHIN     mgpt | fROI=Lang_RH_IFGorb | layer=0 | mean r=0.051
+WITHIN     mgpt | fROI=Lang_RH_IFGorb | layer=1 | mean r=0.026
+WITHIN     mgpt | fROI=Lang_RH_IFGorb | layer=2 | mean r=0.016
+WITHIN     mgpt | fROI=Lang_RH_IFGorb | layer=3 | mean r=0.022
+WITHIN     mgpt | fROI=Lang_RH_IFGorb | layer=4 | mean r=0.050
+WITHIN     mgpt | fROI=Lang_RH_IFGorb | layer=5 | mean r=0.051
+WITHIN     mgpt | fROI=Lang_RH_IFGorb | layer=6 | mean r=0.071
+WITHIN     mgpt | fROI=Lang_RH_IFGorb | layer=7 | mean r=0.069
+WITHIN     mgpt | fROI=Lang_RH_IFGorb | layer=8 | mean r=0.077
+WITHIN     mgpt | fROI=Lang_RH_IFGorb | layer=9 | mean r=0.065
+WITHIN     mgpt | fROI=Lang_RH_IFGorb | layer=10 | mean r=0.062
+WITHIN     mgpt | fROI=Lang_RH_IFGorb | layer=11 | mean r=0.062
+WITHIN     mgpt | fROI=Lang_RH_IFGorb | layer=12 | mean r=0.071
+WITHIN     mgpt | fROI=Lang_RH_IFGorb | layer=13 | mean r=0.070
+WITHIN     mgpt | fROI=Lang_RH_IFGorb | layer=14 | mean r=0.073
+WITHIN     mgpt | fROI=Lang_RH_IFGorb | layer=15 | mean r=0.071
+WITHIN     mgpt | fROI=Lang_RH_IFGorb | layer=16 | mean r=0.078
+WITHIN     mgpt | fROI=Lang_RH_IFGorb | layer=17 | mean r=0.077
+WITHIN     mgpt | fROI=Lang_RH_IFGorb | layer=18 | mean r=0.079
+WITHIN     mgpt | fROI=Lang_RH_IFGorb | layer=19 | mean r=0.078
+WITHIN     mgpt | fROI=Lang_RH_IFGorb | layer=20 | mean r=0.078
+WITHIN     mgpt | fROI=Lang_RH_IFGorb | layer=21 | mean r=0.072
+WITHIN     mgpt | fROI=Lang_RH_IFGorb | layer=22 | mean r=0.067
+WITHIN     mgpt | fROI=Lang_RH_IFGorb | layer=23 | mean r=0.067
+WITHIN     mgpt | fROI=Lang_RH_IFGorb | layer=24 | mean r=0.085
+
+
+Processing Lang_RH_MFG (4/6)
+WITHIN     mgpt | fROI=Lang_RH_MFG | layer=0 | mean r=0.107
+WITHIN     mgpt | fROI=Lang_RH_MFG | layer=1 | mean r=0.106
+WITHIN     mgpt | fROI=Lang_RH_MFG | layer=2 | mean r=0.130
+WITHIN     mgpt | fROI=Lang_RH_MFG | layer=3 | mean r=0.141
+WITHIN     mgpt | fROI=Lang_RH_MFG | layer=4 | mean r=0.170
+WITHIN     mgpt | fROI=Lang_RH_MFG | layer=5 | mean r=0.175
+WITHIN     mgpt | fROI=Lang_RH_MFG | layer=6 | mean r=0.183
+WITHIN     mgpt | fROI=Lang_RH_MFG | layer=7 | mean r=0.178
+WITHIN     mgpt | fROI=Lang_RH_MFG | layer=8 | mean r=0.181
+WITHIN     mgpt | fROI=Lang_RH_MFG | layer=9 | mean r=0.186
+WITHIN     mgpt | fROI=Lang_RH_MFG | layer=10 | mean r=0.172
+WITHIN     mgpt | fROI=Lang_RH_MFG | layer=11 | mean r=0.164
+WITHIN     mgpt | fROI=Lang_RH_MFG | layer=12 | mean r=0.175
+WITHIN     mgpt | fROI=Lang_RH_MFG | layer=13 | mean r=0.179
+WITHIN     mgpt | fROI=Lang_RH_MFG | layer=14 | mean r=0.191
+WITHIN     mgpt | fROI=Lang_RH_MFG | layer=15 | mean r=0.194
+WITHIN     mgpt | fROI=Lang_RH_MFG | layer=16 | mean r=0.194
+WITHIN     mgpt | fROI=Lang_RH_MFG | layer=17 | mean r=0.186
+WITHIN     mgpt | fROI=Lang_RH_MFG | layer=18 | mean r=0.194
+WITHIN     mgpt | fROI=Lang_RH_MFG | layer=19 | mean r=0.201
+WITHIN     mgpt | fROI=Lang_RH_MFG | layer=20 | mean r=0.200
+WITHIN     mgpt | fROI=Lang_RH_MFG | layer=21 | mean r=0.200
+WITHIN     mgpt | fROI=Lang_RH_MFG | layer=22 | mean r=0.199
+WITHIN     mgpt | fROI=Lang_RH_MFG | layer=23 | mean r=0.204
+WITHIN     mgpt | fROI=Lang_RH_MFG | layer=24 | mean r=0.195
+
+
+Processing Lang_RH_PostTemp (5/6)
+WITHIN     mgpt | fROI=Lang_RH_PostTemp | layer=0 | mean r=0.011
+WITHIN     mgpt | fROI=Lang_RH_PostTemp | layer=1 | mean r=0.004
+WITHIN     mgpt | fROI=Lang_RH_PostTemp | layer=2 | mean r=0.002
+WITHIN     mgpt | fROI=Lang_RH_PostTemp | layer=3 | mean r=0.010
+WITHIN     mgpt | fROI=Lang_RH_PostTemp | layer=4 | mean r=0.016
+WITHIN     mgpt | fROI=Lang_RH_PostTemp | layer=5 | mean r=0.045
+WITHIN     mgpt | fROI=Lang_RH_PostTemp | layer=6 | mean r=0.073
+WITHIN     mgpt | fROI=Lang_RH_PostTemp | layer=7 | mean r=0.080
+WITHIN     mgpt | fROI=Lang_RH_PostTemp | layer=8 | mean r=0.086
+WITHIN     mgpt | fROI=Lang_RH_PostTemp | layer=9 | mean r=0.079
+WITHIN     mgpt | fROI=Lang_RH_PostTemp | layer=10 | mean r=0.086
+WITHIN     mgpt | fROI=Lang_RH_PostTemp | layer=11 | mean r=0.091
+WITHIN     mgpt | fROI=Lang_RH_PostTemp | layer=12 | mean r=0.091
+WITHIN     mgpt | fROI=Lang_RH_PostTemp | layer=13 | mean r=0.093
+WITHIN     mgpt | fROI=Lang_RH_PostTemp | layer=14 | mean r=0.108
+WITHIN     mgpt | fROI=Lang_RH_PostTemp | layer=15 | mean r=0.106
+WITHIN     mgpt | fROI=Lang_RH_PostTemp | layer=16 | mean r=0.113
+WITHIN     mgpt | fROI=Lang_RH_PostTemp | layer=17 | mean r=0.111
+WITHIN     mgpt | fROI=Lang_RH_PostTemp | layer=18 | mean r=0.113
+WITHIN     mgpt | fROI=Lang_RH_PostTemp | layer=19 | mean r=0.110
+WITHIN     mgpt | fROI=Lang_RH_PostTemp | layer=20 | mean r=0.105
+WITHIN     mgpt | fROI=Lang_RH_PostTemp | layer=21 | mean r=0.110
+WITHIN     mgpt | fROI=Lang_RH_PostTemp | layer=22 | mean r=0.101
+WITHIN     mgpt | fROI=Lang_RH_PostTemp | layer=23 | mean r=0.103
+WITHIN     mgpt | fROI=Lang_RH_PostTemp | layer=24 | mean r=0.115
+
+
+Processing all (6/6)
+WITHIN     mgpt | fROI=all | layer=0 | mean r=0.133
+WITHIN     mgpt | fROI=all | layer=1 | mean r=0.126
+WITHIN     mgpt | fROI=all | layer=2 | mean r=0.140
+WITHIN     mgpt | fROI=all | layer=3 | mean r=0.137
+WITHIN     mgpt | fROI=all | layer=4 | mean r=0.155
+WITHIN     mgpt | fROI=all | layer=5 | mean r=0.175
+WITHIN     mgpt | fROI=all | layer=6 | mean r=0.203
+WITHIN     mgpt | fROI=all | layer=7 | mean r=0.208
+WITHIN     mgpt | fROI=all | layer=8 | mean r=0.208
+WITHIN     mgpt | fROI=all | layer=9 | mean r=0.208
+WITHIN     mgpt | fROI=all | layer=10 | mean r=0.195
+WITHIN     mgpt | fROI=all | layer=11 | mean r=0.206
+WITHIN     mgpt | fROI=all | layer=12 | mean r=0.210
+WITHIN     mgpt | fROI=all | layer=13 | mean r=0.210
+WITHIN     mgpt | fROI=all | layer=14 | mean r=0.241
+WITHIN     mgpt | fROI=all | layer=15 | mean r=0.236
+WITHIN     mgpt | fROI=all | layer=16 | mean r=0.242
+WITHIN     mgpt | fROI=all | layer=17 | mean r=0.246
+WITHIN     mgpt | fROI=all | layer=18 | mean r=0.248
+WITHIN     mgpt | fROI=all | layer=19 | mean r=0.247
+WITHIN     mgpt | fROI=all | layer=20 | mean r=0.244
+WITHIN     mgpt | fROI=all | layer=21 | mean r=0.241
+WITHIN     mgpt | fROI=all | layer=22 | mean r=0.241
+WITHIN     mgpt | fROI=all | layer=23 | mean r=0.240
+WITHIN     mgpt | fROI=all | layer=24 | mean r=0.239
+Encoding for xglm_small already done
+Encoding for xglm_med already done
+Encoding for xglm_large already done
+Encoding for xglm_xl already done
+Encoding for bert_base already done
+Encoding for distilmbert already done
+Encoding for xlmr_base already done
+Encoding for xlmr_large already done
+Encoding for mt5_small already done
+
+
+Processing Lang_RH_AntTemp (1/6)
+ACROSS     mt5_base | fROI=Lang_RH_AntTemp | layer=0 | mean r=0.063
+ACROSS     mt5_base | fROI=Lang_RH_AntTemp | layer=1 | mean r=0.055
+ACROSS     mt5_base | fROI=Lang_RH_AntTemp | layer=2 | mean r=0.078
+ACROSS     mt5_base | fROI=Lang_RH_AntTemp | layer=3 | mean r=0.066
+ACROSS     mt5_base | fROI=Lang_RH_AntTemp | layer=4 | mean r=0.043
+ACROSS     mt5_base | fROI=Lang_RH_AntTemp | layer=5 | mean r=0.032
+ACROSS     mt5_base | fROI=Lang_RH_AntTemp | layer=6 | mean r=0.037
+ACROSS     mt5_base | fROI=Lang_RH_AntTemp | layer=7 | mean r=0.035
+ACROSS     mt5_base | fROI=Lang_RH_AntTemp | layer=8 | mean r=0.036
+ACROSS     mt5_base | fROI=Lang_RH_AntTemp | layer=9 | mean r=0.035
+ACROSS     mt5_base | fROI=Lang_RH_AntTemp | layer=10 | mean r=0.048
+ACROSS     mt5_base | fROI=Lang_RH_AntTemp | layer=11 | mean r=0.063
+ACROSS     mt5_base | fROI=Lang_RH_AntTemp | layer=12 | mean r=0.076
+
+
+Processing Lang_RH_IFG (2/6)
+ACROSS     mt5_base | fROI=Lang_RH_IFG | layer=0 | mean r=0.026
+ACROSS     mt5_base | fROI=Lang_RH_IFG | layer=1 | mean r=0.016
+ACROSS     mt5_base | fROI=Lang_RH_IFG | layer=2 | mean r=0.030
+ACROSS     mt5_base | fROI=Lang_RH_IFG | layer=3 | mean r=0.017
+ACROSS     mt5_base | fROI=Lang_RH_IFG | layer=4 | mean r=0.018
+ACROSS     mt5_base | fROI=Lang_RH_IFG | layer=5 | mean r=-0.006
+ACROSS     mt5_base | fROI=Lang_RH_IFG | layer=6 | mean r=0.008
+ACROSS     mt5_base | fROI=Lang_RH_IFG | layer=7 | mean r=0.013
+ACROSS     mt5_base | fROI=Lang_RH_IFG | layer=8 | mean r=0.014
+ACROSS     mt5_base | fROI=Lang_RH_IFG | layer=9 | mean r=0.018
+ACROSS     mt5_base | fROI=Lang_RH_IFG | layer=10 | mean r=0.014
+ACROSS     mt5_base | fROI=Lang_RH_IFG | layer=11 | mean r=0.012
+ACROSS     mt5_base | fROI=Lang_RH_IFG | layer=12 | mean r=0.026
+
+
+Processing Lang_RH_IFGorb (3/6)
+ACROSS     mt5_base | fROI=Lang_RH_IFGorb | layer=0 | mean r=0.036
+ACROSS     mt5_base | fROI=Lang_RH_IFGorb | layer=1 | mean r=0.033
+ACROSS     mt5_base | fROI=Lang_RH_IFGorb | layer=2 | mean r=0.035
+ACROSS     mt5_base | fROI=Lang_RH_IFGorb | layer=3 | mean r=0.027
+ACROSS     mt5_base | fROI=Lang_RH_IFGorb | layer=4 | mean r=0.013
+ACROSS     mt5_base | fROI=Lang_RH_IFGorb | layer=5 | mean r=0.013
+ACROSS     mt5_base | fROI=Lang_RH_IFGorb | layer=6 | mean r=0.010
+ACROSS     mt5_base | fROI=Lang_RH_IFGorb | layer=7 | mean r=0.011
+ACROSS     mt5_base | fROI=Lang_RH_IFGorb | layer=8 | mean r=0.010
+ACROSS     mt5_base | fROI=Lang_RH_IFGorb | layer=9 | mean r=0.015
+ACROSS     mt5_base | fROI=Lang_RH_IFGorb | layer=10 | mean r=0.020
+ACROSS     mt5_base | fROI=Lang_RH_IFGorb | layer=11 | mean r=0.022
+ACROSS     mt5_base | fROI=Lang_RH_IFGorb | layer=12 | mean r=0.029
+
+
+Processing Lang_RH_MFG (4/6)
+ACROSS     mt5_base | fROI=Lang_RH_MFG | layer=0 | mean r=-0.017
+ACROSS     mt5_base | fROI=Lang_RH_MFG | layer=1 | mean r=-0.018
+ACROSS     mt5_base | fROI=Lang_RH_MFG | layer=2 | mean r=0.002
+ACROSS     mt5_base | fROI=Lang_RH_MFG | layer=3 | mean r=-0.007
+ACROSS     mt5_base | fROI=Lang_RH_MFG | layer=4 | mean r=-0.002
+ACROSS     mt5_base | fROI=Lang_RH_MFG | layer=5 | mean r=-0.001
+ACROSS     mt5_base | fROI=Lang_RH_MFG | layer=6 | mean r=0.002
+ACROSS     mt5_base | fROI=Lang_RH_MFG | layer=7 | mean r=0.004
+ACROSS     mt5_base | fROI=Lang_RH_MFG | layer=8 | mean r=0.000
+ACROSS     mt5_base | fROI=Lang_RH_MFG | layer=9 | mean r=-0.002
+ACROSS     mt5_base | fROI=Lang_RH_MFG | layer=10 | mean r=0.003
+ACROSS     mt5_base | fROI=Lang_RH_MFG | layer=11 | mean r=0.001
+ACROSS     mt5_base | fROI=Lang_RH_MFG | layer=12 | mean r=0.011
+
+
+Processing Lang_RH_PostTemp (5/6)
+ACROSS     mt5_base | fROI=Lang_RH_PostTemp | layer=0 | mean r=0.052
+ACROSS     mt5_base | fROI=Lang_RH_PostTemp | layer=1 | mean r=0.065
+ACROSS     mt5_base | fROI=Lang_RH_PostTemp | layer=2 | mean r=0.089
+ACROSS     mt5_base | fROI=Lang_RH_PostTemp | layer=3 | mean r=0.075
+ACROSS     mt5_base | fROI=Lang_RH_PostTemp | layer=4 | mean r=0.048
+ACROSS     mt5_base | fROI=Lang_RH_PostTemp | layer=5 | mean r=0.040
+ACROSS     mt5_base | fROI=Lang_RH_PostTemp | layer=6 | mean r=0.050
+ACROSS     mt5_base | fROI=Lang_RH_PostTemp | layer=7 | mean r=0.052
+ACROSS     mt5_base | fROI=Lang_RH_PostTemp | layer=8 | mean r=0.065
+ACROSS     mt5_base | fROI=Lang_RH_PostTemp | layer=9 | mean r=0.077
+ACROSS     mt5_base | fROI=Lang_RH_PostTemp | layer=10 | mean r=0.088
+ACROSS     mt5_base | fROI=Lang_RH_PostTemp | layer=11 | mean r=0.092
+ACROSS     mt5_base | fROI=Lang_RH_PostTemp | layer=12 | mean r=0.094
+
+
+Processing all (6/6)
+ACROSS     mt5_base | fROI=all | layer=0 | mean r=0.055
+ACROSS     mt5_base | fROI=all | layer=1 | mean r=0.047
+ACROSS     mt5_base | fROI=all | layer=2 | mean r=0.056
+ACROSS     mt5_base | fROI=all | layer=3 | mean r=0.035
+ACROSS     mt5_base | fROI=all | layer=4 | mean r=0.027
+ACROSS     mt5_base | fROI=all | layer=5 | mean r=0.013
+ACROSS     mt5_base | fROI=all | layer=6 | mean r=0.029
+ACROSS     mt5_base | fROI=all | layer=7 | mean r=0.025
+ACROSS     mt5_base | fROI=all | layer=8 | mean r=0.027
+ACROSS     mt5_base | fROI=all | layer=9 | mean r=0.036
+ACROSS     mt5_base | fROI=all | layer=10 | mean r=0.039
+ACROSS     mt5_base | fROI=all | layer=11 | mean r=0.047
+ACROSS     mt5_base | fROI=all | layer=12 | mean r=0.053
+
+
+Processing Lang_RH_AntTemp (1/6)
+ACROSS     mt5_large | fROI=Lang_RH_AntTemp | layer=0 | mean r=0.058
+ACROSS     mt5_large | fROI=Lang_RH_AntTemp | layer=1 | mean r=0.066
+ACROSS     mt5_large | fROI=Lang_RH_AntTemp | layer=2 | mean r=0.056
+ACROSS     mt5_large | fROI=Lang_RH_AntTemp | layer=3 | mean r=0.053
+ACROSS     mt5_large | fROI=Lang_RH_AntTemp | layer=4 | mean r=0.054
+ACROSS     mt5_large | fROI=Lang_RH_AntTemp | layer=5 | mean r=0.057
+ACROSS     mt5_large | fROI=Lang_RH_AntTemp | layer=6 | mean r=0.057
+ACROSS     mt5_large | fROI=Lang_RH_AntTemp | layer=7 | mean r=0.067
+ACROSS     mt5_large | fROI=Lang_RH_AntTemp | layer=8 | mean r=0.069
+ACROSS     mt5_large | fROI=Lang_RH_AntTemp | layer=9 | mean r=0.073
+ACROSS     mt5_large | fROI=Lang_RH_AntTemp | layer=10 | mean r=0.080
+ACROSS     mt5_large | fROI=Lang_RH_AntTemp | layer=11 | mean r=0.079
+ACROSS     mt5_large | fROI=Lang_RH_AntTemp | layer=12 | mean r=0.077
+ACROSS     mt5_large | fROI=Lang_RH_AntTemp | layer=13 | mean r=0.081
+ACROSS     mt5_large | fROI=Lang_RH_AntTemp | layer=14 | mean r=0.073
+ACROSS     mt5_large | fROI=Lang_RH_AntTemp | layer=15 | mean r=0.076
+ACROSS     mt5_large | fROI=Lang_RH_AntTemp | layer=16 | mean r=0.079
+ACROSS     mt5_large | fROI=Lang_RH_AntTemp | layer=17 | mean r=0.079
+ACROSS     mt5_large | fROI=Lang_RH_AntTemp | layer=18 | mean r=0.080
+ACROSS     mt5_large | fROI=Lang_RH_AntTemp | layer=19 | mean r=0.083
+ACROSS     mt5_large | fROI=Lang_RH_AntTemp | layer=20 | mean r=0.099
+ACROSS     mt5_large | fROI=Lang_RH_AntTemp | layer=21 | mean r=0.092
+ACROSS     mt5_large | fROI=Lang_RH_AntTemp | layer=22 | mean r=0.074
+ACROSS     mt5_large | fROI=Lang_RH_AntTemp | layer=23 | mean r=0.088
+ACROSS     mt5_large | fROI=Lang_RH_AntTemp | layer=24 | mean r=0.085
+
+
+Processing Lang_RH_IFG (2/6)
+ACROSS     mt5_large | fROI=Lang_RH_IFG | layer=0 | mean r=0.032
+ACROSS     mt5_large | fROI=Lang_RH_IFG | layer=1 | mean r=0.045
+ACROSS     mt5_large | fROI=Lang_RH_IFG | layer=2 | mean r=0.032
+ACROSS     mt5_large | fROI=Lang_RH_IFG | layer=3 | mean r=0.044
+ACROSS     mt5_large | fROI=Lang_RH_IFG | layer=4 | mean r=0.044
+ACROSS     mt5_large | fROI=Lang_RH_IFG | layer=5 | mean r=0.039
+ACROSS     mt5_large | fROI=Lang_RH_IFG | layer=6 | mean r=0.038
+ACROSS     mt5_large | fROI=Lang_RH_IFG | layer=7 | mean r=0.048
+ACROSS     mt5_large | fROI=Lang_RH_IFG | layer=8 | mean r=0.049
+ACROSS     mt5_large | fROI=Lang_RH_IFG | layer=9 | mean r=0.041
+ACROSS     mt5_large | fROI=Lang_RH_IFG | layer=10 | mean r=0.042
+ACROSS     mt5_large | fROI=Lang_RH_IFG | layer=11 | mean r=0.046
+ACROSS     mt5_large | fROI=Lang_RH_IFG | layer=12 | mean r=0.060
+ACROSS     mt5_large | fROI=Lang_RH_IFG | layer=13 | mean r=0.056
+ACROSS     mt5_large | fROI=Lang_RH_IFG | layer=14 | mean r=0.058
+ACROSS     mt5_large | fROI=Lang_RH_IFG | layer=15 | mean r=0.060
+ACROSS     mt5_large | fROI=Lang_RH_IFG | layer=16 | mean r=0.061
+ACROSS     mt5_large | fROI=Lang_RH_IFG | layer=17 | mean r=0.073
+ACROSS     mt5_large | fROI=Lang_RH_IFG | layer=18 | mean r=0.073
+ACROSS     mt5_large | fROI=Lang_RH_IFG | layer=19 | mean r=0.071
+ACROSS     mt5_large | fROI=Lang_RH_IFG | layer=20 | mean r=0.072
+ACROSS     mt5_large | fROI=Lang_RH_IFG | layer=21 | mean r=0.069
+ACROSS     mt5_large | fROI=Lang_RH_IFG | layer=22 | mean r=0.066
+ACROSS     mt5_large | fROI=Lang_RH_IFG | layer=23 | mean r=0.069
+ACROSS     mt5_large | fROI=Lang_RH_IFG | layer=24 | mean r=0.069
+
+
+Processing Lang_RH_IFGorb (3/6)
+ACROSS     mt5_large | fROI=Lang_RH_IFGorb | layer=0 | mean r=0.028
+ACROSS     mt5_large | fROI=Lang_RH_IFGorb | layer=1 | mean r=0.035
+ACROSS     mt5_large | fROI=Lang_RH_IFGorb | layer=2 | mean r=0.034
+ACROSS     mt5_large | fROI=Lang_RH_IFGorb | layer=3 | mean r=0.030
+ACROSS     mt5_large | fROI=Lang_RH_IFGorb | layer=4 | mean r=0.031
+ACROSS     mt5_large | fROI=Lang_RH_IFGorb | layer=5 | mean r=0.032
+ACROSS     mt5_large | fROI=Lang_RH_IFGorb | layer=6 | mean r=0.023
+ACROSS     mt5_large | fROI=Lang_RH_IFGorb | layer=7 | mean r=0.026
+ACROSS     mt5_large | fROI=Lang_RH_IFGorb | layer=8 | mean r=0.028
+ACROSS     mt5_large | fROI=Lang_RH_IFGorb | layer=9 | mean r=0.036
+ACROSS     mt5_large | fROI=Lang_RH_IFGorb | layer=10 | mean r=0.038
+ACROSS     mt5_large | fROI=Lang_RH_IFGorb | layer=11 | mean r=0.036
+ACROSS     mt5_large | fROI=Lang_RH_IFGorb | layer=12 | mean r=0.044
+ACROSS     mt5_large | fROI=Lang_RH_IFGorb | layer=13 | mean r=0.045
+ACROSS     mt5_large | fROI=Lang_RH_IFGorb | layer=14 | mean r=0.033
+ACROSS     mt5_large | fROI=Lang_RH_IFGorb | layer=15 | mean r=0.045
+ACROSS     mt5_large | fROI=Lang_RH_IFGorb | layer=16 | mean r=0.046
+ACROSS     mt5_large | fROI=Lang_RH_IFGorb | layer=17 | mean r=0.049
+ACROSS     mt5_large | fROI=Lang_RH_IFGorb | layer=18 | mean r=0.046
+ACROSS     mt5_large | fROI=Lang_RH_IFGorb | layer=19 | mean r=0.043
+ACROSS     mt5_large | fROI=Lang_RH_IFGorb | layer=20 | mean r=0.058
+ACROSS     mt5_large | fROI=Lang_RH_IFGorb | layer=21 | mean r=0.053
+ACROSS     mt5_large | fROI=Lang_RH_IFGorb | layer=22 | mean r=0.042
+ACROSS     mt5_large | fROI=Lang_RH_IFGorb | layer=23 | mean r=0.037
+ACROSS     mt5_large | fROI=Lang_RH_IFGorb | layer=24 | mean r=0.043
+
+
+Processing Lang_RH_MFG (4/6)
+ACROSS     mt5_large | fROI=Lang_RH_MFG | layer=0 | mean r=-0.015
+ACROSS     mt5_large | fROI=Lang_RH_MFG | layer=1 | mean r=-0.000
+ACROSS     mt5_large | fROI=Lang_RH_MFG | layer=2 | mean r=-0.006
+ACROSS     mt5_large | fROI=Lang_RH_MFG | layer=3 | mean r=0.003
+ACROSS     mt5_large | fROI=Lang_RH_MFG | layer=4 | mean r=0.004
+ACROSS     mt5_large | fROI=Lang_RH_MFG | layer=5 | mean r=0.000
+ACROSS     mt5_large | fROI=Lang_RH_MFG | layer=6 | mean r=0.009
+ACROSS     mt5_large | fROI=Lang_RH_MFG | layer=7 | mean r=-0.010
+ACROSS     mt5_large | fROI=Lang_RH_MFG | layer=8 | mean r=-0.011
+ACROSS     mt5_large | fROI=Lang_RH_MFG | layer=9 | mean r=-0.006
+ACROSS     mt5_large | fROI=Lang_RH_MFG | layer=10 | mean r=-0.004
+ACROSS     mt5_large | fROI=Lang_RH_MFG | layer=11 | mean r=0.004
+ACROSS     mt5_large | fROI=Lang_RH_MFG | layer=12 | mean r=0.014
+ACROSS     mt5_large | fROI=Lang_RH_MFG | layer=13 | mean r=0.008
+ACROSS     mt5_large | fROI=Lang_RH_MFG | layer=14 | mean r=0.013
+ACROSS     mt5_large | fROI=Lang_RH_MFG | layer=15 | mean r=0.017
+ACROSS     mt5_large | fROI=Lang_RH_MFG | layer=16 | mean r=0.020
+ACROSS     mt5_large | fROI=Lang_RH_MFG | layer=17 | mean r=0.032
+ACROSS     mt5_large | fROI=Lang_RH_MFG | layer=18 | mean r=0.027
+ACROSS     mt5_large | fROI=Lang_RH_MFG | layer=19 | mean r=0.029
+ACROSS     mt5_large | fROI=Lang_RH_MFG | layer=20 | mean r=0.031
+ACROSS     mt5_large | fROI=Lang_RH_MFG | layer=21 | mean r=0.033
+ACROSS     mt5_large | fROI=Lang_RH_MFG | layer=22 | mean r=0.027
+ACROSS     mt5_large | fROI=Lang_RH_MFG | layer=23 | mean r=0.021
+ACROSS     mt5_large | fROI=Lang_RH_MFG | layer=24 | mean r=0.013
+
+
+Processing Lang_RH_PostTemp (5/6)
+ACROSS     mt5_large | fROI=Lang_RH_PostTemp | layer=0 | mean r=0.051
+ACROSS     mt5_large | fROI=Lang_RH_PostTemp | layer=1 | mean r=0.069
+ACROSS     mt5_large | fROI=Lang_RH_PostTemp | layer=2 | mean r=0.064
+ACROSS     mt5_large | fROI=Lang_RH_PostTemp | layer=3 | mean r=0.070
+ACROSS     mt5_large | fROI=Lang_RH_PostTemp | layer=4 | mean r=0.077
+ACROSS     mt5_large | fROI=Lang_RH_PostTemp | layer=5 | mean r=0.072
+ACROSS     mt5_large | fROI=Lang_RH_PostTemp | layer=6 | mean r=0.061
+ACROSS     mt5_large | fROI=Lang_RH_PostTemp | layer=7 | mean r=0.077
+ACROSS     mt5_large | fROI=Lang_RH_PostTemp | layer=8 | mean r=0.088
+ACROSS     mt5_large | fROI=Lang_RH_PostTemp | layer=9 | mean r=0.082
+ACROSS     mt5_large | fROI=Lang_RH_PostTemp | layer=10 | mean r=0.091
+ACROSS     mt5_large | fROI=Lang_RH_PostTemp | layer=11 | mean r=0.098
+ACROSS     mt5_large | fROI=Lang_RH_PostTemp | layer=12 | mean r=0.120
+ACROSS     mt5_large | fROI=Lang_RH_PostTemp | layer=13 | mean r=0.131
+ACROSS     mt5_large | fROI=Lang_RH_PostTemp | layer=14 | mean r=0.130
+ACROSS     mt5_large | fROI=Lang_RH_PostTemp | layer=15 | mean r=0.141
+ACROSS     mt5_large | fROI=Lang_RH_PostTemp | layer=16 | mean r=0.155
+ACROSS     mt5_large | fROI=Lang_RH_PostTemp | layer=17 | mean r=0.161
+ACROSS     mt5_large | fROI=Lang_RH_PostTemp | layer=18 | mean r=0.158
+ACROSS     mt5_large | fROI=Lang_RH_PostTemp | layer=19 | mean r=0.153
+ACROSS     mt5_large | fROI=Lang_RH_PostTemp | layer=20 | mean r=0.160
+ACROSS     mt5_large | fROI=Lang_RH_PostTemp | layer=21 | mean r=0.154
+ACROSS     mt5_large | fROI=Lang_RH_PostTemp | layer=22 | mean r=0.133
+ACROSS     mt5_large | fROI=Lang_RH_PostTemp | layer=23 | mean r=0.128
+ACROSS     mt5_large | fROI=Lang_RH_PostTemp | layer=24 | mean r=0.147
+
+
+Processing all (6/6)
+ACROSS     mt5_large | fROI=all | layer=0 | mean r=0.033
+ACROSS     mt5_large | fROI=all | layer=1 | mean r=0.045
+ACROSS     mt5_large | fROI=all | layer=2 | mean r=0.039
+ACROSS     mt5_large | fROI=all | layer=3 | mean r=0.045
+ACROSS     mt5_large | fROI=all | layer=4 | mean r=0.045
+ACROSS     mt5_large | fROI=all | layer=5 | mean r=0.038
+ACROSS     mt5_large | fROI=all | layer=6 | mean r=0.029
+ACROSS     mt5_large | fROI=all | layer=7 | mean r=0.036
+ACROSS     mt5_large | fROI=all | layer=8 | mean r=0.050
+ACROSS     mt5_large | fROI=all | layer=9 | mean r=0.047
+ACROSS     mt5_large | fROI=all | layer=10 | mean r=0.057
+ACROSS     mt5_large | fROI=all | layer=11 | mean r=0.060
+ACROSS     mt5_large | fROI=all | layer=12 | mean r=0.066
+ACROSS     mt5_large | fROI=all | layer=13 | mean r=0.066
+ACROSS     mt5_large | fROI=all | layer=14 | mean r=0.062
+ACROSS     mt5_large | fROI=all | layer=15 | mean r=0.073
+ACROSS     mt5_large | fROI=all | layer=16 | mean r=0.076
+ACROSS     mt5_large | fROI=all | layer=17 | mean r=0.083
+ACROSS     mt5_large | fROI=all | layer=18 | mean r=0.079
+ACROSS     mt5_large | fROI=all | layer=19 | mean r=0.079
+ACROSS     mt5_large | fROI=all | layer=20 | mean r=0.092
+ACROSS     mt5_large | fROI=all | layer=21 | mean r=0.084
+ACROSS     mt5_large | fROI=all | layer=22 | mean r=0.079
+ACROSS     mt5_large | fROI=all | layer=23 | mean r=0.075
+ACROSS     mt5_large | fROI=all | layer=24 | mean r=0.080
+
+
+Processing Lang_RH_AntTemp (1/6)
+ACROSS     mdeberta | fROI=Lang_RH_AntTemp | layer=0 | mean r=0.049
+ACROSS     mdeberta | fROI=Lang_RH_AntTemp | layer=1 | mean r=0.052
+ACROSS     mdeberta | fROI=Lang_RH_AntTemp | layer=2 | mean r=0.037
+ACROSS     mdeberta | fROI=Lang_RH_AntTemp | layer=3 | mean r=0.049
+ACROSS     mdeberta | fROI=Lang_RH_AntTemp | layer=4 | mean r=0.058
+ACROSS     mdeberta | fROI=Lang_RH_AntTemp | layer=5 | mean r=0.066
+ACROSS     mdeberta | fROI=Lang_RH_AntTemp | layer=6 | mean r=0.062
+ACROSS     mdeberta | fROI=Lang_RH_AntTemp | layer=7 | mean r=0.068
+ACROSS     mdeberta | fROI=Lang_RH_AntTemp | layer=8 | mean r=0.087
+ACROSS     mdeberta | fROI=Lang_RH_AntTemp | layer=9 | mean r=0.085
+ACROSS     mdeberta | fROI=Lang_RH_AntTemp | layer=10 | mean r=0.082
+ACROSS     mdeberta | fROI=Lang_RH_AntTemp | layer=11 | mean r=0.085
+ACROSS     mdeberta | fROI=Lang_RH_AntTemp | layer=12 | mean r=0.024
+
+
+Processing Lang_RH_IFG (2/6)
+ACROSS     mdeberta | fROI=Lang_RH_IFG | layer=0 | mean r=0.033
+ACROSS     mdeberta | fROI=Lang_RH_IFG | layer=1 | mean r=0.037
+ACROSS     mdeberta | fROI=Lang_RH_IFG | layer=2 | mean r=0.043
+ACROSS     mdeberta | fROI=Lang_RH_IFG | layer=3 | mean r=0.042
+ACROSS     mdeberta | fROI=Lang_RH_IFG | layer=4 | mean r=0.038
+ACROSS     mdeberta | fROI=Lang_RH_IFG | layer=5 | mean r=0.059
+ACROSS     mdeberta | fROI=Lang_RH_IFG | layer=6 | mean r=0.068
+ACROSS     mdeberta | fROI=Lang_RH_IFG | layer=7 | mean r=0.049
+ACROSS     mdeberta | fROI=Lang_RH_IFG | layer=8 | mean r=0.060
+ACROSS     mdeberta | fROI=Lang_RH_IFG | layer=9 | mean r=0.073
+ACROSS     mdeberta | fROI=Lang_RH_IFG | layer=10 | mean r=0.071
+ACROSS     mdeberta | fROI=Lang_RH_IFG | layer=11 | mean r=0.072
+ACROSS     mdeberta | fROI=Lang_RH_IFG | layer=12 | mean r=0.037
+
+
+Processing Lang_RH_IFGorb (3/6)
+ACROSS     mdeberta | fROI=Lang_RH_IFGorb | layer=0 | mean r=0.025
+ACROSS     mdeberta | fROI=Lang_RH_IFGorb | layer=1 | mean r=0.022
+ACROSS     mdeberta | fROI=Lang_RH_IFGorb | layer=2 | mean r=0.023
+ACROSS     mdeberta | fROI=Lang_RH_IFGorb | layer=3 | mean r=0.027
+ACROSS     mdeberta | fROI=Lang_RH_IFGorb | layer=4 | mean r=0.024
+ACROSS     mdeberta | fROI=Lang_RH_IFGorb | layer=5 | mean r=0.021
+ACROSS     mdeberta | fROI=Lang_RH_IFGorb | layer=6 | mean r=0.027
+ACROSS     mdeberta | fROI=Lang_RH_IFGorb | layer=7 | mean r=0.033
+ACROSS     mdeberta | fROI=Lang_RH_IFGorb | layer=8 | mean r=0.050
+ACROSS     mdeberta | fROI=Lang_RH_IFGorb | layer=9 | mean r=0.052
+ACROSS     mdeberta | fROI=Lang_RH_IFGorb | layer=10 | mean r=0.047
+ACROSS     mdeberta | fROI=Lang_RH_IFGorb | layer=11 | mean r=0.032
+ACROSS     mdeberta | fROI=Lang_RH_IFGorb | layer=12 | mean r=0.019
+
+
+Processing Lang_RH_MFG (4/6)
+ACROSS     mdeberta | fROI=Lang_RH_MFG | layer=0 | mean r=-0.014
+ACROSS     mdeberta | fROI=Lang_RH_MFG | layer=1 | mean r=-0.013
+ACROSS     mdeberta | fROI=Lang_RH_MFG | layer=2 | mean r=0.009
+ACROSS     mdeberta | fROI=Lang_RH_MFG | layer=3 | mean r=0.005
+ACROSS     mdeberta | fROI=Lang_RH_MFG | layer=4 | mean r=0.006
+ACROSS     mdeberta | fROI=Lang_RH_MFG | layer=5 | mean r=0.035
+ACROSS     mdeberta | fROI=Lang_RH_MFG | layer=6 | mean r=0.038
+ACROSS     mdeberta | fROI=Lang_RH_MFG | layer=7 | mean r=0.007
+ACROSS     mdeberta | fROI=Lang_RH_MFG | layer=8 | mean r=0.008
+ACROSS     mdeberta | fROI=Lang_RH_MFG | layer=9 | mean r=0.016
+ACROSS     mdeberta | fROI=Lang_RH_MFG | layer=10 | mean r=0.018
+ACROSS     mdeberta | fROI=Lang_RH_MFG | layer=11 | mean r=0.042
+ACROSS     mdeberta | fROI=Lang_RH_MFG | layer=12 | mean r=0.013
+
+
+Processing Lang_RH_PostTemp (5/6)
+ACROSS     mdeberta | fROI=Lang_RH_PostTemp | layer=0 | mean r=0.032
+ACROSS     mdeberta | fROI=Lang_RH_PostTemp | layer=1 | mean r=0.049
+ACROSS     mdeberta | fROI=Lang_RH_PostTemp | layer=2 | mean r=0.051
+ACROSS     mdeberta | fROI=Lang_RH_PostTemp | layer=3 | mean r=0.063
+ACROSS     mdeberta | fROI=Lang_RH_PostTemp | layer=4 | mean r=0.081
+ACROSS     mdeberta | fROI=Lang_RH_PostTemp | layer=5 | mean r=0.105
+ACROSS     mdeberta | fROI=Lang_RH_PostTemp | layer=6 | mean r=0.112
+ACROSS     mdeberta | fROI=Lang_RH_PostTemp | layer=7 | mean r=0.108
+ACROSS     mdeberta | fROI=Lang_RH_PostTemp | layer=8 | mean r=0.130
+ACROSS     mdeberta | fROI=Lang_RH_PostTemp | layer=9 | mean r=0.133
+ACROSS     mdeberta | fROI=Lang_RH_PostTemp | layer=10 | mean r=0.124
+ACROSS     mdeberta | fROI=Lang_RH_PostTemp | layer=11 | mean r=0.131
+ACROSS     mdeberta | fROI=Lang_RH_PostTemp | layer=12 | mean r=0.057
+
+
+Processing all (6/6)
+ACROSS     mdeberta | fROI=all | layer=0 | mean r=0.031
+ACROSS     mdeberta | fROI=all | layer=1 | mean r=0.040
+ACROSS     mdeberta | fROI=all | layer=2 | mean r=0.043
+ACROSS     mdeberta | fROI=all | layer=3 | mean r=0.044
+ACROSS     mdeberta | fROI=all | layer=4 | mean r=0.049
+ACROSS     mdeberta | fROI=all | layer=5 | mean r=0.064
+ACROSS     mdeberta | fROI=all | layer=6 | mean r=0.073
+ACROSS     mdeberta | fROI=all | layer=7 | mean r=0.058
+ACROSS     mdeberta | fROI=all | layer=8 | mean r=0.075
+ACROSS     mdeberta | fROI=all | layer=9 | mean r=0.087
+ACROSS     mdeberta | fROI=all | layer=10 | mean r=0.083
+ACROSS     mdeberta | fROI=all | layer=11 | mean r=0.088
+ACROSS     mdeberta | fROI=all | layer=12 | mean r=0.036
+
+
+Processing Lang_RH_AntTemp (1/6)
+ACROSS     xlm_align | fROI=Lang_RH_AntTemp | layer=0 | mean r=0.027
+ACROSS     xlm_align | fROI=Lang_RH_AntTemp | layer=1 | mean r=0.026
+ACROSS     xlm_align | fROI=Lang_RH_AntTemp | layer=2 | mean r=0.035
+ACROSS     xlm_align | fROI=Lang_RH_AntTemp | layer=3 | mean r=0.043
+ACROSS     xlm_align | fROI=Lang_RH_AntTemp | layer=4 | mean r=0.050
+ACROSS     xlm_align | fROI=Lang_RH_AntTemp | layer=5 | mean r=0.059
+ACROSS     xlm_align | fROI=Lang_RH_AntTemp | layer=6 | mean r=0.081
+ACROSS     xlm_align | fROI=Lang_RH_AntTemp | layer=7 | mean r=0.099
+ACROSS     xlm_align | fROI=Lang_RH_AntTemp | layer=8 | mean r=0.089
+ACROSS     xlm_align | fROI=Lang_RH_AntTemp | layer=9 | mean r=0.089
+ACROSS     xlm_align | fROI=Lang_RH_AntTemp | layer=10 | mean r=0.091
+ACROSS     xlm_align | fROI=Lang_RH_AntTemp | layer=11 | mean r=0.073
+ACROSS     xlm_align | fROI=Lang_RH_AntTemp | layer=12 | mean r=0.077
+
+
+Processing Lang_RH_IFG (2/6)
+ACROSS     xlm_align | fROI=Lang_RH_IFG | layer=0 | mean r=0.043
+ACROSS     xlm_align | fROI=Lang_RH_IFG | layer=1 | mean r=0.047
+ACROSS     xlm_align | fROI=Lang_RH_IFG | layer=2 | mean r=0.050
+ACROSS     xlm_align | fROI=Lang_RH_IFG | layer=3 | mean r=0.042
+ACROSS     xlm_align | fROI=Lang_RH_IFG | layer=4 | mean r=0.065
+ACROSS     xlm_align | fROI=Lang_RH_IFG | layer=5 | mean r=0.057
+ACROSS     xlm_align | fROI=Lang_RH_IFG | layer=6 | mean r=0.074
+ACROSS     xlm_align | fROI=Lang_RH_IFG | layer=7 | mean r=0.068
+ACROSS     xlm_align | fROI=Lang_RH_IFG | layer=8 | mean r=0.073
+ACROSS     xlm_align | fROI=Lang_RH_IFG | layer=9 | mean r=0.078
+ACROSS     xlm_align | fROI=Lang_RH_IFG | layer=10 | mean r=0.072
+ACROSS     xlm_align | fROI=Lang_RH_IFG | layer=11 | mean r=0.058
+ACROSS     xlm_align | fROI=Lang_RH_IFG | layer=12 | mean r=0.042
+
+
+Processing Lang_RH_IFGorb (3/6)
+ACROSS     xlm_align | fROI=Lang_RH_IFGorb | layer=0 | mean r=0.021
+ACROSS     xlm_align | fROI=Lang_RH_IFGorb | layer=1 | mean r=0.021
+ACROSS     xlm_align | fROI=Lang_RH_IFGorb | layer=2 | mean r=0.023
+ACROSS     xlm_align | fROI=Lang_RH_IFGorb | layer=3 | mean r=0.022
+ACROSS     xlm_align | fROI=Lang_RH_IFGorb | layer=4 | mean r=0.034
+ACROSS     xlm_align | fROI=Lang_RH_IFGorb | layer=5 | mean r=0.038
+ACROSS     xlm_align | fROI=Lang_RH_IFGorb | layer=6 | mean r=0.049
+ACROSS     xlm_align | fROI=Lang_RH_IFGorb | layer=7 | mean r=0.048
+ACROSS     xlm_align | fROI=Lang_RH_IFGorb | layer=8 | mean r=0.047
+ACROSS     xlm_align | fROI=Lang_RH_IFGorb | layer=9 | mean r=0.046
+ACROSS     xlm_align | fROI=Lang_RH_IFGorb | layer=10 | mean r=0.048
+ACROSS     xlm_align | fROI=Lang_RH_IFGorb | layer=11 | mean r=0.043
+ACROSS     xlm_align | fROI=Lang_RH_IFGorb | layer=12 | mean r=0.025
+
+
+Processing Lang_RH_MFG (4/6)
+ACROSS     xlm_align | fROI=Lang_RH_MFG | layer=0 | mean r=0.020
+ACROSS     xlm_align | fROI=Lang_RH_MFG | layer=1 | mean r=0.018
+ACROSS     xlm_align | fROI=Lang_RH_MFG | layer=2 | mean r=0.019
+ACROSS     xlm_align | fROI=Lang_RH_MFG | layer=3 | mean r=0.018
+ACROSS     xlm_align | fROI=Lang_RH_MFG | layer=4 | mean r=0.031
+ACROSS     xlm_align | fROI=Lang_RH_MFG | layer=5 | mean r=0.026
+ACROSS     xlm_align | fROI=Lang_RH_MFG | layer=6 | mean r=0.032
+ACROSS     xlm_align | fROI=Lang_RH_MFG | layer=7 | mean r=0.024
+ACROSS     xlm_align | fROI=Lang_RH_MFG | layer=8 | mean r=0.025
+ACROSS     xlm_align | fROI=Lang_RH_MFG | layer=9 | mean r=0.024
+ACROSS     xlm_align | fROI=Lang_RH_MFG | layer=10 | mean r=0.036
+ACROSS     xlm_align | fROI=Lang_RH_MFG | layer=11 | mean r=0.027
+ACROSS     xlm_align | fROI=Lang_RH_MFG | layer=12 | mean r=0.053
+
+
+Processing Lang_RH_PostTemp (5/6)
+ACROSS     xlm_align | fROI=Lang_RH_PostTemp | layer=0 | mean r=0.033
+ACROSS     xlm_align | fROI=Lang_RH_PostTemp | layer=1 | mean r=0.048
+ACROSS     xlm_align | fROI=Lang_RH_PostTemp | layer=2 | mean r=0.060
+ACROSS     xlm_align | fROI=Lang_RH_PostTemp | layer=3 | mean r=0.076
+ACROSS     xlm_align | fROI=Lang_RH_PostTemp | layer=4 | mean r=0.095
+ACROSS     xlm_align | fROI=Lang_RH_PostTemp | layer=5 | mean r=0.089
+ACROSS     xlm_align | fROI=Lang_RH_PostTemp | layer=6 | mean r=0.115
+ACROSS     xlm_align | fROI=Lang_RH_PostTemp | layer=7 | mean r=0.119
+ACROSS     xlm_align | fROI=Lang_RH_PostTemp | layer=8 | mean r=0.148
+ACROSS     xlm_align | fROI=Lang_RH_PostTemp | layer=9 | mean r=0.145
+ACROSS     xlm_align | fROI=Lang_RH_PostTemp | layer=10 | mean r=0.134
+ACROSS     xlm_align | fROI=Lang_RH_PostTemp | layer=11 | mean r=0.126
+ACROSS     xlm_align | fROI=Lang_RH_PostTemp | layer=12 | mean r=0.107
+
+
+Processing all (6/6)
+ACROSS     xlm_align | fROI=all | layer=0 | mean r=0.043
+ACROSS     xlm_align | fROI=all | layer=1 | mean r=0.043
+ACROSS     xlm_align | fROI=all | layer=2 | mean r=0.052
+ACROSS     xlm_align | fROI=all | layer=3 | mean r=0.058
+ACROSS     xlm_align | fROI=all | layer=4 | mean r=0.078
+ACROSS     xlm_align | fROI=all | layer=5 | mean r=0.073
+ACROSS     xlm_align | fROI=all | layer=6 | mean r=0.097
+ACROSS     xlm_align | fROI=all | layer=7 | mean r=0.097
+ACROSS     xlm_align | fROI=all | layer=8 | mean r=0.098
+ACROSS     xlm_align | fROI=all | layer=9 | mean r=0.098
+ACROSS     xlm_align | fROI=all | layer=10 | mean r=0.087
+ACROSS     xlm_align | fROI=all | layer=11 | mean r=0.071
+ACROSS     xlm_align | fROI=all | layer=12 | mean r=0.060
+
+
+Processing Lang_RH_AntTemp (1/6)
+ACROSS     infoxlm_base | fROI=Lang_RH_AntTemp | layer=0 | mean r=0.026
+ACROSS     infoxlm_base | fROI=Lang_RH_AntTemp | layer=1 | mean r=0.026
+ACROSS     infoxlm_base | fROI=Lang_RH_AntTemp | layer=2 | mean r=0.038
+ACROSS     infoxlm_base | fROI=Lang_RH_AntTemp | layer=3 | mean r=0.045
+ACROSS     infoxlm_base | fROI=Lang_RH_AntTemp | layer=4 | mean r=0.044
+ACROSS     infoxlm_base | fROI=Lang_RH_AntTemp | layer=5 | mean r=0.051
+ACROSS     infoxlm_base | fROI=Lang_RH_AntTemp | layer=6 | mean r=0.054
+ACROSS     infoxlm_base | fROI=Lang_RH_AntTemp | layer=7 | mean r=0.083
+ACROSS     infoxlm_base | fROI=Lang_RH_AntTemp | layer=8 | mean r=0.080
+ACROSS     infoxlm_base | fROI=Lang_RH_AntTemp | layer=9 | mean r=0.080
+ACROSS     infoxlm_base | fROI=Lang_RH_AntTemp | layer=10 | mean r=0.069
+ACROSS     infoxlm_base | fROI=Lang_RH_AntTemp | layer=11 | mean r=0.061
+ACROSS     infoxlm_base | fROI=Lang_RH_AntTemp | layer=12 | mean r=0.038
+
+
+Processing Lang_RH_IFG (2/6)
+ACROSS     infoxlm_base | fROI=Lang_RH_IFG | layer=0 | mean r=0.042
+ACROSS     infoxlm_base | fROI=Lang_RH_IFG | layer=1 | mean r=0.050
+ACROSS     infoxlm_base | fROI=Lang_RH_IFG | layer=2 | mean r=0.048
+ACROSS     infoxlm_base | fROI=Lang_RH_IFG | layer=3 | mean r=0.046
+ACROSS     infoxlm_base | fROI=Lang_RH_IFG | layer=4 | mean r=0.074
+ACROSS     infoxlm_base | fROI=Lang_RH_IFG | layer=5 | mean r=0.072
+ACROSS     infoxlm_base | fROI=Lang_RH_IFG | layer=6 | mean r=0.075
+ACROSS     infoxlm_base | fROI=Lang_RH_IFG | layer=7 | mean r=0.073
+ACROSS     infoxlm_base | fROI=Lang_RH_IFG | layer=8 | mean r=0.080
+ACROSS     infoxlm_base | fROI=Lang_RH_IFG | layer=9 | mean r=0.083
+ACROSS     infoxlm_base | fROI=Lang_RH_IFG | layer=10 | mean r=0.067
+ACROSS     infoxlm_base | fROI=Lang_RH_IFG | layer=11 | mean r=0.057
+ACROSS     infoxlm_base | fROI=Lang_RH_IFG | layer=12 | mean r=0.038
+
+
+Processing Lang_RH_IFGorb (3/6)
+ACROSS     infoxlm_base | fROI=Lang_RH_IFGorb | layer=0 | mean r=0.022
+ACROSS     infoxlm_base | fROI=Lang_RH_IFGorb | layer=1 | mean r=0.021
+ACROSS     infoxlm_base | fROI=Lang_RH_IFGorb | layer=2 | mean r=0.025
+ACROSS     infoxlm_base | fROI=Lang_RH_IFGorb | layer=3 | mean r=0.021
+ACROSS     infoxlm_base | fROI=Lang_RH_IFGorb | layer=4 | mean r=0.024
+ACROSS     infoxlm_base | fROI=Lang_RH_IFGorb | layer=5 | mean r=0.025
+ACROSS     infoxlm_base | fROI=Lang_RH_IFGorb | layer=6 | mean r=0.027
+ACROSS     infoxlm_base | fROI=Lang_RH_IFGorb | layer=7 | mean r=0.033
+ACROSS     infoxlm_base | fROI=Lang_RH_IFGorb | layer=8 | mean r=0.035
+ACROSS     infoxlm_base | fROI=Lang_RH_IFGorb | layer=9 | mean r=0.031
+ACROSS     infoxlm_base | fROI=Lang_RH_IFGorb | layer=10 | mean r=0.032
+ACROSS     infoxlm_base | fROI=Lang_RH_IFGorb | layer=11 | mean r=0.026
+ACROSS     infoxlm_base | fROI=Lang_RH_IFGorb | layer=12 | mean r=0.021
+
+
+Processing Lang_RH_MFG (4/6)
+ACROSS     infoxlm_base | fROI=Lang_RH_MFG | layer=0 | mean r=0.021
+ACROSS     infoxlm_base | fROI=Lang_RH_MFG | layer=1 | mean r=0.021
+ACROSS     infoxlm_base | fROI=Lang_RH_MFG | layer=2 | mean r=0.015
+ACROSS     infoxlm_base | fROI=Lang_RH_MFG | layer=3 | mean r=0.025
+ACROSS     infoxlm_base | fROI=Lang_RH_MFG | layer=4 | mean r=0.048
+ACROSS     infoxlm_base | fROI=Lang_RH_MFG | layer=5 | mean r=0.045
+ACROSS     infoxlm_base | fROI=Lang_RH_MFG | layer=6 | mean r=0.032
+ACROSS     infoxlm_base | fROI=Lang_RH_MFG | layer=7 | mean r=0.029
+ACROSS     infoxlm_base | fROI=Lang_RH_MFG | layer=8 | mean r=0.030
+ACROSS     infoxlm_base | fROI=Lang_RH_MFG | layer=9 | mean r=0.038
+ACROSS     infoxlm_base | fROI=Lang_RH_MFG | layer=10 | mean r=0.027
+ACROSS     infoxlm_base | fROI=Lang_RH_MFG | layer=11 | mean r=0.022
+ACROSS     infoxlm_base | fROI=Lang_RH_MFG | layer=12 | mean r=0.029
+
+
+Processing Lang_RH_PostTemp (5/6)
+ACROSS     infoxlm_base | fROI=Lang_RH_PostTemp | layer=0 | mean r=0.034
+ACROSS     infoxlm_base | fROI=Lang_RH_PostTemp | layer=1 | mean r=0.046
+ACROSS     infoxlm_base | fROI=Lang_RH_PostTemp | layer=2 | mean r=0.064
+ACROSS     infoxlm_base | fROI=Lang_RH_PostTemp | layer=3 | mean r=0.077
+ACROSS     infoxlm_base | fROI=Lang_RH_PostTemp | layer=4 | mean r=0.093
+ACROSS     infoxlm_base | fROI=Lang_RH_PostTemp | layer=5 | mean r=0.095
+ACROSS     infoxlm_base | fROI=Lang_RH_PostTemp | layer=6 | mean r=0.106
+ACROSS     infoxlm_base | fROI=Lang_RH_PostTemp | layer=7 | mean r=0.129
+ACROSS     infoxlm_base | fROI=Lang_RH_PostTemp | layer=8 | mean r=0.154
+ACROSS     infoxlm_base | fROI=Lang_RH_PostTemp | layer=9 | mean r=0.157
+ACROSS     infoxlm_base | fROI=Lang_RH_PostTemp | layer=10 | mean r=0.137
+ACROSS     infoxlm_base | fROI=Lang_RH_PostTemp | layer=11 | mean r=0.130
+ACROSS     infoxlm_base | fROI=Lang_RH_PostTemp | layer=12 | mean r=0.103
+
+
+Processing all (6/6)
+ACROSS     infoxlm_base | fROI=all | layer=0 | mean r=0.045
+ACROSS     infoxlm_base | fROI=all | layer=1 | mean r=0.054
+ACROSS     infoxlm_base | fROI=all | layer=2 | mean r=0.046
+ACROSS     infoxlm_base | fROI=all | layer=3 | mean r=0.064
+ACROSS     infoxlm_base | fROI=all | layer=4 | mean r=0.070
+ACROSS     infoxlm_base | fROI=all | layer=5 | mean r=0.078
+ACROSS     infoxlm_base | fROI=all | layer=6 | mean r=0.072
+ACROSS     infoxlm_base | fROI=all | layer=7 | mean r=0.087
+ACROSS     infoxlm_base | fROI=all | layer=8 | mean r=0.094
+ACROSS     infoxlm_base | fROI=all | layer=9 | mean r=0.086
+ACROSS     infoxlm_base | fROI=all | layer=10 | mean r=0.070
+ACROSS     infoxlm_base | fROI=all | layer=11 | mean r=0.061
+ACROSS     infoxlm_base | fROI=all | layer=12 | mean r=0.049
+
+
+Processing Lang_RH_AntTemp (1/6)
+ACROSS     infoxlm_large | fROI=Lang_RH_AntTemp | layer=0 | mean r=0.029
+ACROSS     infoxlm_large | fROI=Lang_RH_AntTemp | layer=1 | mean r=0.033
+ACROSS     infoxlm_large | fROI=Lang_RH_AntTemp | layer=2 | mean r=0.041
+ACROSS     infoxlm_large | fROI=Lang_RH_AntTemp | layer=3 | mean r=0.044
+ACROSS     infoxlm_large | fROI=Lang_RH_AntTemp | layer=4 | mean r=0.057
+ACROSS     infoxlm_large | fROI=Lang_RH_AntTemp | layer=5 | mean r=0.064
+ACROSS     infoxlm_large | fROI=Lang_RH_AntTemp | layer=6 | mean r=0.064
+ACROSS     infoxlm_large | fROI=Lang_RH_AntTemp | layer=7 | mean r=0.061
+ACROSS     infoxlm_large | fROI=Lang_RH_AntTemp | layer=8 | mean r=0.054
+ACROSS     infoxlm_large | fROI=Lang_RH_AntTemp | layer=9 | mean r=0.049
+ACROSS     infoxlm_large | fROI=Lang_RH_AntTemp | layer=10 | mean r=0.046
+ACROSS     infoxlm_large | fROI=Lang_RH_AntTemp | layer=11 | mean r=0.066
+ACROSS     infoxlm_large | fROI=Lang_RH_AntTemp | layer=12 | mean r=0.056
+ACROSS     infoxlm_large | fROI=Lang_RH_AntTemp | layer=13 | mean r=0.079
+ACROSS     infoxlm_large | fROI=Lang_RH_AntTemp | layer=14 | mean r=0.077
+ACROSS     infoxlm_large | fROI=Lang_RH_AntTemp | layer=15 | mean r=0.080
+ACROSS     infoxlm_large | fROI=Lang_RH_AntTemp | layer=16 | mean r=0.090
+ACROSS     infoxlm_large | fROI=Lang_RH_AntTemp | layer=17 | mean r=0.093
+ACROSS     infoxlm_large | fROI=Lang_RH_AntTemp | layer=18 | mean r=0.090
+ACROSS     infoxlm_large | fROI=Lang_RH_AntTemp | layer=19 | mean r=0.086
+ACROSS     infoxlm_large | fROI=Lang_RH_AntTemp | layer=20 | mean r=0.093
+ACROSS     infoxlm_large | fROI=Lang_RH_AntTemp | layer=21 | mean r=0.086
+ACROSS     infoxlm_large | fROI=Lang_RH_AntTemp | layer=22 | mean r=0.082
+ACROSS     infoxlm_large | fROI=Lang_RH_AntTemp | layer=23 | mean r=0.079
+ACROSS     infoxlm_large | fROI=Lang_RH_AntTemp | layer=24 | mean r=0.048
+
+
+Processing Lang_RH_IFG (2/6)
+ACROSS     infoxlm_large | fROI=Lang_RH_IFG | layer=0 | mean r=0.031
+ACROSS     infoxlm_large | fROI=Lang_RH_IFG | layer=1 | mean r=0.021
+ACROSS     infoxlm_large | fROI=Lang_RH_IFG | layer=2 | mean r=0.036
+ACROSS     infoxlm_large | fROI=Lang_RH_IFG | layer=3 | mean r=0.045
+ACROSS     infoxlm_large | fROI=Lang_RH_IFG | layer=4 | mean r=0.052
+ACROSS     infoxlm_large | fROI=Lang_RH_IFG | layer=5 | mean r=0.056
+ACROSS     infoxlm_large | fROI=Lang_RH_IFG | layer=6 | mean r=0.048
+ACROSS     infoxlm_large | fROI=Lang_RH_IFG | layer=7 | mean r=0.057
+ACROSS     infoxlm_large | fROI=Lang_RH_IFG | layer=8 | mean r=0.064
+ACROSS     infoxlm_large | fROI=Lang_RH_IFG | layer=9 | mean r=0.056
+ACROSS     infoxlm_large | fROI=Lang_RH_IFG | layer=10 | mean r=0.050
+ACROSS     infoxlm_large | fROI=Lang_RH_IFG | layer=11 | mean r=0.057
+ACROSS     infoxlm_large | fROI=Lang_RH_IFG | layer=12 | mean r=0.061
+ACROSS     infoxlm_large | fROI=Lang_RH_IFG | layer=13 | mean r=0.066
+ACROSS     infoxlm_large | fROI=Lang_RH_IFG | layer=14 | mean r=0.071
+ACROSS     infoxlm_large | fROI=Lang_RH_IFG | layer=15 | mean r=0.077
+ACROSS     infoxlm_large | fROI=Lang_RH_IFG | layer=16 | mean r=0.085
+ACROSS     infoxlm_large | fROI=Lang_RH_IFG | layer=17 | mean r=0.086
+ACROSS     infoxlm_large | fROI=Lang_RH_IFG | layer=18 | mean r=0.089
+ACROSS     infoxlm_large | fROI=Lang_RH_IFG | layer=19 | mean r=0.088
+ACROSS     infoxlm_large | fROI=Lang_RH_IFG | layer=20 | mean r=0.100
+ACROSS     infoxlm_large | fROI=Lang_RH_IFG | layer=21 | mean r=0.087
+ACROSS     infoxlm_large | fROI=Lang_RH_IFG | layer=22 | mean r=0.083
+ACROSS     infoxlm_large | fROI=Lang_RH_IFG | layer=23 | mean r=0.085
+ACROSS     infoxlm_large | fROI=Lang_RH_IFG | layer=24 | mean r=0.068
+
+
+Processing Lang_RH_IFGorb (3/6)
+ACROSS     infoxlm_large | fROI=Lang_RH_IFGorb | layer=0 | mean r=0.018
+ACROSS     infoxlm_large | fROI=Lang_RH_IFGorb | layer=1 | mean r=0.014
+ACROSS     infoxlm_large | fROI=Lang_RH_IFGorb | layer=2 | mean r=0.019
+ACROSS     infoxlm_large | fROI=Lang_RH_IFGorb | layer=3 | mean r=0.022
+ACROSS     infoxlm_large | fROI=Lang_RH_IFGorb | layer=4 | mean r=0.031
+ACROSS     infoxlm_large | fROI=Lang_RH_IFGorb | layer=5 | mean r=0.032
+ACROSS     infoxlm_large | fROI=Lang_RH_IFGorb | layer=6 | mean r=0.028
+ACROSS     infoxlm_large | fROI=Lang_RH_IFGorb | layer=7 | mean r=0.030
+ACROSS     infoxlm_large | fROI=Lang_RH_IFGorb | layer=8 | mean r=0.030
+ACROSS     infoxlm_large | fROI=Lang_RH_IFGorb | layer=9 | mean r=0.029
+ACROSS     infoxlm_large | fROI=Lang_RH_IFGorb | layer=10 | mean r=0.022
+ACROSS     infoxlm_large | fROI=Lang_RH_IFGorb | layer=11 | mean r=0.039
+ACROSS     infoxlm_large | fROI=Lang_RH_IFGorb | layer=12 | mean r=0.033
+ACROSS     infoxlm_large | fROI=Lang_RH_IFGorb | layer=13 | mean r=0.038
+ACROSS     infoxlm_large | fROI=Lang_RH_IFGorb | layer=14 | mean r=0.042
+ACROSS     infoxlm_large | fROI=Lang_RH_IFGorb | layer=15 | mean r=0.038
+ACROSS     infoxlm_large | fROI=Lang_RH_IFGorb | layer=16 | mean r=0.043
+ACROSS     infoxlm_large | fROI=Lang_RH_IFGorb | layer=17 | mean r=0.043
+ACROSS     infoxlm_large | fROI=Lang_RH_IFGorb | layer=18 | mean r=0.040
+ACROSS     infoxlm_large | fROI=Lang_RH_IFGorb | layer=19 | mean r=0.029
+ACROSS     infoxlm_large | fROI=Lang_RH_IFGorb | layer=20 | mean r=0.035
+ACROSS     infoxlm_large | fROI=Lang_RH_IFGorb | layer=21 | mean r=0.037
+ACROSS     infoxlm_large | fROI=Lang_RH_IFGorb | layer=22 | mean r=0.040
+ACROSS     infoxlm_large | fROI=Lang_RH_IFGorb | layer=23 | mean r=0.044
+ACROSS     infoxlm_large | fROI=Lang_RH_IFGorb | layer=24 | mean r=0.033
+
+
+Processing Lang_RH_MFG (4/6)
+ACROSS     infoxlm_large | fROI=Lang_RH_MFG | layer=0 | mean r=0.011
+ACROSS     infoxlm_large | fROI=Lang_RH_MFG | layer=1 | mean r=0.009
+ACROSS     infoxlm_large | fROI=Lang_RH_MFG | layer=2 | mean r=0.014
+ACROSS     infoxlm_large | fROI=Lang_RH_MFG | layer=3 | mean r=0.019
+ACROSS     infoxlm_large | fROI=Lang_RH_MFG | layer=4 | mean r=0.030
+ACROSS     infoxlm_large | fROI=Lang_RH_MFG | layer=5 | mean r=0.037
+ACROSS     infoxlm_large | fROI=Lang_RH_MFG | layer=6 | mean r=0.036
+ACROSS     infoxlm_large | fROI=Lang_RH_MFG | layer=7 | mean r=0.036
+ACROSS     infoxlm_large | fROI=Lang_RH_MFG | layer=8 | mean r=0.029
+ACROSS     infoxlm_large | fROI=Lang_RH_MFG | layer=9 | mean r=0.036
+ACROSS     infoxlm_large | fROI=Lang_RH_MFG | layer=10 | mean r=0.047
+ACROSS     infoxlm_large | fROI=Lang_RH_MFG | layer=11 | mean r=0.049
+ACROSS     infoxlm_large | fROI=Lang_RH_MFG | layer=12 | mean r=0.054
+ACROSS     infoxlm_large | fROI=Lang_RH_MFG | layer=13 | mean r=0.047
+ACROSS     infoxlm_large | fROI=Lang_RH_MFG | layer=14 | mean r=0.053
+ACROSS     infoxlm_large | fROI=Lang_RH_MFG | layer=15 | mean r=0.056
+ACROSS     infoxlm_large | fROI=Lang_RH_MFG | layer=16 | mean r=0.063
+ACROSS     infoxlm_large | fROI=Lang_RH_MFG | layer=17 | mean r=0.052
+ACROSS     infoxlm_large | fROI=Lang_RH_MFG | layer=18 | mean r=0.069
+ACROSS     infoxlm_large | fROI=Lang_RH_MFG | layer=19 | mean r=0.063
+ACROSS     infoxlm_large | fROI=Lang_RH_MFG | layer=20 | mean r=0.065
+ACROSS     infoxlm_large | fROI=Lang_RH_MFG | layer=21 | mean r=0.058
+ACROSS     infoxlm_large | fROI=Lang_RH_MFG | layer=22 | mean r=0.054
+ACROSS     infoxlm_large | fROI=Lang_RH_MFG | layer=23 | mean r=0.068
+ACROSS     infoxlm_large | fROI=Lang_RH_MFG | layer=24 | mean r=0.053
+
+
+Processing Lang_RH_PostTemp (5/6)
+ACROSS     infoxlm_large | fROI=Lang_RH_PostTemp | layer=0 | mean r=0.024
+ACROSS     infoxlm_large | fROI=Lang_RH_PostTemp | layer=1 | mean r=0.031
+ACROSS     infoxlm_large | fROI=Lang_RH_PostTemp | layer=2 | mean r=0.042
+ACROSS     infoxlm_large | fROI=Lang_RH_PostTemp | layer=3 | mean r=0.058
+ACROSS     infoxlm_large | fROI=Lang_RH_PostTemp | layer=4 | mean r=0.067
+ACROSS     infoxlm_large | fROI=Lang_RH_PostTemp | layer=5 | mean r=0.086
+ACROSS     infoxlm_large | fROI=Lang_RH_PostTemp | layer=6 | mean r=0.080
+ACROSS     infoxlm_large | fROI=Lang_RH_PostTemp | layer=7 | mean r=0.088
+ACROSS     infoxlm_large | fROI=Lang_RH_PostTemp | layer=8 | mean r=0.088
+ACROSS     infoxlm_large | fROI=Lang_RH_PostTemp | layer=9 | mean r=0.085
+ACROSS     infoxlm_large | fROI=Lang_RH_PostTemp | layer=10 | mean r=0.073
+ACROSS     infoxlm_large | fROI=Lang_RH_PostTemp | layer=11 | mean r=0.099
+ACROSS     infoxlm_large | fROI=Lang_RH_PostTemp | layer=12 | mean r=0.113
+ACROSS     infoxlm_large | fROI=Lang_RH_PostTemp | layer=13 | mean r=0.132
+ACROSS     infoxlm_large | fROI=Lang_RH_PostTemp | layer=14 | mean r=0.136
+ACROSS     infoxlm_large | fROI=Lang_RH_PostTemp | layer=15 | mean r=0.129
+ACROSS     infoxlm_large | fROI=Lang_RH_PostTemp | layer=16 | mean r=0.141
+ACROSS     infoxlm_large | fROI=Lang_RH_PostTemp | layer=17 | mean r=0.133
+ACROSS     infoxlm_large | fROI=Lang_RH_PostTemp | layer=18 | mean r=0.129
+ACROSS     infoxlm_large | fROI=Lang_RH_PostTemp | layer=19 | mean r=0.128
+ACROSS     infoxlm_large | fROI=Lang_RH_PostTemp | layer=20 | mean r=0.133
+ACROSS     infoxlm_large | fROI=Lang_RH_PostTemp | layer=21 | mean r=0.126
+ACROSS     infoxlm_large | fROI=Lang_RH_PostTemp | layer=22 | mean r=0.111
+ACROSS     infoxlm_large | fROI=Lang_RH_PostTemp | layer=23 | mean r=0.104
+ACROSS     infoxlm_large | fROI=Lang_RH_PostTemp | layer=24 | mean r=0.091
+
+
+Processing all (6/6)
+ACROSS     infoxlm_large | fROI=all | layer=0 | mean r=0.024
+ACROSS     infoxlm_large | fROI=all | layer=1 | mean r=0.026
+ACROSS     infoxlm_large | fROI=all | layer=2 | mean r=0.048
+ACROSS     infoxlm_large | fROI=all | layer=3 | mean r=0.053
+ACROSS     infoxlm_large | fROI=all | layer=4 | mean r=0.066
+ACROSS     infoxlm_large | fROI=all | layer=5 | mean r=0.078
+ACROSS     infoxlm_large | fROI=all | layer=6 | mean r=0.070
+ACROSS     infoxlm_large | fROI=all | layer=7 | mean r=0.073
+ACROSS     infoxlm_large | fROI=all | layer=8 | mean r=0.075
+ACROSS     infoxlm_large | fROI=all | layer=9 | mean r=0.062
+ACROSS     infoxlm_large | fROI=all | layer=10 | mean r=0.061
+ACROSS     infoxlm_large | fROI=all | layer=11 | mean r=0.069
+ACROSS     infoxlm_large | fROI=all | layer=12 | mean r=0.074
+ACROSS     infoxlm_large | fROI=all | layer=13 | mean r=0.082
+ACROSS     infoxlm_large | fROI=all | layer=14 | mean r=0.085
+ACROSS     infoxlm_large | fROI=all | layer=15 | mean r=0.088
+ACROSS     infoxlm_large | fROI=all | layer=16 | mean r=0.095
+ACROSS     infoxlm_large | fROI=all | layer=17 | mean r=0.085
+ACROSS     infoxlm_large | fROI=all | layer=18 | mean r=0.087
+ACROSS     infoxlm_large | fROI=all | layer=19 | mean r=0.086
+ACROSS     infoxlm_large | fROI=all | layer=20 | mean r=0.100
+ACROSS     infoxlm_large | fROI=all | layer=21 | mean r=0.094
+ACROSS     infoxlm_large | fROI=all | layer=22 | mean r=0.090
+ACROSS     infoxlm_large | fROI=all | layer=23 | mean r=0.099
+ACROSS     infoxlm_large | fROI=all | layer=24 | mean r=0.092
+
+
+Processing Lang_RH_AntTemp (1/6)
+ACROSS     multiminilm | fROI=Lang_RH_AntTemp | layer=0 | mean r=0.041
+ACROSS     multiminilm | fROI=Lang_RH_AntTemp | layer=1 | mean r=0.044
+ACROSS     multiminilm | fROI=Lang_RH_AntTemp | layer=2 | mean r=0.049
+ACROSS     multiminilm | fROI=Lang_RH_AntTemp | layer=3 | mean r=0.042
+ACROSS     multiminilm | fROI=Lang_RH_AntTemp | layer=4 | mean r=0.061
+ACROSS     multiminilm | fROI=Lang_RH_AntTemp | layer=5 | mean r=0.074
+ACROSS     multiminilm | fROI=Lang_RH_AntTemp | layer=6 | mean r=0.078
+ACROSS     multiminilm | fROI=Lang_RH_AntTemp | layer=7 | mean r=0.075
+ACROSS     multiminilm | fROI=Lang_RH_AntTemp | layer=8 | mean r=0.093
+ACROSS     multiminilm | fROI=Lang_RH_AntTemp | layer=9 | mean r=0.095
+ACROSS     multiminilm | fROI=Lang_RH_AntTemp | layer=10 | mean r=0.087
+ACROSS     multiminilm | fROI=Lang_RH_AntTemp | layer=11 | mean r=0.085
+ACROSS     multiminilm | fROI=Lang_RH_AntTemp | layer=12 | mean r=0.086
+
+
+Processing Lang_RH_IFG (2/6)
+ACROSS     multiminilm | fROI=Lang_RH_IFG | layer=0 | mean r=0.050
+ACROSS     multiminilm | fROI=Lang_RH_IFG | layer=1 | mean r=0.046
+ACROSS     multiminilm | fROI=Lang_RH_IFG | layer=2 | mean r=0.053
+ACROSS     multiminilm | fROI=Lang_RH_IFG | layer=3 | mean r=0.050
+ACROSS     multiminilm | fROI=Lang_RH_IFG | layer=4 | mean r=0.057
+ACROSS     multiminilm | fROI=Lang_RH_IFG | layer=5 | mean r=0.067
+ACROSS     multiminilm | fROI=Lang_RH_IFG | layer=6 | mean r=0.057
+ACROSS     multiminilm | fROI=Lang_RH_IFG | layer=7 | mean r=0.057
+ACROSS     multiminilm | fROI=Lang_RH_IFG | layer=8 | mean r=0.067
+ACROSS     multiminilm | fROI=Lang_RH_IFG | layer=9 | mean r=0.058
+ACROSS     multiminilm | fROI=Lang_RH_IFG | layer=10 | mean r=0.059
+ACROSS     multiminilm | fROI=Lang_RH_IFG | layer=11 | mean r=0.062
+ACROSS     multiminilm | fROI=Lang_RH_IFG | layer=12 | mean r=0.063
+
+
+Processing Lang_RH_IFGorb (3/6)
+ACROSS     multiminilm | fROI=Lang_RH_IFGorb | layer=0 | mean r=0.029
+ACROSS     multiminilm | fROI=Lang_RH_IFGorb | layer=1 | mean r=0.027
+ACROSS     multiminilm | fROI=Lang_RH_IFGorb | layer=2 | mean r=0.019
+ACROSS     multiminilm | fROI=Lang_RH_IFGorb | layer=3 | mean r=0.023
+ACROSS     multiminilm | fROI=Lang_RH_IFGorb | layer=4 | mean r=0.031
+ACROSS     multiminilm | fROI=Lang_RH_IFGorb | layer=5 | mean r=0.035
+ACROSS     multiminilm | fROI=Lang_RH_IFGorb | layer=6 | mean r=0.030
+ACROSS     multiminilm | fROI=Lang_RH_IFGorb | layer=7 | mean r=0.037
+ACROSS     multiminilm | fROI=Lang_RH_IFGorb | layer=8 | mean r=0.045
+ACROSS     multiminilm | fROI=Lang_RH_IFGorb | layer=9 | mean r=0.036
+ACROSS     multiminilm | fROI=Lang_RH_IFGorb | layer=10 | mean r=0.024
+ACROSS     multiminilm | fROI=Lang_RH_IFGorb | layer=11 | mean r=0.019
+ACROSS     multiminilm | fROI=Lang_RH_IFGorb | layer=12 | mean r=0.020
+
+
+Processing Lang_RH_MFG (4/6)
+ACROSS     multiminilm | fROI=Lang_RH_MFG | layer=0 | mean r=0.018
+ACROSS     multiminilm | fROI=Lang_RH_MFG | layer=1 | mean r=0.028
+ACROSS     multiminilm | fROI=Lang_RH_MFG | layer=2 | mean r=0.051
+ACROSS     multiminilm | fROI=Lang_RH_MFG | layer=3 | mean r=0.047
+ACROSS     multiminilm | fROI=Lang_RH_MFG | layer=4 | mean r=0.047
+ACROSS     multiminilm | fROI=Lang_RH_MFG | layer=5 | mean r=0.057
+ACROSS     multiminilm | fROI=Lang_RH_MFG | layer=6 | mean r=0.047
+ACROSS     multiminilm | fROI=Lang_RH_MFG | layer=7 | mean r=0.049
+ACROSS     multiminilm | fROI=Lang_RH_MFG | layer=8 | mean r=0.039
+ACROSS     multiminilm | fROI=Lang_RH_MFG | layer=9 | mean r=0.031
+ACROSS     multiminilm | fROI=Lang_RH_MFG | layer=10 | mean r=0.039
+ACROSS     multiminilm | fROI=Lang_RH_MFG | layer=11 | mean r=0.037
+ACROSS     multiminilm | fROI=Lang_RH_MFG | layer=12 | mean r=0.037
+
+
+Processing Lang_RH_PostTemp (5/6)
+ACROSS     multiminilm | fROI=Lang_RH_PostTemp | layer=0 | mean r=0.051
+ACROSS     multiminilm | fROI=Lang_RH_PostTemp | layer=1 | mean r=0.061
+ACROSS     multiminilm | fROI=Lang_RH_PostTemp | layer=2 | mean r=0.067
+ACROSS     multiminilm | fROI=Lang_RH_PostTemp | layer=3 | mean r=0.076
+ACROSS     multiminilm | fROI=Lang_RH_PostTemp | layer=4 | mean r=0.104
+ACROSS     multiminilm | fROI=Lang_RH_PostTemp | layer=5 | mean r=0.124
+ACROSS     multiminilm | fROI=Lang_RH_PostTemp | layer=6 | mean r=0.118
+ACROSS     multiminilm | fROI=Lang_RH_PostTemp | layer=7 | mean r=0.111
+ACROSS     multiminilm | fROI=Lang_RH_PostTemp | layer=8 | mean r=0.138
+ACROSS     multiminilm | fROI=Lang_RH_PostTemp | layer=9 | mean r=0.140
+ACROSS     multiminilm | fROI=Lang_RH_PostTemp | layer=10 | mean r=0.136
+ACROSS     multiminilm | fROI=Lang_RH_PostTemp | layer=11 | mean r=0.119
+ACROSS     multiminilm | fROI=Lang_RH_PostTemp | layer=12 | mean r=0.118
+
+
+Processing all (6/6)
+ACROSS     multiminilm | fROI=all | layer=0 | mean r=0.054
+ACROSS     multiminilm | fROI=all | layer=1 | mean r=0.043
+ACROSS     multiminilm | fROI=all | layer=2 | mean r=0.063
+ACROSS     multiminilm | fROI=all | layer=3 | mean r=0.058
+ACROSS     multiminilm | fROI=all | layer=4 | mean r=0.075
+ACROSS     multiminilm | fROI=all | layer=5 | mean r=0.092
+ACROSS     multiminilm | fROI=all | layer=6 | mean r=0.075
+ACROSS     multiminilm | fROI=all | layer=7 | mean r=0.072
+ACROSS     multiminilm | fROI=all | layer=8 | mean r=0.097
+ACROSS     multiminilm | fROI=all | layer=9 | mean r=0.090
+ACROSS     multiminilm | fROI=all | layer=10 | mean r=0.069
+ACROSS     multiminilm | fROI=all | layer=11 | mean r=0.064
+ACROSS     multiminilm | fROI=all | layer=12 | mean r=0.065
+
+
+Processing Lang_RH_AntTemp (1/6)
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_AntTemp | layer=0 | mean r=0.038
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_AntTemp | layer=1 | mean r=0.036
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_AntTemp | layer=2 | mean r=0.023
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_AntTemp | layer=3 | mean r=0.035
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_AntTemp | layer=4 | mean r=0.039
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_AntTemp | layer=5 | mean r=0.045
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_AntTemp | layer=6 | mean r=0.046
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_AntTemp | layer=7 | mean r=0.051
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_AntTemp | layer=8 | mean r=0.049
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_AntTemp | layer=9 | mean r=0.053
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_AntTemp | layer=10 | mean r=0.069
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_AntTemp | layer=11 | mean r=0.056
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_AntTemp | layer=12 | mean r=0.050
+
+
+Processing Lang_RH_IFG (2/6)
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_IFG | layer=0 | mean r=0.029
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_IFG | layer=1 | mean r=0.040
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_IFG | layer=2 | mean r=0.039
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_IFG | layer=3 | mean r=0.044
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_IFG | layer=4 | mean r=0.046
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_IFG | layer=5 | mean r=0.042
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_IFG | layer=6 | mean r=0.054
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_IFG | layer=7 | mean r=0.058
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_IFG | layer=8 | mean r=0.057
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_IFG | layer=9 | mean r=0.057
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_IFG | layer=10 | mean r=0.058
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_IFG | layer=11 | mean r=0.057
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_IFG | layer=12 | mean r=0.051
+
+
+Processing Lang_RH_IFGorb (3/6)
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_IFGorb | layer=0 | mean r=0.018
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_IFGorb | layer=1 | mean r=0.018
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_IFGorb | layer=2 | mean r=0.012
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_IFGorb | layer=3 | mean r=0.019
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_IFGorb | layer=4 | mean r=0.017
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_IFGorb | layer=5 | mean r=0.018
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_IFGorb | layer=6 | mean r=0.022
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_IFGorb | layer=7 | mean r=0.027
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_IFGorb | layer=8 | mean r=0.025
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_IFGorb | layer=9 | mean r=0.025
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_IFGorb | layer=10 | mean r=0.027
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_IFGorb | layer=11 | mean r=0.019
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_IFGorb | layer=12 | mean r=0.017
+
+
+Processing Lang_RH_MFG (4/6)
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_MFG | layer=0 | mean r=0.006
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_MFG | layer=1 | mean r=0.015
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_MFG | layer=2 | mean r=0.029
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_MFG | layer=3 | mean r=0.029
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_MFG | layer=4 | mean r=0.021
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_MFG | layer=5 | mean r=0.023
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_MFG | layer=6 | mean r=0.034
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_MFG | layer=7 | mean r=0.037
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_MFG | layer=8 | mean r=0.039
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_MFG | layer=9 | mean r=0.035
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_MFG | layer=10 | mean r=0.032
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_MFG | layer=11 | mean r=0.036
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_MFG | layer=12 | mean r=0.039
+
+
+Processing Lang_RH_PostTemp (5/6)
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_PostTemp | layer=0 | mean r=0.045
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_PostTemp | layer=1 | mean r=0.036
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_PostTemp | layer=2 | mean r=0.029
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_PostTemp | layer=3 | mean r=0.034
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_PostTemp | layer=4 | mean r=0.038
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_PostTemp | layer=5 | mean r=0.043
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_PostTemp | layer=6 | mean r=0.062
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_PostTemp | layer=7 | mean r=0.064
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_PostTemp | layer=8 | mean r=0.065
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_PostTemp | layer=9 | mean r=0.058
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_PostTemp | layer=10 | mean r=0.071
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_PostTemp | layer=11 | mean r=0.063
+ACROSS     nllb200_distilled_600M | fROI=Lang_RH_PostTemp | layer=12 | mean r=0.053
+
+
+Processing all (6/6)
+ACROSS     nllb200_distilled_600M | fROI=all | layer=0 | mean r=0.039
+ACROSS     nllb200_distilled_600M | fROI=all | layer=1 | mean r=0.040
+ACROSS     nllb200_distilled_600M | fROI=all | layer=2 | mean r=0.039
+ACROSS     nllb200_distilled_600M | fROI=all | layer=3 | mean r=0.046
+ACROSS     nllb200_distilled_600M | fROI=all | layer=4 | mean r=0.045
+ACROSS     nllb200_distilled_600M | fROI=all | layer=5 | mean r=0.046
+ACROSS     nllb200_distilled_600M | fROI=all | layer=6 | mean r=0.055
+ACROSS     nllb200_distilled_600M | fROI=all | layer=7 | mean r=0.059
+ACROSS     nllb200_distilled_600M | fROI=all | layer=8 | mean r=0.056
+ACROSS     nllb200_distilled_600M | fROI=all | layer=9 | mean r=0.056
+ACROSS     nllb200_distilled_600M | fROI=all | layer=10 | mean r=0.061
+ACROSS     nllb200_distilled_600M | fROI=all | layer=11 | mean r=0.057
+ACROSS     nllb200_distilled_600M | fROI=all | layer=12 | mean r=0.046
+
+
+Processing Lang_RH_AntTemp (1/6)
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=0 | mean r=0.034
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=1 | mean r=0.014
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=2 | mean r=0.023
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=3 | mean r=0.025
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=4 | mean r=0.030
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=5 | mean r=0.036
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=6 | mean r=0.039
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=7 | mean r=0.044
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=8 | mean r=0.051
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=9 | mean r=0.051
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=10 | mean r=0.053
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=11 | mean r=0.056
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=12 | mean r=0.064
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=13 | mean r=0.067
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=14 | mean r=0.062
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=15 | mean r=0.065
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=16 | mean r=0.067
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=17 | mean r=0.064
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=18 | mean r=0.061
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=19 | mean r=0.061
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=20 | mean r=0.053
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=21 | mean r=0.052
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=22 | mean r=0.049
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=23 | mean r=0.044
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_AntTemp | layer=24 | mean r=0.043
+
+
+Processing Lang_RH_IFG (2/6)
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=0 | mean r=0.032
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=1 | mean r=0.044
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=2 | mean r=0.050
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=3 | mean r=0.052
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=4 | mean r=0.057
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=5 | mean r=0.057
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=6 | mean r=0.057
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=7 | mean r=0.057
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=8 | mean r=0.062
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=9 | mean r=0.062
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=10 | mean r=0.067
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=11 | mean r=0.073
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=12 | mean r=0.071
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=13 | mean r=0.072
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=14 | mean r=0.069
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=15 | mean r=0.063
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=16 | mean r=0.058
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=17 | mean r=0.057
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=18 | mean r=0.054
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=19 | mean r=0.055
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=20 | mean r=0.055
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=21 | mean r=0.057
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=22 | mean r=0.059
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=23 | mean r=0.058
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFG | layer=24 | mean r=0.048
+
+
+Processing Lang_RH_IFGorb (3/6)
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=0 | mean r=0.019
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=1 | mean r=0.006
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=2 | mean r=0.010
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=3 | mean r=0.014
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=4 | mean r=0.017
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=5 | mean r=0.019
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=6 | mean r=0.019
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=7 | mean r=0.016
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=8 | mean r=0.015
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=9 | mean r=0.011
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=10 | mean r=0.012
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=11 | mean r=0.017
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=12 | mean r=0.018
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=13 | mean r=0.020
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=14 | mean r=0.021
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=15 | mean r=0.020
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=16 | mean r=0.017
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=17 | mean r=0.017
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=18 | mean r=0.014
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=19 | mean r=0.018
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=20 | mean r=0.015
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=21 | mean r=0.015
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=22 | mean r=0.016
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=23 | mean r=0.014
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_IFGorb | layer=24 | mean r=0.012
+
+
+Processing Lang_RH_MFG (4/6)
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=0 | mean r=0.009
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=1 | mean r=0.012
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=2 | mean r=0.018
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=3 | mean r=0.023
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=4 | mean r=0.024
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=5 | mean r=0.014
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=6 | mean r=0.017
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=7 | mean r=0.018
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=8 | mean r=0.015
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=9 | mean r=0.023
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=10 | mean r=0.025
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=11 | mean r=0.041
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=12 | mean r=0.042
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=13 | mean r=0.038
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=14 | mean r=0.040
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=15 | mean r=0.033
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=16 | mean r=0.026
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=17 | mean r=0.027
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=18 | mean r=0.032
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=19 | mean r=0.032
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=20 | mean r=0.029
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=21 | mean r=0.028
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=22 | mean r=0.028
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=23 | mean r=0.031
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_MFG | layer=24 | mean r=0.025
+
+
+Processing Lang_RH_PostTemp (5/6)
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=0 | mean r=0.054
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=1 | mean r=0.043
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=2 | mean r=0.048
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=3 | mean r=0.048
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=4 | mean r=0.046
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=5 | mean r=0.060
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=6 | mean r=0.065
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=7 | mean r=0.068
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=8 | mean r=0.073
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=9 | mean r=0.070
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=10 | mean r=0.077
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=11 | mean r=0.080
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=12 | mean r=0.083
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=13 | mean r=0.089
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=14 | mean r=0.091
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=15 | mean r=0.093
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=16 | mean r=0.087
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=17 | mean r=0.088
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=18 | mean r=0.087
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=19 | mean r=0.087
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=20 | mean r=0.086
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=21 | mean r=0.087
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=22 | mean r=0.087
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=23 | mean r=0.085
+ACROSS     nllb200_distilled_1B | fROI=Lang_RH_PostTemp | layer=24 | mean r=0.082
+
+
+Processing all (6/6)
+ACROSS     nllb200_distilled_1B | fROI=all | layer=0 | mean r=0.040
+ACROSS     nllb200_distilled_1B | fROI=all | layer=1 | mean r=0.039
+ACROSS     nllb200_distilled_1B | fROI=all | layer=2 | mean r=0.044
+ACROSS     nllb200_distilled_1B | fROI=all | layer=3 | mean r=0.057
+ACROSS     nllb200_distilled_1B | fROI=all | layer=4 | mean r=0.051
+ACROSS     nllb200_distilled_1B | fROI=all | layer=5 | mean r=0.057
+ACROSS     nllb200_distilled_1B | fROI=all | layer=6 | mean r=0.061
+ACROSS     nllb200_distilled_1B | fROI=all | layer=7 | mean r=0.057
+ACROSS     nllb200_distilled_1B | fROI=all | layer=8 | mean r=0.058
+ACROSS     nllb200_distilled_1B | fROI=all | layer=9 | mean r=0.056
+ACROSS     nllb200_distilled_1B | fROI=all | layer=10 | mean r=0.058
+ACROSS     nllb200_distilled_1B | fROI=all | layer=11 | mean r=0.068
+ACROSS     nllb200_distilled_1B | fROI=all | layer=12 | mean r=0.064
+ACROSS     nllb200_distilled_1B | fROI=all | layer=13 | mean r=0.067
+ACROSS     nllb200_distilled_1B | fROI=all | layer=14 | mean r=0.065
+ACROSS     nllb200_distilled_1B | fROI=all | layer=15 | mean r=0.062
+ACROSS     nllb200_distilled_1B | fROI=all | layer=16 | mean r=0.058
+ACROSS     nllb200_distilled_1B | fROI=all | layer=17 | mean r=0.060
+ACROSS     nllb200_distilled_1B | fROI=all | layer=18 | mean r=0.059
+ACROSS     nllb200_distilled_1B | fROI=all | layer=19 | mean r=0.060
+ACROSS     nllb200_distilled_1B | fROI=all | layer=20 | mean r=0.059
+ACROSS     nllb200_distilled_1B | fROI=all | layer=21 | mean r=0.059
+ACROSS     nllb200_distilled_1B | fROI=all | layer=22 | mean r=0.060
+ACROSS     nllb200_distilled_1B | fROI=all | layer=23 | mean r=0.064
+ACROSS     nllb200_distilled_1B | fROI=all | layer=24 | mean r=0.053
+
+
+Processing Lang_RH_AntTemp (1/6)
+ACROSS     nllb200_1B | fROI=Lang_RH_AntTemp | layer=0 | mean r=0.035
+ACROSS     nllb200_1B | fROI=Lang_RH_AntTemp | layer=1 | mean r=0.028
+ACROSS     nllb200_1B | fROI=Lang_RH_AntTemp | layer=2 | mean r=0.026
+ACROSS     nllb200_1B | fROI=Lang_RH_AntTemp | layer=3 | mean r=0.030
+ACROSS     nllb200_1B | fROI=Lang_RH_AntTemp | layer=4 | mean r=0.033
+ACROSS     nllb200_1B | fROI=Lang_RH_AntTemp | layer=5 | mean r=0.041
+ACROSS     nllb200_1B | fROI=Lang_RH_AntTemp | layer=6 | mean r=0.046
+ACROSS     nllb200_1B | fROI=Lang_RH_AntTemp | layer=7 | mean r=0.048
+ACROSS     nllb200_1B | fROI=Lang_RH_AntTemp | layer=8 | mean r=0.052
+ACROSS     nllb200_1B | fROI=Lang_RH_AntTemp | layer=9 | mean r=0.060
+ACROSS     nllb200_1B | fROI=Lang_RH_AntTemp | layer=10 | mean r=0.063
+ACROSS     nllb200_1B | fROI=Lang_RH_AntTemp | layer=11 | mean r=0.069
+ACROSS     nllb200_1B | fROI=Lang_RH_AntTemp | layer=12 | mean r=0.079
+ACROSS     nllb200_1B | fROI=Lang_RH_AntTemp | layer=13 | mean r=0.083
+ACROSS     nllb200_1B | fROI=Lang_RH_AntTemp | layer=14 | mean r=0.082
+ACROSS     nllb200_1B | fROI=Lang_RH_AntTemp | layer=15 | mean r=0.081
+ACROSS     nllb200_1B | fROI=Lang_RH_AntTemp | layer=16 | mean r=0.085
+ACROSS     nllb200_1B | fROI=Lang_RH_AntTemp | layer=17 | mean r=0.090
+ACROSS     nllb200_1B | fROI=Lang_RH_AntTemp | layer=18 | mean r=0.093
+ACROSS     nllb200_1B | fROI=Lang_RH_AntTemp | layer=19 | mean r=0.085
+ACROSS     nllb200_1B | fROI=Lang_RH_AntTemp | layer=20 | mean r=0.082
+ACROSS     nllb200_1B | fROI=Lang_RH_AntTemp | layer=21 | mean r=0.081
+ACROSS     nllb200_1B | fROI=Lang_RH_AntTemp | layer=22 | mean r=0.076
+ACROSS     nllb200_1B | fROI=Lang_RH_AntTemp | layer=23 | mean r=0.068
+ACROSS     nllb200_1B | fROI=Lang_RH_AntTemp | layer=24 | mean r=0.080
+
+
+Processing Lang_RH_IFG (2/6)
+ACROSS     nllb200_1B | fROI=Lang_RH_IFG | layer=0 | mean r=0.026
+ACROSS     nllb200_1B | fROI=Lang_RH_IFG | layer=1 | mean r=0.041
+ACROSS     nllb200_1B | fROI=Lang_RH_IFG | layer=2 | mean r=0.043
+ACROSS     nllb200_1B | fROI=Lang_RH_IFG | layer=3 | mean r=0.054
+ACROSS     nllb200_1B | fROI=Lang_RH_IFG | layer=4 | mean r=0.057
+ACROSS     nllb200_1B | fROI=Lang_RH_IFG | layer=5 | mean r=0.068
+ACROSS     nllb200_1B | fROI=Lang_RH_IFG | layer=6 | mean r=0.068
+ACROSS     nllb200_1B | fROI=Lang_RH_IFG | layer=7 | mean r=0.063
+ACROSS     nllb200_1B | fROI=Lang_RH_IFG | layer=8 | mean r=0.062
+ACROSS     nllb200_1B | fROI=Lang_RH_IFG | layer=9 | mean r=0.063
+ACROSS     nllb200_1B | fROI=Lang_RH_IFG | layer=10 | mean r=0.065
+ACROSS     nllb200_1B | fROI=Lang_RH_IFG | layer=11 | mean r=0.066
+ACROSS     nllb200_1B | fROI=Lang_RH_IFG | layer=12 | mean r=0.071
+ACROSS     nllb200_1B | fROI=Lang_RH_IFG | layer=13 | mean r=0.073
+ACROSS     nllb200_1B | fROI=Lang_RH_IFG | layer=14 | mean r=0.070
+ACROSS     nllb200_1B | fROI=Lang_RH_IFG | layer=15 | mean r=0.061
+ACROSS     nllb200_1B | fROI=Lang_RH_IFG | layer=16 | mean r=0.059
+ACROSS     nllb200_1B | fROI=Lang_RH_IFG | layer=17 | mean r=0.056
+ACROSS     nllb200_1B | fROI=Lang_RH_IFG | layer=18 | mean r=0.055
+ACROSS     nllb200_1B | fROI=Lang_RH_IFG | layer=19 | mean r=0.056
+ACROSS     nllb200_1B | fROI=Lang_RH_IFG | layer=20 | mean r=0.053
+ACROSS     nllb200_1B | fROI=Lang_RH_IFG | layer=21 | mean r=0.052
+ACROSS     nllb200_1B | fROI=Lang_RH_IFG | layer=22 | mean r=0.052
+ACROSS     nllb200_1B | fROI=Lang_RH_IFG | layer=23 | mean r=0.049
+ACROSS     nllb200_1B | fROI=Lang_RH_IFG | layer=24 | mean r=0.039
+
+
+Processing Lang_RH_IFGorb (3/6)
+ACROSS     nllb200_1B | fROI=Lang_RH_IFGorb | layer=0 | mean r=0.020
+ACROSS     nllb200_1B | fROI=Lang_RH_IFGorb | layer=1 | mean r=0.017
+ACROSS     nllb200_1B | fROI=Lang_RH_IFGorb | layer=2 | mean r=0.016
+ACROSS     nllb200_1B | fROI=Lang_RH_IFGorb | layer=3 | mean r=0.020
+ACROSS     nllb200_1B | fROI=Lang_RH_IFGorb | layer=4 | mean r=0.020
+ACROSS     nllb200_1B | fROI=Lang_RH_IFGorb | layer=5 | mean r=0.024
+ACROSS     nllb200_1B | fROI=Lang_RH_IFGorb | layer=6 | mean r=0.022
+ACROSS     nllb200_1B | fROI=Lang_RH_IFGorb | layer=7 | mean r=0.023
+ACROSS     nllb200_1B | fROI=Lang_RH_IFGorb | layer=8 | mean r=0.023
+ACROSS     nllb200_1B | fROI=Lang_RH_IFGorb | layer=9 | mean r=0.022
+ACROSS     nllb200_1B | fROI=Lang_RH_IFGorb | layer=10 | mean r=0.021
+ACROSS     nllb200_1B | fROI=Lang_RH_IFGorb | layer=11 | mean r=0.023
+ACROSS     nllb200_1B | fROI=Lang_RH_IFGorb | layer=12 | mean r=0.027
+ACROSS     nllb200_1B | fROI=Lang_RH_IFGorb | layer=13 | mean r=0.024
+ACROSS     nllb200_1B | fROI=Lang_RH_IFGorb | layer=14 | mean r=0.021
+ACROSS     nllb200_1B | fROI=Lang_RH_IFGorb | layer=15 | mean r=0.017
+ACROSS     nllb200_1B | fROI=Lang_RH_IFGorb | layer=16 | mean r=0.018
+ACROSS     nllb200_1B | fROI=Lang_RH_IFGorb | layer=17 | mean r=0.021
+ACROSS     nllb200_1B | fROI=Lang_RH_IFGorb | layer=18 | mean r=0.023
+ACROSS     nllb200_1B | fROI=Lang_RH_IFGorb | layer=19 | mean r=0.022
+ACROSS     nllb200_1B | fROI=Lang_RH_IFGorb | layer=20 | mean r=0.020
+ACROSS     nllb200_1B | fROI=Lang_RH_IFGorb | layer=21 | mean r=0.021
+ACROSS     nllb200_1B | fROI=Lang_RH_IFGorb | layer=22 | mean r=0.019
+ACROSS     nllb200_1B | fROI=Lang_RH_IFGorb | layer=23 | mean r=0.017
+ACROSS     nllb200_1B | fROI=Lang_RH_IFGorb | layer=24 | mean r=0.026
+
+
+Processing Lang_RH_MFG (4/6)
+ACROSS     nllb200_1B | fROI=Lang_RH_MFG | layer=0 | mean r=0.003
+ACROSS     nllb200_1B | fROI=Lang_RH_MFG | layer=1 | mean r=0.018
+ACROSS     nllb200_1B | fROI=Lang_RH_MFG | layer=2 | mean r=0.021
+ACROSS     nllb200_1B | fROI=Lang_RH_MFG | layer=3 | mean r=0.029
+ACROSS     nllb200_1B | fROI=Lang_RH_MFG | layer=4 | mean r=0.026
+ACROSS     nllb200_1B | fROI=Lang_RH_MFG | layer=5 | mean r=0.032
+ACROSS     nllb200_1B | fROI=Lang_RH_MFG | layer=6 | mean r=0.033
+ACROSS     nllb200_1B | fROI=Lang_RH_MFG | layer=7 | mean r=0.034
+ACROSS     nllb200_1B | fROI=Lang_RH_MFG | layer=8 | mean r=0.035
+ACROSS     nllb200_1B | fROI=Lang_RH_MFG | layer=9 | mean r=0.039
+ACROSS     nllb200_1B | fROI=Lang_RH_MFG | layer=10 | mean r=0.049
+ACROSS     nllb200_1B | fROI=Lang_RH_MFG | layer=11 | mean r=0.049
+ACROSS     nllb200_1B | fROI=Lang_RH_MFG | layer=12 | mean r=0.047
+ACROSS     nllb200_1B | fROI=Lang_RH_MFG | layer=13 | mean r=0.054
+ACROSS     nllb200_1B | fROI=Lang_RH_MFG | layer=14 | mean r=0.049
+ACROSS     nllb200_1B | fROI=Lang_RH_MFG | layer=15 | mean r=0.046
+ACROSS     nllb200_1B | fROI=Lang_RH_MFG | layer=16 | mean r=0.042
+ACROSS     nllb200_1B | fROI=Lang_RH_MFG | layer=17 | mean r=0.044
+ACROSS     nllb200_1B | fROI=Lang_RH_MFG | layer=18 | mean r=0.048
+ACROSS     nllb200_1B | fROI=Lang_RH_MFG | layer=19 | mean r=0.043
+ACROSS     nllb200_1B | fROI=Lang_RH_MFG | layer=20 | mean r=0.045
+ACROSS     nllb200_1B | fROI=Lang_RH_MFG | layer=21 | mean r=0.038
+ACROSS     nllb200_1B | fROI=Lang_RH_MFG | layer=22 | mean r=0.037
+ACROSS     nllb200_1B | fROI=Lang_RH_MFG | layer=23 | mean r=0.036
+ACROSS     nllb200_1B | fROI=Lang_RH_MFG | layer=24 | mean r=0.027
+
+
+Processing Lang_RH_PostTemp (5/6)
+ACROSS     nllb200_1B | fROI=Lang_RH_PostTemp | layer=0 | mean r=0.039
+ACROSS     nllb200_1B | fROI=Lang_RH_PostTemp | layer=1 | mean r=0.042
+ACROSS     nllb200_1B | fROI=Lang_RH_PostTemp | layer=2 | mean r=0.043
+ACROSS     nllb200_1B | fROI=Lang_RH_PostTemp | layer=3 | mean r=0.043
+ACROSS     nllb200_1B | fROI=Lang_RH_PostTemp | layer=4 | mean r=0.050
+ACROSS     nllb200_1B | fROI=Lang_RH_PostTemp | layer=5 | mean r=0.068
+ACROSS     nllb200_1B | fROI=Lang_RH_PostTemp | layer=6 | mean r=0.069
+ACROSS     nllb200_1B | fROI=Lang_RH_PostTemp | layer=7 | mean r=0.070
+ACROSS     nllb200_1B | fROI=Lang_RH_PostTemp | layer=8 | mean r=0.082
+ACROSS     nllb200_1B | fROI=Lang_RH_PostTemp | layer=9 | mean r=0.087
+ACROSS     nllb200_1B | fROI=Lang_RH_PostTemp | layer=10 | mean r=0.093
+ACROSS     nllb200_1B | fROI=Lang_RH_PostTemp | layer=11 | mean r=0.101
+ACROSS     nllb200_1B | fROI=Lang_RH_PostTemp | layer=12 | mean r=0.112
+ACROSS     nllb200_1B | fROI=Lang_RH_PostTemp | layer=13 | mean r=0.115
+ACROSS     nllb200_1B | fROI=Lang_RH_PostTemp | layer=14 | mean r=0.111
+ACROSS     nllb200_1B | fROI=Lang_RH_PostTemp | layer=15 | mean r=0.108
+ACROSS     nllb200_1B | fROI=Lang_RH_PostTemp | layer=16 | mean r=0.110
+ACROSS     nllb200_1B | fROI=Lang_RH_PostTemp | layer=17 | mean r=0.109
+ACROSS     nllb200_1B | fROI=Lang_RH_PostTemp | layer=18 | mean r=0.096
+ACROSS     nllb200_1B | fROI=Lang_RH_PostTemp | layer=19 | mean r=0.092
+ACROSS     nllb200_1B | fROI=Lang_RH_PostTemp | layer=20 | mean r=0.090
+ACROSS     nllb200_1B | fROI=Lang_RH_PostTemp | layer=21 | mean r=0.089
+ACROSS     nllb200_1B | fROI=Lang_RH_PostTemp | layer=22 | mean r=0.088
+ACROSS     nllb200_1B | fROI=Lang_RH_PostTemp | layer=23 | mean r=0.084
+ACROSS     nllb200_1B | fROI=Lang_RH_PostTemp | layer=24 | mean r=0.083
+
+
+Processing all (6/6)
+ACROSS     nllb200_1B | fROI=all | layer=0 | mean r=0.036
+ACROSS     nllb200_1B | fROI=all | layer=1 | mean r=0.032
+ACROSS     nllb200_1B | fROI=all | layer=2 | mean r=0.050
+ACROSS     nllb200_1B | fROI=all | layer=3 | mean r=0.054
+ACROSS     nllb200_1B | fROI=all | layer=4 | mean r=0.047
+ACROSS     nllb200_1B | fROI=all | layer=5 | mean r=0.058
+ACROSS     nllb200_1B | fROI=all | layer=6 | mean r=0.069
+ACROSS     nllb200_1B | fROI=all | layer=7 | mean r=0.063
+ACROSS     nllb200_1B | fROI=all | layer=8 | mean r=0.063
+ACROSS     nllb200_1B | fROI=all | layer=9 | mean r=0.065
+ACROSS     nllb200_1B | fROI=all | layer=10 | mean r=0.064
+ACROSS     nllb200_1B | fROI=all | layer=11 | mean r=0.063
+ACROSS     nllb200_1B | fROI=all | layer=12 | mean r=0.071
+ACROSS     nllb200_1B | fROI=all | layer=13 | mean r=0.072
+ACROSS     nllb200_1B | fROI=all | layer=14 | mean r=0.066
+ACROSS     nllb200_1B | fROI=all | layer=15 | mean r=0.058
+ACROSS     nllb200_1B | fROI=all | layer=16 | mean r=0.058
+ACROSS     nllb200_1B | fROI=all | layer=17 | mean r=0.059
+ACROSS     nllb200_1B | fROI=all | layer=18 | mean r=0.062
+ACROSS     nllb200_1B | fROI=all | layer=19 | mean r=0.058
+ACROSS     nllb200_1B | fROI=all | layer=20 | mean r=0.061
+ACROSS     nllb200_1B | fROI=all | layer=21 | mean r=0.059
+ACROSS     nllb200_1B | fROI=all | layer=22 | mean r=0.058
+ACROSS     nllb200_1B | fROI=all | layer=23 | mean r=0.054
+ACROSS     nllb200_1B | fROI=all | layer=24 | mean r=0.049
+
+
+Processing Lang_RH_AntTemp (1/6)
+ACROSS     mgpt | fROI=Lang_RH_AntTemp | layer=0 | mean r=-0.019
+ACROSS     mgpt | fROI=Lang_RH_AntTemp | layer=1 | mean r=-0.008
+ACROSS     mgpt | fROI=Lang_RH_AntTemp | layer=2 | mean r=0.002
+ACROSS     mgpt | fROI=Lang_RH_AntTemp | layer=3 | mean r=0.004
+ACROSS     mgpt | fROI=Lang_RH_AntTemp | layer=4 | mean r=0.003
+ACROSS     mgpt | fROI=Lang_RH_AntTemp | layer=5 | mean r=0.008
+ACROSS     mgpt | fROI=Lang_RH_AntTemp | layer=6 | mean r=0.003
+ACROSS     mgpt | fROI=Lang_RH_AntTemp | layer=7 | mean r=0.013
+ACROSS     mgpt | fROI=Lang_RH_AntTemp | layer=8 | mean r=0.010
+ACROSS     mgpt | fROI=Lang_RH_AntTemp | layer=9 | mean r=0.013
+ACROSS     mgpt | fROI=Lang_RH_AntTemp | layer=10 | mean r=0.015
+ACROSS     mgpt | fROI=Lang_RH_AntTemp | layer=11 | mean r=0.018
+ACROSS     mgpt | fROI=Lang_RH_AntTemp | layer=12 | mean r=0.014
+ACROSS     mgpt | fROI=Lang_RH_AntTemp | layer=13 | mean r=0.014
+ACROSS     mgpt | fROI=Lang_RH_AntTemp | layer=14 | mean r=0.017
+ACROSS     mgpt | fROI=Lang_RH_AntTemp | layer=15 | mean r=0.021
+ACROSS     mgpt | fROI=Lang_RH_AntTemp | layer=16 | mean r=0.019
+ACROSS     mgpt | fROI=Lang_RH_AntTemp | layer=17 | mean r=0.018
+ACROSS     mgpt | fROI=Lang_RH_AntTemp | layer=18 | mean r=0.014
+ACROSS     mgpt | fROI=Lang_RH_AntTemp | layer=19 | mean r=0.013
+ACROSS     mgpt | fROI=Lang_RH_AntTemp | layer=20 | mean r=0.009
+ACROSS     mgpt | fROI=Lang_RH_AntTemp | layer=21 | mean r=0.008
+ACROSS     mgpt | fROI=Lang_RH_AntTemp | layer=22 | mean r=0.005
+ACROSS     mgpt | fROI=Lang_RH_AntTemp | layer=23 | mean r=0.001
+ACROSS     mgpt | fROI=Lang_RH_AntTemp | layer=24 | mean r=0.000
+
+
+Processing Lang_RH_IFG (2/6)
+ACROSS     mgpt | fROI=Lang_RH_IFG | layer=0 | mean r=0.035
+ACROSS     mgpt | fROI=Lang_RH_IFG | layer=1 | mean r=0.039
+ACROSS     mgpt | fROI=Lang_RH_IFG | layer=2 | mean r=0.026
+ACROSS     mgpt | fROI=Lang_RH_IFG | layer=3 | mean r=0.031
+ACROSS     mgpt | fROI=Lang_RH_IFG | layer=4 | mean r=0.032
+ACROSS     mgpt | fROI=Lang_RH_IFG | layer=5 | mean r=0.032
+ACROSS     mgpt | fROI=Lang_RH_IFG | layer=6 | mean r=0.034
+ACROSS     mgpt | fROI=Lang_RH_IFG | layer=7 | mean r=0.046
+ACROSS     mgpt | fROI=Lang_RH_IFG | layer=8 | mean r=0.047
+ACROSS     mgpt | fROI=Lang_RH_IFG | layer=9 | mean r=0.041
+ACROSS     mgpt | fROI=Lang_RH_IFG | layer=10 | mean r=0.042
+ACROSS     mgpt | fROI=Lang_RH_IFG | layer=11 | mean r=0.036
+ACROSS     mgpt | fROI=Lang_RH_IFG | layer=12 | mean r=0.031
+ACROSS     mgpt | fROI=Lang_RH_IFG | layer=13 | mean r=0.027
+ACROSS     mgpt | fROI=Lang_RH_IFG | layer=14 | mean r=0.031
+ACROSS     mgpt | fROI=Lang_RH_IFG | layer=15 | mean r=0.030
+ACROSS     mgpt | fROI=Lang_RH_IFG | layer=16 | mean r=0.027
+ACROSS     mgpt | fROI=Lang_RH_IFG | layer=17 | mean r=0.024
+ACROSS     mgpt | fROI=Lang_RH_IFG | layer=18 | mean r=0.020
+ACROSS     mgpt | fROI=Lang_RH_IFG | layer=19 | mean r=0.018
+ACROSS     mgpt | fROI=Lang_RH_IFG | layer=20 | mean r=0.012
+ACROSS     mgpt | fROI=Lang_RH_IFG | layer=21 | mean r=0.012
+ACROSS     mgpt | fROI=Lang_RH_IFG | layer=22 | mean r=0.013
+ACROSS     mgpt | fROI=Lang_RH_IFG | layer=23 | mean r=0.008
+ACROSS     mgpt | fROI=Lang_RH_IFG | layer=24 | mean r=0.013
+
+
+Processing Lang_RH_IFGorb (3/6)
+ACROSS     mgpt | fROI=Lang_RH_IFGorb | layer=0 | mean r=0.005
+ACROSS     mgpt | fROI=Lang_RH_IFGorb | layer=1 | mean r=0.018
+ACROSS     mgpt | fROI=Lang_RH_IFGorb | layer=2 | mean r=0.015
+ACROSS     mgpt | fROI=Lang_RH_IFGorb | layer=3 | mean r=0.018
+ACROSS     mgpt | fROI=Lang_RH_IFGorb | layer=4 | mean r=0.016
+ACROSS     mgpt | fROI=Lang_RH_IFGorb | layer=5 | mean r=0.017
+ACROSS     mgpt | fROI=Lang_RH_IFGorb | layer=6 | mean r=0.017
+ACROSS     mgpt | fROI=Lang_RH_IFGorb | layer=7 | mean r=0.021
+ACROSS     mgpt | fROI=Lang_RH_IFGorb | layer=8 | mean r=0.020
+ACROSS     mgpt | fROI=Lang_RH_IFGorb | layer=9 | mean r=0.025
+ACROSS     mgpt | fROI=Lang_RH_IFGorb | layer=10 | mean r=0.023
+ACROSS     mgpt | fROI=Lang_RH_IFGorb | layer=11 | mean r=0.022
+ACROSS     mgpt | fROI=Lang_RH_IFGorb | layer=12 | mean r=0.021
+ACROSS     mgpt | fROI=Lang_RH_IFGorb | layer=13 | mean r=0.020
+ACROSS     mgpt | fROI=Lang_RH_IFGorb | layer=14 | mean r=0.020
+ACROSS     mgpt | fROI=Lang_RH_IFGorb | layer=15 | mean r=0.017
+ACROSS     mgpt | fROI=Lang_RH_IFGorb | layer=16 | mean r=0.014
+ACROSS     mgpt | fROI=Lang_RH_IFGorb | layer=17 | mean r=0.012
+ACROSS     mgpt | fROI=Lang_RH_IFGorb | layer=18 | mean r=0.009
+ACROSS     mgpt | fROI=Lang_RH_IFGorb | layer=19 | mean r=0.006
+ACROSS     mgpt | fROI=Lang_RH_IFGorb | layer=20 | mean r=0.001
+ACROSS     mgpt | fROI=Lang_RH_IFGorb | layer=21 | mean r=-0.001
+ACROSS     mgpt | fROI=Lang_RH_IFGorb | layer=22 | mean r=-0.004
+ACROSS     mgpt | fROI=Lang_RH_IFGorb | layer=23 | mean r=-0.006
+ACROSS     mgpt | fROI=Lang_RH_IFGorb | layer=24 | mean r=-0.007
+
+
+Processing Lang_RH_MFG (4/6)
+ACROSS     mgpt | fROI=Lang_RH_MFG | layer=0 | mean r=0.046
+ACROSS     mgpt | fROI=Lang_RH_MFG | layer=1 | mean r=0.057
+ACROSS     mgpt | fROI=Lang_RH_MFG | layer=2 | mean r=0.048
+ACROSS     mgpt | fROI=Lang_RH_MFG | layer=3 | mean r=0.057
+ACROSS     mgpt | fROI=Lang_RH_MFG | layer=4 | mean r=0.054
+ACROSS     mgpt | fROI=Lang_RH_MFG | layer=5 | mean r=0.043
+ACROSS     mgpt | fROI=Lang_RH_MFG | layer=6 | mean r=0.036
+ACROSS     mgpt | fROI=Lang_RH_MFG | layer=7 | mean r=0.039
+ACROSS     mgpt | fROI=Lang_RH_MFG | layer=8 | mean r=0.041
+ACROSS     mgpt | fROI=Lang_RH_MFG | layer=9 | mean r=0.044
+ACROSS     mgpt | fROI=Lang_RH_MFG | layer=10 | mean r=0.034
+ACROSS     mgpt | fROI=Lang_RH_MFG | layer=11 | mean r=0.038
+ACROSS     mgpt | fROI=Lang_RH_MFG | layer=12 | mean r=0.038
+ACROSS     mgpt | fROI=Lang_RH_MFG | layer=13 | mean r=0.034
+ACROSS     mgpt | fROI=Lang_RH_MFG | layer=14 | mean r=0.038
+ACROSS     mgpt | fROI=Lang_RH_MFG | layer=15 | mean r=0.041
+ACROSS     mgpt | fROI=Lang_RH_MFG | layer=16 | mean r=0.043
+ACROSS     mgpt | fROI=Lang_RH_MFG | layer=17 | mean r=0.044
+ACROSS     mgpt | fROI=Lang_RH_MFG | layer=18 | mean r=0.046
+ACROSS     mgpt | fROI=Lang_RH_MFG | layer=19 | mean r=0.046
+ACROSS     mgpt | fROI=Lang_RH_MFG | layer=20 | mean r=0.046
+ACROSS     mgpt | fROI=Lang_RH_MFG | layer=21 | mean r=0.045
+ACROSS     mgpt | fROI=Lang_RH_MFG | layer=22 | mean r=0.043
+ACROSS     mgpt | fROI=Lang_RH_MFG | layer=23 | mean r=0.043
+ACROSS     mgpt | fROI=Lang_RH_MFG | layer=24 | mean r=0.067
+
+
+Processing Lang_RH_PostTemp (5/6)
+ACROSS     mgpt | fROI=Lang_RH_PostTemp | layer=0 | mean r=-0.003
+ACROSS     mgpt | fROI=Lang_RH_PostTemp | layer=1 | mean r=0.002
+ACROSS     mgpt | fROI=Lang_RH_PostTemp | layer=2 | mean r=-0.001
+ACROSS     mgpt | fROI=Lang_RH_PostTemp | layer=3 | mean r=0.004
+ACROSS     mgpt | fROI=Lang_RH_PostTemp | layer=4 | mean r=0.020
+ACROSS     mgpt | fROI=Lang_RH_PostTemp | layer=5 | mean r=0.022
+ACROSS     mgpt | fROI=Lang_RH_PostTemp | layer=6 | mean r=0.027
+ACROSS     mgpt | fROI=Lang_RH_PostTemp | layer=7 | mean r=0.037
+ACROSS     mgpt | fROI=Lang_RH_PostTemp | layer=8 | mean r=0.036
+ACROSS     mgpt | fROI=Lang_RH_PostTemp | layer=9 | mean r=0.042
+ACROSS     mgpt | fROI=Lang_RH_PostTemp | layer=10 | mean r=0.044
+ACROSS     mgpt | fROI=Lang_RH_PostTemp | layer=11 | mean r=0.040
+ACROSS     mgpt | fROI=Lang_RH_PostTemp | layer=12 | mean r=0.041
+ACROSS     mgpt | fROI=Lang_RH_PostTemp | layer=13 | mean r=0.039
+ACROSS     mgpt | fROI=Lang_RH_PostTemp | layer=14 | mean r=0.044
+ACROSS     mgpt | fROI=Lang_RH_PostTemp | layer=15 | mean r=0.041
+ACROSS     mgpt | fROI=Lang_RH_PostTemp | layer=16 | mean r=0.037
+ACROSS     mgpt | fROI=Lang_RH_PostTemp | layer=17 | mean r=0.033
+ACROSS     mgpt | fROI=Lang_RH_PostTemp | layer=18 | mean r=0.030
+ACROSS     mgpt | fROI=Lang_RH_PostTemp | layer=19 | mean r=0.029
+ACROSS     mgpt | fROI=Lang_RH_PostTemp | layer=20 | mean r=0.027
+ACROSS     mgpt | fROI=Lang_RH_PostTemp | layer=21 | mean r=0.028
+ACROSS     mgpt | fROI=Lang_RH_PostTemp | layer=22 | mean r=0.028
+ACROSS     mgpt | fROI=Lang_RH_PostTemp | layer=23 | mean r=0.028
+ACROSS     mgpt | fROI=Lang_RH_PostTemp | layer=24 | mean r=0.031
+
+
+Processing all (6/6)
+ACROSS     mgpt | fROI=all | layer=0 | mean r=0.022
+ACROSS     mgpt | fROI=all | layer=1 | mean r=0.040
+ACROSS     mgpt | fROI=all | layer=2 | mean r=0.020
+ACROSS     mgpt | fROI=all | layer=3 | mean r=0.027
+ACROSS     mgpt | fROI=all | layer=4 | mean r=0.027
+ACROSS     mgpt | fROI=all | layer=5 | mean r=0.028
+ACROSS     mgpt | fROI=all | layer=6 | mean r=0.036
+ACROSS     mgpt | fROI=all | layer=7 | mean r=0.041
+ACROSS     mgpt | fROI=all | layer=8 | mean r=0.039
+ACROSS     mgpt | fROI=all | layer=9 | mean r=0.043
+ACROSS     mgpt | fROI=all | layer=10 | mean r=0.037
+ACROSS     mgpt | fROI=all | layer=11 | mean r=0.037
+ACROSS     mgpt | fROI=all | layer=12 | mean r=0.034
+ACROSS     mgpt | fROI=all | layer=13 | mean r=0.038
+ACROSS     mgpt | fROI=all | layer=14 | mean r=0.030
+ACROSS     mgpt | fROI=all | layer=15 | mean r=0.026
+ACROSS     mgpt | fROI=all | layer=16 | mean r=0.025
+ACROSS     mgpt | fROI=all | layer=17 | mean r=0.023
+ACROSS     mgpt | fROI=all | layer=18 | mean r=0.018
+ACROSS     mgpt | fROI=all | layer=19 | mean r=0.014
+ACROSS     mgpt | fROI=all | layer=20 | mean r=0.011
+ACROSS     mgpt | fROI=all | layer=21 | mean r=0.002
+ACROSS     mgpt | fROI=all | layer=22 | mean r=0.003
+ACROSS     mgpt | fROI=all | layer=23 | mean r=0.003
+ACROSS     mgpt | fROI=all | layer=24 | mean r=0.008
