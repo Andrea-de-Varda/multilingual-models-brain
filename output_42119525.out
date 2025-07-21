@@ -1,0 +1,44 @@
+>>> SCRIPT LAUNCHED
+>>> STARTING JOB in mode: RH
+>>> Loaded fMRI data
+Processing - RH mode
+Encoding for xglm_small already done
+Encoding for xglm_med already done
+Encoding for xglm_large already done
+Encoding for xglm_xl already done
+Encoding for bert_base already done
+Encoding for distilmbert already done
+Encoding for xlmr_base already done
+Encoding for xlmr_large already done
+Encoding for mt5_small already done
+Encoding for mt5_base already done
+Encoding for mt5_large already done
+Encoding for mdeberta already done
+Encoding for xlm_align already done
+Encoding for infoxlm_base already done
+Encoding for infoxlm_large already done
+Encoding for multiminilm already done
+Encoding for nllb200_distilled_600M already done
+Encoding for nllb200_distilled_1B already done
+Encoding for nllb200_1B already done
+Encoding for mgpt already done
+Encoding for xglm_small already done
+Encoding for xglm_med already done
+Encoding for xglm_large already done
+Encoding for xglm_xl already done
+Encoding for bert_base already done
+Encoding for distilmbert already done
+Encoding for xlmr_base already done
+Encoding for xlmr_large already done
+Encoding for mt5_small already done
+Encoding for mt5_base already done
+Encoding for mt5_large already done
+Encoding for mdeberta already done
+Encoding for xlm_align already done
+Encoding for infoxlm_base already done
+Encoding for infoxlm_large already done
+Encoding for multiminilm already done
+Encoding for nllb200_distilled_600M already done
+Encoding for nllb200_distilled_1B already done
+Encoding for nllb200_1B already done
+Encoding for mgpt already done

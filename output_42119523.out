@@ -1,0 +1,36 @@
+>>> SCRIPT LAUNCHED
+>>> STARTING JOB in mode: within
+>>> Loaded fMRI data
+Processing - WITHIN mode
+Encoding for xglm_small already done
+Encoding for xglm_med already done
+Encoding for xglm_large already done
+Encoding for xglm_xl already done
+Encoding for bert_base already done
+Encoding for distilmbert already done
+Encoding for xlmr_base already done
+Encoding for xlmr_large already done
+Encoding for mt5_small already done
+Encoding for mt5_base already done
+Encoding for mt5_large already done
+Encoding for mdeberta already done
+Encoding for xlm_align already done
+Encoding for infoxlm_base already done
+Encoding for infoxlm_large already done
+Encoding for multiminilm already done
+Encoding for nllb200_distilled_600M already done
+Encoding for nllb200_distilled_1B already done
+Encoding for nllb200_1B already done
+Encoding for mgpt already done
+Encoding for xglm_small – Lang_LH_AntTemp already done
+Encoding for xglm_small – Lang_LH_IFG already done
+Encoding for xglm_small – Lang_LH_IFGorb already done
+Encoding for xglm_small – Lang_LH_MFG already done
+Encoding for xglm_small – Lang_LH_PostTemp already done
+Encoding for xglm_small – all already done
+Traceback (most recent call last):
+  File "/net/vast-storage/scratch/vast/evlab/devar_ag/multilingual-models-brain/fit_encoding.py", line 369, in <module>
+    xglm_small  = monolingual_encoding_circshift(xglm_langs, "xglm_small", 24, d)
+  File "/net/vast-storage/scratch/vast/evlab/devar_ag/multilingual-models-brain/fit_encoding.py", line 227, in monolingual_encoding_circshift
+    return out_all_shifts
+UnboundLocalError: local variable 'out_all_shifts' referenced before assignment

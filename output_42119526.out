@@ -1,0 +1,129 @@
+>>> SCRIPT LAUNCHED
+>>> STARTING JOB in mode: MD
+>>> Loaded fMRI data
+Processing - MD mode
+Encoding for xglm_small already done
+Encoding for xglm_med already done
+Encoding for xglm_large already done
+Encoding for xglm_xl already done
+Encoding for bert_base already done
+Encoding for distilmbert already done
+Encoding for xlmr_base already done
+Encoding for xlmr_large already done
+Encoding for mt5_small already done
+Encoding for mt5_base already done
+Encoding for mt5_large already done
+Encoding for mdeberta already done
+Encoding for xlm_align already done
+Encoding for infoxlm_base already done
+Encoding for infoxlm_large already done
+Encoding for multiminilm already done
+Encoding for nllb200_distilled_600M already done
+Encoding for nllb200_distilled_1B already done
+Encoding for nllb200_1B already done
+Encoding for mgpt already done
+Encoding for xglm_small already done
+Encoding for xglm_med already done
+
+
+Processing MD_LH_Precentral_A_PrecG (1/21)
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=0 | mean r=-0.026
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=1 | mean r=-0.041
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=2 | mean r=-0.037
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=3 | mean r=-0.040
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=4 | mean r=-0.042
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=5 | mean r=-0.039
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=6 | mean r=-0.032
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=7 | mean r=-0.025
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=8 | mean r=-0.022
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=9 | mean r=-0.014
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=10 | mean r=-0.015
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=11 | mean r=-0.021
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=12 | mean r=-0.016
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=13 | mean r=-0.011
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=14 | mean r=-0.013
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=15 | mean r=-0.015
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=16 | mean r=-0.014
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=17 | mean r=-0.020
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=18 | mean r=-0.022
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=19 | mean r=-0.020
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=20 | mean r=-0.024
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=21 | mean r=-0.029
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=22 | mean r=-0.031
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=23 | mean r=-0.034
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=24 | mean r=-0.036
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=25 | mean r=-0.036
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=26 | mean r=-0.040
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=27 | mean r=-0.038
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=28 | mean r=-0.038
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=29 | mean r=-0.041
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=30 | mean r=-0.045
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=31 | mean r=-0.043
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=32 | mean r=-0.041
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=33 | mean r=-0.041
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=34 | mean r=-0.038
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=35 | mean r=-0.033
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=36 | mean r=-0.035
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=37 | mean r=-0.032
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=38 | mean r=-0.027
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=39 | mean r=-0.025
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=40 | mean r=-0.022
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=41 | mean r=-0.021
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=42 | mean r=-0.023
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=43 | mean r=-0.022
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=44 | mean r=-0.019
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=45 | mean r=-0.017
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=46 | mean r=-0.009
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=47 | mean r=-0.003
+ACROSS     xglm_large | fROI=MD_LH_Precentral_A_PrecG | layer=48 | mean r=-0.033
+
+
+Processing MD_LH_Precentral_B_IFGop (2/21)
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=0 | mean r=0.007
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=1 | mean r=-0.001
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=2 | mean r=-0.002
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=3 | mean r=-0.004
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=4 | mean r=-0.009
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=5 | mean r=-0.008
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=6 | mean r=-0.007
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=7 | mean r=-0.002
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=8 | mean r=-0.003
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=9 | mean r=0.001
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=10 | mean r=-0.002
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=11 | mean r=-0.011
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=12 | mean r=-0.007
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=13 | mean r=-0.003
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=14 | mean r=-0.004
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=15 | mean r=-0.004
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=16 | mean r=-0.006
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=17 | mean r=-0.010
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=18 | mean r=-0.013
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=19 | mean r=-0.015
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=20 | mean r=-0.017
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=21 | mean r=-0.023
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=22 | mean r=-0.022
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=23 | mean r=-0.021
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=24 | mean r=-0.020
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=25 | mean r=-0.018
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=26 | mean r=-0.023
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=27 | mean r=-0.020
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=28 | mean r=-0.022
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=29 | mean r=-0.024
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=30 | mean r=-0.023
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=31 | mean r=-0.020
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=32 | mean r=-0.019
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=33 | mean r=-0.019
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=34 | mean r=-0.019
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=35 | mean r=-0.020
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=36 | mean r=-0.021
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=37 | mean r=-0.018
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=38 | mean r=-0.014
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=39 | mean r=-0.011
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=40 | mean r=-0.012
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=41 | mean r=-0.009
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=42 | mean r=-0.010
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=43 | mean r=-0.009
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=44 | mean r=-0.007
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=45 | mean r=-0.004
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=46 | mean r=0.001
+ACROSS     xglm_large | fROI=MD_LH_Precentral_B_IFGop | layer=47 | mean r=0.006

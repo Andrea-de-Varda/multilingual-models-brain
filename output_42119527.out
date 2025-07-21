@@ -1,0 +1,163 @@
+>>> SCRIPT LAUNCHED
+>>> STARTING JOB in mode: within
+>>> Loaded fMRI data
+Processing - WITHIN mode
+Encoding for xglm_small already done
+Encoding for xglm_med already done
+Encoding for xglm_large already done
+Encoding for xglm_xl already done
+Encoding for bert_base already done
+Encoding for distilmbert already done
+Encoding for xlmr_base already done
+Encoding for xlmr_large already done
+Encoding for mt5_small already done
+Encoding for mt5_base already done
+Encoding for mt5_large already done
+Encoding for mdeberta already done
+Encoding for xlm_align already done
+Encoding for infoxlm_base already done
+Encoding for infoxlm_large already done
+Encoding for multiminilm already done
+Encoding for nllb200_distilled_600M already done
+Encoding for nllb200_distilled_1B already done
+Encoding for nllb200_1B already done
+Encoding for mgpt already done
+Encoding for xglm_small – Lang_LH_AntTemp already done
+Encoding for xglm_med – Lang_LH_AntTemp already done
+Encoding for xglm_large – Lang_LH_AntTemp already done
+Encoding for xglm_xl – Lang_LH_AntTemp already done
+Encoding for bert_base – Lang_LH_AntTemp already done
+Encoding for distilmbert – Lang_LH_AntTemp already done
+Encoding for xlmr_base – Lang_LH_AntTemp already done
+Encoding for xlmr_large – Lang_LH_AntTemp already done
+Encoding for mt5_small – Lang_LH_AntTemp already done
+Encoding for mt5_base – Lang_LH_AntTemp already done
+Encoding for mt5_large – Lang_LH_AntTemp already done
+Encoding for mdeberta – Lang_LH_AntTemp already done
+Encoding for xlm_align – Lang_LH_AntTemp already done
+Encoding for infoxlm_base – Lang_LH_AntTemp already done
+Encoding for infoxlm_large – Lang_LH_AntTemp already done
+Encoding for multiminilm – Lang_LH_AntTemp already done
+Encoding for nllb200_distilled_600M – Lang_LH_AntTemp already done
+
+
+Processing Lang_LH_AntTemp (1/6)
+
+  >>> Circular shift = 26
+WITHIN‑CIRC nllb200_distilled_1B | shift=26 | fROI=Lang_LH_AntTemp | layer=0 | mean r=0.068
+WITHIN‑CIRC nllb200_distilled_1B | shift=26 | fROI=Lang_LH_AntTemp | layer=1 | mean r=0.126
+WITHIN‑CIRC nllb200_distilled_1B | shift=26 | fROI=Lang_LH_AntTemp | layer=2 | mean r=0.166
+WITHIN‑CIRC nllb200_distilled_1B | shift=26 | fROI=Lang_LH_AntTemp | layer=3 | mean r=0.165
+WITHIN‑CIRC nllb200_distilled_1B | shift=26 | fROI=Lang_LH_AntTemp | layer=4 | mean r=0.170
+WITHIN‑CIRC nllb200_distilled_1B | shift=26 | fROI=Lang_LH_AntTemp | layer=5 | mean r=0.163
+WITHIN‑CIRC nllb200_distilled_1B | shift=26 | fROI=Lang_LH_AntTemp | layer=6 | mean r=0.145
+WITHIN‑CIRC nllb200_distilled_1B | shift=26 | fROI=Lang_LH_AntTemp | layer=7 | mean r=0.147
+WITHIN‑CIRC nllb200_distilled_1B | shift=26 | fROI=Lang_LH_AntTemp | layer=8 | mean r=0.135
+WITHIN‑CIRC nllb200_distilled_1B | shift=26 | fROI=Lang_LH_AntTemp | layer=9 | mean r=0.140
+WITHIN‑CIRC nllb200_distilled_1B | shift=26 | fROI=Lang_LH_AntTemp | layer=10 | mean r=0.151
+WITHIN‑CIRC nllb200_distilled_1B | shift=26 | fROI=Lang_LH_AntTemp | layer=11 | mean r=0.148
+WITHIN‑CIRC nllb200_distilled_1B | shift=26 | fROI=Lang_LH_AntTemp | layer=12 | mean r=0.162
+WITHIN‑CIRC nllb200_distilled_1B | shift=26 | fROI=Lang_LH_AntTemp | layer=13 | mean r=0.167
+WITHIN‑CIRC nllb200_distilled_1B | shift=26 | fROI=Lang_LH_AntTemp | layer=14 | mean r=0.173
+WITHIN‑CIRC nllb200_distilled_1B | shift=26 | fROI=Lang_LH_AntTemp | layer=15 | mean r=0.174
+WITHIN‑CIRC nllb200_distilled_1B | shift=26 | fROI=Lang_LH_AntTemp | layer=16 | mean r=0.186
+WITHIN‑CIRC nllb200_distilled_1B | shift=26 | fROI=Lang_LH_AntTemp | layer=17 | mean r=0.170
+WITHIN‑CIRC nllb200_distilled_1B | shift=26 | fROI=Lang_LH_AntTemp | layer=18 | mean r=0.173
+WITHIN‑CIRC nllb200_distilled_1B | shift=26 | fROI=Lang_LH_AntTemp | layer=19 | mean r=0.178
+WITHIN‑CIRC nllb200_distilled_1B | shift=26 | fROI=Lang_LH_AntTemp | layer=20 | mean r=0.170
+WITHIN‑CIRC nllb200_distilled_1B | shift=26 | fROI=Lang_LH_AntTemp | layer=21 | mean r=0.161
+WITHIN‑CIRC nllb200_distilled_1B | shift=26 | fROI=Lang_LH_AntTemp | layer=22 | mean r=0.160
+WITHIN‑CIRC nllb200_distilled_1B | shift=26 | fROI=Lang_LH_AntTemp | layer=23 | mean r=0.142
+WITHIN‑CIRC nllb200_distilled_1B | shift=26 | fROI=Lang_LH_AntTemp | layer=24 | mean r=0.152
+
+  >>> Circular shift = 52
+WITHIN‑CIRC nllb200_distilled_1B | shift=52 | fROI=Lang_LH_AntTemp | layer=0 | mean r=-0.008
+WITHIN‑CIRC nllb200_distilled_1B | shift=52 | fROI=Lang_LH_AntTemp | layer=1 | mean r=-0.007
+WITHIN‑CIRC nllb200_distilled_1B | shift=52 | fROI=Lang_LH_AntTemp | layer=2 | mean r=0.009
+WITHIN‑CIRC nllb200_distilled_1B | shift=52 | fROI=Lang_LH_AntTemp | layer=3 | mean r=0.023
+WITHIN‑CIRC nllb200_distilled_1B | shift=52 | fROI=Lang_LH_AntTemp | layer=4 | mean r=0.035
+WITHIN‑CIRC nllb200_distilled_1B | shift=52 | fROI=Lang_LH_AntTemp | layer=5 | mean r=0.051
+WITHIN‑CIRC nllb200_distilled_1B | shift=52 | fROI=Lang_LH_AntTemp | layer=6 | mean r=0.055
+WITHIN‑CIRC nllb200_distilled_1B | shift=52 | fROI=Lang_LH_AntTemp | layer=7 | mean r=0.067
+WITHIN‑CIRC nllb200_distilled_1B | shift=52 | fROI=Lang_LH_AntTemp | layer=8 | mean r=0.071
+WITHIN‑CIRC nllb200_distilled_1B | shift=52 | fROI=Lang_LH_AntTemp | layer=9 | mean r=0.078
+WITHIN‑CIRC nllb200_distilled_1B | shift=52 | fROI=Lang_LH_AntTemp | layer=10 | mean r=0.094
+WITHIN‑CIRC nllb200_distilled_1B | shift=52 | fROI=Lang_LH_AntTemp | layer=11 | mean r=0.091
+WITHIN‑CIRC nllb200_distilled_1B | shift=52 | fROI=Lang_LH_AntTemp | layer=12 | mean r=0.100
+WITHIN‑CIRC nllb200_distilled_1B | shift=52 | fROI=Lang_LH_AntTemp | layer=13 | mean r=0.099
+WITHIN‑CIRC nllb200_distilled_1B | shift=52 | fROI=Lang_LH_AntTemp | layer=14 | mean r=0.094
+WITHIN‑CIRC nllb200_distilled_1B | shift=52 | fROI=Lang_LH_AntTemp | layer=15 | mean r=0.093
+WITHIN‑CIRC nllb200_distilled_1B | shift=52 | fROI=Lang_LH_AntTemp | layer=16 | mean r=0.093
+WITHIN‑CIRC nllb200_distilled_1B | shift=52 | fROI=Lang_LH_AntTemp | layer=17 | mean r=0.103
+WITHIN‑CIRC nllb200_distilled_1B | shift=52 | fROI=Lang_LH_AntTemp | layer=18 | mean r=0.088
+WITHIN‑CIRC nllb200_distilled_1B | shift=52 | fROI=Lang_LH_AntTemp | layer=19 | mean r=0.102
+WITHIN‑CIRC nllb200_distilled_1B | shift=52 | fROI=Lang_LH_AntTemp | layer=20 | mean r=0.097
+WITHIN‑CIRC nllb200_distilled_1B | shift=52 | fROI=Lang_LH_AntTemp | layer=21 | mean r=0.096
+WITHIN‑CIRC nllb200_distilled_1B | shift=52 | fROI=Lang_LH_AntTemp | layer=22 | mean r=0.092
+WITHIN‑CIRC nllb200_distilled_1B | shift=52 | fROI=Lang_LH_AntTemp | layer=23 | mean r=0.107
+WITHIN‑CIRC nllb200_distilled_1B | shift=52 | fROI=Lang_LH_AntTemp | layer=24 | mean r=0.079
+
+  >>> Circular shift = 78
+WITHIN‑CIRC nllb200_distilled_1B | shift=78 | fROI=Lang_LH_AntTemp | layer=0 | mean r=0.037
+WITHIN‑CIRC nllb200_distilled_1B | shift=78 | fROI=Lang_LH_AntTemp | layer=1 | mean r=0.032
+WITHIN‑CIRC nllb200_distilled_1B | shift=78 | fROI=Lang_LH_AntTemp | layer=2 | mean r=0.066
+WITHIN‑CIRC nllb200_distilled_1B | shift=78 | fROI=Lang_LH_AntTemp | layer=3 | mean r=0.054
+WITHIN‑CIRC nllb200_distilled_1B | shift=78 | fROI=Lang_LH_AntTemp | layer=4 | mean r=0.051
+WITHIN‑CIRC nllb200_distilled_1B | shift=78 | fROI=Lang_LH_AntTemp | layer=5 | mean r=0.033
+WITHIN‑CIRC nllb200_distilled_1B | shift=78 | fROI=Lang_LH_AntTemp | layer=6 | mean r=0.034
+WITHIN‑CIRC nllb200_distilled_1B | shift=78 | fROI=Lang_LH_AntTemp | layer=7 | mean r=0.027
+WITHIN‑CIRC nllb200_distilled_1B | shift=78 | fROI=Lang_LH_AntTemp | layer=8 | mean r=0.032
+WITHIN‑CIRC nllb200_distilled_1B | shift=78 | fROI=Lang_LH_AntTemp | layer=9 | mean r=0.012
+WITHIN‑CIRC nllb200_distilled_1B | shift=78 | fROI=Lang_LH_AntTemp | layer=10 | mean r=0.007
+WITHIN‑CIRC nllb200_distilled_1B | shift=78 | fROI=Lang_LH_AntTemp | layer=11 | mean r=0.015
+WITHIN‑CIRC nllb200_distilled_1B | shift=78 | fROI=Lang_LH_AntTemp | layer=12 | mean r=0.036
+WITHIN‑CIRC nllb200_distilled_1B | shift=78 | fROI=Lang_LH_AntTemp | layer=13 | mean r=0.033
+WITHIN‑CIRC nllb200_distilled_1B | shift=78 | fROI=Lang_LH_AntTemp | layer=14 | mean r=0.046
+WITHIN‑CIRC nllb200_distilled_1B | shift=78 | fROI=Lang_LH_AntTemp | layer=15 | mean r=0.042
+WITHIN‑CIRC nllb200_distilled_1B | shift=78 | fROI=Lang_LH_AntTemp | layer=16 | mean r=0.043
+WITHIN‑CIRC nllb200_distilled_1B | shift=78 | fROI=Lang_LH_AntTemp | layer=17 | mean r=0.041
+WITHIN‑CIRC nllb200_distilled_1B | shift=78 | fROI=Lang_LH_AntTemp | layer=18 | mean r=0.044
+WITHIN‑CIRC nllb200_distilled_1B | shift=78 | fROI=Lang_LH_AntTemp | layer=19 | mean r=0.026
+WITHIN‑CIRC nllb200_distilled_1B | shift=78 | fROI=Lang_LH_AntTemp | layer=20 | mean r=0.017
+WITHIN‑CIRC nllb200_distilled_1B | shift=78 | fROI=Lang_LH_AntTemp | layer=21 | mean r=-0.007
+WITHIN‑CIRC nllb200_distilled_1B | shift=78 | fROI=Lang_LH_AntTemp | layer=22 | mean r=-0.021
+WITHIN‑CIRC nllb200_distilled_1B | shift=78 | fROI=Lang_LH_AntTemp | layer=23 | mean r=-0.029
+WITHIN‑CIRC nllb200_distilled_1B | shift=78 | fROI=Lang_LH_AntTemp | layer=24 | mean r=-0.006
+
+  >>> Circular shift = 104
+WITHIN‑CIRC nllb200_distilled_1B | shift=104 | fROI=Lang_LH_AntTemp | layer=0 | mean r=0.021
+WITHIN‑CIRC nllb200_distilled_1B | shift=104 | fROI=Lang_LH_AntTemp | layer=1 | mean r=0.030
+WITHIN‑CIRC nllb200_distilled_1B | shift=104 | fROI=Lang_LH_AntTemp | layer=2 | mean r=0.074
+WITHIN‑CIRC nllb200_distilled_1B | shift=104 | fROI=Lang_LH_AntTemp | layer=3 | mean r=0.058
+WITHIN‑CIRC nllb200_distilled_1B | shift=104 | fROI=Lang_LH_AntTemp | layer=4 | mean r=0.062
+WITHIN‑CIRC nllb200_distilled_1B | shift=104 | fROI=Lang_LH_AntTemp | layer=5 | mean r=0.063
+WITHIN‑CIRC nllb200_distilled_1B | shift=104 | fROI=Lang_LH_AntTemp | layer=6 | mean r=0.061
+WITHIN‑CIRC nllb200_distilled_1B | shift=104 | fROI=Lang_LH_AntTemp | layer=7 | mean r=0.066
+WITHIN‑CIRC nllb200_distilled_1B | shift=104 | fROI=Lang_LH_AntTemp | layer=8 | mean r=0.057
+WITHIN‑CIRC nllb200_distilled_1B | shift=104 | fROI=Lang_LH_AntTemp | layer=9 | mean r=0.051
+WITHIN‑CIRC nllb200_distilled_1B | shift=104 | fROI=Lang_LH_AntTemp | layer=10 | mean r=0.060
+WITHIN‑CIRC nllb200_distilled_1B | shift=104 | fROI=Lang_LH_AntTemp | layer=11 | mean r=0.052
+WITHIN‑CIRC nllb200_distilled_1B | shift=104 | fROI=Lang_LH_AntTemp | layer=12 | mean r=0.046
+WITHIN‑CIRC nllb200_distilled_1B | shift=104 | fROI=Lang_LH_AntTemp | layer=13 | mean r=0.042
+WITHIN‑CIRC nllb200_distilled_1B | shift=104 | fROI=Lang_LH_AntTemp | layer=14 | mean r=0.039
+WITHIN‑CIRC nllb200_distilled_1B | shift=104 | fROI=Lang_LH_AntTemp | layer=15 | mean r=0.035
+WITHIN‑CIRC nllb200_distilled_1B | shift=104 | fROI=Lang_LH_AntTemp | layer=16 | mean r=0.024
+WITHIN‑CIRC nllb200_distilled_1B | shift=104 | fROI=Lang_LH_AntTemp | layer=17 | mean r=0.033
+WITHIN‑CIRC nllb200_distilled_1B | shift=104 | fROI=Lang_LH_AntTemp | layer=18 | mean r=0.036
+WITHIN‑CIRC nllb200_distilled_1B | shift=104 | fROI=Lang_LH_AntTemp | layer=19 | mean r=0.040
+WITHIN‑CIRC nllb200_distilled_1B | shift=104 | fROI=Lang_LH_AntTemp | layer=20 | mean r=0.045
+WITHIN‑CIRC nllb200_distilled_1B | shift=104 | fROI=Lang_LH_AntTemp | layer=21 | mean r=0.032
+WITHIN‑CIRC nllb200_distilled_1B | shift=104 | fROI=Lang_LH_AntTemp | layer=22 | mean r=0.040
+WITHIN‑CIRC nllb200_distilled_1B | shift=104 | fROI=Lang_LH_AntTemp | layer=23 | mean r=0.025
+WITHIN‑CIRC nllb200_distilled_1B | shift=104 | fROI=Lang_LH_AntTemp | layer=24 | mean r=0.031
+
+
+Processing Lang_LH_IFG (2/6)
+
+  >>> Circular shift = 26
+WITHIN‑CIRC nllb200_distilled_1B | shift=26 | fROI=Lang_LH_IFG | layer=0 | mean r=0.050
+WITHIN‑CIRC nllb200_distilled_1B | shift=26 | fROI=Lang_LH_IFG | layer=1 | mean r=0.056
+WITHIN‑CIRC nllb200_distilled_1B | shift=26 | fROI=Lang_LH_IFG | layer=2 | mean r=0.082
+WITHIN‑CIRC nllb200_distilled_1B | shift=26 | fROI=Lang_LH_IFG | layer=3 | mean r=0.102
+WITHIN‑CIRC nllb200_distilled_1B | shift=26 | fROI=Lang_LH_IFG | layer=4 | mean r=0.108
+WITHIN‑CIRC nllb200_distilled_1B | shift=26 | fROI=Lang_LH_IFG | layer=5 | mean r=0.114

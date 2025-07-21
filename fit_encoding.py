@@ -199,7 +199,7 @@ def monolingual_encoding_circshift(langs, model_prefix, n_layers, d, prefix="", 
         filepath = f"results/monolingual_{prefix}{model_prefix}_{froi}_circshift"
         if os.path.isfile(filepath) and not overwrite:
             print(f"Encoding for {model_prefix} – {froi} already done")
-            continue
+            return
         print(f"\n\nProcessing {froi} ({froi_idx + 1}/{len(frois)})")
         out_all_shifts = {}
         for shift in shift_vals:
@@ -234,7 +234,7 @@ def multilingual_encoding_circshift(langs, model_prefix, n_layers, d, prefix = "
         filepath = f"results/multilingual_{prefix}{model_prefix}_{froi}_circshift"
         if os.path.isfile(filepath) and not overwrite:
             print(f"Encoding for {model_prefix} – {froi} already done")
-            continue
+            return
         print(f"\n\nProcessing {froi} ({froi_idx+1}/{len(frois)})")
         for shift in shift_vals:
             print(f"\n  >>> Circular shift = {shift}")
