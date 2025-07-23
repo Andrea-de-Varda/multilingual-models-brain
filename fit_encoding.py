@@ -90,7 +90,7 @@ def monolingual_encoding(langs, model_prefix, n_layers, d, shuffle=False, prefix
     # This simply repeats the process for (a) all the languages in the sample and (b) all the layers of a given model from which embeddings are available
     layerwise_dict = {}
     if os.path.isfile(f"results/monolingual_{prefix}{model_prefix}_all") and overwrite == False:
-        print(f"Encoding for {model_prefix} already done")
+        print(f"Encoding for {model_prefix} already done", flush = True)
         return
     else:
         # Encoding evaluated layer by layer
@@ -125,7 +125,7 @@ def multilingual_encoding(langs, model_prefix, n_layers, d, prefix = "", overwri
     # This function trains encoding models in a set of languages (all but one) and evaluates the encoding in the left-out language
     kf = KFold(n_splits=10, shuffle=False)
     if os.path.isfile(f"results/multilingual_{prefix}{model_prefix}_all") and overwrite == False:
-        print(f"Encoding for {model_prefix} already done")
+        print(f"Encoding for {model_prefix} already done", flush = True)
         return
     else:
         kf = KFold(n_splits=10, shuffle=False)
@@ -198,7 +198,7 @@ def monolingual_encoding_circshift(langs, model_prefix, n_layers, d, prefix="", 
     for froi_idx, froi in enumerate(frois):
         filepath = f"results/monolingual_{prefix}{model_prefix}_{froi}_circshift"
         if os.path.isfile(filepath) and not overwrite:
-            print(f"Encoding for {model_prefix} – {froi} already done")
+            print(f"Encoding for {model_prefix} – {froi} already done", flush = True)
             return
         print(f"\n\nProcessing {froi} ({froi_idx + 1}/{len(frois)})")
         out_all_shifts = {}
@@ -226,18 +226,18 @@ def monolingual_encoding_circshift(langs, model_prefix, n_layers, d, prefix="", 
         save(out_all_shifts, filepath)
     return out_all_shifts
 
-def multilingual_encoding_circshift(langs, model_prefix, n_layers, d, prefix = "", overwrite = True, shift_vals = (26, 52, 78, 104)):
+def multilingual_encoding_circshift(langs, model_prefix, n_layers, d, prefix = "", overwrite = False, shift_vals = (26, 52, 78, 104)):
     kf = KFold(n_splits=10, shuffle=False)
     frois = list(d[lang_code_dict[langs[0]]][list(d[lang_code_dict[langs[0]]].keys())[0]].keys())
     for froi_idx, froi in enumerate(frois):
         out_all_shifts = {}
         filepath = f"results/multilingual_{prefix}{model_prefix}_{froi}_circshift"
         if os.path.isfile(filepath) and not overwrite:
-            print(f"Encoding for {model_prefix} – {froi} already done")
+            print(f"Encoding for {model_prefix} – {froi} already done", flush = True)
             return
-        print(f"\n\nProcessing {froi} ({froi_idx+1}/{len(frois)})")
+        print(f"\n\nProcessing {froi} ({froi_idx+1}/{len(frois)})", flush = True)
         for shift in shift_vals:
-            print(f"\n  >>> Circular shift = {shift}")
+            print(f"\n  >>> Circular shift = {shift}", flush = True)
             layerwise_dict = {}
             # pre‑compute fmri reps (X) for all layers and langs to avoid recomputation per split
             fmri_layers = {
@@ -343,7 +343,7 @@ mgpt_langs   = ["af", "fa", "fr", "lt", "mr", "ro", "es", "ta", "tr", "vi"]
 # from time import sleep
 # sleep(200)
 if MODE == "within":
-    print("Processing - WITHIN mode")
+    print("Processing - WITHIN mode", flush = True)
     xglm_small  = monolingual_encoding(xglm_langs, "xglm_small", 24, d)
     xglm_med    = monolingual_encoding(xglm_langs, "xglm_med", 24, d)
     xglm_large  = monolingual_encoding(xglm_langs, "xglm_large", 48, d)
@@ -391,7 +391,7 @@ if MODE == "within":
 # MODEL TRANSFER #
 ##################
 elif MODE == "across":
-    print("Processing - ACROSS mode")
+    print("Processing - ACROSS mode", flush = True)
     xglm_small_multi  = multilingual_encoding(xglm_langs, "xglm_small", 24, d)
     xglm_med_multi    = multilingual_encoding(xglm_langs, "xglm_med", 24, d)
     xglm_large_multi  = multilingual_encoding(xglm_langs, "xglm_large", 48, d)
@@ -442,7 +442,7 @@ elif MODE == "across":
 ####################
 
 elif MODE == "RH":
-    print("Processing - RH mode")
+    print("Processing - RH mode", flush = True)
     with open("data/dict_fROI_rh", 'rb') as handle:
         d_rh = pickle.load(handle)
 
@@ -496,7 +496,7 @@ elif MODE == "RH":
 ##############
 
 elif MODE == "MD":
-    print("Processing - MD mode")
+    print("Processing - MD mode", flush = True)
     with open("data/dict_fROI_md", 'rb') as handle:
         d_md = pickle.load(handle)
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH -p evlab
-#SBATCH --mem=20G
+#SBATCH --mem=10G
 #SBATCH -c 1
 #SBATCH -t 30:00:00
 #SBATCH --output=output_%j.out
