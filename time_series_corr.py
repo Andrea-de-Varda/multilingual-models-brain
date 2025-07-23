@@ -430,3 +430,81 @@ for language in ["French", "Romanian", "Tamil", "Farsi", "Norwegian", "Afrikaans
     rh_all_corr.append(r_hem)
 print(np.mean(md_all_corr))  
 print(np.mean(rh_all_corr))    
+
+###############################################################################
+# lastly, we want the MAIN time-series (language network), but using the ROIs #
+# identified in the participants' first language                              #
+# (also asked by reviewers)                                                   #
+###############################################################################
+
+data_native = pd.read_csv("data/Alice_Story_TimeSeries_native.csv") # langloc in native language
+rois = ['Lang_LH_AntTemp','Lang_LH_IFG','Lang_LH_IFGorb','Lang_LH_MFG','Lang_LH_PostTemp']
+
+# language data is missing from this--but it'll be the same as in original data (same participants)
+part_dict_lang = {row["UID"] : row["Language"] for index, row in data.iterrows()}
+data_native["Language"] = data_native["UID"].map(part_dict_lang)
+
+froi_d_native = {}
+for l in set(data_native["Language"]):
+    temp = data_native[data_native.Language == l]
+    if len(temp) == 24:
+        sub1, sub2 = list(set(temp.UID))
+        part1 = temp[(temp.UID == sub1) & (temp.ROI.isin(rois))]
+        part2 = temp[(temp.UID == sub2) & (temp.ROI.isin(rois))]
+
+        froi_d_native.setdefault(l, {})
+
+        # participant 1
+        p1_data = {}
+        for roi in rois:
+            roi_data = part1[part1.ROI == roi].iloc[:, 7:]
+            p1_data[roi] = roi_data.values[0][9:-3]  # row per ROI
+        all_avg = np.mean(np.stack(list(p1_data.values())), axis=0)
+        p1_data["all"] = all_avg
+        froi_d_native[l][sub1] = p1_data
+
+        # participant 2
+        p2_data = {}
+        for roi in rois:
+            roi_data = part2[part2.ROI == roi].iloc[:, 7:]
+            p2_data[roi] = roi_data.values[0][9:-3]
+        all_avg = np.mean(np.stack(list(p2_data.values())), axis=0)
+        p2_data["all"] = all_avg
+        froi_d_native[l][sub2] = p2_data
+
+with open("data/dict_fROI_native", 'wb') as handle:
+    pickle.dump(froi_d_native, handle, protocol=pickle.HIGHEST_PROTOCOL)
+    
+# check correlations (from author response letter)
+
+languages_of_interest = ["Afrikaans", "Dutch", "Farsi", "French", "Lithuanian", "Marathi", "Norwegian", "Romanian", "Spanish", "Tamil", "Turkish", "Vietnamese"]
+
+corr_list = {}
+for lang in languages_of_interest:
+    part1, part2 = froi_d[lang].keys()
+    for froi in froi_d[lang][part1].keys():
+        ts_std = froi_d[lang][part1][froi]
+        ts_ntv = froi_d_native[lang][part1][froi]
+        r, _ = pearsonr(ts_std, ts_ntv)
+        try:
+            corr_list[froi].append(r)
+        except KeyError:
+            corr_list[froi] = [r]
+
+labels = list(corr_list.keys())
+nice_labels = [label.replace('Lang_LH_', '').replace('_', ' ') if label != 'all' else 'All Lang fROIs' for label in labels]
+
+means = [np.mean(corr_list[k]) for k in labels]
+ses = [np.std(corr_list[k], ddof=1) / np.sqrt(len(corr_list[k])) for k in labels]
+
+plt.figure(figsize=(5, 3), dpi = 300)
+x = np.arange(len(labels))
+plt.bar(x, means, yerr=ses, capsize=5, color='lightblue', edgecolor='black')
+plt.xticks(x, nice_labels, rotation=45, ha='right')
+plt.ylabel('R')
+plt.title('Time series correlations (English vs. native localizer)')
+plt.tight_layout()
+plt.show()
+
+# for lang, mean in zip(nice_labels, means):
+#     print(lang, round(mean, 2))
