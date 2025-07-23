@@ -442,3 +442,324 @@ ACROSS     mt5_base | fROI=MD_LH_supFrontal | layer=9 | mean r=0.002
 ACROSS     mt5_base | fROI=MD_LH_supFrontal | layer=10 | mean r=-0.001
 ACROSS     mt5_base | fROI=MD_LH_supFrontal | layer=11 | mean r=0.005
 ACROSS     mt5_base | fROI=MD_LH_supFrontal | layer=12 | mean r=-0.005
+
+
+Processing MD_RH_Precentral_A_PrecG (11/21)
+ACROSS     mt5_base | fROI=MD_RH_Precentral_A_PrecG | layer=0 | mean r=-0.018
+ACROSS     mt5_base | fROI=MD_RH_Precentral_A_PrecG | layer=1 | mean r=-0.010
+ACROSS     mt5_base | fROI=MD_RH_Precentral_A_PrecG | layer=2 | mean r=-0.002
+ACROSS     mt5_base | fROI=MD_RH_Precentral_A_PrecG | layer=3 | mean r=-0.007
+ACROSS     mt5_base | fROI=MD_RH_Precentral_A_PrecG | layer=4 | mean r=-0.003
+ACROSS     mt5_base | fROI=MD_RH_Precentral_A_PrecG | layer=5 | mean r=-0.005
+ACROSS     mt5_base | fROI=MD_RH_Precentral_A_PrecG | layer=6 | mean r=-0.001
+ACROSS     mt5_base | fROI=MD_RH_Precentral_A_PrecG | layer=7 | mean r=0.008
+ACROSS     mt5_base | fROI=MD_RH_Precentral_A_PrecG | layer=8 | mean r=0.003
+ACROSS     mt5_base | fROI=MD_RH_Precentral_A_PrecG | layer=9 | mean r=-0.003
+ACROSS     mt5_base | fROI=MD_RH_Precentral_A_PrecG | layer=10 | mean r=-0.004
+ACROSS     mt5_base | fROI=MD_RH_Precentral_A_PrecG | layer=11 | mean r=-0.002
+ACROSS     mt5_base | fROI=MD_RH_Precentral_A_PrecG | layer=12 | mean r=-0.005
+
+
+Processing MD_RH_Precentral_B_IFGop (12/21)
+ACROSS     mt5_base | fROI=MD_RH_Precentral_B_IFGop | layer=0 | mean r=0.001
+ACROSS     mt5_base | fROI=MD_RH_Precentral_B_IFGop | layer=1 | mean r=-0.004
+ACROSS     mt5_base | fROI=MD_RH_Precentral_B_IFGop | layer=2 | mean r=0.001
+ACROSS     mt5_base | fROI=MD_RH_Precentral_B_IFGop | layer=3 | mean r=-0.011
+ACROSS     mt5_base | fROI=MD_RH_Precentral_B_IFGop | layer=4 | mean r=-0.007
+ACROSS     mt5_base | fROI=MD_RH_Precentral_B_IFGop | layer=5 | mean r=-0.008
+ACROSS     mt5_base | fROI=MD_RH_Precentral_B_IFGop | layer=6 | mean r=-0.001
+ACROSS     mt5_base | fROI=MD_RH_Precentral_B_IFGop | layer=7 | mean r=0.001
+ACROSS     mt5_base | fROI=MD_RH_Precentral_B_IFGop | layer=8 | mean r=0.009
+ACROSS     mt5_base | fROI=MD_RH_Precentral_B_IFGop | layer=9 | mean r=0.007
+ACROSS     mt5_base | fROI=MD_RH_Precentral_B_IFGop | layer=10 | mean r=0.006
+ACROSS     mt5_base | fROI=MD_RH_Precentral_B_IFGop | layer=11 | mean r=0.000
+ACROSS     mt5_base | fROI=MD_RH_Precentral_B_IFGop | layer=12 | mean r=0.005
+
+
+Processing MD_RH_antParietal (13/21)
+ACROSS     mt5_base | fROI=MD_RH_antParietal | layer=0 | mean r=-0.000
+ACROSS     mt5_base | fROI=MD_RH_antParietal | layer=1 | mean r=0.009
+ACROSS     mt5_base | fROI=MD_RH_antParietal | layer=2 | mean r=0.016
+ACROSS     mt5_base | fROI=MD_RH_antParietal | layer=3 | mean r=0.002
+ACROSS     mt5_base | fROI=MD_RH_antParietal | layer=4 | mean r=-0.002
+ACROSS     mt5_base | fROI=MD_RH_antParietal | layer=5 | mean r=-0.007
+ACROSS     mt5_base | fROI=MD_RH_antParietal | layer=6 | mean r=-0.003
+ACROSS     mt5_base | fROI=MD_RH_antParietal | layer=7 | mean r=-0.008
+ACROSS     mt5_base | fROI=MD_RH_antParietal | layer=8 | mean r=-0.005
+ACROSS     mt5_base | fROI=MD_RH_antParietal | layer=9 | mean r=0.009
+ACROSS     mt5_base | fROI=MD_RH_antParietal | layer=10 | mean r=0.003
+ACROSS     mt5_base | fROI=MD_RH_antParietal | layer=11 | mean r=0.004
+ACROSS     mt5_base | fROI=MD_RH_antParietal | layer=12 | mean r=0.009
+
+
+Processing MD_RH_insula (14/21)
+ACROSS     mt5_base | fROI=MD_RH_insula | layer=0 | mean r=0.008
+ACROSS     mt5_base | fROI=MD_RH_insula | layer=1 | mean r=0.009
+ACROSS     mt5_base | fROI=MD_RH_insula | layer=2 | mean r=0.017
+ACROSS     mt5_base | fROI=MD_RH_insula | layer=3 | mean r=-0.011
+ACROSS     mt5_base | fROI=MD_RH_insula | layer=4 | mean r=-0.017
+ACROSS     mt5_base | fROI=MD_RH_insula | layer=5 | mean r=-0.013
+ACROSS     mt5_base | fROI=MD_RH_insula | layer=6 | mean r=-0.009
+ACROSS     mt5_base | fROI=MD_RH_insula | layer=7 | mean r=-0.015
+ACROSS     mt5_base | fROI=MD_RH_insula | layer=8 | mean r=-0.016
+ACROSS     mt5_base | fROI=MD_RH_insula | layer=9 | mean r=-0.016
+ACROSS     mt5_base | fROI=MD_RH_insula | layer=10 | mean r=-0.014
+ACROSS     mt5_base | fROI=MD_RH_insula | layer=11 | mean r=-0.017
+ACROSS     mt5_base | fROI=MD_RH_insula | layer=12 | mean r=0.000
+
+
+Processing MD_RH_medialFrontal (15/21)
+ACROSS     mt5_base | fROI=MD_RH_medialFrontal | layer=0 | mean r=0.002
+ACROSS     mt5_base | fROI=MD_RH_medialFrontal | layer=1 | mean r=-0.004
+ACROSS     mt5_base | fROI=MD_RH_medialFrontal | layer=2 | mean r=0.001
+ACROSS     mt5_base | fROI=MD_RH_medialFrontal | layer=3 | mean r=-0.003
+ACROSS     mt5_base | fROI=MD_RH_medialFrontal | layer=4 | mean r=-0.011
+ACROSS     mt5_base | fROI=MD_RH_medialFrontal | layer=5 | mean r=-0.020
+ACROSS     mt5_base | fROI=MD_RH_medialFrontal | layer=6 | mean r=-0.014
+ACROSS     mt5_base | fROI=MD_RH_medialFrontal | layer=7 | mean r=-0.005
+ACROSS     mt5_base | fROI=MD_RH_medialFrontal | layer=8 | mean r=-0.005
+ACROSS     mt5_base | fROI=MD_RH_medialFrontal | layer=9 | mean r=0.004
+ACROSS     mt5_base | fROI=MD_RH_medialFrontal | layer=10 | mean r=-0.005
+ACROSS     mt5_base | fROI=MD_RH_medialFrontal | layer=11 | mean r=0.005
+ACROSS     mt5_base | fROI=MD_RH_medialFrontal | layer=12 | mean r=0.009
+
+
+Processing MD_RH_midFrontal (16/21)
+ACROSS     mt5_base | fROI=MD_RH_midFrontal | layer=0 | mean r=0.004
+ACROSS     mt5_base | fROI=MD_RH_midFrontal | layer=1 | mean r=0.001
+ACROSS     mt5_base | fROI=MD_RH_midFrontal | layer=2 | mean r=-0.002
+ACROSS     mt5_base | fROI=MD_RH_midFrontal | layer=3 | mean r=-0.016
+ACROSS     mt5_base | fROI=MD_RH_midFrontal | layer=4 | mean r=-0.023
+ACROSS     mt5_base | fROI=MD_RH_midFrontal | layer=5 | mean r=-0.024
+ACROSS     mt5_base | fROI=MD_RH_midFrontal | layer=6 | mean r=-0.022
+ACROSS     mt5_base | fROI=MD_RH_midFrontal | layer=7 | mean r=-0.020
+ACROSS     mt5_base | fROI=MD_RH_midFrontal | layer=8 | mean r=-0.027
+ACROSS     mt5_base | fROI=MD_RH_midFrontal | layer=9 | mean r=-0.019
+ACROSS     mt5_base | fROI=MD_RH_midFrontal | layer=10 | mean r=-0.019
+ACROSS     mt5_base | fROI=MD_RH_midFrontal | layer=11 | mean r=-0.009
+ACROSS     mt5_base | fROI=MD_RH_midFrontal | layer=12 | mean r=0.026
+
+
+Processing MD_RH_midFrontalOrb (17/21)
+ACROSS     mt5_base | fROI=MD_RH_midFrontalOrb | layer=0 | mean r=0.012
+ACROSS     mt5_base | fROI=MD_RH_midFrontalOrb | layer=1 | mean r=0.018
+ACROSS     mt5_base | fROI=MD_RH_midFrontalOrb | layer=2 | mean r=0.020
+ACROSS     mt5_base | fROI=MD_RH_midFrontalOrb | layer=3 | mean r=0.013
+ACROSS     mt5_base | fROI=MD_RH_midFrontalOrb | layer=4 | mean r=-0.008
+ACROSS     mt5_base | fROI=MD_RH_midFrontalOrb | layer=5 | mean r=-0.002
+ACROSS     mt5_base | fROI=MD_RH_midFrontalOrb | layer=6 | mean r=-0.009
+ACROSS     mt5_base | fROI=MD_RH_midFrontalOrb | layer=7 | mean r=-0.003
+ACROSS     mt5_base | fROI=MD_RH_midFrontalOrb | layer=8 | mean r=0.004
+ACROSS     mt5_base | fROI=MD_RH_midFrontalOrb | layer=9 | mean r=0.024
+ACROSS     mt5_base | fROI=MD_RH_midFrontalOrb | layer=10 | mean r=0.016
+ACROSS     mt5_base | fROI=MD_RH_midFrontalOrb | layer=11 | mean r=0.025
+ACROSS     mt5_base | fROI=MD_RH_midFrontalOrb | layer=12 | mean r=0.045
+
+
+Processing MD_RH_midParietal (18/21)
+ACROSS     mt5_base | fROI=MD_RH_midParietal | layer=0 | mean r=0.008
+ACROSS     mt5_base | fROI=MD_RH_midParietal | layer=1 | mean r=0.012
+ACROSS     mt5_base | fROI=MD_RH_midParietal | layer=2 | mean r=0.011
+ACROSS     mt5_base | fROI=MD_RH_midParietal | layer=3 | mean r=-0.001
+ACROSS     mt5_base | fROI=MD_RH_midParietal | layer=4 | mean r=-0.008
+ACROSS     mt5_base | fROI=MD_RH_midParietal | layer=5 | mean r=-0.003
+ACROSS     mt5_base | fROI=MD_RH_midParietal | layer=6 | mean r=0.005
+ACROSS     mt5_base | fROI=MD_RH_midParietal | layer=7 | mean r=0.009
+ACROSS     mt5_base | fROI=MD_RH_midParietal | layer=8 | mean r=0.007
+ACROSS     mt5_base | fROI=MD_RH_midParietal | layer=9 | mean r=0.011
+ACROSS     mt5_base | fROI=MD_RH_midParietal | layer=10 | mean r=0.010
+ACROSS     mt5_base | fROI=MD_RH_midParietal | layer=11 | mean r=0.006
+ACROSS     mt5_base | fROI=MD_RH_midParietal | layer=12 | mean r=0.021
+
+
+Processing MD_RH_postParietal (19/21)
+ACROSS     mt5_base | fROI=MD_RH_postParietal | layer=0 | mean r=0.012
+ACROSS     mt5_base | fROI=MD_RH_postParietal | layer=1 | mean r=0.014
+ACROSS     mt5_base | fROI=MD_RH_postParietal | layer=2 | mean r=0.013
+ACROSS     mt5_base | fROI=MD_RH_postParietal | layer=3 | mean r=0.017
+ACROSS     mt5_base | fROI=MD_RH_postParietal | layer=4 | mean r=0.010
+ACROSS     mt5_base | fROI=MD_RH_postParietal | layer=5 | mean r=0.006
+ACROSS     mt5_base | fROI=MD_RH_postParietal | layer=6 | mean r=0.020
+ACROSS     mt5_base | fROI=MD_RH_postParietal | layer=7 | mean r=0.015
+ACROSS     mt5_base | fROI=MD_RH_postParietal | layer=8 | mean r=0.013
+ACROSS     mt5_base | fROI=MD_RH_postParietal | layer=9 | mean r=0.018
+ACROSS     mt5_base | fROI=MD_RH_postParietal | layer=10 | mean r=0.013
+ACROSS     mt5_base | fROI=MD_RH_postParietal | layer=11 | mean r=0.009
+ACROSS     mt5_base | fROI=MD_RH_postParietal | layer=12 | mean r=0.026
+
+
+Processing MD_RH_supFrontal (20/21)
+ACROSS     mt5_base | fROI=MD_RH_supFrontal | layer=0 | mean r=0.002
+ACROSS     mt5_base | fROI=MD_RH_supFrontal | layer=1 | mean r=0.007
+ACROSS     mt5_base | fROI=MD_RH_supFrontal | layer=2 | mean r=0.006
+ACROSS     mt5_base | fROI=MD_RH_supFrontal | layer=3 | mean r=0.005
+ACROSS     mt5_base | fROI=MD_RH_supFrontal | layer=4 | mean r=-0.008
+ACROSS     mt5_base | fROI=MD_RH_supFrontal | layer=5 | mean r=-0.007
+ACROSS     mt5_base | fROI=MD_RH_supFrontal | layer=6 | mean r=-0.000
+ACROSS     mt5_base | fROI=MD_RH_supFrontal | layer=7 | mean r=-0.005
+ACROSS     mt5_base | fROI=MD_RH_supFrontal | layer=8 | mean r=-0.005
+ACROSS     mt5_base | fROI=MD_RH_supFrontal | layer=9 | mean r=0.002
+ACROSS     mt5_base | fROI=MD_RH_supFrontal | layer=10 | mean r=0.008
+ACROSS     mt5_base | fROI=MD_RH_supFrontal | layer=11 | mean r=0.011
+ACROSS     mt5_base | fROI=MD_RH_supFrontal | layer=12 | mean r=0.028
+
+
+Processing all (21/21)
+ACROSS     mt5_base | fROI=all | layer=0 | mean r=0.005
+ACROSS     mt5_base | fROI=all | layer=1 | mean r=0.005
+ACROSS     mt5_base | fROI=all | layer=2 | mean r=0.001
+ACROSS     mt5_base | fROI=all | layer=3 | mean r=-0.007
+ACROSS     mt5_base | fROI=all | layer=4 | mean r=-0.011
+ACROSS     mt5_base | fROI=all | layer=5 | mean r=-0.007
+ACROSS     mt5_base | fROI=all | layer=6 | mean r=-0.001
+ACROSS     mt5_base | fROI=all | layer=7 | mean r=0.011
+ACROSS     mt5_base | fROI=all | layer=8 | mean r=0.011
+ACROSS     mt5_base | fROI=all | layer=9 | mean r=0.017
+ACROSS     mt5_base | fROI=all | layer=10 | mean r=0.014
+ACROSS     mt5_base | fROI=all | layer=11 | mean r=0.018
+ACROSS     mt5_base | fROI=all | layer=12 | mean r=0.031
+
+
+Processing MD_LH_Precentral_A_PrecG (1/21)
+ACROSS     mt5_large | fROI=MD_LH_Precentral_A_PrecG | layer=0 | mean r=-0.003
+ACROSS     mt5_large | fROI=MD_LH_Precentral_A_PrecG | layer=1 | mean r=-0.002
+ACROSS     mt5_large | fROI=MD_LH_Precentral_A_PrecG | layer=2 | mean r=-0.005
+ACROSS     mt5_large | fROI=MD_LH_Precentral_A_PrecG | layer=3 | mean r=-0.000
+ACROSS     mt5_large | fROI=MD_LH_Precentral_A_PrecG | layer=4 | mean r=-0.003
+ACROSS     mt5_large | fROI=MD_LH_Precentral_A_PrecG | layer=5 | mean r=-0.001
+ACROSS     mt5_large | fROI=MD_LH_Precentral_A_PrecG | layer=6 | mean r=-0.001
+ACROSS     mt5_large | fROI=MD_LH_Precentral_A_PrecG | layer=7 | mean r=0.002
+ACROSS     mt5_large | fROI=MD_LH_Precentral_A_PrecG | layer=8 | mean r=0.006
+ACROSS     mt5_large | fROI=MD_LH_Precentral_A_PrecG | layer=9 | mean r=0.009
+ACROSS     mt5_large | fROI=MD_LH_Precentral_A_PrecG | layer=10 | mean r=0.012
+ACROSS     mt5_large | fROI=MD_LH_Precentral_A_PrecG | layer=11 | mean r=0.015
+ACROSS     mt5_large | fROI=MD_LH_Precentral_A_PrecG | layer=12 | mean r=0.023
+ACROSS     mt5_large | fROI=MD_LH_Precentral_A_PrecG | layer=13 | mean r=0.024
+ACROSS     mt5_large | fROI=MD_LH_Precentral_A_PrecG | layer=14 | mean r=0.035
+ACROSS     mt5_large | fROI=MD_LH_Precentral_A_PrecG | layer=15 | mean r=0.038
+ACROSS     mt5_large | fROI=MD_LH_Precentral_A_PrecG | layer=16 | mean r=0.035
+ACROSS     mt5_large | fROI=MD_LH_Precentral_A_PrecG | layer=17 | mean r=0.038
+ACROSS     mt5_large | fROI=MD_LH_Precentral_A_PrecG | layer=18 | mean r=0.049
+ACROSS     mt5_large | fROI=MD_LH_Precentral_A_PrecG | layer=19 | mean r=0.042
+ACROSS     mt5_large | fROI=MD_LH_Precentral_A_PrecG | layer=20 | mean r=0.041
+ACROSS     mt5_large | fROI=MD_LH_Precentral_A_PrecG | layer=21 | mean r=0.041
+ACROSS     mt5_large | fROI=MD_LH_Precentral_A_PrecG | layer=22 | mean r=0.041
+ACROSS     mt5_large | fROI=MD_LH_Precentral_A_PrecG | layer=23 | mean r=0.041
+ACROSS     mt5_large | fROI=MD_LH_Precentral_A_PrecG | layer=24 | mean r=0.045
+
+
+Processing MD_LH_Precentral_B_IFGop (2/21)
+ACROSS     mt5_large | fROI=MD_LH_Precentral_B_IFGop | layer=0 | mean r=-0.004
+ACROSS     mt5_large | fROI=MD_LH_Precentral_B_IFGop | layer=1 | mean r=-0.005
+ACROSS     mt5_large | fROI=MD_LH_Precentral_B_IFGop | layer=2 | mean r=-0.010
+ACROSS     mt5_large | fROI=MD_LH_Precentral_B_IFGop | layer=3 | mean r=-0.008
+ACROSS     mt5_large | fROI=MD_LH_Precentral_B_IFGop | layer=4 | mean r=-0.011
+ACROSS     mt5_large | fROI=MD_LH_Precentral_B_IFGop | layer=5 | mean r=-0.012
+ACROSS     mt5_large | fROI=MD_LH_Precentral_B_IFGop | layer=6 | mean r=-0.015
+ACROSS     mt5_large | fROI=MD_LH_Precentral_B_IFGop | layer=7 | mean r=-0.008
+ACROSS     mt5_large | fROI=MD_LH_Precentral_B_IFGop | layer=8 | mean r=-0.005
+ACROSS     mt5_large | fROI=MD_LH_Precentral_B_IFGop | layer=9 | mean r=0.002
+ACROSS     mt5_large | fROI=MD_LH_Precentral_B_IFGop | layer=10 | mean r=0.006
+ACROSS     mt5_large | fROI=MD_LH_Precentral_B_IFGop | layer=11 | mean r=0.006
+ACROSS     mt5_large | fROI=MD_LH_Precentral_B_IFGop | layer=12 | mean r=0.009
+ACROSS     mt5_large | fROI=MD_LH_Precentral_B_IFGop | layer=13 | mean r=0.005
+ACROSS     mt5_large | fROI=MD_LH_Precentral_B_IFGop | layer=14 | mean r=0.009
+ACROSS     mt5_large | fROI=MD_LH_Precentral_B_IFGop | layer=15 | mean r=0.010
+ACROSS     mt5_large | fROI=MD_LH_Precentral_B_IFGop | layer=16 | mean r=0.016
+ACROSS     mt5_large | fROI=MD_LH_Precentral_B_IFGop | layer=17 | mean r=0.025
+ACROSS     mt5_large | fROI=MD_LH_Precentral_B_IFGop | layer=18 | mean r=0.028
+ACROSS     mt5_large | fROI=MD_LH_Precentral_B_IFGop | layer=19 | mean r=0.022
+ACROSS     mt5_large | fROI=MD_LH_Precentral_B_IFGop | layer=20 | mean r=0.021
+ACROSS     mt5_large | fROI=MD_LH_Precentral_B_IFGop | layer=21 | mean r=0.018
+ACROSS     mt5_large | fROI=MD_LH_Precentral_B_IFGop | layer=22 | mean r=0.016
+ACROSS     mt5_large | fROI=MD_LH_Precentral_B_IFGop | layer=23 | mean r=0.019
+ACROSS     mt5_large | fROI=MD_LH_Precentral_B_IFGop | layer=24 | mean r=0.016
+
+
+Processing MD_LH_antParietal (3/21)
+ACROSS     mt5_large | fROI=MD_LH_antParietal | layer=0 | mean r=-0.012
+ACROSS     mt5_large | fROI=MD_LH_antParietal | layer=1 | mean r=-0.006
+ACROSS     mt5_large | fROI=MD_LH_antParietal | layer=2 | mean r=-0.014
+ACROSS     mt5_large | fROI=MD_LH_antParietal | layer=3 | mean r=-0.010
+ACROSS     mt5_large | fROI=MD_LH_antParietal | layer=4 | mean r=-0.010
+ACROSS     mt5_large | fROI=MD_LH_antParietal | layer=5 | mean r=-0.006
+ACROSS     mt5_large | fROI=MD_LH_antParietal | layer=6 | mean r=0.000
+ACROSS     mt5_large | fROI=MD_LH_antParietal | layer=7 | mean r=-0.001
+ACROSS     mt5_large | fROI=MD_LH_antParietal | layer=8 | mean r=-0.000
+ACROSS     mt5_large | fROI=MD_LH_antParietal | layer=9 | mean r=-0.001
+ACROSS     mt5_large | fROI=MD_LH_antParietal | layer=10 | mean r=0.006
+ACROSS     mt5_large | fROI=MD_LH_antParietal | layer=11 | mean r=0.013
+ACROSS     mt5_large | fROI=MD_LH_antParietal | layer=12 | mean r=0.018
+ACROSS     mt5_large | fROI=MD_LH_antParietal | layer=13 | mean r=0.018
+ACROSS     mt5_large | fROI=MD_LH_antParietal | layer=14 | mean r=0.022
+ACROSS     mt5_large | fROI=MD_LH_antParietal | layer=15 | mean r=0.032
+ACROSS     mt5_large | fROI=MD_LH_antParietal | layer=16 | mean r=0.036
+ACROSS     mt5_large | fROI=MD_LH_antParietal | layer=17 | mean r=0.033
+ACROSS     mt5_large | fROI=MD_LH_antParietal | layer=18 | mean r=0.038
+ACROSS     mt5_large | fROI=MD_LH_antParietal | layer=19 | mean r=0.036
+ACROSS     mt5_large | fROI=MD_LH_antParietal | layer=20 | mean r=0.034
+ACROSS     mt5_large | fROI=MD_LH_antParietal | layer=21 | mean r=0.028
+ACROSS     mt5_large | fROI=MD_LH_antParietal | layer=22 | mean r=0.027
+ACROSS     mt5_large | fROI=MD_LH_antParietal | layer=23 | mean r=0.031
+ACROSS     mt5_large | fROI=MD_LH_antParietal | layer=24 | mean r=0.030
+
+
+Processing MD_LH_insula (4/21)
+ACROSS     mt5_large | fROI=MD_LH_insula | layer=0 | mean r=0.012
+ACROSS     mt5_large | fROI=MD_LH_insula | layer=1 | mean r=0.011
+ACROSS     mt5_large | fROI=MD_LH_insula | layer=2 | mean r=0.013
+ACROSS     mt5_large | fROI=MD_LH_insula | layer=3 | mean r=0.012
+ACROSS     mt5_large | fROI=MD_LH_insula | layer=4 | mean r=0.004
+ACROSS     mt5_large | fROI=MD_LH_insula | layer=5 | mean r=0.007
+ACROSS     mt5_large | fROI=MD_LH_insula | layer=6 | mean r=0.007
+ACROSS     mt5_large | fROI=MD_LH_insula | layer=7 | mean r=0.003
+ACROSS     mt5_large | fROI=MD_LH_insula | layer=8 | mean r=0.008
+ACROSS     mt5_large | fROI=MD_LH_insula | layer=9 | mean r=0.011
+ACROSS     mt5_large | fROI=MD_LH_insula | layer=10 | mean r=0.006
+ACROSS     mt5_large | fROI=MD_LH_insula | layer=11 | mean r=0.017
+ACROSS     mt5_large | fROI=MD_LH_insula | layer=12 | mean r=0.022
+ACROSS     mt5_large | fROI=MD_LH_insula | layer=13 | mean r=0.016
+ACROSS     mt5_large | fROI=MD_LH_insula | layer=14 | mean r=0.009
+ACROSS     mt5_large | fROI=MD_LH_insula | layer=15 | mean r=0.003
+ACROSS     mt5_large | fROI=MD_LH_insula | layer=16 | mean r=0.001
+ACROSS     mt5_large | fROI=MD_LH_insula | layer=17 | mean r=0.003
+ACROSS     mt5_large | fROI=MD_LH_insula | layer=18 | mean r=0.007
+ACROSS     mt5_large | fROI=MD_LH_insula | layer=19 | mean r=0.006
+ACROSS     mt5_large | fROI=MD_LH_insula | layer=20 | mean r=0.004
+ACROSS     mt5_large | fROI=MD_LH_insula | layer=21 | mean r=0.008
+ACROSS     mt5_large | fROI=MD_LH_insula | layer=22 | mean r=0.017
+ACROSS     mt5_large | fROI=MD_LH_insula | layer=23 | mean r=0.017
+ACROSS     mt5_large | fROI=MD_LH_insula | layer=24 | mean r=0.006
+
+
+Processing MD_LH_medialFrontal (5/21)
+ACROSS     mt5_large | fROI=MD_LH_medialFrontal | layer=0 | mean r=-0.005
+ACROSS     mt5_large | fROI=MD_LH_medialFrontal | layer=1 | mean r=-0.003
+ACROSS     mt5_large | fROI=MD_LH_medialFrontal | layer=2 | mean r=-0.002
+ACROSS     mt5_large | fROI=MD_LH_medialFrontal | layer=3 | mean r=0.002
+ACROSS     mt5_large | fROI=MD_LH_medialFrontal | layer=4 | mean r=-0.001
+ACROSS     mt5_large | fROI=MD_LH_medialFrontal | layer=5 | mean r=0.001
+ACROSS     mt5_large | fROI=MD_LH_medialFrontal | layer=6 | mean r=0.005
+ACROSS     mt5_large | fROI=MD_LH_medialFrontal | layer=7 | mean r=-0.001
+ACROSS     mt5_large | fROI=MD_LH_medialFrontal | layer=8 | mean r=0.003
+ACROSS     mt5_large | fROI=MD_LH_medialFrontal | layer=9 | mean r=0.010
+ACROSS     mt5_large | fROI=MD_LH_medialFrontal | layer=10 | mean r=0.006
+ACROSS     mt5_large | fROI=MD_LH_medialFrontal | layer=11 | mean r=0.017
+ACROSS     mt5_large | fROI=MD_LH_medialFrontal | layer=12 | mean r=0.031
+ACROSS     mt5_large | fROI=MD_LH_medialFrontal | layer=13 | mean r=0.032
+ACROSS     mt5_large | fROI=MD_LH_medialFrontal | layer=14 | mean r=0.029
+ACROSS     mt5_large | fROI=MD_LH_medialFrontal | layer=15 | mean r=0.023
+ACROSS     mt5_large | fROI=MD_LH_medialFrontal | layer=16 | mean r=0.032
+ACROSS     mt5_large | fROI=MD_LH_medialFrontal | layer=17 | mean r=0.041
+ACROSS     mt5_large | fROI=MD_LH_medialFrontal | layer=18 | mean r=0.052
+ACROSS     mt5_large | fROI=MD_LH_medialFrontal | layer=19 | mean r=0.048
+ACROSS     mt5_large | fROI=MD_LH_medialFrontal | layer=20 | mean r=0.044
+ACROSS     mt5_large | fROI=MD_LH_medialFrontal | layer=21 | mean r=0.040
+ACROSS     mt5_large | fROI=MD_LH_medialFrontal | layer=22 | mean r=0.034
+ACROSS     mt5_large | fROI=MD_LH_medialFrontal | layer=23 | mean r=0.027
+ACROSS     mt5_large | fROI=MD_LH_medialFrontal | layer=24 | mean r=0.036
+
+
+Processing MD_LH_midFrontal (6/21)
+ACROSS     mt5_large | fROI=MD_LH_midFrontal | layer=0 | mean r=0.009
+ACROSS     mt5_large | fROI=MD_LH_midFrontal | layer=1 | mean r=0.006

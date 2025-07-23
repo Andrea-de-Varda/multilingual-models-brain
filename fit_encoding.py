@@ -314,12 +314,13 @@ def multilingual_encoding_circshift(langs, model_prefix, n_layers, d, prefix = "
 parser = argparse.ArgumentParser(description="choose which analyses to run")
 parser.add_argument(
     "--mode",
-    choices=["within", "across", "RH", "MD"],
+    choices=["within", "across", "RH", "MD", "native"],
     required=True,
     help=("within  --> monolingual + circshift only"
           "across  --> multilingual (and circshift) only"
           "RH      --> right‑hemisphere analyses only"
-          "MD      --> MD‑network analyses only"),
+          "MD      --> MD‑network analyses only"
+          "native  --> fROIs found with native contrast"),
 )
 MODE = parser.parse_args().mode
 print(f">>> STARTING JOB in mode: {MODE}", flush=True)
@@ -340,8 +341,7 @@ mgpt_langs   = ["af", "fa", "fr", "lt", "mr", "ro", "es", "ta", "tr", "vi"]
 #############################
 # Non-shuffled (monol only) #
 #############################
-# from time import sleep
-# sleep(200)
+
 if MODE == "within":
     print("Processing - WITHIN mode", flush = True)
     xglm_small  = monolingual_encoding(xglm_langs, "xglm_small", 24, d)
@@ -542,3 +542,56 @@ elif MODE == "MD":
     nllb_d_1b_multi     = multilingual_encoding(all_codes, "nllb200_distilled_1B", 24, d_md, prefix = "md_")
     nllb_1b_multi       = multilingual_encoding(all_codes, "nllb200_1B", 24, d_md, prefix = "md_")
     mgpt_multi          = multilingual_encoding(mgpt_langs, "mgpt", 24, d_md, prefix = "md_")
+
+####################
+# native localizer #
+####################
+
+elif MODE == "native":
+    print("Processing - native mode", flush = True)
+    with open("data/dict_fROI_native", 'rb') as handle:
+        d_native = pickle.load(handle)
+
+    # sequential split
+    xglm_small    = monolingual_encoding(xglm_langs, "xglm_small", 24, d_native, prefix = "native_")
+    xglm_med      = monolingual_encoding(xglm_langs, "xglm_med", 24, d_native, prefix = "native_")
+    xglm_large    = monolingual_encoding(xglm_langs, "xglm_large", 48, d_native, prefix = "native_")
+    xglm_xl       = monolingual_encoding(xglm_langs, "xglm_xl", 48, d_native, prefix = "native_")
+    mbert         = monolingual_encoding(all_codes, "bert_base", 12, d_native, prefix = "native_")
+    distilmbert   = monolingual_encoding(all_codes, "distilmbert", 6, d_native, prefix = "native_")
+    xlmr_base     = monolingual_encoding(all_codes, "xlmr_base", 12, d_native, prefix = "native_")
+    xlmr_large    = monolingual_encoding(all_codes, "xlmr_large", 24, d_native, prefix = "native_")
+    mt5_small     = monolingual_encoding(all_codes, "mt5_small", 8, d_native, prefix = "native_")
+    mt5_base      = monolingual_encoding(all_codes, "mt5_base", 12, d_native, prefix = "native_")
+    mt5_large     = monolingual_encoding(all_codes, "mt5_large", 24, d_native, prefix = "native_")
+    mdeberta      = monolingual_encoding(all_codes, "mdeberta", 12, d_native, prefix = "native_")
+    xlm_align     = monolingual_encoding(all_codes, "xlm_align", 12, d_native, prefix = "native_")
+    infoxlm       = monolingual_encoding(all_codes, "infoxlm_base", 12, d_native, prefix = "native_")
+    infoxlm_large = monolingual_encoding(all_codes, "infoxlm_large", 24, d_native, prefix = "native_")
+    multiminilm   = monolingual_encoding(all_codes, "multiminilm", 12, d_native, prefix = "native_")
+    nllb_d_600m   = monolingual_encoding(all_codes, "nllb200_distilled_600M", 12, d_native, prefix = "native_")
+    nllb_d_1b     = monolingual_encoding(all_codes, "nllb200_distilled_1B", 24, d_native, prefix = "native_")
+    nllb_1b       = monolingual_encoding(all_codes, "nllb200_1B", 24, d_native, prefix = "native_") 
+    mgpt          = monolingual_encoding(mgpt_langs, "mgpt", 24, d_native, prefix = "native_")
+
+    # multilingual
+    xglm_small_multi    = multilingual_encoding(xglm_langs, "xglm_small", 24, d_native, prefix = "native_")
+    xglm_med_multi      = multilingual_encoding(xglm_langs, "xglm_med", 24, d_native, prefix = "native_")
+    xglm_large_multi    = multilingual_encoding(xglm_langs, "xglm_large", 48, d_native, prefix = "native_")
+    xglm_xl_multi       = multilingual_encoding(xglm_langs, "xglm_xl", 48, d_native, prefix = "native_")
+    mbert_multi         = multilingual_encoding(all_codes, "bert_base", 12, d_native, prefix = "native_")
+    distilmbert_multi   = multilingual_encoding(all_codes, "distilmbert", 6, d_native, prefix = "native_")
+    xlmr_base_multi     = multilingual_encoding(all_codes, "xlmr_base", 12, d_native, prefix = "native_")
+    xlmr_large_multi    = multilingual_encoding(all_codes, "xlmr_large", 24, d_native, prefix = "native_")
+    mt5_small_multi     = multilingual_encoding(all_codes, "mt5_small", 8, d_native, prefix = "native_")
+    mt5_base_multi      = multilingual_encoding(all_codes, "mt5_base", 12, d_native, prefix = "native_")
+    mt5_large_multi     = multilingual_encoding(all_codes, "mt5_large", 24, d_native, prefix = "native_")
+    mdeberta_multi      = multilingual_encoding(all_codes, "mdeberta", 12, d_native, prefix = "native_")
+    xlm_align_multi     = multilingual_encoding(all_codes, "xlm_align", 12, d_native, prefix = "native_")
+    infoxlm_base_multi  = multilingual_encoding(all_codes, "infoxlm_base", 12, d_native, prefix = "native_")
+    infoxlm_large_multi = multilingual_encoding(all_codes, "infoxlm_large", 24, d_native, prefix = "native_")
+    multiminilm_multi   = multilingual_encoding(all_codes, "multiminilm", 12, d_native, prefix = "native_")
+    nllb_d_600m_multi   = multilingual_encoding(all_codes, "nllb200_distilled_600M", 12, d_native, prefix = "native_")
+    nllb_d_1b_multi     = multilingual_encoding(all_codes, "nllb200_distilled_1B", 24, d_native, prefix = "native_")
+    nllb_1b_multi       = multilingual_encoding(all_codes, "nllb200_1B", 24, d_native, prefix = "native_")
+    mgpt_multi          = multilingual_encoding(mgpt_langs, "mgpt", 24, d_native, prefix = "native_")
