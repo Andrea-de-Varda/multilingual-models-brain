@@ -597,3 +597,1997 @@ ACROSS-CIRC     xlmr_large | shift=26 | layer=4 | mean r=-0.004
 ACROSS-CIRC     xlmr_large | shift=26 | layer=5 | mean r=-0.006
 ACROSS-CIRC     xlmr_large | shift=26 | layer=6 | mean r=0.001
 ACROSS-CIRC     xlmr_large | shift=26 | layer=7 | mean r=0.003
+ACROSS-CIRC     xlmr_large | shift=26 | layer=8 | mean r=0.008
+ACROSS-CIRC     xlmr_large | shift=26 | layer=9 | mean r=0.013
+ACROSS-CIRC     xlmr_large | shift=26 | layer=10 | mean r=0.018
+ACROSS-CIRC     xlmr_large | shift=26 | layer=11 | mean r=0.028
+ACROSS-CIRC     xlmr_large | shift=26 | layer=12 | mean r=0.025
+ACROSS-CIRC     xlmr_large | shift=26 | layer=13 | mean r=0.021
+ACROSS-CIRC     xlmr_large | shift=26 | layer=14 | mean r=0.018
+ACROSS-CIRC     xlmr_large | shift=26 | layer=15 | mean r=0.019
+ACROSS-CIRC     xlmr_large | shift=26 | layer=16 | mean r=0.012
+ACROSS-CIRC     xlmr_large | shift=26 | layer=17 | mean r=0.016
+ACROSS-CIRC     xlmr_large | shift=26 | layer=18 | mean r=0.000
+ACROSS-CIRC     xlmr_large | shift=26 | layer=19 | mean r=0.008
+ACROSS-CIRC     xlmr_large | shift=26 | layer=20 | mean r=0.007
+ACROSS-CIRC     xlmr_large | shift=26 | layer=21 | mean r=0.013
+ACROSS-CIRC     xlmr_large | shift=26 | layer=22 | mean r=0.020
+ACROSS-CIRC     xlmr_large | shift=26 | layer=23 | mean r=0.014
+ACROSS-CIRC     xlmr_large | shift=26 | layer=24 | mean r=0.002
+
+  >>> Circular shift = 52
+ACROSS-CIRC     xlmr_large | shift=52 | layer=0 | mean r=0.038
+ACROSS-CIRC     xlmr_large | shift=52 | layer=1 | mean r=0.019
+ACROSS-CIRC     xlmr_large | shift=52 | layer=2 | mean r=0.013
+ACROSS-CIRC     xlmr_large | shift=52 | layer=3 | mean r=0.002
+ACROSS-CIRC     xlmr_large | shift=52 | layer=4 | mean r=-0.005
+ACROSS-CIRC     xlmr_large | shift=52 | layer=5 | mean r=-0.003
+ACROSS-CIRC     xlmr_large | shift=52 | layer=6 | mean r=-0.012
+ACROSS-CIRC     xlmr_large | shift=52 | layer=7 | mean r=-0.004
+ACROSS-CIRC     xlmr_large | shift=52 | layer=8 | mean r=-0.005
+ACROSS-CIRC     xlmr_large | shift=52 | layer=9 | mean r=-0.017
+ACROSS-CIRC     xlmr_large | shift=52 | layer=10 | mean r=-0.008
+ACROSS-CIRC     xlmr_large | shift=52 | layer=11 | mean r=-0.013
+ACROSS-CIRC     xlmr_large | shift=52 | layer=12 | mean r=-0.021
+ACROSS-CIRC     xlmr_large | shift=52 | layer=13 | mean r=-0.023
+ACROSS-CIRC     xlmr_large | shift=52 | layer=14 | mean r=-0.021
+ACROSS-CIRC     xlmr_large | shift=52 | layer=15 | mean r=-0.009
+ACROSS-CIRC     xlmr_large | shift=52 | layer=16 | mean r=-0.020
+ACROSS-CIRC     xlmr_large | shift=52 | layer=17 | mean r=-0.026
+ACROSS-CIRC     xlmr_large | shift=52 | layer=18 | mean r=-0.018
+ACROSS-CIRC     xlmr_large | shift=52 | layer=19 | mean r=-0.013
+ACROSS-CIRC     xlmr_large | shift=52 | layer=20 | mean r=-0.021
+ACROSS-CIRC     xlmr_large | shift=52 | layer=21 | mean r=-0.022
+ACROSS-CIRC     xlmr_large | shift=52 | layer=22 | mean r=-0.023
+ACROSS-CIRC     xlmr_large | shift=52 | layer=23 | mean r=-0.024
+ACROSS-CIRC     xlmr_large | shift=52 | layer=24 | mean r=-0.006
+
+  >>> Circular shift = 78
+ACROSS-CIRC     xlmr_large | shift=78 | layer=0 | mean r=0.007
+ACROSS-CIRC     xlmr_large | shift=78 | layer=1 | mean r=0.002
+ACROSS-CIRC     xlmr_large | shift=78 | layer=2 | mean r=-0.005
+ACROSS-CIRC     xlmr_large | shift=78 | layer=3 | mean r=-0.004
+ACROSS-CIRC     xlmr_large | shift=78 | layer=4 | mean r=-0.005
+ACROSS-CIRC     xlmr_large | shift=78 | layer=5 | mean r=-0.010
+ACROSS-CIRC     xlmr_large | shift=78 | layer=6 | mean r=-0.007
+ACROSS-CIRC     xlmr_large | shift=78 | layer=7 | mean r=-0.014
+ACROSS-CIRC     xlmr_large | shift=78 | layer=8 | mean r=-0.015
+ACROSS-CIRC     xlmr_large | shift=78 | layer=9 | mean r=-0.006
+ACROSS-CIRC     xlmr_large | shift=78 | layer=10 | mean r=-0.007
+ACROSS-CIRC     xlmr_large | shift=78 | layer=11 | mean r=-0.011
+ACROSS-CIRC     xlmr_large | shift=78 | layer=12 | mean r=-0.020
+ACROSS-CIRC     xlmr_large | shift=78 | layer=13 | mean r=-0.014
+ACROSS-CIRC     xlmr_large | shift=78 | layer=14 | mean r=-0.016
+ACROSS-CIRC     xlmr_large | shift=78 | layer=15 | mean r=-0.017
+ACROSS-CIRC     xlmr_large | shift=78 | layer=16 | mean r=-0.014
+ACROSS-CIRC     xlmr_large | shift=78 | layer=17 | mean r=-0.020
+ACROSS-CIRC     xlmr_large | shift=78 | layer=18 | mean r=-0.021
+ACROSS-CIRC     xlmr_large | shift=78 | layer=19 | mean r=-0.026
+ACROSS-CIRC     xlmr_large | shift=78 | layer=20 | mean r=-0.017
+ACROSS-CIRC     xlmr_large | shift=78 | layer=21 | mean r=-0.013
+ACROSS-CIRC     xlmr_large | shift=78 | layer=22 | mean r=-0.010
+ACROSS-CIRC     xlmr_large | shift=78 | layer=23 | mean r=-0.015
+ACROSS-CIRC     xlmr_large | shift=78 | layer=24 | mean r=-0.011
+
+  >>> Circular shift = 104
+ACROSS-CIRC     xlmr_large | shift=104 | layer=0 | mean r=0.016
+ACROSS-CIRC     xlmr_large | shift=104 | layer=1 | mean r=0.007
+ACROSS-CIRC     xlmr_large | shift=104 | layer=2 | mean r=0.005
+ACROSS-CIRC     xlmr_large | shift=104 | layer=3 | mean r=0.002
+ACROSS-CIRC     xlmr_large | shift=104 | layer=4 | mean r=-0.005
+ACROSS-CIRC     xlmr_large | shift=104 | layer=5 | mean r=-0.002
+ACROSS-CIRC     xlmr_large | shift=104 | layer=6 | mean r=0.002
+ACROSS-CIRC     xlmr_large | shift=104 | layer=7 | mean r=0.007
+ACROSS-CIRC     xlmr_large | shift=104 | layer=8 | mean r=0.010
+ACROSS-CIRC     xlmr_large | shift=104 | layer=9 | mean r=0.015
+ACROSS-CIRC     xlmr_large | shift=104 | layer=10 | mean r=0.011
+ACROSS-CIRC     xlmr_large | shift=104 | layer=11 | mean r=0.006
+ACROSS-CIRC     xlmr_large | shift=104 | layer=12 | mean r=0.003
+ACROSS-CIRC     xlmr_large | shift=104 | layer=13 | mean r=0.010
+ACROSS-CIRC     xlmr_large | shift=104 | layer=14 | mean r=0.007
+ACROSS-CIRC     xlmr_large | shift=104 | layer=15 | mean r=-0.001
+ACROSS-CIRC     xlmr_large | shift=104 | layer=16 | mean r=-0.003
+ACROSS-CIRC     xlmr_large | shift=104 | layer=17 | mean r=0.004
+ACROSS-CIRC     xlmr_large | shift=104 | layer=18 | mean r=0.007
+ACROSS-CIRC     xlmr_large | shift=104 | layer=19 | mean r=0.003
+ACROSS-CIRC     xlmr_large | shift=104 | layer=20 | mean r=0.000
+ACROSS-CIRC     xlmr_large | shift=104 | layer=21 | mean r=0.006
+ACROSS-CIRC     xlmr_large | shift=104 | layer=22 | mean r=0.000
+ACROSS-CIRC     xlmr_large | shift=104 | layer=23 | mean r=-0.001
+ACROSS-CIRC     xlmr_large | shift=104 | layer=24 | mean r=-0.005
+Encoding for mt5_small – Lang_LH_AntTemp already done
+Encoding for mt5_base – Lang_LH_AntTemp already done
+Encoding for mt5_large – Lang_LH_AntTemp already done
+
+
+Processing Lang_LH_AntTemp (1/6)
+
+  >>> Circular shift = 26
+ACROSS-CIRC     mdeberta | shift=26 | layer=0 | mean r=-0.013
+ACROSS-CIRC     mdeberta | shift=26 | layer=1 | mean r=-0.021
+ACROSS-CIRC     mdeberta | shift=26 | layer=2 | mean r=-0.016
+ACROSS-CIRC     mdeberta | shift=26 | layer=3 | mean r=-0.015
+ACROSS-CIRC     mdeberta | shift=26 | layer=4 | mean r=-0.005
+ACROSS-CIRC     mdeberta | shift=26 | layer=5 | mean r=-0.015
+ACROSS-CIRC     mdeberta | shift=26 | layer=6 | mean r=0.000
+ACROSS-CIRC     mdeberta | shift=26 | layer=7 | mean r=-0.009
+ACROSS-CIRC     mdeberta | shift=26 | layer=8 | mean r=-0.002
+ACROSS-CIRC     mdeberta | shift=26 | layer=9 | mean r=-0.004
+ACROSS-CIRC     mdeberta | shift=26 | layer=10 | mean r=-0.008
+ACROSS-CIRC     mdeberta | shift=26 | layer=11 | mean r=-0.010
+ACROSS-CIRC     mdeberta | shift=26 | layer=12 | mean r=0.001
+
+  >>> Circular shift = 52
+ACROSS-CIRC     mdeberta | shift=52 | layer=0 | mean r=0.022
+ACROSS-CIRC     mdeberta | shift=52 | layer=1 | mean r=0.007
+ACROSS-CIRC     mdeberta | shift=52 | layer=2 | mean r=0.012
+ACROSS-CIRC     mdeberta | shift=52 | layer=3 | mean r=0.004
+ACROSS-CIRC     mdeberta | shift=52 | layer=4 | mean r=0.005
+ACROSS-CIRC     mdeberta | shift=52 | layer=5 | mean r=-0.005
+ACROSS-CIRC     mdeberta | shift=52 | layer=6 | mean r=-0.016
+ACROSS-CIRC     mdeberta | shift=52 | layer=7 | mean r=0.003
+ACROSS-CIRC     mdeberta | shift=52 | layer=8 | mean r=-0.006
+ACROSS-CIRC     mdeberta | shift=52 | layer=9 | mean r=-0.011
+ACROSS-CIRC     mdeberta | shift=52 | layer=10 | mean r=0.004
+ACROSS-CIRC     mdeberta | shift=52 | layer=11 | mean r=0.003
+ACROSS-CIRC     mdeberta | shift=52 | layer=12 | mean r=-0.001
+
+  >>> Circular shift = 78
+ACROSS-CIRC     mdeberta | shift=78 | layer=0 | mean r=-0.022
+ACROSS-CIRC     mdeberta | shift=78 | layer=1 | mean r=-0.020
+ACROSS-CIRC     mdeberta | shift=78 | layer=2 | mean r=-0.031
+ACROSS-CIRC     mdeberta | shift=78 | layer=3 | mean r=-0.032
+ACROSS-CIRC     mdeberta | shift=78 | layer=4 | mean r=-0.036
+ACROSS-CIRC     mdeberta | shift=78 | layer=5 | mean r=-0.031
+ACROSS-CIRC     mdeberta | shift=78 | layer=6 | mean r=-0.017
+ACROSS-CIRC     mdeberta | shift=78 | layer=7 | mean r=-0.009
+ACROSS-CIRC     mdeberta | shift=78 | layer=8 | mean r=-0.021
+ACROSS-CIRC     mdeberta | shift=78 | layer=9 | mean r=0.000
+ACROSS-CIRC     mdeberta | shift=78 | layer=10 | mean r=0.004
+ACROSS-CIRC     mdeberta | shift=78 | layer=11 | mean r=0.009
+ACROSS-CIRC     mdeberta | shift=78 | layer=12 | mean r=0.001
+
+  >>> Circular shift = 104
+ACROSS-CIRC     mdeberta | shift=104 | layer=0 | mean r=0.027
+ACROSS-CIRC     mdeberta | shift=104 | layer=1 | mean r=0.021
+ACROSS-CIRC     mdeberta | shift=104 | layer=2 | mean r=0.020
+ACROSS-CIRC     mdeberta | shift=104 | layer=3 | mean r=0.015
+ACROSS-CIRC     mdeberta | shift=104 | layer=4 | mean r=0.008
+ACROSS-CIRC     mdeberta | shift=104 | layer=5 | mean r=0.016
+ACROSS-CIRC     mdeberta | shift=104 | layer=6 | mean r=0.012
+ACROSS-CIRC     mdeberta | shift=104 | layer=7 | mean r=0.000
+ACROSS-CIRC     mdeberta | shift=104 | layer=8 | mean r=0.009
+ACROSS-CIRC     mdeberta | shift=104 | layer=9 | mean r=-0.009
+ACROSS-CIRC     mdeberta | shift=104 | layer=10 | mean r=-0.017
+ACROSS-CIRC     mdeberta | shift=104 | layer=11 | mean r=0.002
+ACROSS-CIRC     mdeberta | shift=104 | layer=12 | mean r=-0.006
+
+
+Processing Lang_LH_IFG (2/6)
+
+  >>> Circular shift = 26
+ACROSS-CIRC     mdeberta | shift=26 | layer=0 | mean r=-0.016
+ACROSS-CIRC     mdeberta | shift=26 | layer=1 | mean r=-0.009
+ACROSS-CIRC     mdeberta | shift=26 | layer=2 | mean r=-0.006
+ACROSS-CIRC     mdeberta | shift=26 | layer=3 | mean r=-0.009
+ACROSS-CIRC     mdeberta | shift=26 | layer=4 | mean r=0.003
+ACROSS-CIRC     mdeberta | shift=26 | layer=5 | mean r=0.016
+ACROSS-CIRC     mdeberta | shift=26 | layer=6 | mean r=0.026
+ACROSS-CIRC     mdeberta | shift=26 | layer=7 | mean r=0.029
+ACROSS-CIRC     mdeberta | shift=26 | layer=8 | mean r=0.030
+ACROSS-CIRC     mdeberta | shift=26 | layer=9 | mean r=0.034
+ACROSS-CIRC     mdeberta | shift=26 | layer=10 | mean r=0.019
+ACROSS-CIRC     mdeberta | shift=26 | layer=11 | mean r=0.021
+ACROSS-CIRC     mdeberta | shift=26 | layer=12 | mean r=0.002
+
+  >>> Circular shift = 52
+ACROSS-CIRC     mdeberta | shift=52 | layer=0 | mean r=0.001
+ACROSS-CIRC     mdeberta | shift=52 | layer=1 | mean r=-0.009
+ACROSS-CIRC     mdeberta | shift=52 | layer=2 | mean r=-0.006
+ACROSS-CIRC     mdeberta | shift=52 | layer=3 | mean r=-0.002
+ACROSS-CIRC     mdeberta | shift=52 | layer=4 | mean r=-0.000
+ACROSS-CIRC     mdeberta | shift=52 | layer=5 | mean r=-0.021
+ACROSS-CIRC     mdeberta | shift=52 | layer=6 | mean r=-0.038
+ACROSS-CIRC     mdeberta | shift=52 | layer=7 | mean r=-0.028
+ACROSS-CIRC     mdeberta | shift=52 | layer=8 | mean r=-0.027
+ACROSS-CIRC     mdeberta | shift=52 | layer=9 | mean r=-0.023
+ACROSS-CIRC     mdeberta | shift=52 | layer=10 | mean r=-0.018
+ACROSS-CIRC     mdeberta | shift=52 | layer=11 | mean r=-0.019
+ACROSS-CIRC     mdeberta | shift=52 | layer=12 | mean r=0.019
+
+  >>> Circular shift = 78
+ACROSS-CIRC     mdeberta | shift=78 | layer=0 | mean r=-0.029
+ACROSS-CIRC     mdeberta | shift=78 | layer=1 | mean r=-0.022
+ACROSS-CIRC     mdeberta | shift=78 | layer=2 | mean r=-0.022
+ACROSS-CIRC     mdeberta | shift=78 | layer=3 | mean r=-0.016
+ACROSS-CIRC     mdeberta | shift=78 | layer=4 | mean r=-0.016
+ACROSS-CIRC     mdeberta | shift=78 | layer=5 | mean r=-0.028
+ACROSS-CIRC     mdeberta | shift=78 | layer=6 | mean r=-0.024
+ACROSS-CIRC     mdeberta | shift=78 | layer=7 | mean r=-0.019
+ACROSS-CIRC     mdeberta | shift=78 | layer=8 | mean r=-0.030
+ACROSS-CIRC     mdeberta | shift=78 | layer=9 | mean r=-0.020
+ACROSS-CIRC     mdeberta | shift=78 | layer=10 | mean r=-0.022
+ACROSS-CIRC     mdeberta | shift=78 | layer=11 | mean r=-0.020
+ACROSS-CIRC     mdeberta | shift=78 | layer=12 | mean r=0.007
+
+  >>> Circular shift = 104
+ACROSS-CIRC     mdeberta | shift=104 | layer=0 | mean r=-0.004
+ACROSS-CIRC     mdeberta | shift=104 | layer=1 | mean r=0.000
+ACROSS-CIRC     mdeberta | shift=104 | layer=2 | mean r=-0.012
+ACROSS-CIRC     mdeberta | shift=104 | layer=3 | mean r=-0.018
+ACROSS-CIRC     mdeberta | shift=104 | layer=4 | mean r=-0.013
+ACROSS-CIRC     mdeberta | shift=104 | layer=5 | mean r=-0.012
+ACROSS-CIRC     mdeberta | shift=104 | layer=6 | mean r=0.000
+ACROSS-CIRC     mdeberta | shift=104 | layer=7 | mean r=-0.015
+ACROSS-CIRC     mdeberta | shift=104 | layer=8 | mean r=-0.021
+ACROSS-CIRC     mdeberta | shift=104 | layer=9 | mean r=-0.021
+ACROSS-CIRC     mdeberta | shift=104 | layer=10 | mean r=-0.020
+ACROSS-CIRC     mdeberta | shift=104 | layer=11 | mean r=-0.002
+ACROSS-CIRC     mdeberta | shift=104 | layer=12 | mean r=-0.008
+
+
+Processing Lang_LH_IFGorb (3/6)
+
+  >>> Circular shift = 26
+ACROSS-CIRC     mdeberta | shift=26 | layer=0 | mean r=-0.008
+ACROSS-CIRC     mdeberta | shift=26 | layer=1 | mean r=-0.001
+ACROSS-CIRC     mdeberta | shift=26 | layer=2 | mean r=0.005
+ACROSS-CIRC     mdeberta | shift=26 | layer=3 | mean r=0.006
+ACROSS-CIRC     mdeberta | shift=26 | layer=4 | mean r=0.001
+ACROSS-CIRC     mdeberta | shift=26 | layer=5 | mean r=-0.007
+ACROSS-CIRC     mdeberta | shift=26 | layer=6 | mean r=0.010
+ACROSS-CIRC     mdeberta | shift=26 | layer=7 | mean r=0.013
+ACROSS-CIRC     mdeberta | shift=26 | layer=8 | mean r=0.006
+ACROSS-CIRC     mdeberta | shift=26 | layer=9 | mean r=0.005
+ACROSS-CIRC     mdeberta | shift=26 | layer=10 | mean r=0.002
+ACROSS-CIRC     mdeberta | shift=26 | layer=11 | mean r=0.002
+ACROSS-CIRC     mdeberta | shift=26 | layer=12 | mean r=0.005
+
+  >>> Circular shift = 52
+ACROSS-CIRC     mdeberta | shift=52 | layer=0 | mean r=0.008
+ACROSS-CIRC     mdeberta | shift=52 | layer=1 | mean r=0.003
+ACROSS-CIRC     mdeberta | shift=52 | layer=2 | mean r=0.009
+ACROSS-CIRC     mdeberta | shift=52 | layer=3 | mean r=0.008
+ACROSS-CIRC     mdeberta | shift=52 | layer=4 | mean r=0.005
+ACROSS-CIRC     mdeberta | shift=52 | layer=5 | mean r=-0.016
+ACROSS-CIRC     mdeberta | shift=52 | layer=6 | mean r=-0.013
+ACROSS-CIRC     mdeberta | shift=52 | layer=7 | mean r=-0.005
+ACROSS-CIRC     mdeberta | shift=52 | layer=8 | mean r=-0.012
+ACROSS-CIRC     mdeberta | shift=52 | layer=9 | mean r=-0.011
+ACROSS-CIRC     mdeberta | shift=52 | layer=10 | mean r=-0.011
+ACROSS-CIRC     mdeberta | shift=52 | layer=11 | mean r=-0.001
+ACROSS-CIRC     mdeberta | shift=52 | layer=12 | mean r=-0.007
+
+  >>> Circular shift = 78
+ACROSS-CIRC     mdeberta | shift=78 | layer=0 | mean r=-0.008
+ACROSS-CIRC     mdeberta | shift=78 | layer=1 | mean r=-0.018
+ACROSS-CIRC     mdeberta | shift=78 | layer=2 | mean r=-0.014
+ACROSS-CIRC     mdeberta | shift=78 | layer=3 | mean r=-0.016
+ACROSS-CIRC     mdeberta | shift=78 | layer=4 | mean r=-0.012
+ACROSS-CIRC     mdeberta | shift=78 | layer=5 | mean r=-0.010
+ACROSS-CIRC     mdeberta | shift=78 | layer=6 | mean r=-0.005
+ACROSS-CIRC     mdeberta | shift=78 | layer=7 | mean r=-0.006
+ACROSS-CIRC     mdeberta | shift=78 | layer=8 | mean r=-0.016
+ACROSS-CIRC     mdeberta | shift=78 | layer=9 | mean r=-0.008
+ACROSS-CIRC     mdeberta | shift=78 | layer=10 | mean r=-0.008
+ACROSS-CIRC     mdeberta | shift=78 | layer=11 | mean r=-0.001
+ACROSS-CIRC     mdeberta | shift=78 | layer=12 | mean r=0.003
+
+  >>> Circular shift = 104
+ACROSS-CIRC     mdeberta | shift=104 | layer=0 | mean r=0.019
+ACROSS-CIRC     mdeberta | shift=104 | layer=1 | mean r=0.017
+ACROSS-CIRC     mdeberta | shift=104 | layer=2 | mean r=0.012
+ACROSS-CIRC     mdeberta | shift=104 | layer=3 | mean r=0.009
+ACROSS-CIRC     mdeberta | shift=104 | layer=4 | mean r=-0.004
+ACROSS-CIRC     mdeberta | shift=104 | layer=5 | mean r=0.002
+ACROSS-CIRC     mdeberta | shift=104 | layer=6 | mean r=-0.004
+ACROSS-CIRC     mdeberta | shift=104 | layer=7 | mean r=-0.005
+ACROSS-CIRC     mdeberta | shift=104 | layer=8 | mean r=-0.009
+ACROSS-CIRC     mdeberta | shift=104 | layer=9 | mean r=-0.020
+ACROSS-CIRC     mdeberta | shift=104 | layer=10 | mean r=-0.014
+ACROSS-CIRC     mdeberta | shift=104 | layer=11 | mean r=-0.001
+ACROSS-CIRC     mdeberta | shift=104 | layer=12 | mean r=0.015
+
+
+Processing Lang_LH_MFG (4/6)
+
+  >>> Circular shift = 26
+ACROSS-CIRC     mdeberta | shift=26 | layer=0 | mean r=-0.001
+ACROSS-CIRC     mdeberta | shift=26 | layer=1 | mean r=0.001
+ACROSS-CIRC     mdeberta | shift=26 | layer=2 | mean r=-0.004
+ACROSS-CIRC     mdeberta | shift=26 | layer=3 | mean r=-0.012
+ACROSS-CIRC     mdeberta | shift=26 | layer=4 | mean r=0.007
+ACROSS-CIRC     mdeberta | shift=26 | layer=5 | mean r=0.019
+ACROSS-CIRC     mdeberta | shift=26 | layer=6 | mean r=0.026
+ACROSS-CIRC     mdeberta | shift=26 | layer=7 | mean r=0.022
+ACROSS-CIRC     mdeberta | shift=26 | layer=8 | mean r=0.023
+ACROSS-CIRC     mdeberta | shift=26 | layer=9 | mean r=0.020
+ACROSS-CIRC     mdeberta | shift=26 | layer=10 | mean r=0.009
+ACROSS-CIRC     mdeberta | shift=26 | layer=11 | mean r=0.024
+ACROSS-CIRC     mdeberta | shift=26 | layer=12 | mean r=0.002
+
+  >>> Circular shift = 52
+ACROSS-CIRC     mdeberta | shift=52 | layer=0 | mean r=0.006
+ACROSS-CIRC     mdeberta | shift=52 | layer=1 | mean r=-0.002
+ACROSS-CIRC     mdeberta | shift=52 | layer=2 | mean r=-0.000
+ACROSS-CIRC     mdeberta | shift=52 | layer=3 | mean r=-0.006
+ACROSS-CIRC     mdeberta | shift=52 | layer=4 | mean r=-0.010
+ACROSS-CIRC     mdeberta | shift=52 | layer=5 | mean r=-0.027
+ACROSS-CIRC     mdeberta | shift=52 | layer=6 | mean r=-0.032
+ACROSS-CIRC     mdeberta | shift=52 | layer=7 | mean r=-0.017
+ACROSS-CIRC     mdeberta | shift=52 | layer=8 | mean r=-0.027
+ACROSS-CIRC     mdeberta | shift=52 | layer=9 | mean r=-0.031
+ACROSS-CIRC     mdeberta | shift=52 | layer=10 | mean r=-0.025
+ACROSS-CIRC     mdeberta | shift=52 | layer=11 | mean r=-0.024
+ACROSS-CIRC     mdeberta | shift=52 | layer=12 | mean r=-0.001
+
+  >>> Circular shift = 78
+ACROSS-CIRC     mdeberta | shift=78 | layer=0 | mean r=-0.038
+ACROSS-CIRC     mdeberta | shift=78 | layer=1 | mean r=-0.023
+ACROSS-CIRC     mdeberta | shift=78 | layer=2 | mean r=-0.013
+ACROSS-CIRC     mdeberta | shift=78 | layer=3 | mean r=-0.016
+ACROSS-CIRC     mdeberta | shift=78 | layer=4 | mean r=-0.022
+ACROSS-CIRC     mdeberta | shift=78 | layer=5 | mean r=-0.024
+ACROSS-CIRC     mdeberta | shift=78 | layer=6 | mean r=-0.017
+ACROSS-CIRC     mdeberta | shift=78 | layer=7 | mean r=-0.035
+ACROSS-CIRC     mdeberta | shift=78 | layer=8 | mean r=-0.036
+ACROSS-CIRC     mdeberta | shift=78 | layer=9 | mean r=-0.031
+ACROSS-CIRC     mdeberta | shift=78 | layer=10 | mean r=-0.024
+ACROSS-CIRC     mdeberta | shift=78 | layer=11 | mean r=-0.017
+ACROSS-CIRC     mdeberta | shift=78 | layer=12 | mean r=0.001
+
+  >>> Circular shift = 104
+ACROSS-CIRC     mdeberta | shift=104 | layer=0 | mean r=-0.007
+ACROSS-CIRC     mdeberta | shift=104 | layer=1 | mean r=-0.005
+ACROSS-CIRC     mdeberta | shift=104 | layer=2 | mean r=-0.011
+ACROSS-CIRC     mdeberta | shift=104 | layer=3 | mean r=-0.018
+ACROSS-CIRC     mdeberta | shift=104 | layer=4 | mean r=-0.008
+ACROSS-CIRC     mdeberta | shift=104 | layer=5 | mean r=-0.008
+ACROSS-CIRC     mdeberta | shift=104 | layer=6 | mean r=-0.000
+ACROSS-CIRC     mdeberta | shift=104 | layer=7 | mean r=-0.005
+ACROSS-CIRC     mdeberta | shift=104 | layer=8 | mean r=-0.004
+ACROSS-CIRC     mdeberta | shift=104 | layer=9 | mean r=-0.006
+ACROSS-CIRC     mdeberta | shift=104 | layer=10 | mean r=-0.008
+ACROSS-CIRC     mdeberta | shift=104 | layer=11 | mean r=-0.010
+ACROSS-CIRC     mdeberta | shift=104 | layer=12 | mean r=-0.003
+
+
+Processing Lang_LH_PostTemp (5/6)
+
+  >>> Circular shift = 26
+ACROSS-CIRC     mdeberta | shift=26 | layer=0 | mean r=-0.012
+ACROSS-CIRC     mdeberta | shift=26 | layer=1 | mean r=-0.023
+ACROSS-CIRC     mdeberta | shift=26 | layer=2 | mean r=-0.002
+ACROSS-CIRC     mdeberta | shift=26 | layer=3 | mean r=0.001
+ACROSS-CIRC     mdeberta | shift=26 | layer=4 | mean r=0.005
+ACROSS-CIRC     mdeberta | shift=26 | layer=5 | mean r=0.005
+ACROSS-CIRC     mdeberta | shift=26 | layer=6 | mean r=0.021
+ACROSS-CIRC     mdeberta | shift=26 | layer=7 | mean r=0.013
+ACROSS-CIRC     mdeberta | shift=26 | layer=8 | mean r=0.020
+ACROSS-CIRC     mdeberta | shift=26 | layer=9 | mean r=0.018
+ACROSS-CIRC     mdeberta | shift=26 | layer=10 | mean r=0.021
+ACROSS-CIRC     mdeberta | shift=26 | layer=11 | mean r=0.013
+ACROSS-CIRC     mdeberta | shift=26 | layer=12 | mean r=0.004
+
+  >>> Circular shift = 52
+ACROSS-CIRC     mdeberta | shift=52 | layer=0 | mean r=0.029
+ACROSS-CIRC     mdeberta | shift=52 | layer=1 | mean r=0.019
+ACROSS-CIRC     mdeberta | shift=52 | layer=2 | mean r=0.008
+ACROSS-CIRC     mdeberta | shift=52 | layer=3 | mean r=0.003
+ACROSS-CIRC     mdeberta | shift=52 | layer=4 | mean r=0.001
+ACROSS-CIRC     mdeberta | shift=52 | layer=5 | mean r=-0.039
+ACROSS-CIRC     mdeberta | shift=52 | layer=6 | mean r=-0.048
+ACROSS-CIRC     mdeberta | shift=52 | layer=7 | mean r=-0.032
+ACROSS-CIRC     mdeberta | shift=52 | layer=8 | mean r=-0.051
+ACROSS-CIRC     mdeberta | shift=52 | layer=9 | mean r=-0.054
+ACROSS-CIRC     mdeberta | shift=52 | layer=10 | mean r=-0.051
+ACROSS-CIRC     mdeberta | shift=52 | layer=11 | mean r=-0.047
+ACROSS-CIRC     mdeberta | shift=52 | layer=12 | mean r=-0.022
+
+  >>> Circular shift = 78
+ACROSS-CIRC     mdeberta | shift=78 | layer=0 | mean r=-0.027
+ACROSS-CIRC     mdeberta | shift=78 | layer=1 | mean r=-0.027
+ACROSS-CIRC     mdeberta | shift=78 | layer=2 | mean r=-0.042
+ACROSS-CIRC     mdeberta | shift=78 | layer=3 | mean r=-0.036
+ACROSS-CIRC     mdeberta | shift=78 | layer=4 | mean r=-0.045
+ACROSS-CIRC     mdeberta | shift=78 | layer=5 | mean r=-0.042
+ACROSS-CIRC     mdeberta | shift=78 | layer=6 | mean r=-0.041
+ACROSS-CIRC     mdeberta | shift=78 | layer=7 | mean r=-0.041
+ACROSS-CIRC     mdeberta | shift=78 | layer=8 | mean r=-0.050
+ACROSS-CIRC     mdeberta | shift=78 | layer=9 | mean r=-0.035
+ACROSS-CIRC     mdeberta | shift=78 | layer=10 | mean r=-0.029
+ACROSS-CIRC     mdeberta | shift=78 | layer=11 | mean r=-0.024
+ACROSS-CIRC     mdeberta | shift=78 | layer=12 | mean r=0.001
+
+  >>> Circular shift = 104
+ACROSS-CIRC     mdeberta | shift=104 | layer=0 | mean r=0.039
+ACROSS-CIRC     mdeberta | shift=104 | layer=1 | mean r=0.040
+ACROSS-CIRC     mdeberta | shift=104 | layer=2 | mean r=0.026
+ACROSS-CIRC     mdeberta | shift=104 | layer=3 | mean r=0.022
+ACROSS-CIRC     mdeberta | shift=104 | layer=4 | mean r=0.026
+ACROSS-CIRC     mdeberta | shift=104 | layer=5 | mean r=0.038
+ACROSS-CIRC     mdeberta | shift=104 | layer=6 | mean r=0.030
+ACROSS-CIRC     mdeberta | shift=104 | layer=7 | mean r=0.021
+ACROSS-CIRC     mdeberta | shift=104 | layer=8 | mean r=0.031
+ACROSS-CIRC     mdeberta | shift=104 | layer=9 | mean r=0.008
+ACROSS-CIRC     mdeberta | shift=104 | layer=10 | mean r=0.022
+ACROSS-CIRC     mdeberta | shift=104 | layer=11 | mean r=0.037
+ACROSS-CIRC     mdeberta | shift=104 | layer=12 | mean r=0.019
+
+
+Processing all (6/6)
+
+  >>> Circular shift = 26
+ACROSS-CIRC     mdeberta | shift=26 | layer=0 | mean r=-0.014
+ACROSS-CIRC     mdeberta | shift=26 | layer=1 | mean r=-0.011
+ACROSS-CIRC     mdeberta | shift=26 | layer=2 | mean r=-0.000
+ACROSS-CIRC     mdeberta | shift=26 | layer=3 | mean r=-0.004
+ACROSS-CIRC     mdeberta | shift=26 | layer=4 | mean r=0.007
+ACROSS-CIRC     mdeberta | shift=26 | layer=5 | mean r=0.011
+ACROSS-CIRC     mdeberta | shift=26 | layer=6 | mean r=0.027
+ACROSS-CIRC     mdeberta | shift=26 | layer=7 | mean r=0.022
+ACROSS-CIRC     mdeberta | shift=26 | layer=8 | mean r=0.023
+ACROSS-CIRC     mdeberta | shift=26 | layer=9 | mean r=0.020
+ACROSS-CIRC     mdeberta | shift=26 | layer=10 | mean r=0.012
+ACROSS-CIRC     mdeberta | shift=26 | layer=11 | mean r=0.010
+ACROSS-CIRC     mdeberta | shift=26 | layer=12 | mean r=-0.005
+
+  >>> Circular shift = 52
+ACROSS-CIRC     mdeberta | shift=52 | layer=0 | mean r=0.014
+ACROSS-CIRC     mdeberta | shift=52 | layer=1 | mean r=-0.001
+ACROSS-CIRC     mdeberta | shift=52 | layer=2 | mean r=0.011
+ACROSS-CIRC     mdeberta | shift=52 | layer=3 | mean r=0.003
+ACROSS-CIRC     mdeberta | shift=52 | layer=4 | mean r=-0.001
+ACROSS-CIRC     mdeberta | shift=52 | layer=5 | mean r=-0.031
+ACROSS-CIRC     mdeberta | shift=52 | layer=6 | mean r=-0.029
+ACROSS-CIRC     mdeberta | shift=52 | layer=7 | mean r=-0.023
+ACROSS-CIRC     mdeberta | shift=52 | layer=8 | mean r=-0.032
+ACROSS-CIRC     mdeberta | shift=52 | layer=9 | mean r=-0.024
+ACROSS-CIRC     mdeberta | shift=52 | layer=10 | mean r=-0.020
+ACROSS-CIRC     mdeberta | shift=52 | layer=11 | mean r=-0.015
+ACROSS-CIRC     mdeberta | shift=52 | layer=12 | mean r=-0.003
+
+  >>> Circular shift = 78
+ACROSS-CIRC     mdeberta | shift=78 | layer=0 | mean r=-0.026
+ACROSS-CIRC     mdeberta | shift=78 | layer=1 | mean r=-0.022
+ACROSS-CIRC     mdeberta | shift=78 | layer=2 | mean r=-0.030
+ACROSS-CIRC     mdeberta | shift=78 | layer=3 | mean r=-0.033
+ACROSS-CIRC     mdeberta | shift=78 | layer=4 | mean r=-0.039
+ACROSS-CIRC     mdeberta | shift=78 | layer=5 | mean r=-0.029
+ACROSS-CIRC     mdeberta | shift=78 | layer=6 | mean r=-0.020
+ACROSS-CIRC     mdeberta | shift=78 | layer=7 | mean r=-0.024
+ACROSS-CIRC     mdeberta | shift=78 | layer=8 | mean r=-0.031
+ACROSS-CIRC     mdeberta | shift=78 | layer=9 | mean r=-0.019
+ACROSS-CIRC     mdeberta | shift=78 | layer=10 | mean r=-0.022
+ACROSS-CIRC     mdeberta | shift=78 | layer=11 | mean r=-0.013
+ACROSS-CIRC     mdeberta | shift=78 | layer=12 | mean r=0.007
+
+  >>> Circular shift = 104
+ACROSS-CIRC     mdeberta | shift=104 | layer=0 | mean r=0.021
+ACROSS-CIRC     mdeberta | shift=104 | layer=1 | mean r=0.015
+ACROSS-CIRC     mdeberta | shift=104 | layer=2 | mean r=0.008
+ACROSS-CIRC     mdeberta | shift=104 | layer=3 | mean r=-0.003
+ACROSS-CIRC     mdeberta | shift=104 | layer=4 | mean r=-0.001
+ACROSS-CIRC     mdeberta | shift=104 | layer=5 | mean r=0.009
+ACROSS-CIRC     mdeberta | shift=104 | layer=6 | mean r=0.014
+ACROSS-CIRC     mdeberta | shift=104 | layer=7 | mean r=-0.004
+ACROSS-CIRC     mdeberta | shift=104 | layer=8 | mean r=0.005
+ACROSS-CIRC     mdeberta | shift=104 | layer=9 | mean r=-0.008
+ACROSS-CIRC     mdeberta | shift=104 | layer=10 | mean r=-0.002
+ACROSS-CIRC     mdeberta | shift=104 | layer=11 | mean r=0.007
+ACROSS-CIRC     mdeberta | shift=104 | layer=12 | mean r=0.002
+
+
+Processing Lang_LH_AntTemp (1/6)
+
+  >>> Circular shift = 26
+ACROSS-CIRC     xlm_align | shift=26 | layer=0 | mean r=-0.003
+ACROSS-CIRC     xlm_align | shift=26 | layer=1 | mean r=-0.025
+ACROSS-CIRC     xlm_align | shift=26 | layer=2 | mean r=-0.015
+ACROSS-CIRC     xlm_align | shift=26 | layer=3 | mean r=-0.019
+ACROSS-CIRC     xlm_align | shift=26 | layer=4 | mean r=-0.004
+ACROSS-CIRC     xlm_align | shift=26 | layer=5 | mean r=-0.017
+ACROSS-CIRC     xlm_align | shift=26 | layer=6 | mean r=-0.010
+ACROSS-CIRC     xlm_align | shift=26 | layer=7 | mean r=-0.019
+ACROSS-CIRC     xlm_align | shift=26 | layer=8 | mean r=-0.013
+ACROSS-CIRC     xlm_align | shift=26 | layer=9 | mean r=-0.023
+ACROSS-CIRC     xlm_align | shift=26 | layer=10 | mean r=-0.035
+ACROSS-CIRC     xlm_align | shift=26 | layer=11 | mean r=-0.027
+ACROSS-CIRC     xlm_align | shift=26 | layer=12 | mean r=0.005
+
+  >>> Circular shift = 52
+ACROSS-CIRC     xlm_align | shift=52 | layer=0 | mean r=0.016
+ACROSS-CIRC     xlm_align | shift=52 | layer=1 | mean r=0.013
+ACROSS-CIRC     xlm_align | shift=52 | layer=2 | mean r=0.012
+ACROSS-CIRC     xlm_align | shift=52 | layer=3 | mean r=0.004
+ACROSS-CIRC     xlm_align | shift=52 | layer=4 | mean r=0.001
+ACROSS-CIRC     xlm_align | shift=52 | layer=5 | mean r=0.000
+ACROSS-CIRC     xlm_align | shift=52 | layer=6 | mean r=0.002
+ACROSS-CIRC     xlm_align | shift=52 | layer=7 | mean r=0.002
+ACROSS-CIRC     xlm_align | shift=52 | layer=8 | mean r=-0.008
+ACROSS-CIRC     xlm_align | shift=52 | layer=9 | mean r=-0.010
+ACROSS-CIRC     xlm_align | shift=52 | layer=10 | mean r=0.002
+ACROSS-CIRC     xlm_align | shift=52 | layer=11 | mean r=0.007
+ACROSS-CIRC     xlm_align | shift=52 | layer=12 | mean r=0.020
+
+  >>> Circular shift = 78
+ACROSS-CIRC     xlm_align | shift=78 | layer=0 | mean r=0.001
+ACROSS-CIRC     xlm_align | shift=78 | layer=1 | mean r=0.004
+ACROSS-CIRC     xlm_align | shift=78 | layer=2 | mean r=-0.003
+ACROSS-CIRC     xlm_align | shift=78 | layer=3 | mean r=-0.018
+ACROSS-CIRC     xlm_align | shift=78 | layer=4 | mean r=-0.008
+ACROSS-CIRC     xlm_align | shift=78 | layer=5 | mean r=-0.010
+ACROSS-CIRC     xlm_align | shift=78 | layer=6 | mean r=-0.014
+ACROSS-CIRC     xlm_align | shift=78 | layer=7 | mean r=-0.013
+ACROSS-CIRC     xlm_align | shift=78 | layer=8 | mean r=-0.016
+ACROSS-CIRC     xlm_align | shift=78 | layer=9 | mean r=-0.014
+ACROSS-CIRC     xlm_align | shift=78 | layer=10 | mean r=-0.007
+ACROSS-CIRC     xlm_align | shift=78 | layer=11 | mean r=-0.019
+ACROSS-CIRC     xlm_align | shift=78 | layer=12 | mean r=-0.040
+
+  >>> Circular shift = 104
+ACROSS-CIRC     xlm_align | shift=104 | layer=0 | mean r=0.028
+ACROSS-CIRC     xlm_align | shift=104 | layer=1 | mean r=0.016
+ACROSS-CIRC     xlm_align | shift=104 | layer=2 | mean r=0.012
+ACROSS-CIRC     xlm_align | shift=104 | layer=3 | mean r=0.019
+ACROSS-CIRC     xlm_align | shift=104 | layer=4 | mean r=0.008
+ACROSS-CIRC     xlm_align | shift=104 | layer=5 | mean r=-0.001
+ACROSS-CIRC     xlm_align | shift=104 | layer=6 | mean r=-0.001
+ACROSS-CIRC     xlm_align | shift=104 | layer=7 | mean r=0.005
+ACROSS-CIRC     xlm_align | shift=104 | layer=8 | mean r=0.013
+ACROSS-CIRC     xlm_align | shift=104 | layer=9 | mean r=0.015
+ACROSS-CIRC     xlm_align | shift=104 | layer=10 | mean r=0.011
+ACROSS-CIRC     xlm_align | shift=104 | layer=11 | mean r=0.021
+ACROSS-CIRC     xlm_align | shift=104 | layer=12 | mean r=-0.003
+
+
+Processing Lang_LH_IFG (2/6)
+
+  >>> Circular shift = 26
+ACROSS-CIRC     xlm_align | shift=26 | layer=0 | mean r=-0.043
+ACROSS-CIRC     xlm_align | shift=26 | layer=1 | mean r=-0.053
+ACROSS-CIRC     xlm_align | shift=26 | layer=2 | mean r=-0.043
+ACROSS-CIRC     xlm_align | shift=26 | layer=3 | mean r=-0.031
+ACROSS-CIRC     xlm_align | shift=26 | layer=4 | mean r=-0.015
+ACROSS-CIRC     xlm_align | shift=26 | layer=5 | mean r=-0.022
+ACROSS-CIRC     xlm_align | shift=26 | layer=6 | mean r=-0.022
+ACROSS-CIRC     xlm_align | shift=26 | layer=7 | mean r=-0.013
+ACROSS-CIRC     xlm_align | shift=26 | layer=8 | mean r=-0.007
+ACROSS-CIRC     xlm_align | shift=26 | layer=9 | mean r=-0.009
+ACROSS-CIRC     xlm_align | shift=26 | layer=10 | mean r=0.001
+ACROSS-CIRC     xlm_align | shift=26 | layer=11 | mean r=0.004
+ACROSS-CIRC     xlm_align | shift=26 | layer=12 | mean r=0.020
+
+  >>> Circular shift = 52
+ACROSS-CIRC     xlm_align | shift=52 | layer=0 | mean r=-0.003
+ACROSS-CIRC     xlm_align | shift=52 | layer=1 | mean r=-0.007
+ACROSS-CIRC     xlm_align | shift=52 | layer=2 | mean r=-0.001
+ACROSS-CIRC     xlm_align | shift=52 | layer=3 | mean r=-0.005
+ACROSS-CIRC     xlm_align | shift=52 | layer=4 | mean r=-0.024
+ACROSS-CIRC     xlm_align | shift=52 | layer=5 | mean r=-0.031
+ACROSS-CIRC     xlm_align | shift=52 | layer=6 | mean r=-0.025
+ACROSS-CIRC     xlm_align | shift=52 | layer=7 | mean r=-0.021
+ACROSS-CIRC     xlm_align | shift=52 | layer=8 | mean r=-0.004
+ACROSS-CIRC     xlm_align | shift=52 | layer=9 | mean r=-0.017
+ACROSS-CIRC     xlm_align | shift=52 | layer=10 | mean r=-0.019
+ACROSS-CIRC     xlm_align | shift=52 | layer=11 | mean r=-0.035
+ACROSS-CIRC     xlm_align | shift=52 | layer=12 | mean r=-0.035
+
+  >>> Circular shift = 78
+ACROSS-CIRC     xlm_align | shift=78 | layer=0 | mean r=0.013
+ACROSS-CIRC     xlm_align | shift=78 | layer=1 | mean r=0.017
+ACROSS-CIRC     xlm_align | shift=78 | layer=2 | mean r=0.026
+ACROSS-CIRC     xlm_align | shift=78 | layer=3 | mean r=0.012
+ACROSS-CIRC     xlm_align | shift=78 | layer=4 | mean r=-0.006
+ACROSS-CIRC     xlm_align | shift=78 | layer=5 | mean r=0.015
+ACROSS-CIRC     xlm_align | shift=78 | layer=6 | mean r=0.013
+ACROSS-CIRC     xlm_align | shift=78 | layer=7 | mean r=0.008
+ACROSS-CIRC     xlm_align | shift=78 | layer=8 | mean r=0.001
+ACROSS-CIRC     xlm_align | shift=78 | layer=9 | mean r=0.006
+ACROSS-CIRC     xlm_align | shift=78 | layer=10 | mean r=-0.003
+ACROSS-CIRC     xlm_align | shift=78 | layer=11 | mean r=-0.004
+ACROSS-CIRC     xlm_align | shift=78 | layer=12 | mean r=-0.012
+
+  >>> Circular shift = 104
+ACROSS-CIRC     xlm_align | shift=104 | layer=0 | mean r=0.006
+ACROSS-CIRC     xlm_align | shift=104 | layer=1 | mean r=0.008
+ACROSS-CIRC     xlm_align | shift=104 | layer=2 | mean r=-0.005
+ACROSS-CIRC     xlm_align | shift=104 | layer=3 | mean r=-0.009
+ACROSS-CIRC     xlm_align | shift=104 | layer=4 | mean r=-0.005
+ACROSS-CIRC     xlm_align | shift=104 | layer=5 | mean r=-0.002
+ACROSS-CIRC     xlm_align | shift=104 | layer=6 | mean r=-0.008
+ACROSS-CIRC     xlm_align | shift=104 | layer=7 | mean r=-0.016
+ACROSS-CIRC     xlm_align | shift=104 | layer=8 | mean r=-0.012
+ACROSS-CIRC     xlm_align | shift=104 | layer=9 | mean r=-0.008
+ACROSS-CIRC     xlm_align | shift=104 | layer=10 | mean r=-0.004
+ACROSS-CIRC     xlm_align | shift=104 | layer=11 | mean r=-0.013
+ACROSS-CIRC     xlm_align | shift=104 | layer=12 | mean r=0.019
+
+
+Processing Lang_LH_IFGorb (3/6)
+
+  >>> Circular shift = 26
+ACROSS-CIRC     xlm_align | shift=26 | layer=0 | mean r=-0.014
+ACROSS-CIRC     xlm_align | shift=26 | layer=1 | mean r=-0.030
+ACROSS-CIRC     xlm_align | shift=26 | layer=2 | mean r=-0.022
+ACROSS-CIRC     xlm_align | shift=26 | layer=3 | mean r=-0.016
+ACROSS-CIRC     xlm_align | shift=26 | layer=4 | mean r=-0.004
+ACROSS-CIRC     xlm_align | shift=26 | layer=5 | mean r=-0.016
+ACROSS-CIRC     xlm_align | shift=26 | layer=6 | mean r=-0.008
+ACROSS-CIRC     xlm_align | shift=26 | layer=7 | mean r=-0.023
+ACROSS-CIRC     xlm_align | shift=26 | layer=8 | mean r=-0.020
+ACROSS-CIRC     xlm_align | shift=26 | layer=9 | mean r=-0.024
+ACROSS-CIRC     xlm_align | shift=26 | layer=10 | mean r=-0.027
+ACROSS-CIRC     xlm_align | shift=26 | layer=11 | mean r=-0.023
+ACROSS-CIRC     xlm_align | shift=26 | layer=12 | mean r=-0.010
+
+  >>> Circular shift = 52
+ACROSS-CIRC     xlm_align | shift=52 | layer=0 | mean r=-0.006
+ACROSS-CIRC     xlm_align | shift=52 | layer=1 | mean r=-0.008
+ACROSS-CIRC     xlm_align | shift=52 | layer=2 | mean r=-0.007
+ACROSS-CIRC     xlm_align | shift=52 | layer=3 | mean r=-0.009
+ACROSS-CIRC     xlm_align | shift=52 | layer=4 | mean r=0.002
+ACROSS-CIRC     xlm_align | shift=52 | layer=5 | mean r=-0.020
+ACROSS-CIRC     xlm_align | shift=52 | layer=6 | mean r=-0.019
+ACROSS-CIRC     xlm_align | shift=52 | layer=7 | mean r=-0.011
+ACROSS-CIRC     xlm_align | shift=52 | layer=8 | mean r=-0.011
+ACROSS-CIRC     xlm_align | shift=52 | layer=9 | mean r=-0.014
+ACROSS-CIRC     xlm_align | shift=52 | layer=10 | mean r=-0.005
+ACROSS-CIRC     xlm_align | shift=52 | layer=11 | mean r=-0.019
+ACROSS-CIRC     xlm_align | shift=52 | layer=12 | mean r=-0.011
+
+  >>> Circular shift = 78
+ACROSS-CIRC     xlm_align | shift=78 | layer=0 | mean r=-0.000
+ACROSS-CIRC     xlm_align | shift=78 | layer=1 | mean r=-0.010
+ACROSS-CIRC     xlm_align | shift=78 | layer=2 | mean r=-0.014
+ACROSS-CIRC     xlm_align | shift=78 | layer=3 | mean r=-0.011
+ACROSS-CIRC     xlm_align | shift=78 | layer=4 | mean r=-0.021
+ACROSS-CIRC     xlm_align | shift=78 | layer=5 | mean r=-0.013
+ACROSS-CIRC     xlm_align | shift=78 | layer=6 | mean r=-0.027
+ACROSS-CIRC     xlm_align | shift=78 | layer=7 | mean r=-0.019
+ACROSS-CIRC     xlm_align | shift=78 | layer=8 | mean r=-0.015
+ACROSS-CIRC     xlm_align | shift=78 | layer=9 | mean r=-0.014
+ACROSS-CIRC     xlm_align | shift=78 | layer=10 | mean r=-0.013
+ACROSS-CIRC     xlm_align | shift=78 | layer=11 | mean r=-0.022
+ACROSS-CIRC     xlm_align | shift=78 | layer=12 | mean r=-0.018
+
+  >>> Circular shift = 104
+ACROSS-CIRC     xlm_align | shift=104 | layer=0 | mean r=0.007
+ACROSS-CIRC     xlm_align | shift=104 | layer=1 | mean r=0.000
+ACROSS-CIRC     xlm_align | shift=104 | layer=2 | mean r=-0.003
+ACROSS-CIRC     xlm_align | shift=104 | layer=3 | mean r=-0.006
+ACROSS-CIRC     xlm_align | shift=104 | layer=4 | mean r=-0.006
+ACROSS-CIRC     xlm_align | shift=104 | layer=5 | mean r=-0.012
+ACROSS-CIRC     xlm_align | shift=104 | layer=6 | mean r=-0.017
+ACROSS-CIRC     xlm_align | shift=104 | layer=7 | mean r=-0.012
+ACROSS-CIRC     xlm_align | shift=104 | layer=8 | mean r=-0.016
+ACROSS-CIRC     xlm_align | shift=104 | layer=9 | mean r=-0.009
+ACROSS-CIRC     xlm_align | shift=104 | layer=10 | mean r=-0.009
+ACROSS-CIRC     xlm_align | shift=104 | layer=11 | mean r=-0.004
+ACROSS-CIRC     xlm_align | shift=104 | layer=12 | mean r=0.014
+
+
+Processing Lang_LH_MFG (4/6)
+
+  >>> Circular shift = 26
+ACROSS-CIRC     xlm_align | shift=26 | layer=0 | mean r=-0.008
+ACROSS-CIRC     xlm_align | shift=26 | layer=1 | mean r=-0.012
+ACROSS-CIRC     xlm_align | shift=26 | layer=2 | mean r=-0.003
+ACROSS-CIRC     xlm_align | shift=26 | layer=3 | mean r=0.010
+ACROSS-CIRC     xlm_align | shift=26 | layer=4 | mean r=0.023
+ACROSS-CIRC     xlm_align | shift=26 | layer=5 | mean r=0.011
+ACROSS-CIRC     xlm_align | shift=26 | layer=6 | mean r=0.001
+ACROSS-CIRC     xlm_align | shift=26 | layer=7 | mean r=0.003
+ACROSS-CIRC     xlm_align | shift=26 | layer=8 | mean r=0.015
+ACROSS-CIRC     xlm_align | shift=26 | layer=9 | mean r=0.008
+ACROSS-CIRC     xlm_align | shift=26 | layer=10 | mean r=0.008
+ACROSS-CIRC     xlm_align | shift=26 | layer=11 | mean r=0.004
+ACROSS-CIRC     xlm_align | shift=26 | layer=12 | mean r=-0.006
+
+  >>> Circular shift = 52
+ACROSS-CIRC     xlm_align | shift=52 | layer=0 | mean r=0.019
+ACROSS-CIRC     xlm_align | shift=52 | layer=1 | mean r=0.005
+ACROSS-CIRC     xlm_align | shift=52 | layer=2 | mean r=0.019
+ACROSS-CIRC     xlm_align | shift=52 | layer=3 | mean r=-0.003
+ACROSS-CIRC     xlm_align | shift=52 | layer=4 | mean r=-0.022
+ACROSS-CIRC     xlm_align | shift=52 | layer=5 | mean r=-0.035
+ACROSS-CIRC     xlm_align | shift=52 | layer=6 | mean r=-0.027
+ACROSS-CIRC     xlm_align | shift=52 | layer=7 | mean r=-0.026
+ACROSS-CIRC     xlm_align | shift=52 | layer=8 | mean r=-0.013
+ACROSS-CIRC     xlm_align | shift=52 | layer=9 | mean r=-0.005
+ACROSS-CIRC     xlm_align | shift=52 | layer=10 | mean r=-0.016
+ACROSS-CIRC     xlm_align | shift=52 | layer=11 | mean r=-0.030
+ACROSS-CIRC     xlm_align | shift=52 | layer=12 | mean r=-0.017
+
+  >>> Circular shift = 78
+ACROSS-CIRC     xlm_align | shift=78 | layer=0 | mean r=-0.005
+ACROSS-CIRC     xlm_align | shift=78 | layer=1 | mean r=-0.002
+ACROSS-CIRC     xlm_align | shift=78 | layer=2 | mean r=-0.010
+ACROSS-CIRC     xlm_align | shift=78 | layer=3 | mean r=-0.005
+ACROSS-CIRC     xlm_align | shift=78 | layer=4 | mean r=-0.014
+ACROSS-CIRC     xlm_align | shift=78 | layer=5 | mean r=0.001
+ACROSS-CIRC     xlm_align | shift=78 | layer=6 | mean r=0.002
+ACROSS-CIRC     xlm_align | shift=78 | layer=7 | mean r=0.001
+ACROSS-CIRC     xlm_align | shift=78 | layer=8 | mean r=-0.014
+ACROSS-CIRC     xlm_align | shift=78 | layer=9 | mean r=-0.013
+ACROSS-CIRC     xlm_align | shift=78 | layer=10 | mean r=-0.016
+ACROSS-CIRC     xlm_align | shift=78 | layer=11 | mean r=-0.025
+ACROSS-CIRC     xlm_align | shift=78 | layer=12 | mean r=-0.023
+
+  >>> Circular shift = 104
+ACROSS-CIRC     xlm_align | shift=104 | layer=0 | mean r=-0.002
+ACROSS-CIRC     xlm_align | shift=104 | layer=1 | mean r=-0.012
+ACROSS-CIRC     xlm_align | shift=104 | layer=2 | mean r=-0.011
+ACROSS-CIRC     xlm_align | shift=104 | layer=3 | mean r=-0.006
+ACROSS-CIRC     xlm_align | shift=104 | layer=4 | mean r=-0.000
+ACROSS-CIRC     xlm_align | shift=104 | layer=5 | mean r=0.001
+ACROSS-CIRC     xlm_align | shift=104 | layer=6 | mean r=-0.024
+ACROSS-CIRC     xlm_align | shift=104 | layer=7 | mean r=-0.017
+ACROSS-CIRC     xlm_align | shift=104 | layer=8 | mean r=-0.017
+ACROSS-CIRC     xlm_align | shift=104 | layer=9 | mean r=-0.015
+ACROSS-CIRC     xlm_align | shift=104 | layer=10 | mean r=-0.000
+ACROSS-CIRC     xlm_align | shift=104 | layer=11 | mean r=-0.011
+ACROSS-CIRC     xlm_align | shift=104 | layer=12 | mean r=0.021
+
+
+Processing Lang_LH_PostTemp (5/6)
+
+  >>> Circular shift = 26
+ACROSS-CIRC     xlm_align | shift=26 | layer=0 | mean r=-0.024
+ACROSS-CIRC     xlm_align | shift=26 | layer=1 | mean r=-0.034
+ACROSS-CIRC     xlm_align | shift=26 | layer=2 | mean r=-0.025
+ACROSS-CIRC     xlm_align | shift=26 | layer=3 | mean r=-0.025
+ACROSS-CIRC     xlm_align | shift=26 | layer=4 | mean r=-0.016
+ACROSS-CIRC     xlm_align | shift=26 | layer=5 | mean r=-0.027
+ACROSS-CIRC     xlm_align | shift=26 | layer=6 | mean r=-0.022
+ACROSS-CIRC     xlm_align | shift=26 | layer=7 | mean r=-0.035
+ACROSS-CIRC     xlm_align | shift=26 | layer=8 | mean r=-0.024
+ACROSS-CIRC     xlm_align | shift=26 | layer=9 | mean r=-0.020
+ACROSS-CIRC     xlm_align | shift=26 | layer=10 | mean r=-0.027
+ACROSS-CIRC     xlm_align | shift=26 | layer=11 | mean r=-0.022
+ACROSS-CIRC     xlm_align | shift=26 | layer=12 | mean r=0.022
+
+  >>> Circular shift = 52
+ACROSS-CIRC     xlm_align | shift=52 | layer=0 | mean r=0.006
+ACROSS-CIRC     xlm_align | shift=52 | layer=1 | mean r=0.008
+ACROSS-CIRC     xlm_align | shift=52 | layer=2 | mean r=-0.005
+ACROSS-CIRC     xlm_align | shift=52 | layer=3 | mean r=-0.014
+ACROSS-CIRC     xlm_align | shift=52 | layer=4 | mean r=-0.032
+ACROSS-CIRC     xlm_align | shift=52 | layer=5 | mean r=-0.043
+ACROSS-CIRC     xlm_align | shift=52 | layer=6 | mean r=-0.053
+ACROSS-CIRC     xlm_align | shift=52 | layer=7 | mean r=-0.050
+ACROSS-CIRC     xlm_align | shift=52 | layer=8 | mean r=-0.039
+ACROSS-CIRC     xlm_align | shift=52 | layer=9 | mean r=-0.044
+ACROSS-CIRC     xlm_align | shift=52 | layer=10 | mean r=-0.036
+ACROSS-CIRC     xlm_align | shift=52 | layer=11 | mean r=-0.028
+ACROSS-CIRC     xlm_align | shift=52 | layer=12 | mean r=-0.017
+
+  >>> Circular shift = 78
+ACROSS-CIRC     xlm_align | shift=78 | layer=0 | mean r=0.004
+ACROSS-CIRC     xlm_align | shift=78 | layer=1 | mean r=-0.000
+ACROSS-CIRC     xlm_align | shift=78 | layer=2 | mean r=-0.011
+ACROSS-CIRC     xlm_align | shift=78 | layer=3 | mean r=-0.031
+ACROSS-CIRC     xlm_align | shift=78 | layer=4 | mean r=-0.029
+ACROSS-CIRC     xlm_align | shift=78 | layer=5 | mean r=-0.021
+ACROSS-CIRC     xlm_align | shift=78 | layer=6 | mean r=-0.027
+ACROSS-CIRC     xlm_align | shift=78 | layer=7 | mean r=-0.029
+ACROSS-CIRC     xlm_align | shift=78 | layer=8 | mean r=-0.013
+ACROSS-CIRC     xlm_align | shift=78 | layer=9 | mean r=-0.025
+ACROSS-CIRC     xlm_align | shift=78 | layer=10 | mean r=-0.031
+ACROSS-CIRC     xlm_align | shift=78 | layer=11 | mean r=-0.043
+ACROSS-CIRC     xlm_align | shift=78 | layer=12 | mean r=-0.038
+
+  >>> Circular shift = 104
+ACROSS-CIRC     xlm_align | shift=104 | layer=0 | mean r=0.027
+ACROSS-CIRC     xlm_align | shift=104 | layer=1 | mean r=0.022
+ACROSS-CIRC     xlm_align | shift=104 | layer=2 | mean r=0.019
+ACROSS-CIRC     xlm_align | shift=104 | layer=3 | mean r=0.037
+ACROSS-CIRC     xlm_align | shift=104 | layer=4 | mean r=0.035
+ACROSS-CIRC     xlm_align | shift=104 | layer=5 | mean r=0.022
+ACROSS-CIRC     xlm_align | shift=104 | layer=6 | mean r=0.024
+ACROSS-CIRC     xlm_align | shift=104 | layer=7 | mean r=0.027
+ACROSS-CIRC     xlm_align | shift=104 | layer=8 | mean r=0.036
+ACROSS-CIRC     xlm_align | shift=104 | layer=9 | mean r=0.034
+ACROSS-CIRC     xlm_align | shift=104 | layer=10 | mean r=0.038
+ACROSS-CIRC     xlm_align | shift=104 | layer=11 | mean r=0.047
+ACROSS-CIRC     xlm_align | shift=104 | layer=12 | mean r=0.038
+
+
+Processing all (6/6)
+
+  >>> Circular shift = 26
+ACROSS-CIRC     xlm_align | shift=26 | layer=0 | mean r=-0.021
+ACROSS-CIRC     xlm_align | shift=26 | layer=1 | mean r=-0.039
+ACROSS-CIRC     xlm_align | shift=26 | layer=2 | mean r=-0.033
+ACROSS-CIRC     xlm_align | shift=26 | layer=3 | mean r=-0.025
+ACROSS-CIRC     xlm_align | shift=26 | layer=4 | mean r=-0.008
+ACROSS-CIRC     xlm_align | shift=26 | layer=5 | mean r=-0.016
+ACROSS-CIRC     xlm_align | shift=26 | layer=6 | mean r=-0.018
+ACROSS-CIRC     xlm_align | shift=26 | layer=7 | mean r=-0.021
+ACROSS-CIRC     xlm_align | shift=26 | layer=8 | mean r=-0.016
+ACROSS-CIRC     xlm_align | shift=26 | layer=9 | mean r=-0.026
+ACROSS-CIRC     xlm_align | shift=26 | layer=10 | mean r=-0.028
+ACROSS-CIRC     xlm_align | shift=26 | layer=11 | mean r=-0.025
+ACROSS-CIRC     xlm_align | shift=26 | layer=12 | mean r=-0.000
+
+  >>> Circular shift = 52
+ACROSS-CIRC     xlm_align | shift=52 | layer=0 | mean r=0.013
+ACROSS-CIRC     xlm_align | shift=52 | layer=1 | mean r=0.002
+ACROSS-CIRC     xlm_align | shift=52 | layer=2 | mean r=0.006
+ACROSS-CIRC     xlm_align | shift=52 | layer=3 | mean r=-0.008
+ACROSS-CIRC     xlm_align | shift=52 | layer=4 | mean r=-0.030
+ACROSS-CIRC     xlm_align | shift=52 | layer=5 | mean r=-0.047
+ACROSS-CIRC     xlm_align | shift=52 | layer=6 | mean r=-0.046
+ACROSS-CIRC     xlm_align | shift=52 | layer=7 | mean r=-0.037
+ACROSS-CIRC     xlm_align | shift=52 | layer=8 | mean r=-0.025
+ACROSS-CIRC     xlm_align | shift=52 | layer=9 | mean r=-0.030
+ACROSS-CIRC     xlm_align | shift=52 | layer=10 | mean r=-0.025
+ACROSS-CIRC     xlm_align | shift=52 | layer=11 | mean r=-0.028
+ACROSS-CIRC     xlm_align | shift=52 | layer=12 | mean r=-0.022
+
+  >>> Circular shift = 78
+ACROSS-CIRC     xlm_align | shift=78 | layer=0 | mean r=-0.002
+ACROSS-CIRC     xlm_align | shift=78 | layer=1 | mean r=0.005
+ACROSS-CIRC     xlm_align | shift=78 | layer=2 | mean r=0.004
+ACROSS-CIRC     xlm_align | shift=78 | layer=3 | mean r=-0.015
+ACROSS-CIRC     xlm_align | shift=78 | layer=4 | mean r=-0.023
+ACROSS-CIRC     xlm_align | shift=78 | layer=5 | mean r=-0.015
+ACROSS-CIRC     xlm_align | shift=78 | layer=6 | mean r=-0.010
+ACROSS-CIRC     xlm_align | shift=78 | layer=7 | mean r=-0.010
+ACROSS-CIRC     xlm_align | shift=78 | layer=8 | mean r=-0.010
+ACROSS-CIRC     xlm_align | shift=78 | layer=9 | mean r=-0.019
+ACROSS-CIRC     xlm_align | shift=78 | layer=10 | mean r=-0.011
+ACROSS-CIRC     xlm_align | shift=78 | layer=11 | mean r=-0.019
+ACROSS-CIRC     xlm_align | shift=78 | layer=12 | mean r=-0.031
+
+  >>> Circular shift = 104
+ACROSS-CIRC     xlm_align | shift=104 | layer=0 | mean r=0.017
+ACROSS-CIRC     xlm_align | shift=104 | layer=1 | mean r=0.001
+ACROSS-CIRC     xlm_align | shift=104 | layer=2 | mean r=-0.006
+ACROSS-CIRC     xlm_align | shift=104 | layer=3 | mean r=0.016
+ACROSS-CIRC     xlm_align | shift=104 | layer=4 | mean r=0.004
+ACROSS-CIRC     xlm_align | shift=104 | layer=5 | mean r=-0.006
+ACROSS-CIRC     xlm_align | shift=104 | layer=6 | mean r=-0.007
+ACROSS-CIRC     xlm_align | shift=104 | layer=7 | mean r=-0.008
+ACROSS-CIRC     xlm_align | shift=104 | layer=8 | mean r=0.001
+ACROSS-CIRC     xlm_align | shift=104 | layer=9 | mean r=-0.001
+ACROSS-CIRC     xlm_align | shift=104 | layer=10 | mean r=0.004
+ACROSS-CIRC     xlm_align | shift=104 | layer=11 | mean r=0.007
+ACROSS-CIRC     xlm_align | shift=104 | layer=12 | mean r=0.021
+
+
+Processing Lang_LH_AntTemp (1/6)
+
+  >>> Circular shift = 26
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=0 | mean r=-0.005
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=1 | mean r=-0.021
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=2 | mean r=-0.015
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=3 | mean r=-0.024
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=4 | mean r=-0.010
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=5 | mean r=-0.009
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=6 | mean r=-0.010
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=7 | mean r=-0.006
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=8 | mean r=-0.010
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=9 | mean r=-0.013
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=10 | mean r=-0.013
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=11 | mean r=-0.008
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=12 | mean r=-0.008
+
+  >>> Circular shift = 52
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=0 | mean r=0.016
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=1 | mean r=0.008
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=2 | mean r=0.012
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=3 | mean r=0.011
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=4 | mean r=0.017
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=5 | mean r=0.012
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=6 | mean r=0.021
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=7 | mean r=0.008
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=8 | mean r=-0.001
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=9 | mean r=0.004
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=10 | mean r=0.015
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=11 | mean r=0.011
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=12 | mean r=-0.005
+
+  >>> Circular shift = 78
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=0 | mean r=0.000
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=1 | mean r=0.002
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=2 | mean r=-0.004
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=3 | mean r=-0.018
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=4 | mean r=-0.023
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=5 | mean r=-0.015
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=6 | mean r=-0.002
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=7 | mean r=-0.012
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=8 | mean r=-0.002
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=9 | mean r=-0.006
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=10 | mean r=-0.006
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=11 | mean r=-0.011
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=12 | mean r=0.001
+
+  >>> Circular shift = 104
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=0 | mean r=0.027
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=1 | mean r=0.016
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=2 | mean r=0.008
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=3 | mean r=0.021
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=4 | mean r=0.016
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=5 | mean r=0.007
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=6 | mean r=-0.004
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=7 | mean r=0.002
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=8 | mean r=-0.004
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=9 | mean r=0.009
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=10 | mean r=0.000
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=11 | mean r=0.016
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=12 | mean r=0.011
+
+
+Processing Lang_LH_IFG (2/6)
+
+  >>> Circular shift = 26
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=0 | mean r=-0.044
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=1 | mean r=-0.044
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=2 | mean r=-0.040
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=3 | mean r=-0.019
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=4 | mean r=-0.005
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=5 | mean r=-0.020
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=6 | mean r=-0.014
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=7 | mean r=0.003
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=8 | mean r=-0.007
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=9 | mean r=0.001
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=10 | mean r=0.002
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=11 | mean r=0.006
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=12 | mean r=0.018
+
+  >>> Circular shift = 52
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=0 | mean r=-0.002
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=1 | mean r=-0.006
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=2 | mean r=-0.012
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=3 | mean r=-0.007
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=4 | mean r=-0.030
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=5 | mean r=-0.045
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=6 | mean r=-0.027
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=7 | mean r=-0.030
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=8 | mean r=-0.028
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=9 | mean r=-0.029
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=10 | mean r=-0.027
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=11 | mean r=-0.029
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=12 | mean r=-0.041
+
+  >>> Circular shift = 78
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=0 | mean r=0.014
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=1 | mean r=0.022
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=2 | mean r=0.026
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=3 | mean r=0.008
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=4 | mean r=-0.014
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=5 | mean r=-0.004
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=6 | mean r=0.008
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=7 | mean r=-0.003
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=8 | mean r=0.007
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=9 | mean r=-0.009
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=10 | mean r=-0.002
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=11 | mean r=0.004
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=12 | mean r=-0.002
+
+  >>> Circular shift = 104
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=0 | mean r=0.003
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=1 | mean r=0.002
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=2 | mean r=-0.009
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=3 | mean r=-0.000
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=4 | mean r=0.010
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=5 | mean r=0.003
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=6 | mean r=-0.004
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=7 | mean r=-0.010
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=8 | mean r=-0.008
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=9 | mean r=-0.005
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=10 | mean r=-0.014
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=11 | mean r=-0.013
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=12 | mean r=-0.024
+
+
+Processing Lang_LH_IFGorb (3/6)
+
+  >>> Circular shift = 26
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=0 | mean r=-0.015
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=1 | mean r=-0.025
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=2 | mean r=-0.018
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=3 | mean r=-0.011
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=4 | mean r=-0.001
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=5 | mean r=-0.010
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=6 | mean r=-0.003
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=7 | mean r=-0.008
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=8 | mean r=-0.015
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=9 | mean r=-0.010
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=10 | mean r=-0.014
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=11 | mean r=-0.009
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=12 | mean r=-0.001
+
+  >>> Circular shift = 52
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=0 | mean r=-0.004
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=1 | mean r=-0.010
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=2 | mean r=-0.013
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=3 | mean r=-0.005
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=4 | mean r=0.003
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=5 | mean r=-0.008
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=6 | mean r=-0.007
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=7 | mean r=-0.012
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=8 | mean r=-0.014
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=9 | mean r=-0.014
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=10 | mean r=-0.003
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=11 | mean r=-0.009
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=12 | mean r=-0.015
+
+  >>> Circular shift = 78
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=0 | mean r=-0.002
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=1 | mean r=-0.009
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=2 | mean r=-0.013
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=3 | mean r=-0.011
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=4 | mean r=-0.025
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=5 | mean r=-0.016
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=6 | mean r=-0.020
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=7 | mean r=-0.027
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=8 | mean r=-0.009
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=9 | mean r=-0.021
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=10 | mean r=-0.014
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=11 | mean r=-0.011
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=12 | mean r=-0.020
+
+  >>> Circular shift = 104
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=0 | mean r=0.005
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=1 | mean r=-0.000
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=2 | mean r=-0.003
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=3 | mean r=0.002
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=4 | mean r=0.001
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=5 | mean r=-0.002
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=6 | mean r=-0.015
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=7 | mean r=-0.009
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=8 | mean r=-0.013
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=9 | mean r=0.004
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=10 | mean r=-0.002
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=11 | mean r=0.009
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=12 | mean r=0.011
+
+
+Processing Lang_LH_MFG (4/6)
+
+  >>> Circular shift = 26
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=0 | mean r=-0.008
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=1 | mean r=-0.007
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=2 | mean r=-0.003
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=3 | mean r=0.011
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=4 | mean r=0.010
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=5 | mean r=0.004
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=6 | mean r=0.001
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=7 | mean r=-0.001
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=8 | mean r=0.004
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=9 | mean r=0.007
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=10 | mean r=0.012
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=11 | mean r=0.012
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=12 | mean r=0.057
+
+  >>> Circular shift = 52
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=0 | mean r=0.019
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=1 | mean r=-0.001
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=2 | mean r=0.007
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=3 | mean r=-0.011
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=4 | mean r=-0.032
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=5 | mean r=-0.040
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=6 | mean r=-0.018
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=7 | mean r=-0.031
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=8 | mean r=-0.025
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=9 | mean r=-0.016
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=10 | mean r=-0.012
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=11 | mean r=-0.016
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=12 | mean r=-0.032
+
+  >>> Circular shift = 78
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=0 | mean r=-0.007
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=1 | mean r=0.001
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=2 | mean r=-0.000
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=3 | mean r=-0.006
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=4 | mean r=-0.009
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=5 | mean r=-0.000
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=6 | mean r=0.007
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=7 | mean r=-0.004
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=8 | mean r=-0.007
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=9 | mean r=-0.008
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=10 | mean r=-0.010
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=11 | mean r=-0.011
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=12 | mean r=0.007
+
+  >>> Circular shift = 104
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=0 | mean r=-0.003
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=1 | mean r=-0.009
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=2 | mean r=-0.015
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=3 | mean r=-0.000
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=4 | mean r=0.012
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=5 | mean r=-0.010
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=6 | mean r=-0.040
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=7 | mean r=-0.027
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=8 | mean r=-0.015
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=9 | mean r=-0.012
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=10 | mean r=-0.012
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=11 | mean r=-0.018
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=12 | mean r=-0.020
+
+
+Processing Lang_LH_PostTemp (5/6)
+
+  >>> Circular shift = 26
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=0 | mean r=-0.026
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=1 | mean r=-0.028
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=2 | mean r=-0.018
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=3 | mean r=-0.022
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=4 | mean r=-0.009
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=5 | mean r=-0.014
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=6 | mean r=0.001
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=7 | mean r=-0.005
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=8 | mean r=-0.010
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=9 | mean r=-0.004
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=10 | mean r=-0.003
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=11 | mean r=0.002
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=12 | mean r=0.014
+
+  >>> Circular shift = 52
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=0 | mean r=0.008
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=1 | mean r=0.001
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=2 | mean r=-0.006
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=3 | mean r=-0.008
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=4 | mean r=-0.021
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=5 | mean r=-0.015
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=6 | mean r=-0.026
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=7 | mean r=-0.035
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=8 | mean r=-0.047
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=9 | mean r=-0.040
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=10 | mean r=-0.029
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=11 | mean r=-0.017
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=12 | mean r=-0.034
+
+  >>> Circular shift = 78
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=0 | mean r=0.004
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=1 | mean r=0.002
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=2 | mean r=-0.011
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=3 | mean r=-0.026
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=4 | mean r=-0.036
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=5 | mean r=-0.026
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=6 | mean r=-0.017
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=7 | mean r=-0.033
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=8 | mean r=-0.020
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=9 | mean r=-0.032
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=10 | mean r=-0.029
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=11 | mean r=-0.037
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=12 | mean r=-0.019
+
+  >>> Circular shift = 104
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=0 | mean r=0.029
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=1 | mean r=0.024
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=2 | mean r=0.015
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=3 | mean r=0.035
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=4 | mean r=0.037
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=5 | mean r=0.019
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=6 | mean r=0.015
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=7 | mean r=0.027
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=8 | mean r=0.020
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=9 | mean r=0.030
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=10 | mean r=0.035
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=11 | mean r=0.048
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=12 | mean r=0.035
+
+
+Processing all (6/6)
+
+  >>> Circular shift = 26
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=0 | mean r=-0.023
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=1 | mean r=-0.031
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=2 | mean r=-0.025
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=3 | mean r=-0.019
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=4 | mean r=-0.002
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=5 | mean r=-0.010
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=6 | mean r=-0.005
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=7 | mean r=0.003
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=8 | mean r=-0.004
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=9 | mean r=-0.002
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=10 | mean r=-0.008
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=11 | mean r=-0.004
+ACROSS-CIRC     infoxlm_base | shift=26 | layer=12 | mean r=0.020
+
+  >>> Circular shift = 52
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=0 | mean r=0.014
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=1 | mean r=-0.007
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=2 | mean r=0.000
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=3 | mean r=-0.002
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=4 | mean r=-0.018
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=5 | mean r=-0.033
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=6 | mean r=-0.024
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=7 | mean r=-0.033
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=8 | mean r=-0.039
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=9 | mean r=-0.031
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=10 | mean r=-0.023
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=11 | mean r=-0.018
+ACROSS-CIRC     infoxlm_base | shift=52 | layer=12 | mean r=-0.029
+
+  >>> Circular shift = 78
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=0 | mean r=-0.000
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=1 | mean r=-0.002
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=2 | mean r=0.001
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=3 | mean r=-0.007
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=4 | mean r=-0.028
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=5 | mean r=-0.016
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=6 | mean r=-0.003
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=7 | mean r=-0.025
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=8 | mean r=-0.010
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=9 | mean r=-0.019
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=10 | mean r=-0.014
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=11 | mean r=-0.019
+ACROSS-CIRC     infoxlm_base | shift=78 | layer=12 | mean r=-0.018
+
+  >>> Circular shift = 104
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=0 | mean r=0.018
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=1 | mean r=0.006
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=2 | mean r=-0.005
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=3 | mean r=0.008
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=4 | mean r=0.015
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=5 | mean r=-0.004
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=6 | mean r=-0.007
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=7 | mean r=0.003
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=8 | mean r=0.007
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=9 | mean r=0.010
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=10 | mean r=0.008
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=11 | mean r=0.013
+ACROSS-CIRC     infoxlm_base | shift=104 | layer=12 | mean r=0.005
+
+
+Processing Lang_LH_AntTemp (1/6)
+
+  >>> Circular shift = 26
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=0 | mean r=0.004
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=1 | mean r=-0.005
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=2 | mean r=-0.008
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=3 | mean r=-0.013
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=4 | mean r=-0.011
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=5 | mean r=-0.017
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=6 | mean r=-0.010
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=7 | mean r=-0.006
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=8 | mean r=-0.000
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=9 | mean r=-0.008
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=10 | mean r=-0.017
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=11 | mean r=-0.016
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=12 | mean r=-0.016
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=13 | mean r=-0.012
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=14 | mean r=-0.010
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=15 | mean r=-0.002
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=16 | mean r=0.001
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=17 | mean r=-0.017
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=18 | mean r=-0.006
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=19 | mean r=-0.012
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=20 | mean r=-0.025
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=21 | mean r=-0.020
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=22 | mean r=-0.035
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=23 | mean r=-0.027
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=24 | mean r=-0.014
+
+  >>> Circular shift = 52
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=0 | mean r=0.030
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=1 | mean r=0.020
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=2 | mean r=0.020
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=3 | mean r=0.021
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=4 | mean r=0.012
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=5 | mean r=0.020
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=6 | mean r=0.008
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=7 | mean r=0.004
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=8 | mean r=0.004
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=9 | mean r=0.007
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=10 | mean r=0.020
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=11 | mean r=0.015
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=12 | mean r=0.018
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=13 | mean r=0.015
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=14 | mean r=0.010
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=15 | mean r=0.005
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=16 | mean r=0.016
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=17 | mean r=0.018
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=18 | mean r=0.024
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=19 | mean r=0.026
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=20 | mean r=0.024
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=21 | mean r=0.026
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=22 | mean r=0.024
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=23 | mean r=0.027
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=24 | mean r=0.030
+
+  >>> Circular shift = 78
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=0 | mean r=0.008
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=1 | mean r=0.013
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=2 | mean r=0.004
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=3 | mean r=0.011
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=4 | mean r=0.003
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=5 | mean r=-0.007
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=6 | mean r=-0.001
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=7 | mean r=-0.008
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=8 | mean r=0.001
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=9 | mean r=-0.002
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=10 | mean r=-0.003
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=11 | mean r=-0.008
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=12 | mean r=-0.008
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=13 | mean r=0.006
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=14 | mean r=-0.000
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=15 | mean r=-0.006
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=16 | mean r=-0.002
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=17 | mean r=-0.009
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=18 | mean r=0.005
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=19 | mean r=-0.011
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=20 | mean r=-0.008
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=21 | mean r=-0.011
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=22 | mean r=-0.006
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=23 | mean r=-0.014
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=24 | mean r=0.008
+
+  >>> Circular shift = 104
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=0 | mean r=0.008
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=1 | mean r=-0.003
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=2 | mean r=-0.001
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=3 | mean r=-0.004
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=4 | mean r=-0.011
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=5 | mean r=-0.007
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=6 | mean r=-0.007
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=7 | mean r=-0.000
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=8 | mean r=-0.007
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=9 | mean r=-0.004
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=10 | mean r=-0.006
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=11 | mean r=-0.009
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=12 | mean r=-0.009
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=13 | mean r=-0.015
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=14 | mean r=-0.021
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=15 | mean r=-0.024
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=16 | mean r=-0.035
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=17 | mean r=-0.036
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=18 | mean r=-0.023
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=19 | mean r=-0.008
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=20 | mean r=0.001
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=21 | mean r=0.003
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=22 | mean r=0.004
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=23 | mean r=-0.008
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=24 | mean r=-0.013
+
+
+Processing Lang_LH_IFG (2/6)
+
+  >>> Circular shift = 26
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=0 | mean r=-0.013
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=1 | mean r=-0.015
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=2 | mean r=-0.012
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=3 | mean r=-0.011
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=4 | mean r=-0.013
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=5 | mean r=-0.010
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=6 | mean r=-0.010
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=7 | mean r=-0.010
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=8 | mean r=-0.008
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=9 | mean r=-0.000
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=10 | mean r=-0.010
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=11 | mean r=-0.002
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=12 | mean r=-0.002
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=13 | mean r=0.006
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=14 | mean r=0.002
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=15 | mean r=0.006
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=16 | mean r=0.008
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=17 | mean r=-0.007
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=18 | mean r=-0.008
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=19 | mean r=-0.004
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=20 | mean r=-0.002
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=21 | mean r=-0.002
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=22 | mean r=0.009
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=23 | mean r=0.035
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=24 | mean r=0.046
+
+  >>> Circular shift = 52
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=0 | mean r=0.027
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=1 | mean r=0.010
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=2 | mean r=0.013
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=3 | mean r=-0.002
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=4 | mean r=-0.006
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=5 | mean r=-0.001
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=6 | mean r=-0.006
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=7 | mean r=-0.015
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=8 | mean r=-0.013
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=9 | mean r=-0.019
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=10 | mean r=-0.014
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=11 | mean r=-0.021
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=12 | mean r=-0.013
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=13 | mean r=-0.005
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=14 | mean r=-0.015
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=15 | mean r=-0.020
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=16 | mean r=-0.028
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=17 | mean r=-0.027
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=18 | mean r=-0.019
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=19 | mean r=-0.010
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=20 | mean r=-0.011
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=21 | mean r=-0.012
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=22 | mean r=-0.012
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=23 | mean r=-0.024
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=24 | mean r=0.003
+
+  >>> Circular shift = 78
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=0 | mean r=0.013
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=1 | mean r=0.023
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=2 | mean r=0.016
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=3 | mean r=0.018
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=4 | mean r=0.014
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=5 | mean r=0.007
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=6 | mean r=0.009
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=7 | mean r=0.007
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=8 | mean r=0.012
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=9 | mean r=0.002
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=10 | mean r=0.007
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=11 | mean r=-0.001
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=12 | mean r=0.013
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=13 | mean r=0.016
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=14 | mean r=0.019
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=15 | mean r=0.016
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=16 | mean r=0.016
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=17 | mean r=0.022
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=18 | mean r=0.017
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=19 | mean r=0.004
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=20 | mean r=0.006
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=21 | mean r=0.002
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=22 | mean r=-0.002
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=23 | mean r=-0.023
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=24 | mean r=-0.022
+
+  >>> Circular shift = 104
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=0 | mean r=0.007
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=1 | mean r=-0.004
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=2 | mean r=-0.008
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=3 | mean r=-0.017
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=4 | mean r=-0.015
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=5 | mean r=-0.013
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=6 | mean r=-0.008
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=7 | mean r=0.003
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=8 | mean r=-0.009
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=9 | mean r=-0.006
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=10 | mean r=-0.006
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=11 | mean r=-0.006
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=12 | mean r=0.001
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=13 | mean r=0.000
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=14 | mean r=-0.000
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=15 | mean r=-0.013
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=16 | mean r=-0.012
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=17 | mean r=-0.010
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=18 | mean r=-0.009
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=19 | mean r=-0.013
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=20 | mean r=-0.019
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=21 | mean r=-0.016
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=22 | mean r=-0.018
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=23 | mean r=-0.022
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=24 | mean r=-0.026
+
+
+Processing Lang_LH_IFGorb (3/6)
+
+  >>> Circular shift = 26
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=0 | mean r=-0.000
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=1 | mean r=-0.005
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=2 | mean r=-0.006
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=3 | mean r=-0.005
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=4 | mean r=-0.006
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=5 | mean r=-0.012
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=6 | mean r=-0.011
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=7 | mean r=-0.016
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=8 | mean r=-0.008
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=9 | mean r=-0.009
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=10 | mean r=-0.012
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=11 | mean r=-0.004
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=12 | mean r=-0.007
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=13 | mean r=-0.008
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=14 | mean r=-0.004
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=15 | mean r=0.003
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=16 | mean r=0.002
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=17 | mean r=-0.009
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=18 | mean r=0.001
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=19 | mean r=-0.001
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=20 | mean r=-0.006
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=21 | mean r=-0.009
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=22 | mean r=-0.012
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=23 | mean r=-0.005
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=24 | mean r=0.014
+
+  >>> Circular shift = 52
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=0 | mean r=0.012
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=1 | mean r=-0.002
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=2 | mean r=0.001
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=3 | mean r=0.000
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=4 | mean r=-0.009
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=5 | mean r=0.002
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=6 | mean r=-0.010
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=7 | mean r=-0.016
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=8 | mean r=-0.017
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=9 | mean r=-0.017
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=10 | mean r=-0.005
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=11 | mean r=-0.014
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=12 | mean r=-0.011
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=13 | mean r=-0.009
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=14 | mean r=-0.007
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=15 | mean r=-0.011
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=16 | mean r=-0.013
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=17 | mean r=-0.013
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=18 | mean r=-0.013
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=19 | mean r=-0.003
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=20 | mean r=-0.002
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=21 | mean r=0.005
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=22 | mean r=-0.000
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=23 | mean r=-0.007
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=24 | mean r=0.008
+
+  >>> Circular shift = 78
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=0 | mean r=0.015
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=1 | mean r=0.017
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=2 | mean r=0.004
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=3 | mean r=0.008
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=4 | mean r=0.000
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=5 | mean r=0.002
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=6 | mean r=0.001
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=7 | mean r=-0.003
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=8 | mean r=0.001
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=9 | mean r=-0.003
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=10 | mean r=-0.002
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=11 | mean r=-0.004
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=12 | mean r=-0.002
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=13 | mean r=0.005
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=14 | mean r=0.006
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=15 | mean r=-0.003
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=16 | mean r=0.003
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=17 | mean r=0.004
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=18 | mean r=0.001
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=19 | mean r=-0.011
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=20 | mean r=-0.004
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=21 | mean r=-0.008
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=22 | mean r=-0.012
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=23 | mean r=-0.018
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=24 | mean r=-0.002
+
+  >>> Circular shift = 104
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=0 | mean r=0.004
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=1 | mean r=-0.002
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=2 | mean r=-0.004
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=3 | mean r=-0.011
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=4 | mean r=-0.012
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=5 | mean r=-0.009
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=6 | mean r=-0.007
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=7 | mean r=0.001
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=8 | mean r=-0.006
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=9 | mean r=0.004
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=10 | mean r=-0.002
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=11 | mean r=-0.007
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=12 | mean r=-0.007
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=13 | mean r=-0.014
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=14 | mean r=-0.020
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=15 | mean r=-0.016
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=16 | mean r=-0.020
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=17 | mean r=-0.020
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=18 | mean r=-0.013
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=19 | mean r=-0.016
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=20 | mean r=-0.013
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=21 | mean r=-0.001
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=22 | mean r=-0.004
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=23 | mean r=-0.005
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=24 | mean r=-0.006
+
+
+Processing Lang_LH_MFG (4/6)
+
+  >>> Circular shift = 26
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=0 | mean r=0.008
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=1 | mean r=0.008
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=2 | mean r=-0.001
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=3 | mean r=0.002
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=4 | mean r=-0.015
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=5 | mean r=-0.012
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=6 | mean r=-0.011
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=7 | mean r=-0.000
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=8 | mean r=0.008
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=9 | mean r=0.002
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=10 | mean r=-0.009
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=11 | mean r=0.002
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=12 | mean r=-0.009
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=13 | mean r=-0.014
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=14 | mean r=-0.018
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=15 | mean r=-0.007
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=16 | mean r=-0.002
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=17 | mean r=-0.014
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=18 | mean r=-0.013
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=19 | mean r=-0.022
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=20 | mean r=-0.014
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=21 | mean r=-0.019
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=22 | mean r=-0.010
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=23 | mean r=0.010
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=24 | mean r=0.029
+
+  >>> Circular shift = 52
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=0 | mean r=0.034
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=1 | mean r=0.019
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=2 | mean r=0.012
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=3 | mean r=0.003
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=4 | mean r=-0.001
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=5 | mean r=0.005
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=6 | mean r=0.001
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=7 | mean r=-0.007
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=8 | mean r=-0.012
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=9 | mean r=-0.027
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=10 | mean r=-0.016
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=11 | mean r=-0.011
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=12 | mean r=-0.006
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=13 | mean r=-0.012
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=14 | mean r=-0.011
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=15 | mean r=-0.015
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=16 | mean r=-0.027
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=17 | mean r=-0.031
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=18 | mean r=-0.042
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=19 | mean r=-0.015
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=20 | mean r=-0.026
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=21 | mean r=-0.031
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=22 | mean r=-0.026
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=23 | mean r=-0.053
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=24 | mean r=-0.042
+
+  >>> Circular shift = 78
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=0 | mean r=-0.012
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=1 | mean r=-0.009
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=2 | mean r=-0.004
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=3 | mean r=-0.005
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=4 | mean r=-0.012
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=5 | mean r=-0.010
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=6 | mean r=0.001
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=7 | mean r=-0.010
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=8 | mean r=-0.002
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=9 | mean r=0.007
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=10 | mean r=0.005
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=11 | mean r=0.003
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=12 | mean r=0.001
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=13 | mean r=0.007
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=14 | mean r=0.004
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=15 | mean r=-0.001
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=16 | mean r=0.002
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=17 | mean r=0.006
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=18 | mean r=0.008
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=19 | mean r=0.003
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=20 | mean r=0.012
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=21 | mean r=0.009
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=22 | mean r=0.005
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=23 | mean r=-0.010
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=24 | mean r=-0.009
+
+  >>> Circular shift = 104
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=0 | mean r=0.001
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=1 | mean r=-0.008
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=2 | mean r=-0.018
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=3 | mean r=-0.015
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=4 | mean r=-0.002
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=5 | mean r=-0.002
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=6 | mean r=-0.004
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=7 | mean r=0.005
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=8 | mean r=-0.001
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=9 | mean r=-0.001
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=10 | mean r=-0.011
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=11 | mean r=-0.012
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=12 | mean r=0.007
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=13 | mean r=0.013
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=14 | mean r=0.015
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=15 | mean r=0.018
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=16 | mean r=0.008
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=17 | mean r=0.004
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=18 | mean r=0.006
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=19 | mean r=-0.001
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=20 | mean r=-0.001
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=21 | mean r=0.010
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=22 | mean r=0.015
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=23 | mean r=0.015
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=24 | mean r=-0.015
+
+
+Processing Lang_LH_PostTemp (5/6)
+
+  >>> Circular shift = 26
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=0 | mean r=-0.006
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=1 | mean r=-0.013
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=2 | mean r=-0.015
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=3 | mean r=-0.021
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=4 | mean r=-0.020
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=5 | mean r=-0.012
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=6 | mean r=-0.020
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=7 | mean r=-0.010
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=8 | mean r=-0.008
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=9 | mean r=-0.011
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=10 | mean r=-0.019
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=11 | mean r=-0.010
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=12 | mean r=-0.003
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=13 | mean r=0.010
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=14 | mean r=0.011
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=15 | mean r=0.020
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=16 | mean r=0.023
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=17 | mean r=0.000
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=18 | mean r=0.006
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=19 | mean r=0.004
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=20 | mean r=-0.019
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=21 | mean r=-0.015
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=22 | mean r=-0.014
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=23 | mean r=-0.010
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=24 | mean r=0.011
+
+  >>> Circular shift = 52
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=0 | mean r=0.036
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=1 | mean r=0.021
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=2 | mean r=0.015
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=3 | mean r=0.008
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=4 | mean r=-0.005
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=5 | mean r=0.007
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=6 | mean r=-0.007
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=7 | mean r=-0.005
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=8 | mean r=-0.009
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=9 | mean r=-0.011
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=10 | mean r=-0.008
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=11 | mean r=-0.012
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=12 | mean r=-0.012
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=13 | mean r=-0.027
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=14 | mean r=-0.028
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=15 | mean r=-0.028
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=16 | mean r=-0.032
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=17 | mean r=-0.040
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=18 | mean r=-0.033
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=19 | mean r=-0.026
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=20 | mean r=-0.028
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=21 | mean r=-0.024
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=22 | mean r=-0.014
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=23 | mean r=-0.009
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=24 | mean r=0.015
+
+  >>> Circular shift = 78
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=0 | mean r=0.024
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=1 | mean r=0.026
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=2 | mean r=0.007
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=3 | mean r=0.012
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=4 | mean r=-0.004
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=5 | mean r=-0.013
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=6 | mean r=-0.002
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=7 | mean r=-0.016
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=8 | mean r=-0.002
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=9 | mean r=-0.005
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=10 | mean r=-0.007
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=11 | mean r=-0.013
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=12 | mean r=-0.007
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=13 | mean r=-0.002
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=14 | mean r=-0.017
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=15 | mean r=-0.022
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=16 | mean r=-0.027
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=17 | mean r=-0.031
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=18 | mean r=-0.020
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=19 | mean r=-0.025
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=20 | mean r=-0.018
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=21 | mean r=-0.016
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=22 | mean r=-0.013
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=23 | mean r=-0.028
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=24 | mean r=-0.008
+
+  >>> Circular shift = 104
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=0 | mean r=0.030
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=1 | mean r=0.017
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=2 | mean r=0.012
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=3 | mean r=0.004
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=4 | mean r=-0.001
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=5 | mean r=0.010
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=6 | mean r=0.008
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=7 | mean r=0.016
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=8 | mean r=0.015
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=9 | mean r=0.021
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=10 | mean r=0.006
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=11 | mean r=0.004
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=12 | mean r=0.005
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=13 | mean r=-0.007
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=14 | mean r=-0.011
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=15 | mean r=-0.007
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=16 | mean r=-0.012
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=17 | mean r=-0.008
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=18 | mean r=0.003
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=19 | mean r=0.006
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=20 | mean r=0.015
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=21 | mean r=0.022
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=22 | mean r=0.026
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=23 | mean r=0.017
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=24 | mean r=0.001
+
+
+Processing all (6/6)
+
+  >>> Circular shift = 26
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=0 | mean r=0.011
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=1 | mean r=0.000
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=2 | mean r=-0.006
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=3 | mean r=-0.008
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=4 | mean r=-0.015
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=5 | mean r=-0.013
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=6 | mean r=-0.010
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=7 | mean r=-0.008
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=8 | mean r=-0.005
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=9 | mean r=0.001
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=10 | mean r=-0.007
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=11 | mean r=0.006
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=12 | mean r=0.005
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=13 | mean r=0.004
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=14 | mean r=-0.006
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=15 | mean r=0.003
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=16 | mean r=0.002
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=17 | mean r=-0.009
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=18 | mean r=-0.008
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=19 | mean r=-0.009
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=20 | mean r=-0.011
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=21 | mean r=-0.015
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=22 | mean r=-0.010
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=23 | mean r=0.013
+ACROSS-CIRC     infoxlm_large | shift=26 | layer=24 | mean r=0.022
+
+  >>> Circular shift = 52
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=0 | mean r=0.040
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=1 | mean r=0.016
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=2 | mean r=0.013
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=3 | mean r=0.006
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=4 | mean r=-0.005
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=5 | mean r=0.004
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=6 | mean r=-0.009
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=7 | mean r=-0.014
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=8 | mean r=-0.019
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=9 | mean r=-0.024
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=10 | mean r=-0.015
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=11 | mean r=-0.021
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=12 | mean r=-0.019
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=13 | mean r=-0.018
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=14 | mean r=-0.015
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=15 | mean r=-0.021
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=16 | mean r=-0.024
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=17 | mean r=-0.028
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=18 | mean r=-0.027
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=19 | mean r=-0.016
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=20 | mean r=-0.015
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=21 | mean r=-0.009
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=22 | mean r=-0.009
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=23 | mean r=-0.017
+ACROSS-CIRC     infoxlm_large | shift=52 | layer=24 | mean r=-0.002
+
+  >>> Circular shift = 78
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=0 | mean r=0.005
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=1 | mean r=0.007
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=2 | mean r=-0.006
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=3 | mean r=-0.003
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=4 | mean r=-0.012
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=5 | mean r=-0.016
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=6 | mean r=-0.008
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=7 | mean r=-0.013
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=8 | mean r=-0.008
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=9 | mean r=-0.007
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=10 | mean r=-0.004
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=11 | mean r=-0.005
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=12 | mean r=-0.001
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=13 | mean r=0.007
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=14 | mean r=0.005
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=15 | mean r=0.001
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=16 | mean r=0.012
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=17 | mean r=0.011
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=18 | mean r=0.008
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=19 | mean r=-0.002
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=20 | mean r=0.006
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=21 | mean r=0.003
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=22 | mean r=0.004
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=23 | mean r=-0.010
+ACROSS-CIRC     infoxlm_large | shift=78 | layer=24 | mean r=-0.006
+
+  >>> Circular shift = 104
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=0 | mean r=0.010
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=1 | mean r=0.010
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=2 | mean r=-0.001
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=3 | mean r=-0.013
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=4 | mean r=-0.011
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=5 | mean r=-0.004
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=6 | mean r=-0.005
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=7 | mean r=0.006
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=8 | mean r=0.001
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=9 | mean r=0.005
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=10 | mean r=0.003
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=11 | mean r=-0.003
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=12 | mean r=0.009
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=13 | mean r=0.001
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=14 | mean r=-0.005
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=15 | mean r=-0.001
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=16 | mean r=-0.011
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=17 | mean r=-0.013
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=18 | mean r=0.001
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=19 | mean r=-0.013
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=20 | mean r=-0.009
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=21 | mean r=0.002
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=22 | mean r=0.004
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=23 | mean r=-0.001
+ACROSS-CIRC     infoxlm_large | shift=104 | layer=24 | mean r=-0.007
+
+
+Processing Lang_LH_AntTemp (1/6)
+
+  >>> Circular shift = 26
+ACROSS-CIRC     multiminilm | shift=26 | layer=0 | mean r=-0.016
+ACROSS-CIRC     multiminilm | shift=26 | layer=1 | mean r=-0.019
+ACROSS-CIRC     multiminilm | shift=26 | layer=2 | mean r=-0.021
+ACROSS-CIRC     multiminilm | shift=26 | layer=3 | mean r=-0.022
+ACROSS-CIRC     multiminilm | shift=26 | layer=4 | mean r=-0.023
+ACROSS-CIRC     multiminilm | shift=26 | layer=5 | mean r=-0.020
+ACROSS-CIRC     multiminilm | shift=26 | layer=6 | mean r=-0.026
+ACROSS-CIRC     multiminilm | shift=26 | layer=7 | mean r=-0.030
+ACROSS-CIRC     multiminilm | shift=26 | layer=8 | mean r=-0.032
+ACROSS-CIRC     multiminilm | shift=26 | layer=9 | mean r=-0.038
+ACROSS-CIRC     multiminilm | shift=26 | layer=10 | mean r=-0.039
+ACROSS-CIRC     multiminilm | shift=26 | layer=11 | mean r=-0.026
+ACROSS-CIRC     multiminilm | shift=26 | layer=12 | mean r=-0.028
+
+  >>> Circular shift = 52
+ACROSS-CIRC     multiminilm | shift=52 | layer=0 | mean r=0.009
+ACROSS-CIRC     multiminilm | shift=52 | layer=1 | mean r=0.015
+ACROSS-CIRC     multiminilm | shift=52 | layer=2 | mean r=0.001
+ACROSS-CIRC     multiminilm | shift=52 | layer=3 | mean r=-0.002
+ACROSS-CIRC     multiminilm | shift=52 | layer=4 | mean r=-0.002
+ACROSS-CIRC     multiminilm | shift=52 | layer=5 | mean r=-0.008
+ACROSS-CIRC     multiminilm | shift=52 | layer=6 | mean r=-0.012
+ACROSS-CIRC     multiminilm | shift=52 | layer=7 | mean r=-0.005
+ACROSS-CIRC     multiminilm | shift=52 | layer=8 | mean r=-0.004
+ACROSS-CIRC     multiminilm | shift=52 | layer=9 | mean r=0.004
+ACROSS-CIRC     multiminilm | shift=52 | layer=10 | mean r=-0.002
+ACROSS-CIRC     multiminilm | shift=52 | layer=11 | mean r=0.001
+ACROSS-CIRC     multiminilm | shift=52 | layer=12 | mean r=0.001
+
+  >>> Circular shift = 78
+ACROSS-CIRC     multiminilm | shift=78 | layer=0 | mean r=-0.006
+ACROSS-CIRC     multiminilm | shift=78 | layer=1 | mean r=-0.008
+ACROSS-CIRC     multiminilm | shift=78 | layer=2 | mean r=0.001
+ACROSS-CIRC     multiminilm | shift=78 | layer=3 | mean r=-0.001
+ACROSS-CIRC     multiminilm | shift=78 | layer=4 | mean r=-0.008
+ACROSS-CIRC     multiminilm | shift=78 | layer=5 | mean r=-0.008
+ACROSS-CIRC     multiminilm | shift=78 | layer=6 | mean r=0.003
+ACROSS-CIRC     multiminilm | shift=78 | layer=7 | mean r=0.001
+ACROSS-CIRC     multiminilm | shift=78 | layer=8 | mean r=-0.005
+ACROSS-CIRC     multiminilm | shift=78 | layer=9 | mean r=-0.002
+ACROSS-CIRC     multiminilm | shift=78 | layer=10 | mean r=0.004
+ACROSS-CIRC     multiminilm | shift=78 | layer=11 | mean r=0.006
+ACROSS-CIRC     multiminilm | shift=78 | layer=12 | mean r=0.008
+
+  >>> Circular shift = 104
+ACROSS-CIRC     multiminilm | shift=104 | layer=0 | mean r=0.031
+ACROSS-CIRC     multiminilm | shift=104 | layer=1 | mean r=0.025
+ACROSS-CIRC     multiminilm | shift=104 | layer=2 | mean r=0.029
+ACROSS-CIRC     multiminilm | shift=104 | layer=3 | mean r=0.035
+ACROSS-CIRC     multiminilm | shift=104 | layer=4 | mean r=0.019
+ACROSS-CIRC     multiminilm | shift=104 | layer=5 | mean r=0.014
+ACROSS-CIRC     multiminilm | shift=104 | layer=6 | mean r=0.015
+ACROSS-CIRC     multiminilm | shift=104 | layer=7 | mean r=0.014
+ACROSS-CIRC     multiminilm | shift=104 | layer=8 | mean r=0.015
+ACROSS-CIRC     multiminilm | shift=104 | layer=9 | mean r=0.007
+ACROSS-CIRC     multiminilm | shift=104 | layer=10 | mean r=0.003
+ACROSS-CIRC     multiminilm | shift=104 | layer=11 | mean r=-0.001
+ACROSS-CIRC     multiminilm | shift=104 | layer=12 | mean r=-0.004
+
+
+Processing Lang_LH_IFG (2/6)
+
+  >>> Circular shift = 26
+ACROSS-CIRC     multiminilm | shift=26 | layer=0 | mean r=-0.022
+ACROSS-CIRC     multiminilm | shift=26 | layer=1 | mean r=-0.015
+ACROSS-CIRC     multiminilm | shift=26 | layer=2 | mean r=-0.021
+ACROSS-CIRC     multiminilm | shift=26 | layer=3 | mean r=-0.022
+ACROSS-CIRC     multiminilm | shift=26 | layer=4 | mean r=-0.020
+ACROSS-CIRC     multiminilm | shift=26 | layer=5 | mean r=-0.025
+ACROSS-CIRC     multiminilm | shift=26 | layer=6 | mean r=-0.031
+ACROSS-CIRC     multiminilm | shift=26 | layer=7 | mean r=-0.020
+ACROSS-CIRC     multiminilm | shift=26 | layer=8 | mean r=-0.022
+ACROSS-CIRC     multiminilm | shift=26 | layer=9 | mean r=-0.007
+ACROSS-CIRC     multiminilm | shift=26 | layer=10 | mean r=-0.013
+ACROSS-CIRC     multiminilm | shift=26 | layer=11 | mean r=-0.015
+ACROSS-CIRC     multiminilm | shift=26 | layer=12 | mean r=-0.015
+
+  >>> Circular shift = 52
+ACROSS-CIRC     multiminilm | shift=52 | layer=0 | mean r=-0.006
+ACROSS-CIRC     multiminilm | shift=52 | layer=1 | mean r=-0.005
+ACROSS-CIRC     multiminilm | shift=52 | layer=2 | mean r=-0.010
+ACROSS-CIRC     multiminilm | shift=52 | layer=3 | mean r=-0.006
+ACROSS-CIRC     multiminilm | shift=52 | layer=4 | mean r=-0.002
+ACROSS-CIRC     multiminilm | shift=52 | layer=5 | mean r=-0.004
+ACROSS-CIRC     multiminilm | shift=52 | layer=6 | mean r=-0.018
+ACROSS-CIRC     multiminilm | shift=52 | layer=7 | mean r=-0.009
+ACROSS-CIRC     multiminilm | shift=52 | layer=8 | mean r=-0.015
+slurmstepd: error: *** JOB 42132345 ON node094 CANCELLED AT 2025-07-24T16:12:32 DUE TO TIME LIMIT ***

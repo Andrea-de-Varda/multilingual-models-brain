@@ -314,13 +314,13 @@ def multilingual_encoding_circshift(langs, model_prefix, n_layers, d, prefix = "
 parser = argparse.ArgumentParser(description="choose which analyses to run")
 parser.add_argument(
     "--mode",
-    choices=["within", "across", "RH", "MD", "native"],
+    choices=["within", "across", "RH", "MD", "native-within", "native-across"],
     required=True,
     help=("within  --> monolingual + circshift only"
           "across  --> multilingual (and circshift) only"
           "RH      --> right‑hemisphere analyses only"
           "MD      --> MD‑network analyses only"
-          "native  --> fROIs found with native contrast"),
+          "native-within  --> fROIs found with native contrast"),
 )
 MODE = parser.parse_args().mode
 print(f">>> STARTING JOB in mode: {MODE}", flush=True)
@@ -547,8 +547,8 @@ elif MODE == "MD":
 # native localizer #
 ####################
 
-elif MODE == "native":
-    print("Processing - native mode", flush = True)
+elif MODE == "native-within":
+    print("Processing - native mode (within)", flush = True)
     with open("data/dict_fROI_native", 'rb') as handle:
         d_native = pickle.load(handle)
 
@@ -574,6 +574,10 @@ elif MODE == "native":
     nllb_1b       = monolingual_encoding(all_codes, "nllb200_1B", 24, d_native, prefix = "native_") 
     mgpt          = monolingual_encoding(mgpt_langs, "mgpt", 24, d_native, prefix = "native_")
 
+elif MODE == "native-across":
+    print("Processing - native mode (across)", flush = True)
+    with open("data/dict_fROI_native", 'rb') as handle:
+        d_native = pickle.load(handle)
     # multilingual
     xglm_small_multi    = multilingual_encoding(xglm_langs, "xglm_small", 24, d_native, prefix = "native_")
     xglm_med_multi      = multilingual_encoding(xglm_langs, "xglm_med", 24, d_native, prefix = "native_")
