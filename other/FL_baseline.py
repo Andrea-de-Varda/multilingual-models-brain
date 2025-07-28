@@ -46,6 +46,7 @@ def get_fl(lang, func = np.mean):
     embedded_words = embed_words(fl, words_id, func = func)
     return embedded_words
 
+# NEED TO UPDATE THIS BASED ON NEW CODE!! 
 def test_model_Ridge(X, y, n, shuffle=False):
     if shuffle:
         kf = KFold(n_splits=n, shuffle=True, random_state = 0)
