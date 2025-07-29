@@ -47,7 +47,7 @@ def patched_load(path):
     with open(path, 'rb') as f:
         return pickle.load(f)
 
-def load(model_prefix, froi="all", monol=False, split_context=False, random=False, md=False, rh=False):
+def load(model_prefix, froi="all", monol=False, split_context=False, random=False, md=False, rh=False, native = False):
     if monol:
         if md:
             filename = f"results/monolingual_md_{model_prefix}_{froi}"
@@ -55,6 +55,8 @@ def load(model_prefix, froi="all", monol=False, split_context=False, random=Fals
             filename = f"results/monolingual_rh_{model_prefix}_{froi}"
         elif random:
             filename = f"results/monolingual_{model_prefix}_{froi}_circshift"
+        elif native:
+            filename = f"results/monolingual_native_{model_prefix}_{froi}"
         else:
             filename = f"results/monolingual_{model_prefix}_{froi}"
         print("Loading:", filename)
@@ -65,6 +67,8 @@ def load(model_prefix, froi="all", monol=False, split_context=False, random=Fals
             filename = f"results/multilingual_rh_{model_prefix}_{froi}"
         elif random:
             filename = f"results/multilingual_{model_prefix}_{froi}_circshift"
+        elif native:
+            filename = f"results/multilingual_native_{model_prefix}_{froi}"
         else:
             filename = f"results/multilingual_{model_prefix}_{froi}"
         print("Loading:", filename)
@@ -774,6 +778,76 @@ for froi in ['MD_LH_Precentral_A_PrecG', 'MD_LH_Precentral_B_IFGop', 'MD_LH_antP
     
 spatial_results = pd.DataFrame(spatial_results)
 
+# same order as monolingual!! SO I can recycle axes in multiplot panel
+
+pos_map = {'LH|all': 0.0,
+ 'LH|Lang_LH_PostTemp': 1.2,
+ 'LH|Lang_LH_AntTemp': 2.4,
+ 'LH|Lang_LH_MFG': 3.5999999999999996,
+ 'LH|Lang_LH_IFG': 4.8,
+ 'LH|Lang_LH_IFGorb': 6.0,
+ 'RH|all': 8.2,
+ 'RH|Lang_RH_IFG': 9.399999999999999,
+ 'RH|Lang_RH_PostTemp': 10.599999999999998,
+ 'RH|Lang_RH_AntTemp': 11.799999999999997,
+ 'RH|Lang_RH_MFG': 12.999999999999996,
+ 'RH|Lang_RH_IFGorb': 14.199999999999996,
+ 'MD|all': 16.399999999999995,
+ 'MD|MD_RH_Precentral_A_PrecG': 17.599999999999994,
+ 'MD|MD_RH_midFrontal': 18.799999999999994,
+ 'MD|MD_RH_midFrontalOrb': 19.999999999999993,
+ 'MD|MD_RH_Precentral_B_IFGop': 21.199999999999992,
+ 'MD|MD_LH_midFrontal': 22.39999999999999,
+ 'MD|MD_LH_medialFrontal': 23.59999999999999,
+ 'MD|MD_LH_midFrontalOrb': 24.79999999999999,
+ 'MD|MD_RH_supFrontal': 25.99999999999999,
+ 'MD|MD_LH_Precentral_B_IFGop': 27.19999999999999,
+ 'MD|MD_RH_medialFrontal': 28.399999999999988,
+ 'MD|MD_RH_postParietal': 29.599999999999987,
+ 'MD|MD_RH_midParietal': 30.799999999999986,
+ 'MD|MD_RH_antParietal': 31.999999999999986,
+ 'MD|MD_LH_postParietal': 33.19999999999999,
+ 'MD|MD_LH_supFrontal': 34.39999999999999,
+ 'MD|MD_LH_Precentral_A_PrecG': 35.599999999999994,
+ 'MD|MD_LH_insula': 36.8,
+ 'MD|MD_RH_insula': 38.0,
+ 'MD|MD_LH_midParietal': 39.2,
+ 'MD|MD_LH_antParietal': 40.400000000000006}
+
+label_map = {'LH|all': 'All',
+ 'LH|Lang_LH_PostTemp': 'PostTemp',
+ 'LH|Lang_LH_AntTemp': 'AntTemp',
+ 'LH|Lang_LH_MFG': 'MFG',
+ 'LH|Lang_LH_IFG': 'IFG',
+ 'LH|Lang_LH_IFGorb': 'IFGorb',
+ 'RH|all': 'All',
+ 'RH|Lang_RH_IFG': 'IFG',
+ 'RH|Lang_RH_PostTemp': 'PostTemp',
+ 'RH|Lang_RH_AntTemp': 'AntTemp',
+ 'RH|Lang_RH_MFG': 'MFG',
+ 'RH|Lang_RH_IFGorb': 'IFGorb',
+ 'MD|all': 'All',
+ 'MD|MD_RH_Precentral_A_PrecG': 'Precentral',
+ 'MD|MD_RH_midFrontal': 'midFrontal',
+ 'MD|MD_RH_midFrontalOrb': 'midFrontalOrb',
+ 'MD|MD_RH_Precentral_B_IFGop': 'Precentral',
+ 'MD|MD_LH_midFrontal': 'midFrontal',
+ 'MD|MD_LH_medialFrontal': 'medialFrontal',
+ 'MD|MD_LH_midFrontalOrb': 'midFrontalOrb',
+ 'MD|MD_RH_supFrontal': 'supFrontal',
+ 'MD|MD_LH_Precentral_B_IFGop': 'Precentral',
+ 'MD|MD_RH_medialFrontal': 'medialFrontal',
+ 'MD|MD_RH_postParietal': 'postParietal',
+ 'MD|MD_RH_midParietal': 'midParietal',
+ 'MD|MD_RH_antParietal': 'antParietal',
+ 'MD|MD_LH_postParietal': 'postParietal',
+ 'MD|MD_LH_supFrontal': 'supFrontal',
+ 'MD|MD_LH_Precentral_A_PrecG': 'Precentral',
+ 'MD|MD_LH_insula': 'insula',
+ 'MD|MD_RH_insula': 'insula',
+ 'MD|MD_LH_midParietal': 'midParietal',
+ 'MD|MD_LH_antParietal': 'antParietal'}
+
 df = spatial_results.copy()
 df['short_label'] = df['froi'].str.replace(r'^(Lang|MD)_[LR]H_', '', regex=True)
 df['short_label'] = df['short_label'].str.replace(r'_.*', '', regex=True)
@@ -781,14 +855,22 @@ df['short_label'] = df['short_label'].replace('all', 'All')
 df['group_order'] = df['network'].map({'LH': 0, 'RH': 1, 'MD': 2})
 df['is_all'] = (df['short_label'] == 'All').astype(int)
 
-group_order = ['LH', 'RH', 'MD']
-df_sorted = pd.concat([
-    pd.concat([
-        g[g['is_all'] == 1],
-        g[g['is_all'] == 0].sort_values('r', ascending=False)
-    ])
-    for net in group_order
-    for _, g in df.groupby('network') if _ == net], ignore_index=True)
+# group_order = ['LH', 'RH', 'MD']
+# df_sorted = pd.concat([
+#     pd.concat([
+#         g[g['is_all'] == 1],
+#         g[g['is_all'] == 0].sort_values('r', ascending=False)
+#     ])
+#     for net in group_order
+#     for _, g in df.groupby('network') if _ == net], ignore_index=True)
+
+# order from monol
+df['key']         = df['network'] + '|' + df['froi']
+df['pos']         = df['key'].map(pos_map)
+df['short_label'] = df['key'].map(label_map)
+df_sorted         = (df.dropna(subset=['pos']).sort_values('pos').reset_index(drop=True))
+print(df_sorted[df_sorted["network"] == "MD"]["r"].max())
+print(df_sorted[df_sorted["network"] == "LH"]["r"].min())
 
 spacing = 1.2
 positions = []
@@ -826,24 +908,25 @@ ax.errorbar(df_sorted['pos'], df_sorted['r'], yerr=df_sorted['se'],
 for i, row in df_sorted.iterrows():
     ax.plot(row['pos'], row['r'], 'o', color=row['color'], markersize=11, alpha=0.85, zorder=4)
 
-# Brackets
-def add_bracket(ax, start_pos, end_pos, label, y_offset=0.01, weight='normal'):
-    mid = (start_pos + end_pos) / 2
-    y = df_sorted['r'].max() + y_offset
-    ax.plot([start_pos, start_pos, end_pos, end_pos],
-            [y, y + 0.01, y + 0.01, y], color='black', lw=1.5)
-    ax.text(mid, y + 0.015, label, ha='center', va='bottom', fontsize=14, weight=weight)
+# # Brackets
+# def add_bracket(ax, start_pos, end_pos, label, y_offset=0.01, weight='normal'):
+#     mid = (start_pos + end_pos) / 2
+#     y = df_sorted['r'].max() + y_offset
+#     ax.plot([start_pos, start_pos, end_pos, end_pos],
+#             [y, y + 0.01, y + 0.01, y], color='black', lw=1.5)
+#     ax.text(mid, y + 0.015, label, ha='center', va='bottom', fontsize=14, weight=weight)
 
-add_bracket(ax, group_indices['LH'][0], group_indices['RH'][-1], 'Language', y_offset=0.3, weight='bold')
-add_bracket(ax, group_indices['LH'][0], group_indices['LH'][-1], 'Left hem.', y_offset=0.2)
-add_bracket(ax, group_indices['RH'][0], group_indices['RH'][-1], 'Right hem.', y_offset=0.2)
-add_bracket(ax, group_indices['MD'][0], group_indices['MD'][-1], 'MD network', y_offset=0.2, weight='bold')
+# add_bracket(ax, group_indices['LH'][0], group_indices['RH'][-1], 'Language', y_offset=0.3, weight='bold')
+# add_bracket(ax, group_indices['LH'][0], group_indices['LH'][-1], 'Left hem.', y_offset=0.2)
+# add_bracket(ax, group_indices['RH'][0], group_indices['RH'][-1], 'Right hem.', y_offset=0.2)
+# add_bracket(ax, group_indices['MD'][0], group_indices['MD'][-1], 'MD network', y_offset=0.2, weight='bold')
 
 ax.set_xticks(df_sorted['pos'])
 ax.set_xticklabels(tick_labels, rotation=45, ha='right', fontsize=12)
 ax.set_ylabel("R", fontsize=16)
 # ax.set_ylim(df_sorted['r'].min() - 0.05, df_sorted['r'].max() + 0.1)
 plt.yticks(fontsize=12)
+plt.ylim(-.05, .55)
 sns.despine()
 plt.tight_layout()
 plt.show()
@@ -866,3 +949,25 @@ mono_multi["se_mono"] = mono_multi["sd_mono"] / np.sqrt(mono_multi["n"])
 mono_multi["se_multi"] = mono_multi["sd_multi"] / np.sqrt(mono_multi["n"])
 mono_multi["color"] = mono_multi["Family"].map(palette_d)
 mono_multi.to_csv("results/mono_multi.csv", index=False)
+
+##############################
+# compare native vs. english #
+##############################
+
+compare_native = []
+for model in model_names:
+    native = get_best_layerwise(load(model, native = True), give_all = False)
+    english = get_best_layerwise(load(model, native = False), give_all = False)
+    compare_native.append({"model" : model, "native" : native, "english" : english})
+compare_native = pd.DataFrame(compare_native)
+print(compare_native[["native", "english"]].mean())
+print(pearsonr(compare_native["native"], compare_native["english"]))
+
+compare_native_monol = []
+for model in model_names:
+    native = get_best_layerwise(load(model, native = True, monol = True), give_all = False, colname = "m")
+    english = get_best_layerwise(load(model, native = False, monol = True), give_all = False, colname = "m")
+    compare_native_monol.append({"model" : model, "native" : native, "english" : english})
+compare_native_monol = pd.DataFrame(compare_native_monol)
+print(compare_native_monol[["native", "english"]].mean())
+print(pearsonr(compare_native_monol["native"], compare_native_monol["english"]))

@@ -47,7 +47,7 @@ def patched_load(path):
     with open(path, 'rb') as f:
         return pickle.load(f)
 
-def load(model_prefix, froi="all", monol=True, split_context=False, random=False, md=False, rh=False):
+def load(model_prefix, froi="all", monol=True, split_context=False, random=False, md=False, rh=False, native = False):
     if not monol:
         raise ValueError('No multilingual sequential split')
 
@@ -59,6 +59,8 @@ def load(model_prefix, froi="all", monol=True, split_context=False, random=False
         filename = f"results/monolingual_rh_{model_prefix}_{froi}"
     elif random:
         filename = f"results/monolingual_{model_prefix}_{froi}_circshift"
+    elif native:
+        filename = f"results/monolingual_native_{model_prefix}_{froi}"
     else:
         filename = f"results/monolingual_{model_prefix}_{froi}"
     print("Loading:", filename)
@@ -203,23 +205,6 @@ for model in model_names:
     p_values_best.append([model, p_tot])
 p_values_best = add_significance_asterisks(p_values_best)
 p_values_best = pd.DataFrame(p_values_best, columns = ["model", "p", "asterisk"])
-    
-p_values_median = []
-for model in model_names:
-    test = get_median_layerwise(load(model), give_all = True)
-    z_temp = []
-    for shift in [26, 52, 78, 104]:
-        rand = get_median_layerwise(load(model, random=True)[shift], give_all = True)
-        zs = [] # fisher's p values
-        for t, r in zip(test, rand):
-            z, p = r_to_z(t, r)
-            zs.append(z)
-        z_ = combine_z_statistics(zs, return_z = True)
-        z_temp.append(z_)
-    p_tot = combine_z_statistics(z_temp)
-    p_values_median.append([model, p_tot])
-p_values_median = add_significance_asterisks(p_values_median)
-p_values_median = pd.DataFrame(p_values_median, columns = ["model", "p", "asterisk"])
 
 ###########################
 # barplot with best layer #
@@ -780,6 +765,14 @@ for froi in ['Lang_RH_AntTemp', 'Lang_RH_IFG', 'Lang_RH_IFGorb', 'Lang_RH_MFG', 
     se = np.std(best_monol) / np.sqrt(len(best_monol))
     spatial_results.append({"froi" : froi, "network" : "RH", "r" : mean_r, "se" : se, "all_points" : best_monol})
     
+# spatial_results = []
+# for froi in ['Lang_LH_AntTemp', 'Lang_LH_IFG', 'Lang_LH_IFGorb', 'Lang_LH_MFG', 'Lang_LH_PostTemp', 'all']:
+#     best_monol = [get_best_layerwise(load(model, froi = froi, native = True)) for model in model_names]
+#     mean_r = np.mean(best_monol)
+#     se = np.std(best_monol) / np.sqrt(len(best_monol))
+#     froi = re.sub("Lang_LH_", "native_", froi)
+#     spatial_results.append({"froi" : froi, "network" : "RH", "r" : mean_r, "se" : se, "all_points" : best_monol})
+    
 for froi in ['Lang_LH_AntTemp', 'Lang_LH_IFG', 'Lang_LH_IFGorb', 'Lang_LH_MFG', 'Lang_LH_PostTemp', 'all']:
     best_monol = [get_best_layerwise(load(model, froi = froi)) for model in model_names]
     mean_r = np.mean(best_monol)
@@ -864,6 +857,12 @@ ax.set_xticklabels(tick_labels, rotation=45, ha='right', fontsize=12)
 ax.set_ylabel("R", fontsize=16)
 # ax.set_ylim(df_sorted['r'].min() - 0.05, df_sorted['r'].max() + 0.1)
 plt.yticks(fontsize=12)
+plt.ylim(-.05, .55)
 sns.despine()
 plt.tight_layout()
 plt.show()
+
+# SAVE ORDER FOR MULTI (WILL RECYCLE PLOTTING CODE) 
+df_sorted['key'] = df_sorted['network'] + '|' + df_sorted['froi']   # unique, no ‘all’ clash
+pos_map   = dict(zip(df_sorted['key'], df_sorted['pos']))
+label_map = dict(zip(df_sorted['key'], df_sorted['short_label']))
