@@ -122,7 +122,7 @@ def monolingual_encoding(langs, model_prefix, n_layers, d, shuffle=False, prefix
     return layerwise_dict
 
 def multilingual_encoding(langs, model_prefix, n_layers, d, prefix = "", overwrite = False):
-    # This function trains encoding models in a set of languages (all but one) and evaluates the encoding in the left-out language
+    # This function trains encoding models in one language and evaluates the encoding in all the left-out languages
     kf = KFold(n_splits=10, shuffle=False)
     if os.path.isfile(f"results/multilingual_{prefix}{model_prefix}_all") and overwrite == False:
         print(f"Encoding for {model_prefix} already done", flush = True)
@@ -192,16 +192,89 @@ def multilingual_encoding(langs, model_prefix, n_layers, d, prefix = "", overwri
             save(layerwise_dict, f"results/multilingual_{prefix}{model_prefix}_{froi}")
     return layerwise_dict
 
+def multilingual_encoding_multitrain(langs, model_prefix, n_layers, d, prefix = "", overwrite = False):
+    # This function trains encoding models in a set of languages (all but one) and evaluates the encoding in the left-out language
+    kf = KFold(n_splits=10, shuffle=False)
+    if os.path.isfile(f"results/multilingual_multitrain_{prefix}{model_prefix}_all") and overwrite == False:
+        print(f"Encoding for {model_prefix} already done", flush = True)
+        return
+    else:
+        kf = KFold(n_splits=10, shuffle=False)
+        frois = list(d[lang_code_dict[langs[0]]][list(d[lang_code_dict[langs[0]]].keys())[0]].keys())
+        for froi_idx, froi in enumerate(frois):
+            layerwise_dict = {}
+            print(f"\n\nProcessing {froi} ({froi_idx+1}/{len(frois)})")
+            for n in range(n_layers+1):
+                # print(f"Processing layer {n}")
+                fmri_data = [preproc_align(lang, load(f"{model_prefix}_{lang}")[n]) for lang in langs]
+                ############################
+                out_predictions = []
+                for i in range(len(langs)): # for each language, train (KF) in that language
+                    results_d_singlelang = {}
+                    for train_index, test_index in kf.split(fmri_data[0]):
+                        # train on 9/10 of the data in all languages but one
+                        X_train_ = np.concatenate([fmri_data[j][train_index] for j in range(len(langs)) if j != i]) # Training data (X) includes all langs j but lang_i
+                        y_train_1 = []; y_train_2 = []
+                        for j in range(len(langs)):
+                            if j != i:
+                                y_name = langs[j]
+                                part1, part2 = d[lang_code_dict[y_name]].keys()
+                                y_train_1.append(d[lang_code_dict[y_name]][part1][froi][train_index]) # two participants -- train on both
+                                y_train_2.append(d[lang_code_dict[y_name]][part2][froi][train_index])
+                        y_train_1 = np.concatenate(y_train_1)
+                        y_train_2 = np.concatenate(y_train_2)
+                        X_train = np.concatenate([X_train_, X_train_]) # because 2 participants per language!
+                        y_train = np.concatenate([y_train_1, y_train_2])
+                        # scaling (using for test directly)
+                        X_scaler = StandardScaler()
+                        y_scaler = StandardScaler()
+                        X_train = X_scaler.fit_transform(X_train)
+                        y_train = y_scaler.fit_transform(y_train.reshape(-1, 1)).flatten()
+                        reg = KernelRidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
+                        reg.fit(X_train, y_train)
+                        # testing
+                        test_lang = langs[i]
+                        part1, part2 = d[lang_code_dict[test_lang]].keys()
+                        X_test = fmri_data[i][test_index]
+                        y_test_1 = d[lang_code_dict[test_lang]][part1][froi][test_index]
+                        y_test_2 = d[lang_code_dict[test_lang]][part2][froi][test_index]
+                        # y_test = np.mean([y_test_1, y_test_2], axis = 0)
+                        X_test = X_scaler.transform(X_test)
+                        y_test_1 = y_scaler.transform(y_test_1.reshape(-1, 1)).flatten()
+                        y_test_2 = y_scaler.transform(y_test_2.reshape(-1, 1)).flatten()
+                        y_pred = reg.predict(X_test)
+                        try:
+                            results_d_singlelang[test_lang]["prediction"].extend(y_pred.tolist())
+                            results_d_singlelang[test_lang]["target1"].extend(y_test_1.tolist())
+                            results_d_singlelang[test_lang]["target2"].extend(y_test_2.tolist())
+                        except KeyError:
+                            results_d_singlelang[test_lang] = {"prediction" : y_pred.tolist(), 
+                                                                "target1" : y_test_1.tolist(),
+                                                                "target2" : y_test_2.tolist()}
+                    # 1 X participant
+                    d_corr1 = pearsonr(results_d_singlelang[test_lang]["prediction"], results_d_singlelang[test_lang]["target1"])[0]
+                    d_corr2 = pearsonr(results_d_singlelang[test_lang]["prediction"], results_d_singlelang[test_lang]["target2"])[0]
+                    d_avg = {"target_lang": test_lang,
+                            "r": 0.5 * (d_corr1 + d_corr2)}
+                    out_predictions.append(d_avg)
+                out_predictions = pd.DataFrame(out_predictions)
+                layerwise_dict[n] = out_predictions
+                mean_r = out_predictions["r"].mean()
+                print(f"ACROSS-multilang-train     {model_prefix} | fROI={froi} | layer={n} | mean r={mean_r:.3f}", flush=True)
+            save(layerwise_dict, f"results/multilingual_multitrain_{prefix}{model_prefix}_{froi}")
+    return layerwise_dict
+
 def monolingual_encoding_circshift(langs, model_prefix, n_layers, d, prefix="", overwrite=False, shift_vals=(26, 52, 78, 104), shuffle=False):
     kf = KFold(n_splits=10, shuffle=False)
     frois = list(d[lang_code_dict[langs[0]]][list(d[lang_code_dict[langs[0]]].keys())[0]].keys())
-    for froi_idx, froi in enumerate(frois):
+    print(f"Processing {frois}")
+    for froi_idx, froi in enumerate(sorted(frois, key=str.lower)):
         filepath = f"results/monolingual_{prefix}{model_prefix}_{froi}_circshift"
+        out_all_shifts = {}
         if os.path.isfile(filepath) and not overwrite:
             print(f"Encoding for {model_prefix} – {froi} already done", flush = True)
-            return
+            continue
         print(f"\n\nProcessing {froi} ({froi_idx + 1}/{len(frois)})")
-        out_all_shifts = {}
         for shift in shift_vals:
             print(f"\n  >>> Circular shift = {shift}")
             layerwise_dict = {}
@@ -229,12 +302,12 @@ def monolingual_encoding_circshift(langs, model_prefix, n_layers, d, prefix="", 
 def multilingual_encoding_circshift(langs, model_prefix, n_layers, d, prefix = "", overwrite = False, shift_vals = (26, 52, 78, 104)):
     kf = KFold(n_splits=10, shuffle=False)
     frois = list(d[lang_code_dict[langs[0]]][list(d[lang_code_dict[langs[0]]].keys())[0]].keys())
-    for froi_idx, froi in enumerate(frois):
+    for froi_idx, froi in enumerate(sorted(frois, key=str.lower)):
         out_all_shifts = {}
         filepath = f"results/multilingual_{prefix}{model_prefix}_{froi}_circshift"
         if os.path.isfile(filepath) and not overwrite:
             print(f"Encoding for {model_prefix} – {froi} already done", flush = True)
-            return
+            continue
         print(f"\n\nProcessing {froi} ({froi_idx+1}/{len(frois)})", flush = True)
         for shift in shift_vals:
             print(f"\n  >>> Circular shift = {shift}", flush = True)
@@ -316,10 +389,10 @@ parser.add_argument(
     "--mode",
     choices=["within", "across", "RH", "MD", "native-within", "native-across"],
     required=True,
-    help=("within  --> monolingual + circshift only"
+    help=("within  --> monolingual + circshift only"
           "across  --> multilingual (and circshift) only"
-          "RH      --> right‑hemisphere analyses only"
-          "MD      --> MD‑network analyses only"
+          "RH      --> right-hemisphere analyses only"
+          "MD      --> MD-network analyses only"
           "native-within  --> fROIs found with native contrast"),
 )
 MODE = parser.parse_args().mode

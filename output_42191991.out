@@ -1,0 +1,454 @@
+>>> SCRIPT LAUNCHED
+>>> STARTING JOB in mode: across
+>>> Loaded fMRI data
+Processing - ACROSS mode
+Encoding for xglm_small already done
+Encoding for xglm_med already done
+Encoding for xglm_large already done
+Encoding for xglm_xl already done
+Encoding for bert_base already done
+Encoding for distilmbert already done
+Encoding for xlmr_base already done
+Encoding for xlmr_large already done
+Encoding for mt5_small already done
+Encoding for mt5_base already done
+Encoding for mt5_large already done
+Encoding for mdeberta already done
+Encoding for xlm_align already done
+Encoding for infoxlm_base already done
+Encoding for infoxlm_large already done
+Encoding for multiminilm already done
+Encoding for nllb200_distilled_600M already done
+Encoding for nllb200_distilled_1B already done
+Encoding for nllb200_1B already done
+Encoding for mgpt already done
+Encoding for xglm_small – all already done
+Encoding for xglm_small – Lang_LH_AntTemp already done
+Encoding for xglm_small – Lang_LH_IFG already done
+Encoding for xglm_small – Lang_LH_IFGorb already done
+Encoding for xglm_small – Lang_LH_MFG already done
+Encoding for xglm_small – Lang_LH_PostTemp already done
+Encoding for xglm_med – all already done
+Encoding for xglm_med – Lang_LH_AntTemp already done
+Encoding for xglm_med – Lang_LH_IFG already done
+Encoding for xglm_med – Lang_LH_IFGorb already done
+Encoding for xglm_med – Lang_LH_MFG already done
+Encoding for xglm_med – Lang_LH_PostTemp already done
+Encoding for xglm_large – all already done
+Encoding for xglm_large – Lang_LH_AntTemp already done
+Encoding for xglm_large – Lang_LH_IFG already done
+Encoding for xglm_large – Lang_LH_IFGorb already done
+Encoding for xglm_large – Lang_LH_MFG already done
+Encoding for xglm_large – Lang_LH_PostTemp already done
+Encoding for xglm_xl – all already done
+Encoding for xglm_xl – Lang_LH_AntTemp already done
+Encoding for xglm_xl – Lang_LH_IFG already done
+Encoding for xglm_xl – Lang_LH_IFGorb already done
+Encoding for xglm_xl – Lang_LH_MFG already done
+Encoding for xglm_xl – Lang_LH_PostTemp already done
+Encoding for bert_base – all already done
+Encoding for bert_base – Lang_LH_AntTemp already done
+Encoding for bert_base – Lang_LH_IFG already done
+Encoding for bert_base – Lang_LH_IFGorb already done
+Encoding for bert_base – Lang_LH_MFG already done
+Encoding for bert_base – Lang_LH_PostTemp already done
+Encoding for distilmbert – all already done
+Encoding for distilmbert – Lang_LH_AntTemp already done
+Encoding for distilmbert – Lang_LH_IFG already done
+Encoding for distilmbert – Lang_LH_IFGorb already done
+Encoding for distilmbert – Lang_LH_MFG already done
+Encoding for distilmbert – Lang_LH_PostTemp already done
+Encoding for xlmr_base – all already done
+Encoding for xlmr_base – Lang_LH_AntTemp already done
+Encoding for xlmr_base – Lang_LH_IFG already done
+Encoding for xlmr_base – Lang_LH_IFGorb already done
+Encoding for xlmr_base – Lang_LH_MFG already done
+Encoding for xlmr_base – Lang_LH_PostTemp already done
+Encoding for xlmr_large – all already done
+Encoding for xlmr_large – Lang_LH_AntTemp already done
+Encoding for xlmr_large – Lang_LH_IFG already done
+Encoding for xlmr_large – Lang_LH_IFGorb already done
+Encoding for xlmr_large – Lang_LH_MFG already done
+Encoding for xlmr_large – Lang_LH_PostTemp already done
+Encoding for mt5_small – all already done
+Encoding for mt5_small – Lang_LH_AntTemp already done
+Encoding for mt5_small – Lang_LH_IFG already done
+Encoding for mt5_small – Lang_LH_IFGorb already done
+Encoding for mt5_small – Lang_LH_MFG already done
+Encoding for mt5_small – Lang_LH_PostTemp already done
+Encoding for mt5_base – all already done
+Encoding for mt5_base – Lang_LH_AntTemp already done
+Encoding for mt5_base – Lang_LH_IFG already done
+Encoding for mt5_base – Lang_LH_IFGorb already done
+Encoding for mt5_base – Lang_LH_MFG already done
+Encoding for mt5_base – Lang_LH_PostTemp already done
+Encoding for mt5_large – all already done
+Encoding for mt5_large – Lang_LH_AntTemp already done
+Encoding for mt5_large – Lang_LH_IFG already done
+Encoding for mt5_large – Lang_LH_IFGorb already done
+Encoding for mt5_large – Lang_LH_MFG already done
+Encoding for mt5_large – Lang_LH_PostTemp already done
+Encoding for mdeberta – all already done
+Encoding for mdeberta – Lang_LH_AntTemp already done
+Encoding for mdeberta – Lang_LH_IFG already done
+Encoding for mdeberta – Lang_LH_IFGorb already done
+Encoding for mdeberta – Lang_LH_MFG already done
+Encoding for mdeberta – Lang_LH_PostTemp already done
+Encoding for xlm_align – all already done
+Encoding for xlm_align – Lang_LH_AntTemp already done
+Encoding for xlm_align – Lang_LH_IFG already done
+Encoding for xlm_align – Lang_LH_IFGorb already done
+Encoding for xlm_align – Lang_LH_MFG already done
+Encoding for xlm_align – Lang_LH_PostTemp already done
+Encoding for infoxlm_base – all already done
+Encoding for infoxlm_base – Lang_LH_AntTemp already done
+Encoding for infoxlm_base – Lang_LH_IFG already done
+Encoding for infoxlm_base – Lang_LH_IFGorb already done
+Encoding for infoxlm_base – Lang_LH_MFG already done
+Encoding for infoxlm_base – Lang_LH_PostTemp already done
+Encoding for infoxlm_large – all already done
+Encoding for infoxlm_large – Lang_LH_AntTemp already done
+Encoding for infoxlm_large – Lang_LH_IFG already done
+Encoding for infoxlm_large – Lang_LH_IFGorb already done
+Encoding for infoxlm_large – Lang_LH_MFG already done
+Encoding for infoxlm_large – Lang_LH_PostTemp already done
+
+
+Processing all (1/6)
+
+  >>> Circular shift = 26
+ACROSS-CIRC     multiminilm | shift=26 | layer=0 | mean r=-0.022
+ACROSS-CIRC     multiminilm | shift=26 | layer=1 | mean r=-0.001
+ACROSS-CIRC     multiminilm | shift=26 | layer=2 | mean r=-0.018
+ACROSS-CIRC     multiminilm | shift=26 | layer=3 | mean r=-0.021
+ACROSS-CIRC     multiminilm | shift=26 | layer=4 | mean r=-0.020
+ACROSS-CIRC     multiminilm | shift=26 | layer=5 | mean r=-0.024
+ACROSS-CIRC     multiminilm | shift=26 | layer=6 | mean r=-0.029
+ACROSS-CIRC     multiminilm | shift=26 | layer=7 | mean r=-0.024
+ACROSS-CIRC     multiminilm | shift=26 | layer=8 | mean r=-0.021
+ACROSS-CIRC     multiminilm | shift=26 | layer=9 | mean r=-0.019
+ACROSS-CIRC     multiminilm | shift=26 | layer=10 | mean r=-0.016
+ACROSS-CIRC     multiminilm | shift=26 | layer=11 | mean r=-0.013
+ACROSS-CIRC     multiminilm | shift=26 | layer=12 | mean r=-0.014
+
+  >>> Circular shift = 52
+ACROSS-CIRC     multiminilm | shift=52 | layer=0 | mean r=-0.005
+ACROSS-CIRC     multiminilm | shift=52 | layer=1 | mean r=-0.018
+ACROSS-CIRC     multiminilm | shift=52 | layer=2 | mean r=-0.023
+ACROSS-CIRC     multiminilm | shift=52 | layer=3 | mean r=-0.025
+ACROSS-CIRC     multiminilm | shift=52 | layer=4 | mean r=-0.029
+ACROSS-CIRC     multiminilm | shift=52 | layer=5 | mean r=-0.029
+ACROSS-CIRC     multiminilm | shift=52 | layer=6 | mean r=-0.038
+ACROSS-CIRC     multiminilm | shift=52 | layer=7 | mean r=-0.028
+ACROSS-CIRC     multiminilm | shift=52 | layer=8 | mean r=-0.038
+ACROSS-CIRC     multiminilm | shift=52 | layer=9 | mean r=-0.028
+ACROSS-CIRC     multiminilm | shift=52 | layer=10 | mean r=-0.020
+ACROSS-CIRC     multiminilm | shift=52 | layer=11 | mean r=-0.034
+ACROSS-CIRC     multiminilm | shift=52 | layer=12 | mean r=-0.033
+
+  >>> Circular shift = 78
+ACROSS-CIRC     multiminilm | shift=78 | layer=0 | mean r=-0.008
+ACROSS-CIRC     multiminilm | shift=78 | layer=1 | mean r=-0.004
+ACROSS-CIRC     multiminilm | shift=78 | layer=2 | mean r=0.001
+ACROSS-CIRC     multiminilm | shift=78 | layer=3 | mean r=-0.003
+ACROSS-CIRC     multiminilm | shift=78 | layer=4 | mean r=-0.020
+ACROSS-CIRC     multiminilm | shift=78 | layer=5 | mean r=-0.016
+ACROSS-CIRC     multiminilm | shift=78 | layer=6 | mean r=-0.015
+ACROSS-CIRC     multiminilm | shift=78 | layer=7 | mean r=-0.028
+ACROSS-CIRC     multiminilm | shift=78 | layer=8 | mean r=-0.025
+ACROSS-CIRC     multiminilm | shift=78 | layer=9 | mean r=-0.023
+ACROSS-CIRC     multiminilm | shift=78 | layer=10 | mean r=-0.019
+ACROSS-CIRC     multiminilm | shift=78 | layer=11 | mean r=-0.012
+ACROSS-CIRC     multiminilm | shift=78 | layer=12 | mean r=-0.011
+
+  >>> Circular shift = 104
+ACROSS-CIRC     multiminilm | shift=104 | layer=0 | mean r=0.015
+ACROSS-CIRC     multiminilm | shift=104 | layer=1 | mean r=0.001
+ACROSS-CIRC     multiminilm | shift=104 | layer=2 | mean r=0.003
+ACROSS-CIRC     multiminilm | shift=104 | layer=3 | mean r=0.012
+ACROSS-CIRC     multiminilm | shift=104 | layer=4 | mean r=0.004
+ACROSS-CIRC     multiminilm | shift=104 | layer=5 | mean r=0.003
+ACROSS-CIRC     multiminilm | shift=104 | layer=6 | mean r=0.006
+ACROSS-CIRC     multiminilm | shift=104 | layer=7 | mean r=-0.003
+ACROSS-CIRC     multiminilm | shift=104 | layer=8 | mean r=-0.007
+ACROSS-CIRC     multiminilm | shift=104 | layer=9 | mean r=-0.011
+ACROSS-CIRC     multiminilm | shift=104 | layer=10 | mean r=-0.012
+ACROSS-CIRC     multiminilm | shift=104 | layer=11 | mean r=-0.018
+ACROSS-CIRC     multiminilm | shift=104 | layer=12 | mean r=-0.017
+Encoding for multiminilm – Lang_LH_AntTemp already done
+
+
+Processing Lang_LH_IFG (3/6)
+
+  >>> Circular shift = 26
+ACROSS-CIRC     multiminilm | shift=26 | layer=0 | mean r=-0.022
+ACROSS-CIRC     multiminilm | shift=26 | layer=1 | mean r=-0.015
+ACROSS-CIRC     multiminilm | shift=26 | layer=2 | mean r=-0.021
+ACROSS-CIRC     multiminilm | shift=26 | layer=3 | mean r=-0.022
+ACROSS-CIRC     multiminilm | shift=26 | layer=4 | mean r=-0.020
+ACROSS-CIRC     multiminilm | shift=26 | layer=5 | mean r=-0.025
+ACROSS-CIRC     multiminilm | shift=26 | layer=6 | mean r=-0.031
+ACROSS-CIRC     multiminilm | shift=26 | layer=7 | mean r=-0.020
+ACROSS-CIRC     multiminilm | shift=26 | layer=8 | mean r=-0.022
+ACROSS-CIRC     multiminilm | shift=26 | layer=9 | mean r=-0.007
+ACROSS-CIRC     multiminilm | shift=26 | layer=10 | mean r=-0.013
+ACROSS-CIRC     multiminilm | shift=26 | layer=11 | mean r=-0.015
+ACROSS-CIRC     multiminilm | shift=26 | layer=12 | mean r=-0.015
+
+  >>> Circular shift = 52
+ACROSS-CIRC     multiminilm | shift=52 | layer=0 | mean r=-0.006
+ACROSS-CIRC     multiminilm | shift=52 | layer=1 | mean r=-0.005
+ACROSS-CIRC     multiminilm | shift=52 | layer=2 | mean r=-0.010
+ACROSS-CIRC     multiminilm | shift=52 | layer=3 | mean r=-0.006
+ACROSS-CIRC     multiminilm | shift=52 | layer=4 | mean r=-0.002
+ACROSS-CIRC     multiminilm | shift=52 | layer=5 | mean r=-0.004
+ACROSS-CIRC     multiminilm | shift=52 | layer=6 | mean r=-0.018
+ACROSS-CIRC     multiminilm | shift=52 | layer=7 | mean r=-0.009
+ACROSS-CIRC     multiminilm | shift=52 | layer=8 | mean r=-0.015
+ACROSS-CIRC     multiminilm | shift=52 | layer=9 | mean r=-0.011
+ACROSS-CIRC     multiminilm | shift=52 | layer=10 | mean r=-0.012
+ACROSS-CIRC     multiminilm | shift=52 | layer=11 | mean r=-0.021
+ACROSS-CIRC     multiminilm | shift=52 | layer=12 | mean r=-0.021
+
+  >>> Circular shift = 78
+ACROSS-CIRC     multiminilm | shift=78 | layer=0 | mean r=0.014
+ACROSS-CIRC     multiminilm | shift=78 | layer=1 | mean r=0.023
+ACROSS-CIRC     multiminilm | shift=78 | layer=2 | mean r=0.027
+ACROSS-CIRC     multiminilm | shift=78 | layer=3 | mean r=0.019
+ACROSS-CIRC     multiminilm | shift=78 | layer=4 | mean r=0.018
+ACROSS-CIRC     multiminilm | shift=78 | layer=5 | mean r=0.014
+ACROSS-CIRC     multiminilm | shift=78 | layer=6 | mean r=0.012
+ACROSS-CIRC     multiminilm | shift=78 | layer=7 | mean r=0.003
+ACROSS-CIRC     multiminilm | shift=78 | layer=8 | mean r=0.004
+ACROSS-CIRC     multiminilm | shift=78 | layer=9 | mean r=-0.007
+ACROSS-CIRC     multiminilm | shift=78 | layer=10 | mean r=-0.008
+ACROSS-CIRC     multiminilm | shift=78 | layer=11 | mean r=-0.005
+ACROSS-CIRC     multiminilm | shift=78 | layer=12 | mean r=-0.005
+
+  >>> Circular shift = 104
+ACROSS-CIRC     multiminilm | shift=104 | layer=0 | mean r=0.003
+ACROSS-CIRC     multiminilm | shift=104 | layer=1 | mean r=0.003
+ACROSS-CIRC     multiminilm | shift=104 | layer=2 | mean r=0.001
+ACROSS-CIRC     multiminilm | shift=104 | layer=3 | mean r=0.008
+ACROSS-CIRC     multiminilm | shift=104 | layer=4 | mean r=-0.003
+ACROSS-CIRC     multiminilm | shift=104 | layer=5 | mean r=-0.009
+ACROSS-CIRC     multiminilm | shift=104 | layer=6 | mean r=-0.007
+ACROSS-CIRC     multiminilm | shift=104 | layer=7 | mean r=-0.017
+ACROSS-CIRC     multiminilm | shift=104 | layer=8 | mean r=-0.028
+ACROSS-CIRC     multiminilm | shift=104 | layer=9 | mean r=-0.031
+ACROSS-CIRC     multiminilm | shift=104 | layer=10 | mean r=-0.027
+ACROSS-CIRC     multiminilm | shift=104 | layer=11 | mean r=-0.024
+ACROSS-CIRC     multiminilm | shift=104 | layer=12 | mean r=-0.023
+
+
+Processing Lang_LH_IFGorb (4/6)
+
+  >>> Circular shift = 26
+ACROSS-CIRC     multiminilm | shift=26 | layer=0 | mean r=-0.014
+ACROSS-CIRC     multiminilm | shift=26 | layer=1 | mean r=-0.008
+ACROSS-CIRC     multiminilm | shift=26 | layer=2 | mean r=-0.015
+ACROSS-CIRC     multiminilm | shift=26 | layer=3 | mean r=-0.019
+ACROSS-CIRC     multiminilm | shift=26 | layer=4 | mean r=-0.019
+ACROSS-CIRC     multiminilm | shift=26 | layer=5 | mean r=-0.022
+ACROSS-CIRC     multiminilm | shift=26 | layer=6 | mean r=-0.019
+ACROSS-CIRC     multiminilm | shift=26 | layer=7 | mean r=-0.011
+ACROSS-CIRC     multiminilm | shift=26 | layer=8 | mean r=-0.014
+ACROSS-CIRC     multiminilm | shift=26 | layer=9 | mean r=-0.017
+ACROSS-CIRC     multiminilm | shift=26 | layer=10 | mean r=-0.013
+ACROSS-CIRC     multiminilm | shift=26 | layer=11 | mean r=-0.013
+ACROSS-CIRC     multiminilm | shift=26 | layer=12 | mean r=-0.011
+
+  >>> Circular shift = 52
+ACROSS-CIRC     multiminilm | shift=52 | layer=0 | mean r=-0.026
+ACROSS-CIRC     multiminilm | shift=52 | layer=1 | mean r=-0.018
+ACROSS-CIRC     multiminilm | shift=52 | layer=2 | mean r=-0.017
+ACROSS-CIRC     multiminilm | shift=52 | layer=3 | mean r=-0.019
+ACROSS-CIRC     multiminilm | shift=52 | layer=4 | mean r=-0.020
+ACROSS-CIRC     multiminilm | shift=52 | layer=5 | mean r=-0.021
+ACROSS-CIRC     multiminilm | shift=52 | layer=6 | mean r=-0.033
+ACROSS-CIRC     multiminilm | shift=52 | layer=7 | mean r=-0.028
+ACROSS-CIRC     multiminilm | shift=52 | layer=8 | mean r=-0.030
+ACROSS-CIRC     multiminilm | shift=52 | layer=9 | mean r=-0.024
+ACROSS-CIRC     multiminilm | shift=52 | layer=10 | mean r=-0.015
+ACROSS-CIRC     multiminilm | shift=52 | layer=11 | mean r=-0.022
+ACROSS-CIRC     multiminilm | shift=52 | layer=12 | mean r=-0.023
+
+  >>> Circular shift = 78
+ACROSS-CIRC     multiminilm | shift=78 | layer=0 | mean r=-0.012
+ACROSS-CIRC     multiminilm | shift=78 | layer=1 | mean r=-0.006
+ACROSS-CIRC     multiminilm | shift=78 | layer=2 | mean r=-0.008
+ACROSS-CIRC     multiminilm | shift=78 | layer=3 | mean r=-0.005
+ACROSS-CIRC     multiminilm | shift=78 | layer=4 | mean r=-0.004
+ACROSS-CIRC     multiminilm | shift=78 | layer=5 | mean r=-0.015
+ACROSS-CIRC     multiminilm | shift=78 | layer=6 | mean r=-0.014
+ACROSS-CIRC     multiminilm | shift=78 | layer=7 | mean r=-0.014
+ACROSS-CIRC     multiminilm | shift=78 | layer=8 | mean r=-0.015
+ACROSS-CIRC     multiminilm | shift=78 | layer=9 | mean r=-0.015
+ACROSS-CIRC     multiminilm | shift=78 | layer=10 | mean r=-0.008
+ACROSS-CIRC     multiminilm | shift=78 | layer=11 | mean r=-0.007
+ACROSS-CIRC     multiminilm | shift=78 | layer=12 | mean r=-0.007
+
+  >>> Circular shift = 104
+ACROSS-CIRC     multiminilm | shift=104 | layer=0 | mean r=0.001
+ACROSS-CIRC     multiminilm | shift=104 | layer=1 | mean r=-0.006
+ACROSS-CIRC     multiminilm | shift=104 | layer=2 | mean r=-0.009
+ACROSS-CIRC     multiminilm | shift=104 | layer=3 | mean r=0.002
+ACROSS-CIRC     multiminilm | shift=104 | layer=4 | mean r=-0.006
+ACROSS-CIRC     multiminilm | shift=104 | layer=5 | mean r=-0.013
+ACROSS-CIRC     multiminilm | shift=104 | layer=6 | mean r=-0.009
+ACROSS-CIRC     multiminilm | shift=104 | layer=7 | mean r=-0.015
+ACROSS-CIRC     multiminilm | shift=104 | layer=8 | mean r=-0.011
+ACROSS-CIRC     multiminilm | shift=104 | layer=9 | mean r=-0.021
+ACROSS-CIRC     multiminilm | shift=104 | layer=10 | mean r=-0.024
+ACROSS-CIRC     multiminilm | shift=104 | layer=11 | mean r=-0.017
+ACROSS-CIRC     multiminilm | shift=104 | layer=12 | mean r=-0.016
+
+
+Processing Lang_LH_MFG (5/6)
+
+  >>> Circular shift = 26
+ACROSS-CIRC     multiminilm | shift=26 | layer=0 | mean r=0.001
+ACROSS-CIRC     multiminilm | shift=26 | layer=1 | mean r=0.011
+ACROSS-CIRC     multiminilm | shift=26 | layer=2 | mean r=0.003
+ACROSS-CIRC     multiminilm | shift=26 | layer=3 | mean r=0.002
+ACROSS-CIRC     multiminilm | shift=26 | layer=4 | mean r=-0.004
+ACROSS-CIRC     multiminilm | shift=26 | layer=5 | mean r=-0.006
+ACROSS-CIRC     multiminilm | shift=26 | layer=6 | mean r=-0.004
+ACROSS-CIRC     multiminilm | shift=26 | layer=7 | mean r=-0.000
+ACROSS-CIRC     multiminilm | shift=26 | layer=8 | mean r=0.001
+ACROSS-CIRC     multiminilm | shift=26 | layer=9 | mean r=0.011
+ACROSS-CIRC     multiminilm | shift=26 | layer=10 | mean r=0.013
+ACROSS-CIRC     multiminilm | shift=26 | layer=11 | mean r=0.005
+ACROSS-CIRC     multiminilm | shift=26 | layer=12 | mean r=0.006
+
+  >>> Circular shift = 52
+ACROSS-CIRC     multiminilm | shift=52 | layer=0 | mean r=-0.015
+ACROSS-CIRC     multiminilm | shift=52 | layer=1 | mean r=-0.026
+ACROSS-CIRC     multiminilm | shift=52 | layer=2 | mean r=-0.023
+ACROSS-CIRC     multiminilm | shift=52 | layer=3 | mean r=-0.023
+ACROSS-CIRC     multiminilm | shift=52 | layer=4 | mean r=-0.028
+ACROSS-CIRC     multiminilm | shift=52 | layer=5 | mean r=-0.028
+ACROSS-CIRC     multiminilm | shift=52 | layer=6 | mean r=-0.039
+ACROSS-CIRC     multiminilm | shift=52 | layer=7 | mean r=-0.026
+ACROSS-CIRC     multiminilm | shift=52 | layer=8 | mean r=-0.025
+ACROSS-CIRC     multiminilm | shift=52 | layer=9 | mean r=-0.013
+ACROSS-CIRC     multiminilm | shift=52 | layer=10 | mean r=-0.010
+ACROSS-CIRC     multiminilm | shift=52 | layer=11 | mean r=-0.020
+ACROSS-CIRC     multiminilm | shift=52 | layer=12 | mean r=-0.017
+
+  >>> Circular shift = 78
+ACROSS-CIRC     multiminilm | shift=78 | layer=0 | mean r=-0.001
+ACROSS-CIRC     multiminilm | shift=78 | layer=1 | mean r=-0.006
+ACROSS-CIRC     multiminilm | shift=78 | layer=2 | mean r=-0.002
+ACROSS-CIRC     multiminilm | shift=78 | layer=3 | mean r=0.002
+ACROSS-CIRC     multiminilm | shift=78 | layer=4 | mean r=-0.002
+ACROSS-CIRC     multiminilm | shift=78 | layer=5 | mean r=0.008
+ACROSS-CIRC     multiminilm | shift=78 | layer=6 | mean r=0.008
+ACROSS-CIRC     multiminilm | shift=78 | layer=7 | mean r=-0.006
+ACROSS-CIRC     multiminilm | shift=78 | layer=8 | mean r=-0.003
+ACROSS-CIRC     multiminilm | shift=78 | layer=9 | mean r=-0.001
+ACROSS-CIRC     multiminilm | shift=78 | layer=10 | mean r=-0.002
+ACROSS-CIRC     multiminilm | shift=78 | layer=11 | mean r=0.010
+ACROSS-CIRC     multiminilm | shift=78 | layer=12 | mean r=0.013
+
+  >>> Circular shift = 104
+ACROSS-CIRC     multiminilm | shift=104 | layer=0 | mean r=-0.001
+ACROSS-CIRC     multiminilm | shift=104 | layer=1 | mean r=0.000
+ACROSS-CIRC     multiminilm | shift=104 | layer=2 | mean r=0.002
+ACROSS-CIRC     multiminilm | shift=104 | layer=3 | mean r=0.010
+ACROSS-CIRC     multiminilm | shift=104 | layer=4 | mean r=-0.002
+ACROSS-CIRC     multiminilm | shift=104 | layer=5 | mean r=-0.001
+ACROSS-CIRC     multiminilm | shift=104 | layer=6 | mean r=0.002
+ACROSS-CIRC     multiminilm | shift=104 | layer=7 | mean r=-0.004
+ACROSS-CIRC     multiminilm | shift=104 | layer=8 | mean r=-0.004
+ACROSS-CIRC     multiminilm | shift=104 | layer=9 | mean r=-0.018
+ACROSS-CIRC     multiminilm | shift=104 | layer=10 | mean r=-0.024
+ACROSS-CIRC     multiminilm | shift=104 | layer=11 | mean r=-0.021
+ACROSS-CIRC     multiminilm | shift=104 | layer=12 | mean r=-0.020
+
+
+Processing Lang_LH_PostTemp (6/6)
+
+  >>> Circular shift = 26
+ACROSS-CIRC     multiminilm | shift=26 | layer=0 | mean r=-0.016
+ACROSS-CIRC     multiminilm | shift=26 | layer=1 | mean r=-0.000
+ACROSS-CIRC     multiminilm | shift=26 | layer=2 | mean r=-0.007
+ACROSS-CIRC     multiminilm | shift=26 | layer=3 | mean r=-0.000
+ACROSS-CIRC     multiminilm | shift=26 | layer=4 | mean r=0.003
+ACROSS-CIRC     multiminilm | shift=26 | layer=5 | mean r=-0.002
+ACROSS-CIRC     multiminilm | shift=26 | layer=6 | mean r=-0.007
+ACROSS-CIRC     multiminilm | shift=26 | layer=7 | mean r=-0.017
+ACROSS-CIRC     multiminilm | shift=26 | layer=8 | mean r=-0.002
+ACROSS-CIRC     multiminilm | shift=26 | layer=9 | mean r=-0.000
+ACROSS-CIRC     multiminilm | shift=26 | layer=10 | mean r=0.010
+ACROSS-CIRC     multiminilm | shift=26 | layer=11 | mean r=-0.002
+ACROSS-CIRC     multiminilm | shift=26 | layer=12 | mean r=-0.002
+
+  >>> Circular shift = 52
+ACROSS-CIRC     multiminilm | shift=52 | layer=0 | mean r=0.003
+ACROSS-CIRC     multiminilm | shift=52 | layer=1 | mean r=-0.001
+ACROSS-CIRC     multiminilm | shift=52 | layer=2 | mean r=-0.016
+ACROSS-CIRC     multiminilm | shift=52 | layer=3 | mean r=-0.012
+ACROSS-CIRC     multiminilm | shift=52 | layer=4 | mean r=-0.027
+ACROSS-CIRC     multiminilm | shift=52 | layer=5 | mean r=-0.025
+ACROSS-CIRC     multiminilm | shift=52 | layer=6 | mean r=-0.038
+ACROSS-CIRC     multiminilm | shift=52 | layer=7 | mean r=-0.027
+ACROSS-CIRC     multiminilm | shift=52 | layer=8 | mean r=-0.030
+ACROSS-CIRC     multiminilm | shift=52 | layer=9 | mean r=-0.035
+ACROSS-CIRC     multiminilm | shift=52 | layer=10 | mean r=-0.024
+ACROSS-CIRC     multiminilm | shift=52 | layer=11 | mean r=-0.031
+ACROSS-CIRC     multiminilm | shift=52 | layer=12 | mean r=-0.031
+
+  >>> Circular shift = 78
+ACROSS-CIRC     multiminilm | shift=78 | layer=0 | mean r=-0.007
+ACROSS-CIRC     multiminilm | shift=78 | layer=1 | mean r=-0.012
+ACROSS-CIRC     multiminilm | shift=78 | layer=2 | mean r=-0.010
+ACROSS-CIRC     multiminilm | shift=78 | layer=3 | mean r=-0.013
+ACROSS-CIRC     multiminilm | shift=78 | layer=4 | mean r=-0.013
+ACROSS-CIRC     multiminilm | shift=78 | layer=5 | mean r=-0.016
+ACROSS-CIRC     multiminilm | shift=78 | layer=6 | mean r=-0.012
+ACROSS-CIRC     multiminilm | shift=78 | layer=7 | mean r=-0.018
+ACROSS-CIRC     multiminilm | shift=78 | layer=8 | mean r=-0.021
+ACROSS-CIRC     multiminilm | shift=78 | layer=9 | mean r=-0.032
+ACROSS-CIRC     multiminilm | shift=78 | layer=10 | mean r=-0.014
+ACROSS-CIRC     multiminilm | shift=78 | layer=11 | mean r=-0.004
+ACROSS-CIRC     multiminilm | shift=78 | layer=12 | mean r=-0.003
+
+  >>> Circular shift = 104
+ACROSS-CIRC     multiminilm | shift=104 | layer=0 | mean r=0.031
+ACROSS-CIRC     multiminilm | shift=104 | layer=1 | mean r=0.028
+ACROSS-CIRC     multiminilm | shift=104 | layer=2 | mean r=0.029
+ACROSS-CIRC     multiminilm | shift=104 | layer=3 | mean r=0.039
+ACROSS-CIRC     multiminilm | shift=104 | layer=4 | mean r=0.025
+ACROSS-CIRC     multiminilm | shift=104 | layer=5 | mean r=0.018
+ACROSS-CIRC     multiminilm | shift=104 | layer=6 | mean r=0.027
+ACROSS-CIRC     multiminilm | shift=104 | layer=7 | mean r=0.018
+ACROSS-CIRC     multiminilm | shift=104 | layer=8 | mean r=0.011
+ACROSS-CIRC     multiminilm | shift=104 | layer=9 | mean r=0.014
+ACROSS-CIRC     multiminilm | shift=104 | layer=10 | mean r=0.010
+ACROSS-CIRC     multiminilm | shift=104 | layer=11 | mean r=0.014
+ACROSS-CIRC     multiminilm | shift=104 | layer=12 | mean r=0.014
+Encoding for nllb200_distilled_600M – all already done
+Encoding for nllb200_distilled_600M – Lang_LH_AntTemp already done
+Encoding for nllb200_distilled_600M – Lang_LH_IFG already done
+Encoding for nllb200_distilled_600M – Lang_LH_IFGorb already done
+Encoding for nllb200_distilled_600M – Lang_LH_MFG already done
+Encoding for nllb200_distilled_600M – Lang_LH_PostTemp already done
+Encoding for nllb200_distilled_1B – all already done
+Encoding for nllb200_distilled_1B – Lang_LH_AntTemp already done
+Encoding for nllb200_distilled_1B – Lang_LH_IFG already done
+Encoding for nllb200_distilled_1B – Lang_LH_IFGorb already done
+Encoding for nllb200_distilled_1B – Lang_LH_MFG already done
+Encoding for nllb200_distilled_1B – Lang_LH_PostTemp already done
+Encoding for nllb200_1B – all already done
+Encoding for nllb200_1B – Lang_LH_AntTemp already done
+Encoding for nllb200_1B – Lang_LH_IFG already done
+Encoding for nllb200_1B – Lang_LH_IFGorb already done
+Encoding for nllb200_1B – Lang_LH_MFG already done
+Encoding for nllb200_1B – Lang_LH_PostTemp already done
+Encoding for mgpt – all already done
+Encoding for mgpt – Lang_LH_AntTemp already done
+Encoding for mgpt – Lang_LH_IFG already done
+Encoding for mgpt – Lang_LH_IFGorb already done
+Encoding for mgpt – Lang_LH_MFG already done
+Encoding for mgpt – Lang_LH_PostTemp already done
