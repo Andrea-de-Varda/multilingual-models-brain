@@ -75,8 +75,6 @@ encoding = pd.read_csv("results/mono_multi.csv")
 mono_multi = pd.merge(encoding, ppx_res)
 del mono_multi["mod"]
 
-print(mono_multi.corr())
-
 ################################################################################
 
 ############
@@ -132,17 +130,17 @@ to_print = ['NLLB$_{d-small}$', 'NLLB$_{large}$', 'InfoXLM$_{large}$', 'mMiniLM'
 
 models_with_lines = names_formatted
 
-for i in range(len(mono_multi)):
-    model = mono_multi['Model'][i]
-    if model in to_print:
-        offset_x, offset_y = annotations.get(model, (0.02, 0.02))
-        offset_x = offset_x * 300
-        plt.text(mono_multi['ppx_mean'][i] + offset_x, mono_multi['Score_mono'][i] + offset_y,
-                 model, fontsize=12, ha='center', va='bottom', alpha = 0.3, bbox=dict(facecolor='white', alpha=1, zorder = 4, edgecolor='#D3D3D3'))
-        if model in models_with_lines:
-            plt.plot([mono_multi['ppx_mean'][i], mono_multi['ppx_mean'][i] + offset_x],
-                     [mono_multi['Score_mono'][i], mono_multi['Score_mono'][i] + offset_y],
-                     color='black', alpha = 0.3, lw=1, zorder = 1)
+# for i in range(len(mono_multi)):
+#     model = mono_multi['Model'][i]
+#     if model in to_print:
+#         offset_x, offset_y = annotations.get(model, (0.02, 0.02))
+#         offset_x = offset_x * 300
+#         plt.text(mono_multi['ppx_mean'][i] + offset_x, mono_multi['Score_mono'][i] + offset_y,
+#                  model, fontsize=12, ha='center', va='bottom', alpha = 0.3, bbox=dict(facecolor='white', alpha=1, zorder = 4, edgecolor='#D3D3D3'))
+#         if model in models_with_lines:
+#             plt.plot([mono_multi['ppx_mean'][i], mono_multi['ppx_mean'][i] + offset_x],
+#                      [mono_multi['Score_mono'][i], mono_multi['Score_mono'][i] + offset_y],
+#                      color='black', alpha = 0.3, lw=1, zorder = 1)
 plt.text(0.98, 0.98, f"r = {round(r, 2)}, p = {round(p, 4)}", 
          fontsize=15, ha='right', va='top', alpha=1, 
          bbox=dict(facecolor='white', alpha=0.7), 
@@ -153,7 +151,7 @@ plt.ylabel('R within-languages', fontsize = 17)
 plt.yticks(fontsize=15)
 plt.xticks(fontsize=15)
 plt.xlim(-90, 45)
-plt.ylim(0.15, 0.6)
+#plt.ylim(0.15, 0.6)
 plt.yticks([0.2, 0.3, 0.4, 0.5])
 plt.grid(True)
 plt.show()
@@ -162,6 +160,7 @@ plt.show()
 #########
 # MULTI #
 #########
+
 
 r, p = pearsonr(mono_multi['Score_multi'], mono_multi['ppx_mean']) 
 
@@ -206,33 +205,38 @@ to_print = ['NLLB$_{d-small}$', 'NLLB$_{large}$', 'XLM-Align', 'mMiniLM', 'XLM-R
 
 #annotations.keys()
 
-models_with_lines = names_formatted
+models_with_lines = names_formatted # CHANGE HERE TO PRINT CORRECTLY
 
-for i in range(len(mono_multi)):
-    model = mono_multi['Model'][i]
-    if model in to_print:
-        offset_x, offset_y = annotations.get(model, (0.02, 0.02))
-        offset_x = offset_x * 300
-        plt.text(mono_multi['ppx_mean'][i] + offset_x, mono_multi['Score_multi'][i] + offset_y,
-                  model, fontsize=12, ha='center', va='bottom', alpha = 0.3, bbox=dict(facecolor='white', alpha=1, zorder = 4, edgecolor='#D3D3D3'))
-        if model in models_with_lines:
-            plt.plot([mono_multi['ppx_mean'][i], mono_multi['ppx_mean'][i] + offset_x],
-                      [mono_multi['Score_multi'][i], mono_multi['Score_multi'][i] + offset_y],
-                      color='black', alpha = 0.3, lw=1, zorder = 1)
+# for i in range(len(mono_multi)):
+#     model = mono_multi['Model'][i]
+#     if model in to_print:
+#         offset_x, offset_y = annotations.get(model, (0.02, 0.02))
+#         offset_x = offset_x * 300
+#         plt.text(mono_multi['ppx_mean'][i] + offset_x, mono_multi['Score_multi'][i] + offset_y,
+#                   model, fontsize=12, ha='center', va='bottom', alpha = 0.3, bbox=dict(facecolor='white', alpha=1, zorder = 4, edgecolor='#D3D3D3'))
+#         if model in models_with_lines:
+#             plt.plot([mono_multi['ppx_mean'][i], mono_multi['ppx_mean'][i] + offset_x],
+#                       [mono_multi['Score_multi'][i], mono_multi['Score_multi'][i] + offset_y],
+#                       color='black', alpha = 0.3, lw=1, zorder = 1)
 plt.text(0.98, 0.98, f"r = {round(r, 2)}, p = {round(p, 4)}", 
          fontsize=15, ha='right', va='top', alpha=1, 
          bbox=dict(facecolor='white', alpha=0.7), 
-         transform=plt.gca().transAxes)
+         transform=plt.gca().transAxes, clip_on=True)
+ax = plt.gca()
+margin_low = 0.025
+margin_high = 0.045
+lo = mono_multi['Score_multi'].min() - margin_low
+hi = mono_multi['Score_multi'].max() + margin_high
+ax.set_ylim(lo, hi)
 plt.xlabel('Perplexity (residual)', fontsize = 17)
 plt.ylabel('R across-languages', fontsize = 17)
 plt.yticks(fontsize=15)
 plt.xticks(fontsize=15)
 plt.xlim(-90, 45)
-plt.ylim(0.18, 0.426)
-plt.yticks([0.2, 0.3, 0.4])
+# plt.ylim(0.0, 0.35)
+plt.yticks([0.1, 0.2])
 plt.grid(True)
 plt.show()
-
 
 # check if corrs are sig different
 

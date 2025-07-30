@@ -11,6 +11,8 @@ from tqdm import tqdm
 from time import sleep
 import pickle
 import matplotlib.pyplot as plt
+import sys
+sys.modules['numpy._core.numeric'] = np.core.numeric
 
 chdir("/home/dev/Documents/PhD/Alice")
 
@@ -110,8 +112,6 @@ def get_all_embeddings(languages, df, tokenizer, model, is_seq2seq=False, save_i
             if save_intermediate:
                 print(f"Saving embeddings for language {l}...")
                 save(embeddings, f"{intermediate_modelname}_intermediate_{l}.pkl")
-        sleep(600)
-    sleep(250)
     return d_embeddings
 
 
@@ -243,12 +243,12 @@ del model, tokenizer, nllb200_1B
 ###############################################################################
 
 def load_multi(model_prefix):
-    with open(f"results/multilingual_{model_prefix}", 'rb') as handle:
+    with open(f"results/multilingual_{model_prefix}_all", 'rb') as handle:
         file = pickle.load(handle)
     return file
 
 def load_mono(model_prefix):
-    with open(f"results/monolingual_{model_prefix}", 'rb') as handle:
+    with open(f"results/monolingual_{model_prefix}_all", 'rb') as handle:
         file = pickle.load(handle)
     return file
 
@@ -319,25 +319,27 @@ results_single_langs = []
 for model in modelnames:
     res = load(model)
     layer, encod, single_langs_encod = get_best_layerwise(load_multi(model))
-    last_layer_encod = get_last_layerwise(load_multi(model))    
+    single_langs_encod.index = single_langs_encod["target_lang"]
+    last_layer_encod = get_last_layerwise(load_multi(model))   
+    last_layer_encod.index = last_layer_encod["target_lang"]
     rs = load_multi(model)[layer]["r"]
     se_encod = np.std(rs) / np.sqrt(len(rs))
     print(f"Loaded {model}")
     langs_ = res.keys()
     out = []
-    out_langs = {lang : [] for lang in langs_}
     for l1, l2 in combinations(langs_, 2):
+        r_1 = single_langs_encod.loc[l1, l2]
+        r_2 = single_langs_encod.loc[l2, l1]
+        r_pair = (r_1 + r_2) / 2
+        r_1_last = last_layer_encod.loc[l1, l2]
+        r_2_last = last_layer_encod.loc[l2, l1]
+        r_pair_last = (r_1_last + r_2_last) / 2
         res_ = evaluate_language_pair(l1, l2, res, layer)
+        res_["r_pair"] = r_pair
+        res_["r_pair_last"] = r_pair_last
+        res_["model"] = model
+        results_single_langs.append(res_)
         out.append(res_)
-        for k in out_langs.keys():
-            if l1 == k:
-                out_langs[k].append(res_["mrr"])
-            elif l2 == k:
-                out_langs[k].append(res_["mrr"])
-    for l in langs_:
-        r_lang = single_langs_encod.loc[single_langs_encod['lang'] == l, 'r'].iloc[0]
-        r_lang_last = last_layer_encod.loc[single_langs_encod['lang'] == l, 'r'].iloc[0]
-        results_single_langs.append([model, l, np.mean(out_langs[l]), r_lang, r_lang_last])
     # mean and SE for each metric across all pairs
     avg_rank = np.mean([x["avg_rank"] for x in out])
     avg_rank_se = np.std([x["avg_rank"] for x in out]) / np.sqrt(len(langs_))
@@ -376,11 +378,11 @@ for model in modelnames:
 
 results_df = pd.DataFrame(results)
 # results_df.to_csv(folder_path+'multilingual_results.csv', index=False)
-results_df = pd.read_csv(folder_path+'multilingual_results.csv')
-print(results_df.corr())
-print(pearsonr(results_df["mrr"], results_df["encod"]))
+# results_df = pd.read_csv(folder_path+'multilingual_results.csv')
+pearsonr(results_df["mrr"], results_df["encod"])
 
-results_single_langs = pd.DataFrame(results_single_langs, columns = ["model", "language", "mrr", "r", "r_last"])
+results_single_langs = pd.DataFrame(results_single_langs)
+print(pearsonr(results_single_langs["mrr"], results_single_langs["r_pair_last"]))
 # results_single_langs.to_csv(folder_path+'singlelangs_multilingual_results.csv', index=False)
 results_single_langs = pd.read_csv(folder_path+'singlelangs_multilingual_results.csv')
 # results_single_langs.corr()
@@ -391,30 +393,80 @@ results_single_langs = pd.read_csv(folder_path+'singlelangs_multilingual_results
 #######################
 
 # multilingual results 
+# results_mono = []
+# results_single_langs_mono = []
+# for model in modelnames:
+#     res = load(model)
+#     layer, encod, single_langs_encod = get_best_layerwise(load_mono(model), colname = "m")
+#     last_layer_encod = get_last_layerwise(load_mono(model))
+#     rs = load_mono(model)[layer]["m"]
+#     se_encod = np.std(rs) / np.sqrt(len(rs))
+#     print(f"Loaded {model}")
+#     langs_ = res.keys()
+#     out = []
+#     out_langs = {lang : [] for lang in langs_}
+#     for l1, l2 in combinations(langs_, 2):
+#         res_ = evaluate_language_pair(l1, l2, res, layer)
+#         out.append(res_)
+#         for k in out_langs.keys():
+#             if l1 == k:
+#                 out_langs[k].append(res_["mrr"])
+#             elif l2 == k:
+#                 out_langs[k].append(res_["mrr"])
+#     for l in langs_:
+#         r_lang = single_langs_encod.loc[single_langs_encod['lang'] == l, 'm'].iloc[0]
+#         r_lang_last = last_layer_encod.loc[single_langs_encod['lang'] == l, 'm'].iloc[0]
+#         results_single_langs_mono.append([model, l, np.mean(out_langs[l]), r_lang, r_lang_last])
+#     # mean and SE for each metric across all pairs
+#     avg_rank = np.mean([x["avg_rank"] for x in out])
+#     avg_rank_se = np.std([x["avg_rank"] for x in out]) / np.sqrt(len(langs_))
+#     p_at_k = np.mean([x["p@k"] for x in out])
+#     p_at_k_se = np.std([x["p@k"] for x in out]) / np.sqrt(len(langs_))
+#     mrr = np.mean([x["mrr"] for x in out])
+#     mrr_se = np.std([x["mrr"] for x in out]) / np.sqrt(len(langs_))
+#     r_at_k = np.mean([x["r@k"] for x in out])
+#     r_at_k_se = np.std([x["r@k"] for x in out]) / np.sqrt(len(langs_))
+#     map_score = np.mean([x["map"] for x in out])
+#     map_score_se = np.std([x["map"] for x in out]) / np.sqrt(len(langs_))
+#     results_mono.append({
+#         "model": model,
+#         "avg_rank": avg_rank,
+#         "avg_rank_se": avg_rank_se,
+#         "p@k": p_at_k,
+#         "p@k_se": p_at_k_se,
+#         "mrr": mrr,
+#         "mrr_se": mrr_se,
+#         "r@k": r_at_k,
+#         "r@k_se": r_at_k_se,
+#         "map": map_score,
+#         "map_se": map_score_se,
+#         "encod": encod,
+#         "encod_se" : se_encod,
+#         "best_layer": layer
+#     })
+    
+#     print(f"Done {model} (avg_rank: {round(avg_rank, 2)} ± {round(avg_rank_se, 2)}, "
+#           f"p@k: {round(p_at_k, 2)} ± {round(p_at_k_se, 2)}, "
+#           f"mrr: {round(mrr, 2)} ± {round(mrr_se, 2)}, "
+#           f"r@k: {round(r_at_k, 2)} ± {round(r_at_k_se, 2)}, "
+#           f"map: {round(map_score, 2)} ± {round(map_score_se, 2)}, "
+#           f"encod: {round(encod, 2)})")
+
 results_mono = []
-results_single_langs_mono = []
 for model in modelnames:
     res = load(model)
     layer, encod, single_langs_encod = get_best_layerwise(load_mono(model), colname = "m")
-    last_layer_encod = get_last_layerwise(load_mono(model))
+    single_langs_encod.index = single_langs_encod["lang"]
+    last_layer_encod = get_last_layerwise(load_mono(model), colname = "m")   
+    last_layer_encod.index = last_layer_encod["lang"]
     rs = load_mono(model)[layer]["m"]
     se_encod = np.std(rs) / np.sqrt(len(rs))
     print(f"Loaded {model}")
     langs_ = res.keys()
     out = []
-    out_langs = {lang : [] for lang in langs_}
     for l1, l2 in combinations(langs_, 2):
         res_ = evaluate_language_pair(l1, l2, res, layer)
         out.append(res_)
-        for k in out_langs.keys():
-            if l1 == k:
-                out_langs[k].append(res_["mrr"])
-            elif l2 == k:
-                out_langs[k].append(res_["mrr"])
-    for l in langs_:
-        r_lang = single_langs_encod.loc[single_langs_encod['lang'] == l, 'm'].iloc[0]
-        r_lang_last = last_layer_encod.loc[single_langs_encod['lang'] == l, 'm'].iloc[0]
-        results_single_langs_mono.append([model, l, np.mean(out_langs[l]), r_lang, r_lang_last])
     # mean and SE for each metric across all pairs
     avg_rank = np.mean([x["avg_rank"] for x in out])
     avg_rank_se = np.std([x["avg_rank"] for x in out]) / np.sqrt(len(langs_))
@@ -453,13 +505,13 @@ for model in modelnames:
 
 results_mono_df = pd.DataFrame(results_mono)
 # results_mono_df.to_csv(folder_path+'monolingual_results.csv', index=False)
-results_mono_df = pd.read_csv(folder_path+'monolingual_results.csv')
-print(results_mono_df.corr())
+# results_mono_df = pd.read_csv(folder_path+'monolingual_results.csv')
+# print(results_mono_df.corr())
 print(pearsonr(results_mono_df["mrr"], results_mono_df["encod"]))
 
-results_single_langs_mono = pd.DataFrame(results_single_langs_mono, columns = ["model", "language", "mrr", "r", "r_last"])
+# results_single_langs_mono = pd.DataFrame(results_single_langs_mono, columns = ["model", "language", "mrr", "r", "r_last"])
 # results_single_langs_mono.to_csv(folder_path+'singlelangs_monolingual_results.csv', index=False)
-results_single_langs_mono = pd.read_csv(folder_path+'singlelangs_monolingual_results.csv')
+# results_single_langs_mono = pd.read_csv(folder_path+'singlelangs_monolingual_results.csv')
 # results_single_langs_mono.corr()
 # pearsonr(results_single_langs_mono["mrr"], results_single_langs_mono["r"])
 
