@@ -6,8 +6,9 @@ from os import chdir
 import os
 import pickle
 # from sklearn.linear_model import RidgeCV
-# from himalaya.ridge import RidgeCV ## Apparently Kernel Ridge is faster -->  Solving ridge is slower than solving kernel ridge when n_samples < n_features (here 117 < 1024). Using a linear kernel in himalaya.kernel_ridge.KernelRidgeCV or himalaya.kernel_ridge.solve_kernel_ridge_cv_eigenvalues would be faster. ---- default kernel is linear
+from himalaya.ridge import RidgeCV ## Apparently Kernel Ridge is faster (in most of the cases, apart some across, multilang) -->  Solving ridge is slower than solving kernel ridge when n_samples < n_features (here 117 < 1024). Using a linear kernel in himalaya.kernel_ridge.KernelRidgeCV or himalaya.kernel_ridge.solve_kernel_ridge_cv_eigenvalues would be faster. ---- default kernel is linear
 from himalaya.kernel_ridge import KernelRidgeCV
+from himalaya.backend import set_backend, get_backend
 from sklearn.model_selection import KFold
 from sklearn.preprocessing import StandardScaler
 from tqdm import tqdm
@@ -16,8 +17,28 @@ import warnings
 warnings.filterwarnings("ignore", category=RuntimeWarning)
 warnings.filterwarnings("ignore", category=DeprecationWarning, message=".*numpy\\.core\\.numeric is deprecated.*")
 import argparse
+import torch
 
 # chdir("/home/dev/Documents/PhD/Alice")
+
+# backend stuff
+DEVICE  = "cuda" if torch.cuda.is_available() else "cpu"
+BACKEND = "torch_cuda" if DEVICE == "cuda" else "numpy"
+set_backend(BACKEND)
+print(f"[INFO] Himalaya backend set to {get_backend()} ({DEVICE})", flush=True)
+
+def to_backend(a):
+    if not BACKEND.startswith("torch"):
+        return a
+    # np array case
+    if isinstance(a, np.ndarray):
+        if a.dtype != np.float32:
+            a = a.astype(np.float32, copy=False)
+        return torch.from_numpy(a).to(DEVICE)
+    # torch tensor case
+    if torch.is_tensor(a):
+        return a.to(dtype=torch.float32, device=DEVICE)
+    return a
 
 def save(file, name):
     with open(name, 'wb') as handle:
@@ -70,8 +91,12 @@ def test_model_Ridge(X, y_part1, y_part2, n, saveto, save_results = False, shuff
         y_train = y_scaler.fit_transform(y_part1[train_index].reshape(-1, 1)).flatten()
         y_test = y_scaler.transform(y_part2[test_index].reshape(-1, 1)).flatten()
         reg = KernelRidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000)) # Alpha values log spaced. Alpha chosen with leave-one-out nested CV
-        reg.fit(X_train, y_train)
-        y_pred = reg.predict(X_test)
+        # reg.fit(X_train, y_train)
+        reg.fit(to_backend(X_train), to_backend(y_train[:, None]))
+        y_pred = reg.predict(to_backend(X_test)).squeeze()
+        if BACKEND.startswith("torch"):
+            y_pred = y_pred.cpu().numpy()
+        # y_pred = reg.predict(X_test)
         r, _ = pearsonr(y_test, y_pred)
         out_pred.extend(y_pred.tolist())
         y_tot.extend(y_test.tolist())
@@ -96,7 +121,7 @@ def monolingual_encoding(langs, model_prefix, n_layers, d, shuffle=False, prefix
         # Encoding evaluated layer by layer
         frois = list(d[lang_code_dict[langs[0]]][list(d[lang_code_dict[langs[0]]].keys())[0]].keys())
         for froi_idx, froi in enumerate(frois):
-            print(f"\n\nProcessing {froi} ({froi_idx+1}/{len(frois)})")
+            print(f"\n\nProcessing {froi} ({froi_idx+1}/{len(frois)})", flush = True)
             for n in range(n_layers+1):
                 # print(f"Processing layer {n}")
                 fmri_data = [preproc_align(lang, load(f"{model_prefix}_{lang}")[n]) for lang in langs]
@@ -132,7 +157,7 @@ def multilingual_encoding(langs, model_prefix, n_layers, d, prefix = "", overwri
         frois = list(d[lang_code_dict[langs[0]]][list(d[lang_code_dict[langs[0]]].keys())[0]].keys())
         for froi_idx, froi in enumerate(frois):
             layerwise_dict = {}
-            print(f"\n\nProcessing {froi} ({froi_idx+1}/{len(frois)})")
+            print(f"\n\nProcessing {froi} ({froi_idx+1}/{len(frois)})", flush = True)
             for n in range(n_layers+1):
                 # print(f"Processing layer {n}")
                 fmri_data = [preproc_align(lang, load(f"{model_prefix}_{lang}")[n]) for lang in langs]
@@ -155,7 +180,8 @@ def multilingual_encoding(langs, model_prefix, n_layers, d, prefix = "", overwri
                         X_train = X_scaler.fit_transform(X_train)
                         y_train = y_scaler.fit_transform(y_train.reshape(-1, 1)).flatten()
                         reg = KernelRidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
-                        reg.fit(X_train, y_train)
+                        # reg.fit(X_train, y_train)
+                        reg.fit(to_backend(X_train), to_backend(y_train[:, None]))
                         for j in range(len(langs)):
                             #if j != i: # !! otherwise, train-test in same lang # on second thought, keeping it to have square matrices and aligned dims
                             test_lang = langs[j]
@@ -167,7 +193,10 @@ def multilingual_encoding(langs, model_prefix, n_layers, d, prefix = "", overwri
                             X_test = X_scaler.transform(X_test)
                             y_test_1 = y_scaler.transform(y_test_1.reshape(-1, 1)).flatten()
                             y_test_2 = y_scaler.transform(y_test_2.reshape(-1, 1)).flatten()
-                            y_pred = reg.predict(X_test)
+                            # y_pred = reg.predict(X_test)
+                            y_pred = reg.predict(to_backend(X_test)).squeeze()
+                            if BACKEND.startswith("torch"):
+                                y_pred = y_pred.cpu().numpy()
                             try:
                                 results_d_singlelang[test_lang]["prediction"].extend(y_pred.tolist())
                                 results_d_singlelang[test_lang]["target1"].extend(y_test_1.tolist())
@@ -203,7 +232,7 @@ def multilingual_encoding_multitrain(langs, model_prefix, n_layers, d, prefix = 
             print(f"Encoding for {model_prefix} - {froi} already done", flush = True)
             continue
         else:
-            print(f"\n\nProcessing {froi} ({froi_idx+1}/{len(frois)})")
+            print(f"\n\nProcessing {froi} ({froi_idx+1}/{len(frois)})", flush = True)
             for n in range(n_layers+1):
                 # print(f"Processing layer {n}")
                 fmri_data = [preproc_align(lang, load(f"{model_prefix}_{lang}")[n]) for lang in langs]
@@ -230,8 +259,14 @@ def multilingual_encoding_multitrain(langs, model_prefix, n_layers, d, prefix = 
                         y_scaler = StandardScaler()
                         X_train = X_scaler.fit_transform(X_train)
                         y_train = y_scaler.fit_transform(y_train.reshape(-1, 1)).flatten()
-                        reg = KernelRidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
-                        reg.fit(X_train, y_train)
+                        # here, we're training on more data so sometimes standard ridgeCV is faster (depending on embedding dim)
+                        if X_train.shape[0] > X_train.shape[1]:
+                            reg = RidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
+                        else:
+                            reg = KernelRidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
+                        # reg = KernelRidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
+                        # reg.fit(X_train, y_train)
+                        reg.fit(to_backend(X_train), to_backend(y_train[:, None]))
                         # testing
                         test_lang = langs[i]
                         part1, part2 = d[lang_code_dict[test_lang]].keys()
@@ -242,7 +277,10 @@ def multilingual_encoding_multitrain(langs, model_prefix, n_layers, d, prefix = 
                         X_test = X_scaler.transform(X_test)
                         y_test_1 = y_scaler.transform(y_test_1.reshape(-1, 1)).flatten()
                         y_test_2 = y_scaler.transform(y_test_2.reshape(-1, 1)).flatten()
-                        y_pred = reg.predict(X_test)
+                        # y_pred = reg.predict(X_test)
+                        y_pred = reg.predict(to_backend(X_test)).squeeze()
+                        if BACKEND.startswith("torch"):
+                            y_pred = y_pred.cpu().numpy()
                         try:
                             results_d_singlelang[test_lang]["prediction"].extend(y_pred.tolist())
                             results_d_singlelang[test_lang]["target1"].extend(y_test_1.tolist())
@@ -267,16 +305,16 @@ def multilingual_encoding_multitrain(langs, model_prefix, n_layers, d, prefix = 
 def monolingual_encoding_circshift(langs, model_prefix, n_layers, d, prefix="", overwrite=False, shift_vals=(26, 52, 78, 104), shuffle=False):
     kf = KFold(n_splits=10, shuffle=False)
     frois = list(d[lang_code_dict[langs[0]]][list(d[lang_code_dict[langs[0]]].keys())[0]].keys())
-    print(f"Processing {frois}")
+    print(f"Processing {frois}", flush = True)
     for froi_idx, froi in enumerate(sorted(frois, key=str.lower)):
         filepath = f"results/monolingual_{prefix}{model_prefix}_{froi}_circshift"
         out_all_shifts = {}
         if os.path.isfile(filepath) and not overwrite:
             print(f"Encoding for {model_prefix} – {froi} already done", flush = True)
             continue
-        print(f"\n\nProcessing {froi} ({froi_idx + 1}/{len(frois)})")
+        print(f"\n\nProcessing {froi} ({froi_idx + 1}/{len(frois)})", flush = True)
         for shift in shift_vals:
-            print(f"\n  >>> Circular shift = {shift}")
+            print(f"\n  >>> Circular shift = {shift}", flush = True)
             layerwise_dict = {}
             fmri_layers = {n: [preproc_align(lang, load(f"{model_prefix}_{lang}")[n]) for lang in langs] for n in range(n_layers + 1)}
             for n in range(n_layers + 1):
@@ -340,7 +378,8 @@ def multilingual_encoding_circshift(langs, model_prefix, n_layers, d, prefix = "
                         X_train = X_scaler.fit_transform(np.concatenate([X_train_, X_train_]))
                         y_train = y_scaler.fit_transform(y_train.reshape(-1, 1)).flatten()
                         reg = KernelRidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
-                        reg.fit(X_train, y_train)
+                        # reg.fit(X_train, y_train)
+                        reg.fit(to_backend(X_train), to_backend(y_train[:, None]))
                         # evaluate on every language
                         for j, test_lang in enumerate(langs):
                             part1_t, part2_t = d[lang_code_dict[test_lang]].keys()
@@ -351,7 +390,10 @@ def multilingual_encoding_circshift(langs, model_prefix, n_layers, d, prefix = "
                             y_t2    = np.roll(y_t2, shift)
                             y_t1    = y_scaler.transform(y_t1.reshape(-1,1)).flatten()
                             y_t2    = y_scaler.transform(y_t2.reshape(-1,1)).flatten()
-                            y_pred  = reg.predict(X_test)
+                            # y_pred  = reg.predict(X_test)
+                            y_pred = reg.predict(to_backend(X_test)).squeeze()
+                            if BACKEND.startswith("torch"):
+                                y_pred = y_pred.cpu().numpy()
                             try:
                                 rds = results_d_singlelang[test_lang]
                                 rds["prediction"].extend(y_pred.tolist())
@@ -421,8 +463,14 @@ def multilingual_encoding_multitrain_circshift(langs, model_prefix, n_layers, d,
                         y_scaler = StandardScaler()
                         X_train = X_scaler.fit_transform(X_train)
                         y_train = y_scaler.fit_transform(y_train.reshape(-1, 1)).flatten()
-                        reg = KernelRidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
-                        reg.fit(X_train, y_train)
+                        # reg = KernelRidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
+                        if X_train.shape[0] > X_train.shape[1]:
+                            reg = RidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
+                        else:
+                            reg = KernelRidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
+                        # reg = KernelRidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
+                        # reg.fit(X_train, y_train)
+                        reg.fit(to_backend(X_train), to_backend(y_train[:, None]))
                         # test on held‑out language
                         p1_t, p2_t = d[lang_code_dict[test_lang]].keys()
                         X_test = X_scaler.transform(fmri_data[i][test_idx])
@@ -430,7 +478,10 @@ def multilingual_encoding_multitrain_circshift(langs, model_prefix, n_layers, d,
                         y_t2 = np.roll(d[lang_code_dict[test_lang]][p2_t][froi][test_idx], shift)
                         y_t1 = y_scaler.transform(y_t1.reshape(-1, 1)).flatten()
                         y_t2 = y_scaler.transform(y_t2.reshape(-1, 1)).flatten()
-                        y_pred = reg.predict(X_test)
+                        # y_pred = reg.predict(X_test)
+                        y_pred = reg.predict(to_backend(X_test)).squeeze()
+                        if BACKEND.startswith("torch"):
+                            y_pred = y_pred.cpu().numpy()
                         results_single["prediction"].extend(y_pred.tolist())
                         results_single["target1"].extend(y_t1.tolist())
                         results_single["target2"].extend(y_t2.tolist())

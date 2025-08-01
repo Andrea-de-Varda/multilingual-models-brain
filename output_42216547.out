@@ -1,4 +1,5 @@
 >>> SCRIPT LAUNCHED
+[INFO] Himalaya backend set to <module 'himalaya.backend.torch_cuda' from '/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/himalaya/backend/torch_cuda.py'> (cuda)
 >>> STARTING JOB in mode: RH
 >>> Loaded fMRI data
 Processing - RH mode
@@ -42,3 +43,35 @@ Encoding for nllb200_distilled_600M already done
 Encoding for nllb200_distilled_1B already done
 Encoding for nllb200_1B already done
 Encoding for mgpt already done
+
+
+Training in N-1 languages (across, RH)
+Encoding for xglm_small - Lang_RH_AntTemp already done
+Encoding for xglm_small - Lang_RH_IFG already done
+Encoding for xglm_small - Lang_RH_IFGorb already done
+Encoding for xglm_small - Lang_RH_MFG already done
+Encoding for xglm_small - Lang_RH_PostTemp already done
+Encoding for xglm_small - all already done
+Encoding for xglm_med - Lang_RH_AntTemp already done
+Encoding for xglm_med - Lang_RH_IFG already done
+Encoding for xglm_med - Lang_RH_IFGorb already done
+Encoding for xglm_med - Lang_RH_MFG already done
+Encoding for xglm_med - Lang_RH_PostTemp already done
+Encoding for xglm_med - all already done
+Encoding for xglm_large - Lang_RH_AntTemp already done
+Encoding for xglm_large - Lang_RH_IFG already done
+Encoding for xglm_large - Lang_RH_IFGorb already done
+Encoding for xglm_large - Lang_RH_MFG already done
+Encoding for xglm_large - Lang_RH_PostTemp already done
+Encoding for xglm_large - all already done
+Encoding for xglm_xl - Lang_RH_AntTemp already done
+Encoding for xglm_xl - Lang_RH_IFG already done
+Encoding for xglm_xl - Lang_RH_IFGorb already done
+Encoding for xglm_xl - Lang_RH_MFG already done
+Encoding for xglm_xl - Lang_RH_PostTemp already done
+Encoding for xglm_xl - all already done
+Encoding for bert_base - Lang_RH_AntTemp already done
+Encoding for bert_base - Lang_RH_IFG already done
+
+
+Processing Lang_RH_IFGorb (3/6)

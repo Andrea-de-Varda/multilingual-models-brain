@@ -1,0 +1,100 @@
+>>> SCRIPT LAUNCHED
+[INFO] Himalaya backend set to <module 'himalaya.backend.torch_cuda' from '/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/himalaya/backend/torch_cuda.py'> (cuda)
+>>> STARTING JOB in mode: MD
+>>> Loaded fMRI data
+Processing - MD mode
+Encoding for xglm_small already done
+Encoding for xglm_med already done
+Encoding for xglm_large already done
+Encoding for xglm_xl already done
+Encoding for bert_base already done
+Encoding for distilmbert already done
+Encoding for xlmr_base already done
+Encoding for xlmr_large already done
+Encoding for mt5_small already done
+Encoding for mt5_base already done
+Encoding for mt5_large already done
+Encoding for mdeberta already done
+Encoding for xlm_align already done
+Encoding for infoxlm_base already done
+Encoding for infoxlm_large already done
+Encoding for multiminilm already done
+Encoding for nllb200_distilled_600M already done
+Encoding for nllb200_distilled_1B already done
+Encoding for nllb200_1B already done
+Encoding for mgpt already done
+Encoding for xglm_small already done
+Encoding for xglm_med already done
+Encoding for xglm_large already done
+Encoding for xglm_xl already done
+Encoding for bert_base already done
+Encoding for distilmbert already done
+Encoding for xlmr_base already done
+Encoding for xlmr_large already done
+Encoding for mt5_small already done
+Encoding for mt5_base already done
+Encoding for mt5_large already done
+Encoding for mdeberta already done
+Encoding for xlm_align already done
+Encoding for infoxlm_base already done
+Encoding for infoxlm_large already done
+Encoding for multiminilm already done
+Encoding for nllb200_distilled_600M already done
+Encoding for nllb200_distilled_1B already done
+Encoding for nllb200_1B already done
+Encoding for mgpt already done
+
+
+Training in N-1 languages (across, MD)
+Encoding for xglm_small - MD_LH_Precentral_A_PrecG already done
+Encoding for xglm_small - MD_LH_Precentral_B_IFGop already done
+Encoding for xglm_small - MD_LH_antParietal already done
+Encoding for xglm_small - MD_LH_insula already done
+Encoding for xglm_small - MD_LH_medialFrontal already done
+Encoding for xglm_small - MD_LH_midFrontal already done
+Encoding for xglm_small - MD_LH_midFrontalOrb already done
+Encoding for xglm_small - MD_LH_midParietal already done
+Encoding for xglm_small - MD_LH_postParietal already done
+Encoding for xglm_small - MD_LH_supFrontal already done
+Encoding for xglm_small - MD_RH_Precentral_A_PrecG already done
+Encoding for xglm_small - MD_RH_Precentral_B_IFGop already done
+Encoding for xglm_small - MD_RH_antParietal already done
+Encoding for xglm_small - MD_RH_insula already done
+Encoding for xglm_small - MD_RH_medialFrontal already done
+Encoding for xglm_small - MD_RH_midFrontal already done
+Encoding for xglm_small - MD_RH_midFrontalOrb already done
+Encoding for xglm_small - MD_RH_midParietal already done
+Encoding for xglm_small - MD_RH_postParietal already done
+Encoding for xglm_small - MD_RH_supFrontal already done
+Encoding for xglm_small - all already done
+Encoding for xglm_med - MD_LH_Precentral_A_PrecG already done
+Encoding for xglm_med - MD_LH_Precentral_B_IFGop already done
+Encoding for xglm_med - MD_LH_antParietal already done
+Encoding for xglm_med - MD_LH_insula already done
+Encoding for xglm_med - MD_LH_medialFrontal already done
+Encoding for xglm_med - MD_LH_midFrontal already done
+Encoding for xglm_med - MD_LH_midFrontalOrb already done
+Encoding for xglm_med - MD_LH_midParietal already done
+Encoding for xglm_med - MD_LH_postParietal already done
+Encoding for xglm_med - MD_LH_supFrontal already done
+Encoding for xglm_med - MD_RH_Precentral_A_PrecG already done
+Encoding for xglm_med - MD_RH_Precentral_B_IFGop already done
+Encoding for xglm_med - MD_RH_antParietal already done
+Encoding for xglm_med - MD_RH_insula already done
+Encoding for xglm_med - MD_RH_medialFrontal already done
+Encoding for xglm_med - MD_RH_midFrontal already done
+Encoding for xglm_med - MD_RH_midFrontalOrb already done
+Encoding for xglm_med - MD_RH_midParietal already done
+Encoding for xglm_med - MD_RH_postParietal already done
+Encoding for xglm_med - MD_RH_supFrontal already done
+Encoding for xglm_med - all already done
+Encoding for xglm_large - MD_LH_Precentral_A_PrecG already done
+Encoding for xglm_large - MD_LH_Precentral_B_IFGop already done
+Encoding for xglm_large - MD_LH_antParietal already done
+Encoding for xglm_large - MD_LH_insula already done
+Encoding for xglm_large - MD_LH_medialFrontal already done
+Encoding for xglm_large - MD_LH_midFrontal already done
+
+
+Processing MD_LH_midFrontalOrb (7/21)
+ACROSS-multilang-train     xglm_large | fROI=MD_LH_midFrontalOrb | layer=0 | mean r=-0.042
