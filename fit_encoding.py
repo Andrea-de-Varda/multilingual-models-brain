@@ -195,14 +195,14 @@ def multilingual_encoding(langs, model_prefix, n_layers, d, prefix = "", overwri
 def multilingual_encoding_multitrain(langs, model_prefix, n_layers, d, prefix = "", overwrite = False):
     # This function trains encoding models in a set of languages (all but one) and evaluates the encoding in the left-out language
     kf = KFold(n_splits=10, shuffle=False)
-    if os.path.isfile(f"results/multilingual_multitrain_{prefix}{model_prefix}_all") and overwrite == False:
-        print(f"Encoding for {model_prefix} already done", flush = True)
-        return
-    else:
-        kf = KFold(n_splits=10, shuffle=False)
-        frois = list(d[lang_code_dict[langs[0]]][list(d[lang_code_dict[langs[0]]].keys())[0]].keys())
-        for froi_idx, froi in enumerate(frois):
-            layerwise_dict = {}
+    frois = list(d[lang_code_dict[langs[0]]][list(d[lang_code_dict[langs[0]]].keys())[0]].keys())
+    for froi_idx, froi in enumerate(frois):
+        filename = f"results/multilingual_multitrain_{prefix}{model_prefix}_{froi}"
+        layerwise_dict = {}
+        if os.path.isfile(filename) and overwrite == False:
+            print(f"Encoding for {model_prefix} - {froi} already done", flush = True)
+            continue
+        else:
             print(f"\n\nProcessing {froi} ({froi_idx+1}/{len(frois)})")
             for n in range(n_layers+1):
                 # print(f"Processing layer {n}")
@@ -261,7 +261,7 @@ def multilingual_encoding_multitrain(langs, model_prefix, n_layers, d, prefix = 
                 layerwise_dict[n] = out_predictions
                 mean_r = out_predictions["r"].mean()
                 print(f"ACROSS-multilang-train     {model_prefix} | fROI={froi} | layer={n} | mean r={mean_r:.3f}", flush=True)
-            save(layerwise_dict, f"results/multilingual_multitrain_{prefix}{model_prefix}_{froi}")
+            save(layerwise_dict, filename)
     return layerwise_dict
 
 def monolingual_encoding_circshift(langs, model_prefix, n_layers, d, prefix="", overwrite=False, shift_vals=(26, 52, 78, 104), shuffle=False):
@@ -382,15 +382,80 @@ def multilingual_encoding_circshift(langs, model_prefix, n_layers, d, prefix = "
         save(out_all_shifts, filepath)
     return out_all_shifts
 
+def multilingual_encoding_multitrain_circshift(langs, model_prefix, n_layers, d, prefix="", overwrite=False, shift_vals=(26, 52, 78, 104),):
+    kf = KFold(n_splits=10, shuffle=False)
+    frois = list(d[lang_code_dict[langs[0]]][list(d[lang_code_dict[langs[0]]].keys())[0]].keys())
+    for froi_idx, froi in enumerate(sorted(frois, key=str.lower)):
+        out_all_shifts = {}
+        filepath = f"results/multilingual_multitrain_{prefix}{model_prefix}_{froi}_circshift"
+        if os.path.isfile(filepath) and not overwrite:
+            print(f"Encoding for {model_prefix} – {froi} already done", flush=True)
+            continue
+        print(f"\n\nProcessing {froi} ({froi_idx+1}/{len(frois)})", flush=True)
+        fmri_layers = {n: [preproc_align(lang, load(f"{model_prefix}_{lang}")[n]) for lang in langs]for n in range(n_layers + 1)}
+        for shift in shift_vals:
+            print(f"\n  >>> Circular shift = {shift}", flush=True)
+            layerwise_dict = {}
+            for n in range(n_layers + 1):
+                fmri_data = fmri_layers[n]
+                out_predictions = []
+                # loop over held‑out language
+                for i, test_lang in enumerate(langs):
+                    results_single = {"prediction": [], "target1": [], "target2": []}
+                    for train_idx, test_idx in kf.split(fmri_data[i]):  # split on held‑out
+                        # build training data from all languages except held‑out
+                        X_train_ = np.concatenate([fmri_data[j][train_idx] for j in range(len(langs)) if j != i])
+                        y_train_1, y_train_2 = [], []
+                        for j in range(len(langs)):
+                            if j != i:
+                                lang_j = langs[j]
+                                p1, p2 = d[lang_code_dict[lang_j]].keys()
+                                y_train_1.append(np.roll(d[lang_code_dict[lang_j]][p1][froi][train_idx],shift))
+                                y_train_2.append(np.roll(d[lang_code_dict[lang_j]][p2][froi][train_idx],shift))
+                        y_train_1 = np.concatenate(y_train_1)
+                        y_train_2 = np.concatenate(y_train_2)
+                        X_train = np.concatenate([X_train_, X_train_])
+                        y_train = np.concatenate([y_train_1, y_train_2])
+                        # scale + fit
+                        X_scaler = StandardScaler()
+                        y_scaler = StandardScaler()
+                        X_train = X_scaler.fit_transform(X_train)
+                        y_train = y_scaler.fit_transform(y_train.reshape(-1, 1)).flatten()
+                        reg = KernelRidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
+                        reg.fit(X_train, y_train)
+                        # test on held‑out language
+                        p1_t, p2_t = d[lang_code_dict[test_lang]].keys()
+                        X_test = X_scaler.transform(fmri_data[i][test_idx])
+                        y_t1 = np.roll(d[lang_code_dict[test_lang]][p1_t][froi][test_idx], shift)
+                        y_t2 = np.roll(d[lang_code_dict[test_lang]][p2_t][froi][test_idx], shift)
+                        y_t1 = y_scaler.transform(y_t1.reshape(-1, 1)).flatten()
+                        y_t2 = y_scaler.transform(y_t2.reshape(-1, 1)).flatten()
+                        y_pred = reg.predict(X_test)
+                        results_single["prediction"].extend(y_pred.tolist())
+                        results_single["target1"].extend(y_t1.tolist())
+                        results_single["target2"].extend(y_t2.tolist())
+                    # correlation (average over 2 participants)
+                    r1 = pearsonr(results_single["prediction"], results_single["target1"])[0]
+                    r2 = pearsonr(results_single["prediction"], results_single["target2"])[0]
+                    out_predictions.append({"target_lang": test_lang, "r": 0.5 * (r1 + r2)})
+                df_layer = pd.DataFrame(out_predictions)
+                layerwise_dict[n] = df_layer
+                mean_r = df_layer["r"].mean()
+                print(f"ACROSS‑CIRC‑MULTITRAIN {model_prefix} | shift={shift} | fROI={froi} | layer={n} | mean r={mean_r:.3f}",flush=True,)
+            out_all_shifts[shift] = layerwise_dict
+        save(out_all_shifts, filepath)
+    return out_all_shifts
+
 ###############################################################################
 
 parser = argparse.ArgumentParser(description="choose which analyses to run")
 parser.add_argument(
     "--mode",
-    choices=["within", "across", "RH", "MD", "native-within", "native-across"],
+    choices=["within", "across", "across-random", "RH", "MD", "native-within", "native-across"],
     required=True,
     help=("within  --> monolingual + circshift only"
-          "across  --> multilingual (and circshift) only"
+          "across  --> multilingual only (no circshift)"
+          "across-random  --> multilingual circshift only"
           "RH      --> right-hemisphere analyses only"
           "MD      --> MD-network analyses only"
           "native-within  --> fROIs found with native contrast"),
@@ -463,6 +528,7 @@ if MODE == "within":
 ##################
 # MODEL TRANSFER #
 ##################
+
 elif MODE == "across":
     print("Processing - ACROSS mode", flush = True)
     xglm_small_multi  = multilingual_encoding(xglm_langs, "xglm_small", 24, d)
@@ -486,6 +552,31 @@ elif MODE == "across":
     nllb_1b_multi       = multilingual_encoding(all_codes, "nllb200_1B", 24, d)
     mgpt_multi          = multilingual_encoding(mgpt_langs, "mgpt", 24, d)
 
+    # multilingual, train in N-1 langs, generalize to left-out lang
+    print("\n\nTraining in N-1 languages (across, standard)", flush=True)
+    xglm_small_multi  = multilingual_encoding_multitrain(xglm_langs, "xglm_small", 24, d)
+    xglm_med_multi    = multilingual_encoding_multitrain(xglm_langs, "xglm_med", 24, d)
+    xglm_large_multi  = multilingual_encoding_multitrain(xglm_langs, "xglm_large", 48, d)
+    xglm_xl_multi     = multilingual_encoding_multitrain(xglm_langs, "xglm_xl", 48, d)
+    mbert_multi       = multilingual_encoding_multitrain(all_codes, "bert_base", 12, d)
+    distilmbert_multi = multilingual_encoding_multitrain(all_codes, "distilmbert", 6, d)
+    xlmr_base_multi   = multilingual_encoding_multitrain(all_codes, "xlmr_base", 12, d)
+    xlmr_large_multi  = multilingual_encoding_multitrain(all_codes, "xlmr_large", 24, d)
+    mt5_small_multi   = multilingual_encoding_multitrain(all_codes, "mt5_small", 8, d)
+    mt5_base_multi    = multilingual_encoding_multitrain(all_codes, "mt5_base", 12, d)
+    mt5_large_multi   = multilingual_encoding_multitrain(all_codes, "mt5_large", 24, d)
+    mdeberta_multi      = multilingual_encoding_multitrain(all_codes, "mdeberta", 12, d)
+    xlm_align_multi     = multilingual_encoding_multitrain(all_codes, "xlm_align", 12, d)
+    infoxlm_base_multi  = multilingual_encoding_multitrain(all_codes, "infoxlm_base", 12, d)
+    infoxlm_large_multi = multilingual_encoding_multitrain(all_codes, "infoxlm_large", 24, d)
+    multiminilm_multi   = multilingual_encoding_multitrain(all_codes, "multiminilm", 12, d)
+    nllb_d_600m_multi   = multilingual_encoding_multitrain(all_codes, "nllb200_distilled_600M", 12, d)
+    nllb_d_1b_multi     = multilingual_encoding_multitrain(all_codes, "nllb200_distilled_1B", 24, d)
+    nllb_1b_multi       = multilingual_encoding_multitrain(all_codes, "nllb200_1B", 24, d)
+    mgpt_multi          = multilingual_encoding_multitrain(mgpt_langs, "mgpt", 24, d)
+
+elif MODE == "across-random":
+    print("Processing - ACROSS mode (random)", flush = True)
     # random
     xglm_small_multi  = multilingual_encoding_circshift(xglm_langs, "xglm_small", 24, d)
     xglm_med_multi    = multilingual_encoding_circshift(xglm_langs, "xglm_med", 24, d)
@@ -507,6 +598,30 @@ elif MODE == "across":
     nllb_d_1b_multi     = multilingual_encoding_circshift(all_codes, "nllb200_distilled_1B", 24, d)
     nllb_1b_multi       = multilingual_encoding_circshift(all_codes, "nllb200_1B", 24, d)
     mgpt_multi          = multilingual_encoding_circshift(mgpt_langs, "mgpt", 24, d)
+
+    # random
+    print("\n\nTraining in N-1 languages (across, random)", flush=True)
+    xglm_small_multi  = multilingual_encoding_multitrain_circshift(xglm_langs, "xglm_small", 24, d)
+    xglm_med_multi    = multilingual_encoding_multitrain_circshift(xglm_langs, "xglm_med", 24, d)
+    xglm_large_multi  = multilingual_encoding_multitrain_circshift(xglm_langs, "xglm_large", 48, d)
+    xglm_xl_multi     = multilingual_encoding_multitrain_circshift(xglm_langs, "xglm_xl", 48, d)
+    mbert_multi       = multilingual_encoding_multitrain_circshift(all_codes, "bert_base", 12, d)
+    distilmbert_multi = multilingual_encoding_multitrain_circshift(all_codes, "distilmbert", 6, d)
+    xlmr_base_multi   = multilingual_encoding_multitrain_circshift(all_codes, "xlmr_base", 12, d)
+    xlmr_large_multi  = multilingual_encoding_multitrain_circshift(all_codes, "xlmr_large", 24, d)
+    mt5_small_multi   = multilingual_encoding_multitrain_circshift(all_codes, "mt5_small", 8, d)
+    mt5_base_multi    = multilingual_encoding_multitrain_circshift(all_codes, "mt5_base", 12, d)
+    mt5_large_multi   = multilingual_encoding_multitrain_circshift(all_codes, "mt5_large", 24, d)
+    mdeberta_multi      = multilingual_encoding_multitrain_circshift(all_codes, "mdeberta", 12, d)
+    xlm_align_multi     = multilingual_encoding_multitrain_circshift(all_codes, "xlm_align", 12, d)
+    infoxlm_base_multi  = multilingual_encoding_multitrain_circshift(all_codes, "infoxlm_base", 12, d)
+    infoxlm_large_multi = multilingual_encoding_multitrain_circshift(all_codes, "infoxlm_large", 24, d)
+    multiminilm_multi   = multilingual_encoding_multitrain_circshift(all_codes, "multiminilm", 12, d)
+    nllb_d_600m_multi   = multilingual_encoding_multitrain_circshift(all_codes, "nllb200_distilled_600M", 12, d)
+    nllb_d_1b_multi     = multilingual_encoding_multitrain_circshift(all_codes, "nllb200_distilled_1B", 24, d)
+    nllb_1b_multi       = multilingual_encoding_multitrain_circshift(all_codes, "nllb200_1B", 24, d)
+    mgpt_multi          = multilingual_encoding_multitrain_circshift(mgpt_langs, "mgpt", 24, d)
+
 
 ###############################################################################
 
@@ -564,6 +679,29 @@ elif MODE == "RH":
     nllb_1b_multi       = multilingual_encoding(all_codes, "nllb200_1B", 24, d_rh, prefix = "rh_")
     mgpt_multi          = multilingual_encoding(mgpt_langs, "mgpt", 24, d_rh, prefix = "rh_")
 
+    # multilingual, train on N-1, test on left out
+    print("\n\nTraining in N-1 languages (across, RH)", flush=True)
+    xglm_small_multi    = multilingual_encoding_multitrain(xglm_langs, "xglm_small", 24, d_rh, prefix = "rh_")
+    xglm_med_multi      = multilingual_encoding_multitrain(xglm_langs, "xglm_med", 24, d_rh, prefix = "rh_")
+    xglm_large_multi    = multilingual_encoding_multitrain(xglm_langs, "xglm_large", 48, d_rh, prefix = "rh_")
+    xglm_xl_multi       = multilingual_encoding_multitrain(xglm_langs, "xglm_xl", 48, d_rh, prefix = "rh_")
+    mbert_multi         = multilingual_encoding_multitrain(all_codes, "bert_base", 12, d_rh, prefix = "rh_")
+    distilmbert_multi   = multilingual_encoding_multitrain(all_codes, "distilmbert", 6, d_rh, prefix = "rh_")
+    xlmr_base_multi     = multilingual_encoding_multitrain(all_codes, "xlmr_base", 12, d_rh, prefix = "rh_")
+    xlmr_large_multi    = multilingual_encoding_multitrain(all_codes, "xlmr_large", 24, d_rh, prefix = "rh_")
+    mt5_small_multi     = multilingual_encoding_multitrain(all_codes, "mt5_small", 8, d_rh, prefix = "rh_")
+    mt5_base_multi      = multilingual_encoding_multitrain(all_codes, "mt5_base", 12, d_rh, prefix = "rh_")
+    mt5_large_multi     = multilingual_encoding_multitrain(all_codes, "mt5_large", 24, d_rh, prefix = "rh_")
+    mdeberta_multi      = multilingual_encoding_multitrain(all_codes, "mdeberta", 12, d_rh, prefix = "rh_")
+    xlm_align_multi     = multilingual_encoding_multitrain(all_codes, "xlm_align", 12, d_rh, prefix = "rh_")
+    infoxlm_base_multi  = multilingual_encoding_multitrain(all_codes, "infoxlm_base", 12, d_rh, prefix = "rh_")
+    infoxlm_large_multi = multilingual_encoding_multitrain(all_codes, "infoxlm_large", 24, d_rh, prefix = "rh_")
+    multiminilm_multi   = multilingual_encoding_multitrain(all_codes, "multiminilm", 12, d_rh, prefix = "rh_")
+    nllb_d_600m_multi   = multilingual_encoding_multitrain(all_codes, "nllb200_distilled_600M", 12, d_rh, prefix = "rh_")
+    nllb_d_1b_multi     = multilingual_encoding_multitrain(all_codes, "nllb200_distilled_1B", 24, d_rh, prefix = "rh_")
+    nllb_1b_multi       = multilingual_encoding_multitrain(all_codes, "nllb200_1B", 24, d_rh, prefix = "rh_")
+    mgpt_multi          = multilingual_encoding_multitrain(mgpt_langs, "mgpt", 24, d_rh, prefix = "rh_")
+
 ##############
 # MD NETWORK #
 ##############
@@ -615,6 +753,29 @@ elif MODE == "MD":
     nllb_d_1b_multi     = multilingual_encoding(all_codes, "nllb200_distilled_1B", 24, d_md, prefix = "md_")
     nllb_1b_multi       = multilingual_encoding(all_codes, "nllb200_1B", 24, d_md, prefix = "md_")
     mgpt_multi          = multilingual_encoding(mgpt_langs, "mgpt", 24, d_md, prefix = "md_")
+
+    # multilingual, train on N-1
+    print("\n\nTraining in N-1 languages (across, MD)", flush=True)
+    xglm_small_multi    = multilingual_encoding_multitrain(xglm_langs, "xglm_small", 24, d_md, prefix = "md_")
+    xglm_med_multi      = multilingual_encoding_multitrain(xglm_langs, "xglm_med", 24, d_md, prefix = "md_")
+    xglm_large_multi    = multilingual_encoding_multitrain(xglm_langs, "xglm_large", 48, d_md, prefix = "md_")
+    xglm_xl_multi       = multilingual_encoding_multitrain(xglm_langs, "xglm_xl", 48, d_md, prefix = "md_")
+    mbert_multi         = multilingual_encoding_multitrain(all_codes, "bert_base", 12, d_md, prefix = "md_")
+    distilmbert_multi   = multilingual_encoding_multitrain(all_codes, "distilmbert", 6, d_md, prefix = "md_")
+    xlmr_base_multi     = multilingual_encoding_multitrain(all_codes, "xlmr_base", 12, d_md, prefix = "md_")
+    xlmr_large_multi    = multilingual_encoding_multitrain(all_codes, "xlmr_large", 24, d_md, prefix = "md_")
+    mt5_small_multi     = multilingual_encoding_multitrain(all_codes, "mt5_small", 8, d_md, prefix = "md_")
+    mt5_base_multi      = multilingual_encoding_multitrain(all_codes, "mt5_base", 12, d_md, prefix = "md_")
+    mt5_large_multi     = multilingual_encoding_multitrain(all_codes, "mt5_large", 24, d_md, prefix = "md_")
+    mdeberta_multi      = multilingual_encoding_multitrain(all_codes, "mdeberta", 12, d_md, prefix = "md_")
+    xlm_align_multi     = multilingual_encoding_multitrain(all_codes, "xlm_align", 12, d_md, prefix = "md_")
+    infoxlm_base_multi  = multilingual_encoding_multitrain(all_codes, "infoxlm_base", 12, d_md, prefix = "md_")
+    infoxlm_large_multi = multilingual_encoding_multitrain(all_codes, "infoxlm_large", 24, d_md, prefix = "md_")
+    multiminilm_multi   = multilingual_encoding_multitrain(all_codes, "multiminilm", 12, d_md, prefix = "md_")
+    nllb_d_600m_multi   = multilingual_encoding_multitrain(all_codes, "nllb200_distilled_600M", 12, d_md, prefix = "md_")
+    nllb_d_1b_multi     = multilingual_encoding_multitrain(all_codes, "nllb200_distilled_1B", 24, d_md, prefix = "md_")
+    nllb_1b_multi       = multilingual_encoding_multitrain(all_codes, "nllb200_1B", 24, d_md, prefix = "md_")
+    mgpt_multi          = multilingual_encoding_multitrain(mgpt_langs, "mgpt", 24, d_md, prefix = "md_")
 
 ####################
 # native localizer #
@@ -672,3 +833,26 @@ elif MODE == "native-across":
     nllb_d_1b_multi     = multilingual_encoding(all_codes, "nllb200_distilled_1B", 24, d_native, prefix = "native_")
     nllb_1b_multi       = multilingual_encoding(all_codes, "nllb200_1B", 24, d_native, prefix = "native_")
     mgpt_multi          = multilingual_encoding(mgpt_langs, "mgpt", 24, d_native, prefix = "native_")
+
+    # multilingual, train on N-1
+    print("\n\nTraining in N-1 languages (across, native localizer)", flush=True)
+    xglm_small_multi    = multilingual_encoding_multitrain(xglm_langs, "xglm_small", 24, d_native, prefix = "native_")
+    xglm_med_multi      = multilingual_encoding_multitrain(xglm_langs, "xglm_med", 24, d_native, prefix = "native_")
+    xglm_large_multi    = multilingual_encoding_multitrain(xglm_langs, "xglm_large", 48, d_native, prefix = "native_")
+    xglm_xl_multi       = multilingual_encoding_multitrain(xglm_langs, "xglm_xl", 48, d_native, prefix = "native_")
+    mbert_multi         = multilingual_encoding_multitrain(all_codes, "bert_base", 12, d_native, prefix = "native_")
+    distilmbert_multi   = multilingual_encoding_multitrain(all_codes, "distilmbert", 6, d_native, prefix = "native_")
+    xlmr_base_multi     = multilingual_encoding_multitrain(all_codes, "xlmr_base", 12, d_native, prefix = "native_")
+    xlmr_large_multi    = multilingual_encoding_multitrain(all_codes, "xlmr_large", 24, d_native, prefix = "native_")
+    mt5_small_multi     = multilingual_encoding_multitrain(all_codes, "mt5_small", 8, d_native, prefix = "native_")
+    mt5_base_multi      = multilingual_encoding_multitrain(all_codes, "mt5_base", 12, d_native, prefix = "native_")
+    mt5_large_multi     = multilingual_encoding_multitrain(all_codes, "mt5_large", 24, d_native, prefix = "native_")
+    mdeberta_multi      = multilingual_encoding_multitrain(all_codes, "mdeberta", 12, d_native, prefix = "native_")
+    xlm_align_multi     = multilingual_encoding_multitrain(all_codes, "xlm_align", 12, d_native, prefix = "native_")
+    infoxlm_base_multi  = multilingual_encoding_multitrain(all_codes, "infoxlm_base", 12, d_native, prefix = "native_")
+    infoxlm_large_multi = multilingual_encoding_multitrain(all_codes, "infoxlm_large", 24, d_native, prefix = "native_")
+    multiminilm_multi   = multilingual_encoding_multitrain(all_codes, "multiminilm", 12, d_native, prefix = "native_")
+    nllb_d_600m_multi   = multilingual_encoding_multitrain(all_codes, "nllb200_distilled_600M", 12, d_native, prefix = "native_")
+    nllb_d_1b_multi     = multilingual_encoding_multitrain(all_codes, "nllb200_distilled_1B", 24, d_native, prefix = "native_")
+    nllb_1b_multi       = multilingual_encoding_multitrain(all_codes, "nllb200_1B", 24, d_native, prefix = "native_")
+    mgpt_multi          = multilingual_encoding_multitrain(mgpt_langs, "mgpt", 24, d_native, prefix = "native_")

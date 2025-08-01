@@ -1,0 +1,98 @@
+>>> SCRIPT LAUNCHED
+>>> STARTING JOB in mode: across
+>>> Loaded fMRI data
+Processing - ACROSS mode
+Encoding for xglm_small already done
+Encoding for xglm_med already done
+Encoding for xglm_large already done
+Encoding for xglm_xl already done
+Encoding for bert_base already done
+Encoding for distilmbert already done
+Encoding for xlmr_base already done
+Encoding for xlmr_large already done
+Encoding for mt5_small already done
+Encoding for mt5_base already done
+Encoding for mt5_large already done
+Encoding for mdeberta already done
+Encoding for xlm_align already done
+Encoding for infoxlm_base already done
+Encoding for infoxlm_large already done
+Encoding for multiminilm already done
+Encoding for nllb200_distilled_600M already done
+Encoding for nllb200_distilled_1B already done
+Encoding for nllb200_1B already done
+Encoding for mgpt already done
+
+
+Training in N-1 languages (across, standard)
+Encoding for xglm_small - Lang_LH_AntTemp already done
+Encoding for xglm_small - Lang_LH_IFG already done
+Encoding for xglm_small - Lang_LH_IFGorb already done
+Encoding for xglm_small - Lang_LH_MFG already done
+Encoding for xglm_small - Lang_LH_PostTemp already done
+Encoding for xglm_small - all already done
+Encoding for xglm_med - Lang_LH_AntTemp already done
+Encoding for xglm_med - Lang_LH_IFG already done
+Encoding for xglm_med - Lang_LH_IFGorb already done
+Encoding for xglm_med - Lang_LH_MFG already done
+Encoding for xglm_med - Lang_LH_PostTemp already done
+Encoding for xglm_med - all already done
+Encoding for xglm_large - Lang_LH_AntTemp already done
+Encoding for xglm_large - Lang_LH_IFG already done
+Encoding for xglm_large - Lang_LH_IFGorb already done
+Encoding for xglm_large - Lang_LH_MFG already done
+Encoding for xglm_large - Lang_LH_PostTemp already done
+Encoding for xglm_large - all already done
+Encoding for xglm_xl - Lang_LH_AntTemp already done
+Encoding for xglm_xl - Lang_LH_IFG already done
+Encoding for xglm_xl - Lang_LH_IFGorb already done
+Encoding for xglm_xl - Lang_LH_MFG already done
+Encoding for xglm_xl - Lang_LH_PostTemp already done
+Encoding for xglm_xl - all already done
+Encoding for bert_base - Lang_LH_AntTemp already done
+/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/himalaya/kernel_ridge/_sklearn_api.py:490: UserWarning: Solving linear kernel ridge is slower than solving ridge when n_samples > n_features (here 2574 > 768). Using himalaya.ridge.RidgeCV would be faster. Use warn=False to silence this warning.
+  warnings.warn(
+/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/himalaya/kernel_ridge/_sklearn_api.py:490: UserWarning: Solving linear kernel ridge is slower than solving ridge when n_samples > n_features (here 2574 > 768). Using himalaya.ridge.RidgeCV would be faster. Use warn=False to silence this warning.
+  warnings.warn(
+/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/himalaya/kernel_ridge/_sklearn_api.py:490: UserWarning: Solving linear kernel ridge is slower than solving ridge when n_samples > n_features (here 2574 > 768). Using himalaya.ridge.RidgeCV would be faster. Use warn=False to silence this warning.
+  warnings.warn(
+/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/himalaya/kernel_ridge/_sklearn_api.py:490: UserWarning: Solving linear kernel ridge is slower than solving ridge when n_samples > n_features (here 2574 > 768). Using himalaya.ridge.RidgeCV would be faster. Use warn=False to silence this warning.
+  warnings.warn(
+/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/himalaya/kernel_ridge/_sklearn_api.py:490: UserWarning: Solving linear kernel ridge is slower than solving ridge when n_samples > n_features (here 2574 > 768). Using himalaya.ridge.RidgeCV would be faster. Use warn=False to silence this warning.
+  warnings.warn(
+/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/himalaya/kernel_ridge/_sklearn_api.py:490: UserWarning: Solving linear kernel ridge is slower than solving ridge when n_samples > n_features (here 2574 > 768). Using himalaya.ridge.RidgeCV would be faster. Use warn=False to silence this warning.
+  warnings.warn(
+/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/himalaya/kernel_ridge/_sklearn_api.py:490: UserWarning: Solving linear kernel ridge is slower than solving ridge when n_samples > n_features (here 2574 > 768). Using himalaya.ridge.RidgeCV would be faster. Use warn=False to silence this warning.
+  warnings.warn(
+/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/himalaya/kernel_ridge/_sklearn_api.py:490: UserWarning: Solving linear kernel ridge is slower than solving ridge when n_samples > n_features (here 2574 > 768). Using himalaya.ridge.RidgeCV would be faster. Use warn=False to silence this warning.
+  warnings.warn(
+/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/himalaya/kernel_ridge/_sklearn_api.py:490: UserWarning: Solving linear kernel ridge is slower than solving ridge when n_samples > n_features (here 2574 > 768). Using himalaya.ridge.RidgeCV would be faster. Use warn=False to silence this warning.
+  warnings.warn(
+/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/himalaya/kernel_ridge/_sklearn_api.py:490: UserWarning: Solving linear kernel ridge is slower than solving ridge when n_samples > n_features (here 2574 > 768). Using himalaya.ridge.RidgeCV would be faster. Use warn=False to silence this warning.
+  warnings.warn(
+/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/himalaya/kernel_ridge/_sklearn_api.py:490: UserWarning: Solving linear kernel ridge is slower than solving ridge when n_samples > n_features (here 2574 > 768). Using himalaya.ridge.RidgeCV would be faster. Use warn=False to silence this warning.
+  warnings.warn(
+/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/himalaya/kernel_ridge/_sklearn_api.py:490: UserWarning: Solving linear kernel ridge is slower than solving ridge when n_samples > n_features (here 2574 > 768). Using himalaya.ridge.RidgeCV would be faster. Use warn=False to silence this warning.
+  warnings.warn(
+/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/himalaya/kernel_ridge/_sklearn_api.py:490: UserWarning: Solving linear kernel ridge is slower than solving ridge when n_samples > n_features (here 2574 > 768). Using himalaya.ridge.RidgeCV would be faster. Use warn=False to silence this warning.
+  warnings.warn(
+/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/himalaya/kernel_ridge/_sklearn_api.py:490: UserWarning: Solving linear kernel ridge is slower than solving ridge when n_samples > n_features (here 2574 > 768). Using himalaya.ridge.RidgeCV would be faster. Use warn=False to silence this warning.
+  warnings.warn(
+/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/himalaya/kernel_ridge/_sklearn_api.py:490: UserWarning: Solving linear kernel ridge is slower than solving ridge when n_samples > n_features (here 2574 > 768). Using himalaya.ridge.RidgeCV would be faster. Use warn=False to silence this warning.
+  warnings.warn(
+/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/himalaya/kernel_ridge/_sklearn_api.py:490: UserWarning: Solving linear kernel ridge is slower than solving ridge when n_samples > n_features (here 2574 > 768). Using himalaya.ridge.RidgeCV would be faster. Use warn=False to silence this warning.
+  warnings.warn(
+/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/himalaya/kernel_ridge/_sklearn_api.py:490: UserWarning: Solving linear kernel ridge is slower than solving ridge when n_samples > n_features (here 2574 > 768). Using himalaya.ridge.RidgeCV would be faster. Use warn=False to silence this warning.
+  warnings.warn(
+/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/himalaya/kernel_ridge/_sklearn_api.py:490: UserWarning: Solving linear kernel ridge is slower than solving ridge when n_samples > n_features (here 2574 > 768). Using himalaya.ridge.RidgeCV would be faster. Use warn=False to silence this warning.
+  warnings.warn(
+/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/himalaya/kernel_ridge/_sklearn_api.py:490: UserWarning: Solving linear kernel ridge is slower than solving ridge when n_samples > n_features (here 2574 > 768). Using himalaya.ridge.RidgeCV would be faster. Use warn=False to silence this warning.
+  warnings.warn(
+/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/himalaya/kernel_ridge/_sklearn_api.py:490: UserWarning: Solving linear kernel ridge is slower than solving ridge when n_samples > n_features (here 2574 > 768). Using himalaya.ridge.RidgeCV would be faster. Use warn=False to silence this warning.
+  warnings.warn(
+/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/himalaya/kernel_ridge/_sklearn_api.py:490: UserWarning: Solving linear kernel ridge is slower than solving ridge when n_samples > n_features (here 2574 > 768). Using himalaya.ridge.RidgeCV would be faster. Use warn=False to silence this warning.
+  warnings.warn(
+/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/himalaya/kernel_ridge/_sklearn_api.py:490: UserWarning: Solving linear kernel ridge is slower than solving ridge when n_samples > n_features (here 2574 > 768). Using himalaya.ridge.RidgeCV would be faster. Use warn=False to silence this warning.
+  warnings.warn(
+/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/himalaya/kernel_ridge/_sklearn_api.py:490: UserWarning: Solving linear kernel ridge is slower than solving ridge when n_samples > n_features (here 2574 > 768). Using himalaya.ridge.RidgeCV would be faster. Use warn=False to silence this warning.
+  warnings.warn(
