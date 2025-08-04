@@ -259,7 +259,7 @@ def multilingual_encoding_multitrain(langs, model_prefix, n_layers, d, prefix = 
                         y_scaler = StandardScaler()
                         X_train = X_scaler.fit_transform(X_train)
                         y_train = y_scaler.fit_transform(y_train.reshape(-1, 1)).flatten()
-                        # here, we're training on more data so sometimes standard ridgeCV is faster (depending on embedding dim)
+                        # here, we're training on more data so sometimes standard ridgeCV is faster (depending on embedding dim) -- choose based on shape
                         if X_train.shape[0] > X_train.shape[1]:
                             reg = RidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
                         else:
