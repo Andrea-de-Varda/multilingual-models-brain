@@ -4678,3 +4678,99 @@ ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=26 | fROI=Lang_LH_PostTemp | layer=0
 ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=26 | fROI=Lang_LH_PostTemp | layer=1 | mean r=-0.033
 ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=26 | fROI=Lang_LH_PostTemp | layer=2 | mean r=-0.043
 ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=26 | fROI=Lang_LH_PostTemp | layer=3 | mean r=-0.028
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=26 | fROI=Lang_LH_PostTemp | layer=4 | mean r=0.032
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=26 | fROI=Lang_LH_PostTemp | layer=5 | mean r=-0.044
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=26 | fROI=Lang_LH_PostTemp | layer=6 | mean r=-0.003
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=26 | fROI=Lang_LH_PostTemp | layer=7 | mean r=-0.034
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=26 | fROI=Lang_LH_PostTemp | layer=8 | mean r=-0.032
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=26 | fROI=Lang_LH_PostTemp | layer=9 | mean r=-0.041
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=26 | fROI=Lang_LH_PostTemp | layer=10 | mean r=-0.067
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=26 | fROI=Lang_LH_PostTemp | layer=11 | mean r=-0.065
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=26 | fROI=Lang_LH_PostTemp | layer=12 | mean r=-0.027
+
+  >>> Circular shift = 52
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=52 | fROI=Lang_LH_PostTemp | layer=0 | mean r=0.017
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=52 | fROI=Lang_LH_PostTemp | layer=1 | mean r=0.037
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=52 | fROI=Lang_LH_PostTemp | layer=2 | mean r=0.053
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=52 | fROI=Lang_LH_PostTemp | layer=3 | mean r=0.031
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=52 | fROI=Lang_LH_PostTemp | layer=4 | mean r=0.003
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=52 | fROI=Lang_LH_PostTemp | layer=5 | mean r=-0.082
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=52 | fROI=Lang_LH_PostTemp | layer=6 | mean r=-0.106
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=52 | fROI=Lang_LH_PostTemp | layer=7 | mean r=-0.080
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=52 | fROI=Lang_LH_PostTemp | layer=8 | mean r=-0.119
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=52 | fROI=Lang_LH_PostTemp | layer=9 | mean r=-0.117
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=52 | fROI=Lang_LH_PostTemp | layer=10 | mean r=-0.106
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=52 | fROI=Lang_LH_PostTemp | layer=11 | mean r=-0.092
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=52 | fROI=Lang_LH_PostTemp | layer=12 | mean r=-0.105
+
+  >>> Circular shift = 78
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=78 | fROI=Lang_LH_PostTemp | layer=0 | mean r=0.028
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=78 | fROI=Lang_LH_PostTemp | layer=1 | mean r=0.017
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=78 | fROI=Lang_LH_PostTemp | layer=2 | mean r=-0.035
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=78 | fROI=Lang_LH_PostTemp | layer=3 | mean r=-0.041
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=78 | fROI=Lang_LH_PostTemp | layer=4 | mean r=-0.006
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=78 | fROI=Lang_LH_PostTemp | layer=5 | mean r=-0.040
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=78 | fROI=Lang_LH_PostTemp | layer=6 | mean r=-0.018
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=78 | fROI=Lang_LH_PostTemp | layer=7 | mean r=-0.020
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=78 | fROI=Lang_LH_PostTemp | layer=8 | mean r=-0.021
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=78 | fROI=Lang_LH_PostTemp | layer=9 | mean r=-0.002
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=78 | fROI=Lang_LH_PostTemp | layer=10 | mean r=-0.035
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=78 | fROI=Lang_LH_PostTemp | layer=11 | mean r=-0.035
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=78 | fROI=Lang_LH_PostTemp | layer=12 | mean r=-0.004
+
+  >>> Circular shift = 104
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=104 | fROI=Lang_LH_PostTemp | layer=0 | mean r=0.008
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=104 | fROI=Lang_LH_PostTemp | layer=1 | mean r=0.025
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=104 | fROI=Lang_LH_PostTemp | layer=2 | mean r=0.038
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=104 | fROI=Lang_LH_PostTemp | layer=3 | mean r=0.041
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=104 | fROI=Lang_LH_PostTemp | layer=4 | mean r=0.036
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=104 | fROI=Lang_LH_PostTemp | layer=5 | mean r=0.047
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=104 | fROI=Lang_LH_PostTemp | layer=6 | mean r=0.053
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=104 | fROI=Lang_LH_PostTemp | layer=7 | mean r=0.057
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=104 | fROI=Lang_LH_PostTemp | layer=8 | mean r=0.017
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=104 | fROI=Lang_LH_PostTemp | layer=9 | mean r=0.011
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=104 | fROI=Lang_LH_PostTemp | layer=10 | mean r=0.025
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=104 | fROI=Lang_LH_PostTemp | layer=11 | mean r=0.025
+ACROSS‑CIRC‑MULTITRAIN mt5_base | shift=104 | fROI=Lang_LH_PostTemp | layer=12 | mean r=0.054
+
+
+Processing all (1/6)
+
+  >>> Circular shift = 26
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=26 | fROI=all | layer=0 | mean r=-0.053
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=26 | fROI=all | layer=1 | mean r=-0.042
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=26 | fROI=all | layer=2 | mean r=-0.023
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=26 | fROI=all | layer=3 | mean r=-0.035
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=26 | fROI=all | layer=4 | mean r=-0.017
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=26 | fROI=all | layer=5 | mean r=0.007
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=26 | fROI=all | layer=6 | mean r=-0.006
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=26 | fROI=all | layer=7 | mean r=0.008
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=26 | fROI=all | layer=8 | mean r=0.032
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=26 | fROI=all | layer=9 | mean r=0.016
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=26 | fROI=all | layer=10 | mean r=0.041
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=26 | fROI=all | layer=11 | mean r=-0.001
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=26 | fROI=all | layer=12 | mean r=0.003
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=26 | fROI=all | layer=13 | mean r=0.031
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=26 | fROI=all | layer=14 | mean r=-0.003
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=26 | fROI=all | layer=15 | mean r=-0.040
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=26 | fROI=all | layer=16 | mean r=-0.021
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=26 | fROI=all | layer=17 | mean r=-0.001
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=26 | fROI=all | layer=18 | mean r=-0.039
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=26 | fROI=all | layer=19 | mean r=-0.014
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=26 | fROI=all | layer=20 | mean r=-0.036
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=26 | fROI=all | layer=21 | mean r=-0.021
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=26 | fROI=all | layer=22 | mean r=-0.031
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=26 | fROI=all | layer=23 | mean r=-0.016
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=26 | fROI=all | layer=24 | mean r=-0.004
+
+  >>> Circular shift = 52
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=52 | fROI=all | layer=0 | mean r=-0.021
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=52 | fROI=all | layer=1 | mean r=-0.026
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=52 | fROI=all | layer=2 | mean r=-0.018
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=52 | fROI=all | layer=3 | mean r=-0.037
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=52 | fROI=all | layer=4 | mean r=-0.033
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=52 | fROI=all | layer=5 | mean r=-0.016
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=52 | fROI=all | layer=6 | mean r=-0.029
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=52 | fROI=all | layer=7 | mean r=0.003
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=52 | fROI=all | layer=8 | mean r=-0.007
+ACROSS‑CIRC‑MULTITRAIN mt5_large | shift=52 | fROI=all | layer=9 | mean r=-0.034

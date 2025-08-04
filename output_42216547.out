@@ -1931,3 +1931,15 @@ ACROSS-multilang-train     mgpt | fROI=all | layer=4 | mean r=0.026
 ACROSS-multilang-train     mgpt | fROI=all | layer=5 | mean r=0.033
 ACROSS-multilang-train     mgpt | fROI=all | layer=6 | mean r=0.064
 ACROSS-multilang-train     mgpt | fROI=all | layer=7 | mean r=0.094
+ACROSS-multilang-train     mgpt | fROI=all | layer=8 | mean r=0.101
+ACROSS-multilang-train     mgpt | fROI=all | layer=9 | mean r=0.088
+ACROSS-multilang-train     mgpt | fROI=all | layer=10 | mean r=0.081
+ACROSS-multilang-train     mgpt | fROI=all | layer=11 | mean r=0.081
+ACROSS-multilang-train     mgpt | fROI=all | layer=12 | mean r=0.065
+ACROSS-multilang-train     mgpt | fROI=all | layer=13 | mean r=0.039
+ACROSS-multilang-train     mgpt | fROI=all | layer=14 | mean r=0.049
+ACROSS-multilang-train     mgpt | fROI=all | layer=15 | mean r=0.044
+ACROSS-multilang-train     mgpt | fROI=all | layer=16 | mean r=0.051
+ACROSS-multilang-train     mgpt | fROI=all | layer=17 | mean r=0.065
+ACROSS-multilang-train     mgpt | fROI=all | layer=18 | mean r=0.104
+ACROSS-multilang-train     mgpt | fROI=all | layer=19 | mean r=0.116
