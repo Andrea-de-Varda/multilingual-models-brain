@@ -47,7 +47,7 @@ def patched_load(path):
     with open(path, 'rb') as f:
         return pickle.load(f)
 
-def load(model_prefix, froi="all", monol=False, split_context=False, random=False, md=False, rh=False, native = False):
+def load(model_prefix, froi="all", monol=False, split_context=False, random=False, md=False, rh=False, native = False, multitrain = True):
     if monol:
         if md:
             filename = f"results/monolingual_md_{model_prefix}_{froi}"
@@ -61,16 +61,17 @@ def load(model_prefix, froi="all", monol=False, split_context=False, random=Fals
             filename = f"results/monolingual_{model_prefix}_{froi}"
         print("Loading:", filename)
     else:
+        mtpfx = "multitrain_" if multitrain else ""
         if md:
-            filename = f"results/multilingual_md_{model_prefix}_{froi}"
+            filename = f"results/multilingual_{mtpfx}md_{model_prefix}_{froi}"
         elif rh:
-            filename = f"results/multilingual_rh_{model_prefix}_{froi}"
+            filename = f"results/multilingual_{mtpfx}rh_{model_prefix}_{froi}"
         elif random:
-            filename = f"results/multilingual_{model_prefix}_{froi}_circshift"
+            filename = f"results/multilingual_{mtpfx}{model_prefix}_{froi}_circshift"
         elif native:
-            filename = f"results/multilingual_native_{model_prefix}_{froi}"
+            filename = f"results/multilingual_{mtpfx}native_{model_prefix}_{froi}"
         else:
-            filename = f"results/multilingual_{model_prefix}_{froi}"
+            filename = f"results/multilingual_{mtpfx}{model_prefix}_{froi}"
         print("Loading:", filename)
     return patched_load(filename)
 

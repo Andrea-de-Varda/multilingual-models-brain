@@ -323,14 +323,15 @@ plt.show()
 
 # legend
 import matplotlib.lines as mlines
+custom_order = ['Lang_LH_IFGorb', 'Lang_LH_IFG', 'Lang_LH_MFG', 'Lang_LH_AntTemp', 'Lang_LH_PostTemp']
 handles = [
-    mlines.Line2D([], [], marker=marker, color='gray', linestyle='None',
+    mlines.Line2D([], [], marker=froi_markers[froi], color='gray', linestyle='None',
                   markersize=10, label=froi[8:])
-    for froi, marker in froi_markers.items()
+    for froi in custom_order
 ]
-fig, ax = plt.subplots(figsize=(2, 2), dpi=300)
+fig, ax = plt.subplots(figsize=(2, 1), dpi=300)
 ax.axis('off')
-legend = ax.legend(handles=handles, loc='center', frameon=False, ncol=1, fontsize=13, handletextpad=0.5)
+legend = ax.legend(handles=handles, loc='center', frameon=False, ncol=5, fontsize=13, handletextpad=0.5)
 plt.tight_layout()
 plt.show()
 
@@ -795,13 +796,28 @@ df['group_order'] = df['network'].map({'LH': 0, 'RH': 1, 'MD': 2})
 df['is_all'] = (df['short_label'] == 'All').astype(int)
 
 group_order = ['LH', 'RH', 'MD']
+# df_sorted = pd.concat([
+#     pd.concat([
+#         g[g['is_all'] == 1],
+#         g[g['is_all'] == 0].sort_values('r', ascending=False)
+#     ])
+#     for net in group_order
+#     for _, g in df.groupby('network') if _ == net], ignore_index=True)
+
+lang_order = ['IFGorb', 'IFG', 'MFG', 'AntTemp', 'PostTemp']
+df['lang_cat'] = pd.Categorical(df['short_label'],
+                                categories=['All'] + lang_order,
+                                ordered=True)
 df_sorted = pd.concat([
     pd.concat([
-        g[g['is_all'] == 1],
-        g[g['is_all'] == 0].sort_values('r', ascending=False)
+        g[g['is_all'] == 1],                                           # “All” first
+        g[g['is_all'] == 0].sort_values(
+            'lang_cat' if net in ('LH', 'RH') else 'r',
+            ascending=True if net in ('LH', 'RH') else False)
     ])
     for net in group_order
-    for _, g in df.groupby('network') if _ == net], ignore_index=True)
+    for _, g in df.groupby('network') if _ == net
+], ignore_index=True)
 
 spacing = 1.2
 positions = []

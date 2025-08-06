@@ -26,7 +26,7 @@ def embed_words(embeddings, words_id, func = np.mean):
     emb_words = imputate_na(emb_words)
     return emb_words
 
-def get_fl(lang, func = np.mean):
+def get_fl(lang, func = np.mean, extra_vars = True):
     # baseline with Zipf frequency and Length
     df = pd.read_csv("transcribed/"+lang+".csv")
     df = df[df["end"] <= 260]
@@ -44,6 +44,16 @@ def get_fl(lang, func = np.mean):
     for i in range(len(time_words)):
         words_id[i] = np.where(time_words[i]> time)[0][-1]
     embedded_words = embed_words(fl, words_id, func = func)
+    
+    if extra_vars: # add word rate and word onset. NB: extra vars are used *only* for expt 1 because they don't make sense for sentence stimuli
+        # word rate is already aligned to time series --- n words uttered within a TR window
+        df['bin'] = (df['start'] // 2).astype(int)
+        counts = np.bincount(df['bin'], minlength=130)[:130]
+        
+        # onset of the first word in the RT window
+        first_onsets = (df.groupby('bin')['start'].min().reindex(range(130)).to_numpy())
+        embedded_words = imputate_na(np.column_stack((embedded_words, counts, first_onsets)))
+
     return embedded_words
 
 # NEED TO UPDATE THIS BASED ON NEW CODE!! 
@@ -88,7 +98,8 @@ lang_code_dict = {k : v for k, v in zip(all_codes, all_langs)}
 with open("data/dict_fMRI", 'rb') as handle:
     d = pickle.load(handle)
 
-fmri_data = [get_fl(lang) for lang in all_codes]
+extra_vars = True # change based on whether you want word rate and word onset (asked for revision)
+fmri_data = [get_fl(lang, extra_vars = extra_vars) for lang in all_codes]
 m = []
 for idx, lang in enumerate(all_codes):
     the_r = test_model_Ridge(fmri_data[idx], d[lang_code_dict[lang]], 10)

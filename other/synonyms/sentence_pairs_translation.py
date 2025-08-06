@@ -86,8 +86,6 @@ def get_all_embeddings(languages, df, tokenizer, model, is_seq2seq = False):
         else:
             embeddings = [get_word_embeddings(s, tokenizer, model) for s in tqdm(sentences)]
         d_embeddings[l] = embeddings
-        sleep(600)
-    sleep(250)
     return d_embeddings
 
 def get_all_embeddings(languages, df, tokenizer, model, is_seq2seq=False, save_intermediate=False, intermediate_modelname = None):

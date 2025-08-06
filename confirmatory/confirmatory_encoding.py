@@ -220,6 +220,40 @@ combined_df = pd.read_csv("confirmatory_results_aggregated.csv")
 # PLOTTING #
 ############
 
+# base barplot
+
+label_map = {"main": "Study I","natstor": "NatStories","control": "Tuckute2024","pereira": "Pereira2018"}
+label_order = ["Study I", "NatStories", "Tuckute2024", "Pereira2018"]
+colors = {"Study I": "darkslateblue","NatStories": "lightsteelblue","Tuckute2024": "tab:red","Pereira2018": "lightsalmon"}
+combined_df["train_label"] = combined_df["train"].map(label_map)
+group_stats = combined_df.groupby("train_label").agg(
+    mean_r=("r", "mean"),
+    se_r=("SE", "mean")
+).loc[label_order]
+fig, ax = plt.subplots(dpi = 400, figsize=(4*.7, 3*.7))
+for i, label in enumerate(label_order):
+    bar = ax.bar(i, group_stats.loc[label, "mean_r"],
+                 yerr=group_stats.loc[label, "se_r"],
+                 capsize=5, color=colors[label], edgecolor="black",
+                 linewidth=1.2, zorder=2)
+for i, label in enumerate(label_order):
+    y_vals = combined_df[combined_df["train_label"] == label]["r"]
+    jitter = np.random.normal(loc=0, scale=0.08, size=len(y_vals))
+    x_vals = i + jitter
+    ax.scatter(x_vals, y_vals, color="black", alpha=0.4, s=20, zorder=3)
+ax.set_ylabel("R", fontsize=13)
+# ax.set_xlabel("Training dataset", fontsize=13)
+ax.set_xticks(range(len(label_order)))
+ax.set_xticklabels(label_order, fontsize=12, rotation = 25, ha="right")
+ax.tick_params(axis="y", labelsize=11)
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
+ax.grid(axis='y', linestyle='--', alpha=0.5, zorder=1)
+ax.set_ylim(None, group_stats["mean_r"].max() + 0.1)
+plt.tight_layout()
+plt.show()
+
+
 model_names = ["nllb200_distilled_600M", "nllb200_distilled_1B", "nllb200_1B", "xlm_align", "infoxlm_base", "infoxlm_large", "multiminilm", "xlmr_base", "xlmr_large", "distilmbert", "bert_base", "mdeberta", "mt5_small", "mt5_base", "mt5_large", "mgpt","xglm_small", "xglm_med", "xglm_large", "xglm_xl"]
 
 names_formatted = ["NLLB$_{d-small}$", "NLLB$_{d-large}$", "NLLB$_{large}$", "XLM-Align", "InfoXLM$_{small}$", "InfoXLM$_{large}$", "mMiniLM", "XLM-R$_{base}$", "XLM-R$_{large}$", "DistilmBERT", "mBERT", "mDeBERTa", "mT5$_{small}$", "mT5$_{base}$", "mT5$_{large}$", "mGPT", "XGLM$_{small}$", "XGLM$_{med}$", "XGLM$_{large}$", "XGLM$_{xl}$"]
