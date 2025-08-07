@@ -72,14 +72,14 @@ def multilingual_encoding_registered(langs, model_prefix, prefix = "", overwrite
     save(norm_params, f"confirmatory/registered_models/main/normaliz_params/{model_prefix}")
     # fitting
     if random:
-        np.random.seed(0)  # seed for reproducibility
-        np.random.shuffle(y_train)  # shuffling y
-        reg = RidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
-        reg.fit(X_train, y_train)
-        y_pred = reg.predict(X_test)
-        r, p = pearsonr(y_test, y_pred)
-        print(f"r = {round(r, 4)}")
-        save(reg, f"confirmatory/registered_models/main/{model_prefix}_random")
+        for random_idx, shift_val in enumerate([26, 52, 78, 104]):
+            y_train_random = np.roll(y_train, shift_val)
+            reg = RidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
+            reg.fit(X_train, y_train_random)
+            y_pred = reg.predict(X_test)
+            r, p = pearsonr(y_test, y_pred)
+            print(f"r = {round(r, 4)}")
+            save(reg, f"confirmatory/registered_models/main/{model_prefix}_random_{random_idx}")
     else:
         reg = RidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
         reg.fit(X_train, y_train)
@@ -91,25 +91,25 @@ def multilingual_encoding_registered(langs, model_prefix, prefix = "", overwrite
 ###############################################################################
 
 dict_bestlayer = {"nllb200_distilled_600M" : 9, 
-                  "nllb200_distilled_1B" : 14, 
-                  "nllb200_1B" : 15, 
+                  "nllb200_distilled_1B" : 15,
+                  "nllb200_1B" : 17,
                   "xlm_align" : 7, 
                   "infoxlm_base" : 7, 
                   "infoxlm_large" : 14, 
                   "multiminilm" : 9, 
-                  "xlmr_base" : 10, 
-                  "xlmr_large" : 15, 
+                  "xlmr_base" : 9,
+                  "xlmr_large" : 14,
                   "distilmbert" : 4, 
-                  "bert_base" : 5, 
+                  "bert_base" : 6,
                   "mdeberta" : 9, 
-                  "mt5_small" : 5, 
-                  "mt5_base" : 11,
-                  "mt5_large" : 14, 
+                  "mt5_small" : 2, 
+                  "mt5_base" : 9,
+                  "mt5_large" : 17, 
                   "mgpt" : 14, 
-                  "xglm_small" : 15, 
-                  "xglm_med" : 10, 
-                  "xglm_large" : 11, 
-                  "xglm_xl" : 45}
+                  "xglm_small" : 10, 
+                  "xglm_med" : 16, 
+                  "xglm_large" : 40, 
+                  "xglm_xl" : 48}
 
 # load fMRI data
 with open("data/dict_fMRI", 'rb') as handle:
