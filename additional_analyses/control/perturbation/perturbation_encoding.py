@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from os import chdir
+import os
 import re
 import torch
 from transformers import XGLMTokenizer, XGLMForCausalLM, BertTokenizer, BertForMaskedLM, AutoTokenizer, AutoModelForMaskedLM, AutoModel, MT5EncoderModel, T5Tokenizer, DistilBertModel, DistilBertTokenizer
@@ -84,15 +85,23 @@ def get_embeddings_tokens(tokens, sep, tokenizer, model, cased=True, emb_start =
 tokenizer = AutoTokenizer.from_pretrained("ai-forever/mGPT", add_prefix_space=True)
 model = AutoModel.from_pretrained("ai-forever/mGPT")
 
-
 # load materials (perturbations)
 with open("perturbation/perturbation_dict", 'rb') as handle:
     perturbed = pickle.load(handle)
 
 for perturb_type, sentences in perturbed.items():
+    save_path = f"perturbation/embeddings/{perturb_type}"
+    if os.path.exists(save_path):
+        print(f">> Skipping {perturb_type.upper()} (already computed)")
+        continue
     print(f"\n>> Processing perturbation {perturb_type.upper()}")
     embeddings = []
     for sent in tqdm(sentences):
         emb = get_embeddings_tokens(sent.split(), "Ġ", tokenizer, model, cased=True)
         embeddings.append(emb)
     save(embeddings, perturb_type)
+
+######################
+# FIT brain encoding #
+######################
+
