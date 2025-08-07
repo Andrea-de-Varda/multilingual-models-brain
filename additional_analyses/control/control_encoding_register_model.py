@@ -369,26 +369,48 @@ save(embeddings, "nllb200_1B")
 ###############################################################################
 ###############################################################################
 
+# dict_bestlayer = {"nllb200_distilled_600M" : 9, 
+#                   "nllb200_distilled_1B" : 14, 
+#                   "nllb200_1B" : 15, 
+#                   "xlm_align" : 7, 
+#                   "infoxlm_base" : 7, 
+#                   "infoxlm_large" : 14, 
+#                   "multiminilm" : 9, 
+#                   "xlmr_base" : 10, 
+#                   "xlmr_large" : 15, 
+#                   "distilmbert" : 4, 
+#                   "bert_base" : 5, 
+#                   "mdeberta" : 9, 
+#                   "mt5_small" : 5, 
+#                   "mt5_base" : 11,
+#                   "mt5_large" : 14, 
+#                   "mgpt" : 14, 
+#                   "xglm_small" : 15, 
+#                   "xglm_med" : 10, 
+#                   "xglm_large" : 11, 
+#                   "xglm_xl" : 45}
+
+# NEW BEST LAYER after reviewers asked for changes!
 dict_bestlayer = {"nllb200_distilled_600M" : 9, 
-                  "nllb200_distilled_1B" : 14, 
-                  "nllb200_1B" : 15, 
+                  "nllb200_distilled_1B" : 15,
+                  "nllb200_1B" : 17,
                   "xlm_align" : 7, 
                   "infoxlm_base" : 7, 
                   "infoxlm_large" : 14, 
                   "multiminilm" : 9, 
-                  "xlmr_base" : 10, 
-                  "xlmr_large" : 15, 
+                  "xlmr_base" : 9,
+                  "xlmr_large" : 14,
                   "distilmbert" : 4, 
-                  "bert_base" : 5, 
+                  "bert_base" : 6,
                   "mdeberta" : 9, 
-                  "mt5_small" : 5, 
-                  "mt5_base" : 11,
-                  "mt5_large" : 14, 
+                  "mt5_small" : 2, 
+                  "mt5_base" : 9,
+                  "mt5_large" : 17, 
                   "mgpt" : 14, 
-                  "xglm_small" : 15, 
-                  "xglm_med" : 10, 
-                  "xglm_large" : 11, 
-                  "xglm_xl" : 45}
+                  "xglm_small" : 10, 
+                  "xglm_med" : 16, 
+                  "xglm_large" : 40, 
+                  "xglm_xl" : 48}
 
 for modelname in dict_bestlayer.keys():
     print(f"Processing with {modelname.upper()}...")
@@ -410,13 +432,13 @@ for modelname in dict_bestlayer.keys():
     with open(f"../../confirmatory/registered_models/control/normaliz_params/{modelname}", 'wb') as handle:
         pickle.dump([X_scaler, y_scaler], handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-    # randomized model
-    np.random.seed(0)  # seed for reproducibility
-    np.random.shuffle(y_train)  # shuffling y
-    reg_random = RidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
-    reg_random.fit(X_train, y_train)
-
-    with open(f"../../confirmatory/registered_models/control/{modelname}_random", 'wb') as handle:
-        pickle.dump(reg_random, handle, protocol=pickle.HIGHEST_PROTOCOL)
+    # randomized model -- three seeds (revision edit)
+    for seed in [0, 1, 2, 3]:
+        np.random.seed(0)  # seed for reproducibility
+        np.random.shuffle(y_train)  # shuffling y
+        reg_random = RidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
+        reg_random.fit(X_train, y_train)
+        with open(f"../../confirmatory/registered_models/control/{modelname}_random_{seed}", 'wb') as handle:
+            pickle.dump(reg_random, handle, protocol=pickle.HIGHEST_PROTOCOL)
         
 
