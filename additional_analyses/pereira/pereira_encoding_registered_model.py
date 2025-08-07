@@ -383,27 +383,6 @@ save(embeddings, "nllb200_1B")
 ###############################################################################
 ###############################################################################
 
-# dict_bestlayer = {"nllb200_distilled_600M" : 9, 
-#                   "nllb200_distilled_1B" : 14, 
-#                   "nllb200_1B" : 15, 
-#                   "xlm_align" : 7, 
-#                   "infoxlm_base" : 7, 
-#                   "infoxlm_large" : 14, 
-#                   "multiminilm" : 9, 
-#                   "xlmr_base" : 10, 
-#                   "xlmr_large" : 15, 
-#                   "distilmbert" : 4, 
-#                   "bert_base" : 5, 
-#                   "mdeberta" : 9, 
-#                   "mt5_small" : 5, 
-#                   "mt5_base" : 11,
-#                   "mt5_large" : 14, 
-#                   "mgpt" : 14, 
-#                   "xglm_small" : 15, 
-#                   "xglm_med" : 10, 
-#                   "xglm_large" : 11, 
-#                   "xglm_xl" : 45}
-
 # NEW BEST LAYER after reviewers asked for changes!
 dict_bestlayer = {"nllb200_distilled_600M" : 9, 
                   "nllb200_distilled_1B" : 15,
