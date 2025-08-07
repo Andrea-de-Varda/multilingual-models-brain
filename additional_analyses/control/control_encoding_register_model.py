@@ -434,7 +434,7 @@ for modelname in dict_bestlayer.keys():
 
     # randomized model -- three seeds (revision edit)
     for seed in [0, 1, 2, 3]:
-        np.random.seed(0)  # seed for reproducibility
+        np.random.seed(seed)  # seed for reproducibility
         np.random.shuffle(y_train)  # shuffling y
         reg_random = RidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
         reg_random.fit(X_train, y_train)
