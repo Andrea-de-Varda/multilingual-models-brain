@@ -62,27 +62,28 @@ lang_code_dict_inv = {v : k for k, v in lang_code_dict.items()}
 
 with open("data/dict_fMRI", 'rb') as handle:
     d = pickle.load(handle)
-    
+
+# NEW LAYERS FOR REVISION -- new CV approach caused (slightly) different peaks
 dict_bestlayer = {"nllb200_distilled_600M" : 9, 
-                  "nllb200_distilled_1B" : 14, 
-                  "nllb200_1B" : 15, 
+                  "nllb200_distilled_1B" : 15,
+                  "nllb200_1B" : 17,
                   "xlm_align" : 7, 
                   "infoxlm_base" : 7, 
                   "infoxlm_large" : 14, 
                   "multiminilm" : 9, 
-                  "xlmr_base" : 10, 
-                  "xlmr_large" : 15, 
+                  "xlmr_base" : 9,
+                  "xlmr_large" : 14,
                   "distilmbert" : 4, 
-                  "bert_base" : 5, 
+                  "bert_base" : 6,
                   "mdeberta" : 9, 
-                  "mt5_small" : 5, 
-                  "mt5_base" : 11,
-                  "mt5_large" : 14, 
+                  "mt5_small" : 2, 
+                  "mt5_base" : 9,
+                  "mt5_large" : 17, 
                   "mgpt" : 14, 
-                  "xglm_small" : 15, 
-                  "xglm_med" : 10, 
-                  "xglm_large" : 11, 
-                  "xglm_xl" : 45}
+                  "xglm_small" : 10, 
+                  "xglm_med" : 16, 
+                  "xglm_large" : 40, 
+                  "xglm_xl" : 48}
 
 model_names = dict_bestlayer.keys()
 
@@ -98,9 +99,13 @@ for train_name in ["main", "pereira", "control", "natstor"]:
         with open(f"registered_models/{train_name}/{modelname}", 'rb') as handle:
             file = pickle.load(handle)
             models[modelname] = file
-        with open(f"registered_models/{train_name}/{modelname}_random", 'rb') as handle:
-            file_random = pickle.load(handle)
-            models_random[modelname] = file_random
+        for random_idx in [0, 1, 2, 3]: # new in revision, different seeds
+            with open(f"registered_models/{train_name}/{modelname}_random_{random_idx}", 'rb') as handle:
+                file_random = pickle.load(handle)
+                try:
+                    models_random[modelname][random_idx] = file_random
+                except KeyError:
+                    models_random[modelname] = {random_idx : file_random}
     d_models[train_name] = {"norm" : norm_params, "models" : models, "random" : models_random}
         
 ##################################
@@ -142,13 +147,14 @@ for lang in lang_codes:
         norm_params = d_models[train_name]["norm"]
         models_random = d_models[train_name]["random"]
         for regname, reg in models_random.items():
-            X_scaler, y_scaler = norm_params[regname] # previous norm parameters
-            X = [X_scaler.transform(preproc_align(lang, passage, load(f"{passage}/{regname}_{lang}")[dict_bestlayer[regname]])) for passage in passages]
-            predictions = [reg.predict(the_x) for the_x in X]
-            responses = [y_scaler.transform(d[passage][lang_code_dict[lang]].reshape(-1, 1)).flatten() for passage in passages]
-            rs = [pearsonr(pred, resp)[0] for pred, resp in zip(predictions, responses)]
-            print(regname, rs)
-            transf_results.append([train_name, "random", lang_code_dict[lang], regname, rs[0], rs[1], rs[2], np.mean([rs[i-1] for i in passages_keep]), np.std([rs[i-1] for i in passages_keep])])
+            for random_idx in [0, 1, 2, 3]:
+                X_scaler, y_scaler = norm_params[regname] # previous norm parameters
+                X = [X_scaler.transform(preproc_align(lang, passage, load(f"{passage}/{regname}_{lang}")[dict_bestlayer[regname]])) for passage in passages]
+                predictions = [reg[random_idx].predict(the_x) for the_x in X]
+                responses = [y_scaler.transform(d[passage][lang_code_dict[lang]].reshape(-1, 1)).flatten() for passage in passages]
+                rs = [pearsonr(pred, resp)[0] for pred, resp in zip(predictions, responses)]
+                print(regname, rs)
+                transf_results.append([train_name, f"random_{random_idx}", lang_code_dict[lang], regname, rs[0], rs[1], rs[2], np.mean([rs[i-1] for i in passages_keep]), np.std([rs[i-1] for i in passages_keep])])
 
 transf_results = pd.DataFrame(transf_results, columns = ["train", "condition", "language", "model", "r1", "r2", "r3", "r_mean", "r_sd"])
 #transf_results.to_csv("confirmatory_results.csv", index=False)
@@ -186,13 +192,19 @@ for pair in transf_results.groupby(["language", "train", "model"]):
     keep_passages = d_passages_keep[lang_code]
     df = pair[1]
     rs = [df[df["condition"] == "experimental"][["r1", "r2", "r3"]].to_numpy()[0][idx-1] for idx in keep_passages]
-    rs_random = [df[df["condition"] == "random"][["r1", "r2", "r3"]].to_numpy()[0][idx-1] for idx in keep_passages]
-    zs = []
-    for r_exp, r_rand in zip(rs, rs_random):
-        z, p = r_to_z(r_exp, r_rand)
-        zs.append(z)
-    z_combined, p_combined = combine_z_statistics(zs, return_z = True)
-    results_sig.append([language, corpus, model, np.mean(rs), np.mean(rs_random), z_combined, p_combined])
+    full_rs_random = [] # aggregating over passages and random seeds / circular shifts
+    full_zs = [] # this is aggregating over random seeds
+    for random_idx in [0, 1, 2, 3]:
+        rs_random = [df[df["condition"] == f"random_{random_idx}"][["r1", "r2", "r3"]].to_numpy()[0][idx-1] for idx in keep_passages]
+        full_rs_random.extend(rs_random)
+        zs = [] # this is aggregating over passages
+        for r_exp, r_rand in zip(rs, rs_random):
+            z, p = r_to_z(r_exp, r_rand)
+            zs.append(z)
+        z_combined, p_combined = combine_z_statistics(zs, return_z = True)
+        full_zs.append(z_combined)
+    z_combined_full, p_combined_full = combine_z_statistics(full_zs, return_z = True)
+    results_sig.append([language, corpus, model, np.mean(rs), np.mean(full_rs_random), z_combined_full, p_combined_full])
 results_sig = pd.DataFrame(results_sig, columns = ["lang", "training", "model", "r_mean", "r_random", "z", "p"])
 
 combined_df = []

@@ -163,9 +163,6 @@ for i, s in enumerate(paraphrases):
         print("Second one changed")
 perturbed_dict["paraphrase"] = paraphrase
 
-with open("perturbation_dict", 'wb') as handle:
+with open("perturbation/perturbation_dict", 'wb') as handle:
     pickle.dump(perturbed_dict, handle, protocol=pickle.HIGHEST_PROTOCOL)
-    
-########################
-# GET MODEL EMBEDDINGS #
-########################
+
