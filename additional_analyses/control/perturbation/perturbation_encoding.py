@@ -114,7 +114,6 @@ df = avg_1.groupby("sentence").agg({"response_target" : "mean", "cond" : "first"
 df = df[df["cond"] == "B"] # baseline sentences only
 y = df["response_target"].to_numpy()
 
-
 layernum = 14
 for perturb_type in perturbed.keys():
     try:
