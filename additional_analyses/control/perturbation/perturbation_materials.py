@@ -15,6 +15,7 @@ import pandas as pd
 import string
 import nltk
 from tqdm import tqdm
+import difflib
 nltk.download('tagsets_json')
 nltk.download('averaged_perceptron_tagger_eng')
 nltk.download('punkt_tab')
@@ -163,6 +164,63 @@ for i, s in enumerate(paraphrases):
         print("Second one changed")
 perturbed_dict["paraphrase"] = paraphrase
 
+##############
+# WORD SWAPS #
+##############
+# then checks for Hamming distance over word positions
+
+def local_word_swaps(sent_list, n_swaps, seed=42, min_distance=None, max_attempts=10000):
+    swapped_sents = []
+    rng = random.Random(seed)
+    fail_count = 0
+    for s_idx, sent in tqdm(enumerate(sent_list), total = len(sent_list)):
+        words = sent.strip().split()
+        if len(words) < 2:
+            swapped_sents.append(sent)
+            continue
+        original_words = words[:]
+        rng.seed(seed + s_idx)
+        best_words = original_words[:]
+        best_distance = -1
+        for attempt in range(max_attempts):
+            words_copy = original_words[:]
+            for _ in range(min(n_swaps, len(words_copy) - 1)):
+                i = rng.randint(0, len(words_copy) - 1)
+                if i == 0:
+                    j = 1
+                elif i == len(words_copy) - 1:
+                    j = len(words_copy) - 2
+                else:
+                    j = i + 1 if rng.random() < 0.5 else i - 1
+                words_copy[i], words_copy[j] = words_copy[j], words_copy[i]
+            if min_distance is not None:
+                # word-position (Hamming) distance
+                distance = sum(1 for a, b in zip(original_words, words_copy) if a != b)
+            else:
+                distance = 999  # skip check if not needed
+            if distance > best_distance:
+                best_distance = distance
+                best_words = words_copy[:]
+            if min_distance is None or distance >= min_distance:
+                break
+            rng.seed(seed + s_idx + attempt + 1)
+        if min_distance is not None and best_distance < min_distance:
+            fail_count += 1
+        swapped_sents.append(" ".join(best_words))
+    if min_distance is not None:
+        print(f"Unable to achieve {min_distance} swaps for {fail_count} sentences")
+    return swapped_sents
+
+perturbed_dict["1LocalWordSwap"]  = local_word_swaps(sentences, 1, min_distance=1)
+perturbed_dict["2LocalWordSwap"]  = local_word_swaps(sentences, 2, min_distance=2)
+perturbed_dict["3LocalWordSwaps"] = local_word_swaps(sentences, 3, min_distance=3)
+perturbed_dict["4LocalWordSwaps"] = local_word_swaps(sentences, 4, min_distance=4)
+perturbed_dict["5LocalWordSwaps"] = local_word_swaps(sentences, 5, min_distance=5)
+
+def reversed_order(sent_list):
+    return [" ".join(sent.strip().split()[::-1]) for sent in sent_list]
+
+perturbed_dict["Reversed"] = reversed_order(sentences)
+
 with open("perturbation/perturbation_dict", 'wb') as handle:
     pickle.dump(perturbed_dict, handle, protocol=pickle.HIGHEST_PROTOCOL)
-
