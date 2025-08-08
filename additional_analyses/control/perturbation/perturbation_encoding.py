@@ -105,3 +105,34 @@ for perturb_type, sentences in perturbed.items():
 # FIT brain encoding #
 ######################
 
+# data
+rois = ['lang_LH_IFGorb', 'lang_LH_IFG', 'lang_LH_MFG', 'lang_LH_AntTemp', 'lang_LH_PostTemp']
+control = pd.read_csv("data/brain-lang-data_participant_20230728.csv")
+
+avg_1 = control[control["roi"].isin(rois)].groupby(["sentence", "target_UID"]).agg({"response_target" : "mean", "cond" : "first", "sentence" : "first"}).reset_index(drop=True) # first average across fROIs
+df = avg_1.groupby("sentence").agg({"response_target" : "mean", "cond" : "first"}) # then average across participants
+df = df[df["cond"] == "B"] # baseline sentences only
+y = df["response_target"].to_numpy()
+
+
+layernum = 14
+for perturb_type in perturbed.keys():
+    try:
+        print(f">> Processing {perturb_type}")
+        embeddings = load(perturb_type)
+        # refit model on entire data (exp + random), store, use with new data
+        X = np.vstack([vec[layernum].mean(axis = 0) for vec in embeddings])
+        X_scaler = StandardScaler()
+        y_scaler = StandardScaler()
+        X_train = X_scaler.fit_transform(X)
+        y_train = y_scaler.fit_transform(y.reshape(-1, 1)).flatten()
+        reg = RidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
+        reg.fit(X_train, y_train)
+        
+        with open(f"perturbation/registered_models/{perturb_type}", 'wb') as handle:
+            pickle.dump(reg, handle, protocol=pickle.HIGHEST_PROTOCOL)
+            
+        with open(f"perturbation/registered_models/normaliz_params/{perturb_type}", 'wb') as handle:
+            pickle.dump([X_scaler, y_scaler], handle, protocol=pickle.HIGHEST_PROTOCOL)
+    except FileNotFoundError:
+        print(f"Embeddings for {perturb_type} are missing")
