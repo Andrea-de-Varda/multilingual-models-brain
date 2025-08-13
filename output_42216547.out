@@ -1943,3 +1943,8 @@ ACROSS-multilang-train     mgpt | fROI=all | layer=16 | mean r=0.051
 ACROSS-multilang-train     mgpt | fROI=all | layer=17 | mean r=0.065
 ACROSS-multilang-train     mgpt | fROI=all | layer=18 | mean r=0.104
 ACROSS-multilang-train     mgpt | fROI=all | layer=19 | mean r=0.116
+ACROSS-multilang-train     mgpt | fROI=all | layer=20 | mean r=0.110
+ACROSS-multilang-train     mgpt | fROI=all | layer=21 | mean r=0.103
+ACROSS-multilang-train     mgpt | fROI=all | layer=22 | mean r=0.098
+ACROSS-multilang-train     mgpt | fROI=all | layer=23 | mean r=0.092
+ACROSS-multilang-train     mgpt | fROI=all | layer=24 | mean r=0.092

@@ -13,6 +13,6 @@ conda activate reasoning-models
 # python fit_encoding.py --mode across
 # python fit_encoding.py --mode across-random
 # python fit_encoding.py --mode RH
-# python fit_encoding.py --mode MD
+python fit_encoding.py --mode MD
 # python fit_encoding.py --mode native-within
-python fit_encoding.py --mode native-across
+# python fit_encoding.py --mode native-across

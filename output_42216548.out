@@ -4308,3 +4308,883 @@ ACROSS-multilang-train     mt5_large | fROI=MD_LH_supFrontal | layer=24 | mean r
 
 Processing MD_RH_Precentral_A_PrecG (11/21)
 ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_A_PrecG | layer=0 | mean r=-0.044
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_A_PrecG | layer=1 | mean r=-0.058
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_A_PrecG | layer=2 | mean r=-0.088
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_A_PrecG | layer=3 | mean r=-0.060
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_A_PrecG | layer=4 | mean r=-0.043
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_A_PrecG | layer=5 | mean r=-0.047
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_A_PrecG | layer=6 | mean r=-0.016
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_A_PrecG | layer=7 | mean r=-0.033
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_A_PrecG | layer=8 | mean r=-0.033
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_A_PrecG | layer=9 | mean r=-0.040
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_A_PrecG | layer=10 | mean r=-0.037
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_A_PrecG | layer=11 | mean r=-0.019
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_A_PrecG | layer=12 | mean r=-0.028
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_A_PrecG | layer=13 | mean r=-0.040
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_A_PrecG | layer=14 | mean r=-0.023
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_A_PrecG | layer=15 | mean r=-0.025
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_A_PrecG | layer=16 | mean r=-0.059
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_A_PrecG | layer=17 | mean r=-0.059
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_A_PrecG | layer=18 | mean r=-0.074
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_A_PrecG | layer=19 | mean r=-0.082
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_A_PrecG | layer=20 | mean r=-0.062
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_A_PrecG | layer=21 | mean r=-0.071
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_A_PrecG | layer=22 | mean r=-0.050
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_A_PrecG | layer=23 | mean r=-0.049
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_A_PrecG | layer=24 | mean r=-0.047
+
+
+Processing MD_RH_Precentral_B_IFGop (12/21)
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_B_IFGop | layer=0 | mean r=-0.019
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_B_IFGop | layer=1 | mean r=-0.035
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_B_IFGop | layer=2 | mean r=-0.045
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_B_IFGop | layer=3 | mean r=-0.049
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_B_IFGop | layer=4 | mean r=-0.043
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_B_IFGop | layer=5 | mean r=-0.034
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_B_IFGop | layer=6 | mean r=-0.037
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_B_IFGop | layer=7 | mean r=-0.047
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_B_IFGop | layer=8 | mean r=-0.054
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_B_IFGop | layer=9 | mean r=-0.080
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_B_IFGop | layer=10 | mean r=-0.064
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_B_IFGop | layer=11 | mean r=-0.050
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_B_IFGop | layer=12 | mean r=-0.041
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_B_IFGop | layer=13 | mean r=-0.054
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_B_IFGop | layer=14 | mean r=-0.039
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_B_IFGop | layer=15 | mean r=-0.037
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_B_IFGop | layer=16 | mean r=-0.047
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_B_IFGop | layer=17 | mean r=-0.016
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_B_IFGop | layer=18 | mean r=-0.033
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_B_IFGop | layer=19 | mean r=-0.021
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_B_IFGop | layer=20 | mean r=-0.013
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_B_IFGop | layer=21 | mean r=-0.010
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_B_IFGop | layer=22 | mean r=-0.004
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_B_IFGop | layer=23 | mean r=-0.011
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_Precentral_B_IFGop | layer=24 | mean r=-0.030
+
+
+Processing MD_RH_antParietal (13/21)
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_antParietal | layer=0 | mean r=-0.005
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_antParietal | layer=1 | mean r=-0.015
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_antParietal | layer=2 | mean r=-0.008
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_antParietal | layer=3 | mean r=-0.008
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_antParietal | layer=4 | mean r=0.002
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_antParietal | layer=5 | mean r=0.013
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_antParietal | layer=6 | mean r=0.013
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_antParietal | layer=7 | mean r=0.006
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_antParietal | layer=8 | mean r=0.008
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_antParietal | layer=9 | mean r=0.006
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_antParietal | layer=10 | mean r=-0.003
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_antParietal | layer=11 | mean r=0.015
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_antParietal | layer=12 | mean r=0.006
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_antParietal | layer=13 | mean r=-0.004
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_antParietal | layer=14 | mean r=0.007
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_antParietal | layer=15 | mean r=0.013
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_antParietal | layer=16 | mean r=0.021
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_antParietal | layer=17 | mean r=-0.000
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_antParietal | layer=18 | mean r=-0.012
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_antParietal | layer=19 | mean r=-0.003
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_antParietal | layer=20 | mean r=-0.008
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_antParietal | layer=21 | mean r=-0.022
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_antParietal | layer=22 | mean r=-0.021
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_antParietal | layer=23 | mean r=-0.015
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_antParietal | layer=24 | mean r=-0.001
+
+
+Processing MD_RH_insula (14/21)
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_insula | layer=0 | mean r=0.013
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_insula | layer=1 | mean r=-0.009
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_insula | layer=2 | mean r=-0.020
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_insula | layer=3 | mean r=-0.023
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_insula | layer=4 | mean r=-0.023
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_insula | layer=5 | mean r=0.000
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_insula | layer=6 | mean r=0.002
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_insula | layer=7 | mean r=0.003
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_insula | layer=8 | mean r=-0.010
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_insula | layer=9 | mean r=0.012
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_insula | layer=10 | mean r=0.019
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_insula | layer=11 | mean r=0.048
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_insula | layer=12 | mean r=0.026
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_insula | layer=13 | mean r=0.014
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_insula | layer=14 | mean r=0.014
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_insula | layer=15 | mean r=-0.022
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_insula | layer=16 | mean r=-0.001
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_insula | layer=17 | mean r=-0.004
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_insula | layer=18 | mean r=0.010
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_insula | layer=19 | mean r=0.035
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_insula | layer=20 | mean r=0.002
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_insula | layer=21 | mean r=0.020
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_insula | layer=22 | mean r=0.043
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_insula | layer=23 | mean r=0.064
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_insula | layer=24 | mean r=0.036
+
+
+Processing MD_RH_medialFrontal (15/21)
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_medialFrontal | layer=0 | mean r=0.012
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_medialFrontal | layer=1 | mean r=0.001
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_medialFrontal | layer=2 | mean r=-0.007
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_medialFrontal | layer=3 | mean r=0.019
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_medialFrontal | layer=4 | mean r=0.010
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_medialFrontal | layer=5 | mean r=0.015
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_medialFrontal | layer=6 | mean r=0.010
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_medialFrontal | layer=7 | mean r=0.005
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_medialFrontal | layer=8 | mean r=0.013
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_medialFrontal | layer=9 | mean r=0.027
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_medialFrontal | layer=10 | mean r=0.028
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_medialFrontal | layer=11 | mean r=0.065
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_medialFrontal | layer=12 | mean r=0.058
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_medialFrontal | layer=13 | mean r=0.062
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_medialFrontal | layer=14 | mean r=0.053
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_medialFrontal | layer=15 | mean r=0.010
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_medialFrontal | layer=16 | mean r=0.034
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_medialFrontal | layer=17 | mean r=0.042
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_medialFrontal | layer=18 | mean r=0.035
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_medialFrontal | layer=19 | mean r=0.053
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_medialFrontal | layer=20 | mean r=0.057
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_medialFrontal | layer=21 | mean r=0.056
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_medialFrontal | layer=22 | mean r=0.059
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_medialFrontal | layer=23 | mean r=0.069
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_medialFrontal | layer=24 | mean r=0.077
+
+
+Processing MD_RH_midFrontal (16/21)
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontal | layer=0 | mean r=-0.002
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontal | layer=1 | mean r=-0.023
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontal | layer=2 | mean r=-0.049
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontal | layer=3 | mean r=-0.030
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontal | layer=4 | mean r=-0.028
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontal | layer=5 | mean r=-0.020
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontal | layer=6 | mean r=-0.020
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontal | layer=7 | mean r=-0.026
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontal | layer=8 | mean r=-0.011
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontal | layer=9 | mean r=-0.003
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontal | layer=10 | mean r=-0.010
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontal | layer=11 | mean r=0.040
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontal | layer=12 | mean r=0.017
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontal | layer=13 | mean r=0.030
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontal | layer=14 | mean r=0.040
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontal | layer=15 | mean r=0.015
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontal | layer=16 | mean r=0.031
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontal | layer=17 | mean r=0.020
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontal | layer=18 | mean r=-0.001
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontal | layer=19 | mean r=0.001
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontal | layer=20 | mean r=0.021
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontal | layer=21 | mean r=0.022
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontal | layer=22 | mean r=0.028
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontal | layer=23 | mean r=0.040
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontal | layer=24 | mean r=0.057
+
+
+Processing MD_RH_midFrontalOrb (17/21)
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontalOrb | layer=0 | mean r=0.031
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontalOrb | layer=1 | mean r=0.012
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontalOrb | layer=2 | mean r=-0.000
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontalOrb | layer=3 | mean r=0.020
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontalOrb | layer=4 | mean r=0.026
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontalOrb | layer=5 | mean r=0.047
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontalOrb | layer=6 | mean r=0.050
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontalOrb | layer=7 | mean r=0.041
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontalOrb | layer=8 | mean r=0.048
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontalOrb | layer=9 | mean r=0.048
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontalOrb | layer=10 | mean r=0.061
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontalOrb | layer=11 | mean r=0.112
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontalOrb | layer=12 | mean r=0.107
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontalOrb | layer=13 | mean r=0.124
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontalOrb | layer=14 | mean r=0.113
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontalOrb | layer=15 | mean r=0.075
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontalOrb | layer=16 | mean r=0.088
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontalOrb | layer=17 | mean r=0.091
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontalOrb | layer=18 | mean r=0.075
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontalOrb | layer=19 | mean r=0.090
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontalOrb | layer=20 | mean r=0.100
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontalOrb | layer=21 | mean r=0.096
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontalOrb | layer=22 | mean r=0.096
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontalOrb | layer=23 | mean r=0.095
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midFrontalOrb | layer=24 | mean r=0.124
+
+
+Processing MD_RH_midParietal (18/21)
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midParietal | layer=0 | mean r=0.030
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midParietal | layer=1 | mean r=0.010
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midParietal | layer=2 | mean r=-0.008
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midParietal | layer=3 | mean r=-0.004
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midParietal | layer=4 | mean r=0.011
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midParietal | layer=5 | mean r=0.007
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midParietal | layer=6 | mean r=0.022
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midParietal | layer=7 | mean r=0.021
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midParietal | layer=8 | mean r=0.023
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midParietal | layer=9 | mean r=0.009
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midParietal | layer=10 | mean r=0.009
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midParietal | layer=11 | mean r=0.023
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midParietal | layer=12 | mean r=0.040
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midParietal | layer=13 | mean r=0.034
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midParietal | layer=14 | mean r=0.076
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midParietal | layer=15 | mean r=0.094
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midParietal | layer=16 | mean r=0.086
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midParietal | layer=17 | mean r=0.053
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midParietal | layer=18 | mean r=0.044
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midParietal | layer=19 | mean r=0.044
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midParietal | layer=20 | mean r=0.036
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midParietal | layer=21 | mean r=0.030
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midParietal | layer=22 | mean r=0.026
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midParietal | layer=23 | mean r=0.034
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_midParietal | layer=24 | mean r=0.034
+
+
+Processing MD_RH_postParietal (19/21)
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_postParietal | layer=0 | mean r=-0.013
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_postParietal | layer=1 | mean r=-0.010
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_postParietal | layer=2 | mean r=-0.003
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_postParietal | layer=3 | mean r=0.000
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_postParietal | layer=4 | mean r=0.011
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_postParietal | layer=5 | mean r=0.020
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_postParietal | layer=6 | mean r=0.038
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_postParietal | layer=7 | mean r=0.048
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_postParietal | layer=8 | mean r=0.032
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_postParietal | layer=9 | mean r=0.033
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_postParietal | layer=10 | mean r=0.032
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_postParietal | layer=11 | mean r=0.055
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_postParietal | layer=12 | mean r=0.060
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_postParietal | layer=13 | mean r=0.032
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_postParietal | layer=14 | mean r=0.011
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_postParietal | layer=15 | mean r=0.065
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_postParietal | layer=16 | mean r=0.080
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_postParietal | layer=17 | mean r=0.036
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_postParietal | layer=18 | mean r=0.039
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_postParietal | layer=19 | mean r=0.045
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_postParietal | layer=20 | mean r=0.025
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_postParietal | layer=21 | mean r=0.013
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_postParietal | layer=22 | mean r=-0.012
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_postParietal | layer=23 | mean r=-0.003
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_postParietal | layer=24 | mean r=0.011
+
+
+Processing MD_RH_supFrontal (20/21)
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_supFrontal | layer=0 | mean r=0.015
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_supFrontal | layer=1 | mean r=-0.025
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_supFrontal | layer=2 | mean r=-0.017
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_supFrontal | layer=3 | mean r=-0.014
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_supFrontal | layer=4 | mean r=-0.011
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_supFrontal | layer=5 | mean r=-0.005
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_supFrontal | layer=6 | mean r=-0.006
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_supFrontal | layer=7 | mean r=0.002
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_supFrontal | layer=8 | mean r=-0.010
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_supFrontal | layer=9 | mean r=0.010
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_supFrontal | layer=10 | mean r=0.004
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_supFrontal | layer=11 | mean r=0.054
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_supFrontal | layer=12 | mean r=0.053
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_supFrontal | layer=13 | mean r=0.023
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_supFrontal | layer=14 | mean r=0.035
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_supFrontal | layer=15 | mean r=0.031
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_supFrontal | layer=16 | mean r=0.052
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_supFrontal | layer=17 | mean r=0.047
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_supFrontal | layer=18 | mean r=0.031
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_supFrontal | layer=19 | mean r=0.036
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_supFrontal | layer=20 | mean r=0.054
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_supFrontal | layer=21 | mean r=0.041
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_supFrontal | layer=22 | mean r=0.019
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_supFrontal | layer=23 | mean r=0.021
+ACROSS-multilang-train     mt5_large | fROI=MD_RH_supFrontal | layer=24 | mean r=0.051
+
+
+Processing all (21/21)
+ACROSS-multilang-train     mt5_large | fROI=all | layer=0 | mean r=0.002
+ACROSS-multilang-train     mt5_large | fROI=all | layer=1 | mean r=-0.023
+ACROSS-multilang-train     mt5_large | fROI=all | layer=2 | mean r=-0.039
+ACROSS-multilang-train     mt5_large | fROI=all | layer=3 | mean r=-0.025
+ACROSS-multilang-train     mt5_large | fROI=all | layer=4 | mean r=-0.029
+ACROSS-multilang-train     mt5_large | fROI=all | layer=5 | mean r=-0.014
+ACROSS-multilang-train     mt5_large | fROI=all | layer=6 | mean r=-0.005
+ACROSS-multilang-train     mt5_large | fROI=all | layer=7 | mean r=-0.004
+ACROSS-multilang-train     mt5_large | fROI=all | layer=8 | mean r=0.004
+ACROSS-multilang-train     mt5_large | fROI=all | layer=9 | mean r=0.002
+ACROSS-multilang-train     mt5_large | fROI=all | layer=10 | mean r=0.011
+ACROSS-multilang-train     mt5_large | fROI=all | layer=11 | mean r=0.050
+ACROSS-multilang-train     mt5_large | fROI=all | layer=12 | mean r=0.058
+ACROSS-multilang-train     mt5_large | fROI=all | layer=13 | mean r=0.054
+ACROSS-multilang-train     mt5_large | fROI=all | layer=14 | mean r=0.062
+ACROSS-multilang-train     mt5_large | fROI=all | layer=15 | mean r=0.054
+ACROSS-multilang-train     mt5_large | fROI=all | layer=16 | mean r=0.062
+ACROSS-multilang-train     mt5_large | fROI=all | layer=17 | mean r=0.058
+ACROSS-multilang-train     mt5_large | fROI=all | layer=18 | mean r=0.053
+ACROSS-multilang-train     mt5_large | fROI=all | layer=19 | mean r=0.052
+ACROSS-multilang-train     mt5_large | fROI=all | layer=20 | mean r=0.063
+ACROSS-multilang-train     mt5_large | fROI=all | layer=21 | mean r=0.046
+ACROSS-multilang-train     mt5_large | fROI=all | layer=22 | mean r=0.024
+ACROSS-multilang-train     mt5_large | fROI=all | layer=23 | mean r=0.032
+ACROSS-multilang-train     mt5_large | fROI=all | layer=24 | mean r=0.054
+
+
+Processing MD_LH_Precentral_A_PrecG (1/21)
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_Precentral_A_PrecG | layer=0 | mean r=0.050
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_Precentral_A_PrecG | layer=1 | mean r=0.032
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_Precentral_A_PrecG | layer=2 | mean r=0.032
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_Precentral_A_PrecG | layer=3 | mean r=0.008
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_Precentral_A_PrecG | layer=4 | mean r=-0.005
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_Precentral_A_PrecG | layer=5 | mean r=-0.003
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_Precentral_A_PrecG | layer=6 | mean r=0.028
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_Precentral_A_PrecG | layer=7 | mean r=-0.001
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_Precentral_A_PrecG | layer=8 | mean r=0.023
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_Precentral_A_PrecG | layer=9 | mean r=0.058
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_Precentral_A_PrecG | layer=10 | mean r=0.085
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_Precentral_A_PrecG | layer=11 | mean r=0.055
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_Precentral_A_PrecG | layer=12 | mean r=0.013
+
+
+Processing MD_LH_Precentral_B_IFGop (2/21)
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_Precentral_B_IFGop | layer=0 | mean r=0.010
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_Precentral_B_IFGop | layer=1 | mean r=-0.005
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_Precentral_B_IFGop | layer=2 | mean r=-0.004
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_Precentral_B_IFGop | layer=3 | mean r=-0.034
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_Precentral_B_IFGop | layer=4 | mean r=-0.036
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_Precentral_B_IFGop | layer=5 | mean r=-0.055
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_Precentral_B_IFGop | layer=6 | mean r=-0.054
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_Precentral_B_IFGop | layer=7 | mean r=-0.068
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_Precentral_B_IFGop | layer=8 | mean r=-0.046
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_Precentral_B_IFGop | layer=9 | mean r=-0.015
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_Precentral_B_IFGop | layer=10 | mean r=0.001
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_Precentral_B_IFGop | layer=11 | mean r=-0.027
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_Precentral_B_IFGop | layer=12 | mean r=-0.032
+
+
+Processing MD_LH_antParietal (3/21)
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_antParietal | layer=0 | mean r=0.036
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_antParietal | layer=1 | mean r=0.017
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_antParietal | layer=2 | mean r=0.035
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_antParietal | layer=3 | mean r=0.056
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_antParietal | layer=4 | mean r=0.074
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_antParietal | layer=5 | mean r=0.066
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_antParietal | layer=6 | mean r=0.064
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_antParietal | layer=7 | mean r=0.042
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_antParietal | layer=8 | mean r=0.073
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_antParietal | layer=9 | mean r=0.079
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_antParietal | layer=10 | mean r=0.093
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_antParietal | layer=11 | mean r=0.078
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_antParietal | layer=12 | mean r=0.062
+
+
+Processing MD_LH_insula (4/21)
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_insula | layer=0 | mean r=0.009
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_insula | layer=1 | mean r=0.002
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_insula | layer=2 | mean r=0.019
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_insula | layer=3 | mean r=0.007
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_insula | layer=4 | mean r=0.017
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_insula | layer=5 | mean r=0.001
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_insula | layer=6 | mean r=0.012
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_insula | layer=7 | mean r=0.001
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_insula | layer=8 | mean r=0.002
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_insula | layer=9 | mean r=0.004
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_insula | layer=10 | mean r=0.029
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_insula | layer=11 | mean r=0.065
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_insula | layer=12 | mean r=0.037
+
+
+Processing MD_LH_medialFrontal (5/21)
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_medialFrontal | layer=0 | mean r=0.028
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_medialFrontal | layer=1 | mean r=-0.006
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_medialFrontal | layer=2 | mean r=0.005
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_medialFrontal | layer=3 | mean r=-0.004
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_medialFrontal | layer=4 | mean r=-0.010
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_medialFrontal | layer=5 | mean r=-0.027
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_medialFrontal | layer=6 | mean r=0.021
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_medialFrontal | layer=7 | mean r=0.021
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_medialFrontal | layer=8 | mean r=0.065
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_medialFrontal | layer=9 | mean r=0.033
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_medialFrontal | layer=10 | mean r=0.055
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_medialFrontal | layer=11 | mean r=0.042
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_medialFrontal | layer=12 | mean r=-0.006
+
+
+Processing MD_LH_midFrontal (6/21)
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midFrontal | layer=0 | mean r=0.068
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midFrontal | layer=1 | mean r=0.046
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midFrontal | layer=2 | mean r=0.060
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midFrontal | layer=3 | mean r=0.063
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midFrontal | layer=4 | mean r=0.095
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midFrontal | layer=5 | mean r=0.083
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midFrontal | layer=6 | mean r=0.108
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midFrontal | layer=7 | mean r=0.076
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midFrontal | layer=8 | mean r=0.086
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midFrontal | layer=9 | mean r=0.096
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midFrontal | layer=10 | mean r=0.140
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midFrontal | layer=11 | mean r=0.114
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midFrontal | layer=12 | mean r=0.073
+
+
+Processing MD_LH_midFrontalOrb (7/21)
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midFrontalOrb | layer=0 | mean r=0.051
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midFrontalOrb | layer=1 | mean r=0.020
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midFrontalOrb | layer=2 | mean r=0.042
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midFrontalOrb | layer=3 | mean r=0.026
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midFrontalOrb | layer=4 | mean r=0.061
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midFrontalOrb | layer=5 | mean r=0.070
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midFrontalOrb | layer=6 | mean r=0.102
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midFrontalOrb | layer=7 | mean r=0.112
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midFrontalOrb | layer=8 | mean r=0.123
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midFrontalOrb | layer=9 | mean r=0.101
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midFrontalOrb | layer=10 | mean r=0.120
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midFrontalOrb | layer=11 | mean r=0.102
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midFrontalOrb | layer=12 | mean r=0.042
+
+
+Processing MD_LH_midParietal (8/21)
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midParietal | layer=0 | mean r=0.019
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midParietal | layer=1 | mean r=0.029
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midParietal | layer=2 | mean r=0.069
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midParietal | layer=3 | mean r=0.070
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midParietal | layer=4 | mean r=0.074
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midParietal | layer=5 | mean r=0.094
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midParietal | layer=6 | mean r=0.086
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midParietal | layer=7 | mean r=0.065
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midParietal | layer=8 | mean r=0.082
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midParietal | layer=9 | mean r=0.106
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midParietal | layer=10 | mean r=0.105
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midParietal | layer=11 | mean r=0.099
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_midParietal | layer=12 | mean r=0.104
+
+
+Processing MD_LH_postParietal (9/21)
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_postParietal | layer=0 | mean r=0.006
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_postParietal | layer=1 | mean r=0.025
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_postParietal | layer=2 | mean r=0.088
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_postParietal | layer=3 | mean r=0.081
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_postParietal | layer=4 | mean r=0.075
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_postParietal | layer=5 | mean r=0.074
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_postParietal | layer=6 | mean r=0.078
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_postParietal | layer=7 | mean r=0.059
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_postParietal | layer=8 | mean r=0.085
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_postParietal | layer=9 | mean r=0.085
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_postParietal | layer=10 | mean r=0.088
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_postParietal | layer=11 | mean r=0.067
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_postParietal | layer=12 | mean r=0.046
+
+
+Processing MD_LH_supFrontal (10/21)
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_supFrontal | layer=0 | mean r=0.001
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_supFrontal | layer=1 | mean r=-0.014
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_supFrontal | layer=2 | mean r=-0.003
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_supFrontal | layer=3 | mean r=0.016
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_supFrontal | layer=4 | mean r=0.035
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_supFrontal | layer=5 | mean r=0.005
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_supFrontal | layer=6 | mean r=0.027
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_supFrontal | layer=7 | mean r=-0.013
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_supFrontal | layer=8 | mean r=0.015
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_supFrontal | layer=9 | mean r=0.011
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_supFrontal | layer=10 | mean r=0.034
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_supFrontal | layer=11 | mean r=0.021
+ACROSS-multilang-train     mdeberta | fROI=MD_LH_supFrontal | layer=12 | mean r=0.032
+
+
+Processing MD_RH_Precentral_A_PrecG (11/21)
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_Precentral_A_PrecG | layer=0 | mean r=-0.039
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_Precentral_A_PrecG | layer=1 | mean r=-0.033
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_Precentral_A_PrecG | layer=2 | mean r=-0.080
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_Precentral_A_PrecG | layer=3 | mean r=-0.056
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_Precentral_A_PrecG | layer=4 | mean r=-0.024
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_Precentral_A_PrecG | layer=5 | mean r=-0.024
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_Precentral_A_PrecG | layer=6 | mean r=-0.005
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_Precentral_A_PrecG | layer=7 | mean r=-0.033
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_Precentral_A_PrecG | layer=8 | mean r=-0.012
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_Precentral_A_PrecG | layer=9 | mean r=-0.003
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_Precentral_A_PrecG | layer=10 | mean r=-0.000
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_Precentral_A_PrecG | layer=11 | mean r=-0.014
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_Precentral_A_PrecG | layer=12 | mean r=0.008
+
+
+Processing MD_RH_Precentral_B_IFGop (12/21)
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_Precentral_B_IFGop | layer=0 | mean r=-0.001
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_Precentral_B_IFGop | layer=1 | mean r=-0.019
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_Precentral_B_IFGop | layer=2 | mean r=-0.066
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_Precentral_B_IFGop | layer=3 | mean r=-0.067
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_Precentral_B_IFGop | layer=4 | mean r=-0.071
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_Precentral_B_IFGop | layer=5 | mean r=-0.066
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_Precentral_B_IFGop | layer=6 | mean r=-0.017
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_Precentral_B_IFGop | layer=7 | mean r=-0.047
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_Precentral_B_IFGop | layer=8 | mean r=-0.035
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_Precentral_B_IFGop | layer=9 | mean r=-0.010
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_Precentral_B_IFGop | layer=10 | mean r=-0.020
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_Precentral_B_IFGop | layer=11 | mean r=-0.043
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_Precentral_B_IFGop | layer=12 | mean r=-0.009
+
+
+Processing MD_RH_antParietal (13/21)
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_antParietal | layer=0 | mean r=0.011
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_antParietal | layer=1 | mean r=-0.004
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_antParietal | layer=2 | mean r=-0.008
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_antParietal | layer=3 | mean r=0.004
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_antParietal | layer=4 | mean r=0.022
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_antParietal | layer=5 | mean r=0.027
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_antParietal | layer=6 | mean r=0.032
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_antParietal | layer=7 | mean r=-0.000
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_antParietal | layer=8 | mean r=0.021
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_antParietal | layer=9 | mean r=0.030
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_antParietal | layer=10 | mean r=0.024
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_antParietal | layer=11 | mean r=0.059
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_antParietal | layer=12 | mean r=0.076
+
+
+Processing MD_RH_insula (14/21)
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_insula | layer=0 | mean r=0.042
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_insula | layer=1 | mean r=0.021
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_insula | layer=2 | mean r=-0.004
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_insula | layer=3 | mean r=0.009
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_insula | layer=4 | mean r=-0.008
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_insula | layer=5 | mean r=-0.000
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_insula | layer=6 | mean r=0.013
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_insula | layer=7 | mean r=0.016
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_insula | layer=8 | mean r=0.022
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_insula | layer=9 | mean r=0.030
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_insula | layer=10 | mean r=0.029
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_insula | layer=11 | mean r=0.028
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_insula | layer=12 | mean r=0.030
+
+
+Processing MD_RH_medialFrontal (15/21)
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_medialFrontal | layer=0 | mean r=0.052
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_medialFrontal | layer=1 | mean r=0.011
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_medialFrontal | layer=2 | mean r=0.007
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_medialFrontal | layer=3 | mean r=-0.003
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_medialFrontal | layer=4 | mean r=0.004
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_medialFrontal | layer=5 | mean r=0.017
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_medialFrontal | layer=6 | mean r=0.043
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_medialFrontal | layer=7 | mean r=0.036
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_medialFrontal | layer=8 | mean r=0.053
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_medialFrontal | layer=9 | mean r=0.021
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_medialFrontal | layer=10 | mean r=0.044
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_medialFrontal | layer=11 | mean r=0.036
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_medialFrontal | layer=12 | mean r=0.020
+
+
+Processing MD_RH_midFrontal (16/21)
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midFrontal | layer=0 | mean r=0.029
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midFrontal | layer=1 | mean r=-0.015
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midFrontal | layer=2 | mean r=-0.023
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midFrontal | layer=3 | mean r=-0.011
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midFrontal | layer=4 | mean r=-0.004
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midFrontal | layer=5 | mean r=0.018
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midFrontal | layer=6 | mean r=0.022
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midFrontal | layer=7 | mean r=0.026
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midFrontal | layer=8 | mean r=0.060
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midFrontal | layer=9 | mean r=0.051
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midFrontal | layer=10 | mean r=0.051
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midFrontal | layer=11 | mean r=0.040
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midFrontal | layer=12 | mean r=0.011
+
+
+Processing MD_RH_midFrontalOrb (17/21)
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midFrontalOrb | layer=0 | mean r=0.061
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midFrontalOrb | layer=1 | mean r=0.007
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midFrontalOrb | layer=2 | mean r=0.005
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midFrontalOrb | layer=3 | mean r=0.017
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midFrontalOrb | layer=4 | mean r=0.056
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midFrontalOrb | layer=5 | mean r=0.094
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midFrontalOrb | layer=6 | mean r=0.097
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midFrontalOrb | layer=7 | mean r=0.129
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midFrontalOrb | layer=8 | mean r=0.143
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midFrontalOrb | layer=9 | mean r=0.121
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midFrontalOrb | layer=10 | mean r=0.094
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midFrontalOrb | layer=11 | mean r=0.087
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midFrontalOrb | layer=12 | mean r=0.064
+
+
+Processing MD_RH_midParietal (18/21)
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midParietal | layer=0 | mean r=0.047
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midParietal | layer=1 | mean r=0.032
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midParietal | layer=2 | mean r=0.044
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midParietal | layer=3 | mean r=0.074
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midParietal | layer=4 | mean r=0.085
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midParietal | layer=5 | mean r=0.122
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midParietal | layer=6 | mean r=0.128
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midParietal | layer=7 | mean r=0.085
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midParietal | layer=8 | mean r=0.105
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midParietal | layer=9 | mean r=0.120
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midParietal | layer=10 | mean r=0.104
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midParietal | layer=11 | mean r=0.114
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_midParietal | layer=12 | mean r=0.102
+
+
+Processing MD_RH_postParietal (19/21)
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_postParietal | layer=0 | mean r=0.009
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_postParietal | layer=1 | mean r=0.010
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_postParietal | layer=2 | mean r=0.049
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_postParietal | layer=3 | mean r=0.065
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_postParietal | layer=4 | mean r=0.091
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_postParietal | layer=5 | mean r=0.114
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_postParietal | layer=6 | mean r=0.129
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_postParietal | layer=7 | mean r=0.095
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_postParietal | layer=8 | mean r=0.124
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_postParietal | layer=9 | mean r=0.128
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_postParietal | layer=10 | mean r=0.115
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_postParietal | layer=11 | mean r=0.099
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_postParietal | layer=12 | mean r=0.091
+
+
+Processing MD_RH_supFrontal (20/21)
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_supFrontal | layer=0 | mean r=0.013
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_supFrontal | layer=1 | mean r=-0.006
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_supFrontal | layer=2 | mean r=0.000
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_supFrontal | layer=3 | mean r=0.018
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_supFrontal | layer=4 | mean r=0.042
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_supFrontal | layer=5 | mean r=0.036
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_supFrontal | layer=6 | mean r=0.057
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_supFrontal | layer=7 | mean r=0.031
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_supFrontal | layer=8 | mean r=0.061
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_supFrontal | layer=9 | mean r=0.060
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_supFrontal | layer=10 | mean r=0.077
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_supFrontal | layer=11 | mean r=0.094
+ACROSS-multilang-train     mdeberta | fROI=MD_RH_supFrontal | layer=12 | mean r=0.052
+
+
+Processing all (21/21)
+ACROSS-multilang-train     mdeberta | fROI=all | layer=0 | mean r=0.049
+ACROSS-multilang-train     mdeberta | fROI=all | layer=1 | mean r=0.019
+ACROSS-multilang-train     mdeberta | fROI=all | layer=2 | mean r=0.016
+ACROSS-multilang-train     mdeberta | fROI=all | layer=3 | mean r=0.019
+ACROSS-multilang-train     mdeberta | fROI=all | layer=4 | mean r=0.046
+ACROSS-multilang-train     mdeberta | fROI=all | layer=5 | mean r=0.053
+ACROSS-multilang-train     mdeberta | fROI=all | layer=6 | mean r=0.079
+ACROSS-multilang-train     mdeberta | fROI=all | layer=7 | mean r=0.057
+ACROSS-multilang-train     mdeberta | fROI=all | layer=8 | mean r=0.088
+ACROSS-multilang-train     mdeberta | fROI=all | layer=9 | mean r=0.092
+ACROSS-multilang-train     mdeberta | fROI=all | layer=10 | mean r=0.096
+ACROSS-multilang-train     mdeberta | fROI=all | layer=11 | mean r=0.101
+ACROSS-multilang-train     mdeberta | fROI=all | layer=12 | mean r=0.062
+
+
+Processing MD_LH_Precentral_A_PrecG (1/21)
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_Precentral_A_PrecG | layer=0 | mean r=-0.014
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_Precentral_A_PrecG | layer=1 | mean r=-0.010
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_Precentral_A_PrecG | layer=2 | mean r=-0.013
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_Precentral_A_PrecG | layer=3 | mean r=0.004
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_Precentral_A_PrecG | layer=4 | mean r=0.017
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_Precentral_A_PrecG | layer=5 | mean r=0.046
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_Precentral_A_PrecG | layer=6 | mean r=0.054
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_Precentral_A_PrecG | layer=7 | mean r=0.092
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_Precentral_A_PrecG | layer=8 | mean r=0.066
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_Precentral_A_PrecG | layer=9 | mean r=0.062
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_Precentral_A_PrecG | layer=10 | mean r=0.077
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_Precentral_A_PrecG | layer=11 | mean r=0.086
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_Precentral_A_PrecG | layer=12 | mean r=0.063
+
+
+Processing MD_LH_Precentral_B_IFGop (2/21)
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_Precentral_B_IFGop | layer=0 | mean r=-0.008
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_Precentral_B_IFGop | layer=1 | mean r=0.006
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_Precentral_B_IFGop | layer=2 | mean r=0.008
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_Precentral_B_IFGop | layer=3 | mean r=0.021
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_Precentral_B_IFGop | layer=4 | mean r=0.023
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_Precentral_B_IFGop | layer=5 | mean r=0.038
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_Precentral_B_IFGop | layer=6 | mean r=0.052
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_Precentral_B_IFGop | layer=7 | mean r=0.083
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_Precentral_B_IFGop | layer=8 | mean r=0.048
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_Precentral_B_IFGop | layer=9 | mean r=0.046
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_Precentral_B_IFGop | layer=10 | mean r=0.062
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_Precentral_B_IFGop | layer=11 | mean r=0.070
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_Precentral_B_IFGop | layer=12 | mean r=0.052
+
+
+Processing MD_LH_antParietal (3/21)
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_antParietal | layer=0 | mean r=0.053
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_antParietal | layer=1 | mean r=0.058
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_antParietal | layer=2 | mean r=0.048
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_antParietal | layer=3 | mean r=0.060
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_antParietal | layer=4 | mean r=0.071
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_antParietal | layer=5 | mean r=0.091
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_antParietal | layer=6 | mean r=0.049
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_antParietal | layer=7 | mean r=0.062
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_antParietal | layer=8 | mean r=0.063
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_antParietal | layer=9 | mean r=0.070
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_antParietal | layer=10 | mean r=0.064
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_antParietal | layer=11 | mean r=0.079
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_antParietal | layer=12 | mean r=0.034
+
+
+Processing MD_LH_insula (4/21)
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_insula | layer=0 | mean r=-0.003
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_insula | layer=1 | mean r=0.001
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_insula | layer=2 | mean r=0.029
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_insula | layer=3 | mean r=0.032
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_insula | layer=4 | mean r=0.051
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_insula | layer=5 | mean r=0.008
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_insula | layer=6 | mean r=0.038
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_insula | layer=7 | mean r=-0.010
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_insula | layer=8 | mean r=-0.006
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_insula | layer=9 | mean r=0.020
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_insula | layer=10 | mean r=0.013
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_insula | layer=11 | mean r=0.014
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_insula | layer=12 | mean r=0.006
+
+
+Processing MD_LH_medialFrontal (5/21)
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_medialFrontal | layer=0 | mean r=-0.016
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_medialFrontal | layer=1 | mean r=-0.034
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_medialFrontal | layer=2 | mean r=-0.036
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_medialFrontal | layer=3 | mean r=-0.035
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_medialFrontal | layer=4 | mean r=0.019
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_medialFrontal | layer=5 | mean r=0.046
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_medialFrontal | layer=6 | mean r=0.019
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_medialFrontal | layer=7 | mean r=0.040
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_medialFrontal | layer=8 | mean r=0.020
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_medialFrontal | layer=9 | mean r=0.036
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_medialFrontal | layer=10 | mean r=0.022
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_medialFrontal | layer=11 | mean r=0.020
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_medialFrontal | layer=12 | mean r=0.049
+
+
+Processing MD_LH_midFrontal (6/21)
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midFrontal | layer=0 | mean r=0.043
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midFrontal | layer=1 | mean r=0.053
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midFrontal | layer=2 | mean r=0.073
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midFrontal | layer=3 | mean r=0.069
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midFrontal | layer=4 | mean r=0.110
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midFrontal | layer=5 | mean r=0.141
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midFrontal | layer=6 | mean r=0.097
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midFrontal | layer=7 | mean r=0.129
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midFrontal | layer=8 | mean r=0.110
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midFrontal | layer=9 | mean r=0.130
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midFrontal | layer=10 | mean r=0.113
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midFrontal | layer=11 | mean r=0.129
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midFrontal | layer=12 | mean r=0.122
+
+
+Processing MD_LH_midFrontalOrb (7/21)
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midFrontalOrb | layer=0 | mean r=-0.011
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midFrontalOrb | layer=1 | mean r=-0.006
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midFrontalOrb | layer=2 | mean r=0.005
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midFrontalOrb | layer=3 | mean r=0.023
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midFrontalOrb | layer=4 | mean r=0.083
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midFrontalOrb | layer=5 | mean r=0.097
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midFrontalOrb | layer=6 | mean r=0.075
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midFrontalOrb | layer=7 | mean r=0.105
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midFrontalOrb | layer=8 | mean r=0.081
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midFrontalOrb | layer=9 | mean r=0.091
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midFrontalOrb | layer=10 | mean r=0.083
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midFrontalOrb | layer=11 | mean r=0.100
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midFrontalOrb | layer=12 | mean r=0.144
+
+
+Processing MD_LH_midParietal (8/21)
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midParietal | layer=0 | mean r=0.068
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midParietal | layer=1 | mean r=0.065
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midParietal | layer=2 | mean r=0.059
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midParietal | layer=3 | mean r=0.090
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midParietal | layer=4 | mean r=0.102
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midParietal | layer=5 | mean r=0.086
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midParietal | layer=6 | mean r=0.107
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midParietal | layer=7 | mean r=0.132
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midParietal | layer=8 | mean r=0.135
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midParietal | layer=9 | mean r=0.126
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midParietal | layer=10 | mean r=0.128
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midParietal | layer=11 | mean r=0.135
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_midParietal | layer=12 | mean r=0.165
+
+
+Processing MD_LH_postParietal (9/21)
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_postParietal | layer=0 | mean r=0.078
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_postParietal | layer=1 | mean r=0.067
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_postParietal | layer=2 | mean r=0.072
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_postParietal | layer=3 | mean r=0.142
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_postParietal | layer=4 | mean r=0.122
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_postParietal | layer=5 | mean r=0.145
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_postParietal | layer=6 | mean r=0.088
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_postParietal | layer=7 | mean r=0.122
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_postParietal | layer=8 | mean r=0.166
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_postParietal | layer=9 | mean r=0.151
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_postParietal | layer=10 | mean r=0.160
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_postParietal | layer=11 | mean r=0.147
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_postParietal | layer=12 | mean r=0.134
+
+
+Processing MD_LH_supFrontal (10/21)
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_supFrontal | layer=0 | mean r=-0.021
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_supFrontal | layer=1 | mean r=-0.038
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_supFrontal | layer=2 | mean r=-0.036
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_supFrontal | layer=3 | mean r=-0.006
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_supFrontal | layer=4 | mean r=0.019
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_supFrontal | layer=5 | mean r=0.053
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_supFrontal | layer=6 | mean r=0.005
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_supFrontal | layer=7 | mean r=0.039
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_supFrontal | layer=8 | mean r=0.013
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_supFrontal | layer=9 | mean r=0.014
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_supFrontal | layer=10 | mean r=0.007
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_supFrontal | layer=11 | mean r=0.033
+ACROSS-multilang-train     xlm_align | fROI=MD_LH_supFrontal | layer=12 | mean r=0.064
+
+
+Processing MD_RH_Precentral_A_PrecG (11/21)
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_Precentral_A_PrecG | layer=0 | mean r=-0.071
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_Precentral_A_PrecG | layer=1 | mean r=-0.067
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_Precentral_A_PrecG | layer=2 | mean r=-0.068
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_Precentral_A_PrecG | layer=3 | mean r=-0.079
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_Precentral_A_PrecG | layer=4 | mean r=-0.050
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_Precentral_A_PrecG | layer=5 | mean r=-0.050
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_Precentral_A_PrecG | layer=6 | mean r=-0.051
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_Precentral_A_PrecG | layer=7 | mean r=-0.014
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_Precentral_A_PrecG | layer=8 | mean r=-0.038
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_Precentral_A_PrecG | layer=9 | mean r=-0.004
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_Precentral_A_PrecG | layer=10 | mean r=-0.015
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_Precentral_A_PrecG | layer=11 | mean r=-0.009
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_Precentral_A_PrecG | layer=12 | mean r=-0.000
+
+
+Processing MD_RH_Precentral_B_IFGop (12/21)
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_Precentral_B_IFGop | layer=0 | mean r=-0.052
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_Precentral_B_IFGop | layer=1 | mean r=-0.032
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_Precentral_B_IFGop | layer=2 | mean r=-0.042
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_Precentral_B_IFGop | layer=3 | mean r=-0.062
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_Precentral_B_IFGop | layer=4 | mean r=-0.032
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_Precentral_B_IFGop | layer=5 | mean r=-0.037
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_Precentral_B_IFGop | layer=6 | mean r=-0.049
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_Precentral_B_IFGop | layer=7 | mean r=-0.009
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_Precentral_B_IFGop | layer=8 | mean r=-0.011
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_Precentral_B_IFGop | layer=9 | mean r=0.003
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_Precentral_B_IFGop | layer=10 | mean r=-0.006
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_Precentral_B_IFGop | layer=11 | mean r=0.002
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_Precentral_B_IFGop | layer=12 | mean r=0.021
+
+
+Processing MD_RH_antParietal (13/21)
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_antParietal | layer=0 | mean r=-0.015
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_antParietal | layer=1 | mean r=0.002
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_antParietal | layer=2 | mean r=0.001
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_antParietal | layer=3 | mean r=-0.032
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_antParietal | layer=4 | mean r=-0.025
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_antParietal | layer=5 | mean r=-0.020
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_antParietal | layer=6 | mean r=-0.030
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_antParietal | layer=7 | mean r=-0.017
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_antParietal | layer=8 | mean r=-0.037
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_antParietal | layer=9 | mean r=-0.007
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_antParietal | layer=10 | mean r=0.038
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_antParietal | layer=11 | mean r=0.023
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_antParietal | layer=12 | mean r=0.019
+
+
+Processing MD_RH_insula (14/21)
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_insula | layer=0 | mean r=-0.033
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_insula | layer=1 | mean r=-0.013
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_insula | layer=2 | mean r=-0.007
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_insula | layer=3 | mean r=-0.042
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_insula | layer=4 | mean r=0.043
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_insula | layer=5 | mean r=0.026
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_insula | layer=6 | mean r=0.009
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_insula | layer=7 | mean r=0.023
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_insula | layer=8 | mean r=-0.002
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_insula | layer=9 | mean r=0.026
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_insula | layer=10 | mean r=0.052
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_insula | layer=11 | mean r=0.005
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_insula | layer=12 | mean r=-0.005
+
+
+Processing MD_RH_medialFrontal (15/21)
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_medialFrontal | layer=0 | mean r=-0.008
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_medialFrontal | layer=1 | mean r=-0.002
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_medialFrontal | layer=2 | mean r=0.001
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_medialFrontal | layer=3 | mean r=-0.045
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_medialFrontal | layer=4 | mean r=0.031
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_medialFrontal | layer=5 | mean r=0.018
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_medialFrontal | layer=6 | mean r=0.013
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_medialFrontal | layer=7 | mean r=0.037
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_medialFrontal | layer=8 | mean r=0.009
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_medialFrontal | layer=9 | mean r=0.019
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_medialFrontal | layer=10 | mean r=0.048
+ACROSS-multilang-train     xlm_align | fROI=MD_RH_medialFrontal | layer=11 | mean r=0.017
+slurmstepd: error: *** JOB 42216548 ON node105 CANCELLED AT 2025-08-05T19:51:18 DUE TO TIME LIMIT ***
