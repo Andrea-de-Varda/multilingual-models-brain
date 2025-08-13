@@ -1,0 +1,2861 @@
+model,perturb,lang,passage,n_empty_bins,sample_empty_bins
+nllb200_1B,1LocalWordSwap,Arabic,Passage_1,1,[70]
+nllb200_1B,1LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_1B,1LocalWordSwap,Arabic,Passage_3,1,[72]
+nllb200_1B,2LocalWordSwap,Arabic,Passage_1,1,[70]
+nllb200_1B,2LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_1B,2LocalWordSwap,Arabic,Passage_3,1,[72]
+nllb200_1B,3LocalWordSwaps,Arabic,Passage_1,1,[70]
+nllb200_1B,3LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_1B,3LocalWordSwaps,Arabic,Passage_3,1,[72]
+nllb200_1B,4LocalWordSwaps,Arabic,Passage_1,1,[70]
+nllb200_1B,4LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_1B,4LocalWordSwaps,Arabic,Passage_3,1,[72]
+nllb200_1B,5LocalWordSwaps,Arabic,Passage_1,1,[70]
+nllb200_1B,5LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_1B,5LocalWordSwaps,Arabic,Passage_3,1,[72]
+nllb200_1B,Reversed,Arabic,Passage_1,1,[70]
+nllb200_1B,Reversed,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_1B,Reversed,Arabic,Passage_3,1,[72]
+nllb200_1B,contentwords,Arabic,Passage_1,1,[70]
+nllb200_1B,contentwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_1B,contentwords,Arabic,Passage_3,1,[72]
+nllb200_1B,functionwords,Arabic,Passage_1,1,[70]
+nllb200_1B,functionwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_1B,functionwords,Arabic,Passage_3,1,[72]
+nllb200_1B,intact,Arabic,Passage_1,1,[70]
+nllb200_1B,intact,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_1B,intact,Arabic,Passage_3,1,[72]
+nllb200_1B,nouns,Arabic,Passage_1,1,[70]
+nllb200_1B,nouns,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_1B,nouns,Arabic,Passage_3,1,[72]
+nllb200_1B,nounsverbs,Arabic,Passage_1,1,[70]
+nllb200_1B,nounsverbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_1B,nounsverbs,Arabic,Passage_3,1,[72]
+nllb200_1B,nounsverbsadj,Arabic,Passage_1,1,[70]
+nllb200_1B,nounsverbsadj,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_1B,nounsverbsadj,Arabic,Passage_3,1,[72]
+nllb200_1B,verbs,Arabic,Passage_1,1,[70]
+nllb200_1B,verbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_1B,verbs,Arabic,Passage_3,1,[72]
+nllb200_1B,1LocalWordSwap,German,Passage_2,1,[123]
+nllb200_1B,2LocalWordSwap,German,Passage_2,1,[123]
+nllb200_1B,3LocalWordSwaps,German,Passage_2,1,[123]
+nllb200_1B,4LocalWordSwaps,German,Passage_2,1,[123]
+nllb200_1B,5LocalWordSwaps,German,Passage_2,1,[123]
+nllb200_1B,Reversed,German,Passage_2,1,[123]
+nllb200_1B,contentwords,German,Passage_2,1,[123]
+nllb200_1B,functionwords,German,Passage_2,1,[123]
+nllb200_1B,intact,German,Passage_2,1,[123]
+nllb200_1B,nouns,German,Passage_2,1,[123]
+nllb200_1B,nounsverbs,German,Passage_2,1,[123]
+nllb200_1B,nounsverbsadj,German,Passage_2,1,[123]
+nllb200_1B,verbs,German,Passage_2,1,[123]
+nllb200_1B,1LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_1B,2LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_1B,3LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_1B,4LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_1B,5LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_1B,Reversed,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_1B,contentwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_1B,functionwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_1B,intact,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_1B,nouns,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_1B,nounsverbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_1B,nounsverbsadj,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_1B,verbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_1B,1LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_1B,2LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_1B,3LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_1B,4LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_1B,5LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_1B,Reversed,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_1B,contentwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_1B,functionwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_1B,intact,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_1B,nouns,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_1B,nounsverbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_1B,nounsverbsadj,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_1B,verbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_1B,1LocalWordSwap,Russian,Passage_2,1,[28]
+nllb200_1B,1LocalWordSwap,Russian,Passage_3,1,[55]
+nllb200_1B,2LocalWordSwap,Russian,Passage_2,1,[28]
+nllb200_1B,2LocalWordSwap,Russian,Passage_3,1,[55]
+nllb200_1B,3LocalWordSwaps,Russian,Passage_2,1,[28]
+nllb200_1B,3LocalWordSwaps,Russian,Passage_3,1,[55]
+nllb200_1B,4LocalWordSwaps,Russian,Passage_2,1,[28]
+nllb200_1B,4LocalWordSwaps,Russian,Passage_3,1,[55]
+nllb200_1B,5LocalWordSwaps,Russian,Passage_2,1,[28]
+nllb200_1B,5LocalWordSwaps,Russian,Passage_3,1,[55]
+nllb200_1B,Reversed,Russian,Passage_2,1,[28]
+nllb200_1B,Reversed,Russian,Passage_3,1,[55]
+nllb200_1B,contentwords,Russian,Passage_2,1,[28]
+nllb200_1B,contentwords,Russian,Passage_3,1,[55]
+nllb200_1B,functionwords,Russian,Passage_2,1,[28]
+nllb200_1B,functionwords,Russian,Passage_3,1,[55]
+nllb200_1B,intact,Russian,Passage_2,1,[28]
+nllb200_1B,intact,Russian,Passage_3,1,[55]
+nllb200_1B,nouns,Russian,Passage_2,1,[28]
+nllb200_1B,nouns,Russian,Passage_3,1,[55]
+nllb200_1B,nounsverbs,Russian,Passage_2,1,[28]
+nllb200_1B,nounsverbs,Russian,Passage_3,1,[55]
+nllb200_1B,nounsverbsadj,Russian,Passage_2,1,[28]
+nllb200_1B,nounsverbsadj,Russian,Passage_3,1,[55]
+nllb200_1B,verbs,Russian,Passage_2,1,[28]
+nllb200_1B,verbs,Russian,Passage_3,1,[55]
+nllb200_1B,1LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+nllb200_1B,1LocalWordSwap,Polish,Passage_2,1,[128]
+nllb200_1B,1LocalWordSwap,Polish,Passage_3,1,[83]
+nllb200_1B,2LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+nllb200_1B,2LocalWordSwap,Polish,Passage_2,1,[128]
+nllb200_1B,2LocalWordSwap,Polish,Passage_3,1,[83]
+nllb200_1B,3LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+nllb200_1B,3LocalWordSwaps,Polish,Passage_2,1,[128]
+nllb200_1B,3LocalWordSwaps,Polish,Passage_3,1,[83]
+nllb200_1B,4LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+nllb200_1B,4LocalWordSwaps,Polish,Passage_2,1,[128]
+nllb200_1B,4LocalWordSwaps,Polish,Passage_3,1,[83]
+nllb200_1B,5LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+nllb200_1B,5LocalWordSwaps,Polish,Passage_2,1,[128]
+nllb200_1B,5LocalWordSwaps,Polish,Passage_3,1,[83]
+nllb200_1B,Reversed,Polish,Passage_1,2,"[39, 64]"
+nllb200_1B,Reversed,Polish,Passage_2,1,[128]
+nllb200_1B,Reversed,Polish,Passage_3,1,[83]
+nllb200_1B,contentwords,Polish,Passage_1,2,"[39, 64]"
+nllb200_1B,contentwords,Polish,Passage_2,1,[128]
+nllb200_1B,contentwords,Polish,Passage_3,1,[83]
+nllb200_1B,functionwords,Polish,Passage_1,2,"[39, 64]"
+nllb200_1B,functionwords,Polish,Passage_2,1,[128]
+nllb200_1B,functionwords,Polish,Passage_3,1,[83]
+nllb200_1B,intact,Polish,Passage_1,2,"[39, 64]"
+nllb200_1B,intact,Polish,Passage_2,1,[128]
+nllb200_1B,intact,Polish,Passage_3,1,[83]
+nllb200_1B,nouns,Polish,Passage_1,2,"[39, 64]"
+nllb200_1B,nouns,Polish,Passage_2,1,[128]
+nllb200_1B,nouns,Polish,Passage_3,1,[83]
+nllb200_1B,nounsverbs,Polish,Passage_1,2,"[39, 64]"
+nllb200_1B,nounsverbs,Polish,Passage_2,1,[128]
+nllb200_1B,nounsverbs,Polish,Passage_3,1,[83]
+nllb200_1B,nounsverbsadj,Polish,Passage_1,2,"[39, 64]"
+nllb200_1B,nounsverbsadj,Polish,Passage_2,1,[128]
+nllb200_1B,nounsverbsadj,Polish,Passage_3,1,[83]
+nllb200_1B,verbs,Polish,Passage_1,2,"[39, 64]"
+nllb200_1B,verbs,Polish,Passage_2,1,[128]
+nllb200_1B,verbs,Polish,Passage_3,1,[83]
+mt5_small,1LocalWordSwap,Arabic,Passage_1,1,[70]
+mt5_small,1LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_small,1LocalWordSwap,Arabic,Passage_3,1,[72]
+mt5_small,2LocalWordSwap,Arabic,Passage_1,1,[70]
+mt5_small,2LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_small,2LocalWordSwap,Arabic,Passage_3,1,[72]
+mt5_small,3LocalWordSwaps,Arabic,Passage_1,1,[70]
+mt5_small,3LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_small,3LocalWordSwaps,Arabic,Passage_3,1,[72]
+mt5_small,4LocalWordSwaps,Arabic,Passage_1,1,[70]
+mt5_small,4LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_small,4LocalWordSwaps,Arabic,Passage_3,1,[72]
+mt5_small,5LocalWordSwaps,Arabic,Passage_1,1,[70]
+mt5_small,5LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_small,5LocalWordSwaps,Arabic,Passage_3,1,[72]
+mt5_small,Reversed,Arabic,Passage_1,1,[70]
+mt5_small,Reversed,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_small,Reversed,Arabic,Passage_3,1,[72]
+mt5_small,contentwords,Arabic,Passage_1,1,[70]
+mt5_small,contentwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_small,contentwords,Arabic,Passage_3,1,[72]
+mt5_small,functionwords,Arabic,Passage_1,1,[70]
+mt5_small,functionwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_small,functionwords,Arabic,Passage_3,1,[72]
+mt5_small,intact,Arabic,Passage_1,1,[70]
+mt5_small,intact,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_small,intact,Arabic,Passage_3,1,[72]
+mt5_small,nouns,Arabic,Passage_1,1,[70]
+mt5_small,nouns,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_small,nouns,Arabic,Passage_3,1,[72]
+mt5_small,nounsverbs,Arabic,Passage_1,1,[70]
+mt5_small,nounsverbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_small,nounsverbs,Arabic,Passage_3,1,[72]
+mt5_small,nounsverbsadj,Arabic,Passage_1,1,[70]
+mt5_small,nounsverbsadj,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_small,nounsverbsadj,Arabic,Passage_3,1,[72]
+mt5_small,verbs,Arabic,Passage_1,1,[70]
+mt5_small,verbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_small,verbs,Arabic,Passage_3,1,[72]
+mt5_small,1LocalWordSwap,German,Passage_2,1,[123]
+mt5_small,2LocalWordSwap,German,Passage_2,1,[123]
+mt5_small,3LocalWordSwaps,German,Passage_2,1,[123]
+mt5_small,4LocalWordSwaps,German,Passage_2,1,[123]
+mt5_small,5LocalWordSwaps,German,Passage_2,1,[123]
+mt5_small,Reversed,German,Passage_2,1,[123]
+mt5_small,contentwords,German,Passage_2,1,[123]
+mt5_small,functionwords,German,Passage_2,1,[123]
+mt5_small,intact,German,Passage_2,1,[123]
+mt5_small,nouns,German,Passage_2,1,[123]
+mt5_small,nounsverbs,German,Passage_2,1,[123]
+mt5_small,nounsverbsadj,German,Passage_2,1,[123]
+mt5_small,verbs,German,Passage_2,1,[123]
+mt5_small,1LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_small,2LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_small,3LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_small,4LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_small,5LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_small,Reversed,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_small,contentwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_small,functionwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_small,intact,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_small,nouns,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_small,nounsverbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_small,nounsverbsadj,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_small,verbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_small,1LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_small,2LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_small,3LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_small,4LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_small,5LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_small,Reversed,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_small,contentwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_small,functionwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_small,intact,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_small,nouns,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_small,nounsverbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_small,nounsverbsadj,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_small,verbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_small,1LocalWordSwap,Russian,Passage_2,1,[28]
+mt5_small,1LocalWordSwap,Russian,Passage_3,1,[55]
+mt5_small,2LocalWordSwap,Russian,Passage_2,1,[28]
+mt5_small,2LocalWordSwap,Russian,Passage_3,1,[55]
+mt5_small,3LocalWordSwaps,Russian,Passage_2,1,[28]
+mt5_small,3LocalWordSwaps,Russian,Passage_3,1,[55]
+mt5_small,4LocalWordSwaps,Russian,Passage_2,1,[28]
+mt5_small,4LocalWordSwaps,Russian,Passage_3,1,[55]
+mt5_small,5LocalWordSwaps,Russian,Passage_2,1,[28]
+mt5_small,5LocalWordSwaps,Russian,Passage_3,1,[55]
+mt5_small,Reversed,Russian,Passage_2,1,[28]
+mt5_small,Reversed,Russian,Passage_3,1,[55]
+mt5_small,contentwords,Russian,Passage_2,1,[28]
+mt5_small,contentwords,Russian,Passage_3,1,[55]
+mt5_small,functionwords,Russian,Passage_2,1,[28]
+mt5_small,functionwords,Russian,Passage_3,1,[55]
+mt5_small,intact,Russian,Passage_2,1,[28]
+mt5_small,intact,Russian,Passage_3,1,[55]
+mt5_small,nouns,Russian,Passage_2,1,[28]
+mt5_small,nouns,Russian,Passage_3,1,[55]
+mt5_small,nounsverbs,Russian,Passage_2,1,[28]
+mt5_small,nounsverbs,Russian,Passage_3,1,[55]
+mt5_small,nounsverbsadj,Russian,Passage_2,1,[28]
+mt5_small,nounsverbsadj,Russian,Passage_3,1,[55]
+mt5_small,verbs,Russian,Passage_2,1,[28]
+mt5_small,verbs,Russian,Passage_3,1,[55]
+mt5_small,1LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+mt5_small,1LocalWordSwap,Polish,Passage_2,1,[128]
+mt5_small,1LocalWordSwap,Polish,Passage_3,1,[83]
+mt5_small,2LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+mt5_small,2LocalWordSwap,Polish,Passage_2,1,[128]
+mt5_small,2LocalWordSwap,Polish,Passage_3,1,[83]
+mt5_small,3LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+mt5_small,3LocalWordSwaps,Polish,Passage_2,1,[128]
+mt5_small,3LocalWordSwaps,Polish,Passage_3,1,[83]
+mt5_small,4LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+mt5_small,4LocalWordSwaps,Polish,Passage_2,1,[128]
+mt5_small,4LocalWordSwaps,Polish,Passage_3,1,[83]
+mt5_small,5LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+mt5_small,5LocalWordSwaps,Polish,Passage_2,1,[128]
+mt5_small,5LocalWordSwaps,Polish,Passage_3,1,[83]
+mt5_small,Reversed,Polish,Passage_1,2,"[39, 64]"
+mt5_small,Reversed,Polish,Passage_2,1,[128]
+mt5_small,Reversed,Polish,Passage_3,1,[83]
+mt5_small,contentwords,Polish,Passage_1,2,"[39, 64]"
+mt5_small,contentwords,Polish,Passage_2,1,[128]
+mt5_small,contentwords,Polish,Passage_3,1,[83]
+mt5_small,functionwords,Polish,Passage_1,2,"[39, 64]"
+mt5_small,functionwords,Polish,Passage_2,1,[128]
+mt5_small,functionwords,Polish,Passage_3,1,[83]
+mt5_small,intact,Polish,Passage_1,2,"[39, 64]"
+mt5_small,intact,Polish,Passage_2,1,[128]
+mt5_small,intact,Polish,Passage_3,1,[83]
+mt5_small,nouns,Polish,Passage_1,2,"[39, 64]"
+mt5_small,nouns,Polish,Passage_2,1,[128]
+mt5_small,nouns,Polish,Passage_3,1,[83]
+mt5_small,nounsverbs,Polish,Passage_1,2,"[39, 64]"
+mt5_small,nounsverbs,Polish,Passage_2,1,[128]
+mt5_small,nounsverbs,Polish,Passage_3,1,[83]
+mt5_small,nounsverbsadj,Polish,Passage_1,2,"[39, 64]"
+mt5_small,nounsverbsadj,Polish,Passage_2,1,[128]
+mt5_small,nounsverbsadj,Polish,Passage_3,1,[83]
+mt5_small,verbs,Polish,Passage_1,2,"[39, 64]"
+mt5_small,verbs,Polish,Passage_2,1,[128]
+mt5_small,verbs,Polish,Passage_3,1,[83]
+nllb200_distilled_1B,1LocalWordSwap,Arabic,Passage_1,1,[70]
+nllb200_distilled_1B,1LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_distilled_1B,1LocalWordSwap,Arabic,Passage_3,1,[72]
+nllb200_distilled_1B,2LocalWordSwap,Arabic,Passage_1,1,[70]
+nllb200_distilled_1B,2LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_distilled_1B,2LocalWordSwap,Arabic,Passage_3,1,[72]
+nllb200_distilled_1B,3LocalWordSwaps,Arabic,Passage_1,1,[70]
+nllb200_distilled_1B,3LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_distilled_1B,3LocalWordSwaps,Arabic,Passage_3,1,[72]
+nllb200_distilled_1B,4LocalWordSwaps,Arabic,Passage_1,1,[70]
+nllb200_distilled_1B,4LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_distilled_1B,4LocalWordSwaps,Arabic,Passage_3,1,[72]
+nllb200_distilled_1B,5LocalWordSwaps,Arabic,Passage_1,1,[70]
+nllb200_distilled_1B,5LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_distilled_1B,5LocalWordSwaps,Arabic,Passage_3,1,[72]
+nllb200_distilled_1B,Reversed,Arabic,Passage_1,1,[70]
+nllb200_distilled_1B,Reversed,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_distilled_1B,Reversed,Arabic,Passage_3,1,[72]
+nllb200_distilled_1B,contentwords,Arabic,Passage_1,1,[70]
+nllb200_distilled_1B,contentwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_distilled_1B,contentwords,Arabic,Passage_3,1,[72]
+nllb200_distilled_1B,functionwords,Arabic,Passage_1,1,[70]
+nllb200_distilled_1B,functionwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_distilled_1B,functionwords,Arabic,Passage_3,1,[72]
+nllb200_distilled_1B,intact,Arabic,Passage_1,1,[70]
+nllb200_distilled_1B,intact,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_distilled_1B,intact,Arabic,Passage_3,1,[72]
+nllb200_distilled_1B,nouns,Arabic,Passage_1,1,[70]
+nllb200_distilled_1B,nouns,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_distilled_1B,nouns,Arabic,Passage_3,1,[72]
+nllb200_distilled_1B,nounsverbs,Arabic,Passage_1,1,[70]
+nllb200_distilled_1B,nounsverbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_distilled_1B,nounsverbs,Arabic,Passage_3,1,[72]
+nllb200_distilled_1B,nounsverbsadj,Arabic,Passage_1,1,[70]
+nllb200_distilled_1B,nounsverbsadj,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_distilled_1B,nounsverbsadj,Arabic,Passage_3,1,[72]
+nllb200_distilled_1B,verbs,Arabic,Passage_1,1,[70]
+nllb200_distilled_1B,verbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_distilled_1B,verbs,Arabic,Passage_3,1,[72]
+nllb200_distilled_1B,1LocalWordSwap,German,Passage_2,1,[123]
+nllb200_distilled_1B,2LocalWordSwap,German,Passage_2,1,[123]
+nllb200_distilled_1B,3LocalWordSwaps,German,Passage_2,1,[123]
+nllb200_distilled_1B,4LocalWordSwaps,German,Passage_2,1,[123]
+nllb200_distilled_1B,5LocalWordSwaps,German,Passage_2,1,[123]
+nllb200_distilled_1B,Reversed,German,Passage_2,1,[123]
+nllb200_distilled_1B,contentwords,German,Passage_2,1,[123]
+nllb200_distilled_1B,functionwords,German,Passage_2,1,[123]
+nllb200_distilled_1B,intact,German,Passage_2,1,[123]
+nllb200_distilled_1B,nouns,German,Passage_2,1,[123]
+nllb200_distilled_1B,nounsverbs,German,Passage_2,1,[123]
+nllb200_distilled_1B,nounsverbsadj,German,Passage_2,1,[123]
+nllb200_distilled_1B,verbs,German,Passage_2,1,[123]
+nllb200_distilled_1B,1LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_distilled_1B,2LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_distilled_1B,3LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_distilled_1B,4LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_distilled_1B,5LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_distilled_1B,Reversed,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_distilled_1B,contentwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_distilled_1B,functionwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_distilled_1B,intact,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_distilled_1B,nouns,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_distilled_1B,nounsverbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_distilled_1B,nounsverbsadj,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_distilled_1B,verbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_distilled_1B,1LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_distilled_1B,2LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_distilled_1B,3LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_distilled_1B,4LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_distilled_1B,5LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_distilled_1B,Reversed,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_distilled_1B,contentwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_distilled_1B,functionwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_distilled_1B,intact,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_distilled_1B,nouns,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_distilled_1B,nounsverbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_distilled_1B,nounsverbsadj,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_distilled_1B,verbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_distilled_1B,1LocalWordSwap,Russian,Passage_2,1,[28]
+nllb200_distilled_1B,1LocalWordSwap,Russian,Passage_3,1,[55]
+nllb200_distilled_1B,2LocalWordSwap,Russian,Passage_2,1,[28]
+nllb200_distilled_1B,2LocalWordSwap,Russian,Passage_3,1,[55]
+nllb200_distilled_1B,3LocalWordSwaps,Russian,Passage_2,1,[28]
+nllb200_distilled_1B,3LocalWordSwaps,Russian,Passage_3,1,[55]
+nllb200_distilled_1B,4LocalWordSwaps,Russian,Passage_2,1,[28]
+nllb200_distilled_1B,4LocalWordSwaps,Russian,Passage_3,1,[55]
+nllb200_distilled_1B,5LocalWordSwaps,Russian,Passage_2,1,[28]
+nllb200_distilled_1B,5LocalWordSwaps,Russian,Passage_3,1,[55]
+nllb200_distilled_1B,Reversed,Russian,Passage_2,1,[28]
+nllb200_distilled_1B,Reversed,Russian,Passage_3,1,[55]
+nllb200_distilled_1B,contentwords,Russian,Passage_2,1,[28]
+nllb200_distilled_1B,contentwords,Russian,Passage_3,1,[55]
+nllb200_distilled_1B,functionwords,Russian,Passage_2,1,[28]
+nllb200_distilled_1B,functionwords,Russian,Passage_3,1,[55]
+nllb200_distilled_1B,intact,Russian,Passage_2,1,[28]
+nllb200_distilled_1B,intact,Russian,Passage_3,1,[55]
+nllb200_distilled_1B,nouns,Russian,Passage_2,1,[28]
+nllb200_distilled_1B,nouns,Russian,Passage_3,1,[55]
+nllb200_distilled_1B,nounsverbs,Russian,Passage_2,1,[28]
+nllb200_distilled_1B,nounsverbs,Russian,Passage_3,1,[55]
+nllb200_distilled_1B,nounsverbsadj,Russian,Passage_2,1,[28]
+nllb200_distilled_1B,nounsverbsadj,Russian,Passage_3,1,[55]
+nllb200_distilled_1B,verbs,Russian,Passage_2,1,[28]
+nllb200_distilled_1B,verbs,Russian,Passage_3,1,[55]
+nllb200_distilled_1B,1LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+nllb200_distilled_1B,1LocalWordSwap,Polish,Passage_2,1,[128]
+nllb200_distilled_1B,1LocalWordSwap,Polish,Passage_3,1,[83]
+nllb200_distilled_1B,2LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+nllb200_distilled_1B,2LocalWordSwap,Polish,Passage_2,1,[128]
+nllb200_distilled_1B,2LocalWordSwap,Polish,Passage_3,1,[83]
+nllb200_distilled_1B,3LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+nllb200_distilled_1B,3LocalWordSwaps,Polish,Passage_2,1,[128]
+nllb200_distilled_1B,3LocalWordSwaps,Polish,Passage_3,1,[83]
+nllb200_distilled_1B,4LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+nllb200_distilled_1B,4LocalWordSwaps,Polish,Passage_2,1,[128]
+nllb200_distilled_1B,4LocalWordSwaps,Polish,Passage_3,1,[83]
+nllb200_distilled_1B,5LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+nllb200_distilled_1B,5LocalWordSwaps,Polish,Passage_2,1,[128]
+nllb200_distilled_1B,5LocalWordSwaps,Polish,Passage_3,1,[83]
+nllb200_distilled_1B,Reversed,Polish,Passage_1,2,"[39, 64]"
+nllb200_distilled_1B,Reversed,Polish,Passage_2,1,[128]
+nllb200_distilled_1B,Reversed,Polish,Passage_3,1,[83]
+nllb200_distilled_1B,contentwords,Polish,Passage_1,2,"[39, 64]"
+nllb200_distilled_1B,contentwords,Polish,Passage_2,1,[128]
+nllb200_distilled_1B,contentwords,Polish,Passage_3,1,[83]
+nllb200_distilled_1B,functionwords,Polish,Passage_1,2,"[39, 64]"
+nllb200_distilled_1B,functionwords,Polish,Passage_2,1,[128]
+nllb200_distilled_1B,functionwords,Polish,Passage_3,1,[83]
+nllb200_distilled_1B,intact,Polish,Passage_1,2,"[39, 64]"
+nllb200_distilled_1B,intact,Polish,Passage_2,1,[128]
+nllb200_distilled_1B,intact,Polish,Passage_3,1,[83]
+nllb200_distilled_1B,nouns,Polish,Passage_1,2,"[39, 64]"
+nllb200_distilled_1B,nouns,Polish,Passage_2,1,[128]
+nllb200_distilled_1B,nouns,Polish,Passage_3,1,[83]
+nllb200_distilled_1B,nounsverbs,Polish,Passage_1,2,"[39, 64]"
+nllb200_distilled_1B,nounsverbs,Polish,Passage_2,1,[128]
+nllb200_distilled_1B,nounsverbs,Polish,Passage_3,1,[83]
+nllb200_distilled_1B,nounsverbsadj,Polish,Passage_1,2,"[39, 64]"
+nllb200_distilled_1B,nounsverbsadj,Polish,Passage_2,1,[128]
+nllb200_distilled_1B,nounsverbsadj,Polish,Passage_3,1,[83]
+nllb200_distilled_1B,verbs,Polish,Passage_1,2,"[39, 64]"
+nllb200_distilled_1B,verbs,Polish,Passage_2,1,[128]
+nllb200_distilled_1B,verbs,Polish,Passage_3,1,[83]
+nllb200_distilled_600M,1LocalWordSwap,Arabic,Passage_1,1,[70]
+nllb200_distilled_600M,1LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_distilled_600M,1LocalWordSwap,Arabic,Passage_3,1,[72]
+nllb200_distilled_600M,2LocalWordSwap,Arabic,Passage_1,1,[70]
+nllb200_distilled_600M,2LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_distilled_600M,2LocalWordSwap,Arabic,Passage_3,1,[72]
+nllb200_distilled_600M,3LocalWordSwaps,Arabic,Passage_1,1,[70]
+nllb200_distilled_600M,3LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_distilled_600M,3LocalWordSwaps,Arabic,Passage_3,1,[72]
+nllb200_distilled_600M,4LocalWordSwaps,Arabic,Passage_1,1,[70]
+nllb200_distilled_600M,4LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_distilled_600M,4LocalWordSwaps,Arabic,Passage_3,1,[72]
+nllb200_distilled_600M,5LocalWordSwaps,Arabic,Passage_1,1,[70]
+nllb200_distilled_600M,5LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_distilled_600M,5LocalWordSwaps,Arabic,Passage_3,1,[72]
+nllb200_distilled_600M,Reversed,Arabic,Passage_1,1,[70]
+nllb200_distilled_600M,Reversed,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_distilled_600M,Reversed,Arabic,Passage_3,1,[72]
+nllb200_distilled_600M,contentwords,Arabic,Passage_1,1,[70]
+nllb200_distilled_600M,contentwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_distilled_600M,contentwords,Arabic,Passage_3,1,[72]
+nllb200_distilled_600M,functionwords,Arabic,Passage_1,1,[70]
+nllb200_distilled_600M,functionwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_distilled_600M,functionwords,Arabic,Passage_3,1,[72]
+nllb200_distilled_600M,intact,Arabic,Passage_1,1,[70]
+nllb200_distilled_600M,intact,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_distilled_600M,intact,Arabic,Passage_3,1,[72]
+nllb200_distilled_600M,nouns,Arabic,Passage_1,1,[70]
+nllb200_distilled_600M,nouns,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_distilled_600M,nouns,Arabic,Passage_3,1,[72]
+nllb200_distilled_600M,nounsverbs,Arabic,Passage_1,1,[70]
+nllb200_distilled_600M,nounsverbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_distilled_600M,nounsverbs,Arabic,Passage_3,1,[72]
+nllb200_distilled_600M,nounsverbsadj,Arabic,Passage_1,1,[70]
+nllb200_distilled_600M,nounsverbsadj,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_distilled_600M,nounsverbsadj,Arabic,Passage_3,1,[72]
+nllb200_distilled_600M,verbs,Arabic,Passage_1,1,[70]
+nllb200_distilled_600M,verbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+nllb200_distilled_600M,verbs,Arabic,Passage_3,1,[72]
+nllb200_distilled_600M,1LocalWordSwap,German,Passage_2,1,[123]
+nllb200_distilled_600M,2LocalWordSwap,German,Passage_2,1,[123]
+nllb200_distilled_600M,3LocalWordSwaps,German,Passage_2,1,[123]
+nllb200_distilled_600M,4LocalWordSwaps,German,Passage_2,1,[123]
+nllb200_distilled_600M,5LocalWordSwaps,German,Passage_2,1,[123]
+nllb200_distilled_600M,Reversed,German,Passage_2,1,[123]
+nllb200_distilled_600M,contentwords,German,Passage_2,1,[123]
+nllb200_distilled_600M,functionwords,German,Passage_2,1,[123]
+nllb200_distilled_600M,intact,German,Passage_2,1,[123]
+nllb200_distilled_600M,nouns,German,Passage_2,1,[123]
+nllb200_distilled_600M,nounsverbs,German,Passage_2,1,[123]
+nllb200_distilled_600M,nounsverbsadj,German,Passage_2,1,[123]
+nllb200_distilled_600M,verbs,German,Passage_2,1,[123]
+nllb200_distilled_600M,1LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_distilled_600M,2LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_distilled_600M,3LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_distilled_600M,4LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_distilled_600M,5LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_distilled_600M,Reversed,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_distilled_600M,contentwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_distilled_600M,functionwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_distilled_600M,intact,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_distilled_600M,nouns,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_distilled_600M,nounsverbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_distilled_600M,nounsverbsadj,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_distilled_600M,verbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+nllb200_distilled_600M,1LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_distilled_600M,2LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_distilled_600M,3LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_distilled_600M,4LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_distilled_600M,5LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_distilled_600M,Reversed,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_distilled_600M,contentwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_distilled_600M,functionwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_distilled_600M,intact,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_distilled_600M,nouns,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_distilled_600M,nounsverbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_distilled_600M,nounsverbsadj,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_distilled_600M,verbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+nllb200_distilled_600M,1LocalWordSwap,Russian,Passage_2,1,[28]
+nllb200_distilled_600M,1LocalWordSwap,Russian,Passage_3,1,[55]
+nllb200_distilled_600M,2LocalWordSwap,Russian,Passage_2,1,[28]
+nllb200_distilled_600M,2LocalWordSwap,Russian,Passage_3,1,[55]
+nllb200_distilled_600M,3LocalWordSwaps,Russian,Passage_2,1,[28]
+nllb200_distilled_600M,3LocalWordSwaps,Russian,Passage_3,1,[55]
+nllb200_distilled_600M,4LocalWordSwaps,Russian,Passage_2,1,[28]
+nllb200_distilled_600M,4LocalWordSwaps,Russian,Passage_3,1,[55]
+nllb200_distilled_600M,5LocalWordSwaps,Russian,Passage_2,1,[28]
+nllb200_distilled_600M,5LocalWordSwaps,Russian,Passage_3,1,[55]
+nllb200_distilled_600M,Reversed,Russian,Passage_2,1,[28]
+nllb200_distilled_600M,Reversed,Russian,Passage_3,1,[55]
+nllb200_distilled_600M,contentwords,Russian,Passage_2,1,[28]
+nllb200_distilled_600M,contentwords,Russian,Passage_3,1,[55]
+nllb200_distilled_600M,functionwords,Russian,Passage_2,1,[28]
+nllb200_distilled_600M,functionwords,Russian,Passage_3,1,[55]
+nllb200_distilled_600M,intact,Russian,Passage_2,1,[28]
+nllb200_distilled_600M,intact,Russian,Passage_3,1,[55]
+nllb200_distilled_600M,nouns,Russian,Passage_2,1,[28]
+nllb200_distilled_600M,nouns,Russian,Passage_3,1,[55]
+nllb200_distilled_600M,nounsverbs,Russian,Passage_2,1,[28]
+nllb200_distilled_600M,nounsverbs,Russian,Passage_3,1,[55]
+nllb200_distilled_600M,nounsverbsadj,Russian,Passage_2,1,[28]
+nllb200_distilled_600M,nounsverbsadj,Russian,Passage_3,1,[55]
+nllb200_distilled_600M,verbs,Russian,Passage_2,1,[28]
+nllb200_distilled_600M,verbs,Russian,Passage_3,1,[55]
+nllb200_distilled_600M,1LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+nllb200_distilled_600M,1LocalWordSwap,Polish,Passage_2,1,[128]
+nllb200_distilled_600M,1LocalWordSwap,Polish,Passage_3,1,[83]
+nllb200_distilled_600M,2LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+nllb200_distilled_600M,2LocalWordSwap,Polish,Passage_2,1,[128]
+nllb200_distilled_600M,2LocalWordSwap,Polish,Passage_3,1,[83]
+nllb200_distilled_600M,3LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+nllb200_distilled_600M,3LocalWordSwaps,Polish,Passage_2,1,[128]
+nllb200_distilled_600M,3LocalWordSwaps,Polish,Passage_3,1,[83]
+nllb200_distilled_600M,4LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+nllb200_distilled_600M,4LocalWordSwaps,Polish,Passage_2,1,[128]
+nllb200_distilled_600M,4LocalWordSwaps,Polish,Passage_3,1,[83]
+nllb200_distilled_600M,5LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+nllb200_distilled_600M,5LocalWordSwaps,Polish,Passage_2,1,[128]
+nllb200_distilled_600M,5LocalWordSwaps,Polish,Passage_3,1,[83]
+nllb200_distilled_600M,Reversed,Polish,Passage_1,2,"[39, 64]"
+nllb200_distilled_600M,Reversed,Polish,Passage_2,1,[128]
+nllb200_distilled_600M,Reversed,Polish,Passage_3,1,[83]
+nllb200_distilled_600M,contentwords,Polish,Passage_1,2,"[39, 64]"
+nllb200_distilled_600M,contentwords,Polish,Passage_2,1,[128]
+nllb200_distilled_600M,contentwords,Polish,Passage_3,1,[83]
+nllb200_distilled_600M,functionwords,Polish,Passage_1,2,"[39, 64]"
+nllb200_distilled_600M,functionwords,Polish,Passage_2,1,[128]
+nllb200_distilled_600M,functionwords,Polish,Passage_3,1,[83]
+nllb200_distilled_600M,intact,Polish,Passage_1,2,"[39, 64]"
+nllb200_distilled_600M,intact,Polish,Passage_2,1,[128]
+nllb200_distilled_600M,intact,Polish,Passage_3,1,[83]
+nllb200_distilled_600M,nouns,Polish,Passage_1,2,"[39, 64]"
+nllb200_distilled_600M,nouns,Polish,Passage_2,1,[128]
+nllb200_distilled_600M,nouns,Polish,Passage_3,1,[83]
+nllb200_distilled_600M,nounsverbs,Polish,Passage_1,2,"[39, 64]"
+nllb200_distilled_600M,nounsverbs,Polish,Passage_2,1,[128]
+nllb200_distilled_600M,nounsverbs,Polish,Passage_3,1,[83]
+nllb200_distilled_600M,nounsverbsadj,Polish,Passage_1,2,"[39, 64]"
+nllb200_distilled_600M,nounsverbsadj,Polish,Passage_2,1,[128]
+nllb200_distilled_600M,nounsverbsadj,Polish,Passage_3,1,[83]
+nllb200_distilled_600M,verbs,Polish,Passage_1,2,"[39, 64]"
+nllb200_distilled_600M,verbs,Polish,Passage_2,1,[128]
+nllb200_distilled_600M,verbs,Polish,Passage_3,1,[83]
+mt5_large,1LocalWordSwap,Arabic,Passage_1,1,[70]
+mt5_large,1LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_large,1LocalWordSwap,Arabic,Passage_3,1,[72]
+mt5_large,2LocalWordSwap,Arabic,Passage_1,1,[70]
+mt5_large,2LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_large,2LocalWordSwap,Arabic,Passage_3,1,[72]
+mt5_large,3LocalWordSwaps,Arabic,Passage_1,1,[70]
+mt5_large,3LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_large,3LocalWordSwaps,Arabic,Passage_3,1,[72]
+mt5_large,4LocalWordSwaps,Arabic,Passage_1,1,[70]
+mt5_large,4LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_large,4LocalWordSwaps,Arabic,Passage_3,1,[72]
+mt5_large,5LocalWordSwaps,Arabic,Passage_1,1,[70]
+mt5_large,5LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_large,5LocalWordSwaps,Arabic,Passage_3,1,[72]
+mt5_large,Reversed,Arabic,Passage_1,1,[70]
+mt5_large,Reversed,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_large,Reversed,Arabic,Passage_3,1,[72]
+mt5_large,contentwords,Arabic,Passage_1,1,[70]
+mt5_large,contentwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_large,contentwords,Arabic,Passage_3,1,[72]
+mt5_large,functionwords,Arabic,Passage_1,1,[70]
+mt5_large,functionwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_large,functionwords,Arabic,Passage_3,1,[72]
+mt5_large,intact,Arabic,Passage_1,1,[70]
+mt5_large,intact,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_large,intact,Arabic,Passage_3,1,[72]
+mt5_large,nouns,Arabic,Passage_1,1,[70]
+mt5_large,nouns,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_large,nouns,Arabic,Passage_3,1,[72]
+mt5_large,nounsverbs,Arabic,Passage_1,1,[70]
+mt5_large,nounsverbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_large,nounsverbs,Arabic,Passage_3,1,[72]
+mt5_large,nounsverbsadj,Arabic,Passage_1,1,[70]
+mt5_large,nounsverbsadj,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_large,nounsverbsadj,Arabic,Passage_3,1,[72]
+mt5_large,verbs,Arabic,Passage_1,1,[70]
+mt5_large,verbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_large,verbs,Arabic,Passage_3,1,[72]
+mt5_large,1LocalWordSwap,German,Passage_2,1,[123]
+mt5_large,2LocalWordSwap,German,Passage_2,1,[123]
+mt5_large,3LocalWordSwaps,German,Passage_2,1,[123]
+mt5_large,4LocalWordSwaps,German,Passage_2,1,[123]
+mt5_large,5LocalWordSwaps,German,Passage_2,1,[123]
+mt5_large,Reversed,German,Passage_2,1,[123]
+mt5_large,contentwords,German,Passage_2,1,[123]
+mt5_large,functionwords,German,Passage_2,1,[123]
+mt5_large,intact,German,Passage_2,1,[123]
+mt5_large,nouns,German,Passage_2,1,[123]
+mt5_large,nounsverbs,German,Passage_2,1,[123]
+mt5_large,nounsverbsadj,German,Passage_2,1,[123]
+mt5_large,verbs,German,Passage_2,1,[123]
+mt5_large,1LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_large,2LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_large,3LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_large,4LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_large,5LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_large,Reversed,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_large,contentwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_large,functionwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_large,intact,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_large,nouns,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_large,nounsverbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_large,nounsverbsadj,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_large,verbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_large,1LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_large,2LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_large,3LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_large,4LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_large,5LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_large,Reversed,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_large,contentwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_large,functionwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_large,intact,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_large,nouns,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_large,nounsverbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_large,nounsverbsadj,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_large,verbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_large,1LocalWordSwap,Russian,Passage_2,1,[28]
+mt5_large,1LocalWordSwap,Russian,Passage_3,1,[55]
+mt5_large,2LocalWordSwap,Russian,Passage_2,1,[28]
+mt5_large,2LocalWordSwap,Russian,Passage_3,1,[55]
+mt5_large,3LocalWordSwaps,Russian,Passage_2,1,[28]
+mt5_large,3LocalWordSwaps,Russian,Passage_3,1,[55]
+mt5_large,4LocalWordSwaps,Russian,Passage_2,1,[28]
+mt5_large,4LocalWordSwaps,Russian,Passage_3,1,[55]
+mt5_large,5LocalWordSwaps,Russian,Passage_2,1,[28]
+mt5_large,5LocalWordSwaps,Russian,Passage_3,1,[55]
+mt5_large,Reversed,Russian,Passage_2,1,[28]
+mt5_large,Reversed,Russian,Passage_3,1,[55]
+mt5_large,contentwords,Russian,Passage_2,1,[28]
+mt5_large,contentwords,Russian,Passage_3,1,[55]
+mt5_large,functionwords,Russian,Passage_2,1,[28]
+mt5_large,functionwords,Russian,Passage_3,1,[55]
+mt5_large,intact,Russian,Passage_2,1,[28]
+mt5_large,intact,Russian,Passage_3,1,[55]
+mt5_large,nouns,Russian,Passage_2,1,[28]
+mt5_large,nouns,Russian,Passage_3,1,[55]
+mt5_large,nounsverbs,Russian,Passage_2,1,[28]
+mt5_large,nounsverbs,Russian,Passage_3,1,[55]
+mt5_large,nounsverbsadj,Russian,Passage_2,1,[28]
+mt5_large,nounsverbsadj,Russian,Passage_3,1,[55]
+mt5_large,verbs,Russian,Passage_2,1,[28]
+mt5_large,verbs,Russian,Passage_3,1,[55]
+mt5_large,1LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+mt5_large,1LocalWordSwap,Polish,Passage_2,1,[128]
+mt5_large,1LocalWordSwap,Polish,Passage_3,1,[83]
+mt5_large,2LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+mt5_large,2LocalWordSwap,Polish,Passage_2,1,[128]
+mt5_large,2LocalWordSwap,Polish,Passage_3,1,[83]
+mt5_large,3LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+mt5_large,3LocalWordSwaps,Polish,Passage_2,1,[128]
+mt5_large,3LocalWordSwaps,Polish,Passage_3,1,[83]
+mt5_large,4LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+mt5_large,4LocalWordSwaps,Polish,Passage_2,1,[128]
+mt5_large,4LocalWordSwaps,Polish,Passage_3,1,[83]
+mt5_large,5LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+mt5_large,5LocalWordSwaps,Polish,Passage_2,1,[128]
+mt5_large,5LocalWordSwaps,Polish,Passage_3,1,[83]
+mt5_large,Reversed,Polish,Passage_1,2,"[39, 64]"
+mt5_large,Reversed,Polish,Passage_2,1,[128]
+mt5_large,Reversed,Polish,Passage_3,1,[83]
+mt5_large,contentwords,Polish,Passage_1,2,"[39, 64]"
+mt5_large,contentwords,Polish,Passage_2,1,[128]
+mt5_large,contentwords,Polish,Passage_3,1,[83]
+mt5_large,functionwords,Polish,Passage_1,2,"[39, 64]"
+mt5_large,functionwords,Polish,Passage_2,1,[128]
+mt5_large,functionwords,Polish,Passage_3,1,[83]
+mt5_large,intact,Polish,Passage_1,2,"[39, 64]"
+mt5_large,intact,Polish,Passage_2,1,[128]
+mt5_large,intact,Polish,Passage_3,1,[83]
+mt5_large,nouns,Polish,Passage_1,2,"[39, 64]"
+mt5_large,nouns,Polish,Passage_2,1,[128]
+mt5_large,nouns,Polish,Passage_3,1,[83]
+mt5_large,nounsverbs,Polish,Passage_1,2,"[39, 64]"
+mt5_large,nounsverbs,Polish,Passage_2,1,[128]
+mt5_large,nounsverbs,Polish,Passage_3,1,[83]
+mt5_large,nounsverbsadj,Polish,Passage_1,2,"[39, 64]"
+mt5_large,nounsverbsadj,Polish,Passage_2,1,[128]
+mt5_large,nounsverbsadj,Polish,Passage_3,1,[83]
+mt5_large,verbs,Polish,Passage_1,2,"[39, 64]"
+mt5_large,verbs,Polish,Passage_2,1,[128]
+mt5_large,verbs,Polish,Passage_3,1,[83]
+xlm_align,1LocalWordSwap,Arabic,Passage_1,1,[70]
+xlm_align,1LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlm_align,1LocalWordSwap,Arabic,Passage_3,1,[72]
+xlm_align,2LocalWordSwap,Arabic,Passage_1,1,[70]
+xlm_align,2LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlm_align,2LocalWordSwap,Arabic,Passage_3,1,[72]
+xlm_align,3LocalWordSwaps,Arabic,Passage_1,1,[70]
+xlm_align,3LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlm_align,3LocalWordSwaps,Arabic,Passage_3,1,[72]
+xlm_align,4LocalWordSwaps,Arabic,Passage_1,1,[70]
+xlm_align,4LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlm_align,4LocalWordSwaps,Arabic,Passage_3,1,[72]
+xlm_align,5LocalWordSwaps,Arabic,Passage_1,1,[70]
+xlm_align,5LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlm_align,5LocalWordSwaps,Arabic,Passage_3,1,[72]
+xlm_align,Reversed,Arabic,Passage_1,1,[70]
+xlm_align,Reversed,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlm_align,Reversed,Arabic,Passage_3,1,[72]
+xlm_align,contentwords,Arabic,Passage_1,1,[70]
+xlm_align,contentwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlm_align,contentwords,Arabic,Passage_3,1,[72]
+xlm_align,functionwords,Arabic,Passage_1,1,[70]
+xlm_align,functionwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlm_align,functionwords,Arabic,Passage_3,1,[72]
+xlm_align,intact,Arabic,Passage_1,1,[70]
+xlm_align,intact,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlm_align,intact,Arabic,Passage_3,1,[72]
+xlm_align,nouns,Arabic,Passage_1,1,[70]
+xlm_align,nouns,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlm_align,nouns,Arabic,Passage_3,1,[72]
+xlm_align,nounsverbs,Arabic,Passage_1,1,[70]
+xlm_align,nounsverbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlm_align,nounsverbs,Arabic,Passage_3,1,[72]
+xlm_align,nounsverbsadj,Arabic,Passage_1,1,[70]
+xlm_align,nounsverbsadj,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlm_align,nounsverbsadj,Arabic,Passage_3,1,[72]
+xlm_align,verbs,Arabic,Passage_1,1,[70]
+xlm_align,verbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlm_align,verbs,Arabic,Passage_3,1,[72]
+xlm_align,1LocalWordSwap,German,Passage_2,1,[123]
+xlm_align,2LocalWordSwap,German,Passage_2,1,[123]
+xlm_align,3LocalWordSwaps,German,Passage_2,1,[123]
+xlm_align,4LocalWordSwaps,German,Passage_2,1,[123]
+xlm_align,5LocalWordSwaps,German,Passage_2,1,[123]
+xlm_align,Reversed,German,Passage_2,1,[123]
+xlm_align,contentwords,German,Passage_2,1,[123]
+xlm_align,functionwords,German,Passage_2,1,[123]
+xlm_align,intact,German,Passage_2,1,[123]
+xlm_align,nouns,German,Passage_2,1,[123]
+xlm_align,nounsverbs,German,Passage_2,1,[123]
+xlm_align,nounsverbsadj,German,Passage_2,1,[123]
+xlm_align,verbs,German,Passage_2,1,[123]
+xlm_align,1LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlm_align,2LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlm_align,3LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlm_align,4LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlm_align,5LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlm_align,Reversed,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlm_align,contentwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlm_align,functionwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlm_align,intact,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlm_align,nouns,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlm_align,nounsverbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlm_align,nounsverbsadj,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlm_align,verbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlm_align,1LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlm_align,2LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlm_align,3LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlm_align,4LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlm_align,5LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlm_align,Reversed,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlm_align,contentwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlm_align,functionwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlm_align,intact,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlm_align,nouns,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlm_align,nounsverbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlm_align,nounsverbsadj,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlm_align,verbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlm_align,1LocalWordSwap,Russian,Passage_2,1,[28]
+xlm_align,1LocalWordSwap,Russian,Passage_3,1,[55]
+xlm_align,2LocalWordSwap,Russian,Passage_2,1,[28]
+xlm_align,2LocalWordSwap,Russian,Passage_3,1,[55]
+xlm_align,3LocalWordSwaps,Russian,Passage_2,1,[28]
+xlm_align,3LocalWordSwaps,Russian,Passage_3,1,[55]
+xlm_align,4LocalWordSwaps,Russian,Passage_2,1,[28]
+xlm_align,4LocalWordSwaps,Russian,Passage_3,1,[55]
+xlm_align,5LocalWordSwaps,Russian,Passage_2,1,[28]
+xlm_align,5LocalWordSwaps,Russian,Passage_3,1,[55]
+xlm_align,Reversed,Russian,Passage_2,1,[28]
+xlm_align,Reversed,Russian,Passage_3,1,[55]
+xlm_align,contentwords,Russian,Passage_2,1,[28]
+xlm_align,contentwords,Russian,Passage_3,1,[55]
+xlm_align,functionwords,Russian,Passage_2,1,[28]
+xlm_align,functionwords,Russian,Passage_3,1,[55]
+xlm_align,intact,Russian,Passage_2,1,[28]
+xlm_align,intact,Russian,Passage_3,1,[55]
+xlm_align,nouns,Russian,Passage_2,1,[28]
+xlm_align,nouns,Russian,Passage_3,1,[55]
+xlm_align,nounsverbs,Russian,Passage_2,1,[28]
+xlm_align,nounsverbs,Russian,Passage_3,1,[55]
+xlm_align,nounsverbsadj,Russian,Passage_2,1,[28]
+xlm_align,nounsverbsadj,Russian,Passage_3,1,[55]
+xlm_align,verbs,Russian,Passage_2,1,[28]
+xlm_align,verbs,Russian,Passage_3,1,[55]
+xlm_align,1LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+xlm_align,1LocalWordSwap,Polish,Passage_2,1,[128]
+xlm_align,1LocalWordSwap,Polish,Passage_3,1,[83]
+xlm_align,2LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+xlm_align,2LocalWordSwap,Polish,Passage_2,1,[128]
+xlm_align,2LocalWordSwap,Polish,Passage_3,1,[83]
+xlm_align,3LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+xlm_align,3LocalWordSwaps,Polish,Passage_2,1,[128]
+xlm_align,3LocalWordSwaps,Polish,Passage_3,1,[83]
+xlm_align,4LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+xlm_align,4LocalWordSwaps,Polish,Passage_2,1,[128]
+xlm_align,4LocalWordSwaps,Polish,Passage_3,1,[83]
+xlm_align,5LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+xlm_align,5LocalWordSwaps,Polish,Passage_2,1,[128]
+xlm_align,5LocalWordSwaps,Polish,Passage_3,1,[83]
+xlm_align,Reversed,Polish,Passage_1,2,"[39, 64]"
+xlm_align,Reversed,Polish,Passage_2,1,[128]
+xlm_align,Reversed,Polish,Passage_3,1,[83]
+xlm_align,contentwords,Polish,Passage_1,2,"[39, 64]"
+xlm_align,contentwords,Polish,Passage_2,1,[128]
+xlm_align,contentwords,Polish,Passage_3,1,[83]
+xlm_align,functionwords,Polish,Passage_1,2,"[39, 64]"
+xlm_align,functionwords,Polish,Passage_2,1,[128]
+xlm_align,functionwords,Polish,Passage_3,1,[83]
+xlm_align,intact,Polish,Passage_1,2,"[39, 64]"
+xlm_align,intact,Polish,Passage_2,1,[128]
+xlm_align,intact,Polish,Passage_3,1,[83]
+xlm_align,nouns,Polish,Passage_1,2,"[39, 64]"
+xlm_align,nouns,Polish,Passage_2,1,[128]
+xlm_align,nouns,Polish,Passage_3,1,[83]
+xlm_align,nounsverbs,Polish,Passage_1,2,"[39, 64]"
+xlm_align,nounsverbs,Polish,Passage_2,1,[128]
+xlm_align,nounsverbs,Polish,Passage_3,1,[83]
+xlm_align,nounsverbsadj,Polish,Passage_1,2,"[39, 64]"
+xlm_align,nounsverbsadj,Polish,Passage_2,1,[128]
+xlm_align,nounsverbsadj,Polish,Passage_3,1,[83]
+xlm_align,verbs,Polish,Passage_1,2,"[39, 64]"
+xlm_align,verbs,Polish,Passage_2,1,[128]
+xlm_align,verbs,Polish,Passage_3,1,[83]
+xglm_xl,1LocalWordSwap,Arabic,Passage_1,1,[70]
+xglm_xl,1LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_xl,1LocalWordSwap,Arabic,Passage_3,1,[72]
+xglm_xl,2LocalWordSwap,Arabic,Passage_1,1,[70]
+xglm_xl,2LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_xl,2LocalWordSwap,Arabic,Passage_3,1,[72]
+xglm_xl,3LocalWordSwaps,Arabic,Passage_1,1,[70]
+xglm_xl,3LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_xl,3LocalWordSwaps,Arabic,Passage_3,1,[72]
+xglm_xl,4LocalWordSwaps,Arabic,Passage_1,1,[70]
+xglm_xl,4LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_xl,4LocalWordSwaps,Arabic,Passage_3,1,[72]
+xglm_xl,5LocalWordSwaps,Arabic,Passage_1,1,[70]
+xglm_xl,5LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_xl,5LocalWordSwaps,Arabic,Passage_3,1,[72]
+xglm_xl,Reversed,Arabic,Passage_1,1,[70]
+xglm_xl,Reversed,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_xl,Reversed,Arabic,Passage_3,1,[72]
+xglm_xl,contentwords,Arabic,Passage_1,1,[70]
+xglm_xl,contentwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_xl,contentwords,Arabic,Passage_3,1,[72]
+xglm_xl,functionwords,Arabic,Passage_1,1,[70]
+xglm_xl,functionwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_xl,functionwords,Arabic,Passage_3,1,[72]
+xglm_xl,intact,Arabic,Passage_1,1,[70]
+xglm_xl,intact,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_xl,intact,Arabic,Passage_3,1,[72]
+xglm_xl,nouns,Arabic,Passage_1,1,[70]
+xglm_xl,nouns,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_xl,nouns,Arabic,Passage_3,1,[72]
+xglm_xl,nounsverbs,Arabic,Passage_1,1,[70]
+xglm_xl,nounsverbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_xl,nounsverbs,Arabic,Passage_3,1,[72]
+xglm_xl,nounsverbsadj,Arabic,Passage_1,1,[70]
+xglm_xl,nounsverbsadj,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_xl,nounsverbsadj,Arabic,Passage_3,1,[72]
+xglm_xl,verbs,Arabic,Passage_1,1,[70]
+xglm_xl,verbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_xl,verbs,Arabic,Passage_3,1,[72]
+xglm_xl,1LocalWordSwap,German,Passage_2,1,[123]
+xglm_xl,2LocalWordSwap,German,Passage_2,1,[123]
+xglm_xl,3LocalWordSwaps,German,Passage_2,1,[123]
+xglm_xl,4LocalWordSwaps,German,Passage_2,1,[123]
+xglm_xl,5LocalWordSwaps,German,Passage_2,1,[123]
+xglm_xl,Reversed,German,Passage_2,1,[123]
+xglm_xl,contentwords,German,Passage_2,1,[123]
+xglm_xl,functionwords,German,Passage_2,1,[123]
+xglm_xl,intact,German,Passage_2,1,[123]
+xglm_xl,nouns,German,Passage_2,1,[123]
+xglm_xl,nounsverbs,German,Passage_2,1,[123]
+xglm_xl,nounsverbsadj,German,Passage_2,1,[123]
+xglm_xl,verbs,German,Passage_2,1,[123]
+xglm_xl,1LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_xl,2LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_xl,3LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_xl,4LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_xl,5LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_xl,Reversed,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_xl,contentwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_xl,functionwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_xl,intact,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_xl,nouns,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_xl,nounsverbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_xl,nounsverbsadj,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_xl,verbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_xl,1LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_xl,2LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_xl,3LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_xl,4LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_xl,5LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_xl,Reversed,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_xl,contentwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_xl,functionwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_xl,intact,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_xl,nouns,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_xl,nounsverbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_xl,nounsverbsadj,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_xl,verbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_xl,1LocalWordSwap,Russian,Passage_2,1,[28]
+xglm_xl,1LocalWordSwap,Russian,Passage_3,1,[55]
+xglm_xl,2LocalWordSwap,Russian,Passage_2,1,[28]
+xglm_xl,2LocalWordSwap,Russian,Passage_3,1,[55]
+xglm_xl,3LocalWordSwaps,Russian,Passage_2,1,[28]
+xglm_xl,3LocalWordSwaps,Russian,Passage_3,1,[55]
+xglm_xl,4LocalWordSwaps,Russian,Passage_2,1,[28]
+xglm_xl,4LocalWordSwaps,Russian,Passage_3,1,[55]
+xglm_xl,5LocalWordSwaps,Russian,Passage_2,1,[28]
+xglm_xl,5LocalWordSwaps,Russian,Passage_3,1,[55]
+xglm_xl,Reversed,Russian,Passage_2,1,[28]
+xglm_xl,Reversed,Russian,Passage_3,1,[55]
+xglm_xl,contentwords,Russian,Passage_2,1,[28]
+xglm_xl,contentwords,Russian,Passage_3,1,[55]
+xglm_xl,functionwords,Russian,Passage_2,1,[28]
+xglm_xl,functionwords,Russian,Passage_3,1,[55]
+xglm_xl,intact,Russian,Passage_2,1,[28]
+xglm_xl,intact,Russian,Passage_3,1,[55]
+xglm_xl,nouns,Russian,Passage_2,1,[28]
+xglm_xl,nouns,Russian,Passage_3,1,[55]
+xglm_xl,nounsverbs,Russian,Passage_2,1,[28]
+xglm_xl,nounsverbs,Russian,Passage_3,1,[55]
+xglm_xl,nounsverbsadj,Russian,Passage_2,1,[28]
+xglm_xl,nounsverbsadj,Russian,Passage_3,1,[55]
+xglm_xl,verbs,Russian,Passage_2,1,[28]
+xglm_xl,verbs,Russian,Passage_3,1,[55]
+xglm_xl,1LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+xglm_xl,1LocalWordSwap,Polish,Passage_2,1,[128]
+xglm_xl,1LocalWordSwap,Polish,Passage_3,1,[83]
+xglm_xl,2LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+xglm_xl,2LocalWordSwap,Polish,Passage_2,1,[128]
+xglm_xl,2LocalWordSwap,Polish,Passage_3,1,[83]
+xglm_xl,3LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+xglm_xl,3LocalWordSwaps,Polish,Passage_2,1,[128]
+xglm_xl,3LocalWordSwaps,Polish,Passage_3,1,[83]
+xglm_xl,4LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+xglm_xl,4LocalWordSwaps,Polish,Passage_2,1,[128]
+xglm_xl,4LocalWordSwaps,Polish,Passage_3,1,[83]
+xglm_xl,5LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+xglm_xl,5LocalWordSwaps,Polish,Passage_2,1,[128]
+xglm_xl,5LocalWordSwaps,Polish,Passage_3,1,[83]
+xglm_xl,Reversed,Polish,Passage_1,2,"[39, 64]"
+xglm_xl,Reversed,Polish,Passage_2,1,[128]
+xglm_xl,Reversed,Polish,Passage_3,1,[83]
+xglm_xl,contentwords,Polish,Passage_1,2,"[39, 64]"
+xglm_xl,contentwords,Polish,Passage_2,1,[128]
+xglm_xl,contentwords,Polish,Passage_3,1,[83]
+xglm_xl,functionwords,Polish,Passage_1,2,"[39, 64]"
+xglm_xl,functionwords,Polish,Passage_2,1,[128]
+xglm_xl,functionwords,Polish,Passage_3,1,[83]
+xglm_xl,intact,Polish,Passage_1,2,"[39, 64]"
+xglm_xl,intact,Polish,Passage_2,1,[128]
+xglm_xl,intact,Polish,Passage_3,1,[83]
+xglm_xl,nouns,Polish,Passage_1,2,"[39, 64]"
+xglm_xl,nouns,Polish,Passage_2,1,[128]
+xglm_xl,nouns,Polish,Passage_3,1,[83]
+xglm_xl,nounsverbs,Polish,Passage_1,2,"[39, 64]"
+xglm_xl,nounsverbs,Polish,Passage_2,1,[128]
+xglm_xl,nounsverbs,Polish,Passage_3,1,[83]
+xglm_xl,nounsverbsadj,Polish,Passage_1,2,"[39, 64]"
+xglm_xl,nounsverbsadj,Polish,Passage_2,1,[128]
+xglm_xl,nounsverbsadj,Polish,Passage_3,1,[83]
+xglm_xl,verbs,Polish,Passage_1,2,"[39, 64]"
+xglm_xl,verbs,Polish,Passage_2,1,[128]
+xglm_xl,verbs,Polish,Passage_3,1,[83]
+xlmr_large,1LocalWordSwap,Arabic,Passage_1,1,[70]
+xlmr_large,1LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlmr_large,1LocalWordSwap,Arabic,Passage_3,1,[72]
+xlmr_large,2LocalWordSwap,Arabic,Passage_1,1,[70]
+xlmr_large,2LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlmr_large,2LocalWordSwap,Arabic,Passage_3,1,[72]
+xlmr_large,3LocalWordSwaps,Arabic,Passage_1,1,[70]
+xlmr_large,3LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlmr_large,3LocalWordSwaps,Arabic,Passage_3,1,[72]
+xlmr_large,4LocalWordSwaps,Arabic,Passage_1,1,[70]
+xlmr_large,4LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlmr_large,4LocalWordSwaps,Arabic,Passage_3,1,[72]
+xlmr_large,5LocalWordSwaps,Arabic,Passage_1,1,[70]
+xlmr_large,5LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlmr_large,5LocalWordSwaps,Arabic,Passage_3,1,[72]
+xlmr_large,Reversed,Arabic,Passage_1,1,[70]
+xlmr_large,Reversed,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlmr_large,Reversed,Arabic,Passage_3,1,[72]
+xlmr_large,contentwords,Arabic,Passage_1,1,[70]
+xlmr_large,contentwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlmr_large,contentwords,Arabic,Passage_3,1,[72]
+xlmr_large,functionwords,Arabic,Passage_1,1,[70]
+xlmr_large,functionwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlmr_large,functionwords,Arabic,Passage_3,1,[72]
+xlmr_large,intact,Arabic,Passage_1,1,[70]
+xlmr_large,intact,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlmr_large,intact,Arabic,Passage_3,1,[72]
+xlmr_large,nouns,Arabic,Passage_1,1,[70]
+xlmr_large,nouns,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlmr_large,nouns,Arabic,Passage_3,1,[72]
+xlmr_large,nounsverbs,Arabic,Passage_1,1,[70]
+xlmr_large,nounsverbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlmr_large,nounsverbs,Arabic,Passage_3,1,[72]
+xlmr_large,nounsverbsadj,Arabic,Passage_1,1,[70]
+xlmr_large,nounsverbsadj,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlmr_large,nounsverbsadj,Arabic,Passage_3,1,[72]
+xlmr_large,verbs,Arabic,Passage_1,1,[70]
+xlmr_large,verbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlmr_large,verbs,Arabic,Passage_3,1,[72]
+xlmr_large,1LocalWordSwap,German,Passage_2,1,[123]
+xlmr_large,2LocalWordSwap,German,Passage_2,1,[123]
+xlmr_large,3LocalWordSwaps,German,Passage_2,1,[123]
+xlmr_large,4LocalWordSwaps,German,Passage_2,1,[123]
+xlmr_large,5LocalWordSwaps,German,Passage_2,1,[123]
+xlmr_large,Reversed,German,Passage_2,1,[123]
+xlmr_large,contentwords,German,Passage_2,1,[123]
+xlmr_large,functionwords,German,Passage_2,1,[123]
+xlmr_large,intact,German,Passage_2,1,[123]
+xlmr_large,nouns,German,Passage_2,1,[123]
+xlmr_large,nounsverbs,German,Passage_2,1,[123]
+xlmr_large,nounsverbsadj,German,Passage_2,1,[123]
+xlmr_large,verbs,German,Passage_2,1,[123]
+xlmr_large,1LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlmr_large,2LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlmr_large,3LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlmr_large,4LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlmr_large,5LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlmr_large,Reversed,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlmr_large,contentwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlmr_large,functionwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlmr_large,intact,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlmr_large,nouns,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlmr_large,nounsverbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlmr_large,nounsverbsadj,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlmr_large,verbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlmr_large,1LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlmr_large,2LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlmr_large,3LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlmr_large,4LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlmr_large,5LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlmr_large,Reversed,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlmr_large,contentwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlmr_large,functionwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlmr_large,intact,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlmr_large,nouns,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlmr_large,nounsverbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlmr_large,nounsverbsadj,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlmr_large,verbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlmr_large,1LocalWordSwap,Russian,Passage_2,1,[28]
+xlmr_large,1LocalWordSwap,Russian,Passage_3,1,[55]
+xlmr_large,2LocalWordSwap,Russian,Passage_2,1,[28]
+xlmr_large,2LocalWordSwap,Russian,Passage_3,1,[55]
+xlmr_large,3LocalWordSwaps,Russian,Passage_2,1,[28]
+xlmr_large,3LocalWordSwaps,Russian,Passage_3,1,[55]
+xlmr_large,4LocalWordSwaps,Russian,Passage_2,1,[28]
+xlmr_large,4LocalWordSwaps,Russian,Passage_3,1,[55]
+xlmr_large,5LocalWordSwaps,Russian,Passage_2,1,[28]
+xlmr_large,5LocalWordSwaps,Russian,Passage_3,1,[55]
+xlmr_large,Reversed,Russian,Passage_2,1,[28]
+xlmr_large,Reversed,Russian,Passage_3,1,[55]
+xlmr_large,contentwords,Russian,Passage_2,1,[28]
+xlmr_large,contentwords,Russian,Passage_3,1,[55]
+xlmr_large,functionwords,Russian,Passage_2,1,[28]
+xlmr_large,functionwords,Russian,Passage_3,1,[55]
+xlmr_large,intact,Russian,Passage_2,1,[28]
+xlmr_large,intact,Russian,Passage_3,1,[55]
+xlmr_large,nouns,Russian,Passage_2,1,[28]
+xlmr_large,nouns,Russian,Passage_3,1,[55]
+xlmr_large,nounsverbs,Russian,Passage_2,1,[28]
+xlmr_large,nounsverbs,Russian,Passage_3,1,[55]
+xlmr_large,nounsverbsadj,Russian,Passage_2,1,[28]
+xlmr_large,nounsverbsadj,Russian,Passage_3,1,[55]
+xlmr_large,verbs,Russian,Passage_2,1,[28]
+xlmr_large,verbs,Russian,Passage_3,1,[55]
+xlmr_large,1LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+xlmr_large,1LocalWordSwap,Polish,Passage_2,1,[128]
+xlmr_large,1LocalWordSwap,Polish,Passage_3,1,[83]
+xlmr_large,2LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+xlmr_large,2LocalWordSwap,Polish,Passage_2,1,[128]
+xlmr_large,2LocalWordSwap,Polish,Passage_3,1,[83]
+xlmr_large,3LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+xlmr_large,3LocalWordSwaps,Polish,Passage_2,1,[128]
+xlmr_large,3LocalWordSwaps,Polish,Passage_3,1,[83]
+xlmr_large,4LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+xlmr_large,4LocalWordSwaps,Polish,Passage_2,1,[128]
+xlmr_large,4LocalWordSwaps,Polish,Passage_3,1,[83]
+xlmr_large,5LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+xlmr_large,5LocalWordSwaps,Polish,Passage_2,1,[128]
+xlmr_large,5LocalWordSwaps,Polish,Passage_3,1,[83]
+xlmr_large,Reversed,Polish,Passage_1,2,"[39, 64]"
+xlmr_large,Reversed,Polish,Passage_2,1,[128]
+xlmr_large,Reversed,Polish,Passage_3,1,[83]
+xlmr_large,contentwords,Polish,Passage_1,2,"[39, 64]"
+xlmr_large,contentwords,Polish,Passage_2,1,[128]
+xlmr_large,contentwords,Polish,Passage_3,1,[83]
+xlmr_large,functionwords,Polish,Passage_1,2,"[39, 64]"
+xlmr_large,functionwords,Polish,Passage_2,1,[128]
+xlmr_large,functionwords,Polish,Passage_3,1,[83]
+xlmr_large,intact,Polish,Passage_1,2,"[39, 64]"
+xlmr_large,intact,Polish,Passage_2,1,[128]
+xlmr_large,intact,Polish,Passage_3,1,[83]
+xlmr_large,nouns,Polish,Passage_1,2,"[39, 64]"
+xlmr_large,nouns,Polish,Passage_2,1,[128]
+xlmr_large,nouns,Polish,Passage_3,1,[83]
+xlmr_large,nounsverbs,Polish,Passage_1,2,"[39, 64]"
+xlmr_large,nounsverbs,Polish,Passage_2,1,[128]
+xlmr_large,nounsverbs,Polish,Passage_3,1,[83]
+xlmr_large,nounsverbsadj,Polish,Passage_1,2,"[39, 64]"
+xlmr_large,nounsverbsadj,Polish,Passage_2,1,[128]
+xlmr_large,nounsverbsadj,Polish,Passage_3,1,[83]
+xlmr_large,verbs,Polish,Passage_1,2,"[39, 64]"
+xlmr_large,verbs,Polish,Passage_2,1,[128]
+xlmr_large,verbs,Polish,Passage_3,1,[83]
+xglm_med,1LocalWordSwap,Arabic,Passage_1,1,[70]
+xglm_med,1LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_med,1LocalWordSwap,Arabic,Passage_3,1,[72]
+xglm_med,2LocalWordSwap,Arabic,Passage_1,1,[70]
+xglm_med,2LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_med,2LocalWordSwap,Arabic,Passage_3,1,[72]
+xglm_med,3LocalWordSwaps,Arabic,Passage_1,1,[70]
+xglm_med,3LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_med,3LocalWordSwaps,Arabic,Passage_3,1,[72]
+xglm_med,4LocalWordSwaps,Arabic,Passage_1,1,[70]
+xglm_med,4LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_med,4LocalWordSwaps,Arabic,Passage_3,1,[72]
+xglm_med,5LocalWordSwaps,Arabic,Passage_1,1,[70]
+xglm_med,5LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_med,5LocalWordSwaps,Arabic,Passage_3,1,[72]
+xglm_med,Reversed,Arabic,Passage_1,1,[70]
+xglm_med,Reversed,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_med,Reversed,Arabic,Passage_3,1,[72]
+xglm_med,contentwords,Arabic,Passage_1,1,[70]
+xglm_med,contentwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_med,contentwords,Arabic,Passage_3,1,[72]
+xglm_med,functionwords,Arabic,Passage_1,1,[70]
+xglm_med,functionwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_med,functionwords,Arabic,Passage_3,1,[72]
+xglm_med,intact,Arabic,Passage_1,1,[70]
+xglm_med,intact,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_med,intact,Arabic,Passage_3,1,[72]
+xglm_med,nouns,Arabic,Passage_1,1,[70]
+xglm_med,nouns,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_med,nouns,Arabic,Passage_3,1,[72]
+xglm_med,nounsverbs,Arabic,Passage_1,1,[70]
+xglm_med,nounsverbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_med,nounsverbs,Arabic,Passage_3,1,[72]
+xglm_med,nounsverbsadj,Arabic,Passage_1,1,[70]
+xglm_med,nounsverbsadj,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_med,nounsverbsadj,Arabic,Passage_3,1,[72]
+xglm_med,verbs,Arabic,Passage_1,1,[70]
+xglm_med,verbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_med,verbs,Arabic,Passage_3,1,[72]
+xglm_med,1LocalWordSwap,German,Passage_2,1,[123]
+xglm_med,2LocalWordSwap,German,Passage_2,1,[123]
+xglm_med,3LocalWordSwaps,German,Passage_2,1,[123]
+xglm_med,4LocalWordSwaps,German,Passage_2,1,[123]
+xglm_med,5LocalWordSwaps,German,Passage_2,1,[123]
+xglm_med,Reversed,German,Passage_2,1,[123]
+xglm_med,contentwords,German,Passage_2,1,[123]
+xglm_med,functionwords,German,Passage_2,1,[123]
+xglm_med,intact,German,Passage_2,1,[123]
+xglm_med,nouns,German,Passage_2,1,[123]
+xglm_med,nounsverbs,German,Passage_2,1,[123]
+xglm_med,nounsverbsadj,German,Passage_2,1,[123]
+xglm_med,verbs,German,Passage_2,1,[123]
+xglm_med,1LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_med,2LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_med,3LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_med,4LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_med,5LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_med,Reversed,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_med,contentwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_med,functionwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_med,intact,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_med,nouns,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_med,nounsverbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_med,nounsverbsadj,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_med,verbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_med,1LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_med,2LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_med,3LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_med,4LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_med,5LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_med,Reversed,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_med,contentwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_med,functionwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_med,intact,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_med,nouns,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_med,nounsverbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_med,nounsverbsadj,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_med,verbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_med,1LocalWordSwap,Russian,Passage_2,1,[28]
+xglm_med,1LocalWordSwap,Russian,Passage_3,1,[55]
+xglm_med,2LocalWordSwap,Russian,Passage_2,1,[28]
+xglm_med,2LocalWordSwap,Russian,Passage_3,1,[55]
+xglm_med,3LocalWordSwaps,Russian,Passage_2,1,[28]
+xglm_med,3LocalWordSwaps,Russian,Passage_3,1,[55]
+xglm_med,4LocalWordSwaps,Russian,Passage_2,1,[28]
+xglm_med,4LocalWordSwaps,Russian,Passage_3,1,[55]
+xglm_med,5LocalWordSwaps,Russian,Passage_2,1,[28]
+xglm_med,5LocalWordSwaps,Russian,Passage_3,1,[55]
+xglm_med,Reversed,Russian,Passage_2,1,[28]
+xglm_med,Reversed,Russian,Passage_3,1,[55]
+xglm_med,contentwords,Russian,Passage_2,1,[28]
+xglm_med,contentwords,Russian,Passage_3,1,[55]
+xglm_med,functionwords,Russian,Passage_2,1,[28]
+xglm_med,functionwords,Russian,Passage_3,1,[55]
+xglm_med,intact,Russian,Passage_2,1,[28]
+xglm_med,intact,Russian,Passage_3,1,[55]
+xglm_med,nouns,Russian,Passage_2,1,[28]
+xglm_med,nouns,Russian,Passage_3,1,[55]
+xglm_med,nounsverbs,Russian,Passage_2,1,[28]
+xglm_med,nounsverbs,Russian,Passage_3,1,[55]
+xglm_med,nounsverbsadj,Russian,Passage_2,1,[28]
+xglm_med,nounsverbsadj,Russian,Passage_3,1,[55]
+xglm_med,verbs,Russian,Passage_2,1,[28]
+xglm_med,verbs,Russian,Passage_3,1,[55]
+xglm_med,1LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+xglm_med,1LocalWordSwap,Polish,Passage_2,1,[128]
+xglm_med,1LocalWordSwap,Polish,Passage_3,1,[83]
+xglm_med,2LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+xglm_med,2LocalWordSwap,Polish,Passage_2,1,[128]
+xglm_med,2LocalWordSwap,Polish,Passage_3,1,[83]
+xglm_med,3LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+xglm_med,3LocalWordSwaps,Polish,Passage_2,1,[128]
+xglm_med,3LocalWordSwaps,Polish,Passage_3,1,[83]
+xglm_med,4LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+xglm_med,4LocalWordSwaps,Polish,Passage_2,1,[128]
+xglm_med,4LocalWordSwaps,Polish,Passage_3,1,[83]
+xglm_med,5LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+xglm_med,5LocalWordSwaps,Polish,Passage_2,1,[128]
+xglm_med,5LocalWordSwaps,Polish,Passage_3,1,[83]
+xglm_med,Reversed,Polish,Passage_1,2,"[39, 64]"
+xglm_med,Reversed,Polish,Passage_2,1,[128]
+xglm_med,Reversed,Polish,Passage_3,1,[83]
+xglm_med,contentwords,Polish,Passage_1,2,"[39, 64]"
+xglm_med,contentwords,Polish,Passage_2,1,[128]
+xglm_med,contentwords,Polish,Passage_3,1,[83]
+xglm_med,functionwords,Polish,Passage_1,2,"[39, 64]"
+xglm_med,functionwords,Polish,Passage_2,1,[128]
+xglm_med,functionwords,Polish,Passage_3,1,[83]
+xglm_med,intact,Polish,Passage_1,2,"[39, 64]"
+xglm_med,intact,Polish,Passage_2,1,[128]
+xglm_med,intact,Polish,Passage_3,1,[83]
+xglm_med,nouns,Polish,Passage_1,2,"[39, 64]"
+xglm_med,nouns,Polish,Passage_2,1,[128]
+xglm_med,nouns,Polish,Passage_3,1,[83]
+xglm_med,nounsverbs,Polish,Passage_1,2,"[39, 64]"
+xglm_med,nounsverbs,Polish,Passage_2,1,[128]
+xglm_med,nounsverbs,Polish,Passage_3,1,[83]
+xglm_med,nounsverbsadj,Polish,Passage_1,2,"[39, 64]"
+xglm_med,nounsverbsadj,Polish,Passage_2,1,[128]
+xglm_med,nounsverbsadj,Polish,Passage_3,1,[83]
+xglm_med,verbs,Polish,Passage_1,2,"[39, 64]"
+xglm_med,verbs,Polish,Passage_2,1,[128]
+xglm_med,verbs,Polish,Passage_3,1,[83]
+xglm_large,1LocalWordSwap,Arabic,Passage_1,1,[70]
+xglm_large,1LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_large,1LocalWordSwap,Arabic,Passage_3,1,[72]
+xglm_large,2LocalWordSwap,Arabic,Passage_1,1,[70]
+xglm_large,2LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_large,2LocalWordSwap,Arabic,Passage_3,1,[72]
+xglm_large,3LocalWordSwaps,Arabic,Passage_1,1,[70]
+xglm_large,3LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_large,3LocalWordSwaps,Arabic,Passage_3,1,[72]
+xglm_large,4LocalWordSwaps,Arabic,Passage_1,1,[70]
+xglm_large,4LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_large,4LocalWordSwaps,Arabic,Passage_3,1,[72]
+xglm_large,5LocalWordSwaps,Arabic,Passage_1,1,[70]
+xglm_large,5LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_large,5LocalWordSwaps,Arabic,Passage_3,1,[72]
+xglm_large,Reversed,Arabic,Passage_1,1,[70]
+xglm_large,Reversed,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_large,Reversed,Arabic,Passage_3,1,[72]
+xglm_large,contentwords,Arabic,Passage_1,1,[70]
+xglm_large,contentwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_large,contentwords,Arabic,Passage_3,1,[72]
+xglm_large,functionwords,Arabic,Passage_1,1,[70]
+xglm_large,functionwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_large,functionwords,Arabic,Passage_3,1,[72]
+xglm_large,intact,Arabic,Passage_1,1,[70]
+xglm_large,intact,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_large,intact,Arabic,Passage_3,1,[72]
+xglm_large,nouns,Arabic,Passage_1,1,[70]
+xglm_large,nouns,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_large,nouns,Arabic,Passage_3,1,[72]
+xglm_large,nounsverbs,Arabic,Passage_1,1,[70]
+xglm_large,nounsverbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_large,nounsverbs,Arabic,Passage_3,1,[72]
+xglm_large,nounsverbsadj,Arabic,Passage_1,1,[70]
+xglm_large,nounsverbsadj,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_large,nounsverbsadj,Arabic,Passage_3,1,[72]
+xglm_large,verbs,Arabic,Passage_1,1,[70]
+xglm_large,verbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_large,verbs,Arabic,Passage_3,1,[72]
+xglm_large,1LocalWordSwap,German,Passage_2,1,[123]
+xglm_large,2LocalWordSwap,German,Passage_2,1,[123]
+xglm_large,3LocalWordSwaps,German,Passage_2,1,[123]
+xglm_large,4LocalWordSwaps,German,Passage_2,1,[123]
+xglm_large,5LocalWordSwaps,German,Passage_2,1,[123]
+xglm_large,Reversed,German,Passage_2,1,[123]
+xglm_large,contentwords,German,Passage_2,1,[123]
+xglm_large,functionwords,German,Passage_2,1,[123]
+xglm_large,intact,German,Passage_2,1,[123]
+xglm_large,nouns,German,Passage_2,1,[123]
+xglm_large,nounsverbs,German,Passage_2,1,[123]
+xglm_large,nounsverbsadj,German,Passage_2,1,[123]
+xglm_large,verbs,German,Passage_2,1,[123]
+xglm_large,1LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_large,2LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_large,3LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_large,4LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_large,5LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_large,Reversed,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_large,contentwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_large,functionwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_large,intact,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_large,nouns,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_large,nounsverbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_large,nounsverbsadj,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_large,verbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_large,1LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_large,2LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_large,3LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_large,4LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_large,5LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_large,Reversed,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_large,contentwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_large,functionwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_large,intact,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_large,nouns,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_large,nounsverbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_large,nounsverbsadj,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_large,verbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_large,1LocalWordSwap,Russian,Passage_2,1,[28]
+xglm_large,1LocalWordSwap,Russian,Passage_3,1,[55]
+xglm_large,2LocalWordSwap,Russian,Passage_2,1,[28]
+xglm_large,2LocalWordSwap,Russian,Passage_3,1,[55]
+xglm_large,3LocalWordSwaps,Russian,Passage_2,1,[28]
+xglm_large,3LocalWordSwaps,Russian,Passage_3,1,[55]
+xglm_large,4LocalWordSwaps,Russian,Passage_2,1,[28]
+xglm_large,4LocalWordSwaps,Russian,Passage_3,1,[55]
+xglm_large,5LocalWordSwaps,Russian,Passage_2,1,[28]
+xglm_large,5LocalWordSwaps,Russian,Passage_3,1,[55]
+xglm_large,Reversed,Russian,Passage_2,1,[28]
+xglm_large,Reversed,Russian,Passage_3,1,[55]
+xglm_large,contentwords,Russian,Passage_2,1,[28]
+xglm_large,contentwords,Russian,Passage_3,1,[55]
+xglm_large,functionwords,Russian,Passage_2,1,[28]
+xglm_large,functionwords,Russian,Passage_3,1,[55]
+xglm_large,intact,Russian,Passage_2,1,[28]
+xglm_large,intact,Russian,Passage_3,1,[55]
+xglm_large,nouns,Russian,Passage_2,1,[28]
+xglm_large,nouns,Russian,Passage_3,1,[55]
+xglm_large,nounsverbs,Russian,Passage_2,1,[28]
+xglm_large,nounsverbs,Russian,Passage_3,1,[55]
+xglm_large,nounsverbsadj,Russian,Passage_2,1,[28]
+xglm_large,nounsverbsadj,Russian,Passage_3,1,[55]
+xglm_large,verbs,Russian,Passage_2,1,[28]
+xglm_large,verbs,Russian,Passage_3,1,[55]
+xglm_large,1LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+xglm_large,1LocalWordSwap,Polish,Passage_2,1,[128]
+xglm_large,1LocalWordSwap,Polish,Passage_3,1,[83]
+xglm_large,2LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+xglm_large,2LocalWordSwap,Polish,Passage_2,1,[128]
+xglm_large,2LocalWordSwap,Polish,Passage_3,1,[83]
+xglm_large,3LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+xglm_large,3LocalWordSwaps,Polish,Passage_2,1,[128]
+xglm_large,3LocalWordSwaps,Polish,Passage_3,1,[83]
+xglm_large,4LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+xglm_large,4LocalWordSwaps,Polish,Passage_2,1,[128]
+xglm_large,4LocalWordSwaps,Polish,Passage_3,1,[83]
+xglm_large,5LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+xglm_large,5LocalWordSwaps,Polish,Passage_2,1,[128]
+xglm_large,5LocalWordSwaps,Polish,Passage_3,1,[83]
+xglm_large,Reversed,Polish,Passage_1,2,"[39, 64]"
+xglm_large,Reversed,Polish,Passage_2,1,[128]
+xglm_large,Reversed,Polish,Passage_3,1,[83]
+xglm_large,contentwords,Polish,Passage_1,2,"[39, 64]"
+xglm_large,contentwords,Polish,Passage_2,1,[128]
+xglm_large,contentwords,Polish,Passage_3,1,[83]
+xglm_large,functionwords,Polish,Passage_1,2,"[39, 64]"
+xglm_large,functionwords,Polish,Passage_2,1,[128]
+xglm_large,functionwords,Polish,Passage_3,1,[83]
+xglm_large,intact,Polish,Passage_1,2,"[39, 64]"
+xglm_large,intact,Polish,Passage_2,1,[128]
+xglm_large,intact,Polish,Passage_3,1,[83]
+xglm_large,nouns,Polish,Passage_1,2,"[39, 64]"
+xglm_large,nouns,Polish,Passage_2,1,[128]
+xglm_large,nouns,Polish,Passage_3,1,[83]
+xglm_large,nounsverbs,Polish,Passage_1,2,"[39, 64]"
+xglm_large,nounsverbs,Polish,Passage_2,1,[128]
+xglm_large,nounsverbs,Polish,Passage_3,1,[83]
+xglm_large,nounsverbsadj,Polish,Passage_1,2,"[39, 64]"
+xglm_large,nounsverbsadj,Polish,Passage_2,1,[128]
+xglm_large,nounsverbsadj,Polish,Passage_3,1,[83]
+xglm_large,verbs,Polish,Passage_1,2,"[39, 64]"
+xglm_large,verbs,Polish,Passage_2,1,[128]
+xglm_large,verbs,Polish,Passage_3,1,[83]
+xlmr_base,1LocalWordSwap,Arabic,Passage_1,1,[70]
+xlmr_base,1LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlmr_base,1LocalWordSwap,Arabic,Passage_3,1,[72]
+xlmr_base,2LocalWordSwap,Arabic,Passage_1,1,[70]
+xlmr_base,2LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlmr_base,2LocalWordSwap,Arabic,Passage_3,1,[72]
+xlmr_base,3LocalWordSwaps,Arabic,Passage_1,1,[70]
+xlmr_base,3LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlmr_base,3LocalWordSwaps,Arabic,Passage_3,1,[72]
+xlmr_base,4LocalWordSwaps,Arabic,Passage_1,1,[70]
+xlmr_base,4LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlmr_base,4LocalWordSwaps,Arabic,Passage_3,1,[72]
+xlmr_base,5LocalWordSwaps,Arabic,Passage_1,1,[70]
+xlmr_base,5LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlmr_base,5LocalWordSwaps,Arabic,Passage_3,1,[72]
+xlmr_base,Reversed,Arabic,Passage_1,1,[70]
+xlmr_base,Reversed,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlmr_base,Reversed,Arabic,Passage_3,1,[72]
+xlmr_base,contentwords,Arabic,Passage_1,1,[70]
+xlmr_base,contentwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlmr_base,contentwords,Arabic,Passage_3,1,[72]
+xlmr_base,functionwords,Arabic,Passage_1,1,[70]
+xlmr_base,functionwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlmr_base,functionwords,Arabic,Passage_3,1,[72]
+xlmr_base,intact,Arabic,Passage_1,1,[70]
+xlmr_base,intact,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlmr_base,intact,Arabic,Passage_3,1,[72]
+xlmr_base,nouns,Arabic,Passage_1,1,[70]
+xlmr_base,nouns,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlmr_base,nouns,Arabic,Passage_3,1,[72]
+xlmr_base,nounsverbs,Arabic,Passage_1,1,[70]
+xlmr_base,nounsverbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlmr_base,nounsverbs,Arabic,Passage_3,1,[72]
+xlmr_base,nounsverbsadj,Arabic,Passage_1,1,[70]
+xlmr_base,nounsverbsadj,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlmr_base,nounsverbsadj,Arabic,Passage_3,1,[72]
+xlmr_base,verbs,Arabic,Passage_1,1,[70]
+xlmr_base,verbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xlmr_base,verbs,Arabic,Passage_3,1,[72]
+xlmr_base,1LocalWordSwap,German,Passage_2,1,[123]
+xlmr_base,2LocalWordSwap,German,Passage_2,1,[123]
+xlmr_base,3LocalWordSwaps,German,Passage_2,1,[123]
+xlmr_base,4LocalWordSwaps,German,Passage_2,1,[123]
+xlmr_base,5LocalWordSwaps,German,Passage_2,1,[123]
+xlmr_base,Reversed,German,Passage_2,1,[123]
+xlmr_base,contentwords,German,Passage_2,1,[123]
+xlmr_base,functionwords,German,Passage_2,1,[123]
+xlmr_base,intact,German,Passage_2,1,[123]
+xlmr_base,nouns,German,Passage_2,1,[123]
+xlmr_base,nounsverbs,German,Passage_2,1,[123]
+xlmr_base,nounsverbsadj,German,Passage_2,1,[123]
+xlmr_base,verbs,German,Passage_2,1,[123]
+xlmr_base,1LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlmr_base,2LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlmr_base,3LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlmr_base,4LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlmr_base,5LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlmr_base,Reversed,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlmr_base,contentwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlmr_base,functionwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlmr_base,intact,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlmr_base,nouns,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlmr_base,nounsverbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlmr_base,nounsverbsadj,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlmr_base,verbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xlmr_base,1LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlmr_base,2LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlmr_base,3LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlmr_base,4LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlmr_base,5LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlmr_base,Reversed,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlmr_base,contentwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlmr_base,functionwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlmr_base,intact,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlmr_base,nouns,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlmr_base,nounsverbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlmr_base,nounsverbsadj,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlmr_base,verbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xlmr_base,1LocalWordSwap,Russian,Passage_2,1,[28]
+xlmr_base,1LocalWordSwap,Russian,Passage_3,1,[55]
+xlmr_base,2LocalWordSwap,Russian,Passage_2,1,[28]
+xlmr_base,2LocalWordSwap,Russian,Passage_3,1,[55]
+xlmr_base,3LocalWordSwaps,Russian,Passage_2,1,[28]
+xlmr_base,3LocalWordSwaps,Russian,Passage_3,1,[55]
+xlmr_base,4LocalWordSwaps,Russian,Passage_2,1,[28]
+xlmr_base,4LocalWordSwaps,Russian,Passage_3,1,[55]
+xlmr_base,5LocalWordSwaps,Russian,Passage_2,1,[28]
+xlmr_base,5LocalWordSwaps,Russian,Passage_3,1,[55]
+xlmr_base,Reversed,Russian,Passage_2,1,[28]
+xlmr_base,Reversed,Russian,Passage_3,1,[55]
+xlmr_base,contentwords,Russian,Passage_2,1,[28]
+xlmr_base,contentwords,Russian,Passage_3,1,[55]
+xlmr_base,functionwords,Russian,Passage_2,1,[28]
+xlmr_base,functionwords,Russian,Passage_3,1,[55]
+xlmr_base,intact,Russian,Passage_2,1,[28]
+xlmr_base,intact,Russian,Passage_3,1,[55]
+xlmr_base,nouns,Russian,Passage_2,1,[28]
+xlmr_base,nouns,Russian,Passage_3,1,[55]
+xlmr_base,nounsverbs,Russian,Passage_2,1,[28]
+xlmr_base,nounsverbs,Russian,Passage_3,1,[55]
+xlmr_base,nounsverbsadj,Russian,Passage_2,1,[28]
+xlmr_base,nounsverbsadj,Russian,Passage_3,1,[55]
+xlmr_base,verbs,Russian,Passage_2,1,[28]
+xlmr_base,verbs,Russian,Passage_3,1,[55]
+xlmr_base,1LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+xlmr_base,1LocalWordSwap,Polish,Passage_2,1,[128]
+xlmr_base,1LocalWordSwap,Polish,Passage_3,1,[83]
+xlmr_base,2LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+xlmr_base,2LocalWordSwap,Polish,Passage_2,1,[128]
+xlmr_base,2LocalWordSwap,Polish,Passage_3,1,[83]
+xlmr_base,3LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+xlmr_base,3LocalWordSwaps,Polish,Passage_2,1,[128]
+xlmr_base,3LocalWordSwaps,Polish,Passage_3,1,[83]
+xlmr_base,4LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+xlmr_base,4LocalWordSwaps,Polish,Passage_2,1,[128]
+xlmr_base,4LocalWordSwaps,Polish,Passage_3,1,[83]
+xlmr_base,5LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+xlmr_base,5LocalWordSwaps,Polish,Passage_2,1,[128]
+xlmr_base,5LocalWordSwaps,Polish,Passage_3,1,[83]
+xlmr_base,Reversed,Polish,Passage_1,2,"[39, 64]"
+xlmr_base,Reversed,Polish,Passage_2,1,[128]
+xlmr_base,Reversed,Polish,Passage_3,1,[83]
+xlmr_base,contentwords,Polish,Passage_1,2,"[39, 64]"
+xlmr_base,contentwords,Polish,Passage_2,1,[128]
+xlmr_base,contentwords,Polish,Passage_3,1,[83]
+xlmr_base,functionwords,Polish,Passage_1,2,"[39, 64]"
+xlmr_base,functionwords,Polish,Passage_2,1,[128]
+xlmr_base,functionwords,Polish,Passage_3,1,[83]
+xlmr_base,intact,Polish,Passage_1,2,"[39, 64]"
+xlmr_base,intact,Polish,Passage_2,1,[128]
+xlmr_base,intact,Polish,Passage_3,1,[83]
+xlmr_base,nouns,Polish,Passage_1,2,"[39, 64]"
+xlmr_base,nouns,Polish,Passage_2,1,[128]
+xlmr_base,nouns,Polish,Passage_3,1,[83]
+xlmr_base,nounsverbs,Polish,Passage_1,2,"[39, 64]"
+xlmr_base,nounsverbs,Polish,Passage_2,1,[128]
+xlmr_base,nounsverbs,Polish,Passage_3,1,[83]
+xlmr_base,nounsverbsadj,Polish,Passage_1,2,"[39, 64]"
+xlmr_base,nounsverbsadj,Polish,Passage_2,1,[128]
+xlmr_base,nounsverbsadj,Polish,Passage_3,1,[83]
+xlmr_base,verbs,Polish,Passage_1,2,"[39, 64]"
+xlmr_base,verbs,Polish,Passage_2,1,[128]
+xlmr_base,verbs,Polish,Passage_3,1,[83]
+bert_base,1LocalWordSwap,Arabic,Passage_1,1,[70]
+bert_base,1LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+bert_base,1LocalWordSwap,Arabic,Passage_3,1,[72]
+bert_base,2LocalWordSwap,Arabic,Passage_1,1,[70]
+bert_base,2LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+bert_base,2LocalWordSwap,Arabic,Passage_3,1,[72]
+bert_base,3LocalWordSwaps,Arabic,Passage_1,1,[70]
+bert_base,3LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+bert_base,3LocalWordSwaps,Arabic,Passage_3,1,[72]
+bert_base,4LocalWordSwaps,Arabic,Passage_1,1,[70]
+bert_base,4LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+bert_base,4LocalWordSwaps,Arabic,Passage_3,1,[72]
+bert_base,5LocalWordSwaps,Arabic,Passage_1,1,[70]
+bert_base,5LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+bert_base,5LocalWordSwaps,Arabic,Passage_3,1,[72]
+bert_base,Reversed,Arabic,Passage_1,1,[70]
+bert_base,Reversed,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+bert_base,Reversed,Arabic,Passage_3,1,[72]
+bert_base,contentwords,Arabic,Passage_1,1,[70]
+bert_base,contentwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+bert_base,contentwords,Arabic,Passage_3,1,[72]
+bert_base,functionwords,Arabic,Passage_1,1,[70]
+bert_base,functionwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+bert_base,functionwords,Arabic,Passage_3,1,[72]
+bert_base,intact,Arabic,Passage_1,1,[70]
+bert_base,intact,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+bert_base,intact,Arabic,Passage_3,1,[72]
+bert_base,nouns,Arabic,Passage_1,1,[70]
+bert_base,nouns,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+bert_base,nouns,Arabic,Passage_3,1,[72]
+bert_base,nounsverbs,Arabic,Passage_1,1,[70]
+bert_base,nounsverbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+bert_base,nounsverbs,Arabic,Passage_3,1,[72]
+bert_base,nounsverbsadj,Arabic,Passage_1,1,[70]
+bert_base,nounsverbsadj,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+bert_base,nounsverbsadj,Arabic,Passage_3,1,[72]
+bert_base,verbs,Arabic,Passage_1,1,[70]
+bert_base,verbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+bert_base,verbs,Arabic,Passage_3,1,[72]
+bert_base,1LocalWordSwap,German,Passage_2,1,[123]
+bert_base,2LocalWordSwap,German,Passage_2,1,[123]
+bert_base,3LocalWordSwaps,German,Passage_2,1,[123]
+bert_base,4LocalWordSwaps,German,Passage_2,1,[123]
+bert_base,5LocalWordSwaps,German,Passage_2,1,[123]
+bert_base,Reversed,German,Passage_2,1,[123]
+bert_base,contentwords,German,Passage_2,1,[123]
+bert_base,functionwords,German,Passage_2,1,[123]
+bert_base,intact,German,Passage_2,1,[123]
+bert_base,nouns,German,Passage_2,1,[123]
+bert_base,nounsverbs,German,Passage_2,1,[123]
+bert_base,nounsverbsadj,German,Passage_2,1,[123]
+bert_base,verbs,German,Passage_2,1,[123]
+bert_base,1LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+bert_base,2LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+bert_base,3LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+bert_base,4LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+bert_base,5LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+bert_base,Reversed,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+bert_base,contentwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+bert_base,functionwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+bert_base,intact,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+bert_base,nouns,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+bert_base,nounsverbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+bert_base,nounsverbsadj,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+bert_base,verbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+bert_base,1LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+bert_base,2LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+bert_base,3LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+bert_base,4LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+bert_base,5LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+bert_base,Reversed,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+bert_base,contentwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+bert_base,functionwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+bert_base,intact,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+bert_base,nouns,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+bert_base,nounsverbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+bert_base,nounsverbsadj,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+bert_base,verbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+bert_base,1LocalWordSwap,Russian,Passage_2,1,[28]
+bert_base,1LocalWordSwap,Russian,Passage_3,1,[55]
+bert_base,2LocalWordSwap,Russian,Passage_2,1,[28]
+bert_base,2LocalWordSwap,Russian,Passage_3,1,[55]
+bert_base,3LocalWordSwaps,Russian,Passage_2,1,[28]
+bert_base,3LocalWordSwaps,Russian,Passage_3,1,[55]
+bert_base,4LocalWordSwaps,Russian,Passage_2,1,[28]
+bert_base,4LocalWordSwaps,Russian,Passage_3,1,[55]
+bert_base,5LocalWordSwaps,Russian,Passage_2,1,[28]
+bert_base,5LocalWordSwaps,Russian,Passage_3,1,[55]
+bert_base,Reversed,Russian,Passage_2,1,[28]
+bert_base,Reversed,Russian,Passage_3,1,[55]
+bert_base,contentwords,Russian,Passage_2,1,[28]
+bert_base,contentwords,Russian,Passage_3,1,[55]
+bert_base,functionwords,Russian,Passage_2,1,[28]
+bert_base,functionwords,Russian,Passage_3,1,[55]
+bert_base,intact,Russian,Passage_2,1,[28]
+bert_base,intact,Russian,Passage_3,1,[55]
+bert_base,nouns,Russian,Passage_2,1,[28]
+bert_base,nouns,Russian,Passage_3,1,[55]
+bert_base,nounsverbs,Russian,Passage_2,1,[28]
+bert_base,nounsverbs,Russian,Passage_3,1,[55]
+bert_base,nounsverbsadj,Russian,Passage_2,1,[28]
+bert_base,nounsverbsadj,Russian,Passage_3,1,[55]
+bert_base,verbs,Russian,Passage_2,1,[28]
+bert_base,verbs,Russian,Passage_3,1,[55]
+bert_base,1LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+bert_base,1LocalWordSwap,Polish,Passage_2,1,[128]
+bert_base,1LocalWordSwap,Polish,Passage_3,1,[83]
+bert_base,2LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+bert_base,2LocalWordSwap,Polish,Passage_2,1,[128]
+bert_base,2LocalWordSwap,Polish,Passage_3,1,[83]
+bert_base,3LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+bert_base,3LocalWordSwaps,Polish,Passage_2,1,[128]
+bert_base,3LocalWordSwaps,Polish,Passage_3,1,[83]
+bert_base,4LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+bert_base,4LocalWordSwaps,Polish,Passage_2,1,[128]
+bert_base,4LocalWordSwaps,Polish,Passage_3,1,[83]
+bert_base,5LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+bert_base,5LocalWordSwaps,Polish,Passage_2,1,[128]
+bert_base,5LocalWordSwaps,Polish,Passage_3,1,[83]
+bert_base,Reversed,Polish,Passage_1,2,"[39, 64]"
+bert_base,Reversed,Polish,Passage_2,1,[128]
+bert_base,Reversed,Polish,Passage_3,1,[83]
+bert_base,contentwords,Polish,Passage_1,2,"[39, 64]"
+bert_base,contentwords,Polish,Passage_2,1,[128]
+bert_base,contentwords,Polish,Passage_3,1,[83]
+bert_base,functionwords,Polish,Passage_1,2,"[39, 64]"
+bert_base,functionwords,Polish,Passage_2,1,[128]
+bert_base,functionwords,Polish,Passage_3,1,[83]
+bert_base,intact,Polish,Passage_1,2,"[39, 64]"
+bert_base,intact,Polish,Passage_2,1,[128]
+bert_base,intact,Polish,Passage_3,1,[83]
+bert_base,nouns,Polish,Passage_1,2,"[39, 64]"
+bert_base,nouns,Polish,Passage_2,1,[128]
+bert_base,nouns,Polish,Passage_3,1,[83]
+bert_base,nounsverbs,Polish,Passage_1,2,"[39, 64]"
+bert_base,nounsverbs,Polish,Passage_2,1,[128]
+bert_base,nounsverbs,Polish,Passage_3,1,[83]
+bert_base,nounsverbsadj,Polish,Passage_1,2,"[39, 64]"
+bert_base,nounsverbsadj,Polish,Passage_2,1,[128]
+bert_base,nounsverbsadj,Polish,Passage_3,1,[83]
+bert_base,verbs,Polish,Passage_1,2,"[39, 64]"
+bert_base,verbs,Polish,Passage_2,1,[128]
+bert_base,verbs,Polish,Passage_3,1,[83]
+infoxlm_base,1LocalWordSwap,Arabic,Passage_1,1,[70]
+infoxlm_base,1LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+infoxlm_base,1LocalWordSwap,Arabic,Passage_3,1,[72]
+infoxlm_base,2LocalWordSwap,Arabic,Passage_1,1,[70]
+infoxlm_base,2LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+infoxlm_base,2LocalWordSwap,Arabic,Passage_3,1,[72]
+infoxlm_base,3LocalWordSwaps,Arabic,Passage_1,1,[70]
+infoxlm_base,3LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+infoxlm_base,3LocalWordSwaps,Arabic,Passage_3,1,[72]
+infoxlm_base,4LocalWordSwaps,Arabic,Passage_1,1,[70]
+infoxlm_base,4LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+infoxlm_base,4LocalWordSwaps,Arabic,Passage_3,1,[72]
+infoxlm_base,5LocalWordSwaps,Arabic,Passage_1,1,[70]
+infoxlm_base,5LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+infoxlm_base,5LocalWordSwaps,Arabic,Passage_3,1,[72]
+infoxlm_base,Reversed,Arabic,Passage_1,1,[70]
+infoxlm_base,Reversed,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+infoxlm_base,Reversed,Arabic,Passage_3,1,[72]
+infoxlm_base,contentwords,Arabic,Passage_1,1,[70]
+infoxlm_base,contentwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+infoxlm_base,contentwords,Arabic,Passage_3,1,[72]
+infoxlm_base,functionwords,Arabic,Passage_1,1,[70]
+infoxlm_base,functionwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+infoxlm_base,functionwords,Arabic,Passage_3,1,[72]
+infoxlm_base,intact,Arabic,Passage_1,1,[70]
+infoxlm_base,intact,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+infoxlm_base,intact,Arabic,Passage_3,1,[72]
+infoxlm_base,nouns,Arabic,Passage_1,1,[70]
+infoxlm_base,nouns,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+infoxlm_base,nouns,Arabic,Passage_3,1,[72]
+infoxlm_base,nounsverbs,Arabic,Passage_1,1,[70]
+infoxlm_base,nounsverbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+infoxlm_base,nounsverbs,Arabic,Passage_3,1,[72]
+infoxlm_base,nounsverbsadj,Arabic,Passage_1,1,[70]
+infoxlm_base,nounsverbsadj,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+infoxlm_base,nounsverbsadj,Arabic,Passage_3,1,[72]
+infoxlm_base,verbs,Arabic,Passage_1,1,[70]
+infoxlm_base,verbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+infoxlm_base,verbs,Arabic,Passage_3,1,[72]
+infoxlm_base,1LocalWordSwap,German,Passage_2,1,[123]
+infoxlm_base,2LocalWordSwap,German,Passage_2,1,[123]
+infoxlm_base,3LocalWordSwaps,German,Passage_2,1,[123]
+infoxlm_base,4LocalWordSwaps,German,Passage_2,1,[123]
+infoxlm_base,5LocalWordSwaps,German,Passage_2,1,[123]
+infoxlm_base,Reversed,German,Passage_2,1,[123]
+infoxlm_base,contentwords,German,Passage_2,1,[123]
+infoxlm_base,functionwords,German,Passage_2,1,[123]
+infoxlm_base,intact,German,Passage_2,1,[123]
+infoxlm_base,nouns,German,Passage_2,1,[123]
+infoxlm_base,nounsverbs,German,Passage_2,1,[123]
+infoxlm_base,nounsverbsadj,German,Passage_2,1,[123]
+infoxlm_base,verbs,German,Passage_2,1,[123]
+infoxlm_base,1LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+infoxlm_base,2LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+infoxlm_base,3LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+infoxlm_base,4LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+infoxlm_base,5LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+infoxlm_base,Reversed,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+infoxlm_base,contentwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+infoxlm_base,functionwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+infoxlm_base,intact,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+infoxlm_base,nouns,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+infoxlm_base,nounsverbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+infoxlm_base,nounsverbsadj,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+infoxlm_base,verbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+infoxlm_base,1LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+infoxlm_base,2LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+infoxlm_base,3LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+infoxlm_base,4LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+infoxlm_base,5LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+infoxlm_base,Reversed,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+infoxlm_base,contentwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+infoxlm_base,functionwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+infoxlm_base,intact,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+infoxlm_base,nouns,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+infoxlm_base,nounsverbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+infoxlm_base,nounsverbsadj,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+infoxlm_base,verbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+infoxlm_base,1LocalWordSwap,Russian,Passage_2,1,[28]
+infoxlm_base,1LocalWordSwap,Russian,Passage_3,1,[55]
+infoxlm_base,2LocalWordSwap,Russian,Passage_2,1,[28]
+infoxlm_base,2LocalWordSwap,Russian,Passage_3,1,[55]
+infoxlm_base,3LocalWordSwaps,Russian,Passage_2,1,[28]
+infoxlm_base,3LocalWordSwaps,Russian,Passage_3,1,[55]
+infoxlm_base,4LocalWordSwaps,Russian,Passage_2,1,[28]
+infoxlm_base,4LocalWordSwaps,Russian,Passage_3,1,[55]
+infoxlm_base,5LocalWordSwaps,Russian,Passage_2,1,[28]
+infoxlm_base,5LocalWordSwaps,Russian,Passage_3,1,[55]
+infoxlm_base,Reversed,Russian,Passage_2,1,[28]
+infoxlm_base,Reversed,Russian,Passage_3,1,[55]
+infoxlm_base,contentwords,Russian,Passage_2,1,[28]
+infoxlm_base,contentwords,Russian,Passage_3,1,[55]
+infoxlm_base,functionwords,Russian,Passage_2,1,[28]
+infoxlm_base,functionwords,Russian,Passage_3,1,[55]
+infoxlm_base,intact,Russian,Passage_2,1,[28]
+infoxlm_base,intact,Russian,Passage_3,1,[55]
+infoxlm_base,nouns,Russian,Passage_2,1,[28]
+infoxlm_base,nouns,Russian,Passage_3,1,[55]
+infoxlm_base,nounsverbs,Russian,Passage_2,1,[28]
+infoxlm_base,nounsverbs,Russian,Passage_3,1,[55]
+infoxlm_base,nounsverbsadj,Russian,Passage_2,1,[28]
+infoxlm_base,nounsverbsadj,Russian,Passage_3,1,[55]
+infoxlm_base,verbs,Russian,Passage_2,1,[28]
+infoxlm_base,verbs,Russian,Passage_3,1,[55]
+infoxlm_base,1LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+infoxlm_base,1LocalWordSwap,Polish,Passage_2,1,[128]
+infoxlm_base,1LocalWordSwap,Polish,Passage_3,1,[83]
+infoxlm_base,2LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+infoxlm_base,2LocalWordSwap,Polish,Passage_2,1,[128]
+infoxlm_base,2LocalWordSwap,Polish,Passage_3,1,[83]
+infoxlm_base,3LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+infoxlm_base,3LocalWordSwaps,Polish,Passage_2,1,[128]
+infoxlm_base,3LocalWordSwaps,Polish,Passage_3,1,[83]
+infoxlm_base,4LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+infoxlm_base,4LocalWordSwaps,Polish,Passage_2,1,[128]
+infoxlm_base,4LocalWordSwaps,Polish,Passage_3,1,[83]
+infoxlm_base,5LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+infoxlm_base,5LocalWordSwaps,Polish,Passage_2,1,[128]
+infoxlm_base,5LocalWordSwaps,Polish,Passage_3,1,[83]
+infoxlm_base,Reversed,Polish,Passage_1,2,"[39, 64]"
+infoxlm_base,Reversed,Polish,Passage_2,1,[128]
+infoxlm_base,Reversed,Polish,Passage_3,1,[83]
+infoxlm_base,contentwords,Polish,Passage_1,2,"[39, 64]"
+infoxlm_base,contentwords,Polish,Passage_2,1,[128]
+infoxlm_base,contentwords,Polish,Passage_3,1,[83]
+infoxlm_base,functionwords,Polish,Passage_1,2,"[39, 64]"
+infoxlm_base,functionwords,Polish,Passage_2,1,[128]
+infoxlm_base,functionwords,Polish,Passage_3,1,[83]
+infoxlm_base,intact,Polish,Passage_1,2,"[39, 64]"
+infoxlm_base,intact,Polish,Passage_2,1,[128]
+infoxlm_base,intact,Polish,Passage_3,1,[83]
+infoxlm_base,nouns,Polish,Passage_1,2,"[39, 64]"
+infoxlm_base,nouns,Polish,Passage_2,1,[128]
+infoxlm_base,nouns,Polish,Passage_3,1,[83]
+infoxlm_base,nounsverbs,Polish,Passage_1,2,"[39, 64]"
+infoxlm_base,nounsverbs,Polish,Passage_2,1,[128]
+infoxlm_base,nounsverbs,Polish,Passage_3,1,[83]
+infoxlm_base,nounsverbsadj,Polish,Passage_1,2,"[39, 64]"
+infoxlm_base,nounsverbsadj,Polish,Passage_2,1,[128]
+infoxlm_base,nounsverbsadj,Polish,Passage_3,1,[83]
+infoxlm_base,verbs,Polish,Passage_1,2,"[39, 64]"
+infoxlm_base,verbs,Polish,Passage_2,1,[128]
+infoxlm_base,verbs,Polish,Passage_3,1,[83]
+mdeberta,1LocalWordSwap,Arabic,Passage_1,1,[70]
+mdeberta,1LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mdeberta,1LocalWordSwap,Arabic,Passage_3,1,[72]
+mdeberta,2LocalWordSwap,Arabic,Passage_1,1,[70]
+mdeberta,2LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mdeberta,2LocalWordSwap,Arabic,Passage_3,1,[72]
+mdeberta,3LocalWordSwaps,Arabic,Passage_1,1,[70]
+mdeberta,3LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mdeberta,3LocalWordSwaps,Arabic,Passage_3,1,[72]
+mdeberta,4LocalWordSwaps,Arabic,Passage_1,1,[70]
+mdeberta,4LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mdeberta,4LocalWordSwaps,Arabic,Passage_3,1,[72]
+mdeberta,5LocalWordSwaps,Arabic,Passage_1,1,[70]
+mdeberta,5LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mdeberta,5LocalWordSwaps,Arabic,Passage_3,1,[72]
+mdeberta,Reversed,Arabic,Passage_1,1,[70]
+mdeberta,Reversed,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mdeberta,Reversed,Arabic,Passage_3,1,[72]
+mdeberta,contentwords,Arabic,Passage_1,1,[70]
+mdeberta,contentwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mdeberta,contentwords,Arabic,Passage_3,1,[72]
+mdeberta,functionwords,Arabic,Passage_1,1,[70]
+mdeberta,functionwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mdeberta,functionwords,Arabic,Passage_3,1,[72]
+mdeberta,intact,Arabic,Passage_1,1,[70]
+mdeberta,intact,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mdeberta,intact,Arabic,Passage_3,1,[72]
+mdeberta,nouns,Arabic,Passage_1,1,[70]
+mdeberta,nouns,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mdeberta,nouns,Arabic,Passage_3,1,[72]
+mdeberta,nounsverbs,Arabic,Passage_1,1,[70]
+mdeberta,nounsverbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mdeberta,nounsverbs,Arabic,Passage_3,1,[72]
+mdeberta,nounsverbsadj,Arabic,Passage_1,1,[70]
+mdeberta,nounsverbsadj,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mdeberta,nounsverbsadj,Arabic,Passage_3,1,[72]
+mdeberta,verbs,Arabic,Passage_1,1,[70]
+mdeberta,verbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mdeberta,verbs,Arabic,Passage_3,1,[72]
+mdeberta,1LocalWordSwap,German,Passage_2,1,[123]
+mdeberta,2LocalWordSwap,German,Passage_2,1,[123]
+mdeberta,3LocalWordSwaps,German,Passage_2,1,[123]
+mdeberta,4LocalWordSwaps,German,Passage_2,1,[123]
+mdeberta,5LocalWordSwaps,German,Passage_2,1,[123]
+mdeberta,Reversed,German,Passage_2,1,[123]
+mdeberta,contentwords,German,Passage_2,1,[123]
+mdeberta,functionwords,German,Passage_2,1,[123]
+mdeberta,intact,German,Passage_2,1,[123]
+mdeberta,nouns,German,Passage_2,1,[123]
+mdeberta,nounsverbs,German,Passage_2,1,[123]
+mdeberta,nounsverbsadj,German,Passage_2,1,[123]
+mdeberta,verbs,German,Passage_2,1,[123]
+mdeberta,1LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mdeberta,2LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mdeberta,3LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mdeberta,4LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mdeberta,5LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mdeberta,Reversed,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mdeberta,contentwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mdeberta,functionwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mdeberta,intact,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mdeberta,nouns,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mdeberta,nounsverbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mdeberta,nounsverbsadj,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mdeberta,verbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mdeberta,1LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mdeberta,2LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mdeberta,3LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mdeberta,4LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mdeberta,5LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mdeberta,Reversed,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mdeberta,contentwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mdeberta,functionwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mdeberta,intact,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mdeberta,nouns,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mdeberta,nounsverbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mdeberta,nounsverbsadj,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mdeberta,verbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mdeberta,1LocalWordSwap,Russian,Passage_2,1,[28]
+mdeberta,1LocalWordSwap,Russian,Passage_3,1,[55]
+mdeberta,2LocalWordSwap,Russian,Passage_2,1,[28]
+mdeberta,2LocalWordSwap,Russian,Passage_3,1,[55]
+mdeberta,3LocalWordSwaps,Russian,Passage_2,1,[28]
+mdeberta,3LocalWordSwaps,Russian,Passage_3,1,[55]
+mdeberta,4LocalWordSwaps,Russian,Passage_2,1,[28]
+mdeberta,4LocalWordSwaps,Russian,Passage_3,1,[55]
+mdeberta,5LocalWordSwaps,Russian,Passage_2,1,[28]
+mdeberta,5LocalWordSwaps,Russian,Passage_3,1,[55]
+mdeberta,Reversed,Russian,Passage_2,1,[28]
+mdeberta,Reversed,Russian,Passage_3,1,[55]
+mdeberta,contentwords,Russian,Passage_2,1,[28]
+mdeberta,contentwords,Russian,Passage_3,1,[55]
+mdeberta,functionwords,Russian,Passage_2,1,[28]
+mdeberta,functionwords,Russian,Passage_3,1,[55]
+mdeberta,intact,Russian,Passage_2,1,[28]
+mdeberta,intact,Russian,Passage_3,1,[55]
+mdeberta,nouns,Russian,Passage_2,1,[28]
+mdeberta,nouns,Russian,Passage_3,1,[55]
+mdeberta,nounsverbs,Russian,Passage_2,1,[28]
+mdeberta,nounsverbs,Russian,Passage_3,1,[55]
+mdeberta,nounsverbsadj,Russian,Passage_2,1,[28]
+mdeberta,nounsverbsadj,Russian,Passage_3,1,[55]
+mdeberta,verbs,Russian,Passage_2,1,[28]
+mdeberta,verbs,Russian,Passage_3,1,[55]
+mdeberta,1LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+mdeberta,1LocalWordSwap,Polish,Passage_2,1,[128]
+mdeberta,1LocalWordSwap,Polish,Passage_3,1,[83]
+mdeberta,2LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+mdeberta,2LocalWordSwap,Polish,Passage_2,1,[128]
+mdeberta,2LocalWordSwap,Polish,Passage_3,1,[83]
+mdeberta,3LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+mdeberta,3LocalWordSwaps,Polish,Passage_2,1,[128]
+mdeberta,3LocalWordSwaps,Polish,Passage_3,1,[83]
+mdeberta,4LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+mdeberta,4LocalWordSwaps,Polish,Passage_2,1,[128]
+mdeberta,4LocalWordSwaps,Polish,Passage_3,1,[83]
+mdeberta,5LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+mdeberta,5LocalWordSwaps,Polish,Passage_2,1,[128]
+mdeberta,5LocalWordSwaps,Polish,Passage_3,1,[83]
+mdeberta,Reversed,Polish,Passage_1,2,"[39, 64]"
+mdeberta,Reversed,Polish,Passage_2,1,[128]
+mdeberta,Reversed,Polish,Passage_3,1,[83]
+mdeberta,contentwords,Polish,Passage_1,2,"[39, 64]"
+mdeberta,contentwords,Polish,Passage_2,1,[128]
+mdeberta,contentwords,Polish,Passage_3,1,[83]
+mdeberta,functionwords,Polish,Passage_1,2,"[39, 64]"
+mdeberta,functionwords,Polish,Passage_2,1,[128]
+mdeberta,functionwords,Polish,Passage_3,1,[83]
+mdeberta,intact,Polish,Passage_1,2,"[39, 64]"
+mdeberta,intact,Polish,Passage_2,1,[128]
+mdeberta,intact,Polish,Passage_3,1,[83]
+mdeberta,nouns,Polish,Passage_1,2,"[39, 64]"
+mdeberta,nouns,Polish,Passage_2,1,[128]
+mdeberta,nouns,Polish,Passage_3,1,[83]
+mdeberta,nounsverbs,Polish,Passage_1,2,"[39, 64]"
+mdeberta,nounsverbs,Polish,Passage_2,1,[128]
+mdeberta,nounsverbs,Polish,Passage_3,1,[83]
+mdeberta,nounsverbsadj,Polish,Passage_1,2,"[39, 64]"
+mdeberta,nounsverbsadj,Polish,Passage_2,1,[128]
+mdeberta,nounsverbsadj,Polish,Passage_3,1,[83]
+mdeberta,verbs,Polish,Passage_1,2,"[39, 64]"
+mdeberta,verbs,Polish,Passage_2,1,[128]
+mdeberta,verbs,Polish,Passage_3,1,[83]
+mt5_base,1LocalWordSwap,Arabic,Passage_1,1,[70]
+mt5_base,1LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_base,1LocalWordSwap,Arabic,Passage_3,1,[72]
+mt5_base,2LocalWordSwap,Arabic,Passage_1,1,[70]
+mt5_base,2LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_base,2LocalWordSwap,Arabic,Passage_3,1,[72]
+mt5_base,3LocalWordSwaps,Arabic,Passage_1,1,[70]
+mt5_base,3LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_base,3LocalWordSwaps,Arabic,Passage_3,1,[72]
+mt5_base,4LocalWordSwaps,Arabic,Passage_1,1,[70]
+mt5_base,4LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_base,4LocalWordSwaps,Arabic,Passage_3,1,[72]
+mt5_base,5LocalWordSwaps,Arabic,Passage_1,1,[70]
+mt5_base,5LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_base,5LocalWordSwaps,Arabic,Passage_3,1,[72]
+mt5_base,Reversed,Arabic,Passage_1,1,[70]
+mt5_base,Reversed,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_base,Reversed,Arabic,Passage_3,1,[72]
+mt5_base,contentwords,Arabic,Passage_1,1,[70]
+mt5_base,contentwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_base,contentwords,Arabic,Passage_3,1,[72]
+mt5_base,functionwords,Arabic,Passage_1,1,[70]
+mt5_base,functionwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_base,functionwords,Arabic,Passage_3,1,[72]
+mt5_base,intact,Arabic,Passage_1,1,[70]
+mt5_base,intact,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_base,intact,Arabic,Passage_3,1,[72]
+mt5_base,nouns,Arabic,Passage_1,1,[70]
+mt5_base,nouns,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_base,nouns,Arabic,Passage_3,1,[72]
+mt5_base,nounsverbs,Arabic,Passage_1,1,[70]
+mt5_base,nounsverbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_base,nounsverbs,Arabic,Passage_3,1,[72]
+mt5_base,nounsverbsadj,Arabic,Passage_1,1,[70]
+mt5_base,nounsverbsadj,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_base,nounsverbsadj,Arabic,Passage_3,1,[72]
+mt5_base,verbs,Arabic,Passage_1,1,[70]
+mt5_base,verbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mt5_base,verbs,Arabic,Passage_3,1,[72]
+mt5_base,1LocalWordSwap,German,Passage_2,1,[123]
+mt5_base,2LocalWordSwap,German,Passage_2,1,[123]
+mt5_base,3LocalWordSwaps,German,Passage_2,1,[123]
+mt5_base,4LocalWordSwaps,German,Passage_2,1,[123]
+mt5_base,5LocalWordSwaps,German,Passage_2,1,[123]
+mt5_base,Reversed,German,Passage_2,1,[123]
+mt5_base,contentwords,German,Passage_2,1,[123]
+mt5_base,functionwords,German,Passage_2,1,[123]
+mt5_base,intact,German,Passage_2,1,[123]
+mt5_base,nouns,German,Passage_2,1,[123]
+mt5_base,nounsverbs,German,Passage_2,1,[123]
+mt5_base,nounsverbsadj,German,Passage_2,1,[123]
+mt5_base,verbs,German,Passage_2,1,[123]
+mt5_base,1LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_base,2LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_base,3LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_base,4LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_base,5LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_base,Reversed,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_base,contentwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_base,functionwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_base,intact,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_base,nouns,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_base,nounsverbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_base,nounsverbsadj,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_base,verbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mt5_base,1LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_base,2LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_base,3LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_base,4LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_base,5LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_base,Reversed,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_base,contentwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_base,functionwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_base,intact,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_base,nouns,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_base,nounsverbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_base,nounsverbsadj,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_base,verbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mt5_base,1LocalWordSwap,Russian,Passage_2,1,[28]
+mt5_base,1LocalWordSwap,Russian,Passage_3,1,[55]
+mt5_base,2LocalWordSwap,Russian,Passage_2,1,[28]
+mt5_base,2LocalWordSwap,Russian,Passage_3,1,[55]
+mt5_base,3LocalWordSwaps,Russian,Passage_2,1,[28]
+mt5_base,3LocalWordSwaps,Russian,Passage_3,1,[55]
+mt5_base,4LocalWordSwaps,Russian,Passage_2,1,[28]
+mt5_base,4LocalWordSwaps,Russian,Passage_3,1,[55]
+mt5_base,5LocalWordSwaps,Russian,Passage_2,1,[28]
+mt5_base,5LocalWordSwaps,Russian,Passage_3,1,[55]
+mt5_base,Reversed,Russian,Passage_2,1,[28]
+mt5_base,Reversed,Russian,Passage_3,1,[55]
+mt5_base,contentwords,Russian,Passage_2,1,[28]
+mt5_base,contentwords,Russian,Passage_3,1,[55]
+mt5_base,functionwords,Russian,Passage_2,1,[28]
+mt5_base,functionwords,Russian,Passage_3,1,[55]
+mt5_base,intact,Russian,Passage_2,1,[28]
+mt5_base,intact,Russian,Passage_3,1,[55]
+mt5_base,nouns,Russian,Passage_2,1,[28]
+mt5_base,nouns,Russian,Passage_3,1,[55]
+mt5_base,nounsverbs,Russian,Passage_2,1,[28]
+mt5_base,nounsverbs,Russian,Passage_3,1,[55]
+mt5_base,nounsverbsadj,Russian,Passage_2,1,[28]
+mt5_base,nounsverbsadj,Russian,Passage_3,1,[55]
+mt5_base,verbs,Russian,Passage_2,1,[28]
+mt5_base,verbs,Russian,Passage_3,1,[55]
+mt5_base,1LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+mt5_base,1LocalWordSwap,Polish,Passage_2,1,[128]
+mt5_base,1LocalWordSwap,Polish,Passage_3,1,[83]
+mt5_base,2LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+mt5_base,2LocalWordSwap,Polish,Passage_2,1,[128]
+mt5_base,2LocalWordSwap,Polish,Passage_3,1,[83]
+mt5_base,3LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+mt5_base,3LocalWordSwaps,Polish,Passage_2,1,[128]
+mt5_base,3LocalWordSwaps,Polish,Passage_3,1,[83]
+mt5_base,4LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+mt5_base,4LocalWordSwaps,Polish,Passage_2,1,[128]
+mt5_base,4LocalWordSwaps,Polish,Passage_3,1,[83]
+mt5_base,5LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+mt5_base,5LocalWordSwaps,Polish,Passage_2,1,[128]
+mt5_base,5LocalWordSwaps,Polish,Passage_3,1,[83]
+mt5_base,Reversed,Polish,Passage_1,2,"[39, 64]"
+mt5_base,Reversed,Polish,Passage_2,1,[128]
+mt5_base,Reversed,Polish,Passage_3,1,[83]
+mt5_base,contentwords,Polish,Passage_1,2,"[39, 64]"
+mt5_base,contentwords,Polish,Passage_2,1,[128]
+mt5_base,contentwords,Polish,Passage_3,1,[83]
+mt5_base,functionwords,Polish,Passage_1,2,"[39, 64]"
+mt5_base,functionwords,Polish,Passage_2,1,[128]
+mt5_base,functionwords,Polish,Passage_3,1,[83]
+mt5_base,intact,Polish,Passage_1,2,"[39, 64]"
+mt5_base,intact,Polish,Passage_2,1,[128]
+mt5_base,intact,Polish,Passage_3,1,[83]
+mt5_base,nouns,Polish,Passage_1,2,"[39, 64]"
+mt5_base,nouns,Polish,Passage_2,1,[128]
+mt5_base,nouns,Polish,Passage_3,1,[83]
+mt5_base,nounsverbs,Polish,Passage_1,2,"[39, 64]"
+mt5_base,nounsverbs,Polish,Passage_2,1,[128]
+mt5_base,nounsverbs,Polish,Passage_3,1,[83]
+mt5_base,nounsverbsadj,Polish,Passage_1,2,"[39, 64]"
+mt5_base,nounsverbsadj,Polish,Passage_2,1,[128]
+mt5_base,nounsverbsadj,Polish,Passage_3,1,[83]
+mt5_base,verbs,Polish,Passage_1,2,"[39, 64]"
+mt5_base,verbs,Polish,Passage_2,1,[128]
+mt5_base,verbs,Polish,Passage_3,1,[83]
+mgpt,1LocalWordSwap,Arabic,Passage_1,1,[70]
+mgpt,1LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mgpt,1LocalWordSwap,Arabic,Passage_3,1,[72]
+mgpt,2LocalWordSwap,Arabic,Passage_1,1,[70]
+mgpt,2LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mgpt,2LocalWordSwap,Arabic,Passage_3,1,[72]
+mgpt,3LocalWordSwaps,Arabic,Passage_1,1,[70]
+mgpt,3LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mgpt,3LocalWordSwaps,Arabic,Passage_3,1,[72]
+mgpt,4LocalWordSwaps,Arabic,Passage_1,1,[70]
+mgpt,4LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mgpt,4LocalWordSwaps,Arabic,Passage_3,1,[72]
+mgpt,5LocalWordSwaps,Arabic,Passage_1,1,[70]
+mgpt,5LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mgpt,5LocalWordSwaps,Arabic,Passage_3,1,[72]
+mgpt,Reversed,Arabic,Passage_1,1,[70]
+mgpt,Reversed,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mgpt,Reversed,Arabic,Passage_3,1,[72]
+mgpt,contentwords,Arabic,Passage_1,1,[70]
+mgpt,contentwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mgpt,contentwords,Arabic,Passage_3,1,[72]
+mgpt,functionwords,Arabic,Passage_1,1,[70]
+mgpt,functionwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mgpt,functionwords,Arabic,Passage_3,1,[72]
+mgpt,intact,Arabic,Passage_1,1,[70]
+mgpt,intact,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mgpt,intact,Arabic,Passage_3,1,[72]
+mgpt,nouns,Arabic,Passage_1,1,[70]
+mgpt,nouns,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mgpt,nouns,Arabic,Passage_3,1,[72]
+mgpt,nounsverbs,Arabic,Passage_1,1,[70]
+mgpt,nounsverbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mgpt,nounsverbs,Arabic,Passage_3,1,[72]
+mgpt,nounsverbsadj,Arabic,Passage_1,1,[70]
+mgpt,nounsverbsadj,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mgpt,nounsverbsadj,Arabic,Passage_3,1,[72]
+mgpt,verbs,Arabic,Passage_1,1,[70]
+mgpt,verbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+mgpt,verbs,Arabic,Passage_3,1,[72]
+mgpt,1LocalWordSwap,German,Passage_2,1,[123]
+mgpt,2LocalWordSwap,German,Passage_2,1,[123]
+mgpt,3LocalWordSwaps,German,Passage_2,1,[123]
+mgpt,4LocalWordSwaps,German,Passage_2,1,[123]
+mgpt,5LocalWordSwaps,German,Passage_2,1,[123]
+mgpt,Reversed,German,Passage_2,1,[123]
+mgpt,contentwords,German,Passage_2,1,[123]
+mgpt,functionwords,German,Passage_2,1,[123]
+mgpt,intact,German,Passage_2,1,[123]
+mgpt,nouns,German,Passage_2,1,[123]
+mgpt,nounsverbs,German,Passage_2,1,[123]
+mgpt,nounsverbsadj,German,Passage_2,1,[123]
+mgpt,verbs,German,Passage_2,1,[123]
+mgpt,1LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mgpt,2LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mgpt,3LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mgpt,4LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mgpt,5LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mgpt,Reversed,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mgpt,contentwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mgpt,functionwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mgpt,intact,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mgpt,nouns,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mgpt,nounsverbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mgpt,nounsverbsadj,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mgpt,verbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+mgpt,1LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mgpt,2LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mgpt,3LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mgpt,4LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mgpt,5LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mgpt,Reversed,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mgpt,contentwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mgpt,functionwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mgpt,intact,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mgpt,nouns,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mgpt,nounsverbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mgpt,nounsverbsadj,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mgpt,verbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+mgpt,1LocalWordSwap,Russian,Passage_2,1,[28]
+mgpt,1LocalWordSwap,Russian,Passage_3,1,[55]
+mgpt,2LocalWordSwap,Russian,Passage_2,1,[28]
+mgpt,2LocalWordSwap,Russian,Passage_3,1,[55]
+mgpt,3LocalWordSwaps,Russian,Passage_2,1,[28]
+mgpt,3LocalWordSwaps,Russian,Passage_3,1,[55]
+mgpt,4LocalWordSwaps,Russian,Passage_2,1,[28]
+mgpt,4LocalWordSwaps,Russian,Passage_3,1,[55]
+mgpt,5LocalWordSwaps,Russian,Passage_2,1,[28]
+mgpt,5LocalWordSwaps,Russian,Passage_3,1,[55]
+mgpt,Reversed,Russian,Passage_2,1,[28]
+mgpt,Reversed,Russian,Passage_3,1,[55]
+mgpt,contentwords,Russian,Passage_2,1,[28]
+mgpt,contentwords,Russian,Passage_3,1,[55]
+mgpt,functionwords,Russian,Passage_2,1,[28]
+mgpt,functionwords,Russian,Passage_3,1,[55]
+mgpt,intact,Russian,Passage_2,1,[28]
+mgpt,intact,Russian,Passage_3,1,[55]
+mgpt,nouns,Russian,Passage_2,1,[28]
+mgpt,nouns,Russian,Passage_3,1,[55]
+mgpt,nounsverbs,Russian,Passage_2,1,[28]
+mgpt,nounsverbs,Russian,Passage_3,1,[55]
+mgpt,nounsverbsadj,Russian,Passage_2,1,[28]
+mgpt,nounsverbsadj,Russian,Passage_3,1,[55]
+mgpt,verbs,Russian,Passage_2,1,[28]
+mgpt,verbs,Russian,Passage_3,1,[55]
+mgpt,1LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+mgpt,1LocalWordSwap,Polish,Passage_2,1,[128]
+mgpt,1LocalWordSwap,Polish,Passage_3,1,[83]
+mgpt,2LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+mgpt,2LocalWordSwap,Polish,Passage_2,1,[128]
+mgpt,2LocalWordSwap,Polish,Passage_3,1,[83]
+mgpt,3LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+mgpt,3LocalWordSwaps,Polish,Passage_2,1,[128]
+mgpt,3LocalWordSwaps,Polish,Passage_3,1,[83]
+mgpt,4LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+mgpt,4LocalWordSwaps,Polish,Passage_2,1,[128]
+mgpt,4LocalWordSwaps,Polish,Passage_3,1,[83]
+mgpt,5LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+mgpt,5LocalWordSwaps,Polish,Passage_2,1,[128]
+mgpt,5LocalWordSwaps,Polish,Passage_3,1,[83]
+mgpt,Reversed,Polish,Passage_1,2,"[39, 64]"
+mgpt,Reversed,Polish,Passage_2,1,[128]
+mgpt,Reversed,Polish,Passage_3,1,[83]
+mgpt,contentwords,Polish,Passage_1,2,"[39, 64]"
+mgpt,contentwords,Polish,Passage_2,1,[128]
+mgpt,contentwords,Polish,Passage_3,1,[83]
+mgpt,functionwords,Polish,Passage_1,2,"[39, 64]"
+mgpt,functionwords,Polish,Passage_2,1,[128]
+mgpt,functionwords,Polish,Passage_3,1,[83]
+mgpt,intact,Polish,Passage_1,2,"[39, 64]"
+mgpt,intact,Polish,Passage_2,1,[128]
+mgpt,intact,Polish,Passage_3,1,[83]
+mgpt,nouns,Polish,Passage_1,2,"[39, 64]"
+mgpt,nouns,Polish,Passage_2,1,[128]
+mgpt,nouns,Polish,Passage_3,1,[83]
+mgpt,nounsverbs,Polish,Passage_1,2,"[39, 64]"
+mgpt,nounsverbs,Polish,Passage_2,1,[128]
+mgpt,nounsverbs,Polish,Passage_3,1,[83]
+mgpt,nounsverbsadj,Polish,Passage_1,2,"[39, 64]"
+mgpt,nounsverbsadj,Polish,Passage_2,1,[128]
+mgpt,nounsverbsadj,Polish,Passage_3,1,[83]
+mgpt,verbs,Polish,Passage_1,2,"[39, 64]"
+mgpt,verbs,Polish,Passage_2,1,[128]
+mgpt,verbs,Polish,Passage_3,1,[83]
+infoxlm_large,1LocalWordSwap,Arabic,Passage_1,1,[70]
+infoxlm_large,1LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+infoxlm_large,1LocalWordSwap,Arabic,Passage_3,1,[72]
+infoxlm_large,2LocalWordSwap,Arabic,Passage_1,1,[70]
+infoxlm_large,2LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+infoxlm_large,2LocalWordSwap,Arabic,Passage_3,1,[72]
+infoxlm_large,3LocalWordSwaps,Arabic,Passage_1,1,[70]
+infoxlm_large,3LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+infoxlm_large,3LocalWordSwaps,Arabic,Passage_3,1,[72]
+infoxlm_large,4LocalWordSwaps,Arabic,Passage_1,1,[70]
+infoxlm_large,4LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+infoxlm_large,4LocalWordSwaps,Arabic,Passage_3,1,[72]
+infoxlm_large,5LocalWordSwaps,Arabic,Passage_1,1,[70]
+infoxlm_large,5LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+infoxlm_large,5LocalWordSwaps,Arabic,Passage_3,1,[72]
+infoxlm_large,Reversed,Arabic,Passage_1,1,[70]
+infoxlm_large,Reversed,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+infoxlm_large,Reversed,Arabic,Passage_3,1,[72]
+infoxlm_large,contentwords,Arabic,Passage_1,1,[70]
+infoxlm_large,contentwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+infoxlm_large,contentwords,Arabic,Passage_3,1,[72]
+infoxlm_large,functionwords,Arabic,Passage_1,1,[70]
+infoxlm_large,functionwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+infoxlm_large,functionwords,Arabic,Passage_3,1,[72]
+infoxlm_large,intact,Arabic,Passage_1,1,[70]
+infoxlm_large,intact,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+infoxlm_large,intact,Arabic,Passage_3,1,[72]
+infoxlm_large,nouns,Arabic,Passage_1,1,[70]
+infoxlm_large,nouns,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+infoxlm_large,nouns,Arabic,Passage_3,1,[72]
+infoxlm_large,nounsverbs,Arabic,Passage_1,1,[70]
+infoxlm_large,nounsverbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+infoxlm_large,nounsverbs,Arabic,Passage_3,1,[72]
+infoxlm_large,nounsverbsadj,Arabic,Passage_1,1,[70]
+infoxlm_large,nounsverbsadj,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+infoxlm_large,nounsverbsadj,Arabic,Passage_3,1,[72]
+infoxlm_large,verbs,Arabic,Passage_1,1,[70]
+infoxlm_large,verbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+infoxlm_large,verbs,Arabic,Passage_3,1,[72]
+infoxlm_large,1LocalWordSwap,German,Passage_2,1,[123]
+infoxlm_large,2LocalWordSwap,German,Passage_2,1,[123]
+infoxlm_large,3LocalWordSwaps,German,Passage_2,1,[123]
+infoxlm_large,4LocalWordSwaps,German,Passage_2,1,[123]
+infoxlm_large,5LocalWordSwaps,German,Passage_2,1,[123]
+infoxlm_large,Reversed,German,Passage_2,1,[123]
+infoxlm_large,contentwords,German,Passage_2,1,[123]
+infoxlm_large,functionwords,German,Passage_2,1,[123]
+infoxlm_large,intact,German,Passage_2,1,[123]
+infoxlm_large,nouns,German,Passage_2,1,[123]
+infoxlm_large,nounsverbs,German,Passage_2,1,[123]
+infoxlm_large,nounsverbsadj,German,Passage_2,1,[123]
+infoxlm_large,verbs,German,Passage_2,1,[123]
+infoxlm_large,1LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+infoxlm_large,2LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+infoxlm_large,3LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+infoxlm_large,4LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+infoxlm_large,5LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+infoxlm_large,Reversed,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+infoxlm_large,contentwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+infoxlm_large,functionwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+infoxlm_large,intact,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+infoxlm_large,nouns,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+infoxlm_large,nounsverbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+infoxlm_large,nounsverbsadj,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+infoxlm_large,verbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+infoxlm_large,1LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+infoxlm_large,2LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+infoxlm_large,3LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+infoxlm_large,4LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+infoxlm_large,5LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+infoxlm_large,Reversed,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+infoxlm_large,contentwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+infoxlm_large,functionwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+infoxlm_large,intact,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+infoxlm_large,nouns,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+infoxlm_large,nounsverbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+infoxlm_large,nounsverbsadj,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+infoxlm_large,verbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+infoxlm_large,1LocalWordSwap,Russian,Passage_2,1,[28]
+infoxlm_large,1LocalWordSwap,Russian,Passage_3,1,[55]
+infoxlm_large,2LocalWordSwap,Russian,Passage_2,1,[28]
+infoxlm_large,2LocalWordSwap,Russian,Passage_3,1,[55]
+infoxlm_large,3LocalWordSwaps,Russian,Passage_2,1,[28]
+infoxlm_large,3LocalWordSwaps,Russian,Passage_3,1,[55]
+infoxlm_large,4LocalWordSwaps,Russian,Passage_2,1,[28]
+infoxlm_large,4LocalWordSwaps,Russian,Passage_3,1,[55]
+infoxlm_large,5LocalWordSwaps,Russian,Passage_2,1,[28]
+infoxlm_large,5LocalWordSwaps,Russian,Passage_3,1,[55]
+infoxlm_large,Reversed,Russian,Passage_2,1,[28]
+infoxlm_large,Reversed,Russian,Passage_3,1,[55]
+infoxlm_large,contentwords,Russian,Passage_2,1,[28]
+infoxlm_large,contentwords,Russian,Passage_3,1,[55]
+infoxlm_large,functionwords,Russian,Passage_2,1,[28]
+infoxlm_large,functionwords,Russian,Passage_3,1,[55]
+infoxlm_large,intact,Russian,Passage_2,1,[28]
+infoxlm_large,intact,Russian,Passage_3,1,[55]
+infoxlm_large,nouns,Russian,Passage_2,1,[28]
+infoxlm_large,nouns,Russian,Passage_3,1,[55]
+infoxlm_large,nounsverbs,Russian,Passage_2,1,[28]
+infoxlm_large,nounsverbs,Russian,Passage_3,1,[55]
+infoxlm_large,nounsverbsadj,Russian,Passage_2,1,[28]
+infoxlm_large,nounsverbsadj,Russian,Passage_3,1,[55]
+infoxlm_large,verbs,Russian,Passage_2,1,[28]
+infoxlm_large,verbs,Russian,Passage_3,1,[55]
+infoxlm_large,1LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+infoxlm_large,1LocalWordSwap,Polish,Passage_2,1,[128]
+infoxlm_large,1LocalWordSwap,Polish,Passage_3,1,[83]
+infoxlm_large,2LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+infoxlm_large,2LocalWordSwap,Polish,Passage_2,1,[128]
+infoxlm_large,2LocalWordSwap,Polish,Passage_3,1,[83]
+infoxlm_large,3LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+infoxlm_large,3LocalWordSwaps,Polish,Passage_2,1,[128]
+infoxlm_large,3LocalWordSwaps,Polish,Passage_3,1,[83]
+infoxlm_large,4LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+infoxlm_large,4LocalWordSwaps,Polish,Passage_2,1,[128]
+infoxlm_large,4LocalWordSwaps,Polish,Passage_3,1,[83]
+infoxlm_large,5LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+infoxlm_large,5LocalWordSwaps,Polish,Passage_2,1,[128]
+infoxlm_large,5LocalWordSwaps,Polish,Passage_3,1,[83]
+infoxlm_large,Reversed,Polish,Passage_1,2,"[39, 64]"
+infoxlm_large,Reversed,Polish,Passage_2,1,[128]
+infoxlm_large,Reversed,Polish,Passage_3,1,[83]
+infoxlm_large,contentwords,Polish,Passage_1,2,"[39, 64]"
+infoxlm_large,contentwords,Polish,Passage_2,1,[128]
+infoxlm_large,contentwords,Polish,Passage_3,1,[83]
+infoxlm_large,functionwords,Polish,Passage_1,2,"[39, 64]"
+infoxlm_large,functionwords,Polish,Passage_2,1,[128]
+infoxlm_large,functionwords,Polish,Passage_3,1,[83]
+infoxlm_large,intact,Polish,Passage_1,2,"[39, 64]"
+infoxlm_large,intact,Polish,Passage_2,1,[128]
+infoxlm_large,intact,Polish,Passage_3,1,[83]
+infoxlm_large,nouns,Polish,Passage_1,2,"[39, 64]"
+infoxlm_large,nouns,Polish,Passage_2,1,[128]
+infoxlm_large,nouns,Polish,Passage_3,1,[83]
+infoxlm_large,nounsverbs,Polish,Passage_1,2,"[39, 64]"
+infoxlm_large,nounsverbs,Polish,Passage_2,1,[128]
+infoxlm_large,nounsverbs,Polish,Passage_3,1,[83]
+infoxlm_large,nounsverbsadj,Polish,Passage_1,2,"[39, 64]"
+infoxlm_large,nounsverbsadj,Polish,Passage_2,1,[128]
+infoxlm_large,nounsverbsadj,Polish,Passage_3,1,[83]
+infoxlm_large,verbs,Polish,Passage_1,2,"[39, 64]"
+infoxlm_large,verbs,Polish,Passage_2,1,[128]
+infoxlm_large,verbs,Polish,Passage_3,1,[83]
+xglm_small,1LocalWordSwap,Arabic,Passage_1,1,[70]
+xglm_small,1LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_small,1LocalWordSwap,Arabic,Passage_3,1,[72]
+xglm_small,2LocalWordSwap,Arabic,Passage_1,1,[70]
+xglm_small,2LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_small,2LocalWordSwap,Arabic,Passage_3,1,[72]
+xglm_small,3LocalWordSwaps,Arabic,Passage_1,1,[70]
+xglm_small,3LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_small,3LocalWordSwaps,Arabic,Passage_3,1,[72]
+xglm_small,4LocalWordSwaps,Arabic,Passage_1,1,[70]
+xglm_small,4LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_small,4LocalWordSwaps,Arabic,Passage_3,1,[72]
+xglm_small,5LocalWordSwaps,Arabic,Passage_1,1,[70]
+xglm_small,5LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_small,5LocalWordSwaps,Arabic,Passage_3,1,[72]
+xglm_small,Reversed,Arabic,Passage_1,1,[70]
+xglm_small,Reversed,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_small,Reversed,Arabic,Passage_3,1,[72]
+xglm_small,contentwords,Arabic,Passage_1,1,[70]
+xglm_small,contentwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_small,contentwords,Arabic,Passage_3,1,[72]
+xglm_small,functionwords,Arabic,Passage_1,1,[70]
+xglm_small,functionwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_small,functionwords,Arabic,Passage_3,1,[72]
+xglm_small,intact,Arabic,Passage_1,1,[70]
+xglm_small,intact,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_small,intact,Arabic,Passage_3,1,[72]
+xglm_small,nouns,Arabic,Passage_1,1,[70]
+xglm_small,nouns,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_small,nouns,Arabic,Passage_3,1,[72]
+xglm_small,nounsverbs,Arabic,Passage_1,1,[70]
+xglm_small,nounsverbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_small,nounsverbs,Arabic,Passage_3,1,[72]
+xglm_small,nounsverbsadj,Arabic,Passage_1,1,[70]
+xglm_small,nounsverbsadj,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_small,nounsverbsadj,Arabic,Passage_3,1,[72]
+xglm_small,verbs,Arabic,Passage_1,1,[70]
+xglm_small,verbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+xglm_small,verbs,Arabic,Passage_3,1,[72]
+xglm_small,1LocalWordSwap,German,Passage_2,1,[123]
+xglm_small,2LocalWordSwap,German,Passage_2,1,[123]
+xglm_small,3LocalWordSwaps,German,Passage_2,1,[123]
+xglm_small,4LocalWordSwaps,German,Passage_2,1,[123]
+xglm_small,5LocalWordSwaps,German,Passage_2,1,[123]
+xglm_small,Reversed,German,Passage_2,1,[123]
+xglm_small,contentwords,German,Passage_2,1,[123]
+xglm_small,functionwords,German,Passage_2,1,[123]
+xglm_small,intact,German,Passage_2,1,[123]
+xglm_small,nouns,German,Passage_2,1,[123]
+xglm_small,nounsverbs,German,Passage_2,1,[123]
+xglm_small,nounsverbsadj,German,Passage_2,1,[123]
+xglm_small,verbs,German,Passage_2,1,[123]
+xglm_small,1LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_small,2LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_small,3LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_small,4LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_small,5LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_small,Reversed,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_small,contentwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_small,functionwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_small,intact,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_small,nouns,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_small,nounsverbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_small,nounsverbsadj,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_small,verbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+xglm_small,1LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_small,2LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_small,3LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_small,4LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_small,5LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_small,Reversed,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_small,contentwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_small,functionwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_small,intact,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_small,nouns,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_small,nounsverbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_small,nounsverbsadj,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_small,verbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+xglm_small,1LocalWordSwap,Russian,Passage_2,1,[28]
+xglm_small,1LocalWordSwap,Russian,Passage_3,1,[55]
+xglm_small,2LocalWordSwap,Russian,Passage_2,1,[28]
+xglm_small,2LocalWordSwap,Russian,Passage_3,1,[55]
+xglm_small,3LocalWordSwaps,Russian,Passage_2,1,[28]
+xglm_small,3LocalWordSwaps,Russian,Passage_3,1,[55]
+xglm_small,4LocalWordSwaps,Russian,Passage_2,1,[28]
+xglm_small,4LocalWordSwaps,Russian,Passage_3,1,[55]
+xglm_small,5LocalWordSwaps,Russian,Passage_2,1,[28]
+xglm_small,5LocalWordSwaps,Russian,Passage_3,1,[55]
+xglm_small,Reversed,Russian,Passage_2,1,[28]
+xglm_small,Reversed,Russian,Passage_3,1,[55]
+xglm_small,contentwords,Russian,Passage_2,1,[28]
+xglm_small,contentwords,Russian,Passage_3,1,[55]
+xglm_small,functionwords,Russian,Passage_2,1,[28]
+xglm_small,functionwords,Russian,Passage_3,1,[55]
+xglm_small,intact,Russian,Passage_2,1,[28]
+xglm_small,intact,Russian,Passage_3,1,[55]
+xglm_small,nouns,Russian,Passage_2,1,[28]
+xglm_small,nouns,Russian,Passage_3,1,[55]
+xglm_small,nounsverbs,Russian,Passage_2,1,[28]
+xglm_small,nounsverbs,Russian,Passage_3,1,[55]
+xglm_small,nounsverbsadj,Russian,Passage_2,1,[28]
+xglm_small,nounsverbsadj,Russian,Passage_3,1,[55]
+xglm_small,verbs,Russian,Passage_2,1,[28]
+xglm_small,verbs,Russian,Passage_3,1,[55]
+xglm_small,1LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+xglm_small,1LocalWordSwap,Polish,Passage_2,1,[128]
+xglm_small,1LocalWordSwap,Polish,Passage_3,1,[83]
+xglm_small,2LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+xglm_small,2LocalWordSwap,Polish,Passage_2,1,[128]
+xglm_small,2LocalWordSwap,Polish,Passage_3,1,[83]
+xglm_small,3LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+xglm_small,3LocalWordSwaps,Polish,Passage_2,1,[128]
+xglm_small,3LocalWordSwaps,Polish,Passage_3,1,[83]
+xglm_small,4LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+xglm_small,4LocalWordSwaps,Polish,Passage_2,1,[128]
+xglm_small,4LocalWordSwaps,Polish,Passage_3,1,[83]
+xglm_small,5LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+xglm_small,5LocalWordSwaps,Polish,Passage_2,1,[128]
+xglm_small,5LocalWordSwaps,Polish,Passage_3,1,[83]
+xglm_small,Reversed,Polish,Passage_1,2,"[39, 64]"
+xglm_small,Reversed,Polish,Passage_2,1,[128]
+xglm_small,Reversed,Polish,Passage_3,1,[83]
+xglm_small,contentwords,Polish,Passage_1,2,"[39, 64]"
+xglm_small,contentwords,Polish,Passage_2,1,[128]
+xglm_small,contentwords,Polish,Passage_3,1,[83]
+xglm_small,functionwords,Polish,Passage_1,2,"[39, 64]"
+xglm_small,functionwords,Polish,Passage_2,1,[128]
+xglm_small,functionwords,Polish,Passage_3,1,[83]
+xglm_small,intact,Polish,Passage_1,2,"[39, 64]"
+xglm_small,intact,Polish,Passage_2,1,[128]
+xglm_small,intact,Polish,Passage_3,1,[83]
+xglm_small,nouns,Polish,Passage_1,2,"[39, 64]"
+xglm_small,nouns,Polish,Passage_2,1,[128]
+xglm_small,nouns,Polish,Passage_3,1,[83]
+xglm_small,nounsverbs,Polish,Passage_1,2,"[39, 64]"
+xglm_small,nounsverbs,Polish,Passage_2,1,[128]
+xglm_small,nounsverbs,Polish,Passage_3,1,[83]
+xglm_small,nounsverbsadj,Polish,Passage_1,2,"[39, 64]"
+xglm_small,nounsverbsadj,Polish,Passage_2,1,[128]
+xglm_small,nounsverbsadj,Polish,Passage_3,1,[83]
+xglm_small,verbs,Polish,Passage_1,2,"[39, 64]"
+xglm_small,verbs,Polish,Passage_2,1,[128]
+xglm_small,verbs,Polish,Passage_3,1,[83]
+multiminilm,1LocalWordSwap,Arabic,Passage_1,1,[70]
+multiminilm,1LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+multiminilm,1LocalWordSwap,Arabic,Passage_3,1,[72]
+multiminilm,2LocalWordSwap,Arabic,Passage_1,1,[70]
+multiminilm,2LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+multiminilm,2LocalWordSwap,Arabic,Passage_3,1,[72]
+multiminilm,3LocalWordSwaps,Arabic,Passage_1,1,[70]
+multiminilm,3LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+multiminilm,3LocalWordSwaps,Arabic,Passage_3,1,[72]
+multiminilm,4LocalWordSwaps,Arabic,Passage_1,1,[70]
+multiminilm,4LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+multiminilm,4LocalWordSwaps,Arabic,Passage_3,1,[72]
+multiminilm,5LocalWordSwaps,Arabic,Passage_1,1,[70]
+multiminilm,5LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+multiminilm,5LocalWordSwaps,Arabic,Passage_3,1,[72]
+multiminilm,Reversed,Arabic,Passage_1,1,[70]
+multiminilm,Reversed,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+multiminilm,Reversed,Arabic,Passage_3,1,[72]
+multiminilm,contentwords,Arabic,Passage_1,1,[70]
+multiminilm,contentwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+multiminilm,contentwords,Arabic,Passage_3,1,[72]
+multiminilm,functionwords,Arabic,Passage_1,1,[70]
+multiminilm,functionwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+multiminilm,functionwords,Arabic,Passage_3,1,[72]
+multiminilm,intact,Arabic,Passage_1,1,[70]
+multiminilm,intact,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+multiminilm,intact,Arabic,Passage_3,1,[72]
+multiminilm,nouns,Arabic,Passage_1,1,[70]
+multiminilm,nouns,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+multiminilm,nouns,Arabic,Passage_3,1,[72]
+multiminilm,nounsverbs,Arabic,Passage_1,1,[70]
+multiminilm,nounsverbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+multiminilm,nounsverbs,Arabic,Passage_3,1,[72]
+multiminilm,nounsverbsadj,Arabic,Passage_1,1,[70]
+multiminilm,nounsverbsadj,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+multiminilm,nounsverbsadj,Arabic,Passage_3,1,[72]
+multiminilm,verbs,Arabic,Passage_1,1,[70]
+multiminilm,verbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+multiminilm,verbs,Arabic,Passage_3,1,[72]
+multiminilm,1LocalWordSwap,German,Passage_2,1,[123]
+multiminilm,2LocalWordSwap,German,Passage_2,1,[123]
+multiminilm,3LocalWordSwaps,German,Passage_2,1,[123]
+multiminilm,4LocalWordSwaps,German,Passage_2,1,[123]
+multiminilm,5LocalWordSwaps,German,Passage_2,1,[123]
+multiminilm,Reversed,German,Passage_2,1,[123]
+multiminilm,contentwords,German,Passage_2,1,[123]
+multiminilm,functionwords,German,Passage_2,1,[123]
+multiminilm,intact,German,Passage_2,1,[123]
+multiminilm,nouns,German,Passage_2,1,[123]
+multiminilm,nounsverbs,German,Passage_2,1,[123]
+multiminilm,nounsverbsadj,German,Passage_2,1,[123]
+multiminilm,verbs,German,Passage_2,1,[123]
+multiminilm,1LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+multiminilm,2LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+multiminilm,3LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+multiminilm,4LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+multiminilm,5LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+multiminilm,Reversed,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+multiminilm,contentwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+multiminilm,functionwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+multiminilm,intact,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+multiminilm,nouns,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+multiminilm,nounsverbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+multiminilm,nounsverbsadj,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+multiminilm,verbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+multiminilm,1LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+multiminilm,2LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+multiminilm,3LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+multiminilm,4LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+multiminilm,5LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+multiminilm,Reversed,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+multiminilm,contentwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+multiminilm,functionwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+multiminilm,intact,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+multiminilm,nouns,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+multiminilm,nounsverbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+multiminilm,nounsverbsadj,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+multiminilm,verbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+multiminilm,1LocalWordSwap,Russian,Passage_2,1,[28]
+multiminilm,1LocalWordSwap,Russian,Passage_3,1,[55]
+multiminilm,2LocalWordSwap,Russian,Passage_2,1,[28]
+multiminilm,2LocalWordSwap,Russian,Passage_3,1,[55]
+multiminilm,3LocalWordSwaps,Russian,Passage_2,1,[28]
+multiminilm,3LocalWordSwaps,Russian,Passage_3,1,[55]
+multiminilm,4LocalWordSwaps,Russian,Passage_2,1,[28]
+multiminilm,4LocalWordSwaps,Russian,Passage_3,1,[55]
+multiminilm,5LocalWordSwaps,Russian,Passage_2,1,[28]
+multiminilm,5LocalWordSwaps,Russian,Passage_3,1,[55]
+multiminilm,Reversed,Russian,Passage_2,1,[28]
+multiminilm,Reversed,Russian,Passage_3,1,[55]
+multiminilm,contentwords,Russian,Passage_2,1,[28]
+multiminilm,contentwords,Russian,Passage_3,1,[55]
+multiminilm,functionwords,Russian,Passage_2,1,[28]
+multiminilm,functionwords,Russian,Passage_3,1,[55]
+multiminilm,intact,Russian,Passage_2,1,[28]
+multiminilm,intact,Russian,Passage_3,1,[55]
+multiminilm,nouns,Russian,Passage_2,1,[28]
+multiminilm,nouns,Russian,Passage_3,1,[55]
+multiminilm,nounsverbs,Russian,Passage_2,1,[28]
+multiminilm,nounsverbs,Russian,Passage_3,1,[55]
+multiminilm,nounsverbsadj,Russian,Passage_2,1,[28]
+multiminilm,nounsverbsadj,Russian,Passage_3,1,[55]
+multiminilm,verbs,Russian,Passage_2,1,[28]
+multiminilm,verbs,Russian,Passage_3,1,[55]
+multiminilm,1LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+multiminilm,1LocalWordSwap,Polish,Passage_2,1,[128]
+multiminilm,1LocalWordSwap,Polish,Passage_3,1,[83]
+multiminilm,2LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+multiminilm,2LocalWordSwap,Polish,Passage_2,1,[128]
+multiminilm,2LocalWordSwap,Polish,Passage_3,1,[83]
+multiminilm,3LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+multiminilm,3LocalWordSwaps,Polish,Passage_2,1,[128]
+multiminilm,3LocalWordSwaps,Polish,Passage_3,1,[83]
+multiminilm,4LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+multiminilm,4LocalWordSwaps,Polish,Passage_2,1,[128]
+multiminilm,4LocalWordSwaps,Polish,Passage_3,1,[83]
+multiminilm,5LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+multiminilm,5LocalWordSwaps,Polish,Passage_2,1,[128]
+multiminilm,5LocalWordSwaps,Polish,Passage_3,1,[83]
+multiminilm,Reversed,Polish,Passage_1,2,"[39, 64]"
+multiminilm,Reversed,Polish,Passage_2,1,[128]
+multiminilm,Reversed,Polish,Passage_3,1,[83]
+multiminilm,contentwords,Polish,Passage_1,2,"[39, 64]"
+multiminilm,contentwords,Polish,Passage_2,1,[128]
+multiminilm,contentwords,Polish,Passage_3,1,[83]
+multiminilm,functionwords,Polish,Passage_1,2,"[39, 64]"
+multiminilm,functionwords,Polish,Passage_2,1,[128]
+multiminilm,functionwords,Polish,Passage_3,1,[83]
+multiminilm,intact,Polish,Passage_1,2,"[39, 64]"
+multiminilm,intact,Polish,Passage_2,1,[128]
+multiminilm,intact,Polish,Passage_3,1,[83]
+multiminilm,nouns,Polish,Passage_1,2,"[39, 64]"
+multiminilm,nouns,Polish,Passage_2,1,[128]
+multiminilm,nouns,Polish,Passage_3,1,[83]
+multiminilm,nounsverbs,Polish,Passage_1,2,"[39, 64]"
+multiminilm,nounsverbs,Polish,Passage_2,1,[128]
+multiminilm,nounsverbs,Polish,Passage_3,1,[83]
+multiminilm,nounsverbsadj,Polish,Passage_1,2,"[39, 64]"
+multiminilm,nounsverbsadj,Polish,Passage_2,1,[128]
+multiminilm,nounsverbsadj,Polish,Passage_3,1,[83]
+multiminilm,verbs,Polish,Passage_1,2,"[39, 64]"
+multiminilm,verbs,Polish,Passage_2,1,[128]
+multiminilm,verbs,Polish,Passage_3,1,[83]
+distilmbert,1LocalWordSwap,Arabic,Passage_1,1,[70]
+distilmbert,1LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+distilmbert,1LocalWordSwap,Arabic,Passage_3,1,[72]
+distilmbert,2LocalWordSwap,Arabic,Passage_1,1,[70]
+distilmbert,2LocalWordSwap,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+distilmbert,2LocalWordSwap,Arabic,Passage_3,1,[72]
+distilmbert,3LocalWordSwaps,Arabic,Passage_1,1,[70]
+distilmbert,3LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+distilmbert,3LocalWordSwaps,Arabic,Passage_3,1,[72]
+distilmbert,4LocalWordSwaps,Arabic,Passage_1,1,[70]
+distilmbert,4LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+distilmbert,4LocalWordSwaps,Arabic,Passage_3,1,[72]
+distilmbert,5LocalWordSwaps,Arabic,Passage_1,1,[70]
+distilmbert,5LocalWordSwaps,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+distilmbert,5LocalWordSwaps,Arabic,Passage_3,1,[72]
+distilmbert,Reversed,Arabic,Passage_1,1,[70]
+distilmbert,Reversed,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+distilmbert,Reversed,Arabic,Passage_3,1,[72]
+distilmbert,contentwords,Arabic,Passage_1,1,[70]
+distilmbert,contentwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+distilmbert,contentwords,Arabic,Passage_3,1,[72]
+distilmbert,functionwords,Arabic,Passage_1,1,[70]
+distilmbert,functionwords,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+distilmbert,functionwords,Arabic,Passage_3,1,[72]
+distilmbert,intact,Arabic,Passage_1,1,[70]
+distilmbert,intact,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+distilmbert,intact,Arabic,Passage_3,1,[72]
+distilmbert,nouns,Arabic,Passage_1,1,[70]
+distilmbert,nouns,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+distilmbert,nouns,Arabic,Passage_3,1,[72]
+distilmbert,nounsverbs,Arabic,Passage_1,1,[70]
+distilmbert,nounsverbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+distilmbert,nounsverbs,Arabic,Passage_3,1,[72]
+distilmbert,nounsverbsadj,Arabic,Passage_1,1,[70]
+distilmbert,nounsverbsadj,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+distilmbert,nounsverbsadj,Arabic,Passage_3,1,[72]
+distilmbert,verbs,Arabic,Passage_1,1,[70]
+distilmbert,verbs,Arabic,Passage_2,12,"[106, 107, 108, 109, 110, 111, 112, 113, 114, 115]"
+distilmbert,verbs,Arabic,Passage_3,1,[72]
+distilmbert,1LocalWordSwap,German,Passage_2,1,[123]
+distilmbert,2LocalWordSwap,German,Passage_2,1,[123]
+distilmbert,3LocalWordSwaps,German,Passage_2,1,[123]
+distilmbert,4LocalWordSwaps,German,Passage_2,1,[123]
+distilmbert,5LocalWordSwaps,German,Passage_2,1,[123]
+distilmbert,Reversed,German,Passage_2,1,[123]
+distilmbert,contentwords,German,Passage_2,1,[123]
+distilmbert,functionwords,German,Passage_2,1,[123]
+distilmbert,intact,German,Passage_2,1,[123]
+distilmbert,nouns,German,Passage_2,1,[123]
+distilmbert,nounsverbs,German,Passage_2,1,[123]
+distilmbert,nounsverbsadj,German,Passage_2,1,[123]
+distilmbert,verbs,German,Passage_2,1,[123]
+distilmbert,1LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+distilmbert,2LocalWordSwap,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+distilmbert,3LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+distilmbert,4LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+distilmbert,5LocalWordSwaps,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+distilmbert,Reversed,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+distilmbert,contentwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+distilmbert,functionwords,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+distilmbert,intact,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+distilmbert,nouns,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+distilmbert,nounsverbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+distilmbert,nounsverbsadj,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+distilmbert,verbs,Hindi,Passage_1,6,"[57, 58, 59, 60, 61, 62]"
+distilmbert,1LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+distilmbert,2LocalWordSwap,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+distilmbert,3LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+distilmbert,4LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+distilmbert,5LocalWordSwaps,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+distilmbert,Reversed,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+distilmbert,contentwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+distilmbert,functionwords,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+distilmbert,intact,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+distilmbert,nouns,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+distilmbert,nounsverbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+distilmbert,nounsverbsadj,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+distilmbert,verbs,Italian,Passage_1,16,"[114, 115, 116, 117, 118, 119, 120, 121, 122, 123]"
+distilmbert,1LocalWordSwap,Russian,Passage_2,1,[28]
+distilmbert,1LocalWordSwap,Russian,Passage_3,1,[55]
+distilmbert,2LocalWordSwap,Russian,Passage_2,1,[28]
+distilmbert,2LocalWordSwap,Russian,Passage_3,1,[55]
+distilmbert,3LocalWordSwaps,Russian,Passage_2,1,[28]
+distilmbert,3LocalWordSwaps,Russian,Passage_3,1,[55]
+distilmbert,4LocalWordSwaps,Russian,Passage_2,1,[28]
+distilmbert,4LocalWordSwaps,Russian,Passage_3,1,[55]
+distilmbert,5LocalWordSwaps,Russian,Passage_2,1,[28]
+distilmbert,5LocalWordSwaps,Russian,Passage_3,1,[55]
+distilmbert,Reversed,Russian,Passage_2,1,[28]
+distilmbert,Reversed,Russian,Passage_3,1,[55]
+distilmbert,contentwords,Russian,Passage_2,1,[28]
+distilmbert,contentwords,Russian,Passage_3,1,[55]
+distilmbert,functionwords,Russian,Passage_2,1,[28]
+distilmbert,functionwords,Russian,Passage_3,1,[55]
+distilmbert,intact,Russian,Passage_2,1,[28]
+distilmbert,intact,Russian,Passage_3,1,[55]
+distilmbert,nouns,Russian,Passage_2,1,[28]
+distilmbert,nouns,Russian,Passage_3,1,[55]
+distilmbert,nounsverbs,Russian,Passage_2,1,[28]
+distilmbert,nounsverbs,Russian,Passage_3,1,[55]
+distilmbert,nounsverbsadj,Russian,Passage_2,1,[28]
+distilmbert,nounsverbsadj,Russian,Passage_3,1,[55]
+distilmbert,verbs,Russian,Passage_2,1,[28]
+distilmbert,verbs,Russian,Passage_3,1,[55]
+distilmbert,1LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+distilmbert,1LocalWordSwap,Polish,Passage_2,1,[128]
+distilmbert,1LocalWordSwap,Polish,Passage_3,1,[83]
+distilmbert,2LocalWordSwap,Polish,Passage_1,2,"[39, 64]"
+distilmbert,2LocalWordSwap,Polish,Passage_2,1,[128]
+distilmbert,2LocalWordSwap,Polish,Passage_3,1,[83]
+distilmbert,3LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+distilmbert,3LocalWordSwaps,Polish,Passage_2,1,[128]
+distilmbert,3LocalWordSwaps,Polish,Passage_3,1,[83]
+distilmbert,4LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+distilmbert,4LocalWordSwaps,Polish,Passage_2,1,[128]
+distilmbert,4LocalWordSwaps,Polish,Passage_3,1,[83]
+distilmbert,5LocalWordSwaps,Polish,Passage_1,2,"[39, 64]"
+distilmbert,5LocalWordSwaps,Polish,Passage_2,1,[128]
+distilmbert,5LocalWordSwaps,Polish,Passage_3,1,[83]
+distilmbert,Reversed,Polish,Passage_1,2,"[39, 64]"
+distilmbert,Reversed,Polish,Passage_2,1,[128]
+distilmbert,Reversed,Polish,Passage_3,1,[83]
+distilmbert,contentwords,Polish,Passage_1,2,"[39, 64]"
+distilmbert,contentwords,Polish,Passage_2,1,[128]
+distilmbert,contentwords,Polish,Passage_3,1,[83]
+distilmbert,functionwords,Polish,Passage_1,2,"[39, 64]"
+distilmbert,functionwords,Polish,Passage_2,1,[128]
+distilmbert,functionwords,Polish,Passage_3,1,[83]
+distilmbert,intact,Polish,Passage_1,2,"[39, 64]"
+distilmbert,intact,Polish,Passage_2,1,[128]
+distilmbert,intact,Polish,Passage_3,1,[83]
+distilmbert,nouns,Polish,Passage_1,2,"[39, 64]"
+distilmbert,nouns,Polish,Passage_2,1,[128]
+distilmbert,nouns,Polish,Passage_3,1,[83]
+distilmbert,nounsverbs,Polish,Passage_1,2,"[39, 64]"
+distilmbert,nounsverbs,Polish,Passage_2,1,[128]
+distilmbert,nounsverbs,Polish,Passage_3,1,[83]
+distilmbert,nounsverbsadj,Polish,Passage_1,2,"[39, 64]"
+distilmbert,nounsverbsadj,Polish,Passage_2,1,[128]
+distilmbert,nounsverbsadj,Polish,Passage_3,1,[83]
+distilmbert,verbs,Polish,Passage_1,2,"[39, 64]"
+distilmbert,verbs,Polish,Passage_2,1,[128]
+distilmbert,verbs,Polish,Passage_3,1,[83]

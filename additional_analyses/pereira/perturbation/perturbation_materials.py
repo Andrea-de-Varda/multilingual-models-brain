@@ -27,14 +27,8 @@ chdir("/home/dev/Documents/PhD/Alice/additional_analyses/pereira")
 # loading sentences and brain responses #
 #########################################
 
-rois = ['lang_LH_IFGorb', 'lang_LH_IFG', 'lang_LH_MFG', 'lang_LH_AntTemp', 'lang_LH_PostTemp']
-control = pd.read_csv("data/brain-lang-data_participant_20230728.csv")
-
-avg_1 = control[control["roi"].isin(rois)].groupby(["sentence", "target_UID"]).agg({"response_target" : "mean", "cond" : "first", "sentence" : "first"}).reset_index(drop=True) # first average across fROIs
-df = avg_1.groupby("sentence").agg({"response_target" : "mean", "cond" : "first"}) # then average across participants
-df = df[df["cond"] == "B"] # baseline sentences only
-sentences = df.index.tolist()
-y = df["response_target"].to_numpy()
+grouped2 = pd.read_csv("pereira_averaged.csv")
+sentences = grouped2["Sentence"].tolist()
 
 # PoS tagging
 def pos_tag_sentences(sentences):
@@ -147,19 +141,7 @@ for sent in tqdm(sentences):
     content = response.choices[0].message.content
     paraphrases.append(content)
 
-# manually checked, these two need to be manually edited:
- # '"You mean the one who witnessed the murder?" is not a good paraphrase, a better one is: "The one who was seen at the murder?" or simply "Is that the one seen at the murder scene?" or more naturally: "Is that the one who was at the murder?" \n\nA more natural paraphrase is: "The one who was seen at the murder scene?"'
- 
- # '"Unwavering in our commitment, we will stop at nothing." is not a good paraphrase because the original text is describing a person or a group, not a commitment. Here is a better one: "Cold-blooded, heartless, and utterly loyal to our mission."'
- 
-for i, s in enumerate(paraphrases):
-    if s.strip().startswith('"You mean the one who witnessed the murder?"'):
-        paraphrases[i] = "The one who was seen at the murder scene?"
-        print("First one changed")
-    elif s.strip().startswith('"Unwavering in our commitment, we will stop at nothing."'):
-        paraphrases[i] = "Cold-blooded, heartless, and utterly loyal to our mission."
-        print("Second one changed")
-perturbed_dict["paraphrase"] = paraphrase
+perturbed_dict["paraphrase"] = paraphrases
 
 ##############
 # WORD SWAPS #

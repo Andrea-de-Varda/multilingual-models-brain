@@ -7,6 +7,11 @@ from sklearn.preprocessing import StandardScaler
 from scipy.stats import pearsonr
 import matplotlib.pyplot as plt
 import warnings
+warnings.filterwarnings(
+    "ignore",
+    category=DeprecationWarning,
+    message="numpy.core.numeric is deprecated"
+)
 warnings.filterwarnings("ignore", message="Mean of empty slice.")
 
 # ---------- PATHS ----------
@@ -170,3 +175,55 @@ ax.grid(axis="y", linestyle="--", alpha=0.5, zorder=1)
 ax.set_ylim(None, group_stats["mean_r"].max() + 0.1)
 plt.tight_layout()
 plt.show()
+
+
+
+
+
+
+
+
+import itertools
+np.random.seed(0)
+
+df_mgpt = results[results["model"] == "mgpt"].copy()
+
+group_stats_mgpt = (df_mgpt.groupby("perturb_type")
+                    .agg(mean_r=("r_mean","mean"),
+                         se_r=("r_mean", lambda x: x.std()/np.sqrt(x.notna().sum())))
+                    .sort_values("mean_r", ascending=False))
+
+pert_order = list(group_stats_mgpt.index)
+palette = (list(plt.cm.Set3.colors) + list(plt.cm.tab20.colors) +
+           list(plt.cm.Pastel1.colors) + list(plt.cm.Accent.colors))
+colors = {p: c for p, c in zip(pert_order, itertools.islice(itertools.cycle(palette), len(pert_order)))}
+
+fig, ax = plt.subplots(dpi=400, figsize=(max(4, 0.9*len(pert_order)), 2.6))
+for i, pert in enumerate(pert_order):
+    ax.bar(i,
+           group_stats_mgpt.loc[pert, "mean_r"],
+           yerr=group_stats_mgpt.loc[pert, "se_r"],
+           capsize=5,
+           color=colors[pert],
+           edgecolor="black",
+           linewidth=1.2,
+           zorder=2)
+
+for i, pert in enumerate(pert_order):
+    y_vals = df_mgpt.loc[df_mgpt["perturb_type"] == pert, "r_mean"].to_numpy()  # per-language points
+    jitter = np.random.normal(loc=0, scale=0.08, size=len(y_vals))
+    x_vals = i + jitter
+    ax.scatter(x_vals, y_vals, color="black", alpha=0.45, s=18, zorder=3)
+
+ax.set_title("mGPT", fontsize=12)
+ax.set_ylabel("R", fontsize=12)
+ax.set_xticks(range(len(pert_order)))
+ax.set_xticklabels(pert_order, fontsize=10, rotation=30, ha="right")
+ax.tick_params(axis="y", labelsize=10)
+ax.spines["top"].set_visible(False)
+ax.spines["right"].set_visible(False)
+ax.grid(axis="y", linestyle="--", alpha=0.5, zorder=1)
+ax.set_ylim(None, group_stats_mgpt["mean_r"].max() + 0.1)
+plt.tight_layout()
+plt.show()
+
