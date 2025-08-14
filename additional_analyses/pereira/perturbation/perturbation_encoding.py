@@ -61,7 +61,7 @@ def get_embeddings_tokens(tokens, sep, tokenizer, model, cased=True, emb_start=0
     return out_dict
 
 # ===== DATA =====
-df = pd.read_csv("pereira_averaged.csv")
+df = pd.read_csv("../pereira_averaged.csv")
 y = df["EffectSize"].to_numpy()
 sentences = df["Sentence"].tolist()
 
@@ -101,7 +101,7 @@ NORM_OUT = "perturbation/registered_models/normaliz_params"
 os.makedirs(REG_OUT, exist_ok=True)
 os.makedirs(NORM_OUT, exist_ok=True)
 
-with open("perturbation/perturbation_dict", 'rb') as handle:
+with open("perturbation_dict", 'rb') as handle:
     perturbed = pickle.load(handle)  # {perturb_type: [sentences]}
 
 # ===== skip logic: only train missing (model_key, perturb_type) pairs =====
