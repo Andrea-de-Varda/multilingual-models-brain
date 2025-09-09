@@ -150,19 +150,20 @@ for sent in tqdm(sentences):
     content = response.choices[0].message.content
     paraphrases.append(content)
 
-# manually checked, these two need to be manually edited:
- # '"You mean the one who witnessed the murder?" is not a good paraphrase, a better one is: "The one who was seen at the murder?" or simply "Is that the one seen at the murder scene?" or more naturally: "Is that the one who was at the murder?" \n\nA more natural paraphrase is: "The one who was seen at the murder scene?"'
- 
- # '"Unwavering in our commitment, we will stop at nothing." is not a good paraphrase because the original text is describing a person or a group, not a commitment. Here is a better one: "Cold-blooded, heartless, and utterly loyal to our mission."'
- 
+# manually checked, these need to be manually edited:
+# targeted fixes by index (safer than startswith)
+fixes = {
+    767: "The one who was seen at the murder scene?", # last option
+    184: "Solely due to constitutional grounds.", # formatting, text.
+    321: "She has my total admiration.", # arrow, formatting
+    690: "That was quite an ordeal.", # last option
+    935: "What's she needed for?",} # last option
+
 for i, s in enumerate(paraphrases):
-    if s.strip().startswith('"You mean the one who witnessed the murder?"'):
-        paraphrases[i] = "The one who was seen at the murder scene?"
-        print("First one changed")
-    elif s.strip().startswith('"Unwavering in our commitment, we will stop at nothing."'):
-        paraphrases[i] = "Cold-blooded, heartless, and utterly loyal to our mission."
-        print("Second one changed")
-perturbed_dict["paraphrase"] = paraphrase
+    if i in fixes:
+        paraphrases[i] = fixes[i]
+
+perturbed_dict["paraphrase"] = paraphrases
 
 ##############
 # WORD SWAPS #

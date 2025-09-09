@@ -15,9 +15,9 @@ warnings.filterwarnings("ignore", category=DeprecationWarning, message="numpy.co
 np.seterr(invalid="warn", divide="warn")
 
 CONFIRM_BASE = "/home/dev/Documents/PhD/Alice/confirmatory"
-EMB_DIR      = os.path.join(CONFIRM_BASE, "embeddings")      # embeddings/Passage_1/<model>_<lang>
-TRANS_DIR    = os.path.join(CONFIRM_BASE, "transcribed")     # transcribed/Passage_1/it.csv
-FMRI_DICT    = os.path.join(CONFIRM_BASE, "data/dict_fMRI")  # pickled dict
+EMB_DIR      = os.path.join(CONFIRM_BASE, "embeddings")
+TRANS_DIR    = os.path.join(CONFIRM_BASE, "transcribed")
+FMRI_DICT    = os.path.join(CONFIRM_BASE, "data/dict_fMRI")
 os.chdir(CONFIRM_BASE)
 
 DATASETS = {
@@ -229,44 +229,127 @@ for label, cfg in DATASETS.items():
 results = pd.concat(all_results, ignore_index=True)
 per_model = pd.concat(all_per_model, ignore_index=True)
 
-group_stats = (per_model.groupby("perturb_type")
-               .agg(mean_r=("r","mean"),
-                    se_r=("SE", lambda s: (pd.Series(s).dropna().std(ddof=1)/np.sqrt(pd.Series(s).dropna().shape[0])
-                                           if pd.Series(s).dropna().shape[0]>1 else np.nan)))
-               .sort_values("mean_r", ascending=False))
+results.to_csv("perturbation_results.csv", index = False)
+per_model.to_csv("perturbation_results_per_model.csv", index = False)
 
-pert_order = list(group_stats.index)
-palette = list(plt.cm.Set3.colors) + list(plt.cm.tab20.colors) + list(plt.cm.Pastel1.colors) + list(plt.cm.Accent.colors)
-colors = {p: c for p, c in zip(pert_order, itertools.islice(itertools.cycle(palette), len(pert_order)))}
+results = pd.read_csv("perturbation_results.csv")
+per_model = pd.read_csv("perturbation_results_per_model.csv")
 
-fig, ax = plt.subplots(dpi=400, figsize=(max(5, 0.65*len(pert_order)), 2.8))
-yerr = group_stats["se_r"].fillna(0).to_numpy()
-for i, pert in enumerate(pert_order):
-    ax.bar(i, group_stats.loc[pert, "mean_r"],
-           yerr=yerr[i], capsize=5, color=colors[pert],
-           edgecolor="black", linewidth=1.2, zorder=2)
+pert_order = [
+    'intact',
+    'contentwords', 'nounsverbsadj', 'nounsverbs', 'nouns', 'verbs', 'functionwords',
+    'paraphrase',
+    '1LocalWordSwap', '2LocalWordSwap', '3LocalWordSwaps', '4LocalWordSwaps', '5LocalWordSwaps', 'Reversed'
+]
 
-marker_map = {"Pereira2018": "s", "Tuckute2024": "o"}  # square vs circle
-for i, pert in enumerate(pert_order):
+groups = [
+    ("Intact",        ['intact']),
+    ("Information loss", ['contentwords','nounsverbsadj','nounsverbs','nouns','verbs','functionwords']),
+    ("Paraphrase",    ['paraphrase']),
+    ("Word order",    ['1LocalWordSwap','2LocalWordSwap','3LocalWordSwaps','4LocalWordSwaps','5LocalWordSwaps','Reversed'])
+]
+
+group_color = {
+    "Intact": "tab:blue",
+    "Information loss": "tab:red",
+    "Paraphrase": "tab:green",
+    "Word order": "tab:purple",
+}
+
+alpha_schedules = {
+    "Intact":        [1.0],
+    "Information loss": np.linspace(1.0, 0.6, num=len([*groups[1][1]])).tolist(),
+    "Paraphrase":    [1.0],
+    "Word order":    np.linspace(1.0, 0.5, num=len([*groups[3][1]])).tolist(),
+}
+
+bar_means = {}
+bar_se    = {}
+for pert in pert_order:
+    vals = per_model.loc[per_model["perturb_type"] == pert, "r"].to_numpy()
+    vals = vals[np.isfinite(vals)]
+    if vals.size == 0:
+        bar_means[pert] = np.nan
+        bar_se[pert]    = np.nan
+    else:
+        bar_means[pert] = np.mean(vals)
+        bar_se[pert]    = np.std(vals, ddof=1) / np.sqrt(vals.size) if vals.size > 1 else np.nan
+
+gap = 0.8  # horizontal space between groups
+x_positions = {}
+x = 0.0
+group_boundaries = []
+for g_name, g_items in groups:
+    for item in g_items:
+        x_positions[item] = x
+        x += 1.0
+    group_boundaries.append(x - 0.5)  # boundary after this group
+    x += gap
+
+total_width = x - gap
+
+
+fig, ax = plt.subplots(dpi=400, figsize=(max(8, 0.6*len(pert_order) + 2.5), 3.4))
+
+for g_name, g_items in groups:
+    base_c = group_color[g_name]
+    alphas = alpha_schedules[g_name]
+    for i, pert in enumerate(g_items):
+        xpos = x_positions[pert]
+        mean = bar_means.get(pert, np.nan)
+        se   = bar_se.get(pert, np.nan)
+        ax.bar(xpos, mean, yerr=0 if not np.isfinite(se) else se, capsize=5,
+               color=base_c, alpha=alphas[i] if i < len(alphas) else 1.0,
+               edgecolor="black", linewidth=1.1, zorder=2)
+
+marker_map = {"Pereira2018": ("s", 0.15, "black"), "Tuckute2024": ("o", 0.15, "black")}
+legend_handles = {}
+for pert in pert_order:
+    xpos = x_positions[pert]
     sub = per_model[per_model["perturb_type"] == pert]
-    for dataset_label, marker in marker_map.items():
+    for dataset_label, (marker, alpha, color) in marker_map.items():
         vals = sub.loc[sub["dataset"] == dataset_label, "r"].to_numpy()
-        if len(vals) == 0:
+        if vals.size == 0: 
             continue
-        jitter = np.random.normal(loc=0, scale=0.08, size=len(vals))
-        x_vals = i + jitter
-        ax.scatter(x_vals, vals, marker=marker, color="black", alpha=0.25, s=18, zorder=3, label=dataset_label)
+        jitter = np.random.normal(loc=0, scale=0.08, size=vals.size)
+        ax.scatter(xpos + jitter, vals, marker=marker, color=color, alpha=alpha, s=18, zorder=3,
+                   label=dataset_label if dataset_label not in legend_handles else None)
+        if dataset_label not in legend_handles:
+            legend_handles[dataset_label] = True
 
-handles, labels = ax.get_legend_handles_labels()
-uniq = dict(zip(labels, handles))
-ax.legend(uniq.values(), uniq.keys(), title="Dataset", frameon=False, loc="best")
-ax.set_ylabel("R", fontsize=12)
-ax.set_xticks(range(len(pert_order)))
+xticks = [x_positions[p] for p in pert_order]
+ax.set_xticks(xticks)
 ax.set_xticklabels(pert_order, fontsize=10, rotation=30, ha="right")
+
+# acc = []
+# for idx, (g_name, g_items) in enumerate(groups[:-1]):
+#     last_item = g_items[-1]
+#     boundary_x = x_positions[last_item] + 0.5
+    #ax.axvline(boundary_x + gap/2 - 0.4, color="k", linewidth=0.8, alpha=0.25)
+
+# brackets labels
+y_top = np.nanmax([v for v in bar_means.values() if np.isfinite(v)]) if len(bar_means) else 0.3
+y_top = y_top + 0.12
+for g_name, g_items in groups:
+    x_start = x_positions[g_items[0]] - 0.45
+    x_end   = x_positions[g_items[-1]] + 0.45
+    y = y_top
+    # bracket line
+    ax.plot([x_start, x_end], [y, y], color="black", linewidth=1.0)
+    ax.plot([x_start, x_start], [y, y-0.02], color="black", linewidth=1.0)
+    ax.plot([x_end,   x_end],   [y, y-0.02], color="black", linewidth=1.0)
+    # label
+    ax.text((x_start + x_end)/2, y + 0.02, g_name, ha="center", va="bottom", fontsize=11)
+
+ax.legend(title="Dataset", frameon=False, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+
+ax.set_ylabel("R", fontsize=12)
 ax.tick_params(axis="y", labelsize=10)
 ax.spines["top"].set_visible(False)
 ax.spines["right"].set_visible(False)
 ax.grid(axis="y", linestyle="--", alpha=0.5, zorder=1)
+
 ax.set_ylim(None, None)
+
 plt.tight_layout()
 plt.show()
