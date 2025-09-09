@@ -1,0 +1,16 @@
+/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Traceback (most recent call last):
+  File "/net/vast-storage/scratch/vast/evlab/devar_ag/multilingual-models-brain/additional_analyses/control/perturbation/perturbation_encoding.py", line 83, in <module>
+    control = pd.read_csv("data/brain-lang-data_participant_20230728.csv")
+  File "/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/pandas/io/parsers/readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/pandas/io/parsers/readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/pandas/io/parsers/readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/pandas/io/parsers/readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+  File "/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/pandas/io/common.py", line 873, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: 'data/brain-lang-data_participant_20230728.csv'
