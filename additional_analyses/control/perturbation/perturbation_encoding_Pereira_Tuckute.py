@@ -112,7 +112,9 @@ lang_codes = ["ar", "de", "hi", "it", "ko", "pt", "ru", "zh", "pl"]
 lang_map   = {c: n for c, n in zip(lang_codes, languages)}
 keep = {'ar':[1,2,3],'de':[2,3],'hi':[2,3],'it':[1,2,3],'ko':[1],'pt':[1,3],'ru':[1,2,3],'zh':[1,2,3],'pl':[1,2,3]}
 
-def evaluate_dataset(REG_BASE, NORM_BASE, dataset_label, DEBUG=True):
+def evaluate_dataset(REG_BASE, NORM_BASE, dataset_label, DEBUG=True, skip_keys=None):
+    skip_keys = set() if skip_keys is None else set(skip_keys)
+
     empty_bin_log, allnan_col_log, inner_loop_log = [], [], []
 
     model_keys = [m for m in os.listdir(REG_BASE) if os.path.isdir(os.path.join(REG_BASE, m))]
@@ -137,6 +139,11 @@ def evaluate_dataset(REG_BASE, NORM_BASE, dataset_label, DEBUG=True):
             kept = keep[lang]
             lang_label = lang_map[lang]
             for pert in tqdm(perturbs, desc=f"[{dataset_label}] {model_key} | {lang_label}", leave=False):
+                # --- NEW: skip combos already present in cached results ---
+                if (dataset_label, pert, model_key, lang_label) in skip_keys:
+                    continue
+                # ----------------------------------------------------------
+
                 reg  = load_pickle(os.path.join(REG_BASE,  model_key, pert))
                 Xsc, Ysc = load_pickle(os.path.join(NORM_BASE, model_key, pert))
                 rs = []
@@ -219,21 +226,42 @@ def evaluate_dataset(REG_BASE, NORM_BASE, dataset_label, DEBUG=True):
 
     return results, per_model
 
-all_results = []
-all_per_model = []
+
+cache_results_path = "perturbation_results.csv"
+cache_per_model_path = "perturbation_results_per_model.csv"
+
+if os.path.exists(cache_results_path):
+    results = pd.read_csv(cache_results_path)
+else:
+    results = pd.DataFrame(columns=["dataset","perturb_type","model","language","r1","r2","r3","r_mean","r_sd"])
+
+skip_keys = set(
+    results[["dataset","perturb_type","model","language"]]
+    .itertuples(index=False, name=None)
+)
+
+new_results_list = []
 for label, cfg in DATASETS.items():
-    res, pm = evaluate_dataset(cfg["REG_BASE"], cfg["NORM_BASE"], label, DEBUG=True)
-    all_results.append(res)
-    all_per_model.append(pm)
+    res_new, _ = evaluate_dataset(cfg["REG_BASE"], cfg["NORM_BASE"], label, DEBUG=True, skip_keys=skip_keys)
+    if len(res_new):
+        new_results_list.append(res_new)
 
-results = pd.concat(all_results, ignore_index=True)
-per_model = pd.concat(all_per_model, ignore_index=True)
+if new_results_list:
+    results = pd.concat([results] + new_results_list, ignore_index=True)
 
-results.to_csv("perturbation_results.csv", index = False)
-per_model.to_csv("perturbation_results_per_model.csv", index = False)
+results.to_csv(cache_results_path, index=False)
 
-results = pd.read_csv("perturbation_results.csv")
-per_model = pd.read_csv("perturbation_results_per_model.csv")
+_old = np.seterr(invalid="raise", divide="raise")
+try:
+    per_model = (results.groupby(["dataset","perturb_type","model"])
+                 .agg(r=("r_mean","mean"),
+                      SE=("r_mean", lambda x: x.std(ddof=1)/np.sqrt(x.notna().sum()) if x.notna().sum()>1 else np.nan))
+                 .reset_index())
+finally:
+    np.seterr(**_old)
+
+per_model.to_csv(cache_per_model_path, index=False)
+
 
 pert_order = [
     'intact',

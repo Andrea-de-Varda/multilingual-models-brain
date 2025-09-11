@@ -23,6 +23,10 @@ import seaborn as sns
 import copy
 import itertools
 import sys
+import matplotlib as mpl
+mpl.rcParams['svg.fonttype'] = 'none'
+mpl.rcParams['font.family'] = 'DejaVu Sans'
+
 sys.modules['numpy._core.numeric'] = np.core.numeric
 
 chdir("/home/dev/Documents/PhD/Alice")
@@ -332,6 +336,7 @@ plt.xticks(bar_positions, labels=df_main["Model"], rotation=45, ha='right', font
 plt.yticks([.1, .2, .3, .4, .5, .6, .7], fontsize=23)
 sns.despine()
 plt.tight_layout(rect=[0, 0, 0.85, 1])
+plt.savefig("plots/multi_multitrain.svg", format="svg", bbox_inches="tight")
 plt.show()
 
 #####################
@@ -447,7 +452,7 @@ plt.show()
 # Encoding results by language #
 ################################
 
-colname = "m"
+colname = "r"
 sequential = True
 r_lang = {lang : [] for lang in langs}
 for model in model_names:
@@ -458,7 +463,7 @@ for model in model_names:
     df = res_dict[idx_max]
     for lang in langs:
         try:
-            therow = df[df.lang == lang]
+            therow = df[df.target_lang == lang]
             r = therow.values[0][1]
             #sd = therow.values[0][2]
             r_lang[lang].append(r)
@@ -521,71 +526,8 @@ for i, ax in enumerate(axes):
 axes[-1].set_xticklabels([lang_dict[l] for l in data.columns], rotation=45, ha="right")
 plt.suptitle('', y=0.97, fontsize=26, weight="bold")
 plt.tight_layout()
+plt.savefig("plots/all_languages_multi.svg", format="svg", bbox_inches="tight")
 plt.show()
-
-
-###############################################################################
-###############################################################################
-###############################################################################
-
-# SPLIT CONTEXT
-
-# monolingual, best layer #####################################################
-best_monol_split = [get_best_layerwise(load(model, split_context = True)) for model in model_names]
-best_monol_sd_split = [get_best_layerwise(load(model, split_context = True), give_mean = False) for model in model_names]
-
-best_layer_split = pd.DataFrame({
-    'Model': names_formatted,
-    'Score': best_monol_split,
-    'Family': model_family,
-    'sd' : best_monol_sd_split,
-    'n' : n_langs
-})
-
-plot_aggregate(best_layer_split, "",  ylim = .85, ylimstart = -.1)
-
-# split context, plot for paper
-df = best_layer_split
-title = ""
-ylimstart = 0
-ylim = 0.75
-
-plt.figure(figsize=(24*.7, 11.5*.7), dpi = 300)
-sns.set_context("talk")
-palette = sns.color_palette("tab20", n_colors = 9)
-df["color"] = df["Family"].map(palette_d)
-ax = plt.gca()
-bar_positions = [1,2,3,
-                 4.5, 5.5, 6.5,
-                 9, 10, 11, 12, 13, 14, 15.5, 16.5, 17.5, 19, 20, 21, 22, 23]
-bars = ax.bar(bar_positions, df['Score'], yerr=[df['sd'][i] / sqrt(df['n'][i]) for i in range(len(df))],
-              capsize=5, color=df["color"], edgecolor='.2', alpha = 0.8, lw = 3)
-ax.hlines(best_layer['Score'], xmin=[x - 0.3 for x in bar_positions], xmax=[x + 0.3 for x in bar_positions],
-          colors='black', linestyles=(0, (1, 1)), linewidth=2) 
-plt.title(title, fontsize=30, weight='bold', pad=20)
-plt.xlabel('Model', fontsize=27, labelpad=20)
-plt.ylabel('R', fontsize=27, labelpad=20)
-plt.ylim(ylimstart, ylim)
-plt.xticks(bar_positions, labels = df["Model"], rotation=45, ha='right', fontsize=22)
-plt.yticks([.1, .2, .3, .4, .5, .6, .7], fontsize=23)
-sns.despine()
-plt.tight_layout(rect=[0, 0, 0.85, 1])
-plt.show()
-
-# monolingual, median layer ###################################################
-median_monol = [get_median_layerwise(load(model, split_context = True)) for model in model_names]
-median_monol_sd = [get_median_layerwise(load(model), give_mean = False) for model in model_names]
-
-median_layer = pd.DataFrame({
-    'Model': names_formatted,
-    'Score': median_monol,
-    'Family': model_family,
-    'sd' : median_monol_sd,
-    'n' : n_langs
-})
-plot_aggregate(median_layer, "", ylim = .85, ylimstart = -.1)
-
-###############################################################################
 
 ############################
 # MULTIPLE DEMANDS NETWORK #
