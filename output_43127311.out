@@ -1,0 +1,630 @@
+>>> SCRIPT LAUNCHED
+[INFO] Himalaya backend set to <module 'himalaya.backend.torch_cuda' from '/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/himalaya/backend/torch_cuda.py'> (cuda)
+>>> STARTING JOB in mode: MD
+>>> Loaded fMRI data
+Processing - MD mode
+Encoding for xglm_small already done
+Encoding for xglm_med already done
+Encoding for xglm_large already done
+Encoding for xglm_xl already done
+Encoding for bert_base already done
+Encoding for distilmbert already done
+Encoding for xlmr_base already done
+Encoding for xlmr_large already done
+Encoding for mt5_small already done
+Encoding for mt5_base already done
+Encoding for mt5_large already done
+Encoding for mdeberta already done
+Encoding for xlm_align already done
+Encoding for infoxlm_base already done
+Encoding for infoxlm_large already done
+Encoding for multiminilm already done
+Encoding for nllb200_distilled_600M already done
+Encoding for nllb200_distilled_1B already done
+Encoding for nllb200_1B already done
+Encoding for mgpt already done
+Encoding for xglm_small already done
+Encoding for xglm_med already done
+Encoding for xglm_large already done
+Encoding for xglm_xl already done
+Encoding for bert_base already done
+Encoding for distilmbert already done
+Encoding for xlmr_base already done
+Encoding for xlmr_large already done
+Encoding for mt5_small already done
+Encoding for mt5_base already done
+Encoding for mt5_large already done
+Encoding for mdeberta already done
+Encoding for xlm_align already done
+Encoding for infoxlm_base already done
+Encoding for infoxlm_large already done
+Encoding for multiminilm already done
+Encoding for nllb200_distilled_600M already done
+Encoding for nllb200_distilled_1B already done
+Encoding for nllb200_1B already done
+Encoding for mgpt already done
+
+
+Training in N-1 languages (across, MD)
+Encoding for xglm_small - MD_LH_Precentral_A_PrecG already done
+Encoding for xglm_small - MD_LH_Precentral_B_IFGop already done
+Encoding for xglm_small - MD_LH_antParietal already done
+Encoding for xglm_small - MD_LH_insula already done
+Encoding for xglm_small - MD_LH_medialFrontal already done
+Encoding for xglm_small - MD_LH_midFrontal already done
+Encoding for xglm_small - MD_LH_midFrontalOrb already done
+Encoding for xglm_small - MD_LH_midParietal already done
+Encoding for xglm_small - MD_LH_postParietal already done
+Encoding for xglm_small - MD_LH_supFrontal already done
+Encoding for xglm_small - MD_RH_Precentral_A_PrecG already done
+Encoding for xglm_small - MD_RH_Precentral_B_IFGop already done
+Encoding for xglm_small - MD_RH_antParietal already done
+Encoding for xglm_small - MD_RH_insula already done
+Encoding for xglm_small - MD_RH_medialFrontal already done
+Encoding for xglm_small - MD_RH_midFrontal already done
+Encoding for xglm_small - MD_RH_midFrontalOrb already done
+Encoding for xglm_small - MD_RH_midParietal already done
+Encoding for xglm_small - MD_RH_postParietal already done
+Encoding for xglm_small - MD_RH_supFrontal already done
+Encoding for xglm_small - all already done
+Encoding for xglm_med - MD_LH_Precentral_A_PrecG already done
+Encoding for xglm_med - MD_LH_Precentral_B_IFGop already done
+Encoding for xglm_med - MD_LH_antParietal already done
+Encoding for xglm_med - MD_LH_insula already done
+Encoding for xglm_med - MD_LH_medialFrontal already done
+Encoding for xglm_med - MD_LH_midFrontal already done
+Encoding for xglm_med - MD_LH_midFrontalOrb already done
+Encoding for xglm_med - MD_LH_midParietal already done
+Encoding for xglm_med - MD_LH_postParietal already done
+Encoding for xglm_med - MD_LH_supFrontal already done
+Encoding for xglm_med - MD_RH_Precentral_A_PrecG already done
+Encoding for xglm_med - MD_RH_Precentral_B_IFGop already done
+Encoding for xglm_med - MD_RH_antParietal already done
+Encoding for xglm_med - MD_RH_insula already done
+Encoding for xglm_med - MD_RH_medialFrontal already done
+Encoding for xglm_med - MD_RH_midFrontal already done
+Encoding for xglm_med - MD_RH_midFrontalOrb already done
+Encoding for xglm_med - MD_RH_midParietal already done
+Encoding for xglm_med - MD_RH_postParietal already done
+Encoding for xglm_med - MD_RH_supFrontal already done
+Encoding for xglm_med - all already done
+Encoding for xglm_large - MD_LH_Precentral_A_PrecG already done
+Encoding for xglm_large - MD_LH_Precentral_B_IFGop already done
+Encoding for xglm_large - MD_LH_antParietal already done
+Encoding for xglm_large - MD_LH_insula already done
+Encoding for xglm_large - MD_LH_medialFrontal already done
+Encoding for xglm_large - MD_LH_midFrontal already done
+Encoding for xglm_large - MD_LH_midFrontalOrb already done
+Encoding for xglm_large - MD_LH_midParietal already done
+Encoding for xglm_large - MD_LH_postParietal already done
+Encoding for xglm_large - MD_LH_supFrontal already done
+Encoding for xglm_large - MD_RH_Precentral_A_PrecG already done
+Encoding for xglm_large - MD_RH_Precentral_B_IFGop already done
+Encoding for xglm_large - MD_RH_antParietal already done
+Encoding for xglm_large - MD_RH_insula already done
+Encoding for xglm_large - MD_RH_medialFrontal already done
+Encoding for xglm_large - MD_RH_midFrontal already done
+Encoding for xglm_large - MD_RH_midFrontalOrb already done
+Encoding for xglm_large - MD_RH_midParietal already done
+Encoding for xglm_large - MD_RH_postParietal already done
+Encoding for xglm_large - MD_RH_supFrontal already done
+Encoding for xglm_large - all already done
+Encoding for xglm_xl - MD_LH_Precentral_A_PrecG already done
+Encoding for xglm_xl - MD_LH_Precentral_B_IFGop already done
+Encoding for xglm_xl - MD_LH_antParietal already done
+Encoding for xglm_xl - MD_LH_insula already done
+Encoding for xglm_xl - MD_LH_medialFrontal already done
+Encoding for xglm_xl - MD_LH_midFrontal already done
+Encoding for xglm_xl - MD_LH_midFrontalOrb already done
+Encoding for xglm_xl - MD_LH_midParietal already done
+Encoding for xglm_xl - MD_LH_postParietal already done
+Encoding for xglm_xl - MD_LH_supFrontal already done
+Encoding for xglm_xl - MD_RH_Precentral_A_PrecG already done
+Encoding for xglm_xl - MD_RH_Precentral_B_IFGop already done
+Encoding for xglm_xl - MD_RH_antParietal already done
+Encoding for xglm_xl - MD_RH_insula already done
+Encoding for xglm_xl - MD_RH_medialFrontal already done
+Encoding for xglm_xl - MD_RH_midFrontal already done
+Encoding for xglm_xl - MD_RH_midFrontalOrb already done
+Encoding for xglm_xl - MD_RH_midParietal already done
+Encoding for xglm_xl - MD_RH_postParietal already done
+Encoding for xglm_xl - MD_RH_supFrontal already done
+Encoding for xglm_xl - all already done
+Encoding for bert_base - MD_LH_Precentral_A_PrecG already done
+Encoding for bert_base - MD_LH_Precentral_B_IFGop already done
+Encoding for bert_base - MD_LH_antParietal already done
+Encoding for bert_base - MD_LH_insula already done
+Encoding for bert_base - MD_LH_medialFrontal already done
+Encoding for bert_base - MD_LH_midFrontal already done
+Encoding for bert_base - MD_LH_midFrontalOrb already done
+Encoding for bert_base - MD_LH_midParietal already done
+Encoding for bert_base - MD_LH_postParietal already done
+Encoding for bert_base - MD_LH_supFrontal already done
+Encoding for bert_base - MD_RH_Precentral_A_PrecG already done
+Encoding for bert_base - MD_RH_Precentral_B_IFGop already done
+Encoding for bert_base - MD_RH_antParietal already done
+Encoding for bert_base - MD_RH_insula already done
+Encoding for bert_base - MD_RH_medialFrontal already done
+Encoding for bert_base - MD_RH_midFrontal already done
+Encoding for bert_base - MD_RH_midFrontalOrb already done
+Encoding for bert_base - MD_RH_midParietal already done
+Encoding for bert_base - MD_RH_postParietal already done
+Encoding for bert_base - MD_RH_supFrontal already done
+Encoding for bert_base - all already done
+Encoding for distilmbert - MD_LH_Precentral_A_PrecG already done
+Encoding for distilmbert - MD_LH_Precentral_B_IFGop already done
+Encoding for distilmbert - MD_LH_antParietal already done
+Encoding for distilmbert - MD_LH_insula already done
+Encoding for distilmbert - MD_LH_medialFrontal already done
+Encoding for distilmbert - MD_LH_midFrontal already done
+Encoding for distilmbert - MD_LH_midFrontalOrb already done
+Encoding for distilmbert - MD_LH_midParietal already done
+Encoding for distilmbert - MD_LH_postParietal already done
+Encoding for distilmbert - MD_LH_supFrontal already done
+Encoding for distilmbert - MD_RH_Precentral_A_PrecG already done
+Encoding for distilmbert - MD_RH_Precentral_B_IFGop already done
+Encoding for distilmbert - MD_RH_antParietal already done
+Encoding for distilmbert - MD_RH_insula already done
+Encoding for distilmbert - MD_RH_medialFrontal already done
+Encoding for distilmbert - MD_RH_midFrontal already done
+Encoding for distilmbert - MD_RH_midFrontalOrb already done
+Encoding for distilmbert - MD_RH_midParietal already done
+Encoding for distilmbert - MD_RH_postParietal already done
+Encoding for distilmbert - MD_RH_supFrontal already done
+Encoding for distilmbert - all already done
+Encoding for xlmr_base - MD_LH_Precentral_A_PrecG already done
+Encoding for xlmr_base - MD_LH_Precentral_B_IFGop already done
+Encoding for xlmr_base - MD_LH_antParietal already done
+Encoding for xlmr_base - MD_LH_insula already done
+Encoding for xlmr_base - MD_LH_medialFrontal already done
+Encoding for xlmr_base - MD_LH_midFrontal already done
+Encoding for xlmr_base - MD_LH_midFrontalOrb already done
+Encoding for xlmr_base - MD_LH_midParietal already done
+Encoding for xlmr_base - MD_LH_postParietal already done
+Encoding for xlmr_base - MD_LH_supFrontal already done
+Encoding for xlmr_base - MD_RH_Precentral_A_PrecG already done
+Encoding for xlmr_base - MD_RH_Precentral_B_IFGop already done
+Encoding for xlmr_base - MD_RH_antParietal already done
+Encoding for xlmr_base - MD_RH_insula already done
+Encoding for xlmr_base - MD_RH_medialFrontal already done
+Encoding for xlmr_base - MD_RH_midFrontal already done
+Encoding for xlmr_base - MD_RH_midFrontalOrb already done
+Encoding for xlmr_base - MD_RH_midParietal already done
+Encoding for xlmr_base - MD_RH_postParietal already done
+Encoding for xlmr_base - MD_RH_supFrontal already done
+Encoding for xlmr_base - all already done
+Encoding for xlmr_large - MD_LH_Precentral_A_PrecG already done
+Encoding for xlmr_large - MD_LH_Precentral_B_IFGop already done
+Encoding for xlmr_large - MD_LH_antParietal already done
+Encoding for xlmr_large - MD_LH_insula already done
+Encoding for xlmr_large - MD_LH_medialFrontal already done
+Encoding for xlmr_large - MD_LH_midFrontal already done
+Encoding for xlmr_large - MD_LH_midFrontalOrb already done
+Encoding for xlmr_large - MD_LH_midParietal already done
+Encoding for xlmr_large - MD_LH_postParietal already done
+Encoding for xlmr_large - MD_LH_supFrontal already done
+Encoding for xlmr_large - MD_RH_Precentral_A_PrecG already done
+Encoding for xlmr_large - MD_RH_Precentral_B_IFGop already done
+Encoding for xlmr_large - MD_RH_antParietal already done
+Encoding for xlmr_large - MD_RH_insula already done
+Encoding for xlmr_large - MD_RH_medialFrontal already done
+Encoding for xlmr_large - MD_RH_midFrontal already done
+Encoding for xlmr_large - MD_RH_midFrontalOrb already done
+Encoding for xlmr_large - MD_RH_midParietal already done
+Encoding for xlmr_large - MD_RH_postParietal already done
+Encoding for xlmr_large - MD_RH_supFrontal already done
+Encoding for xlmr_large - all already done
+Encoding for mt5_small - MD_LH_Precentral_A_PrecG already done
+Encoding for mt5_small - MD_LH_Precentral_B_IFGop already done
+Encoding for mt5_small - MD_LH_antParietal already done
+Encoding for mt5_small - MD_LH_insula already done
+Encoding for mt5_small - MD_LH_medialFrontal already done
+Encoding for mt5_small - MD_LH_midFrontal already done
+Encoding for mt5_small - MD_LH_midFrontalOrb already done
+Encoding for mt5_small - MD_LH_midParietal already done
+Encoding for mt5_small - MD_LH_postParietal already done
+Encoding for mt5_small - MD_LH_supFrontal already done
+Encoding for mt5_small - MD_RH_Precentral_A_PrecG already done
+Encoding for mt5_small - MD_RH_Precentral_B_IFGop already done
+Encoding for mt5_small - MD_RH_antParietal already done
+Encoding for mt5_small - MD_RH_insula already done
+Encoding for mt5_small - MD_RH_medialFrontal already done
+Encoding for mt5_small - MD_RH_midFrontal already done
+Encoding for mt5_small - MD_RH_midFrontalOrb already done
+Encoding for mt5_small - MD_RH_midParietal already done
+Encoding for mt5_small - MD_RH_postParietal already done
+Encoding for mt5_small - MD_RH_supFrontal already done
+Encoding for mt5_small - all already done
+Encoding for mt5_base - MD_LH_Precentral_A_PrecG already done
+Encoding for mt5_base - MD_LH_Precentral_B_IFGop already done
+Encoding for mt5_base - MD_LH_antParietal already done
+Encoding for mt5_base - MD_LH_insula already done
+Encoding for mt5_base - MD_LH_medialFrontal already done
+Encoding for mt5_base - MD_LH_midFrontal already done
+Encoding for mt5_base - MD_LH_midFrontalOrb already done
+Encoding for mt5_base - MD_LH_midParietal already done
+Encoding for mt5_base - MD_LH_postParietal already done
+Encoding for mt5_base - MD_LH_supFrontal already done
+Encoding for mt5_base - MD_RH_Precentral_A_PrecG already done
+Encoding for mt5_base - MD_RH_Precentral_B_IFGop already done
+Encoding for mt5_base - MD_RH_antParietal already done
+Encoding for mt5_base - MD_RH_insula already done
+Encoding for mt5_base - MD_RH_medialFrontal already done
+Encoding for mt5_base - MD_RH_midFrontal already done
+Encoding for mt5_base - MD_RH_midFrontalOrb already done
+Encoding for mt5_base - MD_RH_midParietal already done
+Encoding for mt5_base - MD_RH_postParietal already done
+Encoding for mt5_base - MD_RH_supFrontal already done
+Encoding for mt5_base - all already done
+Encoding for mt5_large - MD_LH_Precentral_A_PrecG already done
+Encoding for mt5_large - MD_LH_Precentral_B_IFGop already done
+Encoding for mt5_large - MD_LH_antParietal already done
+Encoding for mt5_large - MD_LH_insula already done
+Encoding for mt5_large - MD_LH_medialFrontal already done
+Encoding for mt5_large - MD_LH_midFrontal already done
+Encoding for mt5_large - MD_LH_midFrontalOrb already done
+Encoding for mt5_large - MD_LH_midParietal already done
+Encoding for mt5_large - MD_LH_postParietal already done
+Encoding for mt5_large - MD_LH_supFrontal already done
+Encoding for mt5_large - MD_RH_Precentral_A_PrecG already done
+Encoding for mt5_large - MD_RH_Precentral_B_IFGop already done
+Encoding for mt5_large - MD_RH_antParietal already done
+Encoding for mt5_large - MD_RH_insula already done
+Encoding for mt5_large - MD_RH_medialFrontal already done
+Encoding for mt5_large - MD_RH_midFrontal already done
+Encoding for mt5_large - MD_RH_midFrontalOrb already done
+Encoding for mt5_large - MD_RH_midParietal already done
+Encoding for mt5_large - MD_RH_postParietal already done
+Encoding for mt5_large - MD_RH_supFrontal already done
+Encoding for mt5_large - all already done
+Encoding for mdeberta - MD_LH_Precentral_A_PrecG already done
+Encoding for mdeberta - MD_LH_Precentral_B_IFGop already done
+Encoding for mdeberta - MD_LH_antParietal already done
+Encoding for mdeberta - MD_LH_insula already done
+Encoding for mdeberta - MD_LH_medialFrontal already done
+Encoding for mdeberta - MD_LH_midFrontal already done
+Encoding for mdeberta - MD_LH_midFrontalOrb already done
+Encoding for mdeberta - MD_LH_midParietal already done
+Encoding for mdeberta - MD_LH_postParietal already done
+Encoding for mdeberta - MD_LH_supFrontal already done
+Encoding for mdeberta - MD_RH_Precentral_A_PrecG already done
+Encoding for mdeberta - MD_RH_Precentral_B_IFGop already done
+Encoding for mdeberta - MD_RH_antParietal already done
+Encoding for mdeberta - MD_RH_insula already done
+Encoding for mdeberta - MD_RH_medialFrontal already done
+Encoding for mdeberta - MD_RH_midFrontal already done
+Encoding for mdeberta - MD_RH_midFrontalOrb already done
+Encoding for mdeberta - MD_RH_midParietal already done
+Encoding for mdeberta - MD_RH_postParietal already done
+Encoding for mdeberta - MD_RH_supFrontal already done
+Encoding for mdeberta - all already done
+Encoding for xlm_align - MD_LH_Precentral_A_PrecG already done
+Encoding for xlm_align - MD_LH_Precentral_B_IFGop already done
+Encoding for xlm_align - MD_LH_antParietal already done
+Encoding for xlm_align - MD_LH_insula already done
+Encoding for xlm_align - MD_LH_medialFrontal already done
+Encoding for xlm_align - MD_LH_midFrontal already done
+Encoding for xlm_align - MD_LH_midFrontalOrb already done
+Encoding for xlm_align - MD_LH_midParietal already done
+Encoding for xlm_align - MD_LH_postParietal already done
+Encoding for xlm_align - MD_LH_supFrontal already done
+Encoding for xlm_align - MD_RH_Precentral_A_PrecG already done
+Encoding for xlm_align - MD_RH_Precentral_B_IFGop already done
+Encoding for xlm_align - MD_RH_antParietal already done
+Encoding for xlm_align - MD_RH_insula already done
+Encoding for xlm_align - MD_RH_medialFrontal already done
+Encoding for xlm_align - MD_RH_midFrontal already done
+Encoding for xlm_align - MD_RH_midFrontalOrb already done
+Encoding for xlm_align - MD_RH_midParietal already done
+Encoding for xlm_align - MD_RH_postParietal already done
+Encoding for xlm_align - MD_RH_supFrontal already done
+Encoding for xlm_align - all already done
+Encoding for infoxlm_base - MD_LH_Precentral_A_PrecG already done
+Encoding for infoxlm_base - MD_LH_Precentral_B_IFGop already done
+Encoding for infoxlm_base - MD_LH_antParietal already done
+Encoding for infoxlm_base - MD_LH_insula already done
+Encoding for infoxlm_base - MD_LH_medialFrontal already done
+Encoding for infoxlm_base - MD_LH_midFrontal already done
+Encoding for infoxlm_base - MD_LH_midFrontalOrb already done
+Encoding for infoxlm_base - MD_LH_midParietal already done
+Encoding for infoxlm_base - MD_LH_postParietal already done
+Encoding for infoxlm_base - MD_LH_supFrontal already done
+Encoding for infoxlm_base - MD_RH_Precentral_A_PrecG already done
+Encoding for infoxlm_base - MD_RH_Precentral_B_IFGop already done
+Encoding for infoxlm_base - MD_RH_antParietal already done
+Encoding for infoxlm_base - MD_RH_insula already done
+Encoding for infoxlm_base - MD_RH_medialFrontal already done
+Encoding for infoxlm_base - MD_RH_midFrontal already done
+Encoding for infoxlm_base - MD_RH_midFrontalOrb already done
+Encoding for infoxlm_base - MD_RH_midParietal already done
+Encoding for infoxlm_base - MD_RH_postParietal already done
+Encoding for infoxlm_base - MD_RH_supFrontal already done
+Encoding for infoxlm_base - all already done
+Encoding for infoxlm_large - MD_LH_Precentral_A_PrecG already done
+Encoding for infoxlm_large - MD_LH_Precentral_B_IFGop already done
+Encoding for infoxlm_large - MD_LH_antParietal already done
+Encoding for infoxlm_large - MD_LH_insula already done
+Encoding for infoxlm_large - MD_LH_medialFrontal already done
+Encoding for infoxlm_large - MD_LH_midFrontal already done
+Encoding for infoxlm_large - MD_LH_midFrontalOrb already done
+Encoding for infoxlm_large - MD_LH_midParietal already done
+Encoding for infoxlm_large - MD_LH_postParietal already done
+Encoding for infoxlm_large - MD_LH_supFrontal already done
+Encoding for infoxlm_large - MD_RH_Precentral_A_PrecG already done
+Encoding for infoxlm_large - MD_RH_Precentral_B_IFGop already done
+Encoding for infoxlm_large - MD_RH_antParietal already done
+Encoding for infoxlm_large - MD_RH_insula already done
+Encoding for infoxlm_large - MD_RH_medialFrontal already done
+Encoding for infoxlm_large - MD_RH_midFrontal already done
+Encoding for infoxlm_large - MD_RH_midFrontalOrb already done
+Encoding for infoxlm_large - MD_RH_midParietal already done
+Encoding for infoxlm_large - MD_RH_postParietal already done
+Encoding for infoxlm_large - MD_RH_supFrontal already done
+Encoding for infoxlm_large - all already done
+Encoding for multiminilm - MD_LH_Precentral_A_PrecG already done
+Encoding for multiminilm - MD_LH_Precentral_B_IFGop already done
+Encoding for multiminilm - MD_LH_antParietal already done
+Encoding for multiminilm - MD_LH_insula already done
+Encoding for multiminilm - MD_LH_medialFrontal already done
+Encoding for multiminilm - MD_LH_midFrontal already done
+Encoding for multiminilm - MD_LH_midFrontalOrb already done
+Encoding for multiminilm - MD_LH_midParietal already done
+Encoding for multiminilm - MD_LH_postParietal already done
+Encoding for multiminilm - MD_LH_supFrontal already done
+Encoding for multiminilm - MD_RH_Precentral_A_PrecG already done
+Encoding for multiminilm - MD_RH_Precentral_B_IFGop already done
+Encoding for multiminilm - MD_RH_antParietal already done
+Encoding for multiminilm - MD_RH_insula already done
+Encoding for multiminilm - MD_RH_medialFrontal already done
+Encoding for multiminilm - MD_RH_midFrontal already done
+Encoding for multiminilm - MD_RH_midFrontalOrb already done
+Encoding for multiminilm - MD_RH_midParietal already done
+Encoding for multiminilm - MD_RH_postParietal already done
+Encoding for multiminilm - MD_RH_supFrontal already done
+Encoding for multiminilm - all already done
+Encoding for nllb200_distilled_600M - MD_LH_Precentral_A_PrecG already done
+Encoding for nllb200_distilled_600M - MD_LH_Precentral_B_IFGop already done
+Encoding for nllb200_distilled_600M - MD_LH_antParietal already done
+Encoding for nllb200_distilled_600M - MD_LH_insula already done
+Encoding for nllb200_distilled_600M - MD_LH_medialFrontal already done
+Encoding for nllb200_distilled_600M - MD_LH_midFrontal already done
+Encoding for nllb200_distilled_600M - MD_LH_midFrontalOrb already done
+Encoding for nllb200_distilled_600M - MD_LH_midParietal already done
+Encoding for nllb200_distilled_600M - MD_LH_postParietal already done
+Encoding for nllb200_distilled_600M - MD_LH_supFrontal already done
+Encoding for nllb200_distilled_600M - MD_RH_Precentral_A_PrecG already done
+Encoding for nllb200_distilled_600M - MD_RH_Precentral_B_IFGop already done
+Encoding for nllb200_distilled_600M - MD_RH_antParietal already done
+Encoding for nllb200_distilled_600M - MD_RH_insula already done
+Encoding for nllb200_distilled_600M - MD_RH_medialFrontal already done
+Encoding for nllb200_distilled_600M - MD_RH_midFrontal already done
+Encoding for nllb200_distilled_600M - MD_RH_midFrontalOrb already done
+Encoding for nllb200_distilled_600M - MD_RH_midParietal already done
+Encoding for nllb200_distilled_600M - MD_RH_postParietal already done
+Encoding for nllb200_distilled_600M - MD_RH_supFrontal already done
+Encoding for nllb200_distilled_600M - all already done
+Encoding for nllb200_distilled_1B - MD_LH_Precentral_A_PrecG already done
+Encoding for nllb200_distilled_1B - MD_LH_Precentral_B_IFGop already done
+Encoding for nllb200_distilled_1B - MD_LH_antParietal already done
+Encoding for nllb200_distilled_1B - MD_LH_insula already done
+Encoding for nllb200_distilled_1B - MD_LH_medialFrontal already done
+Encoding for nllb200_distilled_1B - MD_LH_midFrontal already done
+Encoding for nllb200_distilled_1B - MD_LH_midFrontalOrb already done
+Encoding for nllb200_distilled_1B - MD_LH_midParietal already done
+Encoding for nllb200_distilled_1B - MD_LH_postParietal already done
+Encoding for nllb200_distilled_1B - MD_LH_supFrontal already done
+Encoding for nllb200_distilled_1B - MD_RH_Precentral_A_PrecG already done
+Encoding for nllb200_distilled_1B - MD_RH_Precentral_B_IFGop already done
+Encoding for nllb200_distilled_1B - MD_RH_antParietal already done
+Encoding for nllb200_distilled_1B - MD_RH_insula already done
+Encoding for nllb200_distilled_1B - MD_RH_medialFrontal already done
+Encoding for nllb200_distilled_1B - MD_RH_midFrontal already done
+Encoding for nllb200_distilled_1B - MD_RH_midFrontalOrb already done
+Encoding for nllb200_distilled_1B - MD_RH_midParietal already done
+Encoding for nllb200_distilled_1B - MD_RH_postParietal already done
+Encoding for nllb200_distilled_1B - MD_RH_supFrontal already done
+Encoding for nllb200_distilled_1B - all already done
+Encoding for nllb200_1B - MD_LH_Precentral_A_PrecG already done
+Encoding for nllb200_1B - MD_LH_Precentral_B_IFGop already done
+Encoding for nllb200_1B - MD_LH_antParietal already done
+Encoding for nllb200_1B - MD_LH_insula already done
+Encoding for nllb200_1B - MD_LH_medialFrontal already done
+Encoding for nllb200_1B - MD_LH_midFrontal already done
+Encoding for nllb200_1B - MD_LH_midFrontalOrb already done
+Encoding for nllb200_1B - MD_LH_midParietal already done
+Encoding for nllb200_1B - MD_LH_postParietal already done
+Encoding for nllb200_1B - MD_LH_supFrontal already done
+Encoding for nllb200_1B - MD_RH_Precentral_A_PrecG already done
+Encoding for nllb200_1B - MD_RH_Precentral_B_IFGop already done
+Encoding for nllb200_1B - MD_RH_antParietal already done
+Encoding for nllb200_1B - MD_RH_insula already done
+Encoding for nllb200_1B - MD_RH_medialFrontal already done
+Encoding for nllb200_1B - MD_RH_midFrontal already done
+Encoding for nllb200_1B - MD_RH_midFrontalOrb already done
+Encoding for nllb200_1B - MD_RH_midParietal already done
+Encoding for nllb200_1B - MD_RH_postParietal already done
+Encoding for nllb200_1B - MD_RH_supFrontal already done
+Encoding for nllb200_1B - all already done
+Encoding for mgpt - MD_LH_Precentral_A_PrecG already done
+Encoding for mgpt - MD_LH_Precentral_B_IFGop already done
+Encoding for mgpt - MD_LH_antParietal already done
+Encoding for mgpt - MD_LH_insula already done
+Encoding for mgpt - MD_LH_medialFrontal already done
+Encoding for mgpt - MD_LH_midFrontal already done
+Encoding for mgpt - MD_LH_midFrontalOrb already done
+Encoding for mgpt - MD_LH_midParietal already done
+Encoding for mgpt - MD_LH_postParietal already done
+Encoding for mgpt - MD_LH_supFrontal already done
+Encoding for mgpt - MD_RH_Precentral_A_PrecG already done
+Encoding for mgpt - MD_RH_Precentral_B_IFGop already done
+Encoding for mgpt - MD_RH_antParietal already done
+Encoding for mgpt - MD_RH_insula already done
+Encoding for mgpt - MD_RH_medialFrontal already done
+
+
+Processing MD_RH_midFrontal (16/21)
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontal | layer=0 | mean r=-0.012
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontal | layer=1 | mean r=-0.027
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontal | layer=2 | mean r=-0.063
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontal | layer=3 | mean r=0.022
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontal | layer=4 | mean r=-0.003
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontal | layer=5 | mean r=0.049
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontal | layer=6 | mean r=0.108
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontal | layer=7 | mean r=0.125
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontal | layer=8 | mean r=0.109
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontal | layer=9 | mean r=0.125
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontal | layer=10 | mean r=0.159
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontal | layer=11 | mean r=0.150
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontal | layer=12 | mean r=0.131
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontal | layer=13 | mean r=0.132
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontal | layer=14 | mean r=0.108
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontal | layer=15 | mean r=0.112
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontal | layer=16 | mean r=0.105
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontal | layer=17 | mean r=0.090
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontal | layer=18 | mean r=0.085
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontal | layer=19 | mean r=0.089
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontal | layer=20 | mean r=0.082
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontal | layer=21 | mean r=0.072
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontal | layer=22 | mean r=0.076
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontal | layer=23 | mean r=0.083
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontal | layer=24 | mean r=0.106
+
+
+Processing MD_RH_midFrontalOrb (17/21)
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontalOrb | layer=0 | mean r=-0.042
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontalOrb | layer=1 | mean r=0.015
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontalOrb | layer=2 | mean r=-0.010
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontalOrb | layer=3 | mean r=0.008
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontalOrb | layer=4 | mean r=0.006
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontalOrb | layer=5 | mean r=0.048
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontalOrb | layer=6 | mean r=0.096
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontalOrb | layer=7 | mean r=0.100
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontalOrb | layer=8 | mean r=0.086
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontalOrb | layer=9 | mean r=0.100
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontalOrb | layer=10 | mean r=0.127
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontalOrb | layer=11 | mean r=0.121
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontalOrb | layer=12 | mean r=0.114
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontalOrb | layer=13 | mean r=0.106
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontalOrb | layer=14 | mean r=0.098
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontalOrb | layer=15 | mean r=0.099
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontalOrb | layer=16 | mean r=0.087
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontalOrb | layer=17 | mean r=0.077
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontalOrb | layer=18 | mean r=0.058
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontalOrb | layer=19 | mean r=0.063
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontalOrb | layer=20 | mean r=0.051
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontalOrb | layer=21 | mean r=0.050
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontalOrb | layer=22 | mean r=0.044
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontalOrb | layer=23 | mean r=0.066
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midFrontalOrb | layer=24 | mean r=0.102
+
+
+Processing MD_RH_midParietal (18/21)
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midParietal | layer=0 | mean r=0.001
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midParietal | layer=1 | mean r=-0.039
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midParietal | layer=2 | mean r=-0.047
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midParietal | layer=3 | mean r=-0.019
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midParietal | layer=4 | mean r=0.003
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midParietal | layer=5 | mean r=0.018
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midParietal | layer=6 | mean r=0.028
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midParietal | layer=7 | mean r=0.045
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midParietal | layer=8 | mean r=0.043
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midParietal | layer=9 | mean r=0.071
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midParietal | layer=10 | mean r=0.072
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midParietal | layer=11 | mean r=0.067
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midParietal | layer=12 | mean r=0.060
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midParietal | layer=13 | mean r=0.065
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midParietal | layer=14 | mean r=0.060
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midParietal | layer=15 | mean r=0.059
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midParietal | layer=16 | mean r=0.049
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midParietal | layer=17 | mean r=0.041
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midParietal | layer=18 | mean r=0.044
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midParietal | layer=19 | mean r=0.045
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midParietal | layer=20 | mean r=0.049
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midParietal | layer=21 | mean r=0.052
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midParietal | layer=22 | mean r=0.064
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midParietal | layer=23 | mean r=0.068
+ACROSS-multilang-train     mgpt | fROI=MD_RH_midParietal | layer=24 | mean r=0.086
+
+
+Processing MD_RH_postParietal (19/21)
+ACROSS-multilang-train     mgpt | fROI=MD_RH_postParietal | layer=0 | mean r=0.126
+ACROSS-multilang-train     mgpt | fROI=MD_RH_postParietal | layer=1 | mean r=0.098
+ACROSS-multilang-train     mgpt | fROI=MD_RH_postParietal | layer=2 | mean r=0.092
+ACROSS-multilang-train     mgpt | fROI=MD_RH_postParietal | layer=3 | mean r=0.069
+ACROSS-multilang-train     mgpt | fROI=MD_RH_postParietal | layer=4 | mean r=0.079
+ACROSS-multilang-train     mgpt | fROI=MD_RH_postParietal | layer=5 | mean r=0.092
+ACROSS-multilang-train     mgpt | fROI=MD_RH_postParietal | layer=6 | mean r=0.104
+ACROSS-multilang-train     mgpt | fROI=MD_RH_postParietal | layer=7 | mean r=0.132
+ACROSS-multilang-train     mgpt | fROI=MD_RH_postParietal | layer=8 | mean r=0.139
+ACROSS-multilang-train     mgpt | fROI=MD_RH_postParietal | layer=9 | mean r=0.167
+ACROSS-multilang-train     mgpt | fROI=MD_RH_postParietal | layer=10 | mean r=0.171
+ACROSS-multilang-train     mgpt | fROI=MD_RH_postParietal | layer=11 | mean r=0.161
+ACROSS-multilang-train     mgpt | fROI=MD_RH_postParietal | layer=12 | mean r=0.153
+ACROSS-multilang-train     mgpt | fROI=MD_RH_postParietal | layer=13 | mean r=0.155
+ACROSS-multilang-train     mgpt | fROI=MD_RH_postParietal | layer=14 | mean r=0.138
+ACROSS-multilang-train     mgpt | fROI=MD_RH_postParietal | layer=15 | mean r=0.126
+ACROSS-multilang-train     mgpt | fROI=MD_RH_postParietal | layer=16 | mean r=0.102
+ACROSS-multilang-train     mgpt | fROI=MD_RH_postParietal | layer=17 | mean r=0.104
+ACROSS-multilang-train     mgpt | fROI=MD_RH_postParietal | layer=18 | mean r=0.103
+ACROSS-multilang-train     mgpt | fROI=MD_RH_postParietal | layer=19 | mean r=0.096
+ACROSS-multilang-train     mgpt | fROI=MD_RH_postParietal | layer=20 | mean r=0.103
+ACROSS-multilang-train     mgpt | fROI=MD_RH_postParietal | layer=21 | mean r=0.111
+ACROSS-multilang-train     mgpt | fROI=MD_RH_postParietal | layer=22 | mean r=0.120
+ACROSS-multilang-train     mgpt | fROI=MD_RH_postParietal | layer=23 | mean r=0.120
+ACROSS-multilang-train     mgpt | fROI=MD_RH_postParietal | layer=24 | mean r=0.140
+
+
+Processing MD_RH_supFrontal (20/21)
+ACROSS-multilang-train     mgpt | fROI=MD_RH_supFrontal | layer=0 | mean r=-0.039
+ACROSS-multilang-train     mgpt | fROI=MD_RH_supFrontal | layer=1 | mean r=-0.094
+ACROSS-multilang-train     mgpt | fROI=MD_RH_supFrontal | layer=2 | mean r=-0.106
+ACROSS-multilang-train     mgpt | fROI=MD_RH_supFrontal | layer=3 | mean r=-0.043
+ACROSS-multilang-train     mgpt | fROI=MD_RH_supFrontal | layer=4 | mean r=-0.042
+ACROSS-multilang-train     mgpt | fROI=MD_RH_supFrontal | layer=5 | mean r=-0.008
+ACROSS-multilang-train     mgpt | fROI=MD_RH_supFrontal | layer=6 | mean r=0.031
+ACROSS-multilang-train     mgpt | fROI=MD_RH_supFrontal | layer=7 | mean r=0.059
+ACROSS-multilang-train     mgpt | fROI=MD_RH_supFrontal | layer=8 | mean r=0.055
+ACROSS-multilang-train     mgpt | fROI=MD_RH_supFrontal | layer=9 | mean r=0.089
+ACROSS-multilang-train     mgpt | fROI=MD_RH_supFrontal | layer=10 | mean r=0.131
+ACROSS-multilang-train     mgpt | fROI=MD_RH_supFrontal | layer=11 | mean r=0.130
+ACROSS-multilang-train     mgpt | fROI=MD_RH_supFrontal | layer=12 | mean r=0.096
+ACROSS-multilang-train     mgpt | fROI=MD_RH_supFrontal | layer=13 | mean r=0.093
+ACROSS-multilang-train     mgpt | fROI=MD_RH_supFrontal | layer=14 | mean r=0.073
+ACROSS-multilang-train     mgpt | fROI=MD_RH_supFrontal | layer=15 | mean r=0.072
+ACROSS-multilang-train     mgpt | fROI=MD_RH_supFrontal | layer=16 | mean r=0.076
+ACROSS-multilang-train     mgpt | fROI=MD_RH_supFrontal | layer=17 | mean r=0.065
+ACROSS-multilang-train     mgpt | fROI=MD_RH_supFrontal | layer=18 | mean r=0.061
+ACROSS-multilang-train     mgpt | fROI=MD_RH_supFrontal | layer=19 | mean r=0.077
+ACROSS-multilang-train     mgpt | fROI=MD_RH_supFrontal | layer=20 | mean r=0.065
+ACROSS-multilang-train     mgpt | fROI=MD_RH_supFrontal | layer=21 | mean r=0.053
+ACROSS-multilang-train     mgpt | fROI=MD_RH_supFrontal | layer=22 | mean r=0.061
+ACROSS-multilang-train     mgpt | fROI=MD_RH_supFrontal | layer=23 | mean r=0.068
+ACROSS-multilang-train     mgpt | fROI=MD_RH_supFrontal | layer=24 | mean r=0.094
+
+
+Processing all (21/21)
+ACROSS-multilang-train     mgpt | fROI=all | layer=0 | mean r=-0.086
+ACROSS-multilang-train     mgpt | fROI=all | layer=1 | mean r=-0.066
+ACROSS-multilang-train     mgpt | fROI=all | layer=2 | mean r=-0.111
+ACROSS-multilang-train     mgpt | fROI=all | layer=3 | mean r=-0.040
+ACROSS-multilang-train     mgpt | fROI=all | layer=4 | mean r=-0.050
+ACROSS-multilang-train     mgpt | fROI=all | layer=5 | mean r=-0.028
+ACROSS-multilang-train     mgpt | fROI=all | layer=6 | mean r=0.022
+ACROSS-multilang-train     mgpt | fROI=all | layer=7 | mean r=0.033
+ACROSS-multilang-train     mgpt | fROI=all | layer=8 | mean r=0.034
+ACROSS-multilang-train     mgpt | fROI=all | layer=9 | mean r=0.066
+ACROSS-multilang-train     mgpt | fROI=all | layer=10 | mean r=0.108
+ACROSS-multilang-train     mgpt | fROI=all | layer=11 | mean r=0.109
+ACROSS-multilang-train     mgpt | fROI=all | layer=12 | mean r=0.091
+ACROSS-multilang-train     mgpt | fROI=all | layer=13 | mean r=0.088
+ACROSS-multilang-train     mgpt | fROI=all | layer=14 | mean r=0.054
+ACROSS-multilang-train     mgpt | fROI=all | layer=15 | mean r=0.056
+ACROSS-multilang-train     mgpt | fROI=all | layer=16 | mean r=0.052
+ACROSS-multilang-train     mgpt | fROI=all | layer=17 | mean r=0.043
+ACROSS-multilang-train     mgpt | fROI=all | layer=18 | mean r=0.039
+ACROSS-multilang-train     mgpt | fROI=all | layer=19 | mean r=0.050
+ACROSS-multilang-train     mgpt | fROI=all | layer=20 | mean r=0.043
+ACROSS-multilang-train     mgpt | fROI=all | layer=21 | mean r=0.036
+ACROSS-multilang-train     mgpt | fROI=all | layer=22 | mean r=0.040
+ACROSS-multilang-train     mgpt | fROI=all | layer=23 | mean r=0.049
+ACROSS-multilang-train     mgpt | fROI=all | layer=24 | mean r=0.084
