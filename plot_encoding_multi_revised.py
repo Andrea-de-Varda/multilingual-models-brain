@@ -714,7 +714,12 @@ for froi in ['Lang_LH_AntTemp', 'Lang_LH_IFG', 'Lang_LH_IFGorb', 'Lang_LH_MFG', 
     spatial_results.append({"froi" : froi, "network" : "LH", "r" : mean_r, "se" : se, "all_points" : best_monol})
     
 for froi in ['MD_LH_Precentral_A_PrecG', 'MD_LH_Precentral_B_IFGop', 'MD_LH_antParietal', 'MD_LH_insula', 'MD_LH_medialFrontal', 'MD_LH_midFrontal', 'MD_LH_midFrontalOrb', 'MD_LH_midParietal', 'MD_LH_postParietal', 'MD_LH_supFrontal', 'MD_RH_Precentral_A_PrecG', 'MD_RH_Precentral_B_IFGop', 'MD_RH_antParietal', 'MD_RH_insula', 'MD_RH_medialFrontal', 'MD_RH_midFrontal', 'MD_RH_midFrontalOrb', 'MD_RH_midParietal', 'MD_RH_postParietal', 'MD_RH_supFrontal', 'all']:
-    best_monol = [get_best_layerwise(load(model, froi = froi, md=True)) for model in model_names]
+    best_monol = []
+    for model in model_names:
+        try: # !!!! TODO FIX THIS: a couple of fROIs are missing for mGPT!
+            best_monol.append(get_best_layerwise(load(model, froi = froi, md=True)))
+        except FileNotFoundError:
+            print("\n\n", froi, model, "\n\n")
     mean_r = np.mean(best_monol)
     se = np.std(best_monol) / np.sqrt(len(best_monol))
     spatial_results.append({"froi" : froi, "network" : "MD", "r" : mean_r, "se" : se, "all_points" : best_monol})
@@ -872,6 +877,7 @@ plt.yticks(fontsize=12)
 plt.ylim(-.05, .55)
 sns.despine()
 plt.tight_layout()
+plt.savefig("plots/spatial_specificity_multi.svg", format="svg", bbox_inches="tight")
 plt.show()
 
 ##########################

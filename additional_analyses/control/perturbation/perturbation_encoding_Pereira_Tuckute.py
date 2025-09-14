@@ -262,6 +262,23 @@ finally:
 
 per_model.to_csv(cache_per_model_path, index=False)
 
+pert_labels = {
+    "intact": "Intact",
+    "contentwords": "Content words",
+    "nounsverbsadj": "N + V + Adj",
+    "nounsverbs": "N + V",
+    "nouns": "N",
+    "verbs": "V",
+    "functionwords": "Function words",
+    "paraphrase": "Paraphrase",
+    "1LocalWordSwap": "1 local swap",
+    "2LocalWordSwap": "2 local swaps",
+    "3LocalWordSwaps": "3 local swaps",
+    "4LocalWordSwaps": "4 local swaps",
+    "5LocalWordSwaps": "5 local swaps",
+    "Reversed": "Reversed word order",
+}
+
 
 pert_order = [
     'intact',
@@ -317,7 +334,7 @@ for g_name, g_items in groups:
 total_width = x - gap
 
 
-fig, ax = plt.subplots(dpi=400, figsize=(max(8, 0.6*len(pert_order) + 2.5), 3.4))
+fig, ax = plt.subplots(dpi=400, figsize=(max(8, 0.5*len(pert_order) + 2.5), 3))
 
 for g_name, g_items in groups:
     base_c = group_color[g_name]
@@ -347,7 +364,10 @@ for pert in pert_order:
 
 xticks = [x_positions[p] for p in pert_order]
 ax.set_xticks(xticks)
-ax.set_xticklabels(pert_order, fontsize=10, rotation=30, ha="right")
+# ax.set_xticklabels(pert_order, fontsize=10, rotation=30, ha="right")
+ax.set_xticklabels([pert_labels[p] for p in pert_order],
+                   fontsize=10, rotation=30, ha="right")
+
 
 # acc = []
 # for idx, (g_name, g_items) in enumerate(groups[:-1]):
@@ -380,4 +400,5 @@ ax.grid(axis="y", linestyle="--", alpha=0.5, zorder=1)
 ax.set_ylim(None, None)
 
 plt.tight_layout()
+plt.savefig("../plots/perturb.svg", format="svg", bbox_inches="tight")
 plt.show()
