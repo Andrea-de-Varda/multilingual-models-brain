@@ -8,45 +8,46 @@ from matplotlib.lines import Line2D
 import seaborn as sns
 from scipy.stats import norm
 
+import matplotlib as mpl
+mpl.rcParams['svg.fonttype'] = 'none'
+mpl.rcParams['font.family'] = 'DejaVu Sans'
+
 chdir("/home/dev/Documents/PhD/Alice")
 
-def load(model_prefix, monol = True, sequential = False, reset_context = False, random = False, md = False, rh = False):
-    print(model_prefix)
-    if sequential:
-        if reset_context:
-            if monol:
-                with open(f"results/split_context/monolingual_{model_prefix}", 'rb') as handle:
-                    file = pickle.load(handle)
-            else:
-                raise ValueError('No multilingual sequential split')
+def patched_load(path):
+    import sys
+    import numpy
+    sys.modules['numpy._core.numeric'] = numpy.core.numeric
+    with open(path, 'rb') as f:
+        return pickle.load(f)
+
+def load(model_prefix, froi="all", monol=False, split_context=False, random=False, md=False, rh=False, native = False, multitrain = True):
+    if monol:
+        if md:
+            filename = f"results/monolingual_md_{model_prefix}_{froi}"
+        elif rh:
+            filename = f"results/monolingual_rh_{model_prefix}_{froi}"
+        elif random:
+            filename = f"results/monolingual_{model_prefix}_{froi}_circshift"
+        elif native:
+            filename = f"results/monolingual_native_{model_prefix}_{froi}"
         else:
-            if monol:
-                with open(f"results/monolingual_{model_prefix}", 'rb') as handle:
-                    file = pickle.load(handle)
-            else:
-                raise ValueError('No multilingual sequential split')
-    elif random:
-        if monol:
-            with open(f"results/random/monolingual_{model_prefix}", 'rb') as handle:
-                file = pickle.load(handle)
-        else:
-            with open(f"results/random/multilingual_{model_prefix}", 'rb') as handle:
-                file = pickle.load(handle)
+            filename = f"results/monolingual_{model_prefix}_{froi}"
+        print("Loading:", filename)
     else:
-        if monol:
-            with open(f"results/monolingual_{model_prefix}", 'rb') as handle:
-                file = pickle.load(handle)
+        mtpfx = "multitrain_" if multitrain else ""
+        if md:
+            filename = f"results/multilingual_{mtpfx}md_{model_prefix}_{froi}"
+        elif rh:
+            filename = f"results/multilingual_{mtpfx}rh_{model_prefix}_{froi}"
+        elif random:
+            filename = f"results/multilingual_{mtpfx}{model_prefix}_{froi}_circshift"
+        elif native:
+            filename = f"results/multilingual_{mtpfx}native_{model_prefix}_{froi}"
         else:
-            if md:
-                with open(f"results/multilingual_md_{model_prefix}", 'rb') as handle:
-                    file = pickle.load(handle)
-            elif rh:
-                with open(f"results/multilingual_rh_{model_prefix}", 'rb') as handle:
-                    file = pickle.load(handle)
-            else:
-                with open(f"results/multilingual_{model_prefix}", 'rb') as handle:
-                    file = pickle.load(handle)
-    return file
+            filename = f"results/multilingual_{mtpfx}{model_prefix}_{froi}"
+        print("Loading:", filename)
+    return patched_load(filename)
 
 def r_to_z(r1, r2, n = 130):    
     # fisher r-to-z transformation
@@ -127,11 +128,7 @@ palette = sns.color_palette("tab10", n_colors=n_classes)
 class_order = ['NLLB', 'XLM-Align', 'InfoXLM', 'XLM-R', 'BERT', 'DeBERTa', 'mT5', 'mGPT', 'XGLM']
 
 fig = plt.figure(figsize=(13*.8, 7*.8), dpi=400)  # Main figure size
-
-# Create a 3x3 grid
 gs = gridspec.GridSpec(3, 3, figure=fig)
-
-# Loop through the class order and create subplots within each main grid cell
 for i, model_class in enumerate(class_order):
     # Find row and column index
     row = i // 3
@@ -164,10 +161,10 @@ for i, model_class in enumerate(class_order):
         ax1.tick_params(axis='x', labelsize=0)
     #ax1.tick_params(axis='y', labelsize=18)
     ax1.set_xlim([group_data['l'].min()-.02, group_data['l'].max()+.02])
-    ax1.set_ylim(-.05, .53)
+    ax1.set_ylim(-.05, .38)
     ax1.set_ylabel('')  # Remove y-axis label
     ax1.set_xlabel('')  # Remove x-axis label
-    ax1.set_yticks([0, 0.2, 0.4])  # Set y-ticks
+    ax1.set_yticks([0, .1, .2, .3])  # Set y-ticks
     ax1.get_legend().remove()
     ax1.spines['top'].set_color('black')
     ax1.spines['top'].set_linewidth(1.5)
@@ -206,10 +203,10 @@ for i, model_class in enumerate(class_order):
     #ax2.tick_params(axis='x', labelsize=18)
     #ax2.tick_params(axis='y', labelsize=0)
     ax2.set_xlim([group_data_mono['l'].min()-.02, group_data_mono['l'].max()+.02])
-    ax2.set_ylim(-.05, .53)
+    ax2.set_ylim(-.05, .38)
     ax2.set_ylabel('')  # Remove y-axis label
     ax2.set_xlabel('')  # Remove x-axis label
-    ax2.set_yticks([0, 0.2, 0.4])  # Set y-ticks
+    ax2.set_yticks([0, .1, .2, .3])  # Set y-ticks
     ax2.get_legend().remove()
     ax2.spines['top'].set_color('black')
     ax2.spines['top'].set_linewidth(1.5)
@@ -229,7 +226,104 @@ fig.text(0.00, 0.5, 'R', ha='center', va='center', rotation='vertical', fontsize
 legend_handles = [Line2D([0], [0], color=palette_d[class_dict_nice[model]], marker=model_markers[model], label=model, linestyle='-', markersize=8) for model in out_dfs['Model'].unique()]
 fig.legend(handles=legend_handles, loc='upper right', fontsize=13.2, title_fontsize=18, title='Model', bbox_to_anchor=(1.2, 1.05))
 fig.tight_layout()
+plt.savefig("plots/layerwise.svg", format="svg", bbox_inches="tight")
+plt.show()
 
+
+import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
+
+legend_handles = [
+    Line2D(
+        [0], [0],
+        color=palette_d[class_dict_nice[model]],
+        marker=model_markers[model],
+        label=model,
+        linestyle='-',
+        markersize=8
+    )
+    for model in out_dfs['Model'].unique()
+]
+
+fig, ax = plt.subplots(figsize=(7, 3), dpi=400)
+ax.axis('off')  # remove axes
+
+legend = fig.legend(
+    handles=legend_handles,
+    loc='center',
+    fontsize=13.2,
+    title_fontsize=18,
+    title='Model',
+    ncol=3
+)
+plt.savefig("plots/layerwise_legend.svg", format="svg", bbox_inches="tight")
+plt.show()
+
+
+################################################
+# Diff in r layerwise (compare mono vs. multi) #
+################################################
+
+df_both = pd.merge(out_dfs[["l", "m", "Model", "Class", "color"]], out_dfs_mono[["l", "m", "Model", "Class", "color"]], on = ["l", "Model", "Class", "color"], suffixes = ["_multi", "_mono"])
+df_both["delta_m"] = df_both["m_mono"] - df_both["m_multi"]
+
+p_diff = []
+for index, row in df_both.iterrows():
+    z, p = r_to_z(row["m_mono"], row["m_multi"])
+    p_diff.append(p)
+df_both["p_diff"] = p_diff
+
+bin_edges = np.linspace(0, 1, 8) 
+#bins = pd.interval_range(start=0, end=1, freq=1 / 9, closed = "left")
+df_both['l_bin'] = pd.cut(df_both['l'], bins=bin_edges, include_lowest=True, right=True)
+df_both["l_bin_str"] = df_both["l_bin"].astype(str)
+res_agg = []
+all_df_agg = []
+for name, df in df_both.groupby("l_bin"):
+    df_agg = df.groupby("Model").agg({"m_multi": "mean", "m_mono" : "mean", "delta_m" : "mean", "l_bin_str" : "max", "Model" : "max"})
+    all_df_agg.append(df_agg)
+    div = np.sqrt(len(df_agg))
+    res_agg.append([df_agg.m_multi.mean(), df_agg.m_mono.mean(), df_agg.m_multi.std()/div, df_agg.m_mono.std()/div])
+all_df_agg = pd.concat(all_df_agg)
+res_agg = pd.DataFrame(res_agg, columns = ["r_multi", "r_mono", "sd_multi", "sd_mono"])
+
+
+plt.figure(figsize = (7*.45, 5*.45), dpi=300)
+x = np.array(range(len(res_agg)))/(len(res_agg)-1)
+plt.plot(x, res_agg["r_multi"], color = "darkslateblue")
+plt.plot(x, res_agg["r_mono"], color = "tomato")
+plt.fill_between(
+    x, 
+    res_agg["r_multi"] - res_agg["sd_multi"], 
+    res_agg["r_multi"] + res_agg["sd_multi"], 
+    color='blue', 
+    alpha=0.1, 
+)
+plt.fill_between(
+    x, 
+    res_agg["r_mono"] - res_agg["sd_mono"], 
+    res_agg["r_mono"] + res_agg["sd_mono"], 
+    color='orange', 
+    alpha=0.1, 
+)
+plt.text(0.48, 0.146, "ACROSS", fontsize=14, weight = "bold")
+plt.text(0.05, 0.187, "WITHIN", fontsize=14, weight = "bold")
+ax = plt.gca()
+plt.title("Averaged")
+#plt.xlabel("Layer position")
+plt.ylabel("Mean R")
+plt.xticks([0, 0.25, 0.5, 0.75, 1])
+ax.spines['top'].set_color('black')
+ax.spines['top'].set_linewidth(1.5)
+ax.spines['bottom'].set_color('black')
+ax.spines['bottom'].set_linewidth(1.5)
+ax.spines['left'].set_color('black')
+ax.spines['left'].set_linewidth(1.5)
+ax.spines['right'].set_color('black')
+ax.spines['right'].set_linewidth(1.5)
+plt.xlim(-.05, 1.05)
+#plt.tight_layout()
+plt.savefig("plots/layerwise_avg.svg", format="svg", bbox_inches="tight")
 plt.show()
 
 ##############################
@@ -286,71 +380,6 @@ plt.ylabel('R')
 #plt.title('Average m for Each 0.05 Bin of l')
 plt.show()
 
-
-################################################
-# Diff in r layerwise (compare mono vs. multi) #
-################################################
-
-df_both = pd.merge(out_dfs[["l", "m", "Model", "Class", "color"]], out_dfs_mono[["l", "m", "Model", "Class", "color"]], on = ["l", "Model", "Class", "color"], suffixes = ["_multi", "_mono"])
-df_both["delta_m"] = df_both["m_mono"] - df_both["m_multi"]
-
-p_diff = []
-for index, row in df_both.iterrows():
-    z, p = r_to_z(row["m_mono"], row["m_multi"])
-    p_diff.append(p)
-df_both["p_diff"] = p_diff
-
-bin_edges = np.linspace(0, 1, 8) 
-#bins = pd.interval_range(start=0, end=1, freq=1 / 9, closed = "left")
-df_both['l_bin'] = pd.cut(df_both['l'], bins=bin_edges, include_lowest=True, right=True)
-df_both["l_bin_str"] = df_both["l_bin"].astype(str)
-res_agg = []
-all_df_agg = []
-for name, df in df_both.groupby("l_bin"):
-    df_agg = df.groupby("Model").agg({"m_multi": "mean", "m_mono" : "mean", "delta_m" : "mean", "l_bin_str" : "max", "Model" : "max"})
-    all_df_agg.append(df_agg)
-    div = np.sqrt(len(df_agg))
-    res_agg.append([df_agg.m_multi.mean(), df_agg.m_mono.mean(), df_agg.m_multi.std()/div, df_agg.m_mono.std()/div])
-all_df_agg = pd.concat(all_df_agg)
-res_agg = pd.DataFrame(res_agg, columns = ["r_multi", "r_mono", "sd_multi", "sd_mono"])
-
-
-plt.figure(figsize = (7*.45, 5*.45), dpi=300)
-x = np.array(range(len(res_agg)))/(len(res_agg)-1)
-plt.plot(x, res_agg["r_multi"], color = "darkslateblue")
-plt.plot(x, res_agg["r_mono"], color = "tomato")
-plt.fill_between(
-    x, 
-    res_agg["r_multi"] - res_agg["sd_multi"], 
-    res_agg["r_multi"] + res_agg["sd_multi"], 
-    color='blue', 
-    alpha=0.1, 
-)
-plt.fill_between(
-    x, 
-    res_agg["r_mono"] - res_agg["sd_mono"], 
-    res_agg["r_mono"] + res_agg["sd_mono"], 
-    color='orange', 
-    alpha=0.1, 
-)
-plt.text(0.45, 0.2, "ACROSS", fontsize=14, weight = "bold")
-plt.text(0., 0.275, "WITHIN", fontsize=14, weight = "bold")
-ax = plt.gca()
-plt.title("Averaged")
-#plt.xlabel("Layer position")
-plt.ylabel("Mean R")
-plt.xticks([0, 0.25, 0.5, 0.75, 1])
-ax.spines['top'].set_color('black')
-ax.spines['top'].set_linewidth(1.5)
-ax.spines['bottom'].set_color('black')
-ax.spines['bottom'].set_linewidth(1.5)
-ax.spines['left'].set_color('black')
-ax.spines['left'].set_linewidth(1.5)
-ax.spines['right'].set_color('black')
-ax.spines['right'].set_linewidth(1.5)
-plt.xlim(-.05, 1.05)
-#plt.tight_layout()
-plt.show()
 
 
 #####################

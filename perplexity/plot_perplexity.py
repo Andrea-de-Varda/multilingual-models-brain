@@ -8,6 +8,10 @@ import glob
 from scipy.stats import pearsonr, sem, norm
 from sklearn.linear_model import LinearRegression
 
+import matplotlib as mpl
+mpl.rcParams['svg.fonttype'] = 'none'
+mpl.rcParams['font.family'] = 'DejaVu Sans'
+
 chdir("/home/dev/Documents/PhD/Alice")
 
 # Specifying model names

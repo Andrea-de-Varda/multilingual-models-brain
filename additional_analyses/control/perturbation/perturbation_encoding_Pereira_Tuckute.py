@@ -8,7 +8,12 @@ import matplotlib.pyplot as plt
 import warnings
 import itertools
 import sys
+from matplotlib.lines import Line2D
 sys.modules['numpy._core.numeric'] = np.core.numeric
+
+import matplotlib as mpl
+mpl.rcParams['svg.fonttype'] = 'none'
+mpl.rcParams['font.family'] = 'DejaVu Sans'
 
 warnings.filterwarnings("ignore", message="Mean of empty slice.")
 warnings.filterwarnings("ignore", category=DeprecationWarning, message="numpy.core.numeric is deprecated")
@@ -389,7 +394,7 @@ for g_name, g_items in groups:
     # label
     ax.text((x_start + x_end)/2, y + 0.02, g_name, ha="center", va="bottom", fontsize=11)
 
-ax.legend(title="Dataset", frameon=False, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+ax.legend(title="Encoding models trained on", frameon=False, loc="upper left", bbox_to_anchor=(1.02, 1.0))
 
 ax.set_ylabel("R", fontsize=12)
 ax.tick_params(axis="y", labelsize=10)
@@ -401,4 +406,23 @@ ax.set_ylim(None, None)
 
 plt.tight_layout()
 plt.savefig("../plots/perturb.svg", format="svg", bbox_inches="tight")
+plt.show()
+
+
+
+# legend for multipanel
+legend_elements = [
+    Line2D([0], [0], marker='o', color='black', linestyle='',
+           markersize=6, label='Tuckute2024'),
+    Line2D([0], [0], marker='s', color='black', linestyle='',
+           markersize=6, label='Pereira2018')
+]
+
+fig, ax = plt.subplots(figsize=(2, 1), dpi=400)
+ax.axis('off')
+ax.legend(handles=legend_elements,
+          loc='center',
+          frameon=False,
+          ncol=2)
+plt.savefig("../plots/legend_perturb.svg", format="svg", bbox_inches="tight")
 plt.show()

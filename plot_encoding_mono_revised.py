@@ -25,6 +25,10 @@ import itertools
 import sys
 sys.modules['numpy._core.numeric'] = np.core.numeric
 
+import matplotlib as mpl
+mpl.rcParams['svg.fonttype'] = 'none'
+mpl.rcParams['font.family'] = 'DejaVu Sans'
+
 chdir("/home/dev/Documents/PhD/Alice")
 
 all_langs = ['Spanish', 'Marathi', 'Afrikaans', 'Vietnamese', 'Tamil', 'Lithuanian', 'Turkish', 'Dutch', 'Norwegian', 'Farsi', 'French', 'Romanian']
@@ -206,24 +210,6 @@ for model in model_names:
 p_values_best = add_significance_asterisks(p_values_best)
 p_values_best = pd.DataFrame(p_values_best, columns = ["model", "p", "asterisk"])
 
-###########################
-# barplot with best layer #
-###########################
-
-# monolingual, best layer #####################################################
-best_monol = [get_best_layerwise(load(model)) for model in model_names]
-best_monol_sd = [get_best_layerwise(load(model), give_mean = False) for model in model_names]
-
-best_layer = pd.DataFrame({
-    'Model': names_formatted,
-    'Score': best_monol,
-    'Family': model_family,
-    'sd' : best_monol_sd,
-    'n' : n_langs
-})
-
-plot_aggregate(best_layer, "",  ylim = .85, ylimstart = -.1)#, sig = p_values_best["asterisk"])
-
 ###############################################################################
 ###############################################################################
 
@@ -319,7 +305,9 @@ plt.xticks(bar_positions, labels=df_main["Model"], rotation=45, ha='right', font
 plt.yticks([.1, .2, .3, .4, .5, .6, .7], fontsize=23)
 sns.despine()
 plt.tight_layout(rect=[0, 0, 0.85, 1])
+plt.savefig("plots/mono.svg", format="svg", bbox_inches="tight")
 plt.show()
+
 
 # legend
 import matplotlib.lines as mlines
@@ -333,52 +321,9 @@ fig, ax = plt.subplots(figsize=(2, 1), dpi=300)
 ax.axis('off')
 legend = ax.legend(handles=handles, loc='center', frameon=False, ncol=5, fontsize=13, handletextpad=0.5)
 plt.tight_layout()
+plt.savefig("plots/fROI_legend_multicol.svg", format="svg", bbox_inches="tight")
 plt.show()
 
-#####################
-##########################################################
-###############################################################################
-
-# monolingual, median layer ###################################################
-median_monol = [get_median_layerwise(load(model)) for model in model_names]
-median_monol_sd = [get_median_layerwise(load(model), give_mean = False) for model in model_names]
-
-median_layer = pd.DataFrame({
-    'Model': names_formatted,
-    'Score': median_monol,
-    'Family': model_family,
-    'sd' : median_monol_sd,
-    'n' : n_langs
-})
-plot_aggregate(median_layer, "", ylim = .85, ylimstart = -.1)#, sig = p_values_median["asterisk"])
-
-# random, best layer ##########################################################
-best_monol_random = [get_best_layerwise(load(model, random=True)) for model in model_names]
-best_monol_sd_random = [get_best_layerwise(load(model, random=True), give_mean = False) for model in model_names]
-
-best_layer_random = pd.DataFrame({
-    'Model': names_formatted,
-    'Score': best_monol_random,
-    'Family': model_family,
-    'sd' : best_monol_sd_random,
-    'n' : n_langs
-})
-
-plot_aggregate(best_layer_random, "",  ylim = .85, ylimstart = -.1)
-
-# random, median layer ########################################################
-median_monol_random = [get_median_layerwise(load(model, random=True)) for model in model_names]
-median_monol_sd_random = [get_median_layerwise(load(model, random=True), give_mean = False) for model in model_names]
-
-median_layer_random = pd.DataFrame({
-    'Model': names_formatted,
-    'Score': median_monol_random,
-    'Family': model_family,
-    'sd' : median_monol_sd_random,
-    'n' : n_langs
-})
-
-plot_aggregate(median_layer_random, "",  ylim = .85, ylimstart = -.1)
 
 ###############################################################################
 
@@ -522,6 +467,7 @@ for i, ax in enumerate(axes):
 axes[-1].set_xticklabels([lang_dict[l] for l in data.columns], rotation=45, ha="right")
 plt.suptitle('', y=0.97, fontsize=26, weight="bold")
 plt.tight_layout()
+plt.savefig("plots/all_languages_mono.svg", format="svg", bbox_inches="tight")
 plt.show()
 
 
@@ -530,7 +476,6 @@ plt.show()
 ###############################################################################
 
 # SPLIT CONTEXT
-
 # monolingual, best layer #####################################################
 best_monol_split = [get_best_layerwise(load(model, split_context = True)) for model in model_names]
 best_monol_sd_split = [get_best_layerwise(load(model, split_context = True), give_mean = False) for model in model_names]
@@ -813,7 +758,8 @@ df_sorted = pd.concat([
         g[g['is_all'] == 1],                                           # “All” first
         g[g['is_all'] == 0].sort_values(
             'lang_cat' if net in ('LH', 'RH') else 'r',
-            ascending=True if net in ('LH', 'RH') else False)
+            #'r',
+            ascending=False if net in ('LH', 'RH') else False)
     ])
     for net in group_order
     for _, g in df.groupby('network') if _ == net
@@ -876,6 +822,7 @@ plt.yticks(fontsize=12)
 plt.ylim(-.05, .55)
 sns.despine()
 plt.tight_layout()
+plt.savefig("plots/spatial_specificity_mono.svg", format="svg", bbox_inches="tight")
 plt.show()
 
 # SAVE ORDER FOR MULTI (WILL RECYCLE PLOTTING CODE) 

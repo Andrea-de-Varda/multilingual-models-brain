@@ -12,6 +12,10 @@ import seaborn as sns
 import warnings
 warnings.filterwarnings("ignore", message="Mean of empty slice.")
 
+import matplotlib as mpl
+mpl.rcParams['svg.fonttype'] = 'none'
+mpl.rcParams['font.family'] = 'DejaVu Sans'
+
 chdir("/home/dev/Documents/PhD/Alice/confirmatory")
 
 def save(file, name):
@@ -263,6 +267,7 @@ ax.spines['right'].set_visible(False)
 ax.grid(axis='y', linestyle='--', alpha=0.5, zorder=1)
 ax.set_ylim(None, group_stats["mean_r"].max() + 0.1)
 plt.tight_layout()
+plt.savefig("../plots/study2_summary.svg", format="svg", bbox_inches="tight")
 plt.show()
 
 
@@ -300,7 +305,7 @@ train_names = ["main", "natstor"]
 train_names_nice = ["Study 1", "NatStor"]
 colors = ["darkslateblue", "lightsteelblue"]
 
-plt.figure(figsize=(24*.7, 11.5*.7), dpi = 300)
+plt.figure(figsize=(24*.7, 11.5*.7), dpi=300)
 sns.set_context("talk")
 ax = plt.gca()
 c = -.2
@@ -309,22 +314,45 @@ for train_name, title, color in zip(train_names, train_names_nice, colors):
     df = combined_df[combined_df["train"] == train_name]
     df['model'] = pd.Categorical(df['model'], categories=model_names, ordered=True)
     df = df.sort_values('model').reset_index(drop=True)
-    bars = ax.bar([pos+c for pos in bar_positions], df['r'], yerr=df['SE'],
-              capsize=5, color=color, edgecolor='.2', alpha = 0.8, lw = 3, width=0.35)
-    
-    for index, row in df.iterrows():
-        x_text = [pos+c for pos in bar_positions][index]
-        y_text = row["r"] + row["SE"] + 0.02
-        plt.text(x_text, y_text, row["sig"], ha = "center", size = "small")
-    c+=.4
-plt.axhline(y = 0, color = 'black', lw = 1.75) 
-plt.xlabel('Model', fontsize=27, labelpad=20)
-plt.ylabel('R', fontsize=27, labelpad=20)
+
+    x_vals = [pos + c for pos in bar_positions]
+
+    for i, row in df.iterrows():
+        if row["sig"] in [np.nan]:   
+            marker_color = "gray"
+            alpha = 0.3
+        else:
+            marker_color = color
+            alpha = 0.9
+
+        ax.errorbar(
+            x_vals[i],
+            row['r'],
+            yerr=row['SE'],
+            fmt='o',
+            color=marker_color,
+            ecolor=marker_color,
+            elinewidth=3,
+            capsize=5,
+            markersize=17,
+            alpha=alpha,
+            markeredgecolor=".2"
+        )
+
+    c += .4
+
+for spine in ax.spines.values():
+    spine.set_linewidth(3.5)
+ax.grid(axis="y", linestyle="--", color="gray", alpha=0.5, linewidth = 3.5)
+plt.axhline(y=0, color='black', lw=3.5)
+plt.xlabel('Model', fontsize=33, labelpad=20)
+plt.ylabel('R', fontsize=33, labelpad=20)
 plt.ylim(-.07, .35)
-plt.xticks(bar_positions, labels = names_formatted, rotation=45, ha='right', fontsize=22)
-plt.yticks([ 0, .1, .2, .3], fontsize=23)
+plt.xticks(bar_positions, labels=names_formatted, rotation=45, ha='right', fontsize=24)
+plt.yticks([0, .1, .2, .3], fontsize=27)
 sns.despine()
 plt.tight_layout(rect=[0, 0, 0.85, 1])
+plt.savefig("../plots/sudy2_main_natstor.svg", format="svg", bbox_inches="tight")
 plt.show()
 
 #############
@@ -335,7 +363,7 @@ train_names = ["control", "pereira"]
 train_names_nice = ["Tuckute 2024", "Pereira 2018"]
 colors = ["tab:red", "lightsalmon"]
 
-plt.figure(figsize=(24*.7, 11.5*.7), dpi = 300)
+plt.figure(figsize=(24*.7, 11.5*.7), dpi=300)
 sns.set_context("talk")
 ax = plt.gca()
 c = -.2
@@ -344,21 +372,45 @@ for train_name, title, color in zip(train_names, train_names_nice, colors):
     df = combined_df[combined_df["train"] == train_name]
     df['model'] = pd.Categorical(df['model'], categories=model_names, ordered=True)
     df = df.sort_values('model').reset_index(drop=True)
-    bars = ax.bar([pos+c for pos in bar_positions], df['r'], yerr=df['SE'],
-              capsize=5, color=color, edgecolor='.2', alpha = 0.8, lw = 3, width=0.35)
-    
-    for index, row in df.iterrows():
-        x_text = [pos+c for pos in bar_positions][index]
-        y_text = row["r"] + row["SE"] + 0.02
-        plt.text(x_text, y_text, row["sig"], ha = "center", size = "small")
-    c+=.4
-plt.xlabel('Model', fontsize=27, labelpad=20)
-plt.ylabel('R', fontsize=27, labelpad=20)
-plt.ylim(-.07, 0.35)
-plt.xticks(bar_positions, labels = names_formatted, rotation=45, ha='right', fontsize=22)
-plt.yticks([ 0, .1, .2, .3], fontsize=23)
+
+    x_vals = [pos + c for pos in bar_positions]
+
+    for i, row in df.iterrows():
+        if row["sig"] in [np.nan]:   
+            marker_color = "gray"
+            alpha = 0.3
+        else:
+            marker_color = color
+            alpha = 0.9
+
+        ax.errorbar(
+            x_vals[i],
+            row['r'],
+            yerr=row['SE'],
+            fmt='o',
+            color=marker_color,
+            ecolor=marker_color,
+            elinewidth=3,
+            capsize=5,
+            markersize=17,
+            alpha=alpha,
+            markeredgecolor=".2"
+        )
+
+    c += .4
+
+for spine in ax.spines.values():
+    spine.set_linewidth(3.5)
+ax.grid(axis="y", linestyle="--", color="gray", alpha=0.5, linewidth = 3.5)
+plt.axhline(y=0, color='black', lw=3.5)
+plt.xlabel('Model', fontsize=33, labelpad=20)
+plt.ylabel('R', fontsize=33, labelpad=20)
+plt.ylim(-.07, .35)
+plt.xticks(bar_positions, labels=names_formatted, rotation=45, ha='right', fontsize=24)
+plt.yticks([0, .1, .2, .3], fontsize=27)
 sns.despine()
 plt.tight_layout(rect=[0, 0, 0.85, 1])
+plt.savefig("../plots/sudy2_control_pereira.svg", format="svg", bbox_inches="tight")
 plt.show()
 
 train_names = ["main", "natstor", "control", "pereira"]

@@ -7,12 +7,23 @@ best_layer_mono = pd.DataFrame({
     'sd' : best_mono_sd
 })
 
-mono_multi = pd.merge(best_layer_mono, best_layer_multi, on = "Model", suffixes = ["_mono", "_multi"])
+best = [get_best_layerwise(load(model, froi = "all")) for model in model_names]
+best_sd = [get_best_layerwise(load(model, froi = "all"), give_mean = False) for model in model_names]
+
+best_layer = pd.DataFrame({
+    'Model': names_formatted,
+    'Score': best,
+    'Family': model_family,
+    'sd' : best_sd,
+    'n' : n_langs
+})
+
+mono_multi = pd.merge(best_layer_mono, best_layer, on = "Model", suffixes = ["_mono", "_multi"])
 mono_multi["se_mono"] = mono_multi["sd_mono"] / mono_multi["n"]
 mono_multi["se_multi"] = mono_multi["sd_multi"] / mono_multi["n"]
 mono_multi["color"] = mono_multi["Family"].map(palette_d)
 
-r, p = pearsonr(mono_multi['Score_mono'], mono_multi['Score_multi']) # 0.6293935246947423 0.0029449601326826487
+r, p = pearsonr(mono_multi['Score_mono'], mono_multi['Score_multi']) #  (0.7042646519137589, 0.0005278715830436358) from revision
 
 ################################################################################
 

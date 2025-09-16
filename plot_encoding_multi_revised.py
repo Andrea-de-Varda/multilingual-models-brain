@@ -204,10 +204,10 @@ def add_significance_asterisks(data):
 
 p_values_best = []
 for model in model_names:
-    test = get_best_layerwise(load(model), give_all = True)
+    test = get_best_layerwise(load(model, multitrain = False), give_all = True)
     z_temp = []
     for shift in [26, 52, 78, 104]:
-        rand = get_best_layerwise(load(model, random=True)[shift], give_all = True)
+        rand = get_best_layerwise(load(model, random=True, multitrain = False)[shift], give_all = True)
         zs = [] # fisher's p values
         for t, r in zip(test, rand):
             z, p = r_to_z(t, r)
@@ -239,23 +239,6 @@ p_values_median = pd.DataFrame(p_values_median, columns = ["model", "p", "asteri
 ###########################
 # barplot with best layer #
 ###########################
-
-# monolingual, best layer #####################################################
-best = [get_best_layerwise(load(model)) for model in model_names]
-best_sd = [get_best_layerwise(load(model), give_mean = False) for model in model_names]
-
-best_layer = pd.DataFrame({
-    'Model': names_formatted,
-    'Score': best,
-    'Family': model_family,
-    'sd' : best_sd,
-    'n' : n_langs
-})
-
-plot_aggregate(best_layer, "",  ylim = .85, ylimstart = -.1)#, sig = p_values_best["asterisk"])
-
-###############################################################################
-###############################################################################
 
 # monolingual, best layer #####################################################
 all_best_layers = {}
@@ -342,48 +325,6 @@ plt.show()
 #####################
 ##########################################################
 ###############################################################################
-
-# monolingual, median layer ###################################################
-median_monol = [get_median_layerwise(load(model)) for model in model_names]
-median_monol_sd = [get_median_layerwise(load(model), give_mean = False) for model in model_names]
-
-median_layer = pd.DataFrame({
-    'Model': names_formatted,
-    'Score': median_monol,
-    'Family': model_family,
-    'sd' : median_monol_sd,
-    'n' : n_langs
-})
-plot_aggregate(median_layer, "", ylim = .85, ylimstart = -.1)#, sig = p_values_median["asterisk"])
-
-# random, best layer ##########################################################
-best_monol_random = [get_best_layerwise(load(model, random=True)) for model in model_names]
-best_monol_sd_random = [get_best_layerwise(load(model, random=True), give_mean = False) for model in model_names]
-
-best_layer_random = pd.DataFrame({
-    'Model': names_formatted,
-    'Score': best_monol_random,
-    'Family': model_family,
-    'sd' : best_monol_sd_random,
-    'n' : n_langs
-})
-
-plot_aggregate(best_layer_random, "",  ylim = .85, ylimstart = -.1)
-
-# random, median layer ########################################################
-median_monol_random = [get_median_layerwise(load(model, random=True)) for model in model_names]
-median_monol_sd_random = [get_median_layerwise(load(model, random=True), give_mean = False) for model in model_names]
-
-median_layer_random = pd.DataFrame({
-    'Model': names_formatted,
-    'Score': median_monol_random,
-    'Family': model_family,
-    'sd' : median_monol_sd_random,
-    'n' : n_langs
-})
-
-plot_aggregate(median_layer_random, "",  ylim = .85, ylimstart = -.1)
-
 ###############################################################################
 
 colname = "r"
@@ -528,173 +469,6 @@ plt.suptitle('', y=0.97, fontsize=26, weight="bold")
 plt.tight_layout()
 plt.savefig("plots/all_languages_multi.svg", format="svg", bbox_inches="tight")
 plt.show()
-
-############################
-# MULTIPLE DEMANDS NETWORK #
-############################
-
-def plot_md(MD, L, title, ylim=None, ylimstart=None, sig=[], avg_sig=None, name0="MD", name1="Language", color0="tomato", color1="navy", colname="Network"):
-    MD[colname] = name0
-    L[colname] = name1
-    df_combined = pd.concat([MD, L], axis=0).reset_index(drop=True)
-    
-    md_avg = MD["Score"].mean()
-    md_se = MD["Score"].std() / np.sqrt(len(MD))
-    l_avg = L["Score"].mean()
-    l_se = L["Score"].std() / np.sqrt(len(L))
-
-    plt.figure(figsize=(19*0.7, 10*0.7), dpi=300)
-    sns.set_context("talk")
-    palette = {name0: color0, name1: color1}
-    ax = sns.barplot(x='Model', y='Score', hue=colname, data=df_combined,
-                     dodge=True, palette=palette, edgecolor='.2')
-
-    # find actual colors/width used by sns for each group
-    bar0 = bar1 = None
-    for patch, grp in zip(ax.patches, df_combined[colname]):
-        if grp == name0 and bar0 is None:
-            bar0 = patch
-        elif grp == name1 and bar1 is None:
-            bar1 = patch
-        if bar0 and bar1:
-            break
-
-    if bar0 and bar1:
-        md_bar_color = bar0.get_facecolor()
-        md_bar_edge = bar0.get_edgecolor()
-        bar_width = bar0.get_width()
-
-        l_bar_color = bar1.get_facecolor()
-        l_bar_edge = bar1.get_edgecolor()
-    else:
-        md_bar_color = color0
-        md_bar_edge = '.2'
-        l_bar_color = color1
-        l_bar_edge = '.2'
-        bar_width = 0.35
-
-    unique_models = df_combined['Model'].unique()
-    xvals = np.arange(len(unique_models))
-    dodge_width = bar_width  # Adjusted here to match the actual bar width
-
-    for i, model in enumerate(unique_models):
-        for j, net in enumerate([name0, name1]):
-            row = df_combined[(df_combined['Model'] == model) & (df_combined[colname] == net)]
-            if not row.empty:
-                xpos = xvals[i] + (j - 0.5) * dodge_width
-                yerr = row['sd'].values[0] / np.sqrt(row['n'].values[0])
-                plt.errorbar(xpos, row['Score'].values[0], yerr=yerr, fmt='none',
-                             capsize=4, ecolor='black', capthick=2)
-
-    for i, value in enumerate(L['Score']):
-        if i < len(sig):
-            y = value + L['sd'][i] / np.sqrt(L["n"][i]) + 0.02
-            plt.text(i, y, sig[i], ha='center', va='bottom',
-                     color='black', fontsize=16, weight='bold')
-
-    xpos_md = len(unique_models) + 1
-    xpos_l = xpos_md + dodge_width
-
-    plt.bar(xpos_md, md_avg, color=md_bar_color, edgecolor=md_bar_edge, width=bar_width)
-    plt.bar(xpos_l, l_avg, color=l_bar_color, edgecolor=l_bar_edge, width=bar_width)
-
-    plt.errorbar(xpos_md, md_avg, yerr=md_se, fmt='none',
-                 capsize=5, ecolor='black', capthick=2)
-    plt.errorbar(xpos_l, l_avg, yerr=l_se, fmt='none',
-                 capsize=5, ecolor='black', capthick=2)
-    if avg_sig is not None:
-        y_position = max(md_avg + md_se, l_avg + l_se) + 0.02
-        x_position = (xpos_md + xpos_l) / 2
-        plt.text(x_position, y_position, avg_sig, ha='center', va='bottom',
-                 color='black', fontsize=16, weight='bold')
-    plt.title(title, fontsize=30, weight='bold', pad=20)
-    plt.ylabel('R', fontsize=27, labelpad=20)
-    if ylimstart is not None and ylim is not None:
-        plt.ylim(ylimstart, ylim)
-
-    old_ticks = ax.get_xticks()
-    old_labels = [item.get_text() for item in ax.get_xticklabels()]
-    avg_tick = (xpos_md + xpos_l) / 2
-    plt.xticks(np.append(old_ticks, avg_tick),
-               old_labels + ["Average"],
-               rotation=45, ha='right', fontsize=18)
-    plt.yticks(fontsize=23)
-    sns.despine()
-    plt.tight_layout(rect=[0, 0, 0.85, 1])
-    plt.show()
-
-p_values_best_md = []
-z_best_md = []
-for model in model_names:
-    test = get_best_layerwise(load(model), give_all = True)
-    rand = get_best_layerwise(load(model, md=True), give_all = True)
-    zs = [] # fisher's p values
-    for t, r in zip(test, rand):
-        z, p = r_to_z(t, r)
-        zs.append(z)
-    p = combine_z_statistics(zs)
-    z = np.sum(zs) / np.sqrt(len(zs))
-    z_best_md.append(z)
-    p_values_best_md.append([model, p])
-p_values_best_md = add_significance_asterisks(p_values_best_md)
-p_values_best_md = pd.DataFrame(p_values_best_md, columns = ["model", "p", "asterisk"])
-overall_p = combine_z_statistics(z_best_md)
-
-###############################################################################
-
-best_md = [get_best_layerwise(load(model, md=True)) for model in model_names]
-best_md_sd = [get_best_layerwise(load(model, md=True), give_mean = False) for model in model_names]
-
-best_layer_md = pd.DataFrame({
-    'Model': names_formatted,
-    'Score': best_md,
-    'Family': model_family,
-    'sd' : best_md_sd,
-    'n' : n_langs
-})
-
-plot_md(best_layer_md, best_layer, "", ylim = .75, ylimstart = 0, sig = p_values_best_md["asterisk"], avg_sig = "***")
-
-###############################################################################
-
-########################
-# L - RIGHT HEMISPHERE #
-########################
-
-# significance testing (rh vs lh)
-
-p_values_best_rh = []
-z_best_rh = []
-for model in model_names:
-    test = get_best_layerwise(load(model), give_all = True)
-    rand = get_best_layerwise(load(model, rh=True), give_all = True)
-    zs = [] # fisher's p values
-    for t, r in zip(test, rand):
-        z, p = r_to_z(t, r)
-        zs.append(z)
-    p = combine_z_statistics(zs)
-    z = np.sum(zs) / np.sqrt(len(zs))
-    z_best_rh.append(z)
-    p_values_best_rh.append([model, p])
-p_values_best_rh = add_significance_asterisks(p_values_best_rh)
-p_values_best_rh = pd.DataFrame(p_values_best_rh, columns = ["model", "p", "asterisk"])
-overall_p_rh = combine_z_statistics(z_best_rh)
-
-###############################################################################
-
-best_rh = [get_best_layerwise(load(model, rh=True)) for model in model_names]
-best_rh_sd = [get_best_layerwise(load(model, rh=True), give_mean = False) for model in model_names]
-
-best_layer_rh = pd.DataFrame({
-    'Model': names_formatted,
-    'Score': best_rh,
-    'Family': model_family,
-    'sd' : best_rh_sd,
-    'n' : n_langs
-})
-
-plot_md(best_layer_rh, best_layer, "", ylim = .75, ylimstart = 0, sig = p_values_best_rh["asterisk"], name0 = "Right", name1 = "Left", color0 = "cornflowerblue", colname = "Hemisphere", avg_sig = "*")
-
 
 ###############################################################################
 
