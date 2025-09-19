@@ -9,7 +9,6 @@ from sklearn.linear_model import RidgeCV
 from sklearn.model_selection import KFold
 from tqdm import tqdm
 from scipy.stats import pearsonr, norm
-from math import sqrt
 from time import sleep
 import seaborn as sns
 from adjustText import adjust_text
@@ -67,7 +66,7 @@ def load(model_prefix, froi="all", monol=True, split_context=False, random=False
         filename = f"results/monolingual_native_{model_prefix}_{froi}"
     else:
         filename = f"results/monolingual_{model_prefix}_{froi}"
-    print("Loading:", filename)
+    #print("Loading:", filename)
     return patched_load(filename)
 
 def find_median_index(lst):
@@ -193,43 +192,48 @@ def add_significance_asterisks(data):
         item.append(asterisk)
     return data
 
-p_values_best = []
-for model in model_names:
-    test = get_best_layerwise(load(model), give_all = True)
-    z_temp = []
-    for shift in [26, 52, 78, 104]:
-        rand = get_best_layerwise(load(model, random=True)[shift], give_all = True)
-        zs = [] # fisher's p values
-        for t, r in zip(test, rand):
-            z, p = r_to_z(t, r)
-            zs.append(z)
-        z_ = combine_z_statistics(zs, return_z = True)
-        z_temp.append(z_)
-    p_tot = combine_z_statistics(z_temp)
-    p_values_best.append([model, p_tot])
-p_values_best = add_significance_asterisks(p_values_best)
-p_values_best = pd.DataFrame(p_values_best, columns = ["model", "p", "asterisk"])
+def compute_significance_for_froi(froi, model_names):
+    p_values = []
+    for model in model_names:
+        test = get_best_layerwise(load(model, froi=froi), give_all=True)
+        z_temp = []
+        for shift in [26, 52, 78, 104]:
+            rand = get_best_layerwise(load(model, froi=froi, random=True)[shift], give_all=True)
+            zs = []
+            for t, r in zip(test, rand):
+                z, p = r_to_z(t, r)
+                zs.append(z)
+            z_ = combine_z_statistics(zs, return_z=True)
+            z_temp.append(z_)
+        p_tot = combine_z_statistics(z_temp)
+        p_values.append([model, p_tot])
+    p_values = add_significance_asterisks(p_values)
+    return pd.DataFrame(p_values, columns=["model", "p", "asterisk"])
 
 ###############################################################################
 ###############################################################################
 
-# monolingual, best layer #####################################################
 all_best_layers = {}
-for froi in ['Lang_LH_AntTemp', 'Lang_LH_IFG', 'Lang_LH_IFGorb', 'Lang_LH_MFG', 'Lang_LH_PostTemp', 'all']:
-    best_monol = [get_best_layerwise(load(model, froi = froi)) for model in model_names]
-    best_monol_sd = [get_best_layerwise(load(model, froi = froi), give_mean = False) for model in model_names]
-    
+all_p_values = {}
+
+frois = ['Lang_LH_AntTemp','Lang_LH_IFG','Lang_LH_IFGorb','Lang_LH_MFG','Lang_LH_PostTemp','all']
+
+for froi in frois:
+    best_monol = [get_best_layerwise(load(model, froi=froi)) for model in model_names]
+    best_monol_sd = [get_best_layerwise(load(model, froi=froi), give_mean=False) for model in model_names]
     best_layer = pd.DataFrame({
         'Model': names_formatted,
         'Score': best_monol,
         'Family': model_family,
-        'sd' : best_monol_sd,
-        'n' : n_langs
+        'sd': best_monol_sd,
+        'n': n_langs
     })
-    
+    p_df = compute_significance_for_froi(froi, model_names)
+    p_df['Model'] = p_df['model'].map(names_nice_dict)
+    best_layer = best_layer.merge(p_df[['Model','p','asterisk']], on='Model', how='left')
+    best_layer["Std_Error"] = best_layer["sd"] / np.sqrt(best_layer["n"])
     all_best_layers[froi] = best_layer
-    
-    # plot_aggregate(best_layer, "",  ylim = .85, ylimstart = -.1)#, sig = p_values_best["asterisk"])
+    all_p_values[froi] = p_df
 
 #########################
 # DEFINITIVE FINAL PLOT #
@@ -532,174 +536,6 @@ median_layer = pd.DataFrame({
 plot_aggregate(median_layer, "", ylim = .85, ylimstart = -.1)
 
 ###############################################################################
-
-############################
-# MULTIPLE DEMANDS NETWORK #
-############################
-
-def plot_md(MD, L, title, ylim=None, ylimstart=None, sig=[], avg_sig=None, name0="MD", name1="Language", color0="tomato", color1="navy", colname="Network"):
-    MD[colname] = name0
-    L[colname] = name1
-    df_combined = pd.concat([MD, L], axis=0).reset_index(drop=True)
-    
-    md_avg = MD["Score"].mean()
-    md_se = MD["Score"].std() / np.sqrt(len(MD))
-    l_avg = L["Score"].mean()
-    l_se = L["Score"].std() / np.sqrt(len(L))
-
-    plt.figure(figsize=(19*0.7, 10*0.7), dpi=300)
-    sns.set_context("talk")
-    palette = {name0: color0, name1: color1}
-    ax = sns.barplot(x='Model', y='Score', hue=colname, data=df_combined,
-                     dodge=True, palette=palette, edgecolor='.2')
-
-    # find actual colors/width used by sns for each group
-    bar0 = bar1 = None
-    for patch, grp in zip(ax.patches, df_combined[colname]):
-        if grp == name0 and bar0 is None:
-            bar0 = patch
-        elif grp == name1 and bar1 is None:
-            bar1 = patch
-        if bar0 and bar1:
-            break
-
-    if bar0 and bar1:
-        md_bar_color = bar0.get_facecolor()
-        md_bar_edge = bar0.get_edgecolor()
-        bar_width = bar0.get_width()
-
-        l_bar_color = bar1.get_facecolor()
-        l_bar_edge = bar1.get_edgecolor()
-    else:
-        md_bar_color = color0
-        md_bar_edge = '.2'
-        l_bar_color = color1
-        l_bar_edge = '.2'
-        bar_width = 0.35
-
-    unique_models = df_combined['Model'].unique()
-    xvals = np.arange(len(unique_models))
-    dodge_width = bar_width  # Adjusted here to match the actual bar width
-
-    for i, model in enumerate(unique_models):
-        for j, net in enumerate([name0, name1]):
-            row = df_combined[(df_combined['Model'] == model) & (df_combined[colname] == net)]
-            if not row.empty:
-                xpos = xvals[i] + (j - 0.5) * dodge_width
-                yerr = row['sd'].values[0] / np.sqrt(row['n'].values[0])
-                plt.errorbar(xpos, row['Score'].values[0], yerr=yerr, fmt='none',
-                             capsize=4, ecolor='black', capthick=2)
-
-    for i, value in enumerate(L['Score']):
-        if i < len(sig):
-            y = value + L['sd'][i] / np.sqrt(L["n"][i]) + 0.02
-            plt.text(i, y, sig[i], ha='center', va='bottom',
-                     color='black', fontsize=16, weight='bold')
-
-    xpos_md = len(unique_models) + 1
-    xpos_l = xpos_md + dodge_width
-
-    plt.bar(xpos_md, md_avg, color=md_bar_color, edgecolor=md_bar_edge, width=bar_width)
-    plt.bar(xpos_l, l_avg, color=l_bar_color, edgecolor=l_bar_edge, width=bar_width)
-
-    plt.errorbar(xpos_md, md_avg, yerr=md_se, fmt='none',
-                 capsize=5, ecolor='black', capthick=2)
-    plt.errorbar(xpos_l, l_avg, yerr=l_se, fmt='none',
-                 capsize=5, ecolor='black', capthick=2)
-    if avg_sig is not None:
-        y_position = max(md_avg + md_se, l_avg + l_se) + 0.02
-        x_position = (xpos_md + xpos_l) / 2
-        plt.text(x_position, y_position, avg_sig, ha='center', va='bottom',
-                 color='black', fontsize=16, weight='bold')
-    plt.title(title, fontsize=30, weight='bold', pad=20)
-    plt.ylabel('R', fontsize=27, labelpad=20)
-    if ylimstart is not None and ylim is not None:
-        plt.ylim(ylimstart, ylim)
-
-    old_ticks = ax.get_xticks()
-    old_labels = [item.get_text() for item in ax.get_xticklabels()]
-    avg_tick = (xpos_md + xpos_l) / 2
-    plt.xticks(np.append(old_ticks, avg_tick),
-               old_labels + ["Average"],
-               rotation=45, ha='right', fontsize=18)
-    plt.yticks(fontsize=23)
-    sns.despine()
-    plt.tight_layout(rect=[0, 0, 0.85, 1])
-    plt.show()
-
-p_values_best_md = []
-z_best_md = []
-for model in model_names:
-    test = get_best_layerwise(load(model), give_all = True)
-    rand = get_best_layerwise(load(model, md=True), give_all = True)
-    zs = [] # fisher's p values
-    for t, r in zip(test, rand):
-        z, p = r_to_z(t, r)
-        zs.append(z)
-    p = combine_z_statistics(zs)
-    z = np.sum(zs) / np.sqrt(len(zs))
-    z_best_md.append(z)
-    p_values_best_md.append([model, p])
-p_values_best_md = add_significance_asterisks(p_values_best_md)
-p_values_best_md = pd.DataFrame(p_values_best_md, columns = ["model", "p", "asterisk"])
-overall_p = combine_z_statistics(z_best_md)
-
-###############################################################################
-
-best_md = [get_best_layerwise(load(model, md=True)) for model in model_names]
-best_md_sd = [get_best_layerwise(load(model, md=True), give_mean = False) for model in model_names]
-
-best_layer_md = pd.DataFrame({
-    'Model': names_formatted,
-    'Score': best_md,
-    'Family': model_family,
-    'sd' : best_md_sd,
-    'n' : n_langs
-})
-
-plot_md(best_layer_md, best_layer, "", ylim = .75, ylimstart = 0, sig = p_values_best_md["asterisk"], avg_sig = "***")
-
-###############################################################################
-
-########################
-# L - RIGHT HEMISPHERE #
-########################
-
-# significance testing (rh vs lh)
-
-p_values_best_rh = []
-z_best_rh = []
-for model in model_names:
-    test = get_best_layerwise(load(model), give_all = True)
-    rand = get_best_layerwise(load(model, rh=True), give_all = True)
-    zs = [] # fisher's p values
-    for t, r in zip(test, rand):
-        z, p = r_to_z(t, r)
-        zs.append(z)
-    p = combine_z_statistics(zs)
-    z = np.sum(zs) / np.sqrt(len(zs))
-    z_best_rh.append(z)
-    p_values_best_rh.append([model, p])
-p_values_best_rh = add_significance_asterisks(p_values_best_rh)
-p_values_best_rh = pd.DataFrame(p_values_best_rh, columns = ["model", "p", "asterisk"])
-overall_p_rh = combine_z_statistics(z_best_rh)
-
-###############################################################################
-
-best_rh = [get_best_layerwise(load(model, rh=True)) for model in model_names]
-best_rh_sd = [get_best_layerwise(load(model, rh=True), give_mean = False) for model in model_names]
-
-best_layer_rh = pd.DataFrame({
-    'Model': names_formatted,
-    'Score': best_rh,
-    'Family': model_family,
-    'sd' : best_rh_sd,
-    'n' : n_langs
-})
-
-plot_md(best_layer_rh, best_layer, "", ylim = .75, ylimstart = 0, sig = p_values_best_rh["asterisk"], name0 = "Right", name1 = "Left", color0 = "cornflowerblue", colname = "Hemisphere", avg_sig = "***")
-
-
 ###############################################################################
 
 # spatial DISTRIBUTION
@@ -740,26 +576,23 @@ df['short_label'] = df['short_label'].replace('all', 'All')
 df['group_order'] = df['network'].map({'LH': 0, 'RH': 1, 'MD': 2})
 df['is_all'] = (df['short_label'] == 'All').astype(int)
 
-group_order = ['LH', 'RH', 'MD']
-# df_sorted = pd.concat([
-#     pd.concat([
-#         g[g['is_all'] == 1],
-#         g[g['is_all'] == 0].sort_values('r', ascending=False)
-#     ])
-#     for net in group_order
-#     for _, g in df.groupby('network') if _ == net], ignore_index=True)
+lang_order = list(reversed(['IFGorb', 'IFG', 'MFG', 'AntTemp', 'PostTemp']))
+df['lang_cat'] = pd.Categorical(
+    df['short_label'],
+    categories=['All'] + lang_order,
+    ordered=True
+)
 
-lang_order = ['IFGorb', 'IFG', 'MFG', 'AntTemp', 'PostTemp']
-df['lang_cat'] = pd.Categorical(df['short_label'],
-                                categories=['All'] + lang_order,
-                                ordered=True)
+group_order = ['LH', 'RH', 'MD']
+
 df_sorted = pd.concat([
     pd.concat([
-        g[g['is_all'] == 1],                                           # “All” first
-        g[g['is_all'] == 0].sort_values(
-            'lang_cat' if net in ('LH', 'RH') else 'r',
-            #'r',
-            ascending=False if net in ('LH', 'RH') else False)
+        g[g['is_all'] == 1],
+        (
+            g[g['is_all'] == 0].sort_values('lang_cat', ascending=True)
+            if net in ('LH', 'RH')
+            else g[g['is_all'] == 0].sort_values('r', ascending=False)
+        )
     ])
     for net in group_order
     for _, g in df.groupby('network') if _ == net
@@ -787,7 +620,7 @@ df_sorted['pos'] = positions
 color_map = {'LH': 'navy', 'RH': 'cornflowerblue', 'MD': 'tomato'}
 df_sorted['color'] = df_sorted['network'].map(color_map)
 
-plt.figure(figsize=(16*.7, 6*.7), dpi=300)
+plt.figure(figsize=(15*.7, 6*.7), dpi=300)
 ax = plt.gca()
 sns.set_context("talk")
 ax.grid(axis='y', linestyle='--', linewidth=0.5, alpha=0.3)
