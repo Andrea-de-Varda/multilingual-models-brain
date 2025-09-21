@@ -92,7 +92,7 @@ def get_best_layerwise(res_dict, colname = "r", give_mean = True, give_all = Fal
     mean_results = [value[colname].mean() for key, value in res_dict.items()]
     sd_results   = [value[colname].std() for key, value in res_dict.items()]
     idx_max = np.argmax(mean_results)
-    print(f"Best layer is {idx_max}")
+    #print(f"Best layer is {idx_max}")
     if give_all:
         best = res_dict[idx_max][colname].tolist()
     else:
@@ -246,23 +246,9 @@ for froi in frois:
     all_best_layers[froi] = best_layer
     all_p_values[froi] = p_df
     
-    
-all_best_layers = {}
-for froi in ['Lang_LH_AntTemp', 'Lang_LH_IFG', 'Lang_LH_IFGorb', 'Lang_LH_MFG', 'Lang_LH_PostTemp', 'all']:
-    best = [get_best_layerwise(load(model, froi = froi)) for model in model_names]
-    best_sd = [get_best_layerwise(load(model, froi = froi), give_mean = False) for model in model_names]
-    
-    best_layer = pd.DataFrame({
-        'Model': names_formatted,
-        'Score': best,
-        'Family': model_family,
-        'sd' : best_sd,
-        'n' : n_langs
-    })
-    
-    all_best_layers[froi] = best_layer
-    
-    # plot_aggregate(best_layer, "",  ylim = .85, ylimstart = -.1)#, sig = p_values_best["asterisk"])
+for k, v in all_best_layers.items():
+    print("\n\n", k)
+    print(v[['Model', 'Family', 'Score', 'Std_Error',  'p', 'asterisk']])
 
 #########################
 # DEFINITIVE FINAL PLOT #
@@ -585,7 +571,7 @@ df['key']         = df['network'] + '|' + df['froi']
 df['pos']         = df['key'].map(pos_map)
 df['short_label'] = df['key'].map(label_map)
 df_sorted         = (df.dropna(subset=['pos']).sort_values('pos').reset_index(drop=True))
-print(df_sorted[df_sorted["network"] == "MD"]["r"].max())
+print(df_sorted[df_sorted["network"] == "MD"]["r"].mean())
 print(df_sorted[df_sorted["network"] == "LH"]["r"].min())
 
 spacing = 1.2

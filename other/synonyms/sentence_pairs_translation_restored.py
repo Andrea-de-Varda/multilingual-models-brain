@@ -283,25 +283,45 @@ def mean_average_precision(matching_ranks):
     precision_scores = [np.mean(matching_ranks <= rank) for rank in matching_ranks]
     return np.mean(precision_scores)
 
-def evaluate_language_pair(language1, language2, results, layer, k=10):
+def evaluate_language_pair(language1, language2, results, layer, k=10, eps=1e-12):
     l1 = np.array([vec[layer] for vec in results[language1]])
     l2 = np.array([vec[layer] for vec in results[language2]])
-    cos_sim_matrix = cosine_distance_matrix(l1, l2)
-    # rank similarities across rows
-    ranks = np.apply_along_axis(rankdata, 1, cos_sim_matrix, method='ordinal')
-    matching_ranks = np.diag(ranks)  # diagonal (matching words) ranks
-    # get retrieval metrics
+    D = cosine_distance_matrix(l1, l2)
+    S = 1.0 - D
+    ranks = np.apply_along_axis(rankdata, 1, D, method='ordinal')
+    matching_ranks = np.diag(ranks)
+    diag_dist = np.diag(D)
+    diag_sim  = np.diag(S)
+    margins   = []
+    z_margins = []
+    auc_rows  = []
+    n = D.shape[1]
+    for i in range(D.shape[0]):
+        row = D[i]
+        d_true = row[i]
+        non = np.delete(row, i)
+        margins.append(np.min(non) - d_true)
+        z_margins.append((np.mean(non) - d_true) / (np.std(non) + eps))
+        auc_rows.append(np.mean(non > d_true))
     avg_rank = matching_ranks.mean()
-    p_at_k = precision_at_k(matching_ranks, k) # precision @ k
-    mrr = mean_reciprocal_rank(matching_ranks) # mean reciprocal rank
-    r_at_k = recall_at_k(matching_ranks, k) # recall @ k
-    map_score = mean_average_precision(matching_ranks) # mean avg precision
+    p_at_k   = precision_at_k(matching_ranks, k)
+    mrr      = mean_reciprocal_rank(matching_ranks)
+    r_at_k   = recall_at_k(matching_ranks, k)
+    map_score = mean_average_precision(matching_ranks)
+
     return {
-        "avg_rank": avg_rank,
-        "p@k": p_at_k,
-        "mrr": mrr,
-        "r@k": r_at_k,
-        "map": map_score
+        # rank-based
+        "avg_rank": float(avg_rank),
+        "p@k": float(p_at_k),
+        "mrr": float(mrr),
+        "r@k": float(r_at_k),
+        "map": float(map_score),
+        # magnitude-based (addresses reviewer concern)
+        "mean_diag_dist": float(np.mean(diag_dist)),
+        "mean_diag_sim":  float(np.mean(diag_sim)),
+        "mean_margin":    float(np.mean(margins)),
+        "mean_zmargin":   float(np.mean(z_margins)),
+        "row_auc":        float(np.mean(auc_rows))
     }
 
 ###############################################################################
@@ -325,62 +345,71 @@ for model in modelnames:
     print(f"Loaded {model}")
     langs_ = res.keys()
     out = []
-    out_langs = {lang : [] for lang in langs_}
+    out_langs = {lang: [] for lang in langs_}
+    out_langs_dist = {lang: [] for lang in langs_}
+
     for l1, l2 in combinations(langs_, 2):
         res_ = evaluate_language_pair(l1, l2, res, layer)
         out.append(res_)
         for k in out_langs.keys():
-            if l1 == k:
+            if l1 == k or l2 == k:
                 out_langs[k].append(res_["mrr"])
-            elif l2 == k:
-                out_langs[k].append(res_["mrr"])
+                out_langs_dist[k].append(res_["mean_diag_dist"])
     for l in langs_:
         r_lang = single_langs_encod.loc[single_langs_encod['target_lang'] == l, 'r'].iloc[0]
-        r_lang_last = last_layer_encod.loc[single_langs_encod['target_lang'] == l, 'r'].iloc[0]
-        results_single_langs.append([model, l, np.mean(out_langs[l]), r_lang, r_lang_last])
-    # mean and SE for each metric across all pairs
-    avg_rank = np.mean([x["avg_rank"] for x in out])
-    avg_rank_se = np.std([x["avg_rank"] for x in out]) / np.sqrt(len(langs_))
-    p_at_k = np.mean([x["p@k"] for x in out])
-    p_at_k_se = np.std([x["p@k"] for x in out]) / np.sqrt(len(langs_))
-    mrr = np.mean([x["mrr"] for x in out])
-    mrr_se = np.std([x["mrr"] for x in out]) / np.sqrt(len(langs_))
-    r_at_k = np.mean([x["r@k"] for x in out])
-    r_at_k_se = np.std([x["r@k"] for x in out]) / np.sqrt(len(langs_))
-    map_score = np.mean([x["map"] for x in out])
-    map_score_se = np.std([x["map"] for x in out]) / np.sqrt(len(langs_))
+        r_lang_last = last_layer_encod.loc[last_layer_encod['target_lang'] == l, 'r'].iloc[0]
+        results_single_langs.append([model, l, np.mean(out_langs[l]), r_lang, r_lang_last, np.mean(out_langs_dist[l])])
+    n_pairs = len(out)
+    def mean_se(key):
+        vals = [x[key] for x in out]
+        return np.mean(vals), np.std(vals) / np.sqrt(n_pairs)
+    avg_rank,   avg_rank_se   = mean_se("avg_rank")
+    p_at_k,     p_at_k_se     = mean_se("p@k")
+    mrr,        mrr_se        = mean_se("mrr")
+    r_at_k,     r_at_k_se     = mean_se("r@k")
+    map_score,  map_score_se  = mean_se("map")
+    mean_diag_dist, mean_diag_dist_se = mean_se("mean_diag_dist")
+    mean_diag_sim,  mean_diag_sim_se  = mean_se("mean_diag_sim")
+    mean_margin,    mean_margin_se    = mean_se("mean_margin")
+    mean_zmargin,   mean_zmargin_se   = mean_se("mean_zmargin")
+    row_auc,        row_auc_se        = mean_se("row_auc")
+
     results.append({
         "model": model,
-        "avg_rank": avg_rank,
-        "avg_rank_se": avg_rank_se,
-        "p@k": p_at_k,
-        "p@k_se": p_at_k_se,
-        "mrr": mrr,
-        "mrr_se": mrr_se,
-        "r@k": r_at_k,
-        "r@k_se": r_at_k_se,
-        "map": map_score,
-        "map_se": map_score_se,
-        "encod": encod,
-        "encod_se" : se_encod,
+        "avg_rank": avg_rank,         "avg_rank_se": avg_rank_se,
+        "p@k": p_at_k,                "p@k_se": p_at_k_se,
+        "mrr": mrr,                   "mrr_se": mrr_se,
+        "r@k": r_at_k,                "r@k_se": r_at_k_se,
+        "map": map_score,             "map_se": map_score_se,
+        "mean_diag_dist": mean_diag_dist,     "mean_diag_dist_se": mean_diag_dist_se,
+        "mean_diag_sim":  mean_diag_sim,      "mean_diag_sim_se":  mean_diag_sim_se,
+        "mean_margin":    mean_margin,        "mean_margin_se":    mean_margin_se,
+        "mean_zmargin":   mean_zmargin,       "mean_zmargin_se":   mean_zmargin_se,
+        "row_auc":        row_auc,            "row_auc_se":        row_auc_se,
+        "encod": encod,                "encod_se": se_encod,
         "best_layer": layer
     })
-    
-    print(f"Done {model} (avg_rank: {round(avg_rank, 2)} ± {round(avg_rank_se, 2)}, "
-          f"p@k: {round(p_at_k, 2)} ± {round(p_at_k_se, 2)}, "
-          f"mrr: {round(mrr, 2)} ± {round(mrr_se, 2)}, "
-          f"r@k: {round(r_at_k, 2)} ± {round(r_at_k_se, 2)}, "
-          f"map: {round(map_score, 2)} ± {round(map_score_se, 2)}, "
-          f"encod: {round(encod, 2)})")
+    print(
+        f"Done {model} "
+        f"(avg_rank: {avg_rank:.2f} ± {avg_rank_se:.2f}, "
+        f"p@k: {p_at_k:.2f} ± {p_at_k_se:.2f}, "
+        f"mrr: {mrr:.2f} ± {mrr_se:.2f}, "
+        f"r@k: {r_at_k:.2f} ± {r_at_k_se:.2f}, "
+        f"map: {map_score:.2f} ± {map_score_se:.2f}, "
+        f"mean_diag_dist: {mean_diag_dist:.3f} ± {mean_diag_dist_se:.3f}, "
+        f"mean_margin: {mean_margin:.3f} ± {mean_margin_se:.3f}, "
+        f"row_auc: {row_auc:.3f} ± {row_auc_se:.3f}, "
+        f"encod: {encod:.2f})"
+    )
 
 
 results_df = pd.DataFrame(results)
 # results_df.to_csv(folder_path+'multilingual_results.csv', index=False)
 results_df = pd.read_csv(folder_path+'multilingual_results.csv')
-print(results_df.corr())
+print(results_df[["encod", "p@k", "mrr", "r@k", 'mean_diag_dist',  'mean_diag_sim', 'mean_margin','mean_zmargin']].corr())
 print(pearsonr(results_df["mrr"], results_df["encod"]))
 
-results_single_langs = pd.DataFrame(results_single_langs, columns = ["model", "language", "mrr", "r", "r_last"])
+results_single_langs = pd.DataFrame(results_single_langs, columns=["model", "language", "mean_mrr_lang","r_lang_best", "r_lang_last", "mean_diag_dist_lang"])
 # results_single_langs.to_csv(folder_path+'singlelangs_multilingual_results.csv', index=False)
 results_single_langs = pd.read_csv(folder_path+'singlelangs_multilingual_results.csv')
 # results_single_langs.corr()

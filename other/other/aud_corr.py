@@ -74,9 +74,6 @@ for key, value in lang_dict.items():
         fmri_d[key] = np.mean([a, b], axis=0)
     except IndexError:
         pass
-    
-with open("data/dict_fMRI", 'wb') as handle:
-    pickle.dump(fmri_d, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 print(corrs[(corrs["r"] > 0) & (corrs["p"] < 0.05)])
 print(corrs[(corrs["r"] > 0) & (corrs["p"] < 0.05)]["r"].mean())
@@ -216,8 +213,8 @@ for l in set(data_md["Language"]):
         part1 = temp[(temp.UID == sub1) & (temp.ROI.isin(rois_md))]
         part2 = temp[(temp.UID == sub2) & (temp.ROI.isin(rois_md))]
         
-        ts1 = list(part1.iloc[:, 6:].mean())[9:-3] # 12 sec of silence at the beginning and end (--> 130 TRs)
-        ts2 = list(part2.iloc[:, 6:].mean())[9:-3]
+        ts1 = list(part1.iloc[:, 6:-1].mean())[9:-3] # 12 sec of silence at the beginning and end (--> 130 TRs)
+        ts2 = list(part2.iloc[:, 6:-1].mean())[9:-3]
         lang_dict_md[l] = [ts1, ts2]
 
 corrs_md = []
@@ -258,7 +255,6 @@ plt.xlabel("TE11 and TE12 (* p < .05; ** p < .005)")
 plt.title("Time series correlation - auditory regions")
 plt.tight_layout()
 plt.show()
-
 
 merged = pd.merge(corrs, corrs_md, on = "lang")
 pearsonr(merged["r_x"], merged["r_y"])

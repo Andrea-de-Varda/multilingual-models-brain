@@ -6,6 +6,10 @@ from os import chdir
 from scipy.stats import pearsonr, beta
 import pickle
 from itertools import combinations
+from math import atanh, tanh, sqrt
+import matplotlib as mpl
+mpl.rcParams['svg.fonttype'] = 'none'
+mpl.rcParams['font.family'] = 'DejaVu Sans'
 
 dirName = "/home/dev/Documents/PhD/Alice/confirmatory"
 chdir(dirName)
@@ -219,56 +223,100 @@ plt.show()
 # plot data with 3 participants #
 #################################
 
-corrs_3 = []
+def plain_avg_ci(rs, alpha=0.05):
+    rs = np.array(rs, dtype=float)
+    rs = rs[np.isfinite(rs)]
+    if rs.size == 0:
+        return np.nan, np.nan, np.nan
+    mean = rs.mean()
+    se = np.std(rs) / np.sqrt(len(rs))
+    return mean, mean-se, mean+se
+
+rows = []
 for passage, passagedata in lang_dict.items():
     for lang, responses in passagedata.items():
-        n_resp = len(responses)
-        if n_resp == 3:
+        if len(responses) == 3:
             r_0, p_0 = pearsonr(responses[0], responses[1])
             r_1, p_1 = pearsonr(responses[0], responses[2])
             r_2, p_2 = pearsonr(responses[1], responses[2])
-            corrs_3.append([passage, lang, r_0, p_0, r_1, p_1, r_2, p_2])
-corrs_3 = pd.DataFrame(corrs_3, columns = ["passage", "lang", "r1", "p1", "r2", "p2", "r3", "p3"])
+            (r0_lo, r0_hi) = corr_ci(r_0, 130)
+            (r1_lo, r1_hi) = corr_ci(r_1, 130)
+            (r2_lo, r2_hi) = corr_ci(r_2, 130)
+            rows.append([passage, lang,
+                         r_0, p_0, r0_lo, r0_hi,
+                         r_1, p_1, r1_lo, r1_hi,
+                         r_2, p_2, r2_lo, r2_hi])
 
+corrs_3 = pd.DataFrame(rows, columns=[
+    "passage","lang",
+    "r1","p1","r1_lo","r1_hi",
+    "r2","p2","r2_lo","r2_hi",
+    "r3","p3","r3_lo","r3_hi"
+])
 
-plt.figure(figsize=(13*.75, 6*.75), dpi=300)
-average_r = corrs_3.groupby('lang')[['r1', 'r2', 'r3']].mean().mean(axis=1).sort_values()
-languages = average_r.index
-passages = corrs_3['passage'].unique()
-x = np.arange(len(languages))
-bar_width = 0.08  # Width of individual bars within a group
-group_width = bar_width * 3 + 0.04  # Total width of bar group, including small space between groups
+average_r = corrs_3.groupby('lang')[['r1','r2','r3']].mean().mean(axis=1).sort_values()
+languages = average_r.index.tolist()
+passages = sorted(corrs_3['passage'].unique())
+xcenters  = np.arange(len(languages))
 
-def add_significance(ax, bars, significance):
-    for bar, sign in zip(bars, significance):
-        height = bar.get_height()
-        y_pos = height + (0.02 if height > 0 else -0.05)
-        ax.text(bar.get_x() + bar.get_width() / 2+.025, y_pos, sign, ha='center', va='bottom', color='black', fontsize=7, rotation = 90)
+triplet_offsets = [-0.20, 0.00, 0.20]
+jitter_small    = [-0.05, 0.00, 0.05]
+big_marker_size = 99
+small_marker_sz = 28
 
-for i, passage in enumerate(passages):
-    offset = (i * group_width) - (group_width / 2)
-    subset = corrs_3[corrs_3['passage'] == passage]
-    subset = subset.set_index('lang').reindex(languages).reset_index()
-    
-    # Plot each of r1, r2, r3
-    for j, r_col in enumerate(['r1', 'r2', 'r3']):
-        r_values = subset[r_col].values
-        colors = ['red' if val > 0 else 'blue' for val in r_values]
-        p_values = subset[f'p{j+1}'].values
-        sig_labels = ['***' if p < 0.001 else '**' if p < 0.01 else '*' if p < 0.05 else '' for p in p_values]
-        bars = plt.bar(x + offset + j*bar_width, r_values, bar_width, color=colors) # label=r"r(part$_1$, part$_2$)"
-        add_significance(plt.gca(), bars, sig_labels)
-
+plt.figure(figsize=(13*.65, 6*.65), dpi=300)
+lang_to_idx = {lang:i for i,lang in enumerate(languages)}
+for p_i, passage in enumerate(passages):
+    sub = (
+        corrs_3[corrs_3['passage'] == passage]
+        .set_index('lang')
+        .reindex(languages)
+        .reset_index()
+    )
+    pair_cols = [('r1','p1','r1_lo','r1_hi'),
+                 ('r2','p2','r2_lo','r2_hi'),
+                 ('r3','p3','r3_lo','r3_hi')]
+    for li, lang in enumerate(languages):
+        x0 = xcenters[li] + triplet_offsets[p_i]
+        r_triplet = []
+        for (rcol, pcol, lcol, hcol), joff in zip(pair_cols, jitter_small):
+            r = sub.loc[li, rcol]
+            p = sub.loc[li, pcol]
+            if not np.isfinite(r):
+                continue
+            x_small = x0 + joff
+            if np.isfinite(p) and p < 0.05:
+                color = 'red' if r > 0 else 'blue'
+                alpha = 0.55
+            else:
+                color = 'gray'
+                alpha = 0.15
+            plt.scatter([x_small], [r], s=small_marker_sz, c=[color], alpha=alpha, zorder=3)
+            r_triplet.append(r)
+        if len(r_triplet) >= 1:
+            rbar, rbar_lo, rbar_hi = plain_avg_ci(r_triplet, alpha=0.05)
+            yerr_big = np.array([[rbar - rbar_lo], [rbar_hi - rbar]])
+            c_big = 'red' if rbar > 0 else 'blue'
+            plt.errorbar(x0, rbar, yerr=yerr_big, fmt='D', markersize=6,
+                         color='black', ecolor='black', elinewidth=1.2, capsize=4, alpha=0.95, zorder=4)
+            plt.scatter([x0], [rbar], s=big_marker_size, c=[c_big], edgecolors='black', linewidths=1.1, zorder=5)
+for i in range(len(languages)-1):
+    plt.axvline(x=(xcenters[i] + xcenters[i+1]) / 2, color='0.85', linewidth=0.8, zorder=0)
 ax = plt.gca()
-ax.yaxis.grid(True, which='both', linestyle='dashed', linewidth=0.5)
-ax.yaxis.set_minor_locator(plt.MultipleLocator(base=0.05))
-plt.xticks([0.16, 1.16, 2.16, 3.16, 4.16, 5.16, 6.16, 7.16, 8.16], languages, rotation=45, ha='right')
-plt.ylabel("r")
-plt.xlabel("Language (* p < .05; ** p < .01; *** p < .001)")
-plt.title("Time series correlation")
-plt.ylim(-.43, .65)
+import matplotlib.ticker as mticker
+ax.yaxis.set_major_locator(mticker.MultipleLocator(0.1))
+ax.yaxis.grid(True, which='major', linestyle='dashed', linewidth=0.5)
+ax.set_xlim(-0.6, len(languages)-0.4)
+plt.xticks(xcenters, languages, rotation=45, ha='right')
+plt.ylabel("R")
+plt.ylim(-0.43, 0.65)
 plt.tight_layout()
+plt.savefig("../plots/time-series-corr-confirmatory.svg", format="svg", bbox_inches="tight")
 plt.show()
+
+#########################################################
+#########################################################
+#########################################################
 
 # create outcome variable to use in encoding
 fmri_d = {"Passage_1" : {lang : [] for lang in data["Language"].unique()}, 
@@ -283,7 +331,6 @@ for passage, passagedata in lang_dict.items():
     
 with open("data/dict_fMRI", 'wb') as handle:
     pickle.dump(fmri_d, handle, protocol=pickle.HIGHEST_PROTOCOL)
-
 
 #########################################################
 # reliability (only on data that I'll use for encoding) #

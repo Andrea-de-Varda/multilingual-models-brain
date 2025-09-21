@@ -4,8 +4,11 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from os import chdir
 from scipy.stats import pearsonr
-from math import sqrt
+from math import atanh, tanh, sqrt
 import pickle
+import matplotlib as mpl
+mpl.rcParams['svg.fonttype'] = 'none'
+mpl.rcParams['font.family'] = 'DejaVu Sans'
 
 dirName = "/home/dev/Documents/PhD/Alice"
 chdir(dirName)
@@ -126,6 +129,173 @@ for lang in froi_d:
             r, p = pearsonr(ts1, ts2)
             roi_corrs_within.append((lang, participant, roi1, roi2, r, p))
 df_within_participant = pd.DataFrame(roi_corrs_within, columns=["Language", "Participant", "ROI_1", "ROI_2", "r", "p"])
+
+###############################################################################
+###############################################################################
+###############################################################################
+
+rois = ['Lang_LH_AntTemp','Lang_LH_IFG','Lang_LH_IFGorb','Lang_LH_MFG','Lang_LH_PostTemp']
+froi_markers = {
+    'Lang_LH_AntTemp': 's',
+    'Lang_LH_IFG': 'o',
+    'Lang_LH_IFGorb': '^',
+    'Lang_LH_MFG': 'v',
+    'Lang_LH_PostTemp': 'X'
+}
+
+def corr_ci(r, n, alpha=0.05):
+    # fisher z CI, back-transformed to r
+    if n <= 3 or np.isclose(abs(r), 1.0):
+        return (np.nan, np.nan)
+    z = atanh(r)
+    se = 1.0 / sqrt(n - 3)
+    zcrit = 1.96 if np.isclose(alpha, 0.05) else None
+    if zcrit is None:
+        from scipy.stats import norm
+        zcrit = norm.ppf(1 - alpha/2)
+    lo = tanh(z - zcrit * se)
+    hi = tanh(z + zcrit * se)
+    return (lo, hi)
+
+records = []
+for lang, parts in froi_d.items():
+    if len(parts) != 2:
+        continue
+    uid1, uid2 = list(parts.keys())
+    rois_plus_all = rois + ['all']
+
+    for roi in rois_plus_all:
+        ts1 = np.array(parts[uid1][roi], dtype=float)
+        ts2 = np.array(parts[uid2][roi], dtype=float)
+        # Drop any NaNs pairwise
+        mask = np.isfinite(ts1) & np.isfinite(ts2)
+        ts1, ts2 = ts1[mask], ts2[mask]
+        if ts1.size < 4:
+            r, p = np.nan, np.nan
+            lo, hi = np.nan, np.nan
+            n = ts1.size
+        else:
+            r, p = pearsonr(ts1, ts2)
+            n = ts1.size
+            lo, hi = corr_ci(r, n, alpha=0.05)
+
+        records.append({
+            'lang': lang,
+            'roi': roi,
+            'r': r,
+            'p': p,
+            'n': n,
+            'r_lo': lo,
+            'r_hi': hi
+        })
+
+df = pd.DataFrame.from_records(records)
+order = (
+    df[df['roi'] == 'all']
+    .sort_values('r', na_position='first')
+    ['lang']
+    .tolist()
+)
+
+fig, ax = plt.subplots(figsize=(12.1*.75, 6*.75), dpi=300)
+for roi in rois:
+    sub = df[(df['roi'] == roi) & (df['lang'].isin(order))].copy()
+    sub['x'] = sub['lang'].map({lang:i for i,lang in enumerate(order)})
+    y = sub['r'].values
+    yerr = np.vstack([
+        y - sub['r_lo'].values,
+        sub['r_hi'].values - y
+    ])
+    colors = ['red' if r > 0 else 'blue' for r in y]
+    # ax.errorbar(
+    #     sub['x'].values, y, yerr=yerr,
+    #     fmt=froi_markers[roi],
+    #     markersize=4,
+    #     elinewidth=0.7,
+    #     capsize=2,
+    #     alpha=0.6,
+    #     linestyle='none',
+    #     color='gray'
+    # )
+    ax.scatter(
+        sub['x'].values, y,
+        marker=froi_markers[roi],
+        c=colors,
+        s=25,
+        alpha=0.4,
+        label=roi
+    )
+sub_all = df[(df['roi'] == 'all') & (df['lang'].isin(order))].copy()
+sub_all['x'] = sub_all['lang'].map({lang:i for i,lang in enumerate(order)})
+y_all = sub_all['r'].values
+yerr_all = np.vstack([
+    y_all - sub_all['r_lo'].values,
+    sub_all['r_hi'].values - y_all
+])
+colors_all = ['red' if r > 0 else 'blue' for r in y_all]
+ax.errorbar(
+    sub_all['x'].values, y_all, yerr=yerr_all,
+    fmt='o',
+    markersize=8,
+    elinewidth=1.2,
+    capsize=3,
+    linestyle='none',
+    color='black'  # error bars for 'all'
+)
+ax.scatter(
+    sub_all['x'].values, y_all,
+    marker='o',
+    c=colors_all,
+    s=60,
+    edgecolor='black',
+    zorder=3,
+    label='all'
+)
+for _, row in sub_all.iterrows():
+    if pd.notna(row['r']) and pd.notna(row['p']):
+        star = "**" if row['p'] < 0.005 else ("*" if row['p'] < 0.05 else "")
+        if star:
+            offset = 0.15 if row['r'] >= 0 else -0.23
+            ax.text(
+                row['x'], row['r'] + offset,
+                star, ha='center', va='bottom', fontsize=11
+            )
+
+ax.set_xticks(range(len(order)))
+ax.set_xticklabels(order, rotation=45, ha='right')
+ax.set_ylabel("R")
+# ax.set_xlabel("Language (* p < .05; ** p < .005)")
+ax.yaxis.grid(True, which='both', linestyle='dashed', linewidth=0.5)
+# ax.set_ylim(-0.15, 0.55)
+# ax.legend(loc='upper left', ncol=2, frameon=False)
+plt.savefig("plots/time-series-corr.svg", format="svg", bbox_inches="tight")
+plt.tight_layout()
+plt.show()
+
+roi_summary = (
+    df.groupby("roi")["r"]
+      .agg(
+          mean="mean",
+          std="std",
+          count="count",
+          min="min",
+          max="max",
+          n_pos=lambda x: (x > 0).sum(),
+          frac_pos=lambda x: (x > 0).mean()
+      )
+)
+roi_summary['sem'] = roi_summary['std'] / roi_summary['count']**0.5
+roi_summary = roi_summary[['mean', 'sem', 'frac_pos']] #  'min', 'max'
+print(roi_summary.sort_values(by="mean", ascending = False))
+
+#                       mean       sem       min       max
+# roi                                                     
+# Lang_LH_PostTemp  0.141140  0.023694 -0.175632  0.422637
+# Lang_LH_AntTemp   0.121991  0.031412 -0.391922  0.475791
+# all               0.080869  0.033318 -0.662467  0.461557
+# Lang_LH_IFG       0.075657  0.023776 -0.263456  0.401316
+# Lang_LH_MFG       0.056307  0.037940 -0.750040  0.455420
+# Lang_LH_IFGorb    0.029402  0.029987 -0.606524  0.317150
 
 ##########################################################################################
 

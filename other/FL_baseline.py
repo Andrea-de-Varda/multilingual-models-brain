@@ -329,4 +329,5 @@ for idx, lang in enumerate(lang_codes):
         all_res[k].append(v)
 all_res = pd.DataFrame(all_res)
 all_res.mean()
-        
+
+all_res.std() / np.sqrt(len(all_res))

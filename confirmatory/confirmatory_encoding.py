@@ -612,3 +612,11 @@ axes[-1].set_xticklabels(r_mean.index, rotation=45, ha="right")
 plt.suptitle('', y=0.97, fontsize=26, weight="bold")
 plt.tight_layout()
 plt.show()
+
+# combined_df = combined_df[['train', 'model', 'r', 'SE', 'p', 'sig']]
+# main = combined_df[combined_df["train"] == "main"]
+# control = combined_df[combined_df["train"] == "control"]
+# natstor = combined_df[combined_df["train"] == "natstor"]
+# pereira = combined_df[combined_df["train"] == "pereira"]
+
+# pereira.sort_values(by="r")
