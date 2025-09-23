@@ -659,8 +659,8 @@ mono_multi.to_csv("results/mono_multi.csv", index=False)
 
 compare_native = []
 for model in model_names:
-    native = get_best_layerwise(load(model, native = True), give_all = False)
-    english = get_best_layerwise(load(model, native = False), give_all = False)
+    native = get_best_layerwise(load(model, native = True, multitrain = True), give_all = False)
+    english = get_best_layerwise(load(model, native = False, multitrain = True), give_all = False)
     compare_native.append({"model" : model, "native" : native, "english" : english})
 compare_native = pd.DataFrame(compare_native)
 print(compare_native[["native", "english"]].mean())

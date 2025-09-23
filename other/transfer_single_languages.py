@@ -1,235 +1,160 @@
-import numpy as np
-import numpy.ma as ma
-import pandas as pd
-import re
-from os import chdir
+#!/usr/bin/env python3
 import os
-import pickle
-from sklearn.linear_model import RidgeCV
-from sklearn.model_selection import KFold
-from sklearn.preprocessing import StandardScaler
-from tqdm import tqdm
-from scipy.stats import pearsonr
-from researchpy import corr_pair
-from math import sqrt
-import matplotlib.pyplot as plt
-from time import sleep
+import numpy as np
+import pandas as pd
 import seaborn as sns
-from adjustText import adjust_text
+import matplotlib.pyplot as plt
+from scipy.stats import pearsonr
+from tqdm import tqdm
 import lang2vec.lang2vec as l2v
-import statsmodels.api as sm
-import statsmodels.formula.api as smf
-from scipy.stats import ttest_ind, rankdata
+from statsmodels.stats.multitest import multipletests
 
-# IMPORTANT NOTE: lang2vec needs to be installed from source (pip has older version)
+TARGET_MODEL = "infoxlm_large" 
+FROI         = "all"
+langs_matrix = langs[:]
+pretty_labels = [lang_dict[l] for l in langs_matrix]
 
-chdir("/home/dev/Documents/PhD/Alice")
+def get_best_layer_matrix(model):
+    res_dict = load(model, froi=FROI, monol=False, random=False,
+                    md=False, rh=False, native=False, multitrain=False)
+    layer_means = {k: v["r"].mean() for k, v in res_dict.items()}
+    best_layer = max(layer_means, key=layer_means.get)
+    df_best = res_dict[best_layer]
 
-def imputate_na(array):
-    return np.where(np.isnan(array), ma.array(array, mask=np.isnan(array)).mean(axis=0), array)
+    M = pd.DataFrame(np.nan, index=langs_matrix, columns=langs_matrix, dtype=float)
+    test_cols = [c for c in df_best.columns if c not in ("target_lang", "r")]
+    for _, row in df_best.iterrows():
+        tr = row["target_lang"]
+        if tr not in langs_matrix:
+            continue
+        for t in test_cols:
+            if t in langs_matrix:
+                try:
+                    M.at[tr, t] = float(row[t])
+                except Exception:
+                    pass
+    return M, best_layer
 
-def embed_words(embeddings, words_id):
-    ids = words_id.astype(int)
-    time = np.arange(0, 260, 2)
-    emb_words = []                         
-    for i in range(time.shape[0]):
-        emb = np.mean(embeddings[ids==i], axis=0)
-        emb_words.append(emb)
-    emb_words = np.array(emb_words)
-    emb_words = imputate_na(emb_words)
-    return emb_words
+def build_symmetric_matrix():
+    if TARGET_MODEL == "ALL":
+        mats = []
+        for model in model_names:
+            try:
+                M, _ = get_best_layer_matrix(model)
+                mats.append(M)
+            except Exception as e:
+                print(f"[WARN] Skipping {model}: {e}")
+        stacked = np.stack([m.to_numpy() for m in mats], axis=2)
+        A = np.nanmean(stacked, axis=2)
+        title = "Average across models"
+    else:
+        M, best_layer = get_best_layer_matrix(TARGET_MODEL)
+        A = M.to_numpy()
+        title = f"{TARGET_MODEL} (best layer={best_layer})"
 
-def preproc_align(lang, embeddings):
-    df = pd.read_csv("transcribed/"+lang+".csv")
-    df = df[df["end"] <= 260]
-    time = np.arange(0, 260, 2) # sampled each 2 sec
-    time_words = df["end"]
-    words_id = np.zeros([len(time_words)])
-    # w=find what TR each word belongs to; then I'll need to aggregate representations
-    for i in range(len(time_words)):
-        words_id[i] = np.where(time_words[i]> time)[0][-1]
-    embedded_words = embed_words(embeddings, words_id)
-    return embedded_words
+    # symmetrize
+    n = A.shape[0]
+    for i in range(n):
+        for j in range(i+1, n):
+            m = np.nanmean([A[i, j], A[j, i]])
+            A[i, j] = m
+            A[j, i] = m
+    return A, title
 
-###############################################################################
+def plot_heatmap(sym_df, title):
+    A = sym_df.to_numpy()
+    mask_upper = np.triu(np.ones_like(A, dtype=bool), k=1)
+    absmax = np.nanmax(np.abs(A))
 
-# load fMRI data
-with open("data/dict_fMRI", 'rb') as handle:
-    d = pickle.load(handle)
-    
-# all_langs = ['Catalan', 'Japanese', 'English', 'Spanish', 'Marathi', 'Afrikaans', 'Vietnamese', 'Tamil', 'Lithuanian', 'Turkish', 'Dutch', 'Norwegian', 'Farsi', 'French', 'Romanian', 'Italian']
-# all_codes = ["ca", "ja", "en", "es", "mr", "af", "vi", "ta", "lt", "tr", "nl", "no", "fa", "fr", "ro", "ita"]
+    plt.figure(figsize=(10.5*.7, 8.2*.7), dpi=300)
+    sns.set_context("talk")
+    ax = sns.heatmap(
+        sym_df,
+        mask=mask_upper,
+        cmap="RdBu_r",
+        vmin=-absmax, vmax=absmax, center=0,
+        square=True,
+        cbar_kws={"label": "r"},
+        linewidths=0.3, linecolor="white"
+    )
+    ax.set_xticklabels(pretty_labels, rotation=45, ha="right", fontsize=14)
+    ax.set_yticklabels(pretty_labels, rotation=0, ha="right", fontsize=14)
+    plt.tight_layout()
+    os.makedirs("plots", exist_ok=True)
+    plt.savefig("plots/xling_matrix.svg", format="svg", bbox_inches="tight")
+    plt.show()
 
-all_langs = ['Spanish', 'Marathi', 'Afrikaans', 'Vietnamese', 'Tamil', 'Lithuanian', 'Turkish', 'Dutch', 'Norwegian', 'Farsi', 'French', 'Romanian']
-all_codes = ["es", "mr", "af", "vi", "ta", "lt", "tr", "nl", "no", "fa", "fr", "ro"]
+def make_comparison_df(sym_df):
+    langs = sym_df.index.tolist()
+    pairs, values = [], []
+    for i in range(len(langs)):
+        for j in range(i+1, len(langs)):
+            pairs.append((langs[i], langs[j]))
+            values.append(sym_df.iloc[i, j])
+    comparison_df = pd.DataFrame(pairs, columns=["Lang1", "Lang2"])
+    comparison_df["transfer"] = values
+    return comparison_df
 
-# xglm_langs = ["ca", "ja", "en", "es", "vi", "ta", "tr", "fr", "ita"]
-xglm_langs = ["es", "vi", "ta", "tr", "fr"]
+def add_lang2vec_distances(comparison_df):
+    iso_codes = {
+        "fa": "fas", "mr": "mar", "es": "spa", "ro": "ron", "fr": "fra", "lt": "lit",
+        "af": "afr", "nl": "nld", "no": "nob", "tr": "tur", "vi": "vie", "ta": "tam",
+    }
+    comparison_df["iso1"] = comparison_df["Lang1"].map(iso_codes)
+    comparison_df["iso2"] = comparison_df["Lang2"].map(iso_codes)
 
-lang_code_dict = {k : v for k, v in zip(all_codes, all_langs)}
-lang_code_d_reversed = {v : k for k, v in lang_code_dict.items()}
+    syn, geo, pho, gen, inv, feat = [], [], [], [], [], []
+    for _, row in tqdm(comparison_df.iterrows(), total=len(comparison_df)):
+        syn.append(l2v.syntactic_distance(row["iso1"], row["iso2"]))
+        geo.append(l2v.geographic_distance(row["iso1"], row["iso2"]))
+        pho.append(l2v.phonological_distance(row["iso1"], row["iso2"]))
+        gen.append(l2v.genetic_distance(row["iso1"], row["iso2"]))
+        inv.append(l2v.inventory_distance(row["iso1"], row["iso2"]))
+        feat.append(l2v.featural_distance(row["iso1"], row["iso2"]))
 
-###########################################################################
-# predict data in ALL LANGUAGES with ridge weights from a single language #
-###########################################################################
+    comparison_df["syn"] = syn
+    comparison_df["geo"] = geo
+    comparison_df["pho"] = pho
+    comparison_df["gen"] = gen
+    comparison_df["inv"] = inv
+    comparison_df["feat"] = feat
+    return comparison_df
 
-# xlmr_large best layer is 15 (best in transfer)
-# previous coefficients are obtained on the various folds, now need the coefficients obtained with the full data in a single language
+def run_correlations(comparison_df):
+    results = []
+    for col in ["syn", "geo", "pho", "gen", "inv", "feat"]:
+        r, p = pearsonr(comparison_df["transfer"], comparison_df[col])
+        results.append((col, r, p))
 
-def load_embeddings(name, layer):
-    with open("embeddings/"+name, 'rb') as handle:
-        file = pickle.load(handle)[layer]
-    return file
+    cols, rs, ps = zip(*results)
+    reject, pvals_corr, _, _ = multipletests(ps, alpha=0.05, method="fdr_bh")
 
-# mBERT
-# new ordering to make the plot better for genetic clustering (which is added manually afterwards)
-# all_langs = ["Farsi", "Marathi", "Catalan", "Spanish", "Italian", "Romanian", "French", "Lithuanian", "Afrikaans", "Dutch", "English", "Norwegian", "Turkish", "Vietnamese", "Tamil", "Japanese"]
-all_langs = ["Farsi", "Marathi", "Spanish", "Romanian", "French", "Lithuanian", "Afrikaans", "Dutch", "Norwegian", "Turkish", "Vietnamese", "Tamil"]
+    for c, r, p_raw, p_corr, rej in zip(cols, rs, ps, pvals_corr, reject):
+        print(f"{c:>5}: r={r:.3f}, p_raw={p_raw:.3g}, p_corr={p_corr:.3g}, significant={rej}")
 
-all_codes = [lang_code_d_reversed[l] for l in all_langs]
-#all_codes = xglm_langs
+if __name__ == "__main__":
+    A, title = build_symmetric_matrix()
+    sym_df = pd.DataFrame(A, index=langs_matrix, columns=langs_matrix)
 
-fmri_data = [preproc_align(lang, load_embeddings(f"xlmr_large_{lang}", 15)) for lang in all_codes]
-fmri_response = [d[lang_code_dict[lang]] for lang in all_codes]
+    diag_vals = np.diag(A)
+    off_vals  = A[~np.eye(len(A), dtype=bool)]
+    print(f"[diag mean]     {np.nanmean(diag_vals):.4f}")
+    print(f"[off-diag mean] {np.nanmean(off_vals):.4f}")
+    print(f"[overall mean]  {np.nanmean(A):.4f}")
 
-out = []
-out_p = []
-for lang in all_codes:
-    # set data
-    X = preproc_align(lang, load_embeddings(f"xlmr_large_{lang}", 15))
-    y = d[lang_code_dict[lang]]
-    # scaling
-    X_scaler = StandardScaler()
-    y_scaler = StandardScaler()
-    X = X_scaler.fit_transform(X)
-    y = y_scaler.fit_transform(y.reshape(-1, 1)).flatten()
-    reg = RidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
-    reg.fit(X, y)
-    weights = reg.coef_#; print(coefs)
-    pred = [reg.predict(X_scaler.transform(data)) for data in fmri_data]
-    rs = [pearsonr(thepred, y_scaler.transform(theresponse.reshape(-1, 1)).flatten())[0] for thepred, theresponse in zip(pred, fmri_response)]
-    ps = [pearsonr(thepred, y_scaler.transform(theresponse.reshape(-1, 1)).flatten())[1] for thepred, theresponse in zip(pred, fmri_response)]
-    out.append(rs)
-    out_p.append(ps)
-corr = pd.DataFrame(out, columns = all_codes)
-p_values = pd.DataFrame(out_p, columns = all_codes)
-corr.index = all_langs
-corr.columns = all_langs
+    plot_heatmap(sym_df, title)
 
-df = corr.copy()
-# Create a mask for non-significant correlations
-mask_non_sig = p_values > 0.05
-#mask_upper = np.triu(np.ones_like(corr, dtype=bool))
-mask = mask_non_sig #| mask_upper
-df[mask.values] = np.nan
+    comparison_df = make_comparison_df(sym_df)
+    comparison_df = add_lang2vec_distances(comparison_df)
+    run_correlations(comparison_df)
 
-plt.figure(figsize=(7, 7), dpi=150)
-# sns.heatmap(df, annot=True, fmt=".2f", cmap='jet', center = 0, vmin=-1, vmax=1, square=True, cbar_kws={"shrink": .82}, linewidths=0.1, annot_kws={"size": 10})
-sns.heatmap(df, annot=False, fmt=".2f", cmap='jet', center = 0, vmin=-1, vmax=1, square=True, cbar_kws={"shrink": .82}, linewidths=0.1)
-plt.xticks(fontsize=16, rotation=45, ha="right")
-plt.yticks(fontsize=16, rotation = 0, ha="right")
-plt.show()
-
-#########################
-# interacting with WALS #
-#########################
-
-df_stacked = corr.stack()
-df_stacked = df_stacked[df_stacked.index.get_level_values(0) != df_stacked.index.get_level_values(1)] # filter out the diagonal
-
-
-pairs = [(min(lang1, lang2), max(lang1, lang2)) for lang1, lang2 in df_stacked.index] # separate the upper and lower triangular values
-unique_pairs = pd.unique(pairs)
-# prepare data
-data = {
-    'Lang1': [],
-    'Lang2': [],
-    '1to2': [],
-    '2to1': []
-}
-
-for lang1, lang2 in unique_pairs:
-    if (lang1, lang2) in df_stacked.index:
-        data['Lang1'].append(lang1)
-        data['Lang2'].append(lang2)
-        data['1to2'].append(df_stacked[(lang1, lang2)])
-        data['2to1'].append(df_stacked[(lang2, lang1)])
-    else:  # if missing pairs (though there shouldn't be any)
-        data['Lang1'].append(lang1)
-        data['Lang2'].append(lang2)
-        data['1to2'].append(np.nan)
-        data['2to1'].append(np.nan)
-
-comparison_df = pd.DataFrame(data) # 15 x 14 / 2 values
-print("correlation = ", pearsonr(comparison_df["1to2"], comparison_df["2to1"])) # statistic=0.6901676684866376, pvalue=1.4489189831199006e-10
-comparison_df["transfer"] = comparison_df[["1to2", "2to1"]].mean(axis=1) # there is a high correlation, we can average 1to2 and 2to1
-
-# ISO 693-3 codes
-iso = ["fas", "mar", "cat", "spa", "ita", "ron", "fra", "lit", "afr", "nld", "eng", "nob", "tur", "vie", "tam", "jpn"]
-iso_codes = {lang : code for lang, code in zip(all_langs, iso)}
-comparison_df["iso1"] = comparison_df["Lang1"].map(iso_codes)
-comparison_df["iso2"] = comparison_df["Lang2"].map(iso_codes)
-
-# first trying with aggregate measures 
-syn, geo, pho, gen, inv, feat = [], [], [], [], [], []
-for index, row in tqdm(comparison_df.iterrows(), total = len(comparison_df)):
-    syn.append(l2v.syntactic_distance(row["iso1"], row["iso2"]))
-    geo.append(l2v.geographic_distance(row["iso1"], row["iso2"]))
-    pho.append(l2v.phonological_distance(row["iso1"], row["iso2"]))
-    gen.append(l2v.genetic_distance(row["iso1"], row["iso2"]))
-    inv.append(l2v.inventory_distance(row["iso1"], row["iso2"]))
-    feat.append(l2v.featural_distance(row["iso1"], row["iso2"]))
-
-comparison_df["syn"] = syn
-comparison_df["geo"] = geo
-comparison_df["pho"] = pho
-comparison_df["gen"] = gen
-comparison_df["inv"] = inv
-comparison_df["feat"] = feat
-
-for colname in ["syn", "geo", "pho", "gen", "inv", "feat"]:
-    r, _ = pearsonr(comparison_df["transfer"], comparison_df[colname])
-    print(colname, r, _) # nothing is significant here
-
-# comparison_df.to_csv("results/comparison_df.csv", index=False)
-comparison_df = pd.read_csv("results/comparison_df.csv")
-
-####################
-# compare with MRR #
-####################
-
-def load(name):
-    with open(f"other/synonyms/embeddings/{name}", 'rb') as handle:
-        file = pickle.load(handle)
-    return file
-
-def cosine_distance_matrix(vectors1, vectors2):
-    v1_norm = vectors1 / np.linalg.norm(vectors1, axis=1)[:, np.newaxis]
-    v2_norm = vectors2 / np.linalg.norm(vectors2, axis=1)[:, np.newaxis]
-    cos_sim_matrix = np.dot(v1_norm, v2_norm.T)
-    return 1-cos_sim_matrix
-
-def mean_reciprocal_rank(matching_ranks):
-    return np.mean(1 / matching_ranks)
-
-def evaluate_language_pair(language1, language2, results, layer):
-    l1 = np.array([vec[layer] for vec in results[language1]])
-    l2 = np.array([vec[layer] for vec in results[language2]])
-    cos_sim_matrix = cosine_distance_matrix(l1, l2)
-    # rank similarities across rows
-    ranks = np.apply_along_axis(rankdata, 1, cos_sim_matrix, method='ordinal')
-    matching_ranks = np.diag(ranks)  # diagonal (matching words) ranks
-    # get retrieval metrics
-    mrr = mean_reciprocal_rank(matching_ranks) # mean reciprocal rank
-    return mrr
-
-res = load("xlmr_large")
-mrr_res = []
-for index, row in tqdm(comparison_df.iterrows(), total = len(comparison_df)):
-    l1, l2 = lang_code_d_reversed[row["Lang1"]], lang_code_d_reversed[row["Lang2"]]
-    mrr = evaluate_language_pair(l1, l2, res, 15)
-    mrr_res.append(mrr)
-comparison_df["mrr"] = mrr_res
-print(pearsonr(comparison_df["transfer"], comparison_df["mrr"]))
-
-corr_df = comparison_df.corr()
+#   syn: r=-0.202, p_raw=0.103, p_corr=0.31, significant=False
+#   geo: r=0.169, p_raw=0.175, p_corr=0.35, significant=False
+#   pho: r=0.083, p_raw=0.506, p_corr=0.609, significant=False
+#   gen: r=0.063, p_raw=0.613, p_corr=0.613, significant=False
+#   inv: r=0.275, p_raw=0.0253, p_corr=0.152, significant=False
+#  feat: r=-0.083, p_raw=0.508, p_corr=0.609, significant=False
+ 
+# [diag mean]     0.3035
+# [off-diag mean] 0.1263
+# [overall mean]  0.1411
