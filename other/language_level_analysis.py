@@ -16,7 +16,7 @@ names_nice_dict = {name : nice for name, nice in zip(model_names, names_formatte
 # load previous data #
 ######################
 
-ppx_res = pd.read_csv("other/synonyms/perplexity_results.csv")[["lang", "mod", "ppx_residuals"]] # perplexity-encoding
+ppx_res = pd.read_csv("other/synonyms/perplexity_results.csv")[["lang", "mod", "ppx_residuals"]] # perplexity-encoding	
 sem_multi = pd.read_csv('other/synonyms/singlelangs_multilingual_results.csv')[["model", "language", "mrr", "r"]] # sentence translat., multi
 sem_mono  = pd.read_csv('other/synonyms/singlelangs_monolingual_results.csv')[["model", "language", "mrr", "r"]] # sentence translat., monol
 

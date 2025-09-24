@@ -60,7 +60,7 @@ out_all.replace({'mod':{'mbert':'bert_base'}, 'lang':{'it':'ita'}}, inplace = Tr
 model = LinearRegression()
 model.fit(out_all[["ppx_random"]], out_all["ppx"])
 out_all["ppx_residuals"] = out_all["ppx"] - model.predict(out_all[["ppx_random"]])
-#out_all.to_csv("other/synonyms/perplexity_results.csv", index=False)
+out_all.to_csv("other/synonyms/perplexity_results.csv", index=False)
 
 print(pearsonr(out_all["ppx_residuals"], out_all["ppx_random"])) # check
 
@@ -71,7 +71,7 @@ ppx_res = out_all.groupby("mod").agg(
 )
 ppx_res["Model"] = ppx_res["mod"].map(names_nice_dict)
 ppx_res = ppx_res.reset_index(drop=True)
-#ppx_res.to_csv("results/perplexity_results.csv", index=False)
+ppx_res.to_csv("results/perplexity_results.csv", index=False)
 
 # encoding results 
 encoding = pd.read_csv("results/mono_multi.csv")
@@ -106,12 +106,12 @@ for i in range(len(mono_multi)):
                  xerr=mono_multi['ppx_se'][i], yerr=mono_multi['se_mono'][i],
                  fmt='o', color=mono_multi['color'][i], zorder = 5)
 annotations = {
-    'NLLB$_{d-small}$': (.09,-0.022),
+    'NLLB$_{d-small}$': (.09,0.012),
     'NLLB$_{d-large}$': (.07,-.036),
     'NLLB$_{large}$': (-.08,-.048),
     'XLM-Align': (.06,-.02),
     'InfoXLM$_{small}$': (.04,.03),
-    'InfoXLM$_{large}$': (-.055,.022),
+    'InfoXLM$_{large}$': (-.055,.072),
     'mMiniLM': (-.09,-.075),
     'XLM-R$_{base}$': (-0.08,-0.004),
     'XLM-R$_{large}$': (-.077,.07),
@@ -120,7 +120,7 @@ annotations = {
     'mDeBERTa': (0.09,.012),
     'mT5$_{small}$': (.055,-.04),
     'mT5$_{base}$': (-.06,-0.1),
-    'mT5$_{large}$': (-0.14,-0.058),
+    'mT5$_{large}$': (-0.19,-0.058),
     'mGPT': (-.055,-0.02),
     'XGLM$_{small}$': (.05,.057),
     'XGLM$_{med}$': (-.05,-.03),
@@ -128,23 +128,23 @@ annotations = {
     'XGLM$_{xl}$': (-.05,.013)
 }
 
-to_print = ['NLLB$_{d-small}$', 'NLLB$_{large}$', 'InfoXLM$_{large}$', 'mMiniLM', 'XLM-R$_{large}$', 'DistilmBERT', 'mBERT', 'mT5$_{small}$', 'mT5$_{base}$', 'mT5$_{large}$', 'mGPT', 'XGLM$_{small}$', 'XGLM$_{med}$', 'XGLM$_{large}$', 'XGLM$_{xl}$']
+to_print = ['NLLB$_{d-small}$', 'NLLB$_{large}$', 'InfoXLM$_{large}$', 'XLM-R$_{large}$', 'DistilmBERT', 'mBERT', 'mT5$_{small}$', 'mT5$_{base}$', 'mT5$_{large}$', 'mGPT', 'XGLM$_{small}$', 'XGLM$_{med}$', 'XGLM$_{large}$', 'XGLM$_{xl}$']
 
 #annotations.keys()
 
 models_with_lines = names_formatted
 
-# for i in range(len(mono_multi)):
-#     model = mono_multi['Model'][i]
-#     if model in to_print:
-#         offset_x, offset_y = annotations.get(model, (0.02, 0.02))
-#         offset_x = offset_x * 300
-#         plt.text(mono_multi['ppx_mean'][i] + offset_x, mono_multi['Score_mono'][i] + offset_y,
-#                  model, fontsize=12, ha='center', va='bottom', alpha = 0.3, bbox=dict(facecolor='white', alpha=1, zorder = 4, edgecolor='#D3D3D3'))
-#         if model in models_with_lines:
-#             plt.plot([mono_multi['ppx_mean'][i], mono_multi['ppx_mean'][i] + offset_x],
-#                      [mono_multi['Score_mono'][i], mono_multi['Score_mono'][i] + offset_y],
-#                      color='black', alpha = 0.3, lw=1, zorder = 1)
+for i in range(len(mono_multi)):
+    model = mono_multi['Model'][i]
+    if model in to_print:
+        offset_x, offset_y = annotations.get(model, (0.02, 0.02))
+        offset_x = offset_x * 300
+        plt.text(mono_multi['ppx_mean'][i] + offset_x, mono_multi['Score_mono'][i] + offset_y,
+                 model, fontsize=12, ha='center', va='bottom', alpha = 0.3, bbox=dict(facecolor='white', alpha=1, zorder = 4, edgecolor='#D3D3D3'))
+        if model in models_with_lines:
+            plt.plot([mono_multi['ppx_mean'][i], mono_multi['ppx_mean'][i] + offset_x],
+                     [mono_multi['Score_mono'][i], mono_multi['Score_mono'][i] + offset_y],
+                     color='black', alpha = 0.3, lw=1, zorder = 1)
 plt.text(0.98, 0.98, f"r = {round(r, 2)}, p = {round(p, 4)}", 
          fontsize=15, ha='right', va='top', alpha=1, 
          bbox=dict(facecolor='white', alpha=0.7), 
@@ -158,13 +158,16 @@ plt.xlim(-90, 45)
 #plt.ylim(0.15, 0.6)
 plt.yticks([0.2, 0.3, 0.4, 0.5])
 plt.grid(True)
+plt.savefig("plots/perplexity_mono.svg", format="svg", bbox_inches="tight")
 plt.show()
-
 
 #########
 # MULTI #
 #########
 
+#########
+# MULTI #
+#########
 
 r, p = pearsonr(mono_multi['Score_multi'], mono_multi['ppx_mean']) 
 
@@ -183,45 +186,45 @@ for i in range(len(mono_multi)):
                  xerr=mono_multi['ppx_se'][i], yerr=mono_multi['se_multi'][i],
                  fmt='o', color=mono_multi['color'][i], zorder = 5)
 annotations = {
-    'NLLB$_{d-small}$': (.082,-0.01),
+    'NLLB$_{d-small}$': (.082,-0.015),
     'NLLB$_{d-large}$': (.075,-0.015),
-    'NLLB$_{large}$': (-.07,-.014),
-    'XLM-Align': (-.107,.033),
+    'NLLB$_{large}$': (-.07,.014),
+    'XLM-Align': (-.066,.026),
     'InfoXLM$_{small}$': (-.04,-.022),
     'InfoXLM$_{large}$': (.08,-.014),
-    'mMiniLM': (-.05,-.021),
-    'XLM-R$_{base}$': (-0.09,-0.003),
-    'XLM-R$_{large}$': (-.06,.028),
+    'mMiniLM': (-.045,.011),
+    'XLM-R$_{base}$': (-0.09,-0.016),
+    'XLM-R$_{large}$': (-.05,.038),
     'DistilmBERT': (-.08,-.02),
-    'mBERT': (-.042,.005),
+    'mBERT': (-.042,.015),
     'mDeBERTa': (-0.05,.008),
-    'mT5$_{small}$': (.07,-.01),
-    'mT5$_{base}$': (.08,-.01),
-    'mT5$_{large}$': (-.1,0.0065),
+    'mT5$_{small}$': (.07,-.017),
+    'mT5$_{base}$': (.08,-.022),
+    'mT5$_{large}$': (-.1,0.0165),
     'mGPT': (-.07,-0.006),
-    'XGLM$_{small}$': (-.11,.02),
+    'XGLM$_{small}$': (.06,.02),
     'XGLM$_{med}$': (-.07,-0.009),
-    'XGLM$_{large}$': (-.06,-0.012),
-    'XGLM$_{xl}$': (-.05,.008)
+    'XGLM$_{large}$': (-.06,0.012),
+    'XGLM$_{xl}$': (-.05,.005)
 }
 
-to_print = ['NLLB$_{d-small}$', 'NLLB$_{large}$', 'XLM-Align', 'mMiniLM', 'XLM-R$_{base}$', 'XLM-R$_{large}$', 'DistilmBERT', 'mBERT', 'mT5$_{small}$', 'mT5$_{base}$', 'mT5$_{large}$', 'mGPT', 'XGLM$_{small}$', 'XGLM$_{large}$', 'XGLM$_{xl}$']
+to_print = ['NLLB$_{d-small}$','NLLB$_{d-large}$', 'NLLB$_{large}$', 'XLM-Align', 'mMiniLM', 'XLM-R$_{base}$', 'XLM-R$_{large}$', 'DistilmBERT','mT5$_{small}$', 'mT5$_{base}$', 'mT5$_{large}$', 'mGPT', 'XGLM$_{small}$', 'XGLM$_{large}$', 'XGLM$_{xl}$']
 
 #annotations.keys()
 
 models_with_lines = names_formatted # CHANGE HERE TO PRINT CORRECTLY
 
-# for i in range(len(mono_multi)):
-#     model = mono_multi['Model'][i]
-#     if model in to_print:
-#         offset_x, offset_y = annotations.get(model, (0.02, 0.02))
-#         offset_x = offset_x * 300
-#         plt.text(mono_multi['ppx_mean'][i] + offset_x, mono_multi['Score_multi'][i] + offset_y,
-#                   model, fontsize=12, ha='center', va='bottom', alpha = 0.3, bbox=dict(facecolor='white', alpha=1, zorder = 4, edgecolor='#D3D3D3'))
-#         if model in models_with_lines:
-#             plt.plot([mono_multi['ppx_mean'][i], mono_multi['ppx_mean'][i] + offset_x],
-#                       [mono_multi['Score_multi'][i], mono_multi['Score_multi'][i] + offset_y],
-#                       color='black', alpha = 0.3, lw=1, zorder = 1)
+for i in range(len(mono_multi)):
+    model = mono_multi['Model'][i]
+    if model in to_print:
+        offset_x, offset_y = annotations.get(model, (0.02, 0.02))
+        offset_x = offset_x * 300
+        plt.text(mono_multi['ppx_mean'][i] + offset_x, mono_multi['Score_multi'][i] + offset_y,
+                  model, fontsize=12, ha='center', va='bottom', alpha = 0.3, bbox=dict(facecolor='white', alpha=1, zorder = 4, edgecolor='#D3D3D3'))
+        if model in models_with_lines:
+            plt.plot([mono_multi['ppx_mean'][i], mono_multi['ppx_mean'][i] + offset_x],
+                      [mono_multi['Score_multi'][i], mono_multi['Score_multi'][i] + offset_y],
+                      color='black', alpha = 0.3, lw=1, zorder = 1)
 plt.text(0.98, 0.98, f"r = {round(r, 2)}, p = {round(p, 4)}", 
          fontsize=15, ha='right', va='top', alpha=1, 
          bbox=dict(facecolor='white', alpha=0.7), 
@@ -240,6 +243,7 @@ plt.xlim(-90, 45)
 # plt.ylim(0.0, 0.35)
 plt.yticks([0.1, 0.2])
 plt.grid(True)
+plt.savefig("plots/perplexity_multi.svg", format="svg", bbox_inches="tight")
 plt.show()
 
 # check if corrs are sig different
@@ -257,9 +261,9 @@ def r_to_z(r1, r2, n = 130):
 
 r_to_z(pearsonr(mono_multi['Score_multi'], mono_multi['ppx_mean'])[0], pearsonr(mono_multi['Score_mono'], mono_multi['ppx_mean'])[0], n = 20)
 
-#####################
-# at the lang level #
-#####################
+# #####################
+# # at the lang level #
+# #####################
 
-out_all = pd.read_csv("other/synonyms/perplexity_results.csv")
-out_all.columns
+# out_all = pd.read_csv("other/synonyms/perplexity_results.csv")
+# out_all.columns

@@ -351,6 +351,17 @@ for g_name, g_items in groups:
         ax.bar(xpos, mean, yerr=0 if not np.isfinite(se) else se, capsize=5,
                color=base_c, alpha=alphas[i] if i < len(alphas) else 1.0,
                edgecolor="black", linewidth=1.1, zorder=2)
+        # # doesn't really work as a scatter...
+        # ax.scatter(xpos, mean,
+        #    s=120,                 # dot size
+        #    color=base_c,
+        #    alpha=alphas[i] if i < len(alphas) else 1.0,
+        #    edgecolor="black",
+        #    linewidth=1.1,
+        #    zorder=4)
+        # if np.isfinite(se):
+        #     ax.errorbar(xpos, mean, yerr=se, capsize=5,
+        #                 color="black", linewidth=1, zorder=1)
 
 marker_map = {"Pereira2018": ("s", 0.15, "black"), "Tuckute2024": ("o", 0.15, "black")}
 legend_handles = {}
@@ -407,8 +418,6 @@ ax.set_ylim(None, None)
 plt.tight_layout()
 plt.savefig("../plots/perturb.svg", format="svg", bbox_inches="tight")
 plt.show()
-
-
 
 # legend for multipanel
 legend_elements = [

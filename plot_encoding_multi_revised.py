@@ -63,7 +63,7 @@ def load(model_prefix, froi="all", monol=False, split_context=False, random=Fals
             filename = f"results/monolingual_native_{model_prefix}_{froi}"
         else:
             filename = f"results/monolingual_{model_prefix}_{froi}"
-        print("Loading:", filename)
+        #print("Loading:", filename)
     else:
         mtpfx = "multitrain_" if multitrain else ""
         if md:
@@ -76,7 +76,7 @@ def load(model_prefix, froi="all", monol=False, split_context=False, random=Fals
             filename = f"results/multilingual_{mtpfx}native_{model_prefix}_{froi}"
         else:
             filename = f"results/multilingual_{mtpfx}{model_prefix}_{froi}"
-        print("Loading:", filename)
+        #print("Loading:", filename)
     return patched_load(filename)
 
 def find_median_index(lst):
@@ -92,7 +92,7 @@ def get_best_layerwise(res_dict, colname = "r", give_mean = True, give_all = Fal
     mean_results = [value[colname].mean() for key, value in res_dict.items()]
     sd_results   = [value[colname].std() for key, value in res_dict.items()]
     idx_max = np.argmax(mean_results)
-    print(f"Best layer is {idx_max}")
+    #print(f"Best layer is {idx_max}")
     if give_all:
         best = res_dict[idx_max][colname].tolist()
     else:
@@ -202,61 +202,53 @@ def add_significance_asterisks(data):
         item.append(asterisk)
     return data
 
-p_values_best = []
-for model in model_names:
-    test = get_best_layerwise(load(model, multitrain = False), give_all = True)
-    z_temp = []
-    for shift in [26, 52, 78, 104]:
-        rand = get_best_layerwise(load(model, random=True, multitrain = False)[shift], give_all = True)
-        zs = [] # fisher's p values
-        for t, r in zip(test, rand):
-            z, p = r_to_z(t, r)
-            zs.append(z)
-        z_ = combine_z_statistics(zs, return_z = True)
-        z_temp.append(z_)
-    p_tot = combine_z_statistics(z_temp)
-    p_values_best.append([model, p_tot])
-p_values_best = add_significance_asterisks(p_values_best)
-p_values_best = pd.DataFrame(p_values_best, columns = ["model", "p", "asterisk"])
-    
-p_values_median = []
-for model in model_names:
-    test = get_median_layerwise(load(model), give_all = True)
-    z_temp = []
-    for shift in [26, 52, 78, 104]:
-        rand = get_median_layerwise(load(model, random=True)[shift], give_all = True)
-        zs = [] # fisher's p values
-        for t, r in zip(test, rand):
-            z, p = r_to_z(t, r)
-            zs.append(z)
-        z_ = combine_z_statistics(zs, return_z = True)
-        z_temp.append(z_)
-    p_tot = combine_z_statistics(z_temp)
-    p_values_median.append([model, p_tot])
-p_values_median = add_significance_asterisks(p_values_median)
-p_values_median = pd.DataFrame(p_values_median, columns = ["model", "p", "asterisk"])
+def compute_significance_for_froi(froi, model_names):
+    p_values = []
+    for model in model_names:
+        test = get_best_layerwise(load(model, froi=froi), give_all=True)
+        z_temp = []
+        for shift in [26, 52, 78, 104]:
+            rand = get_best_layerwise(load(model, froi=froi, random=True)[shift], give_all=True)
+            zs = []
+            for t, r in zip(test, rand):
+                z, p = r_to_z(t, r)
+                zs.append(z)
+            z_ = combine_z_statistics(zs, return_z=True)
+            z_temp.append(z_)
+        p_tot = combine_z_statistics(z_temp)
+        p_values.append([model, p_tot])
+    p_values = add_significance_asterisks(p_values)
+    return pd.DataFrame(p_values, columns=["model", "p", "asterisk"])
 
 ###########################
 # barplot with best layer #
 ###########################
 
-# monolingual, best layer #####################################################
 all_best_layers = {}
-for froi in ['Lang_LH_AntTemp', 'Lang_LH_IFG', 'Lang_LH_IFGorb', 'Lang_LH_MFG', 'Lang_LH_PostTemp', 'all']:
-    best = [get_best_layerwise(load(model, froi = froi)) for model in model_names]
-    best_sd = [get_best_layerwise(load(model, froi = froi), give_mean = False) for model in model_names]
-    
+all_p_values = {}
+
+frois = ['Lang_LH_AntTemp','Lang_LH_IFG','Lang_LH_IFGorb','Lang_LH_MFG','Lang_LH_PostTemp','all']
+
+for froi in frois:
+    best_monol = [get_best_layerwise(load(model, froi=froi)) for model in model_names]
+    best_monol_sd = [get_best_layerwise(load(model, froi=froi), give_mean=False) for model in model_names]
     best_layer = pd.DataFrame({
         'Model': names_formatted,
-        'Score': best,
+        'Score': best_monol,
         'Family': model_family,
-        'sd' : best_sd,
-        'n' : n_langs
+        'sd': best_monol_sd,
+        'n': n_langs
     })
-    
+    p_df = compute_significance_for_froi(froi, model_names)
+    p_df['Model'] = p_df['model'].map(names_nice_dict)
+    best_layer = best_layer.merge(p_df[['Model','p','asterisk']], on='Model', how='left')
+    best_layer["Std_Error"] = best_layer["sd"] / np.sqrt(best_layer["n"])
     all_best_layers[froi] = best_layer
+    all_p_values[froi] = p_df
     
-    # plot_aggregate(best_layer, "",  ylim = .85, ylimstart = -.1)#, sig = p_values_best["asterisk"])
+for k, v in all_best_layers.items():
+    print("\n\n", k)
+    print(v[['Model', 'Family', 'Score', 'Std_Error',  'p', 'asterisk']])
 
 #########################
 # DEFINITIVE FINAL PLOT #
@@ -490,10 +482,7 @@ for froi in ['Lang_LH_AntTemp', 'Lang_LH_IFG', 'Lang_LH_IFGorb', 'Lang_LH_MFG', 
 for froi in ['MD_LH_Precentral_A_PrecG', 'MD_LH_Precentral_B_IFGop', 'MD_LH_antParietal', 'MD_LH_insula', 'MD_LH_medialFrontal', 'MD_LH_midFrontal', 'MD_LH_midFrontalOrb', 'MD_LH_midParietal', 'MD_LH_postParietal', 'MD_LH_supFrontal', 'MD_RH_Precentral_A_PrecG', 'MD_RH_Precentral_B_IFGop', 'MD_RH_antParietal', 'MD_RH_insula', 'MD_RH_medialFrontal', 'MD_RH_midFrontal', 'MD_RH_midFrontalOrb', 'MD_RH_midParietal', 'MD_RH_postParietal', 'MD_RH_supFrontal', 'all']:
     best_monol = []
     for model in model_names:
-        try: # !!!! TODO FIX THIS: a couple of fROIs are missing for mGPT!
-            best_monol.append(get_best_layerwise(load(model, froi = froi, md=True)))
-        except FileNotFoundError:
-            print("\n\n", froi, model, "\n\n")
+        best_monol.append(get_best_layerwise(load(model, froi = froi, md=True)))
     mean_r = np.mean(best_monol)
     se = np.std(best_monol) / np.sqrt(len(best_monol))
     spatial_results.append({"froi" : froi, "network" : "MD", "r" : mean_r, "se" : se, "all_points" : best_monol})
@@ -509,10 +498,10 @@ pos_map = {'LH|all': 0.0,
  'LH|Lang_LH_IFG': 4.8,
  'LH|Lang_LH_IFGorb': 6.0,
  'RH|all': 8.2,
- 'RH|Lang_RH_IFG': 9.399999999999999,
- 'RH|Lang_RH_PostTemp': 10.599999999999998,
- 'RH|Lang_RH_AntTemp': 11.799999999999997,
- 'RH|Lang_RH_MFG': 12.999999999999996,
+ 'RH|Lang_RH_PostTemp': 9.399999999999999,
+ 'RH|Lang_RH_AntTemp': 10.599999999999998,
+ 'RH|Lang_RH_MFG': 11.799999999999997,
+ 'RH|Lang_RH_IFG': 12.999999999999996,
  'RH|Lang_RH_IFGorb': 14.199999999999996,
  'MD|all': 16.399999999999995,
  'MD|MD_RH_Precentral_A_PrecG': 17.599999999999994,
@@ -543,10 +532,10 @@ label_map = {'LH|all': 'All',
  'LH|Lang_LH_IFG': 'IFG',
  'LH|Lang_LH_IFGorb': 'IFGorb',
  'RH|all': 'All',
- 'RH|Lang_RH_IFG': 'IFG',
  'RH|Lang_RH_PostTemp': 'PostTemp',
  'RH|Lang_RH_AntTemp': 'AntTemp',
  'RH|Lang_RH_MFG': 'MFG',
+ 'RH|Lang_RH_IFG': 'IFG',
  'RH|Lang_RH_IFGorb': 'IFGorb',
  'MD|all': 'All',
  'MD|MD_RH_Precentral_A_PrecG': 'Precentral',
@@ -577,21 +566,12 @@ df['short_label'] = df['short_label'].replace('all', 'All')
 df['group_order'] = df['network'].map({'LH': 0, 'RH': 1, 'MD': 2})
 df['is_all'] = (df['short_label'] == 'All').astype(int)
 
-# group_order = ['LH', 'RH', 'MD']
-# df_sorted = pd.concat([
-#     pd.concat([
-#         g[g['is_all'] == 1],
-#         g[g['is_all'] == 0].sort_values('r', ascending=False)
-#     ])
-#     for net in group_order
-#     for _, g in df.groupby('network') if _ == net], ignore_index=True)
-
 # order from monol
 df['key']         = df['network'] + '|' + df['froi']
 df['pos']         = df['key'].map(pos_map)
 df['short_label'] = df['key'].map(label_map)
 df_sorted         = (df.dropna(subset=['pos']).sort_values('pos').reset_index(drop=True))
-print(df_sorted[df_sorted["network"] == "MD"]["r"].max())
+print(df_sorted[df_sorted["network"] == "MD"]["r"].mean())
 print(df_sorted[df_sorted["network"] == "LH"]["r"].min())
 
 spacing = 1.2
@@ -616,7 +596,7 @@ df_sorted['pos'] = positions
 color_map = {'LH': 'navy', 'RH': 'cornflowerblue', 'MD': 'tomato'}
 df_sorted['color'] = df_sorted['network'].map(color_map)
 
-plt.figure(figsize=(16*.7, 6*.7), dpi=300)
+plt.figure(figsize=(15*.7, 6*.7), dpi=300)
 ax = plt.gca()
 sns.set_context("talk")
 ax.grid(axis='y', linestyle='--', linewidth=0.5, alpha=0.3)
@@ -679,8 +659,8 @@ mono_multi.to_csv("results/mono_multi.csv", index=False)
 
 compare_native = []
 for model in model_names:
-    native = get_best_layerwise(load(model, native = True), give_all = False)
-    english = get_best_layerwise(load(model, native = False), give_all = False)
+    native = get_best_layerwise(load(model, native = True, multitrain = True), give_all = False)
+    english = get_best_layerwise(load(model, native = False, multitrain = True), give_all = False)
     compare_native.append({"model" : model, "native" : native, "english" : english})
 compare_native = pd.DataFrame(compare_native)
 print(compare_native[["native", "english"]].mean())

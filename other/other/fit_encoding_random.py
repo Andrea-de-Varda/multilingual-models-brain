@@ -51,7 +51,7 @@ def preproc_align(lang, embeddings):
     embedded_words = embed_words(embeddings, words_id)
     return embedded_words
 
-def test_model_Ridge_random(X, y, n, saveto, save_results = True, shuffle=True, prefix = ""):
+def test_model_Ridge_random(X, y, n, saveto, save_results = True, shuffle=False, prefix = ""):
     if shuffle:
         kf = KFold(n_splits=n, shuffle=True, random_state = 0)
     else:
@@ -78,16 +78,17 @@ def test_model_Ridge_random(X, y, n, saveto, save_results = True, shuffle=True, 
         out_coefs.append(coefs)
         out_reg.append(r)
     #print(round(np.mean(out_reg), 4))
-    r_tot = round(pearsonr(out_pred, y_tot)[0], 4)
-    print(r_tot)
+    r_tot = pearsonr(out_pred, y_tot)[0]
+    print(round(r_tot, 4))
     out_predictions = [y_tot, out_pred]
     if save_results:
+        save(r_tot, f"results/rs/random_{prefix}{saveto}")
         save(out_reg, f"results/out_reg/random_{prefix}{saveto}") # saving all rs and coefficients for later use
         save(out_coefs, f"results/coefficients/random_{prefix}{saveto}")
         save(out_predictions, f"results/predictions/random_{prefix}{saveto}")
-    return np.mean(out_reg), np.std(out_reg)
+    return r_tot
     
-def monolingual_encoding_random(langs, model_prefix, n_layers, shuffle=True, prefix = ""):
+def monolingual_encoding_random(langs, model_prefix, n_layers, shuffle=False, prefix = ""):
     layerwise_dict = {}
     if os.path.isfile(f"results/random/monolingual_{prefix}{model_prefix}"):
         print(f"Encoding for {model_prefix} already done")
@@ -96,18 +97,18 @@ def monolingual_encoding_random(langs, model_prefix, n_layers, shuffle=True, pre
             print(f"Processing layer {n}")
             fmri_data = [preproc_align(lang, load(f"{model_prefix}_{lang}")[n]) for lang in langs]
             #########################
-            m = []; sd = []
+            m = []
             for idx, lang in enumerate(langs):
-                the_r, the_sd = test_model_Ridge_random(fmri_data[idx], d[lang_code_dict[lang]], 10, saveto = f"{model_prefix}_{lang}_{n}", shuffle=shuffle, prefix = prefix)
+                the_r = test_model_Ridge_random(fmri_data[idx], d[lang_code_dict[lang]], 10, saveto = f"{model_prefix}_{lang}_{n}", shuffle=shuffle, prefix = prefix)
                 m.append(the_r)
-                sd.append(the_sd)
             #########################
             mean_r = np.mean(m)
             print(f"Mean r = {mean_r} ({model_prefix} - {n})")
             #########################
-            df = pd.DataFrame(zip(langs, m, sd), columns=["lang", "m", "sd"])
+            df = pd.DataFrame(zip(langs, m), columns=["lang", "m"])
             layerwise_dict[n] = df
         save(layerwise_dict, f"results/random/monolingual_{prefix}{model_prefix}")
+        sleep(20)
     return layerwise_dict
 
 def multilingual_encoding_random(langs, model_prefix, n_layers):
@@ -150,6 +151,7 @@ def multilingual_encoding_random(langs, model_prefix, n_layers):
             mean_r = np.mean(out_predictions["r"])
             print(f"Mean r = {mean_r} ({model_prefix} - {n})")
         save(layerwise_dict, f"results/random/multilingual_{model_prefix}")
+        sleep(60)
     return layerwise_dict
 
 ###############################################################################
@@ -158,63 +160,64 @@ def multilingual_encoding_random(langs, model_prefix, n_layers):
 with open("data/dict_fMRI", 'rb') as handle:
     d = pickle.load(handle)
     
-all_langs = ['Catalan', 'Japanese', 'English', 'Spanish', 'Marathi', 'Afrikaans', 'Vietnamese', 'Tamil', 'Lithuanian', 'Turkish', 'Dutch', 'Norwegian', 'Farsi', 'French', 'Romanian']
-all_codes = ["ca", "ja", "en", "es", "mr", "af", "vi", "ta", "lt", "tr", "nl", "no", "fa", "fr", "ro"]
+all_langs = ['Afrikaans', 'Dutch', 'Farsi', 'French', 'Lithuanian', 'Marathi', 'Norwegian', 'Romanian', 'Spanish', 'Tamil', 'Turkish', 'Vietnamese']
+all_codes = ["af", "nl", "fa", "fr", "lt", "mr", "no", "ro", "es", "ta", "tr", "vi"]
 
 lang_code_dict = {k : v for k, v in zip(all_codes, all_langs)}
     
 
 # XGLM langs 
-
-xglm_langs = ["ca", "ja", "en", "es", "vi", "ta", "tr", "fr"]
-
-xglm_small  = monolingual_encoding_random(xglm_langs, "xglm_small", 24)
-xglm_med    = monolingual_encoding_random(xglm_langs, "xglm_med", 24)
-xglm_large  = monolingual_encoding_random(xglm_langs, "xglm_large", 48)
-xglm_xl     = monolingual_encoding_random(xglm_langs, "xglm_xl", 48)
-
-# all langs
-mbert       = monolingual_encoding_random(all_codes, "bert_base", 12)
-distilmbert = monolingual_encoding_random(all_codes, "distilmbert", 6)
-
-xlmr_base   = monolingual_encoding_random(all_codes, "xlmr_base", 12)
-xlmr_large  = monolingual_encoding_random(all_codes, "xlmr_large", 24)
-
-mt5_small   = monolingual_encoding_random(all_codes, "mt5_small", 8)
-mt5_base    = monolingual_encoding_random(all_codes, "mt5_base", 12)
-mt5_large   = monolingual_encoding_random(all_codes, "mt5_large", 24)
+# xglm_langs = ["ca", "ja", "en", "es", "vi", "ta", "tr", "fr", "ita"]
+xglm_langs  = ["es", "vi", "ta", "tr", "fr"]
+mgpt_langs   = ["af", "fa", "fr", "lt", "mr", "ro", "es", "ta", "tr", "vi"]
 
 ##################
 # MODEL TRANSFER #
 ##################
 
-xglm_small_multi  = multilingual_encoding_random(xglm_langs, "xglm_small", 24)
-xglm_med_multi    = multilingual_encoding_random(xglm_langs, "xglm_med", 24)
-xglm_large_multi  = multilingual_encoding_random(xglm_langs, "xglm_large", 48)
-xglm_xl_multi     = multilingual_encoding_random(xglm_langs, "xglm_xl", 48)
-
-mbert_multi       = multilingual_encoding_random(all_codes, "bert_base", 12)
-distilmbert_multi = multilingual_encoding_random(all_codes, "distilmbert", 6)
-
-xlmr_base_multi   = multilingual_encoding_random(all_codes, "xlmr_base", 12)
-xlmr_large_multi  = multilingual_encoding_random(all_codes, "xlmr_large", 24)
-
-mt5_small_multi   = multilingual_encoding_random(all_codes, "mt5_small", 8)
-mt5_base_multi    = multilingual_encoding_random(all_codes, "mt5_base", 12)
-mt5_large_multi   = multilingual_encoding_random(all_codes, "mt5_large", 24)
+xglm_small_multi    = multilingual_encoding_random(xglm_langs, "xglm_small", 24)
+xglm_med_multi      = multilingual_encoding_random(xglm_langs, "xglm_med", 24)
+xglm_large_multi    = multilingual_encoding_random(xglm_langs, "xglm_large", 48)
+xglm_xl_multi       = multilingual_encoding_random(xglm_langs, "xglm_xl", 48)
+mbert_multi         = multilingual_encoding_random(all_codes, "bert_base", 12)
+distilmbert_multi   = multilingual_encoding_random(all_codes, "distilmbert", 6)
+xlmr_base_multi     = multilingual_encoding_random(all_codes, "xlmr_base", 12)
+xlmr_large_multi    = multilingual_encoding_random(all_codes, "xlmr_large", 24)
+mt5_small_multi     = multilingual_encoding_random(all_codes, "mt5_small", 8)
+mt5_base_multi      = multilingual_encoding_random(all_codes, "mt5_base", 12)
+mt5_large_multi     = multilingual_encoding_random(all_codes, "mt5_large", 24)
+mdeberta_multi      = multilingual_encoding_random(all_codes, "mdeberta", 12)
+xlm_align_multi     = multilingual_encoding_random(all_codes, "xlm_align", 12)
+infoxlm_base_multi  = multilingual_encoding_random(all_codes, "infoxlm_base", 12)
+infoxlm_large_multi = multilingual_encoding_random(all_codes, "infoxlm_large", 24)
+multiminilm_multi   = multilingual_encoding_random(all_codes, "multiminilm", 12)
+nllb_d_600m_multi   = multilingual_encoding_random(all_codes, "nllb200_distilled_600M", 12)
+nllb_d_1b_multi     = multilingual_encoding_random(all_codes, "nllb200_distilled_1B", 24)
+nllb_1b_multi       = multilingual_encoding_random(all_codes, "nllb200_1B", 24)
+mgpt_multi          = multilingual_encoding_random(mgpt_langs, "mgpt", 24)
 
 #############################
 # Non-shuffled (monol only) #
 #############################
 
-xglm_small  = monolingual_encoding_random(xglm_langs, "xglm_small", 24, shuffle=False, prefix = "sequential_")
-xglm_med    = monolingual_encoding_random(xglm_langs, "xglm_med", 24, shuffle=False, prefix = "sequential_")
-xglm_large  = monolingual_encoding_random(xglm_langs, "xglm_large", 48, shuffle=False, prefix = "sequential_")
-xglm_xl     = monolingual_encoding_random(xglm_langs, "xglm_xl", 48, shuffle=False, prefix = "sequential_")
-mbert       = monolingual_encoding_random(all_codes, "bert_base", 12, shuffle=False, prefix = "sequential_")
-distilmbert = monolingual_encoding_random(all_codes, "distilmbert", 6, shuffle=False, prefix = "sequential_")
-xlmr_base   = monolingual_encoding_random(all_codes, "xlmr_base", 12, shuffle=False, prefix = "sequential_")
-xlmr_large  = monolingual_encoding_random(all_codes, "xlmr_large", 24, shuffle=False, prefix = "sequential_")
-mt5_small   = monolingual_encoding_random(all_codes, "mt5_small", 8, shuffle=False, prefix = "sequential_")
-mt5_base    = monolingual_encoding_random(all_codes, "mt5_base", 12, shuffle=False, prefix = "sequential_")
-mt5_large   = monolingual_encoding_random(all_codes, "mt5_large", 24, shuffle=False, prefix = "sequential_")
+xglm_small    = monolingual_encoding_random(xglm_langs, "xglm_small", 24)
+xglm_med      = monolingual_encoding_random(xglm_langs, "xglm_med", 24)
+xglm_large    = monolingual_encoding_random(xglm_langs, "xglm_large", 48)
+xglm_xl       = monolingual_encoding_random(xglm_langs, "xglm_xl", 48)
+mbert         = monolingual_encoding_random(all_codes, "bert_base", 12)
+distilmbert   = monolingual_encoding_random(all_codes, "distilmbert", 6)
+xlmr_base     = monolingual_encoding_random(all_codes, "xlmr_base", 12)
+xlmr_large    = monolingual_encoding_random(all_codes, "xlmr_large", 24)
+mt5_small     = monolingual_encoding_random(all_codes, "mt5_small", 8)
+mt5_base      = monolingual_encoding_random(all_codes, "mt5_base", 12)
+mt5_large     = monolingual_encoding_random(all_codes, "mt5_large", 24)
+mdeberta      = monolingual_encoding_random(all_codes, "mdeberta", 12)
+xlm_align     = monolingual_encoding_random(all_codes, "xlm_align", 12)
+infoxlm       = monolingual_encoding_random(all_codes, "infoxlm_base", 12)
+infoxlm_large = monolingual_encoding_random(all_codes, "infoxlm_large", 24)
+multiminilm   = monolingual_encoding_random(all_codes, "multiminilm", 12)
+nllb_d_600m   = monolingual_encoding_random(all_codes, "nllb200_distilled_600M", 12)
+nllb_d_1b     = monolingual_encoding_random(all_codes, "nllb200_distilled_1B", 24)
+nllb_1b       = monolingual_encoding_random(all_codes, "nllb200_1B", 24) 
+mgpt          = monolingual_encoding_random(mgpt_langs, "mgpt", 24)
+

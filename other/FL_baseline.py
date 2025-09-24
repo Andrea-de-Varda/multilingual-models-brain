@@ -15,123 +15,142 @@ chdir("/home/dev/Documents/PhD/Alice")
 def imputate_na(array):
     return np.where(np.isnan(array), ma.array(array, mask=np.isnan(array)).mean(axis=0), array)
 
-def embed_words(embeddings, words_id, func = np.mean):
+def embed_words(embeddings, words_id, func=np.mean):
     ids = words_id.astype(int)
     time = np.arange(0, 260, 2)
-    emb_words = []                         
+    emb_words = []
     for i in range(time.shape[0]):
-        emb = func(embeddings[ids==i], axis=0)
+        emb = func(embeddings[ids == i], axis=0)
         emb_words.append(emb)
     emb_words = np.array(emb_words)
     emb_words = imputate_na(emb_words)
     return emb_words
 
-def get_fl(lang, func = np.mean, extra_vars = True):
-    # baseline with Zipf frequency and Length
-    df = pd.read_csv("transcribed/"+lang+".csv")
+def get_fl(lang, func=np.mean, extra_vars=True):
+    # zipf, len + (optional) word onset / rate
+    df = pd.read_csv(f"transcribed/{lang}.csv")
     df = df[df["end"] <= 260]
-    
-    text = df["text"].str.cat(sep=' ')
+    text = df["text"].str.cat(sep=" ")
     words = text.split()
     length = [len(w) for w in words]
-    freq   = [wordfreq.zipf_frequency(w, lang) for w in words]
-    fl = np.array([[f, l] for f, l in zip(freq, length)])
-    
-    time = np.arange(0, 260, 2) # sampled each 2 sec
-    time_words = df["end"]
-    words_id = np.zeros([len(time_words)])
-    # w=find what TR each word belongs to; then I'll need to aggregate representations
+    freq = [wordfreq.zipf_frequency(w, lang) for w in words]
+    fl = np.array(list(zip(freq, length)))
+    # assign each word to TR by end time
+    time = np.arange(0, 260, 2)
+    time_words = df["end"].to_numpy()
+    words_id = np.zeros(len(time_words))
     for i in range(len(time_words)):
-        words_id[i] = np.where(time_words[i]> time)[0][-1]
-    embedded_words = embed_words(fl, words_id, func = func)
-    
-    if extra_vars: # add word rate and word onset. NB: extra vars are used *only* for expt 1 because they don't make sense for sentence stimuli
-        # word rate is already aligned to time series --- n words uttered within a TR window
-        df['bin'] = (df['start'] // 2).astype(int)
-        counts = np.bincount(df['bin'], minlength=130)[:130]
-        
-        # onset of the first word in the RT window
-        first_onsets = (df.groupby('bin')['start'].min().reindex(range(130)).to_numpy())
-        embedded_words = imputate_na(np.column_stack((embedded_words, counts, first_onsets)))
+        words_id[i] = np.where(time_words[i] > time)[0][-1]
+    X = embed_words(fl, words_id, func=func)
+    if extra_vars:
+        # word rate per TR (by start bin)
+        df["bin"] = (df["start"] // 2).astype(int)
+        counts = np.bincount(df["bin"], minlength=130)[:130]
+        # onset of first word within TR
+        first_onsets = df.groupby("bin")["start"].min().reindex(range(130)).to_numpy()
+        X = imputate_na(np.column_stack([X, counts, first_onsets]))
+    return X
 
-    return embedded_words
-
-# NEED TO UPDATE THIS BASED ON NEW CODE!! 
-def test_model_Ridge(X, y, n, shuffle=False):
-    if shuffle:
-        kf = KFold(n_splits=n, shuffle=True, random_state = 0)
-    else:
-        kf = KFold(n_splits=n, shuffle=False)
-    out_reg = []
-    out_coefs = []
-    out_pred = []; y_tot = []
+def ridge_cv_corr(X, y_train_part, y_test_part, n_splits=10, alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000)):
+    kf = KFold(n_splits=n_splits, shuffle=False)
     X_scaler = StandardScaler()
     y_scaler = StandardScaler()
-    for train_index, test_index in kf.split(X):
-        X_train = X_scaler.fit_transform(X[train_index])
-        X_test = X_scaler.transform(X[test_index])
-        y_train = y_scaler.fit_transform(y[train_index].reshape(-1, 1)).flatten()
-        y_test = y_scaler.transform(y[test_index].reshape(-1, 1)).flatten()
-        reg = RidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
-        reg.fit(X_train, y_train)
-        y_pred = reg.predict(X_test)
-        r, _ = pearsonr(y_test, y_pred)
-        out_pred.extend(y_pred.tolist())
-        y_tot.extend(y_test.tolist())
-        coefs = reg.coef_#; print(coefs)
-        out_coefs.append(coefs)
-        out_reg.append(r)
-    #print(round(np.mean(out_reg), 4))
-    r_tot = pearsonr(out_pred, y_tot)[0]
-    return r_tot
+    all_pred, all_true = [], []
+    for tr_idx, te_idx in kf.split(X):
+        X_tr = X_scaler.fit_transform(X[tr_idx])
+        X_te = X_scaler.transform(X[te_idx])
+        y_tr = y_scaler.fit_transform(y_train_part[tr_idx].reshape(-1, 1)).ravel()
+        y_te = y_scaler.transform(y_test_part[te_idx].reshape(-1, 1)).ravel()
+        reg = RidgeCV(alphas=alphas)
+        reg.fit(X_tr, y_tr)
+        y_hat = reg.predict(X_te)
+        all_pred.extend(y_hat.tolist())
+        all_true.extend(y_te.tolist())
+    return pearsonr(all_pred, all_true)[0]
 
-# ! Afrikaans and Marathi are missing from WordFreq !
-all_langs = ['Dutch', 'Farsi', 'French', 'Lithuanian', 'Norwegian', 'Romanian', 'Spanish', 'Tamil', 'Turkish', 'Vietnamese']
-all_codes = ["nl", "fa", "fr", "lt", "no", "ro", "es", "ta", "tr", "vi"]
+def baseline_within(langs, lang_code_dict, d_froi, froi, extra_vars=True, n_splits=10):
+    results = {}
+    # TR features
+    X_feats = {lc: get_fl(lc, extra_vars=extra_vars) for lc in langs}
+    for lc in langs:
+        lang_name = lang_code_dict[lc]
+        part1, part2 = list(d_froi[lang_name].keys())
+        y1 = d_froi[lang_name][part1][froi]
+        y2 = d_froi[lang_name][part2][froi]
+        r12 = ridge_cv_corr(X_feats[lc], y1, y2, n_splits=n_splits)
+        r21 = ridge_cv_corr(X_feats[lc], y2, y1, n_splits=n_splits)
+        results[lc] = {"m1": r12, "m2": r21, "m": 0.5 * (r12 + r21)}
+        print(f"WITHIN-BASE | lang={lc} | fROI={froi} | r12={r12:.3f} r21={r21:.3f} mean={results[lc]['m']:.3f}")
+    return pd.DataFrame([
+        {"lang": lc, **vals} for lc, vals in results.items()
+    ])
 
-lang_code_dict = {k : v for k, v in zip(all_codes, all_langs)}
+def baseline_across(langs, lang_code_dict, d_froi, froi, extra_vars=True, n_splits=10, alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000)):
+    X_feats = {lc: get_fl(lc, extra_vars=extra_vars) for lc in langs}
+    kf = KFold(n_splits=n_splits, shuffle=False)
+    out_rows = []
+    for i, train_lc in enumerate(langs):
+        train_name = lang_code_dict[train_lc]
+        p1, p2 = list(d_froi[train_name].keys())
+        y_train_p1_full = d_froi[train_name][p1][froi]
+        y_train_p2_full = d_froi[train_name][p2][froi]
+        X_train_full = X_feats[train_lc]
+        agg = {lc: {"pred": [], "t1": [], "t2": []} for lc in langs}
+        for tr_idx, te_idx in kf.split(X_train_full):
+            X_tr = np.concatenate([X_train_full[tr_idx], X_train_full[tr_idx]])
+            y_tr = np.concatenate([y_train_p1_full[tr_idx], y_train_p2_full[tr_idx]])
+            X_scaler = StandardScaler()
+            y_scaler = StandardScaler()
+            X_tr = X_scaler.fit_transform(X_tr)
+            y_tr = y_scaler.fit_transform(y_tr.reshape(-1, 1)).ravel()
+            reg = RidgeCV(alphas=alphas)
+            reg.fit(X_tr, y_tr)
+            for tgt_lc in langs:
+                tgt_name = lang_code_dict[tgt_lc]
+                tp1, tp2 = list(d_froi[tgt_name].keys())
+                X_te = X_scaler.transform(X_feats[tgt_lc][te_idx])  # scale with TRAIN scaler
+                y_t1 = y_scaler.transform(d_froi[tgt_name][tp1][froi][te_idx].reshape(-1, 1)).ravel()
+                y_t2 = y_scaler.transform(d_froi[tgt_name][tp2][froi][te_idx].reshape(-1, 1)).ravel()
+                y_hat = reg.predict(X_te)
+                agg[tgt_lc]["pred"].extend(y_hat.tolist())
+                agg[tgt_lc]["t1"].extend(y_t1.tolist())
+                agg[tgt_lc]["t2"].extend(y_t2.tolist())
+        per_tgt = {}
+        for tgt_lc, dct in agg.items():
+            r1 = pearsonr(dct["pred"], dct["t1"])[0]
+            r2 = pearsonr(dct["pred"], dct["t2"])[0]
+            per_tgt[tgt_lc] = 0.5 * (r1 + r2)
+        mean_other = np.mean([v for k, v in per_tgt.items() if k != train_lc])
+        out_rows.append({"target_lang": train_lc, "r": mean_other})
+        print(f"ACROSS-BASE | train={train_lc} | fROI={froi} | mean r over others={mean_other:.3f}")
+    return pd.DataFrame(out_rows)
 
-###########
-# testing #
-###########
+def summarize_within(df):
+    mean_ = df["m"].mean()
+    se_   = df["m"].std(ddof=1) / np.sqrt(len(df))
+    return mean_, se_
 
-with open("data/dict_fMRI", 'rb') as handle:
-    d = pickle.load(handle)
+def summarize_across(df):
+    mean_ = df["r"].mean()
+    se_   = df["r"].std(ddof=1) / np.sqrt(len(df))
+    return mean_, se_
 
-extra_vars = True # change based on whether you want word rate and word onset (asked for revision)
-fmri_data = [get_fl(lang, extra_vars = extra_vars) for lang in all_codes]
-m = []
-for idx, lang in enumerate(all_codes):
-    the_r = test_model_Ridge(fmri_data[idx], d[lang_code_dict[lang]], 10)
-    m.append(the_r)
-mean_r_within = np.mean(m)
-print(f"Mean r = {mean_r_within}")
-# np.std(m)
+froi = "all"
+all_langs = ['Dutch','Farsi','French','Lithuanian','Norwegian','Romanian','Spanish','Tamil','Turkish','Vietnamese']
+all_codes = ["nl","fa","fr","lt","no","ro","es","ta","tr","vi"]
+lang_code_dict = {lc: name for lc, name in zip(all_codes, all_langs)}
 
-out_predictions = []
-for i in tqdm(range(len(all_codes))):
-    X_data = fmri_data[:i] + fmri_data[i+1:] # exclude lang_i
-    X_train = np.concatenate(X_data)
-    y_names = all_codes[:i] + all_codes[i+1:]
-    y_train = np.concatenate([d[lang_code_dict[name]] for name in y_names])
-    X_test = fmri_data[i]#.reshape(1, -1)
-    y_test = d[lang_code_dict[all_codes[i]]]
-    # scaling
-    X_scaler = StandardScaler()
-    y_scaler = StandardScaler()
-    X_train = X_scaler.fit_transform(X_train)
-    X_test = X_scaler.transform(X_test)
-    y_train = y_scaler.fit_transform(y_train.reshape(-1, 1)).flatten()
-    y_test = y_scaler.transform(y_test.reshape(-1, 1)).flatten()
-    # fitting
-    reg = RidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
-    reg.fit(X_train, y_train)
-    y_pred = reg.predict(X_test)
-    r, p = pearsonr(y_test, y_pred)
-    out_predictions.append([all_codes[i], r])
-out_predictions = pd.DataFrame(out_predictions, columns = ["lang", "r"])
-mean_r_between = np.mean(out_predictions["r"])
-print(f"Mean r = {mean_r_between}")
+with open("data/dict_fROI","rb") as handle:
+    d_froi = pickle.load(handle)
+
+df_within  = baseline_within(all_codes, lang_code_dict, d_froi, froi=froi, extra_vars=True, n_splits=10)
+df_across  = baseline_across(all_codes, lang_code_dict, d_froi, froi=froi, extra_vars=True, n_splits=10)
+
+mean_w, se_w = summarize_within(df_within)
+mean_a, se_a = summarize_across(df_across)
+
+print(f"[WITHIN]  mean r = {mean_w:.3f}, SE = {se_w:.3f}")
+print(f"[ACROSS]  mean r = {mean_a:.3f}, SE = {se_a:.3f}")
 
 ############
 # Study II #
@@ -140,6 +159,11 @@ print(f"Mean r = {mean_r_between}")
 # first: train FL models on training datasets
 
 # Study I
+
+with open("data/dict_fMRI", 'rb') as handle: # for study II, avg across fROIs
+    d = pickle.load(handle)
+
+fmri_data = [get_fl(lc, extra_vars=False) for lc in all_codes] # no onset in study II (meaningless for two datasets)
 
 study1 = np.vstack(fmri_data)
 study1_y = np.concatenate([d[lang_code_dict[lang]] for lang in all_codes])
@@ -159,7 +183,7 @@ for sent in sentences_control:
     words = sent.split()
     length = [len(w) for w in words]
     freq   = [wordfreq.zipf_frequency(w, "en") for w in words]
-    control.append([np.mean(length), np.mean(freq)])
+    control.append([np.mean(freq), np.mean(length)])
 control = np.array(control)
 
 # Pereira
@@ -173,7 +197,7 @@ for sent in sentences_pereira:
     words = sent.split()
     length = [len(w) for w in words]
     freq   = [wordfreq.zipf_frequency(w, "en") for w in words]
-    pereira.append([np.mean(length), np.mean(freq)])
+    pereira.append([np.mean(freq), np.mean(length)])
 pereira = np.array(pereira)
 
 # NatStories
@@ -204,7 +228,6 @@ stories = ["1", "2", "3", "4", "5", "6", "7", "9", "10"]
 with open("additional_analyses/NaturalStories/response/d_shift_3", 'rb') as handle:
     d3 = pickle.load(handle)
     
-
 y_natstor = []
 natstor = []
 for story in stories:
@@ -246,7 +269,7 @@ for k, v in training_data.items():
     y_train = y_scaler.fit_transform(y.reshape(-1, 1)).flatten()
     # fitting
     reg = RidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
-    reg.fit(X, y)
+    reg.fit(X_train, y_train)
     model_dict[k] = [reg, X_scaler, y_scaler]
 
 ########################
@@ -306,4 +329,5 @@ for idx, lang in enumerate(lang_codes):
         all_res[k].append(v)
 all_res = pd.DataFrame(all_res)
 all_res.mean()
-        
+
+all_res.std() / np.sqrt(len(all_res))
