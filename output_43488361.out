@@ -1,0 +1,22 @@
+>>> SCRIPT LAUNCHED
+[INFO] Himalaya backend set to <module 'himalaya.backend.torch_cuda' from '/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/himalaya/backend/torch_cuda.py'> (cuda)
+>>> STARTING JOB in mode: within-split
+>>> Loaded fMRI data
+Processing - WITHIN (SPLIT-CONTEXT) mode
+
+
+[WITHIN-SPLIT] Processing Lang_LH_AntTemp (1/6)
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=0 | mean r=-0.003
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=1 | mean r=-0.011
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=2 | mean r=-0.044
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=3 | mean r=-0.043
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=4 | mean r=-0.030
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=5 | mean r=-0.008
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=6 | mean r=-0.028
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=7 | mean r=-0.018
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=8 | mean r=0.005
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=9 | mean r=0.037
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=10 | mean r=0.032
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=11 | mean r=0.047
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=12 | mean r=0.044
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=13 | mean r=0.063

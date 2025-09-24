@@ -50,11 +50,9 @@ def load(name):
         file = pickle.load(handle)
     return file
 
-def load_split(name, layernum):
-    # loads chunked data for split-context analyses
-    with open(f"embeddings/split_context/{name}", 'rb') as handle:
-        file = pickle.load(handle)
-    return {chunk_idx: arr[layernum] for chunk_idx, arr in file.items()}
+def load_split_one_layer(model_prefix, lang, layer_n):
+    data = load(f"split_context/{model_prefix}_{lang}")
+    return {c: data[c][layer_n] for c in sorted(data.keys())}
 
 def imputate_na(array):
     return np.where(np.isnan(array), ma.array(array, mask=np.isnan(array)).mean(axis=0), array)
@@ -81,42 +79,32 @@ def preproc_align(lang, embeddings):
     embedded_words = embed_words(embeddings, words_id)
     return embedded_words
 
-def preproc_align_split(lang, chunks_layer):
-    # preproc for split context analyses (ctx contamination supplementary materials)
+def preproc_align_split(lang, layer_chunks):
     df = pd.read_csv(f"transcribed/{lang}.csv")
-    df = df[df["end"] <= 260]  # ensure 260 s
-    out_trs = []
-    for chunk_idx, start in enumerate(range(0, 260, 26)):
+    df = df[df["end"] <= 260].reset_index(drop=True)
+    X_all = []
+    for chunk_num, start in enumerate(range(0, 260, 26)):
         end = start + 26
-        subset = df[(df["end"] > start) & (df["end"] < end)]
-        if subset.empty:
-            # no words in this chunk; fill with NaNs, impute below
-            # infer D from first available chunk or from current chunk array
-            emb = chunks_layer[chunk_idx]
-            D = emb.shape[1]
-            out_trs.append(np.full((13, D), np.nan, dtype=float))
-            continue
-        # map words to TR bins within the chunk (13 TRs: every 2s from start)
-        time = np.arange(start, end, 2)   # absolute TR edges for the chunk
-        ends = subset["end"].to_numpy()
-        # for each word find which TR bin it belongs to (last TR boundary before word end)
-        words_id = np.zeros(len(ends))
-        for i in range(len(ends)):
-            words_id[i] = np.where(ends[i] > time)[0][-1] - (start // 2)
-        # average word embeddings per TR (13 per chunk)
-        embs = chunks_layer[chunk_idx]
-        ids = words_id.astype(int)
-        tr_embs = []
-        for tr_idx in range(13):  # 26s / 2s
-            if np.any(ids == tr_idx):
-                tr_embs.append(embs[ids == tr_idx].mean(axis=0))
+        sub = df[(df["end"] > start) & (df["end"] < end)].copy()
+        W = layer_chunks[chunk_num]
+        n_words = len(sub)
+        if W.shape[0] != n_words:
+            n = min(W.shape[0], n_words)
+            sub = sub.iloc[:n]
+            W = W[:n]
+        time = np.arange(start, end, 2)
+        time_words = sub["end"].to_numpy()
+        words_id = np.searchsorted(time, time_words, side="right") - 1
+        words_id = np.clip(words_id, 0, len(time) - 1)
+        X_chunk = []
+        for i in range(len(time)):
+            sel = (words_id == i)
+            if np.any(sel):
+                X_chunk.append(W[sel].mean(axis=0))
             else:
-                tr_embs.append(np.full((embs.shape[1],), np.nan))
-        tr_embs = np.vstack(tr_embs)
-        tr_embs = imputate_na(tr_embs)
-        out_trs.append(tr_embs)
-    # concatenate 10 chunks (10 x 13 = 130 TRs)
-    return np.vstack(out_trs)
+                X_chunk.append(np.zeros(W.shape[1], dtype=W.dtype))
+        X_all.append(np.vstack(X_chunk))
+    return np.vstack(X_all) 
 
 def test_model_Ridge(X, y_part1, y_part2, n, saveto, save_results = False, shuffle=False, prefix = ""):
     if shuffle: # note that shuffling might artificially increase the encoding scores. Default is non-shuffled. All the analyses now are w/o shuffling.
@@ -541,49 +529,57 @@ def multilingual_encoding_multitrain_circshift(langs, model_prefix, n_layers, d,
     return out_all_shifts
 
 # split-context functions
-def monolingual_encoding_split(langs, model_prefix, n_layers, d, shuffle=False, prefix="", overwrite=False):
+def monolingual_encoding_split(langs, model_prefix, n_layers, d, shuffle=False, prefix="", overwrite=True):
+    # WITHIN-SPLIT: train on 9/10 folds of subject A, test on subject B (and vice versa)
     out_tag = f"results/monolingual_{prefix}{model_prefix}_SPLIT_all"
     if os.path.isfile(out_tag) and not overwrite:
         print(f"Encoding (SPLIT) for {model_prefix} already done", flush=True)
         return
     frois = list(d[lang_code_dict[langs[0]]][list(d[lang_code_dict[langs[0]]].keys())[0]].keys())
     for froi_idx, froi in enumerate(frois):
-        layerwise_dict = {}
+        layerwise = {}
         print(f"\n\n[WITHIN-SPLIT] Processing {froi} ({froi_idx+1}/{len(frois)})", flush=True)
         for n in range(n_layers + 1):
-            fmri_data = [preproc_align_split(lang, load_split(f"{model_prefix}_{lang}", n)) for lang in langs]
+            fmri_data = []
+            for lang in langs:
+                layer_chunks = load_split_one_layer(model_prefix, lang, n)
+                X_lang = preproc_align_split(lang, layer_chunks)
+                fmri_data.append(X_lang)
             m1, m2 = [], []
             for idx, lang in enumerate(langs):
                 part1, part2 = d[lang_code_dict[lang]].keys()
                 ts1 = d[lang_code_dict[lang]][part1][froi]
                 ts2 = d[lang_code_dict[lang]][part2][froi]
-                r1 = test_model_Ridge(fmri_data[idx], ts1, ts2, 10, saveto=f"{model_prefix}_{lang}_{froi}_SPLIT_part1_{n}", shuffle=shuffle, prefix=prefix)
-                r2 = test_model_Ridge(fmri_data[idx], ts2, ts1, 10, saveto=f"{model_prefix}_{lang}_{froi}_SPLIT_part2_{n}", shuffle=shuffle, prefix=prefix)
-                m1.append(r1); m2.append(r2)
+                r12 = test_model_Ridge(fmri_data[idx], ts1, ts2, 10, saveto=f"{model_prefix}_{lang}_{froi}_SPLIT_part1_{n}", shuffle=shuffle, prefix=prefix)
+                r21 = test_model_Ridge(fmri_data[idx], ts2, ts1, 10, saveto=f"{model_prefix}_{lang}_{froi}_SPLIT_part2_{n}", shuffle=shuffle, prefix=prefix)
+                m1.append(r12); m2.append(r21)
             df = pd.DataFrame(zip(langs, m1, m2), columns=["lang", "m1", "m2"])
             df["m"] = df[["m1", "m2"]].mean(axis=1)
-            layerwise_dict[n] = df
+            layerwise[n] = df
             print(f"WITHIN-SPLIT {model_prefix} | fROI={froi} | layer={n} | mean r={df['m'].mean():.3f}", flush=True)
-        save(layerwise_dict, f"results/monolingual_{prefix}{model_prefix}_{froi}_SPLIT")
-    save(True, out_tag)
+        save(layerwise, f"results/monolingual_{prefix}{model_prefix}_{froi}_SPLIT")
+    save({"done": True}, out_tag)
 
 def multilingual_encoding_multitrain_split(langs, model_prefix, n_layers, d, prefix="", overwrite=False):
     kf = KFold(n_splits=10, shuffle=False)
     frois = list(d[lang_code_dict[langs[0]]][list(d[lang_code_dict[langs[0]]].keys())[0]].keys())
     for froi_idx, froi in enumerate(frois):
-        filename = f"results/multilingual_multitrain_{prefix}{model_prefix}_{froi}_SPLIT"
-        if os.path.isfile(filename) and not overwrite:
+        outpath = f"results/multilingual_multitrain_{prefix}{model_prefix}_{froi}_SPLIT"
+        if os.path.isfile(outpath) and not overwrite:
             print(f"Encoding (SPLIT) for {model_prefix} – {froi} already done", flush=True)
             continue
-        print(f"\n\n[ACROSS-SPLIT] Processing {froi} ({froi_idx+1}/{len(frois)})", flush=True)
         layerwise_dict = {}
+        print(f"\n\n[ACROSS-SPLIT] Processing {froi} ({froi_idx+1}/{len(frois)})", flush=True)
         for n in range(n_layers + 1):
-            fmri_data = [preproc_align_split(lang, load_split(f"{model_prefix}_{lang}", n)) for lang in langs]
+            fmri_data = []
+            for lang in langs:
+                layer_chunks = load_split_one_layer(model_prefix, lang, n)
+                X_lang = preproc_align_split(lang, layer_chunks)
+                fmri_data.append(X_lang)
             out_predictions = []
             for i, test_lang in enumerate(langs):
                 results_single = {"prediction": [], "target1": [], "target2": []}
                 for train_idx, test_idx in kf.split(fmri_data[i]):
-                    # Train on N-1 languages (both participants)
                     X_train_ = np.concatenate([fmri_data[j][train_idx] for j in range(len(langs)) if j != i])
                     y_train_1, y_train_2 = [], []
                     for j in range(len(langs)):
@@ -601,18 +597,21 @@ def multilingual_encoding_multitrain_split(langs, model_prefix, n_layers, d, pre
                     X_train = X_scaler.fit_transform(X_train)
                     y_train = y_scaler.fit_transform(y_train.reshape(-1, 1)).flatten()
                     if X_train.shape[0] > X_train.shape[1]:
-                        reg = RidgeCV(alphas=(1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 1, 10, 1e2, 1e3, 1e4))
+                        reg = RidgeCV(alphas=(1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 1, 10, 100, 1e3, 1e4))
+                        reg.fit(X_train, y_train)
+                        def _predict(X): return reg.predict(X)
                     else:
-                        reg = KernelRidgeCV(alphas=(1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 1, 10, 1e2, 1e3, 1e4))
-                    reg.fit(to_backend(X_train), to_backend(y_train[:, None]))
-                    # test on held-out language (both participants)
+                        reg = KernelRidgeCV(alphas=(1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 1, 10, 100, 1e3, 1e4))
+                        reg.fit(to_backend(X_train), to_backend(y_train[:, None]))
+                        def _predict(X):
+                            y = reg.predict(to_backend(X)).squeeze()
+                            return y.cpu().numpy() if BACKEND.startswith("torch") else y
+                    # test on held-out language (avg across two parts)
                     p1_t, p2_t = d[lang_code_dict[test_lang]].keys()
                     X_test = X_scaler.transform(fmri_data[i][test_idx])
                     y_t1 = y_scaler.transform(d[lang_code_dict[test_lang]][p1_t][froi][test_idx].reshape(-1, 1)).flatten()
                     y_t2 = y_scaler.transform(d[lang_code_dict[test_lang]][p2_t][froi][test_idx].reshape(-1, 1)).flatten()
-                    y_pred = reg.predict(to_backend(X_test)).squeeze()
-                    if BACKEND.startswith("torch"):
-                        y_pred = y_pred.cpu().numpy()
+                    y_pred = _predict(X_test)
                     results_single["prediction"].extend(y_pred.tolist())
                     results_single["target1"].extend(y_t1.tolist())
                     results_single["target2"].extend(y_t2.tolist())
@@ -621,8 +620,8 @@ def multilingual_encoding_multitrain_split(langs, model_prefix, n_layers, d, pre
                 out_predictions.append({"target_lang": test_lang, "r": 0.5 * (r1 + r2)})
             df_layer = pd.DataFrame(out_predictions)
             layerwise_dict[n] = df_layer
-            print(f"ACROSS-SPLIT {model_prefix} | fROI={froi} | layer={n} | mean r={df_layer['r'].mean():.3f}", flush=True)
-        save(layerwise_dict, filename)
+            print(f"ACROSS-SPLIT-MULTITRAIN {model_prefix} | fROI={froi} | layer={n} | mean r={df_layer['r'].mean():.3f}", flush=True)
+        save(layerwise_dict, outpath)
 
 ###############################################################################
 

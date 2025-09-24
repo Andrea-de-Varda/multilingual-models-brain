@@ -1,0 +1,350 @@
+>>> SCRIPT LAUNCHED
+[INFO] Himalaya backend set to <module 'himalaya.backend.torch_cuda' from '/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/himalaya/backend/torch_cuda.py'> (cuda)
+>>> STARTING JOB in mode: within-split
+>>> Loaded fMRI data
+Processing - WITHIN (SPLIT-CONTEXT) mode
+
+
+[WITHIN-SPLIT] Processing Lang_LH_AntTemp (1/6)
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=0 | mean r=-0.059
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=1 | mean r=-0.057
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=2 | mean r=-0.046
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=3 | mean r=-0.057
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=4 | mean r=-0.047
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=5 | mean r=-0.001
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=6 | mean r=-0.053
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=7 | mean r=-0.048
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=8 | mean r=-0.057
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=9 | mean r=-0.047
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=10 | mean r=-0.024
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=11 | mean r=0.026
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=12 | mean r=-0.013
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=13 | mean r=-0.017
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=14 | mean r=-0.043
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=15 | mean r=-0.051
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=16 | mean r=0.065
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=17 | mean r=-0.007
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=18 | mean r=-0.058
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=19 | mean r=-0.020
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=20 | mean r=-0.061
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=21 | mean r=-0.038
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=22 | mean r=-0.039
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=23 | mean r=-0.067
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=24 | mean r=-0.029
+
+
+[WITHIN-SPLIT] Processing Lang_LH_IFG (2/6)
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=0 | mean r=-0.155
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=1 | mean r=-0.131
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=2 | mean r=-0.136
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=3 | mean r=-0.145
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=4 | mean r=-0.119
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=5 | mean r=-0.130
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=6 | mean r=-0.140
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=7 | mean r=-0.129
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=8 | mean r=-0.107
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=9 | mean r=-0.126
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=10 | mean r=-0.145
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=11 | mean r=-0.082
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=12 | mean r=-0.083
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=13 | mean r=-0.103
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=14 | mean r=-0.118
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=15 | mean r=-0.141
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=16 | mean r=-0.046
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=17 | mean r=-0.125
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=18 | mean r=-0.085
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=19 | mean r=-0.121
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=20 | mean r=-0.109
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=21 | mean r=-0.131
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=22 | mean r=-0.148
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=23 | mean r=-0.104
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=24 | mean r=-0.122
+
+
+[WITHIN-SPLIT] Processing Lang_LH_IFGorb (3/6)
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFGorb | layer=0 | mean r=-0.132
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFGorb | layer=1 | mean r=-0.139
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFGorb | layer=2 | mean r=-0.132
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFGorb | layer=3 | mean r=-0.126
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFGorb | layer=4 | mean r=-0.136
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFGorb | layer=5 | mean r=-0.070
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFGorb | layer=6 | mean r=-0.142
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFGorb | layer=7 | mean r=-0.160
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFGorb | layer=8 | mean r=-0.134
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFGorb | layer=9 | mean r=-0.149
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFGorb | layer=10 | mean r=-0.133
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFGorb | layer=11 | mean r=-0.063
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFGorb | layer=12 | mean r=-0.123
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFGorb | layer=13 | mean r=-0.107
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFGorb | layer=14 | mean r=-0.128
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFGorb | layer=15 | mean r=-0.145
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFGorb | layer=16 | mean r=-0.089
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFGorb | layer=17 | mean r=-0.063
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFGorb | layer=18 | mean r=-0.125
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFGorb | layer=19 | mean r=-0.114
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFGorb | layer=20 | mean r=-0.117
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFGorb | layer=21 | mean r=-0.118
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFGorb | layer=22 | mean r=-0.123
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFGorb | layer=23 | mean r=-0.152
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFGorb | layer=24 | mean r=-0.129
+
+
+[WITHIN-SPLIT] Processing Lang_LH_MFG (4/6)
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_MFG | layer=0 | mean r=-0.196
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_MFG | layer=1 | mean r=-0.141
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_MFG | layer=2 | mean r=-0.154
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_MFG | layer=3 | mean r=-0.121
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_MFG | layer=4 | mean r=-0.079
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_MFG | layer=5 | mean r=-0.163
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_MFG | layer=6 | mean r=-0.136
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_MFG | layer=7 | mean r=-0.132
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_MFG | layer=8 | mean r=-0.170
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_MFG | layer=9 | mean r=-0.165
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_MFG | layer=10 | mean r=-0.155
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_MFG | layer=11 | mean r=-0.095
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_MFG | layer=12 | mean r=-0.115
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_MFG | layer=13 | mean r=-0.111
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_MFG | layer=14 | mean r=-0.127
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_MFG | layer=15 | mean r=-0.136
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_MFG | layer=16 | mean r=-0.032
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_MFG | layer=17 | mean r=-0.090
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_MFG | layer=18 | mean r=-0.106
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_MFG | layer=19 | mean r=-0.127
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_MFG | layer=20 | mean r=-0.142
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_MFG | layer=21 | mean r=-0.157
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_MFG | layer=22 | mean r=-0.176
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_MFG | layer=23 | mean r=-0.123
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_MFG | layer=24 | mean r=-0.124
+
+
+[WITHIN-SPLIT] Processing Lang_LH_PostTemp (5/6)
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_PostTemp | layer=0 | mean r=-0.234
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_PostTemp | layer=1 | mean r=-0.165
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_PostTemp | layer=2 | mean r=-0.228
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_PostTemp | layer=3 | mean r=-0.183
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_PostTemp | layer=4 | mean r=-0.206
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_PostTemp | layer=5 | mean r=-0.102
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_PostTemp | layer=6 | mean r=-0.223
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_PostTemp | layer=7 | mean r=-0.209
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_PostTemp | layer=8 | mean r=-0.196
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_PostTemp | layer=9 | mean r=-0.208
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_PostTemp | layer=10 | mean r=-0.220
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_PostTemp | layer=11 | mean r=-0.215
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_PostTemp | layer=12 | mean r=-0.149
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_PostTemp | layer=13 | mean r=-0.198
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_PostTemp | layer=14 | mean r=-0.201
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_PostTemp | layer=15 | mean r=-0.224
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_PostTemp | layer=16 | mean r=-0.164
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_PostTemp | layer=17 | mean r=-0.079
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_PostTemp | layer=18 | mean r=-0.159
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_PostTemp | layer=19 | mean r=-0.148
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_PostTemp | layer=20 | mean r=-0.208
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_PostTemp | layer=21 | mean r=-0.210
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_PostTemp | layer=22 | mean r=-0.186
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_PostTemp | layer=23 | mean r=-0.204
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_PostTemp | layer=24 | mean r=-0.204
+
+
+[WITHIN-SPLIT] Processing all (6/6)
+WITHIN-SPLIT xglm_small | fROI=all | layer=0 | mean r=-0.216
+WITHIN-SPLIT xglm_small | fROI=all | layer=1 | mean r=-0.202
+WITHIN-SPLIT xglm_small | fROI=all | layer=2 | mean r=-0.177
+WITHIN-SPLIT xglm_small | fROI=all | layer=3 | mean r=-0.169
+WITHIN-SPLIT xglm_small | fROI=all | layer=4 | mean r=-0.085
+WITHIN-SPLIT xglm_small | fROI=all | layer=5 | mean r=-0.157
+WITHIN-SPLIT xglm_small | fROI=all | layer=6 | mean r=-0.181
+WITHIN-SPLIT xglm_small | fROI=all | layer=7 | mean r=-0.143
+WITHIN-SPLIT xglm_small | fROI=all | layer=8 | mean r=-0.175
+WITHIN-SPLIT xglm_small | fROI=all | layer=9 | mean r=-0.198
+WITHIN-SPLIT xglm_small | fROI=all | layer=10 | mean r=-0.191
+WITHIN-SPLIT xglm_small | fROI=all | layer=11 | mean r=-0.137
+WITHIN-SPLIT xglm_small | fROI=all | layer=12 | mean r=-0.166
+WITHIN-SPLIT xglm_small | fROI=all | layer=13 | mean r=-0.167
+WITHIN-SPLIT xglm_small | fROI=all | layer=14 | mean r=-0.164
+WITHIN-SPLIT xglm_small | fROI=all | layer=15 | mean r=-0.193
+WITHIN-SPLIT xglm_small | fROI=all | layer=16 | mean r=-0.033
+WITHIN-SPLIT xglm_small | fROI=all | layer=17 | mean r=-0.088
+WITHIN-SPLIT xglm_small | fROI=all | layer=18 | mean r=-0.098
+WITHIN-SPLIT xglm_small | fROI=all | layer=19 | mean r=-0.136
+WITHIN-SPLIT xglm_small | fROI=all | layer=20 | mean r=-0.132
+WITHIN-SPLIT xglm_small | fROI=all | layer=21 | mean r=-0.186
+WITHIN-SPLIT xglm_small | fROI=all | layer=22 | mean r=-0.184
+WITHIN-SPLIT xglm_small | fROI=all | layer=23 | mean r=-0.171
+WITHIN-SPLIT xglm_small | fROI=all | layer=24 | mean r=-0.183
+
+
+[WITHIN-SPLIT] Processing Lang_LH_AntTemp (1/6)
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_AntTemp | layer=0 | mean r=-0.065
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_AntTemp | layer=1 | mean r=-0.040
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_AntTemp | layer=2 | mean r=0.013
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_AntTemp | layer=3 | mean r=-0.034
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_AntTemp | layer=4 | mean r=-0.064
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_AntTemp | layer=5 | mean r=-0.040
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_AntTemp | layer=6 | mean r=0.004
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_AntTemp | layer=7 | mean r=-0.049
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_AntTemp | layer=8 | mean r=-0.041
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_AntTemp | layer=9 | mean r=-0.046
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_AntTemp | layer=10 | mean r=-0.114
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_AntTemp | layer=11 | mean r=0.016
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_AntTemp | layer=12 | mean r=-0.009
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_AntTemp | layer=13 | mean r=-0.030
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_AntTemp | layer=14 | mean r=-0.027
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_AntTemp | layer=15 | mean r=-0.037
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_AntTemp | layer=16 | mean r=-0.027
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_AntTemp | layer=17 | mean r=-0.016
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_AntTemp | layer=18 | mean r=-0.053
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_AntTemp | layer=19 | mean r=-0.018
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_AntTemp | layer=20 | mean r=0.040
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_AntTemp | layer=21 | mean r=0.019
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_AntTemp | layer=22 | mean r=-0.042
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_AntTemp | layer=23 | mean r=-0.037
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_AntTemp | layer=24 | mean r=-0.014
+
+
+[WITHIN-SPLIT] Processing Lang_LH_IFG (2/6)
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFG | layer=0 | mean r=-0.134
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFG | layer=1 | mean r=-0.118
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFG | layer=2 | mean r=-0.046
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFG | layer=3 | mean r=-0.064
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFG | layer=4 | mean r=-0.130
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFG | layer=5 | mean r=-0.136
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFG | layer=6 | mean r=-0.113
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFG | layer=7 | mean r=-0.126
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFG | layer=8 | mean r=-0.117
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFG | layer=9 | mean r=-0.112
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFG | layer=10 | mean r=-0.150
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFG | layer=11 | mean r=-0.017
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFG | layer=12 | mean r=-0.078
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFG | layer=13 | mean r=-0.171
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFG | layer=14 | mean r=-0.140
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFG | layer=15 | mean r=-0.115
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFG | layer=16 | mean r=-0.127
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFG | layer=17 | mean r=-0.118
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFG | layer=18 | mean r=-0.066
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFG | layer=19 | mean r=-0.120
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFG | layer=20 | mean r=-0.023
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFG | layer=21 | mean r=-0.103
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFG | layer=22 | mean r=-0.096
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFG | layer=23 | mean r=-0.081
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFG | layer=24 | mean r=-0.101
+
+
+[WITHIN-SPLIT] Processing Lang_LH_IFGorb (3/6)
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFGorb | layer=0 | mean r=-0.124
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFGorb | layer=1 | mean r=-0.125
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFGorb | layer=2 | mean r=0.095
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFGorb | layer=3 | mean r=-0.103
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFGorb | layer=4 | mean r=-0.131
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFGorb | layer=5 | mean r=-0.115
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFGorb | layer=6 | mean r=-0.145
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFGorb | layer=7 | mean r=-0.130
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFGorb | layer=8 | mean r=-0.139
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFGorb | layer=9 | mean r=-0.130
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFGorb | layer=10 | mean r=-0.148
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFGorb | layer=11 | mean r=-0.098
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFGorb | layer=12 | mean r=-0.056
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFGorb | layer=13 | mean r=-0.055
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFGorb | layer=14 | mean r=-0.119
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFGorb | layer=15 | mean r=-0.117
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFGorb | layer=16 | mean r=-0.096
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFGorb | layer=17 | mean r=-0.096
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFGorb | layer=18 | mean r=-0.107
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFGorb | layer=19 | mean r=-0.097
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFGorb | layer=20 | mean r=-0.070
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFGorb | layer=21 | mean r=-0.095
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFGorb | layer=22 | mean r=-0.093
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFGorb | layer=23 | mean r=-0.117
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_IFGorb | layer=24 | mean r=-0.079
+
+
+[WITHIN-SPLIT] Processing Lang_LH_MFG (4/6)
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_MFG | layer=0 | mean r=-0.159
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_MFG | layer=1 | mean r=-0.150
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_MFG | layer=2 | mean r=-0.065
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_MFG | layer=3 | mean r=-0.126
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_MFG | layer=4 | mean r=-0.217
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_MFG | layer=5 | mean r=-0.145
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_MFG | layer=6 | mean r=-0.129
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_MFG | layer=7 | mean r=-0.146
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_MFG | layer=8 | mean r=-0.147
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_MFG | layer=9 | mean r=-0.129
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_MFG | layer=10 | mean r=-0.185
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_MFG | layer=11 | mean r=-0.102
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_MFG | layer=12 | mean r=-0.081
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_MFG | layer=13 | mean r=-0.132
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_MFG | layer=14 | mean r=-0.156
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_MFG | layer=15 | mean r=-0.173
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_MFG | layer=16 | mean r=-0.130
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_MFG | layer=17 | mean r=-0.145
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_MFG | layer=18 | mean r=-0.063
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_MFG | layer=19 | mean r=-0.134
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_MFG | layer=20 | mean r=-0.059
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_MFG | layer=21 | mean r=-0.147
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_MFG | layer=22 | mean r=-0.105
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_MFG | layer=23 | mean r=-0.105
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_MFG | layer=24 | mean r=-0.111
+
+
+[WITHIN-SPLIT] Processing Lang_LH_PostTemp (5/6)
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_PostTemp | layer=0 | mean r=-0.244
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_PostTemp | layer=1 | mean r=-0.214
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_PostTemp | layer=2 | mean r=-0.131
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_PostTemp | layer=3 | mean r=-0.222
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_PostTemp | layer=4 | mean r=-0.152
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_PostTemp | layer=5 | mean r=-0.195
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_PostTemp | layer=6 | mean r=-0.179
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_PostTemp | layer=7 | mean r=-0.225
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_PostTemp | layer=8 | mean r=-0.219
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_PostTemp | layer=9 | mean r=-0.163
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_PostTemp | layer=10 | mean r=-0.259
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_PostTemp | layer=11 | mean r=-0.091
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_PostTemp | layer=12 | mean r=-0.169
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_PostTemp | layer=13 | mean r=-0.230
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_PostTemp | layer=14 | mean r=-0.266
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_PostTemp | layer=15 | mean r=-0.161
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_PostTemp | layer=16 | mean r=-0.214
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_PostTemp | layer=17 | mean r=-0.187
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_PostTemp | layer=18 | mean r=-0.141
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_PostTemp | layer=19 | mean r=-0.193
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_PostTemp | layer=20 | mean r=-0.139
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_PostTemp | layer=21 | mean r=-0.181
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_PostTemp | layer=22 | mean r=-0.167
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_PostTemp | layer=23 | mean r=-0.228
+WITHIN-SPLIT xglm_med | fROI=Lang_LH_PostTemp | layer=24 | mean r=-0.217
+
+
+[WITHIN-SPLIT] Processing all (6/6)
+WITHIN-SPLIT xglm_med | fROI=all | layer=0 | mean r=-0.182
+WITHIN-SPLIT xglm_med | fROI=all | layer=1 | mean r=-0.169
+WITHIN-SPLIT xglm_med | fROI=all | layer=2 | mean r=-0.113
+WITHIN-SPLIT xglm_med | fROI=all | layer=3 | mean r=-0.150
+WITHIN-SPLIT xglm_med | fROI=all | layer=4 | mean r=-0.165
+WITHIN-SPLIT xglm_med | fROI=all | layer=5 | mean r=-0.181
+WITHIN-SPLIT xglm_med | fROI=all | layer=6 | mean r=-0.127
+WITHIN-SPLIT xglm_med | fROI=all | layer=7 | mean r=-0.171
+WITHIN-SPLIT xglm_med | fROI=all | layer=8 | mean r=-0.161
+WITHIN-SPLIT xglm_med | fROI=all | layer=9 | mean r=-0.135
+WITHIN-SPLIT xglm_med | fROI=all | layer=10 | mean r=-0.196
+WITHIN-SPLIT xglm_med | fROI=all | layer=11 | mean r=-0.086
+WITHIN-SPLIT xglm_med | fROI=all | layer=12 | mean r=-0.080
+WITHIN-SPLIT xglm_med | fROI=all | layer=13 | mean r=-0.162
+WITHIN-SPLIT xglm_med | fROI=all | layer=14 | mean r=-0.178
+WITHIN-SPLIT xglm_med | fROI=all | layer=15 | mean r=-0.178
+WITHIN-SPLIT xglm_med | fROI=all | layer=16 | mean r=-0.134
+WITHIN-SPLIT xglm_med | fROI=all | layer=17 | mean r=-0.155
+WITHIN-SPLIT xglm_med | fROI=all | layer=18 | mean r=-0.071
+WITHIN-SPLIT xglm_med | fROI=all | layer=19 | mean r=-0.137
+WITHIN-SPLIT xglm_med | fROI=all | layer=20 | mean r=-0.094
+WITHIN-SPLIT xglm_med | fROI=all | layer=21 | mean r=-0.161
+WITHIN-SPLIT xglm_med | fROI=all | layer=22 | mean r=-0.131
+WITHIN-SPLIT xglm_med | fROI=all | layer=23 | mean r=-0.160
+WITHIN-SPLIT xglm_med | fROI=all | layer=24 | mean r=-0.138
+
+
+[WITHIN-SPLIT] Processing Lang_LH_AntTemp (1/6)
+WITHIN-SPLIT xglm_large | fROI=Lang_LH_AntTemp | layer=0 | mean r=0.031
+WITHIN-SPLIT xglm_large | fROI=Lang_LH_AntTemp | layer=1 | mean r=0.021
+WITHIN-SPLIT xglm_large | fROI=Lang_LH_AntTemp | layer=2 | mean r=0.007
+WITHIN-SPLIT xglm_large | fROI=Lang_LH_AntTemp | layer=3 | mean r=-0.072
+WITHIN-SPLIT xglm_large | fROI=Lang_LH_AntTemp | layer=4 | mean r=-0.060
+slurmstepd: error: *** JOB 43487511 ON node111 CANCELLED AT 2025-09-24T17:51:55 ***
