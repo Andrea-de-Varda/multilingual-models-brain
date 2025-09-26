@@ -20,3 +20,29 @@ WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=10 | mean r=0.032
 WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=11 | mean r=0.047
 WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=12 | mean r=0.044
 WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=13 | mean r=0.063
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=14 | mean r=0.060
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=15 | mean r=0.042
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=16 | mean r=0.045
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=17 | mean r=0.059
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=18 | mean r=0.081
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=19 | mean r=0.076
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=20 | mean r=0.069
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=21 | mean r=0.072
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=22 | mean r=0.080
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=23 | mean r=0.071
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_AntTemp | layer=24 | mean r=0.062
+
+
+[WITHIN-SPLIT] Processing Lang_LH_IFG (2/6)
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=0 | mean r=0.091
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=1 | mean r=0.076
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=2 | mean r=0.059
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=3 | mean r=0.038
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=4 | mean r=0.058
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=5 | mean r=0.068
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=6 | mean r=0.053
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=7 | mean r=0.051
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=8 | mean r=0.065
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=9 | mean r=0.069
+WITHIN-SPLIT xglm_small | fROI=Lang_LH_IFG | layer=10 | mean r=0.078
+slurmstepd: error: *** JOB 43488361 ON node113 CANCELLED AT 2025-09-24T18:20:26 ***

@@ -96,15 +96,14 @@ def preproc_align_split(lang, layer_chunks):
         time_words = sub["end"].to_numpy()
         words_id = np.searchsorted(time, time_words, side="right") - 1
         words_id = np.clip(words_id, 0, len(time) - 1)
-        X_chunk = []
+        X_chunk = np.full((len(time), W.shape[1]), np.nan, dtype=W.dtype)
         for i in range(len(time)):
             sel = (words_id == i)
             if np.any(sel):
-                X_chunk.append(W[sel].mean(axis=0))
-            else:
-                X_chunk.append(np.zeros(W.shape[1], dtype=W.dtype))
-        X_all.append(np.vstack(X_chunk))
-    return np.vstack(X_all) 
+                X_chunk[i] = W[sel].mean(axis=0)
+        X_chunk = imputate_na(X_chunk)
+        X_all.append(X_chunk)
+    return np.vstack(X_all)
 
 def test_model_Ridge(X, y_part1, y_part2, n, saveto, save_results = False, shuffle=False, prefix = ""):
     if shuffle: # note that shuffling might artificially increase the encoding scores. Default is non-shuffled. All the analyses now are w/o shuffling.
@@ -1036,9 +1035,9 @@ elif MODE == "native-across":
 
 elif MODE == "within-split":
     print("Processing - WITHIN (SPLIT-CONTEXT) mode", flush=True)
+    monolingual_encoding_split(xglm_langs,  "xglm_large", 48, d)
     monolingual_encoding_split(xglm_langs,  "xglm_small", 24, d)
     monolingual_encoding_split(xglm_langs,  "xglm_med",   24, d)
-    monolingual_encoding_split(xglm_langs,  "xglm_large", 48, d)
     monolingual_encoding_split(xglm_langs,  "xglm_xl",    48, d)
     monolingual_encoding_split(all_codes,   "bert_base",  12, d)
     monolingual_encoding_split(all_codes,   "distilmbert",6,  d)
