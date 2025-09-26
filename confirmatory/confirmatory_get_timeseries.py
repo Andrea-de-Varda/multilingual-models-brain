@@ -331,6 +331,40 @@ for passage, passagedata in lang_dict.items():
     
 with open("data/dict_fMRI", 'wb') as handle:
     pickle.dump(fmri_d, handle, protocol=pickle.HIGHEST_PROTOCOL)
+    
+#########################################################
+#########################################################
+#########################################################
+# asked by reviewer -- save by fROI
+
+
+froi_d_expt2 = {
+    "Passage_1": {lang: {} for lang in data["Language"].unique()},
+    "Passage_2": {lang: {} for lang in data["Language"].unique()},
+    "Passage_3": {lang: {} for lang in data["Language"].unique()},
+}
+
+for l in data["Language"].unique():
+    temp = data[data.Language == l]
+    for uid in temp["UID"].unique():
+        temp_part = temp[temp.UID == uid]
+        for passage_n, run in zip(["Passage_1", "Passage_2", "Passage_3"], temp_part["Passage"].unique()):
+            roi_series = {}
+            per_roi = []
+            for roi in rois:
+                row = temp_part[(temp_part.Passage == run) & (temp_part.ROI == roi)]
+                if row.empty:
+                    continue
+                ts = row.loc[:, TR_columns].iloc[:, 9:-3].values.squeeze()
+                roi_series[roi] = ts
+                per_roi.append(ts)
+            if roi_series:
+                roi_series["all"] = np.mean(np.stack(per_roi, axis=0), axis=0)
+                froi_d_expt2[passage_n][l][uid] = roi_series
+
+with open("data/dict_fROI", "wb") as handle:
+    pickle.dump(froi_d_expt2, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
 
 #########################################################
 # reliability (only on data that I'll use for encoding) #

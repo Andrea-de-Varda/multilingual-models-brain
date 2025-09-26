@@ -98,3 +98,12 @@ print(res)
 
 print(combine_z_statistics(res["z_ppx_mono"]))
 print(combine_z_statistics(res["z_ppx_multi"]))
+
+tmp = all_df.drop_duplicates(subset=["lang", "mod"])
+avg_lang = (tmp.groupby("lang", as_index=False)
+              .agg(r_mono_mean=("r_mono", "mean"),
+                   r_multi_mean=("r_multi", "mean"),
+                   ppx_residuals=("ppx_residuals", "mean"),
+                   n_models=("mod", "nunique")))
+pearsonr(avg_lang["ppx_residuals"], avg_lang["r_mono_mean"])
+pearsonr(avg_lang["ppx_residuals"], avg_lang["r_multi_mean"])
