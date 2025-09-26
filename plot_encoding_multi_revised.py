@@ -51,9 +51,11 @@ def patched_load(path):
     with open(path, 'rb') as f:
         return pickle.load(f)
 
-def load(model_prefix, froi="all", monol=False, split_context=False, random=False, md=False, rh=False, native = False, multitrain = True):
+def load(model_prefix, froi="all", monol=False, split_context=False, random=False, md=False, rh=False, native=False, multitrain=True):
     if monol:
-        if md:
+        if split_context:
+            filename = f"results/monolingual_{model_prefix}_{froi}_SPLIT"
+        elif md:
             filename = f"results/monolingual_md_{model_prefix}_{froi}"
         elif rh:
             filename = f"results/monolingual_rh_{model_prefix}_{froi}"
@@ -63,10 +65,11 @@ def load(model_prefix, froi="all", monol=False, split_context=False, random=Fals
             filename = f"results/monolingual_native_{model_prefix}_{froi}"
         else:
             filename = f"results/monolingual_{model_prefix}_{froi}"
-        #print("Loading:", filename)
     else:
         mtpfx = "multitrain_" if multitrain else ""
-        if md:
+        if split_context:
+            filename = f"results/multilingual_{mtpfx}{model_prefix}_{froi}_SPLIT"
+        elif md:
             filename = f"results/multilingual_{mtpfx}md_{model_prefix}_{froi}"
         elif rh:
             filename = f"results/multilingual_{mtpfx}rh_{model_prefix}_{froi}"
@@ -76,7 +79,6 @@ def load(model_prefix, froi="all", monol=False, split_context=False, random=Fals
             filename = f"results/multilingual_{mtpfx}native_{model_prefix}_{froi}"
         else:
             filename = f"results/multilingual_{mtpfx}{model_prefix}_{froi}"
-        #print("Loading:", filename)
     return patched_load(filename)
 
 def find_median_index(lst):
@@ -249,6 +251,7 @@ for froi in frois:
 for k, v in all_best_layers.items():
     print("\n\n", k)
     print(v[['Model', 'Family', 'Score', 'Std_Error',  'p', 'asterisk']])
+    print("Avg encoding performance: ", v["Score"].mean())
 
 #########################
 # DEFINITIVE FINAL PLOT #
@@ -460,6 +463,64 @@ axes[-1].set_xticklabels([lang_dict[l] for l in data.columns], rotation=45, ha="
 plt.suptitle('', y=0.97, fontsize=26, weight="bold")
 plt.tight_layout()
 plt.savefig("plots/all_languages_multi.svg", format="svg", bbox_inches="tight")
+plt.show()
+
+#############
+# SPLIT-CTX #
+#############
+
+all_best_layers_split = {}
+for froi in frois:
+    print(f"Loading fROI {froi}")
+    best_split  = [get_best_layerwise(load(m, froi=froi, monol=False, split_context=True,  multitrain=True), colname="r") for m in model_names]
+    best_split_sd = [get_best_layerwise(load(m, froi=froi, monol=False, split_context=True,  multitrain=True), colname="r", give_mean=False) for m in model_names]
+    df_split = pd.DataFrame({
+        'Model': names_formatted,
+        'Score': best_split,
+        'Family': model_family,
+        'sd'   : best_split_sd,
+        'n'    : n_langs
+    })
+    df_split["Std_Error"] = df_split["sd"] / np.sqrt(df_split["n"])
+    all_best_layers_split[froi] = df_split
+
+df_main_split = all_best_layers_split["all"]
+df_ref_std    = all_best_layers["all"]
+
+plt.figure(figsize=(24*.7, 11.5*.7), dpi=300)
+sns.set_context("talk")
+df_main_split["color"] = df_main_split["Family"].map(palette_d)
+bar_positions = [1,2,3,
+                 4.5, 5.5, 6.5,
+                 9, 10, 11, 12, 13, 14, 15.5, 16.5, 17.5, 19, 20, 21, 22, 23]
+ax = plt.gca()
+for i, pos in enumerate(bar_positions):
+    yref = df_ref_std.iloc[i]['Score']
+    ax.hlines(y=yref, xmin=pos-0.3, xmax=pos+0.3, colors='black',
+              linestyles=(0, (1, 1)), linewidth=2, zorder=1)
+for i, pos in enumerate(bar_positions):
+    row = df_main_split.iloc[i]
+    err = row['sd'] / np.sqrt(row['n'])
+    ax.errorbar(pos, row['Score'], yerr=err, fmt='o', color=row['color'],
+                markersize=16, alpha=0.9, lw=3, capsize=5, zorder=3)
+for froi in frois:
+    if froi != "all":
+        df = all_best_layers_split[froi]
+        for i, pos in enumerate(bar_positions):
+            row = df.iloc[i]
+            ax.plot(pos, row['Score'],
+                    marker=froi_markers[froi],
+                    color=palette_d[row['Family']],
+                    markersize=9, alpha=0.4, lw=0, zorder=2)
+ax.grid(axis='y', linestyle='--', linewidth=1.5, alpha=0.3)
+plt.xlabel('Model', fontsize=27, labelpad=20)
+plt.ylabel('R', fontsize=27, labelpad=20)
+plt.ylim(0, 0.5)  # tweak if needed
+plt.xticks(bar_positions, labels=df_main_split["Model"], rotation=45, ha='right', fontsize=22)
+plt.yticks([.05, .10, .15, .20, .25, .30, .35, .40, .45, .50], fontsize=23)
+sns.despine()
+plt.tight_layout(rect=[0, 0, 0.85, 1])
+plt.savefig("plots/across_split_context_vs_standard.svg", format="svg", bbox_inches="tight")
 plt.show()
 
 ###############################################################################
