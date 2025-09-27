@@ -2,11 +2,13 @@ import os
 import numpy as np
 import numpy.ma as ma
 import pandas as pd
+import ast
 from os import chdir
 import pickle
 from sklearn.preprocessing import StandardScaler
 from tqdm import tqdm
-from sklearn.linear_model import RidgeCV
+from himalaya.kernel_ridge import KernelRidgeCV
+from himalaya.backend import set_backend, get_backend
 from sklearn.model_selection import KFold
 from scipy.stats import pearsonr, norm, ttest_rel
 import matplotlib.pyplot as plt
@@ -14,10 +16,26 @@ import matplotlib.gridspec as gridspec
 import seaborn as sns
 from math import sqrt
 import warnings
+import torch
 
 warnings.filterwarnings("ignore", message="Mean of empty slice.")
 
 chdir("/home/dev/Documents/PhD/Alice/confirmatory")
+
+DEVICE  = "cuda" if torch.cuda.is_available() else "cpu"
+BACKEND = "torch_cuda" if DEVICE == "cuda" else "numpy"
+set_backend(BACKEND)
+print(f"[INFO] Himalaya backend set to {get_backend()} ({DEVICE})", flush=True)
+
+def _to_backend(a):
+    if BACKEND.startswith("torch"):
+        if isinstance(a, np.ndarray):
+            if a.dtype != np.float32:
+                a = a.astype(np.float32, copy=False)
+            return torch.from_numpy(a).to(DEVICE)
+        if torch.is_tensor(a):
+            return a.to(dtype=torch.float32, device=DEVICE)
+    return a
 
 def save(file, name):
     with open(name, 'wb') as handle:
@@ -63,12 +81,16 @@ def test_model_Ridge_crosspart(X, y_train, y_test, n=10):
         X_test  = X_scaler.transform(X[test_index])
         ytr = y_train.reshape(-1, 1)
         yte = y_test.reshape(-1, 1)
-        ytr_train = StandardScaler().fit_transform(ytr[train_index]).flatten()
-        yte_scaler = StandardScaler().fit(yte[train_index])
-        yte_test   = yte_scaler.transform(yte[test_index]).flatten()
-        reg = RidgeCV(alphas=(1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 1, 10, 100, 1000, 10000))
-        reg.fit(X_train, ytr_train)
-        y_pred = reg.predict(X_test)
+        y_scaler = StandardScaler().fit(ytr[train_index])
+        ytr_train = y_scaler.transform(ytr[train_index]).ravel()
+        yte_test  = y_scaler.transform(yte[test_index]).ravel()
+        reg = KernelRidgeCV(alphas=(1e-5,1e-4,1e-3,1e-2,1e-1,1,10,100,1_000,10_000))
+        reg.fit(_to_backend(X_train), _to_backend(ytr_train[:, None]))
+        y_pred = reg.predict(_to_backend(X_test))
+        if BACKEND.startswith("torch"):
+            y_pred = y_pred.squeeze().detach().cpu().numpy()
+        else:
+            y_pred = np.asarray(y_pred).squeeze()
         preds.extend(y_pred.tolist())
         golds.extend(yte_test.tolist())
     return pearsonr(preds, golds)[0]
@@ -194,6 +216,9 @@ for lang in lang_codes:
 within_results_cv = pd.DataFrame(within_results_cv,
                                  columns=["condition", "model", "language", "r", "r_mean", "r_se"])
 _ = within_results_cv.groupby("model").agg({"r_mean":"mean"})
+# within_results_cv.to_csv("other/within_results_cv.csv", index=False)
+within_results_cv = pd.read_csv("other/within_results_cv.csv")
+
 
 # Baseline: circular-shift random 
 shift_vals = (26, 52, 78, 104)
@@ -239,13 +264,25 @@ within_all = pd.merge(within_results_cv, within_results_cv_random,
                       suffixes=("", "_random"),
                       on=["condition", "model", "language"])
 
-# Optionally persist exactly as before:
-# within_all.to_csv("other/confirmatory_within_all.csv", index=False)
+within_all.to_csv("other/confirmatory_within_all.csv", index=False)
 # within_all = pd.read_csv("other/confirmatory_within_all.csv")
 
 ###############################
 # checking stats significance #
 ###############################
+
+def parse_list(x):
+    if isinstance(x, list):
+        return x
+    if isinstance(x, str):
+        s = x.strip()
+        if s in {"", "[", "]"}:
+            return []
+        return ast.literal_eval(s)
+    return x
+
+within_all["r"] = within_all["r"].apply(parse_list)
+within_all["r_random"] = within_all["r_random"].apply(parse_list)
 
 def r_to_z(r1, r2, n=130):
     z_1 = np.arctanh(r1)
@@ -285,3 +322,93 @@ within_all_grouped = within_all.groupby("model").agg(
 ).reset_index()
 
 print(within_all_grouped["p"].max())  # should mirror your original end-of-block print
+
+########
+# plot #
+########
+
+model_names = ["nllb200_distilled_600M", "nllb200_distilled_1B", "nllb200_1B",
+               "xlm_align",
+               "infoxlm_base", "infoxlm_large",
+               "multiminilm",
+               "xlmr_base", "xlmr_large",
+               "distilmbert", "bert_base", "mdeberta",
+               "mt5_small", "mt5_base", "mt5_large",
+               "mgpt",
+               "xglm_small", "xglm_med", "xglm_large", "xglm_xl"]
+
+names_formatted = ["NLLB$_{d-small}$", "NLLB$_{d-large}$", "NLLB$_{large}$",
+                   "XLM-Align",
+                   "InfoXLM$_{small}$", "InfoXLM$_{large}$",
+                   "mMiniLM",
+                   "XLM-R$_{base}$", "XLM-R$_{large}$",
+                   "DistilmBERT", "mBERT", "mDeBERTa",
+                   "mT5$_{small}$", "mT5$_{base}$", "mT5$_{large}$",
+                   "mGPT",
+                   "XGLM$_{small}$", "XGLM$_{med}$", "XGLM$_{large}$", "XGLM$_{xl}$"]
+
+model_family = ["NLLB", "NLLB", "NLLB",
+                "XLM-Align",
+                "InfoXLM", "InfoXLM",
+                "XLM-R",
+                "XLM-R", "XLM-R",
+                "BERT", "BERT", "DeBERTa",
+                "mT5", "mT5", "mT5",
+                "mGPT",
+                "XGLM", "XGLM", "XGLM", "XGLM"]
+
+names_nice_dict = {name: nice for name, nice in zip(model_names, names_formatted)}
+class_dict      = {name: fam  for name, fam  in zip(model_names, model_family)}
+
+df_main = within_all_grouped.copy()
+df_main["model"] = pd.Categorical(df_main["model"], categories=model_names, ordered=True)
+df_main = df_main.sort_values("model").reset_index(drop=True)
+df_main["Model"]  = df_main["model"].map(names_nice_dict)
+df_main["Family"] = df_main["model"].map(class_dict)
+
+df_main["n"]  = 9
+df_main["se"] = df_main["sd"] / np.sqrt(df_main["n"])
+
+palette_d = {
+    'BERT': "steelblue",
+    'DeBERTa': "teal",
+    'InfoXLM': "firebrick",
+    'NLLB': "tomato",
+    'XGLM': "forestgreen",
+    'XLM-Align': "firebrick",
+    'XLM-R': "lightsteelblue",
+    'mGPT': "yellowgreen",
+    'mT5': "darkorange"
+}
+df_main["color"] = df_main["Family"].map(palette_d)
+
+bar_positions = [1,2,3,
+                 4.5, 5.5, 6.5,
+                 9, 10, 11, 12, 13, 14,
+                 15.5, 16.5, 17.5,
+                 19, 20, 21, 22, 23]
+
+title = ""
+ylimstart = 0
+ylim = 0.75
+
+plt.figure(figsize=(24 * .7, 11.5 * .7), dpi=300)
+sns.set_context("talk")
+ax = plt.gca()
+for i, pos in enumerate(bar_positions):
+    row = df_main.iloc[i]
+    err = row['sd'] / sqrt(row['n'])  # same as df_main["se"][i]
+    ax.errorbar(pos, row['Score'], yerr=err, fmt='o', color=row['color'],
+                markersize=16, alpha=0.9, lw=3, capsize=5)
+
+ax.grid(axis='y', linestyle='--', linewidth=1.5, alpha=0.3)
+plt.title(title, fontsize=30, weight='bold', pad=20)
+plt.xlabel('Model', fontsize=27, labelpad=20)
+plt.ylabel('R', fontsize=27, labelpad=20)
+plt.ylim(ylimstart, ylim)
+plt.xticks(bar_positions, labels=df_main["Model"], rotation=45, ha='right', fontsize=22)
+plt.yticks([.1, .2, .3, .4, .5, .6, .7], fontsize=23)
+sns.despine()
+plt.tight_layout(rect=[0, 0, 0.85, 1])
+plt.savefig("../plots/study2_multi_multitrain.svg", format="svg", bbox_inches="tight")
+plt.show()
