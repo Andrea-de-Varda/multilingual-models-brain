@@ -17,6 +17,9 @@ import seaborn as sns
 from math import sqrt
 import warnings
 import torch
+import matplotlib as mpl
+mpl.rcParams['svg.fonttype'] = 'none'
+mpl.rcParams['font.family'] = 'DejaVu Sans'
 
 warnings.filterwarnings("ignore", message="Mean of empty slice.")
 
@@ -167,102 +170,117 @@ d_passages_keep = {'ar' : [1, 2, 3], 'de' : [2, 3], 'hi' : [2, 3], 'it' : [1, 2,
 def kept_passages(lang_code):
     return [f"Passage_{i}" for i in d_passages_keep[lang_code]]
 
-def ordered_uid_pairs(passage, lang_name):
+def loo_uid_splits(passage, lang_name):
+    # if 3 participants, train on 2, test on 1
+    # if 2, train on 1, test on 1
     uids = list(froi_expt2.get(passage, {}).get(lang_name, {}).keys())
     if len(uids) < 2:
         return []
-    if d_corr_keep is not None:
-        keep_idx = d_corr_keep.get(passage, {}).get(lang_name, [])
+    keep_idx = d_corr_keep.get(passage, {}).get(lang_name, None)
+    if keep_idx is not None and len(keep_idx) >= 2:
         kept = [uids[i] for i in keep_idx if i < len(uids)]
-        if len(kept) < 2:
-            kept = uids[:2]
     else:
-        kept = uids
-    pairs = []
-    for i in range(len(kept)):
-        for j in range(len(kept)):
-            if i == j:
-                continue
-            pairs.append((kept[i], kept[j]))
-    return pairs
+        kept = uids[:2]  # safest fallback
+    splits = []
+    if len(kept) >= 3:
+        a, b, c = kept[:3]
+        splits.append(([a, b], c))
+        splits.append(([a, c], b))
+        splits.append(([b, c], a))
+    else:
+        a, b = kept[:2]
+        splits.append(([a], b))
+        splits.append(([b], a))
+    return splits
 
 within_results_cv = []
 for lang in lang_codes:
     passages_keep = kept_passages(lang)
-    print("\n", lang_code_dict[lang])
+    lang_name = lang_code_dict[lang]
+    print("\n", lang_name)
     for modelname, best_layer in dict_bestlayer.items():
         rs = []
         for test_passage in passages_keep:
             X = preproc_align(lang, test_passage, load(f"{test_passage}/{modelname}_{lang}")[best_layer])
-            pair_scores = []
-            uid_pairs = ordered_uid_pairs(test_passage, lang_code_dict[lang])
-            for uid_a, uid_b in uid_pairs:
-                ya = froi_expt2[test_passage][lang_code_dict[lang]][uid_a].get("all", None)
-                yb = froi_expt2[test_passage][lang_code_dict[lang]][uid_b].get("all", None)
-                if ya is None or yb is None:
+            split_scores = []
+            for train_uids, test_uid in loo_uid_splits(test_passage, lang_name):
+                ys_train = []
+                for uid_tr in train_uids:
+                    y_tr = froi_expt2[test_passage][lang_name][uid_tr].get("all", None)
+                    if y_tr is not None:
+                        ys_train.append(np.asarray(y_tr))
+                y_te = froi_expt2[test_passage][lang_name][test_uid].get("all", None)
+                if len(ys_train) == 0 or y_te is None:
                     continue
-                r_ab = test_model_Ridge_crosspart(X, ya, yb, n=10)
-                pair_scores.append(r_ab)
-            r_passage = np.nan if len(pair_scores) == 0 else float(np.nanmean(pair_scores))
+                y_train_avg = ys_train[0] if len(ys_train) == 1 else np.mean(np.stack(ys_train, axis=0), axis=0)
+                r = test_model_Ridge_crosspart(X, y_train_avg, y_te, n=10)
+                split_scores.append(r)
+            r_passage = np.nan if len(split_scores) == 0 else float(np.nanmean(split_scores))
             rs.append(r_passage)
         print(f"Processed with {modelname} -- {rs}")
         finite_rs = [x for x in rs if np.isfinite(x)]
-        r_mean = np.nan if len(finite_rs) == 0 else np.mean(finite_rs)
-        r_se = np.nan if len(finite_rs) == 0 else np.std(finite_rs) / np.sqrt(len(finite_rs))
+        r_mean = np.nan if len(finite_rs) == 0 else float(np.mean(finite_rs))
+        r_se   = np.nan if len(finite_rs) == 0 else float(np.std(finite_rs) / np.sqrt(len(finite_rs)))
         within_results_cv.append([
-            "experimental", modelname, lang_code_dict[lang], rs, r_mean, r_se
+            "experimental", modelname, lang_name, rs, r_mean, r_se
         ])
 
-within_results_cv = pd.DataFrame(within_results_cv,
-                                 columns=["condition", "model", "language", "r", "r_mean", "r_se"])
+within_results_cv = pd.DataFrame(
+    within_results_cv,
+    columns=["condition", "model", "language", "r", "r_mean", "r_se"]
+)
+
+
 _ = within_results_cv.groupby("model").agg({"r_mean":"mean"})
 # within_results_cv.to_csv("other/within_results_cv.csv", index=False)
 within_results_cv = pd.read_csv("other/within_results_cv.csv")
 
+###################
+# RANDOM baseline #
+###################
 
-# Baseline: circular-shift random 
 shift_vals = (26, 52, 78, 104)
-
 within_results_cv_random = []
 for lang in lang_codes:
     passages_keep = kept_passages(lang)
-    print("\n", lang_code_dict[lang], "(circular-shift baseline)")
+    lang_name = lang_code_dict[lang]
+    print("\n", f"{lang_name} (circular-shift baseline)")
     for modelname, best_layer in dict_bestlayer.items():
         rs = []
         for test_passage in passages_keep:
             X = preproc_align(lang, test_passage, load(f"{test_passage}/{modelname}_{lang}")[best_layer])
-            uid_pairs = ordered_uid_pairs(test_passage, lang_code_dict[lang])
-
             shift_scores = []
             for shift in shift_vals:
-                pair_scores = []
-                for uid_a, uid_b in uid_pairs:
-                    ya = froi_expt2[test_passage][lang_code_dict[lang]][uid_a].get("all", None)
-                    yb = froi_expt2[test_passage][lang_code_dict[lang]][uid_b].get("all", None)
-                    if ya is None or yb is None:
+                split_scores = []
+                for train_uids, test_uid in loo_uid_splits(test_passage, lang_name):
+                    ys_train = []
+                    for uid_tr in train_uids:
+                        y_tr = froi_expt2[test_passage][lang_name][uid_tr].get("all", None)
+                        if y_tr is not None:
+                            ys_train.append(np.asarray(y_tr))
+                    y_te = froi_expt2[test_passage][lang_name][test_uid].get("all", None)
+                    if len(ys_train) == 0 or y_te is None:
                         continue
-                    ya_shift = np.roll(ya, shift)
-                    yb_shift = np.roll(yb, shift)
-                    r_ab = test_model_Ridge_crosspart(X, ya_shift, yb_shift, n=10)
-                    pair_scores.append(r_ab)
-                if len(pair_scores) > 0:
-                    shift_scores.append(np.nanmean(pair_scores))
+                    y_train_avg = ys_train[0] if len(ys_train) == 1 else np.mean(np.stack(ys_train, axis=0), axis=0)
+                    ytr_shift = np.roll(y_train_avg, shift)
+                    yte_shift = np.roll(y_te, shift)
+                    r_shift = test_model_Ridge_crosspart(X, ytr_shift, yte_shift, n=10)
+                    split_scores.append(r_shift)
+                if len(split_scores) > 0:
+                    shift_scores.append(float(np.nanmean(split_scores)))
             r_passage_shift = np.nan if len(shift_scores) == 0 else float(np.nanmean(shift_scores))
             rs.append(r_passage_shift)
         print(f"Processed with {modelname} -- {rs}")
         finite_rs = [x for x in rs if np.isfinite(x)]
-        r_mean = np.nan if len(finite_rs) == 0 else np.mean(finite_rs)
-        r_se = np.nan if len(finite_rs) == 0 else np.std(finite_rs) / np.sqrt(len(finite_rs))
+        r_mean = np.nan if len(finite_rs) == 0 else float(np.mean(finite_rs))
+        r_se   = np.nan if len(finite_rs) == 0 else float(np.std(finite_rs) / np.sqrt(len(finite_rs)))
         within_results_cv_random.append([
-            "experimental", modelname, lang_code_dict[lang], rs, r_mean, r_se
+            "experimental", modelname, lang_name, rs, r_mean, r_se
         ])
 
-within_results_cv_random = pd.DataFrame(within_results_cv_random,
-                                        columns=["condition", "model", "language", "r", "r_mean", "r_se"])
+within_results_cv_random = pd.DataFrame(within_results_cv_random, columns=["condition", "model", "language", "r", "r_mean", "r_se"])
 
-within_all = pd.merge(within_results_cv, within_results_cv_random,
-                      suffixes=("", "_random"),
-                      on=["condition", "model", "language"])
+within_all = pd.merge(within_results_cv, within_results_cv_random, suffixes=("", "_random"), on=["condition", "model", "language"])
 
 within_all.to_csv("other/confirmatory_within_all.csv", index=False)
 # within_all = pd.read_csv("other/confirmatory_within_all.csv")
@@ -311,17 +329,13 @@ for scores, scores_random in zip(within_all["r"], within_all["r_random"]):
 within_all["z"] = compare_z
 within_all["p"] = compare_p
 
-# Optionally persist again to match your later line:
-# within_all.to_csv("other/confirmatory_within_all.csv", index=False)
-# within_all = pd.read_csv("other/confirmatory_within_all.csv")
-
 within_all_grouped = within_all.groupby("model").agg(
     Score=("r_mean", "mean"),
     sd=("r_mean", "std"),
     p=("z", combine_z_statistics)
 ).reset_index()
 
-print(within_all_grouped["p"].max())  # should mirror your original end-of-block print
+print(within_all_grouped["p"])
 
 ########
 # plot #
@@ -411,4 +425,97 @@ plt.yticks([.1, .2, .3, .4, .5, .6, .7], fontsize=23)
 sns.despine()
 plt.tight_layout(rect=[0, 0, 0.85, 1])
 plt.savefig("../plots/study2_multi_multitrain.svg", format="svg", bbox_inches="tight")
+plt.show()
+
+################
+# load study 1 #
+################
+
+study1 = pd.read_csv("../results/mono_multi.csv")
+studies_merged = pd.merge(study1[["Model", "Score_mono", "se_mono"]], df_main, on = "Model")
+df = studies_merged
+
+r, p = pearsonr(studies_merged['Score_mono'], studies_merged['Score'])
+
+plt.figure(figsize=(7*.9, 9.5*.9), dpi=400)
+plt.scatter(studies_merged['Score_mono'], studies_merged['Score'], color=studies_merged['color'], alpha=1, s = 200)
+coefficients = np.polyfit(studies_merged['Score_mono'], studies_merged['Score'], 1)
+polynomial = np.poly1d(coefficients)
+x_values = np.linspace(min(studies_merged['Score_mono'])-.05, max(studies_merged['Score_mono'])+.05, 100)
+y_values = polynomial(x_values)
+plt.plot(x_values, y_values, ls='--', c='gray')
+for i in range(len(studies_merged)):
+    plt.errorbar(studies_merged['Score_mono'][i], studies_merged['Score'][i],
+                  xerr=studies_merged['se_mono'][i], yerr=studies_merged['se'][i],
+                  fmt='o', color=studies_merged['color'][i], zorder = 5)
+
+plt.text(0.03, 0.98, f"r = {round(r, 2)}, p < 0.0001", 
+          fontsize=15, ha='left', va='top', alpha=1, 
+          bbox=dict(facecolor='white', alpha=0.7), 
+          transform=plt.gca().transAxes)
+
+plt.xlabel('Study I WITHIN encoding (R)', fontsize = 17)
+plt.ylabel('Study II WITHIN encoding (R)', fontsize = 17)
+plt.yticks(fontsize=15)
+plt.xticks(fontsize=15)
+#plt.xlim(-90, 45)
+#plt.ylim(0.15, 0.6)
+#plt.yticks([0.2, 0.3, 0.4, 0.5])
+plt.savefig("../plots/study2_study1_corr.svg", format="svg", bbox_inches="tight")
+plt.grid(True)
+plt.show()
+
+# single langs
+
+sns.set_context("talk")
+r_lang = {lang: [] for lang in within_all["language"].unique()}
+r_se_lang = {lang: [] for lang in within_all["language"].unique()}
+
+for model in model_names:
+    for lang in within_all["language"].unique():
+        therow = within_all[(within_all.language == lang) & (within_all.model == model)]
+        r = therow["r_mean"].values[0]
+        r_se = therow["r_se"].values[0]
+        r_lang[lang].append(r)
+        r_se_lang[lang].append(r_se)
+
+data = pd.DataFrame(r_lang)
+data_se = pd.DataFrame(r_se_lang)
+
+avg_across_models = data.mean(axis=0)
+se_across_models = data.sem(axis=0)
+
+data_with_avg = pd.concat([pd.DataFrame([avg_across_models], index=['Mean']), data]) # append avg row
+data_se_with_avg = pd.concat([pd.DataFrame([se_across_models], index=['Mean']), data_se])
+
+fig_height = 26 * 0.9
+fig_width = 10 * 0.9
+
+fig = plt.figure(figsize=(fig_width, fig_height), dpi=300)
+gs = gridspec.GridSpec(len(data_with_avg), 1, height_ratios=[1.5] + [1] * (len(data_with_avg) - 1), hspace=0.5)
+yticks = [0, 0.5]
+axes = [fig.add_subplot(gs[i]) for i in range(len(data_with_avg))]
+for i, ax in enumerate(axes):
+    bar_color = 'steelblue' if i == 0 else 'indianred'  # avg row is blue, others are red
+    ax.bar(
+        data_with_avg.columns, 
+        data_with_avg.iloc[i], 
+        yerr=data_se_with_avg.iloc[i], 
+        color=bar_color, 
+        capsize=5
+    )
+    ax.set_ylim(-0.35, .5)
+    ax.set_yticks(yticks)
+    ax.axhline(y=0, color='black', lw=2)
+    ax.xaxis.grid(False)
+    if i == 0:
+        ax.set_ylabel('Average', rotation=0, ha='right', va='center')
+        ax.set_xticklabels([])
+    else:
+        ax.set_ylabel(names_formatted[i - 1], rotation=0, ha='right', va='center')
+        ax.set_xticklabels([])  
+axes[-1].set_xticklabels(data_with_avg.columns, rotation=45, ha="right")
+plt.suptitle('', y=0.97, fontsize=26, weight="bold")
+plt.tight_layout()
+plt.savefig("../plots/study2_study1_singlelangs.svg", format="svg", bbox_inches="tight")
 plt.show()
