@@ -1,0 +1,179 @@
+>>> SCRIPT LAUNCHED
+[INFO] Himalaya backend set to <module 'himalaya.backend.torch_cuda' from '/home/devar_ag/.conda/envs/reasoning-models/lib/python3.10/site-packages/himalaya/backend/torch_cuda.py'> (cuda)
+>>> STARTING JOB in mode: across-split
+>>> Loaded fMRI data
+Processing - ACROSS (SPLIT-CONTEXT, train on N-1 langs) mode
+Encoding (SPLIT) for xglm_small – Lang_LH_AntTemp already done
+Encoding (SPLIT) for xglm_small – Lang_LH_IFG already done
+Encoding (SPLIT) for xglm_small – Lang_LH_IFGorb already done
+Encoding (SPLIT) for xglm_small – Lang_LH_MFG already done
+Encoding (SPLIT) for xglm_small – Lang_LH_PostTemp already done
+Encoding (SPLIT) for xglm_small – all already done
+Encoding (SPLIT) for xglm_med – Lang_LH_AntTemp already done
+Encoding (SPLIT) for xglm_med – Lang_LH_IFG already done
+Encoding (SPLIT) for xglm_med – Lang_LH_IFGorb already done
+Encoding (SPLIT) for xglm_med – Lang_LH_MFG already done
+Encoding (SPLIT) for xglm_med – Lang_LH_PostTemp already done
+Encoding (SPLIT) for xglm_med – all already done
+Encoding (SPLIT) for xglm_large – Lang_LH_AntTemp already done
+Encoding (SPLIT) for xglm_large – Lang_LH_IFG already done
+Encoding (SPLIT) for xglm_large – Lang_LH_IFGorb already done
+Encoding (SPLIT) for xglm_large – Lang_LH_MFG already done
+Encoding (SPLIT) for xglm_large – Lang_LH_PostTemp already done
+Encoding (SPLIT) for xglm_large – all already done
+Encoding (SPLIT) for xglm_xl – Lang_LH_AntTemp already done
+Encoding (SPLIT) for xglm_xl – Lang_LH_IFG already done
+Encoding (SPLIT) for xglm_xl – Lang_LH_IFGorb already done
+Encoding (SPLIT) for xglm_xl – Lang_LH_MFG already done
+Encoding (SPLIT) for xglm_xl – Lang_LH_PostTemp already done
+Encoding (SPLIT) for xglm_xl – all already done
+Encoding (SPLIT) for bert_base – Lang_LH_AntTemp already done
+Encoding (SPLIT) for bert_base – Lang_LH_IFG already done
+Encoding (SPLIT) for bert_base – Lang_LH_IFGorb already done
+Encoding (SPLIT) for bert_base – Lang_LH_MFG already done
+Encoding (SPLIT) for bert_base – Lang_LH_PostTemp already done
+Encoding (SPLIT) for bert_base – all already done
+Encoding (SPLIT) for distilmbert – Lang_LH_AntTemp already done
+Encoding (SPLIT) for distilmbert – Lang_LH_IFG already done
+Encoding (SPLIT) for distilmbert – Lang_LH_IFGorb already done
+Encoding (SPLIT) for distilmbert – Lang_LH_MFG already done
+Encoding (SPLIT) for distilmbert – Lang_LH_PostTemp already done
+Encoding (SPLIT) for distilmbert – all already done
+Encoding (SPLIT) for xlmr_base – Lang_LH_AntTemp already done
+Encoding (SPLIT) for xlmr_base – Lang_LH_IFG already done
+Encoding (SPLIT) for xlmr_base – Lang_LH_IFGorb already done
+Encoding (SPLIT) for xlmr_base – Lang_LH_MFG already done
+Encoding (SPLIT) for xlmr_base – Lang_LH_PostTemp already done
+Encoding (SPLIT) for xlmr_base – all already done
+Encoding (SPLIT) for xlmr_large – Lang_LH_AntTemp already done
+Encoding (SPLIT) for xlmr_large – Lang_LH_IFG already done
+Encoding (SPLIT) for xlmr_large – Lang_LH_IFGorb already done
+Encoding (SPLIT) for xlmr_large – Lang_LH_MFG already done
+Encoding (SPLIT) for xlmr_large – Lang_LH_PostTemp already done
+Encoding (SPLIT) for xlmr_large – all already done
+Encoding (SPLIT) for mt5_small – Lang_LH_AntTemp already done
+Encoding (SPLIT) for mt5_small – Lang_LH_IFG already done
+Encoding (SPLIT) for mt5_small – Lang_LH_IFGorb already done
+Encoding (SPLIT) for mt5_small – Lang_LH_MFG already done
+Encoding (SPLIT) for mt5_small – Lang_LH_PostTemp already done
+Encoding (SPLIT) for mt5_small – all already done
+Encoding (SPLIT) for mt5_base – Lang_LH_AntTemp already done
+Encoding (SPLIT) for mt5_base – Lang_LH_IFG already done
+Encoding (SPLIT) for mt5_base – Lang_LH_IFGorb already done
+Encoding (SPLIT) for mt5_base – Lang_LH_MFG already done
+Encoding (SPLIT) for mt5_base – Lang_LH_PostTemp already done
+Encoding (SPLIT) for mt5_base – all already done
+Encoding (SPLIT) for mt5_large – Lang_LH_AntTemp already done
+Encoding (SPLIT) for mt5_large – Lang_LH_IFG already done
+Encoding (SPLIT) for mt5_large – Lang_LH_IFGorb already done
+Encoding (SPLIT) for mt5_large – Lang_LH_MFG already done
+Encoding (SPLIT) for mt5_large – Lang_LH_PostTemp already done
+Encoding (SPLIT) for mt5_large – all already done
+Encoding (SPLIT) for mdeberta – Lang_LH_AntTemp already done
+Encoding (SPLIT) for mdeberta – Lang_LH_IFG already done
+Encoding (SPLIT) for mdeberta – Lang_LH_IFGorb already done
+Encoding (SPLIT) for mdeberta – Lang_LH_MFG already done
+Encoding (SPLIT) for mdeberta – Lang_LH_PostTemp already done
+Encoding (SPLIT) for mdeberta – all already done
+Encoding (SPLIT) for xlm_align – Lang_LH_AntTemp already done
+Encoding (SPLIT) for xlm_align – Lang_LH_IFG already done
+Encoding (SPLIT) for xlm_align – Lang_LH_IFGorb already done
+Encoding (SPLIT) for xlm_align – Lang_LH_MFG already done
+Encoding (SPLIT) for xlm_align – Lang_LH_PostTemp already done
+Encoding (SPLIT) for xlm_align – all already done
+Encoding (SPLIT) for infoxlm_base – Lang_LH_AntTemp already done
+Encoding (SPLIT) for infoxlm_base – Lang_LH_IFG already done
+Encoding (SPLIT) for infoxlm_base – Lang_LH_IFGorb already done
+Encoding (SPLIT) for infoxlm_base – Lang_LH_MFG already done
+Encoding (SPLIT) for infoxlm_base – Lang_LH_PostTemp already done
+Encoding (SPLIT) for infoxlm_base – all already done
+Encoding (SPLIT) for infoxlm_large – Lang_LH_AntTemp already done
+Encoding (SPLIT) for infoxlm_large – Lang_LH_IFG already done
+Encoding (SPLIT) for infoxlm_large – Lang_LH_IFGorb already done
+Encoding (SPLIT) for infoxlm_large – Lang_LH_MFG already done
+Encoding (SPLIT) for infoxlm_large – Lang_LH_PostTemp already done
+Encoding (SPLIT) for infoxlm_large – all already done
+Encoding (SPLIT) for multiminilm – Lang_LH_AntTemp already done
+Encoding (SPLIT) for multiminilm – Lang_LH_IFG already done
+Encoding (SPLIT) for multiminilm – Lang_LH_IFGorb already done
+Encoding (SPLIT) for multiminilm – Lang_LH_MFG already done
+Encoding (SPLIT) for multiminilm – Lang_LH_PostTemp already done
+Encoding (SPLIT) for multiminilm – all already done
+Encoding (SPLIT) for nllb200_distilled_600M – Lang_LH_AntTemp already done
+Encoding (SPLIT) for nllb200_distilled_600M – Lang_LH_IFG already done
+Encoding (SPLIT) for nllb200_distilled_600M – Lang_LH_IFGorb already done
+Encoding (SPLIT) for nllb200_distilled_600M – Lang_LH_MFG already done
+Encoding (SPLIT) for nllb200_distilled_600M – Lang_LH_PostTemp already done
+Encoding (SPLIT) for nllb200_distilled_600M – all already done
+Encoding (SPLIT) for nllb200_distilled_1B – Lang_LH_AntTemp already done
+Encoding (SPLIT) for nllb200_distilled_1B – Lang_LH_IFG already done
+Encoding (SPLIT) for nllb200_distilled_1B – Lang_LH_IFGorb already done
+Encoding (SPLIT) for nllb200_distilled_1B – Lang_LH_MFG already done
+Encoding (SPLIT) for nllb200_distilled_1B – Lang_LH_PostTemp already done
+Encoding (SPLIT) for nllb200_distilled_1B – all already done
+Encoding (SPLIT) for nllb200_1B – Lang_LH_AntTemp already done
+Encoding (SPLIT) for nllb200_1B – Lang_LH_IFG already done
+Encoding (SPLIT) for nllb200_1B – Lang_LH_IFGorb already done
+Encoding (SPLIT) for nllb200_1B – Lang_LH_MFG already done
+Encoding (SPLIT) for nllb200_1B – Lang_LH_PostTemp already done
+Encoding (SPLIT) for nllb200_1B – all already done
+Encoding (SPLIT) for mgpt – Lang_LH_AntTemp already done
+Encoding (SPLIT) for mgpt – Lang_LH_IFG already done
+Encoding (SPLIT) for mgpt – Lang_LH_IFGorb already done
+Encoding (SPLIT) for mgpt – Lang_LH_MFG already done
+
+
+[ACROSS-SPLIT] Processing Lang_LH_PostTemp (5/6)
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=Lang_LH_PostTemp | layer=0 | mean r=0.052
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=Lang_LH_PostTemp | layer=1 | mean r=0.092
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=Lang_LH_PostTemp | layer=2 | mean r=0.142
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=Lang_LH_PostTemp | layer=3 | mean r=0.148
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=Lang_LH_PostTemp | layer=4 | mean r=0.195
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=Lang_LH_PostTemp | layer=5 | mean r=0.205
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=Lang_LH_PostTemp | layer=6 | mean r=0.229
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=Lang_LH_PostTemp | layer=7 | mean r=0.254
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=Lang_LH_PostTemp | layer=8 | mean r=0.277
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=Lang_LH_PostTemp | layer=9 | mean r=0.283
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=Lang_LH_PostTemp | layer=10 | mean r=0.292
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=Lang_LH_PostTemp | layer=11 | mean r=0.295
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=Lang_LH_PostTemp | layer=12 | mean r=0.306
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=Lang_LH_PostTemp | layer=13 | mean r=0.295
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=Lang_LH_PostTemp | layer=14 | mean r=0.313
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=Lang_LH_PostTemp | layer=15 | mean r=0.319
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=Lang_LH_PostTemp | layer=16 | mean r=0.321
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=Lang_LH_PostTemp | layer=17 | mean r=0.317
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=Lang_LH_PostTemp | layer=18 | mean r=0.316
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=Lang_LH_PostTemp | layer=19 | mean r=0.310
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=Lang_LH_PostTemp | layer=20 | mean r=0.310
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=Lang_LH_PostTemp | layer=21 | mean r=0.312
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=Lang_LH_PostTemp | layer=22 | mean r=0.307
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=Lang_LH_PostTemp | layer=23 | mean r=0.300
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=Lang_LH_PostTemp | layer=24 | mean r=0.301
+
+
+[ACROSS-SPLIT] Processing all (6/6)
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=all | layer=0 | mean r=0.019
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=all | layer=1 | mean r=0.052
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=all | layer=2 | mean r=0.044
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=all | layer=3 | mean r=0.043
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=all | layer=4 | mean r=0.100
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=all | layer=5 | mean r=0.139
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=all | layer=6 | mean r=0.164
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=all | layer=7 | mean r=0.180
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=all | layer=8 | mean r=0.208
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=all | layer=9 | mean r=0.211
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=all | layer=10 | mean r=0.226
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=all | layer=11 | mean r=0.239
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=all | layer=12 | mean r=0.242
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=all | layer=13 | mean r=0.224
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=all | layer=14 | mean r=0.228
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=all | layer=15 | mean r=0.229
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=all | layer=16 | mean r=0.227
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=all | layer=17 | mean r=0.218
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=all | layer=18 | mean r=0.230
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=all | layer=19 | mean r=0.229
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=all | layer=20 | mean r=0.208
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=all | layer=21 | mean r=0.202
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=all | layer=22 | mean r=0.193
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=all | layer=23 | mean r=0.209
+ACROSS-SPLIT-MULTITRAIN mgpt | fROI=all | layer=24 | mean r=0.202
