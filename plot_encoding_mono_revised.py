@@ -55,7 +55,7 @@ def load(model_prefix, froi="all", monol=True, split_context=False, random=False
         raise ValueError('No multilingual sequential split')
 
     if split_context:
-        filename = f"results/split_context/monolingual_{model_prefix}"
+        filename = f"results/monolingual_{model_prefix}_{froi}_SPLIT"
     elif md:
         filename = f"results/monolingual_md_{model_prefix}_{froi}"
     elif rh:
@@ -479,61 +479,69 @@ plt.show()
 ###############################################################################
 ###############################################################################
 
-# SPLIT CONTEXT
-# monolingual, best layer #####################################################
-best_monol_split = [get_best_layerwise(load(model, split_context = True)) for model in model_names]
-best_monol_sd_split = [get_best_layerwise(load(model, split_context = True), give_mean = False) for model in model_names]
+all_best_layers_split = {}
+for froi in frois:
+    best_monol_sc    = [get_best_layerwise(load(model, froi=froi, split_context=True)) for model in model_names]
+    best_monol_sd_sc = [get_best_layerwise(load(model, froi=froi, split_context=True), give_mean=False) for model in model_names]
+    best_layer_sc = pd.DataFrame({
+        'Model':  names_formatted,
+        'Score':  best_monol_sc,
+        'Family': model_family,
+        'sd':     best_monol_sd_sc,
+        'n':      n_langs
+    })
+    best_layer_sc["Std_Error"] = best_layer_sc["sd"] / np.sqrt(best_layer_sc["n"])
+    all_best_layers_split[froi] = best_layer_sc
 
-best_layer_split = pd.DataFrame({
-    'Model': names_formatted,
-    'Score': best_monol_split,
-    'Family': model_family,
-    'sd' : best_monol_sd_split,
-    'n' : n_langs
-})
+best_layer_std_all = all_best_layers["all"].copy()
+best_layer_std_all["color"] = best_layer_std_all["Family"].map(palette_d)
 
-plot_aggregate(best_layer_split, "",  ylim = .85, ylimstart = -.1)
+split_per_froi = {f: all_best_layers_split[f].copy() for f in froi_markers.keys()}
+split_all      = all_best_layers_split["all"].copy()
+for f in split_per_froi:
+    split_per_froi[f]["color"] = split_per_froi[f]["Family"].map(palette_d)
+split_all["color"] = split_all["Family"].map(palette_d)
 
-# split context, plot for paper
-df = best_layer_split
-title = ""
-ylimstart = 0
-ylim = 0.75
-
-plt.figure(figsize=(24*.7, 11.5*.7), dpi = 300)
+plt.figure(figsize=(24*.7, 11.5*.7), dpi=300)
 sns.set_context("talk")
-palette = sns.color_palette("tab20", n_colors = 9)
-df["color"] = df["Family"].map(palette_d)
 ax = plt.gca()
-bar_positions = [1,2,3,
-                 4.5, 5.5, 6.5,
-                 9, 10, 11, 12, 13, 14, 15.5, 16.5, 17.5, 19, 20, 21, 22, 23]
-bars = ax.bar(bar_positions, df['Score'], yerr=[df['sd'][i] / sqrt(df['n'][i]) for i in range(len(df))],
-              capsize=5, color=df["color"], edgecolor='.2', alpha = 0.8, lw = 3)
-ax.hlines(best_layer['Score'], xmin=[x - 0.3 for x in bar_positions], xmax=[x + 0.3 for x in bar_positions],
-          colors='black', linestyles=(0, (1, 1)), linewidth=2) 
-plt.title(title, fontsize=30, weight='bold', pad=20)
+for i, pos in enumerate(bar_positions):
+    row = best_layer_std_all.iloc[i]
+    ax.hlines(
+        y=row['Score'],
+        xmin=pos - 0.3, xmax=pos + 0.3,
+        colors='black', linestyles=(0, (1, 1)), linewidth=2, zorder=1
+    )
+for froi, marker in froi_markers.items():
+    df = split_per_froi[froi]
+    for i, pos in enumerate(bar_positions):
+        row = df.iloc[i]
+        err = row['sd'] / np.sqrt(row['n'])
+        ax.errorbar(
+            pos, row['Score'], yerr=err,
+            fmt=marker, markersize=9, lw=0, capsize=4,
+            color=row['color'], alpha=0.5, zorder=2
+        )
+
+for i, pos in enumerate(bar_positions):
+    row = split_all.iloc[i]
+    err = row['sd'] / np.sqrt(row['n'])
+    ax.errorbar(
+        pos, row['Score'], yerr=err,
+        fmt='o', markersize=14, lw=3, capsize=5,
+        color=row['color'], alpha=0.95, zorder=3
+    )
+plt.title("", fontsize=30, weight='bold', pad=20)
 plt.xlabel('Model', fontsize=27, labelpad=20)
 plt.ylabel('R', fontsize=27, labelpad=20)
-plt.ylim(ylimstart, ylim)
-plt.xticks(bar_positions, labels = df["Model"], rotation=45, ha='right', fontsize=22)
+plt.ylim(0, 0.75)
+plt.xticks(bar_positions, labels=best_layer_std_all["Model"], rotation=45, ha='right', fontsize=22)
 plt.yticks([.1, .2, .3, .4, .5, .6, .7], fontsize=23)
+ax.grid(axis='y', linestyle='--', linewidth=1.5, alpha=0.3)
 sns.despine()
 plt.tight_layout(rect=[0, 0, 0.85, 1])
+plt.savefig("plots/within_split_context_vs_standard.svg", format="svg", bbox_inches="tight")
 plt.show()
-
-# monolingual, median layer ###################################################
-median_monol = [get_median_layerwise(load(model, split_context = True)) for model in model_names]
-median_monol_sd = [get_median_layerwise(load(model), give_mean = False) for model in model_names]
-
-median_layer = pd.DataFrame({
-    'Model': names_formatted,
-    'Score': median_monol,
-    'Family': model_family,
-    'sd' : median_monol_sd,
-    'n' : n_langs
-})
-plot_aggregate(median_layer, "", ylim = .85, ylimstart = -.1)
 
 ###############################################################################
 ###############################################################################
