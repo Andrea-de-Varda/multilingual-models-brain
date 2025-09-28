@@ -597,15 +597,14 @@ def multilingual_encoding_multitrain_split(langs, model_prefix, n_layers, d, pre
                     y_train = y_scaler.fit_transform(y_train.reshape(-1, 1)).flatten()
                     if X_train.shape[0] > X_train.shape[1]:
                         reg = RidgeCV(alphas=(1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 1, 10, 100, 1e3, 1e4))
-                        reg.fit(X_train, y_train)
-                        def _predict(X): return reg.predict(X)
                     else:
                         reg = KernelRidgeCV(alphas=(1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 1, 10, 100, 1e3, 1e4))
-                        reg.fit(to_backend(X_train), to_backend(y_train[:, None]))
-                        def _predict(X):
-                            y = reg.predict(to_backend(X)).squeeze()
-                            return y.cpu().numpy() if BACKEND.startswith("torch") else y
-                    # test on held-out language (avg across two parts)
+                    reg.fit(to_backend(X_train), to_backend(y_train[:, None]))
+                    def _predict(X_np):
+                        y_hat = reg.predict(to_backend(X_np)).squeeze()
+                        if BACKEND.startswith("torch"):
+                            y_hat = y_hat.cpu().numpy()
+                        return y_hat
                     p1_t, p2_t = d[lang_code_dict[test_lang]].keys()
                     X_test = X_scaler.transform(fmri_data[i][test_idx])
                     y_t1 = y_scaler.transform(d[lang_code_dict[test_lang]][p1_t][froi][test_idx].reshape(-1, 1)).flatten()
