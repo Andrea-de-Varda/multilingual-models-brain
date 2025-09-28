@@ -10878,4 +10878,6 @@
   <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 13px; font-weight: 700; white-space: pre; stroke-width: 1;" x="543.07" y="404.324">D. Next-word prediction as a predictor of model performance</text>
   <rect x="51.7" y="390" width="137.606" height="18" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 1.5;"/>
   <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 13px; font-weight: 700; white-space: pre; stroke-width: 1;" x="59.07" y="404.363">C. Spatial specificity</text>
+  <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 9px; font-weight: 700; white-space: pre;" x="584.094" y="163.455">WITHIN</text>
+  <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 9px; font-weight: 700; white-space: pre; stroke-width: 1;" x="645.826" y="163.462">ACROSS</text>
 </svg>

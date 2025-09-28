@@ -479,8 +479,10 @@ plt.show()
 ###############################################################################
 ###############################################################################
 
+# SPLIT CONTEXT
+
 all_best_layers_split = {}
-for froi in frois:
+for froi in frois+["all"]:
     best_monol_sc    = [get_best_layerwise(load(model, froi=froi, split_context=True)) for model in model_names]
     best_monol_sd_sc = [get_best_layerwise(load(model, froi=froi, split_context=True), give_mean=False) for model in model_names]
     best_layer_sc = pd.DataFrame({
@@ -492,6 +494,11 @@ for froi in frois:
     })
     best_layer_sc["Std_Error"] = best_layer_sc["sd"] / np.sqrt(best_layer_sc["n"])
     all_best_layers_split[froi] = best_layer_sc
+    
+for k, v in all_best_layers_split.items():
+    print("\n\n", k)
+    print(v[['Model', 'Family', 'Score', 'Std_Error']])
+    print("Avg encoding performance: ", v["Score"].mean())
 
 best_layer_std_all = all_best_layers["all"].copy()
 best_layer_std_all["color"] = best_layer_std_all["Family"].map(palette_d)
@@ -540,7 +547,7 @@ plt.yticks([.1, .2, .3, .4, .5, .6, .7], fontsize=23)
 ax.grid(axis='y', linestyle='--', linewidth=1.5, alpha=0.3)
 sns.despine()
 plt.tight_layout(rect=[0, 0, 0.85, 1])
-plt.savefig("plots/within_split_context_vs_standard.svg", format="svg", bbox_inches="tight")
+plt.savefig("plots/split_context_vs_standard_within.svg", format="svg", bbox_inches="tight")
 plt.show()
 
 ###############################################################################

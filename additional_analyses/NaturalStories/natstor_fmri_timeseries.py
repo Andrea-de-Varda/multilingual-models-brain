@@ -126,16 +126,33 @@ d_story_nice = {"tulips" : "Tulips",
                 "elvis" : "Elvis"}
 df_reliab["story_nice"] = df_reliab["story"].map(d_story_nice)
 
-fig, ax = plt.subplots(figsize=(5, 3), dpi = 300)
-ax.bar(df_reliab['story_nice'], df_reliab['r'], yerr=df_reliab['sd'], capsize=5, color='skyblue', error_kw={'elinewidth':2, 'ecolor':'black'}, zorder = 12)
-#ax.set_xlabel('Story', fontsize=12)
-for idx, n in enumerate(df_reliab["n"]):
-    plt.annotate(n, (idx-.2, 0.02), zorder = 14)
+fig, ax = plt.subplots(figsize=(5*.85, 3*.85), dpi=300)
+ax.errorbar(
+    x=df_reliab['story_nice'],
+    y=df_reliab['r'],
+    yerr=df_reliab['sd'],
+    fmt='o',
+    mfc='skyblue',
+    mec='black',
+    mew=1,
+    markersize=7,
+    ecolor='black',
+    elinewidth=2,
+    capsize=5,
+    zorder=12)
+for x, y, n in zip(df_reliab["story_nice"], df_reliab["r"], df_reliab["n"]):
+    ax.annotate(
+        str(n),
+        (x, 0.01),
+        ha='center',
+        zorder=14)
 ax.set_ylabel('R', fontsize=12)
+plt.ylim(0, None)
 plt.xticks(rotation=35, ha='right')
 ax.yaxis.grid(True, linestyle='--', color='gray', linewidth=0.5)
 plt.tight_layout()
 plt.show()
+
 
 print(f'Overall reliability = {(df_reliab["r"] * df_reliab["n1"]).sum() / df_reliab["n1"].sum()}')
 

@@ -52,6 +52,7 @@ def patched_load(path):
         return pickle.load(f)
 
 def load(model_prefix, froi="all", monol=False, split_context=False, random=False, md=False, rh=False, native=False, multitrain=True):
+    #print(model_prefix)
     if monol:
         if split_context:
             filename = f"results/monolingual_{model_prefix}_{froi}_SPLIT"
@@ -470,7 +471,7 @@ plt.show()
 #############
 
 all_best_layers_split = {}
-for froi in frois:
+for froi in frois+["all"]:
     print(f"Loading fROI {froi}")
     best_split  = [get_best_layerwise(load(m, froi=froi, monol=False, split_context=True,  multitrain=True), colname="r") for m in model_names]
     best_split_sd = [get_best_layerwise(load(m, froi=froi, monol=False, split_context=True,  multitrain=True), colname="r", give_mean=False) for m in model_names]
@@ -483,6 +484,11 @@ for froi in frois:
     })
     df_split["Std_Error"] = df_split["sd"] / np.sqrt(df_split["n"])
     all_best_layers_split[froi] = df_split
+    
+for k, v in all_best_layers_split.items():
+    print("\n\n", k)
+    print(v[['Model', 'Family', 'Score', 'Std_Error']])
+    print("Avg encoding performance: ", v["Score"].mean())
 
 df_main_split = all_best_layers_split["all"]
 df_ref_std    = all_best_layers["all"]
@@ -515,12 +521,12 @@ for froi in frois:
 ax.grid(axis='y', linestyle='--', linewidth=1.5, alpha=0.3)
 plt.xlabel('Model', fontsize=27, labelpad=20)
 plt.ylabel('R', fontsize=27, labelpad=20)
-plt.ylim(0, 0.5)  # tweak if needed
+plt.ylim(ylimstart, ylim)
 plt.xticks(bar_positions, labels=df_main_split["Model"], rotation=45, ha='right', fontsize=22)
-plt.yticks([.05, .10, .15, .20, .25, .30, .35, .40, .45, .50], fontsize=23)
+plt.yticks([.1, .2, .3, .4, .5, .6, .7], fontsize=23)
 sns.despine()
 plt.tight_layout(rect=[0, 0, 0.85, 1])
-plt.savefig("plots/across_split_context_vs_standard.svg", format="svg", bbox_inches="tight")
+plt.savefig("plots/split_context_vs_standard_across.svg", format="svg", bbox_inches="tight")
 plt.show()
 
 ###############################################################################

@@ -452,15 +452,32 @@ averaged_df = pd.DataFrame(np.nanmean(all_corrs_across, axis=0), columns = all_c
 
 num_rows = 2
 num_cols = 6
-fig, axes = plt.subplots(num_rows, num_cols, figsize=(8, 2), dpi = 300) 
+fig, axes = plt.subplots(num_rows, num_cols, figsize=(8, 2), dpi=300) 
 axes_flat = axes.flatten()
 for i, (index, row) in enumerate(averaged_df.iterrows()):
     avg_value = row.drop(index).mean()
     std = row.drop(index).std() / np.sqrt(len(row.drop(index)))
     diagonal_value = row[index]
-    axes_flat[i].bar(['Avg', 'Within'], [avg_value, diagonal_value], yerr = [std, np.nan], capsize = 3)
-    axes_flat[i].set_title(f"{index}", fontsize = 10)
+    axes_flat[i].errorbar(
+        [0, 1],
+        [avg_value, diagonal_value],
+        yerr=[std, np.nan],
+        fmt='o',
+        mfc='skyblue',
+        mec='black',
+        mew=1,
+        markersize=4,
+        ecolor='black',
+        elinewidth=1.2,
+        capsize=3,
+        zorder=10
+    )
+    axes_flat[i].axhline(0, color='gray', linestyle='--', linewidth=1, zorder=0)
+    axes_flat[i].set_title(f"{index}", fontsize=10)
     axes_flat[i].set_ylim(-.17, 0.53)
+    axes_flat[i].set_xticks([0, 1])
+    axes_flat[i].set_xticklabels(['Avg', 'Within'], fontsize=8)
+    axes_flat[i].set_xlim(-0.5, 1.5)
 for j in range(i+1, num_rows * num_cols):
     fig.delaxes(axes_flat[j])
 plt.tight_layout()

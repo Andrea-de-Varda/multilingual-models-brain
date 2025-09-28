@@ -123,15 +123,22 @@ unique_dep_counts = {name: len(counts) for name, counts in dependency_counts.ite
 errors = {name: bootstrap_error(list(counts.elements())) for name, counts in dependency_counts.items()}
 normalized_counts = {name: unique_dep_counts[name] / total_dep_counts[name] for name in datasets}
 
-# unique dependency types (no normalization)
 colors = sns.color_palette("muted", 4)
-plt.figure(figsize=(7 * 0.8, 3 * 0.8), dpi=300)
-x_positions = range(len(unique_dep_counts))
-bar_width = 0.6
-for i, (label, value) in enumerate(unique_dep_counts.items()):
-    plt.bar(x=i, height=value, yerr=errors[label], color=colors[i], edgecolor="black", linewidth=1.3, width=bar_width, capsize=5)
-plt.xticks(ticks=x_positions, labels=unique_dep_counts.keys(), fontsize=12)
-plt.ylabel("N° dependency types", fontsize=12)
+labels = list(unique_dep_counts.keys())
+values = list(unique_dep_counts.values())
+x = np.arange(len(labels))
+fig, ax = plt.subplots(figsize=(7 * 0.8, 3 * 0.8), dpi=300)
+for i, (lab, val) in enumerate(zip(labels, values)):
+    ax.errorbar(
+        x[i], val, yerr=errors[lab],
+        fmt='o',
+        mfc=colors[i], mec='black', mew=1.2, markersize=8,
+        ecolor='black', elinewidth=1.3, capsize=5,
+        zorder=10)
+ax.set_xticks(x)
+ax.set_xticklabels(labels, fontsize=12)
+ax.set_ylabel("N° dependency types", fontsize=12)
+ax.set_xlim(-0.5, len(labels) - 0.5)
 sns.despine()
 plt.tight_layout()
 plt.show()
