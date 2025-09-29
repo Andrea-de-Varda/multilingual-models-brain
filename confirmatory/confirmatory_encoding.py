@@ -433,132 +433,74 @@ names_formatted = ["NLLB$_{d-small}$", "NLLB$_{d-large}$", "NLLB$_{large}$", "XL
 train_names = ["control", "pereira"]
 train_names_nice = ["Tuckute 2024", "Pereira 2018"]
 colors = ["tab:red", "lightsalmon"]
-x_offsets = [-.2, .2]
+x_offsets = [-.09, .09]
 yticks = [-.5, 0, .5]
 
-# fig, axes = plt.subplots(20, 1, figsize=(10*.9, 24*.9), dpi=300)
-# for train_name, title, color, x_offset in zip(train_names, train_names_nice, colors, x_offsets):
-#     for i, model in enumerate(model_names):
-#         data = transf_results[(transf_results["condition"] == "experimental") & (transf_results["train"] == train_name) & (transf_results["model"] == model)][["language", "r_mean"]]
-#         data.index = data["language"]
-#         del data["language"]
-#         data = data.T
-#         ax = axes[i]
-        
-#         x_positions = np.arange(len(data.columns)) + x_offset  # Set x positions with offset
-#         ax.bar(x_positions, data.iloc[0], width = 0.37, color=color)
-        
-#         ax.set_xticks(np.arange(len(data.columns)))  
-#         ax.set_xticklabels(data.columns, rotation=45, ha="right")
-#         ax.set_ylim(-.5, .6)
-#         ax.set_yticks(yticks)
-#         ax.axhline(y=0, color='black',lw=2)
-#         # grid
-#         ax.xaxis.grid(False)
-#         ax.set_ylabel(names_formatted[i], rotation=0, ha='right', va='center')
-#         if i < len(axes) - 1:
-#             ax.set_xticks([])  
-#             ax.set_xticklabels([])
-#         else:
-#             ax.set_xticks(np.arange(len(data.columns)))  
-#             ax.set_xticklabels(data.columns, rotation=45, ha="right")
-# plt.suptitle('', y=.97, fontsize=26, weight="bold")
-# plt.tight_layout()
-# plt.show()
 
-# fig, axes = plt.subplots(len(model_names) + 1, 1, figsize=(10 * .9, (25.2) * .9), dpi=300)
-# for train_name, title, color, x_offset in zip(train_names, train_names_nice, colors, x_offsets):
-#     r_lang = {lang: [] for lang in transf_results["language"].unique()}
-#     # results for each model
-#     for i, model in enumerate(model_names):
-#         data = transf_results[(transf_results["condition"] == "experimental") & (transf_results["train"] == train_name) & (transf_results["model"] == model)][["language", "r_mean"]]
-#         data.index = data["language"]
-#         del data["language"]
-#         data = data.T
-#         r_lang.update({col: r_lang[col] + [data[col].iloc[0]] for col in data.columns})
-
-#         ax = axes[i]
-#         x_positions = np.arange(len(data.columns)) + x_offset
-#         ax.bar(x_positions, data.iloc[0], width=0.37, color=color)
-#         ax.set_xticks(np.arange(len(data.columns)))
-#         ax.set_xticklabels(data.columns, rotation=45, ha="right")
-#         ax.set_ylim(-.5, .6)
-#         ax.set_yticks(yticks)
-#         ax.axhline(y=0, color='black', lw=2)
-#         ax.xaxis.grid(False)
-#         ax.set_ylabel(names_formatted[i], rotation=0, ha='right', va='center')
-#         if i < len(axes) - 1:
-#             ax.set_xticks([])
-#             ax.set_xticklabels([])
-#         else:
-#             ax.set_xticks(np.arange(len(data.columns)))
-#             ax.set_xticklabels(data.columns, rotation=45, ha="right")
-    
-#     # mean encoding performance
-#     r_mean = pd.DataFrame(r_lang).mean()
-#     yerr = pd.DataFrame(r_lang).std() / np.sqrt(20)
-    
-#     # mean row at the bottom
-#     ax_mean = axes[len(model_names)]  # last subplot
-#     x_positions = np.arange(len(r_mean.index)) + x_offset
-#     ax_mean.bar(x_positions, r_mean, width=0.37, color=color)  # same color for mean
-#     plt.errorbar(x_positions, r_mean, yerr = yerr, fmt='none', capsize=5, capthick=1, color='black') 
-#     ax_mean.set_xticks(np.arange(len(r_mean.index)))
-#     ax_mean.set_xticklabels(r_mean.index, rotation=45, ha="right")
-#     ax_mean.set_ylim(-.5, .6)
-#     ax_mean.set_yticks(yticks)
-#     ax_mean.axhline(y=0, color='black', lw=2)
-#     ax_mean.xaxis.grid(False)
-#     ax_mean.set_ylabel("Average", rotation=0, ha='right', va='center')
-
-# plt.suptitle('', y=.97, fontsize=26, weight="bold")
-# plt.tight_layout()
-# plt.show()
-
-fig = plt.figure(figsize=(10 * 0.9, 25.2 * 0.9), dpi=300)
+fig = plt.figure(figsize=(6 * 0.9, 25.2 * 0.9), dpi=300)
 gs = gridspec.GridSpec(len(model_names) + 1, 1, height_ratios=[1.65] + [1] * len(model_names), hspace=0.5)
 axes = [fig.add_subplot(gs[i]) for i in range(len(model_names) + 1)]
+
+yticks = [0, 0.5]
+labels_all = transf_results["language"].unique()
+n_labels = len(labels_all)
+x_centers = np.arange(n_labels)
+
+xmin = -0.5 + min(x_offsets)
+xmax = n_labels - 0.5 + max(x_offsets)
+
 for train_name, title, color, x_offset in zip(train_names, train_names_nice, colors, x_offsets):
     r_lang = {lang: [] for lang in transf_results["language"].unique()}
-    # results for each model
     for i, model in enumerate(model_names):
         data = transf_results[
-            (transf_results["condition"] == "experimental") & 
-            (transf_results["train"] == train_name) & 
+            (transf_results["condition"] == "experimental") &
+            (transf_results["train"] == train_name) &
             (transf_results["model"] == model)
-        ][["language", "r_mean"]]
-        data.index = data["language"]
-        del data["language"]
-        data = data.T
-        r_lang.update({col: r_lang[col] + [data[col].iloc[0]] for col in data.columns})
-        # model results
-        ax = axes[i + 1]  # shift all individual model plots down by 1
-        x_positions = np.arange(len(data.columns)) + x_offset
-        ax.bar(x_positions, data.iloc[0], width=0.37, color=color)
+        ][["language", "r_mean"]].copy()
+        data = data.set_index("language").reindex(labels_all)
+        yvals = data["r_mean"].values
+        x_positions = x_centers + x_offset
+        ax = axes[i + 1]
+        ax.errorbar(
+            x_positions, yvals,
+            fmt='o',
+            mfc=color, mec='black', mew=1, markersize=6,
+            zorder=10
+        )
         ax.set_ylim(-0.5, 0.6)
         ax.set_yticks(yticks)
-        ax.axhline(y=0, color='black', lw=2)
+        ax.axhline(y=0, color='black', lw=2, zorder=0)
         ax.xaxis.grid(False)
         ax.set_ylabel(names_formatted[i], rotation=0, ha='right', va='center')
+        ax.set_xlim(xmin, xmax)
         ax.set_xticks([])
         ax.set_xticklabels([])
+        for lang, y in zip(labels_all, yvals):
+            r_lang[lang].append(y)
     r_mean = pd.DataFrame(r_lang).mean()
     yerr = pd.DataFrame(r_lang).std() / np.sqrt(len(model_names))
     ax_avg = axes[0]
-    x_positions = np.arange(len(r_mean.index)) + x_offset
-    ax_avg.bar(x_positions, r_mean, width=0.37, color=color)
-    ax_avg.errorbar(x_positions, r_mean, yerr=yerr, fmt='none', capsize=5, capthick=1, color='black')
+    x_positions = x_centers + x_offset
+    ax_avg.errorbar(
+        x_positions, r_mean.values, yerr=yerr.values,
+        fmt='o',
+        mfc=color, mec='black', mew=1, markersize=6,
+        ecolor='black', elinewidth=1.2, capsize=5,
+        zorder=10
+    )
     ax_avg.set_ylim(-0.5, 0.6)
     ax_avg.set_yticks(yticks)
-    ax_avg.axhline(y=0, color='black', lw=2)
+    ax_avg.axhline(y=0, color='black', lw=2, zorder=0)
     ax_avg.xaxis.grid(False)
     ax_avg.set_ylabel("Average", rotation=0, ha='right', va='center')
+    ax_avg.set_xlim(xmin, xmax)
     ax_avg.set_xticks([])
     ax_avg.set_xticklabels([])
-axes[-1].set_xticks(np.arange(len(r_mean.index)))
-axes[-1].set_xticklabels(r_mean.index, rotation=45, ha="right")
+axes[-1].set_xticks(x_centers)
+axes[-1].set_xticklabels(labels_all, rotation=45, ha="right")
 plt.suptitle('', y=0.97, fontsize=26, weight="bold")
 plt.tight_layout()
+plt.savefig("../plots/study2_all_langs_tuckute_pereira.svg", format="svg", bbox_inches="tight")
 plt.show()
 
 
@@ -567,51 +509,73 @@ train_names = ["main", "natstor"]
 train_names_nice = ["Study 1", "NatStor"]
 colors = ["darkslateblue", "lightsteelblue"]
 
-fig = plt.figure(figsize=(10 * 0.9, 25.2 * 0.9), dpi=300)
+fig = plt.figure(figsize=(6 * 0.9, 25.2 * 0.9), dpi=300)
 gs = gridspec.GridSpec(len(model_names) + 1, 1, height_ratios=[1.65] + [1] * len(model_names), hspace=0.5)
 axes = [fig.add_subplot(gs[i]) for i in range(len(model_names) + 1)]
+
+yticks = [0, 0.5]
+labels_all = transf_results["language"].unique()
+x_centers = np.arange(len(labels_all))
+xmin = -0.5 + min(x_offsets)
+xmax = len(labels_all) - 0.5 + max(x_offsets)
 for train_name, title, color, x_offset in zip(train_names, train_names_nice, colors, x_offsets):
-    r_lang = {lang: [] for lang in transf_results["language"].unique()}
-    # results for each model
+    r_lang = {lang: [] for lang in labels_all}
     for i, model in enumerate(model_names):
         data = transf_results[
-            (transf_results["condition"] == "experimental") & 
-            (transf_results["train"] == train_name) & 
+            (transf_results["condition"] == "experimental") &
+            (transf_results["train"] == train_name) &
             (transf_results["model"] == model)
-        ][["language", "r_mean"]]
-        data.index = data["language"]
-        del data["language"]
-        data = data.T
-        r_lang.update({col: r_lang[col] + [data[col].iloc[0]] for col in data.columns})
-        # model results
-        ax = axes[i + 1]  # shift all individual model plots down by 1
-        x_positions = np.arange(len(data.columns)) + x_offset
-        ax.bar(x_positions, data.iloc[0], width=0.37, color=color)
+        ][["language", "r_mean"]].copy()
+        data = data.set_index("language").reindex(labels_all)
+        yvals = data["r_mean"].values
+        x_positions = x_centers + x_offset
+        mask = ~np.isnan(yvals)
+        ax = axes[i + 1]
+        ax.errorbar(
+            x_positions[mask], yvals[mask],
+            fmt='o',
+            mfc=color, mec='black', mew=1, markersize=6,
+            zorder=10
+        )
         ax.set_ylim(-0.5, 0.6)
         ax.set_yticks(yticks)
-        ax.axhline(y=0, color='black', lw=2)
+        ax.axhline(y=0, color='black', lw=2, zorder=0)
         ax.xaxis.grid(False)
         ax.set_ylabel(names_formatted[i], rotation=0, ha='right', va='center')
+        ax.set_xlim(xmin, xmax)
         ax.set_xticks([])
         ax.set_xticklabels([])
-    r_mean = pd.DataFrame(r_lang).mean()
-    yerr = pd.DataFrame(r_lang).std() / np.sqrt(len(model_names))
+        for lang, y, keep in zip(labels_all, yvals, mask):
+            if keep:
+                r_lang[lang].append(y)
+    r_df = pd.DataFrame(r_lang)
+    r_mean = r_df.mean()
+    yerr = r_df.std() / np.sqrt(r_df.count())
     ax_avg = axes[0]
-    x_positions = np.arange(len(r_mean.index)) + x_offset
-    ax_avg.bar(x_positions, r_mean, width=0.37, color=color)
-    ax_avg.errorbar(x_positions, r_mean, yerr=yerr, fmt='none', capsize=5, capthick=1, color='black')
+    x_positions = x_centers + x_offset
+    mask_avg = ~r_mean.isna().values
+    ax_avg.errorbar(
+        x_positions[mask_avg], r_mean.values[mask_avg], yerr=yerr.values[mask_avg],
+        fmt='o',
+        mfc=color, mec='black', mew=1, markersize=6,
+        ecolor='black', elinewidth=1.2, capsize=5,
+        zorder=10
+    )
     ax_avg.set_ylim(-0.5, 0.6)
     ax_avg.set_yticks(yticks)
-    ax_avg.axhline(y=0, color='black', lw=2)
+    ax_avg.axhline(y=0, color='black', lw=2, zorder=0)
     ax_avg.xaxis.grid(False)
     ax_avg.set_ylabel("Average", rotation=0, ha='right', va='center')
+    ax_avg.set_xlim(xmin, xmax)
     ax_avg.set_xticks([])
     ax_avg.set_xticklabels([])
-axes[-1].set_xticks(np.arange(len(r_mean.index)))
-axes[-1].set_xticklabels(r_mean.index, rotation=45, ha="right")
+axes[-1].set_xticks(x_centers)
+axes[-1].set_xticklabels(labels_all, rotation=45, ha="right")
 plt.suptitle('', y=0.97, fontsize=26, weight="bold")
 plt.tight_layout()
+plt.savefig("../plots/study2_all_langs_natstor_study1.svg", format="svg", bbox_inches="tight")
 plt.show()
+
 
 # combined_df = combined_df[['train', 'model', 'r', 'SE', 'p', 'sig']]
 # main = combined_df[combined_df["train"] == "main"]

@@ -9,7 +9,6 @@ from sklearn.linear_model import RidgeCV
 from sklearn.model_selection import KFold
 from tqdm import tqdm
 from scipy.stats import pearsonr, norm
-from math import sqrt
 from time import sleep
 import seaborn as sns
 from adjustText import adjust_text
@@ -23,11 +22,11 @@ import seaborn as sns
 import copy
 import itertools
 import sys
+sys.modules['numpy._core.numeric'] = np.core.numeric
+
 import matplotlib as mpl
 mpl.rcParams['svg.fonttype'] = 'none'
 mpl.rcParams['font.family'] = 'DejaVu Sans'
-
-sys.modules['numpy._core.numeric'] = np.core.numeric
 
 chdir("/home/dev/Documents/PhD/Alice")
 
@@ -51,35 +50,23 @@ def patched_load(path):
     with open(path, 'rb') as f:
         return pickle.load(f)
 
-def load(model_prefix, froi="all", monol=False, split_context=False, random=False, md=False, rh=False, native=False, multitrain=True):
-    #print(model_prefix)
-    if monol:
-        if split_context:
-            filename = f"results/monolingual_{model_prefix}_{froi}_SPLIT"
-        elif md:
-            filename = f"results/monolingual_md_{model_prefix}_{froi}"
-        elif rh:
-            filename = f"results/monolingual_rh_{model_prefix}_{froi}"
-        elif random:
-            filename = f"results/monolingual_{model_prefix}_{froi}_circshift"
-        elif native:
-            filename = f"results/monolingual_native_{model_prefix}_{froi}"
-        else:
-            filename = f"results/monolingual_{model_prefix}_{froi}"
+def load(model_prefix, froi="all", monol=True, split_context=False, random=False, md=False, rh=False, native = False):
+    if not monol:
+        raise ValueError('No multilingual sequential split')
+
+    if split_context:
+        filename = f"results/monolingual_{model_prefix}_{froi}_SPLIT"
+    elif md:
+        filename = f"results/monolingual_md_{model_prefix}_{froi}"
+    elif rh:
+        filename = f"results/monolingual_rh_{model_prefix}_{froi}"
+    elif random:
+        filename = f"results/monolingual_{model_prefix}_{froi}_circshift"
+    elif native:
+        filename = f"results/monolingual_native_{model_prefix}_{froi}"
     else:
-        mtpfx = "multitrain_" if multitrain else ""
-        if split_context:
-            filename = f"results/multilingual_{mtpfx}{model_prefix}_{froi}_SPLIT"
-        elif md:
-            filename = f"results/multilingual_{mtpfx}md_{model_prefix}_{froi}"
-        elif rh:
-            filename = f"results/multilingual_{mtpfx}rh_{model_prefix}_{froi}"
-        elif random:
-            filename = f"results/multilingual_{mtpfx}{model_prefix}_{froi}_circshift"
-        elif native:
-            filename = f"results/multilingual_{mtpfx}native_{model_prefix}_{froi}"
-        else:
-            filename = f"results/multilingual_{mtpfx}{model_prefix}_{froi}"
+        filename = f"results/monolingual_{model_prefix}_{froi}"
+    #print("Loading:", filename)
     return patched_load(filename)
 
 def find_median_index(lst):
@@ -91,11 +78,11 @@ def find_median_index(lst):
         median = sorted_lst[mid_point - 1]
     return lst.index(median)
 
-def get_best_layerwise(res_dict, colname = "r", give_mean = True, give_all = False):
+def get_best_layerwise(res_dict, colname = "m", give_mean = True, give_all = False):
     mean_results = [value[colname].mean() for key, value in res_dict.items()]
     sd_results   = [value[colname].std() for key, value in res_dict.items()]
     idx_max = np.argmax(mean_results)
-    #print(f"Best layer is {idx_max}")
+    print(f"Best layer is {idx_max}")
     if give_all:
         best = res_dict[idx_max][colname].tolist()
     else:
@@ -105,7 +92,7 @@ def get_best_layerwise(res_dict, colname = "r", give_mean = True, give_all = Fal
             best = sd_results[idx_max] # so the SD is the cross-lingual variation for the best layer
     return best
 
-def get_median_layerwise(res_dict, colname = "r", give_mean = True, give_all = False):
+def get_median_layerwise(res_dict, colname = "m", give_mean = True, give_all = False):
     mean_results = [value[colname].mean() for key, value in res_dict.items()]
     sd_results   = [value[colname].std() for key, value in res_dict.items()]
     idx_median = find_median_index(mean_results)
@@ -223,9 +210,8 @@ def compute_significance_for_froi(froi, model_names):
     p_values = add_significance_asterisks(p_values)
     return pd.DataFrame(p_values, columns=["model", "p", "asterisk"])
 
-###########################
-# barplot with best layer #
-###########################
+###############################################################################
+###############################################################################
 
 all_best_layers = {}
 all_p_values = {}
@@ -248,11 +234,6 @@ for froi in frois:
     best_layer["Std_Error"] = best_layer["sd"] / np.sqrt(best_layer["n"])
     all_best_layers[froi] = best_layer
     all_p_values[froi] = p_df
-    
-for k, v in all_best_layers.items():
-    print("\n\n", k)
-    print(v[['Model', 'Family', 'Score', 'Std_Error',  'p', 'asterisk']])
-    print("Avg encoding performance: ", v["Score"].mean())
 
 #########################
 # DEFINITIVE FINAL PLOT #
@@ -306,6 +287,19 @@ for froi in frois:
         ax.plot(pos, row['Score'], marker=froi_markers[froi], 
                 color=palette_d[row['Family']], markersize=9, alpha=0.4, lw=0)
 
+def add_bracket(ax, pos1, pos2, text, y_offset=0.05, weight="normal"):
+    mid = (pos1 + pos2) / 2
+    y = max(df_main['Score']) + y_offset
+    ax.plot([pos1, pos1, pos2, pos2], [y, y + 0.02, y + 0.02, y], color='black', lw=2)
+    ax.text(mid, y + 0.03, text, ha='center', va='bottom', fontsize=19, weight=weight)
+
+add_bracket(ax, bar_positions[0], bar_positions[2], 'translation', y_offset=-.07)
+add_bracket(ax, bar_positions[3], bar_positions[5], 'contrastive', y_offset=.02)
+add_bracket(ax, bar_positions[0], bar_positions[5], 'explicit', y_offset=.12, weight="bold")
+add_bracket(ax, bar_positions[6], bar_positions[11], 'masked LM', y_offset=-.03)
+add_bracket(ax, bar_positions[12], bar_positions[14], 'span corr.', y_offset=-.09)
+add_bracket(ax, bar_positions[15], bar_positions[19], 'causal LM', y_offset=.12)
+add_bracket(ax, bar_positions[6], bar_positions[19], 'implicit', y_offset=.21, weight="bold")
 ax.grid(axis='y', linestyle='--', linewidth=1.5, alpha=0.3)
 plt.title(title, fontsize=30, weight='bold', pad=20)
 plt.xlabel('Model', fontsize=27, labelpad=20)
@@ -315,15 +309,29 @@ plt.xticks(bar_positions, labels=df_main["Model"], rotation=45, ha='right', font
 plt.yticks([.1, .2, .3, .4, .5, .6, .7], fontsize=23)
 sns.despine()
 plt.tight_layout(rect=[0, 0, 0.85, 1])
-plt.savefig("plots/multi_multitrain.svg", format="svg", bbox_inches="tight")
+plt.savefig("plots/mono.svg", format="svg", bbox_inches="tight")
 plt.show()
 
-#####################
-##########################################################
-###############################################################################
+
+# legend
+import matplotlib.lines as mlines
+custom_order = ['Lang_LH_IFGorb', 'Lang_LH_IFG', 'Lang_LH_MFG', 'Lang_LH_AntTemp', 'Lang_LH_PostTemp']
+handles = [
+    mlines.Line2D([], [], marker=froi_markers[froi], color='gray', linestyle='None',
+                  markersize=10, label=froi[8:])
+    for froi in custom_order
+]
+fig, ax = plt.subplots(figsize=(2, 1), dpi=300)
+ax.axis('off')
+legend = ax.legend(handles=handles, loc='center', frameon=False, ncol=5, fontsize=13, handletextpad=0.5)
+plt.tight_layout()
+plt.savefig("plots/fROI_legend_multicol.svg", format="svg", bbox_inches="tight")
+plt.show()
+
+
 ###############################################################################
 
-colname = "r"
+colname = "m"
 sequential = True # change accordingly
 out_dfs = []
 for modelname in model_names:
@@ -374,7 +382,7 @@ for i, model_class in enumerate(class_order):
     ax.tick_params(axis='y', labelsize=20)
     ax.set_ylabel('')
     ax.set_xlim([group_data['l'].min()-.02, group_data['l'].max()+.02])
-    ax.set_ylim(-.05, .25)
+    ax.set_ylim(-.05, .40)
     ax.get_legend().remove()
 fig.text(0.56, 0.04, 'Layer position', ha='center', va='center', fontsize=23)
 fig.text(0.04, 0.5, 'R', ha='center', va='center', rotation='vertical', fontsize=23)
@@ -389,146 +397,151 @@ plt.show()
 # Encoding results by language #
 ################################
 
-colname = "r"
+colname = "m"
 sequential = True
-r_lang = {lang : [] for lang in langs}
+r_lang = {lang: [] for lang in langs}
 for model in model_names:
     res_dict = load(model)
-    # first selecting best layer
-    mean_results = [value[colname].mean() for key, value in res_dict.items()]
+    mean_results = [value[colname].mean() for _, value in res_dict.items()]
     idx_max = np.argmax(mean_results)
     df = res_dict[idx_max]
     for lang in langs:
         try:
-            therow = df[df.target_lang == lang]
+            therow = df[df.lang == lang]
             r = therow.values[0][1]
-            #sd = therow.values[0][2]
             r_lang[lang].append(r)
-            #sd_lang[lang].append(sd)
-        except IndexError: # xglm models miss some languages
+        except IndexError:
             r_lang[lang].append(0)
-            #sd_lang[lang].append(0)
 
 data = pd.DataFrame(r_lang)
 
-# fig, axes = plt.subplots(20, 1, figsize=(10*.9, 24*.9), dpi=300)
-# yticks = [0, .5, 1]
-# for i, ax in enumerate(axes):
-#     ax.bar(data.columns, data.iloc[i], color='indianred')#, yerr=data1.iloc[i])
-#     for j, value in enumerate(data.iloc[i]):
-#         if value == 0:
-#             ax.text(j, 0, 'NA', ha='center', va='bottom', fontsize=15, color='black')
-#     ax.set_ylim(-.45, 1)
-#     ax.set_yticks(yticks)  # Set the y-ticks to [0, 0.3, 0.6, 1]
-#     ax.axhline(y=0, color='black',lw=2)
-#     # grid
-#     ax.xaxis.grid(False)
-#     ax.set_ylabel(names_formatted[i], rotation=0, ha='right', va='center')
-#     if i < len(axes) - 1:
-#         ax.set_xticklabels([])  # Hide x-tick labels
-#     else:
-#         ax.set_xticklabels([lang_dict[l] for l in data.columns], rotation=45, ha="right")
-# plt.suptitle('', y=.97, fontsize=26, weight="bold")
-# plt.tight_layout()
-# plt.show()
-
-# mean and SE
 data.loc['Mean'] = data.replace(0, np.nan).mean()
 y_err = data.replace(0, np.nan).std() / np.sqrt(20)
-data = pd.concat([data.loc[['Mean']], data.drop('Mean')]) # move mean row to the top
+data = pd.concat([data.loc[['Mean']], data.drop('Mean')])
 
 fig_height = (24 + 1.2) * 0.9
-fig_width = 10 * 0.9
+fig_width = 6 * 0.9
 fig = plt.figure(figsize=(fig_width, fig_height), dpi=300)
-gs = gridspec.GridSpec(len(data), 1, height_ratios=[1.5] + [1] * (len(data) - 1), hspace=0.5) # first row taller
-yticks = [0, 0.5, 1]
+gs = gridspec.GridSpec(len(data), 1, height_ratios=[1.5] + [1] * (len(data) - 1), hspace=0.5)
 axes = [fig.add_subplot(gs[i]) for i in range(len(data))]
+labels = list(data.columns)
+x = np.arange(len(labels))
+yticks = [0, 0.5, 1]
+
 for i, ax in enumerate(axes):
-    bar_color = 'steelblue' if i == 0 else 'indianred'  # mean row is blue, others are red
-    ax.bar(data.columns, data.iloc[i], color=bar_color)
-    for j, value in enumerate(data.iloc[i]):
+    color = 'steelblue' if i == 0 else 'indianred'
+    vals = data.iloc[i].values
+    mask = vals != 0
+    if i == 0:
+        ax.errorbar(
+            x[mask], vals[mask], yerr=y_err.values[mask],
+            fmt='o', mfc=color, mec='black', mew=1, markersize=8,
+            ecolor='black', elinewidth=1.2, capsize=5, zorder=10
+        )
+    else:
+        ax.errorbar(
+            x[mask], vals[mask],
+            fmt='o', mfc=color, mec='black', mew=1, markersize=8,
+            zorder=10
+        )
+    for j, value in enumerate(data.iloc[i].values):
         if value == 0:
-            ax.text(j, 0, 'NA', ha='center', va='bottom', fontsize=15, color='black')
+            ax.text(x[j], 0, 'NA', ha='center', va='bottom', fontsize=13, color='black')
+
+    ax.axhline(0, color='black', lw=2, zorder=0)
     ax.set_ylim(-0.45, 1)
     ax.set_yticks(yticks)
-    ax.axhline(y=0, color='black', lw=2)
-    ax.xaxis.grid(False)
+    ax.set_xlim(-0.5, len(labels) - 0.5)
+    ax.set_xticks(x)
     if i == 0:
-        ax.errorbar(data.columns, data.iloc[i], yerr=y_err, fmt='none', capsize=5, capthick=1, color='black') # add error bars to mean row
         ax.set_ylabel('Average', rotation=0, ha='right', va='center')
         ax.set_xticklabels([])
     else:
         ax.set_ylabel(names_formatted[i - 1], rotation=0, ha='right', va='center')
         ax.set_xticklabels([])
-axes[-1].set_xticklabels([lang_dict[l] for l in data.columns], rotation=45, ha="right")
+axes[-1].set_xticks(x)
+axes[-1].set_xticklabels([lang_dict[l] for l in labels], rotation=45, ha="right")
 plt.suptitle('', y=0.97, fontsize=26, weight="bold")
 plt.tight_layout()
-plt.savefig("plots/all_languages_multi.svg", format="svg", bbox_inches="tight")
+plt.savefig("plots/all_languages_mono.svg", format="svg", bbox_inches="tight")
 plt.show()
 
-#############
-# SPLIT-CTX #
-#############
+###############################################################################
+###############################################################################
+###############################################################################
+
+# SPLIT CONTEXT
 
 all_best_layers_split = {}
 for froi in frois+["all"]:
-    print(f"Loading fROI {froi}")
-    best_split  = [get_best_layerwise(load(m, froi=froi, monol=False, split_context=True,  multitrain=True), colname="r") for m in model_names]
-    best_split_sd = [get_best_layerwise(load(m, froi=froi, monol=False, split_context=True,  multitrain=True), colname="r", give_mean=False) for m in model_names]
-    df_split = pd.DataFrame({
-        'Model': names_formatted,
-        'Score': best_split,
+    best_monol_sc    = [get_best_layerwise(load(model, froi=froi, split_context=True)) for model in model_names]
+    best_monol_sd_sc = [get_best_layerwise(load(model, froi=froi, split_context=True), give_mean=False) for model in model_names]
+    best_layer_sc = pd.DataFrame({
+        'Model':  names_formatted,
+        'Score':  best_monol_sc,
         'Family': model_family,
-        'sd'   : best_split_sd,
-        'n'    : n_langs
+        'sd':     best_monol_sd_sc,
+        'n':      n_langs
     })
-    df_split["Std_Error"] = df_split["sd"] / np.sqrt(df_split["n"])
-    all_best_layers_split[froi] = df_split
+    best_layer_sc["Std_Error"] = best_layer_sc["sd"] / np.sqrt(best_layer_sc["n"])
+    all_best_layers_split[froi] = best_layer_sc
     
 for k, v in all_best_layers_split.items():
     print("\n\n", k)
     print(v[['Model', 'Family', 'Score', 'Std_Error']])
     print("Avg encoding performance: ", v["Score"].mean())
 
-df_main_split = all_best_layers_split["all"]
-df_ref_std    = all_best_layers["all"]
+best_layer_std_all = all_best_layers["all"].copy()
+best_layer_std_all["color"] = best_layer_std_all["Family"].map(palette_d)
+
+split_per_froi = {f: all_best_layers_split[f].copy() for f in froi_markers.keys()}
+split_all      = all_best_layers_split["all"].copy()
+for f in split_per_froi:
+    split_per_froi[f]["color"] = split_per_froi[f]["Family"].map(palette_d)
+split_all["color"] = split_all["Family"].map(palette_d)
 
 plt.figure(figsize=(24*.7, 11.5*.7), dpi=300)
 sns.set_context("talk")
-df_main_split["color"] = df_main_split["Family"].map(palette_d)
-bar_positions = [1,2,3,
-                 4.5, 5.5, 6.5,
-                 9, 10, 11, 12, 13, 14, 15.5, 16.5, 17.5, 19, 20, 21, 22, 23]
 ax = plt.gca()
 for i, pos in enumerate(bar_positions):
-    yref = df_ref_std.iloc[i]['Score']
-    ax.hlines(y=yref, xmin=pos-0.3, xmax=pos+0.3, colors='black',
-              linestyles=(0, (1, 1)), linewidth=2, zorder=1)
+    row = best_layer_std_all.iloc[i]
+    ax.hlines(
+        y=row['Score'],
+        xmin=pos - 0.3, xmax=pos + 0.3,
+        colors='black', linestyles=(0, (1, 1)), linewidth=2, zorder=1
+    )
+for froi, marker in froi_markers.items():
+    df = split_per_froi[froi]
+    for i, pos in enumerate(bar_positions):
+        row = df.iloc[i]
+        err = row['sd'] / np.sqrt(row['n'])
+        ax.errorbar(
+            pos, row['Score'], yerr=err,
+            fmt=marker, markersize=9, lw=0, capsize=4,
+            color=row['color'], alpha=0.5, zorder=2
+        )
+
 for i, pos in enumerate(bar_positions):
-    row = df_main_split.iloc[i]
+    row = split_all.iloc[i]
     err = row['sd'] / np.sqrt(row['n'])
-    ax.errorbar(pos, row['Score'], yerr=err, fmt='o', color=row['color'],
-                markersize=16, alpha=0.9, lw=3, capsize=5, zorder=3)
-for froi in frois:
-    if froi != "all":
-        df = all_best_layers_split[froi]
-        for i, pos in enumerate(bar_positions):
-            row = df.iloc[i]
-            ax.plot(pos, row['Score'],
-                    marker=froi_markers[froi],
-                    color=palette_d[row['Family']],
-                    markersize=9, alpha=0.4, lw=0, zorder=2)
-ax.grid(axis='y', linestyle='--', linewidth=1.5, alpha=0.3)
+    ax.errorbar(
+        pos, row['Score'], yerr=err,
+        fmt='o', markersize=14, lw=3, capsize=5,
+        color=row['color'], alpha=0.95, zorder=3
+    )
+plt.title("", fontsize=30, weight='bold', pad=20)
 plt.xlabel('Model', fontsize=27, labelpad=20)
 plt.ylabel('R', fontsize=27, labelpad=20)
-plt.ylim(ylimstart, ylim)
-plt.xticks(bar_positions, labels=df_main_split["Model"], rotation=45, ha='right', fontsize=22)
+plt.ylim(0, 0.75)
+plt.xticks(bar_positions, labels=best_layer_std_all["Model"], rotation=45, ha='right', fontsize=22)
 plt.yticks([.1, .2, .3, .4, .5, .6, .7], fontsize=23)
+ax.grid(axis='y', linestyle='--', linewidth=1.5, alpha=0.3)
 sns.despine()
 plt.tight_layout(rect=[0, 0, 0.85, 1])
-plt.savefig("plots/split_context_vs_standard_across.svg", format="svg", bbox_inches="tight")
+plt.savefig("plots/split_context_vs_standard_within.svg", format="svg", bbox_inches="tight")
 plt.show()
 
+###############################################################################
 ###############################################################################
 
 # spatial DISTRIBUTION
@@ -540,6 +553,14 @@ for froi in ['Lang_RH_AntTemp', 'Lang_RH_IFG', 'Lang_RH_IFGorb', 'Lang_RH_MFG', 
     se = np.std(best_monol) / np.sqrt(len(best_monol))
     spatial_results.append({"froi" : froi, "network" : "RH", "r" : mean_r, "se" : se, "all_points" : best_monol})
     
+# spatial_results = []
+# for froi in ['Lang_LH_AntTemp', 'Lang_LH_IFG', 'Lang_LH_IFGorb', 'Lang_LH_MFG', 'Lang_LH_PostTemp', 'all']:
+#     best_monol = [get_best_layerwise(load(model, froi = froi, native = True)) for model in model_names]
+#     mean_r = np.mean(best_monol)
+#     se = np.std(best_monol) / np.sqrt(len(best_monol))
+#     froi = re.sub("Lang_LH_", "native_", froi)
+#     spatial_results.append({"froi" : froi, "network" : "RH", "r" : mean_r, "se" : se, "all_points" : best_monol})
+    
 for froi in ['Lang_LH_AntTemp', 'Lang_LH_IFG', 'Lang_LH_IFGorb', 'Lang_LH_MFG', 'Lang_LH_PostTemp', 'all']:
     best_monol = [get_best_layerwise(load(model, froi = froi)) for model in model_names]
     mean_r = np.mean(best_monol)
@@ -547,84 +568,12 @@ for froi in ['Lang_LH_AntTemp', 'Lang_LH_IFG', 'Lang_LH_IFGorb', 'Lang_LH_MFG', 
     spatial_results.append({"froi" : froi, "network" : "LH", "r" : mean_r, "se" : se, "all_points" : best_monol})
     
 for froi in ['MD_LH_Precentral_A_PrecG', 'MD_LH_Precentral_B_IFGop', 'MD_LH_antParietal', 'MD_LH_insula', 'MD_LH_medialFrontal', 'MD_LH_midFrontal', 'MD_LH_midFrontalOrb', 'MD_LH_midParietal', 'MD_LH_postParietal', 'MD_LH_supFrontal', 'MD_RH_Precentral_A_PrecG', 'MD_RH_Precentral_B_IFGop', 'MD_RH_antParietal', 'MD_RH_insula', 'MD_RH_medialFrontal', 'MD_RH_midFrontal', 'MD_RH_midFrontalOrb', 'MD_RH_midParietal', 'MD_RH_postParietal', 'MD_RH_supFrontal', 'all']:
-    best_monol = []
-    for model in model_names:
-        best_monol.append(get_best_layerwise(load(model, froi = froi, md=True)))
+    best_monol = [get_best_layerwise(load(model, froi = froi, md=True)) for model in model_names]
     mean_r = np.mean(best_monol)
     se = np.std(best_monol) / np.sqrt(len(best_monol))
     spatial_results.append({"froi" : froi, "network" : "MD", "r" : mean_r, "se" : se, "all_points" : best_monol})
     
 spatial_results = pd.DataFrame(spatial_results)
-
-# same order as monolingual!! SO I can recycle axes in multiplot panel
-
-pos_map = {'LH|all': 0.0,
- 'LH|Lang_LH_PostTemp': 1.2,
- 'LH|Lang_LH_AntTemp': 2.4,
- 'LH|Lang_LH_MFG': 3.5999999999999996,
- 'LH|Lang_LH_IFG': 4.8,
- 'LH|Lang_LH_IFGorb': 6.0,
- 'RH|all': 8.2,
- 'RH|Lang_RH_PostTemp': 9.399999999999999,
- 'RH|Lang_RH_AntTemp': 10.599999999999998,
- 'RH|Lang_RH_MFG': 11.799999999999997,
- 'RH|Lang_RH_IFG': 12.999999999999996,
- 'RH|Lang_RH_IFGorb': 14.199999999999996,
- 'MD|all': 16.399999999999995,
- 'MD|MD_RH_Precentral_A_PrecG': 17.599999999999994,
- 'MD|MD_RH_midFrontal': 18.799999999999994,
- 'MD|MD_RH_midFrontalOrb': 19.999999999999993,
- 'MD|MD_RH_Precentral_B_IFGop': 21.199999999999992,
- 'MD|MD_LH_midFrontal': 22.39999999999999,
- 'MD|MD_LH_medialFrontal': 23.59999999999999,
- 'MD|MD_LH_midFrontalOrb': 24.79999999999999,
- 'MD|MD_RH_supFrontal': 25.99999999999999,
- 'MD|MD_LH_Precentral_B_IFGop': 27.19999999999999,
- 'MD|MD_RH_medialFrontal': 28.399999999999988,
- 'MD|MD_RH_postParietal': 29.599999999999987,
- 'MD|MD_RH_midParietal': 30.799999999999986,
- 'MD|MD_RH_antParietal': 31.999999999999986,
- 'MD|MD_LH_postParietal': 33.19999999999999,
- 'MD|MD_LH_supFrontal': 34.39999999999999,
- 'MD|MD_LH_Precentral_A_PrecG': 35.599999999999994,
- 'MD|MD_LH_insula': 36.8,
- 'MD|MD_RH_insula': 38.0,
- 'MD|MD_LH_midParietal': 39.2,
- 'MD|MD_LH_antParietal': 40.400000000000006}
-
-label_map = {'LH|all': 'All',
- 'LH|Lang_LH_PostTemp': 'PostTemp',
- 'LH|Lang_LH_AntTemp': 'AntTemp',
- 'LH|Lang_LH_MFG': 'MFG',
- 'LH|Lang_LH_IFG': 'IFG',
- 'LH|Lang_LH_IFGorb': 'IFGorb',
- 'RH|all': 'All',
- 'RH|Lang_RH_PostTemp': 'PostTemp',
- 'RH|Lang_RH_AntTemp': 'AntTemp',
- 'RH|Lang_RH_MFG': 'MFG',
- 'RH|Lang_RH_IFG': 'IFG',
- 'RH|Lang_RH_IFGorb': 'IFGorb',
- 'MD|all': 'All',
- 'MD|MD_RH_Precentral_A_PrecG': 'Precentral',
- 'MD|MD_RH_midFrontal': 'midFrontal',
- 'MD|MD_RH_midFrontalOrb': 'midFrontalOrb',
- 'MD|MD_RH_Precentral_B_IFGop': 'Precentral',
- 'MD|MD_LH_midFrontal': 'midFrontal',
- 'MD|MD_LH_medialFrontal': 'medialFrontal',
- 'MD|MD_LH_midFrontalOrb': 'midFrontalOrb',
- 'MD|MD_RH_supFrontal': 'supFrontal',
- 'MD|MD_LH_Precentral_B_IFGop': 'Precentral',
- 'MD|MD_RH_medialFrontal': 'medialFrontal',
- 'MD|MD_RH_postParietal': 'postParietal',
- 'MD|MD_RH_midParietal': 'midParietal',
- 'MD|MD_RH_antParietal': 'antParietal',
- 'MD|MD_LH_postParietal': 'postParietal',
- 'MD|MD_LH_supFrontal': 'supFrontal',
- 'MD|MD_LH_Precentral_A_PrecG': 'Precentral',
- 'MD|MD_LH_insula': 'insula',
- 'MD|MD_RH_insula': 'insula',
- 'MD|MD_LH_midParietal': 'midParietal',
- 'MD|MD_LH_antParietal': 'antParietal'}
 
 df = spatial_results.copy()
 df['short_label'] = df['froi'].str.replace(r'^(Lang|MD)_[LR]H_', '', regex=True)
@@ -633,13 +582,27 @@ df['short_label'] = df['short_label'].replace('all', 'All')
 df['group_order'] = df['network'].map({'LH': 0, 'RH': 1, 'MD': 2})
 df['is_all'] = (df['short_label'] == 'All').astype(int)
 
-# order from monol
-df['key']         = df['network'] + '|' + df['froi']
-df['pos']         = df['key'].map(pos_map)
-df['short_label'] = df['key'].map(label_map)
-df_sorted         = (df.dropna(subset=['pos']).sort_values('pos').reset_index(drop=True))
-print(df_sorted[df_sorted["network"] == "MD"]["r"].mean())
-print(df_sorted[df_sorted["network"] == "LH"]["r"].min())
+lang_order = list(reversed(['IFGorb', 'IFG', 'MFG', 'AntTemp', 'PostTemp']))
+df['lang_cat'] = pd.Categorical(
+    df['short_label'],
+    categories=['All'] + lang_order,
+    ordered=True
+)
+
+group_order = ['LH', 'RH', 'MD']
+
+df_sorted = pd.concat([
+    pd.concat([
+        g[g['is_all'] == 1],
+        (
+            g[g['is_all'] == 0].sort_values('lang_cat', ascending=True)
+            if net in ('LH', 'RH')
+            else g[g['is_all'] == 0].sort_values('r', ascending=False)
+        )
+    ])
+    for net in group_order
+    for _, g in df.groupby('network') if _ == net
+], ignore_index=True)
 
 spacing = 1.2
 positions = []
@@ -677,18 +640,18 @@ ax.errorbar(df_sorted['pos'], df_sorted['r'], yerr=df_sorted['se'],
 for i, row in df_sorted.iterrows():
     ax.plot(row['pos'], row['r'], 'o', color=row['color'], markersize=11, alpha=0.85, zorder=4)
 
-# # Brackets
-# def add_bracket(ax, start_pos, end_pos, label, y_offset=0.01, weight='normal'):
-#     mid = (start_pos + end_pos) / 2
-#     y = df_sorted['r'].max() + y_offset
-#     ax.plot([start_pos, start_pos, end_pos, end_pos],
-#             [y, y + 0.01, y + 0.01, y], color='black', lw=1.5)
-#     ax.text(mid, y + 0.015, label, ha='center', va='bottom', fontsize=14, weight=weight)
+# Brackets
+def add_bracket(ax, start_pos, end_pos, label, y_offset=0.01, weight='normal'):
+    mid = (start_pos + end_pos) / 2
+    y = df_sorted['r'].max() + y_offset
+    ax.plot([start_pos, start_pos, end_pos, end_pos],
+            [y, y + 0.01, y + 0.01, y], color='black', lw=1.5)
+    ax.text(mid, y + 0.015, label, ha='center', va='bottom', fontsize=14, weight=weight)
 
-# add_bracket(ax, group_indices['LH'][0], group_indices['RH'][-1], 'Language', y_offset=0.3, weight='bold')
-# add_bracket(ax, group_indices['LH'][0], group_indices['LH'][-1], 'Left hem.', y_offset=0.2)
-# add_bracket(ax, group_indices['RH'][0], group_indices['RH'][-1], 'Right hem.', y_offset=0.2)
-# add_bracket(ax, group_indices['MD'][0], group_indices['MD'][-1], 'MD network', y_offset=0.2, weight='bold')
+add_bracket(ax, group_indices['LH'][0], group_indices['RH'][-1], 'Language', y_offset=0.3, weight='bold')
+add_bracket(ax, group_indices['LH'][0], group_indices['LH'][-1], 'Left hem.', y_offset=0.2)
+add_bracket(ax, group_indices['RH'][0], group_indices['RH'][-1], 'Right hem.', y_offset=0.2)
+add_bracket(ax, group_indices['MD'][0], group_indices['MD'][-1], 'MD network', y_offset=0.2, weight='bold')
 
 ax.set_xticks(df_sorted['pos'])
 ax.set_xticklabels(tick_labels, rotation=45, ha='right', fontsize=12)
@@ -698,46 +661,10 @@ plt.yticks(fontsize=12)
 plt.ylim(-.05, .55)
 sns.despine()
 plt.tight_layout()
-plt.savefig("plots/spatial_specificity_multi.svg", format="svg", bbox_inches="tight")
+plt.savefig("plots/spatial_specificity_mono.svg", format="svg", bbox_inches="tight")
 plt.show()
 
-##########################
-# Save all data together #
-##########################
-
-best_mono = [get_best_layerwise(load(model, monol = True), colname="m") for model in model_names]
-best_mono_sd = [get_best_layerwise(load(model, monol = True), colname="m", give_mean = False) for model in model_names]
-
-best_layer_mono = pd.DataFrame({
-    'Model': names_formatted,
-    'Score': best_mono,
-    'sd' : best_mono_sd
-})
-
-mono_multi = pd.merge(best_layer_mono, best_layer, on = "Model", suffixes = ["_mono", "_multi"])
-mono_multi["se_mono"] = mono_multi["sd_mono"] / np.sqrt(mono_multi["n"])
-mono_multi["se_multi"] = mono_multi["sd_multi"] / np.sqrt(mono_multi["n"])
-mono_multi["color"] = mono_multi["Family"].map(palette_d)
-mono_multi.to_csv("results/mono_multi.csv", index=False)
-
-##############################
-# compare native vs. english #
-##############################
-
-compare_native = []
-for model in model_names:
-    native = get_best_layerwise(load(model, native = True, multitrain = True), give_all = False)
-    english = get_best_layerwise(load(model, native = False, multitrain = True), give_all = False)
-    compare_native.append({"model" : model, "native" : native, "english" : english})
-compare_native = pd.DataFrame(compare_native)
-print(compare_native[["native", "english"]].mean())
-print(pearsonr(compare_native["native"], compare_native["english"]))
-
-compare_native_monol = []
-for model in model_names:
-    native = get_best_layerwise(load(model, native = True, monol = True), give_all = False, colname = "m")
-    english = get_best_layerwise(load(model, native = False, monol = True), give_all = False, colname = "m")
-    compare_native_monol.append({"model" : model, "native" : native, "english" : english})
-compare_native_monol = pd.DataFrame(compare_native_monol)
-print(compare_native_monol[["native", "english"]].mean())
-print(pearsonr(compare_native_monol["native"], compare_native_monol["english"]))
+# SAVE ORDER FOR MULTI (WILL RECYCLE PLOTTING CODE) 
+df_sorted['key'] = df_sorted['network'] + '|' + df_sorted['froi']   # unique, no ‘all’ clash
+pos_map   = dict(zip(df_sorted['key'], df_sorted['pos']))
+label_map = dict(zip(df_sorted['key'], df_sorted['short_label']))

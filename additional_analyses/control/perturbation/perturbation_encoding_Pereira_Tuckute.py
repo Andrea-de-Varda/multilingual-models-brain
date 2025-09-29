@@ -340,7 +340,6 @@ total_width = x - gap
 
 
 fig, ax = plt.subplots(dpi=400, figsize=(max(8, 0.5*len(pert_order) + 2.5), 3))
-
 for g_name, g_items in groups:
     base_c = group_color[g_name]
     alphas = alpha_schedules[g_name]
@@ -351,18 +350,6 @@ for g_name, g_items in groups:
         ax.bar(xpos, mean, yerr=0 if not np.isfinite(se) else se, capsize=5,
                color=base_c, alpha=alphas[i] if i < len(alphas) else 1.0,
                edgecolor="black", linewidth=1.1, zorder=2)
-        # # doesn't really work as a scatter...
-        # ax.scatter(xpos, mean,
-        #    s=120,                 # dot size
-        #    color=base_c,
-        #    alpha=alphas[i] if i < len(alphas) else 1.0,
-        #    edgecolor="black",
-        #    linewidth=1.1,
-        #    zorder=4)
-        # if np.isfinite(se):
-        #     ax.errorbar(xpos, mean, yerr=se, capsize=5,
-        #                 color="black", linewidth=1, zorder=1)
-
 marker_map = {"Pereira2018": ("s", 0.15, "black"), "Tuckute2024": ("o", 0.15, "black")}
 legend_handles = {}
 for pert in pert_order:
@@ -383,41 +370,27 @@ ax.set_xticks(xticks)
 # ax.set_xticklabels(pert_order, fontsize=10, rotation=30, ha="right")
 ax.set_xticklabels([pert_labels[p] for p in pert_order],
                    fontsize=10, rotation=30, ha="right")
-
-
-# acc = []
-# for idx, (g_name, g_items) in enumerate(groups[:-1]):
-#     last_item = g_items[-1]
-#     boundary_x = x_positions[last_item] + 0.5
-    #ax.axvline(boundary_x + gap/2 - 0.4, color="k", linewidth=0.8, alpha=0.25)
-
-# brackets labels
 y_top = np.nanmax([v for v in bar_means.values() if np.isfinite(v)]) if len(bar_means) else 0.3
 y_top = y_top + 0.12
 for g_name, g_items in groups:
     x_start = x_positions[g_items[0]] - 0.45
     x_end   = x_positions[g_items[-1]] + 0.45
     y = y_top
-    # bracket line
     ax.plot([x_start, x_end], [y, y], color="black", linewidth=1.0)
     ax.plot([x_start, x_start], [y, y-0.02], color="black", linewidth=1.0)
     ax.plot([x_end,   x_end],   [y, y-0.02], color="black", linewidth=1.0)
-    # label
     ax.text((x_start + x_end)/2, y + 0.02, g_name, ha="center", va="bottom", fontsize=11)
-
 ax.legend(title="Encoding models trained on", frameon=False, loc="upper left", bbox_to_anchor=(1.02, 1.0))
-
 ax.set_ylabel("R", fontsize=12)
 ax.tick_params(axis="y", labelsize=10)
 ax.spines["top"].set_visible(False)
 ax.spines["right"].set_visible(False)
 ax.grid(axis="y", linestyle="--", alpha=0.5, zorder=1)
-
 ax.set_ylim(None, None)
-
 plt.tight_layout()
 plt.savefig("../plots/perturb.svg", format="svg", bbox_inches="tight")
 plt.show()
+
 
 # legend for multipanel
 legend_elements = [
@@ -434,4 +407,83 @@ ax.legend(handles=legend_elements,
           frameon=False,
           ncol=2)
 plt.savefig("../plots/legend_perturb.svg", format="svg", bbox_inches="tight")
+plt.show()
+
+fig, ax = plt.subplots(dpi=400, figsize=(9.5*.9, 3.7*.9))
+
+for g_name, g_items in groups:
+    base_c = group_color[g_name]
+    alphas = alpha_schedules[g_name]
+    for i, pert in enumerate(g_items):
+        xpos = x_positions[pert]
+        vals = per_model.loc[per_model["perturb_type"] == pert, "r"].to_numpy()
+        vals = vals[np.isfinite(vals)]
+        if vals.size == 0:
+            continue
+
+        bp = ax.boxplot(
+            [vals],
+            positions=[xpos],
+            widths=0.66,
+            showfliers=False,
+            patch_artist=True,
+            whis=(5, 95),
+            manage_ticks=False,
+            zorder=2
+        )
+
+
+        fc_alpha = alphas[i] if i < len(alphas) else 1.0
+        for b in bp['boxes']:
+            b.set(facecolor=base_c, alpha=fc_alpha, edgecolor="black", linewidth=1.1)
+        for ln in bp['whiskers'] + bp['caps']:
+            ln.set(color="black", linewidth=1.0)
+        for med in bp['medians']:
+            med.set(color="black", linewidth=1.2)
+
+marker_map = {"Pereira2018": ("s", 0.15, "black"), "Tuckute2024": ("o", 0.15, "black")}
+legend_handles = {}
+for pert in pert_order:
+    xpos = x_positions[pert]
+    sub = per_model[per_model["perturb_type"] == pert]
+    for dataset_label, (marker, alpha, color) in marker_map.items():
+        vals = sub.loc[sub["dataset"] == dataset_label, "r"].to_numpy()
+        if vals.size == 0: 
+            continue
+        jitter = np.random.normal(loc=0, scale=0.08, size=vals.size)
+        ax.scatter(xpos + jitter, vals, marker=marker, color=color, alpha=alpha, s=18, zorder=3,
+                   label=dataset_label if dataset_label not in legend_handles else None)
+        if dataset_label not in legend_handles:
+            legend_handles[dataset_label] = True
+xticks = [x_positions[p] for p in pert_order]
+ax.set_xticks(xticks)
+min_pos = min(x_positions[p] for p in pert_order)
+max_pos = max(x_positions[p] for p in pert_order)
+ax.set_xlim(min_pos - 1, max_pos + 1)
+ax.margins(x=0)                            
+
+ax.set_xticklabels([pert_labels[p] for p in pert_order],
+                   fontsize=10, rotation=30, ha="right")
+y_top = np.nanmax([v for v in bar_means.values() if np.isfinite(v)]) if len(bar_means) else 0.3
+y_top = y_top + 0.12
+for g_name, g_items in groups:
+    x_start = x_positions[g_items[0]] - 0.45
+    x_end   = x_positions[g_items[-1]] + 0.45
+    y = y_top
+    ax.plot([x_start, x_end], [y, y], color="black", linewidth=1.0)
+    ax.plot([x_start, x_start], [y, y-0.02], color="black", linewidth=1.0)
+    ax.plot([x_end,   x_end],   [y, y-0.02], color="black", linewidth=1.0)
+    ax.text((x_start + x_end)/2, y + 0.02, g_name, ha="center", va="bottom", fontsize=11)
+ax.legend(title="Encoding models trained on", frameon=False, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+ax.set_ylabel("R", fontsize=12)
+ax.tick_params(axis="y", labelsize=10)
+ax.spines["top"].set_visible(False)
+ax.spines["right"].set_visible(False)
+ax.spines["left"].set_linewidth(2.25)
+ax.spines["bottom"].set_linewidth(2.25)
+ax.tick_params(axis="both", width=1.1, length=4)
+ax.grid(axis="y", linestyle="--", alpha=0.5, zorder=1)
+ax.set_ylim(None, None)
+plt.tight_layout()
+plt.savefig("../plots/perturb.svg", format="svg", bbox_inches="tight")
 plt.show()

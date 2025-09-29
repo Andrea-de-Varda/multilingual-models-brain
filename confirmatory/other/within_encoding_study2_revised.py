@@ -466,7 +466,6 @@ plt.grid(True)
 plt.show()
 
 # single langs
-
 sns.set_context("talk")
 r_lang = {lang: [] for lang in within_all["language"].unique()}
 r_se_lang = {lang: [] for lang in within_all["language"].unique()}
@@ -481,40 +480,48 @@ for model in model_names:
 
 data = pd.DataFrame(r_lang)
 data_se = pd.DataFrame(r_se_lang)
-
 avg_across_models = data.mean(axis=0)
-se_across_models = data.sem(axis=0)
-
-data_with_avg = pd.concat([pd.DataFrame([avg_across_models], index=['Mean']), data]) # append avg row
-data_se_with_avg = pd.concat([pd.DataFrame([se_across_models], index=['Mean']), data_se])
-
+se_across_models  = data.sem(axis=0)
+data_with_avg     = pd.concat([pd.DataFrame([avg_across_models], index=['Mean']), data])
+data_se_with_avg  = pd.concat([pd.DataFrame([se_across_models],  index=['Mean']), data_se])
 fig_height = 26 * 0.9
-fig_width = 10 * 0.9
+fig_width  = 6 * 0.9
 
 fig = plt.figure(figsize=(fig_width, fig_height), dpi=300)
 gs = gridspec.GridSpec(len(data_with_avg), 1, height_ratios=[1.5] + [1] * (len(data_with_avg) - 1), hspace=0.5)
-yticks = [0, 0.5]
 axes = [fig.add_subplot(gs[i]) for i in range(len(data_with_avg))]
+labels = list(data_with_avg.columns)
+x = np.arange(len(labels))  # FIXED numeric positions for all rows
+yticks = [0, 0.5]
 for i, ax in enumerate(axes):
-    bar_color = 'steelblue' if i == 0 else 'indianred'  # avg row is blue, others are red
-    ax.bar(
-        data_with_avg.columns, 
-        data_with_avg.iloc[i], 
-        yerr=data_se_with_avg.iloc[i], 
-        color=bar_color, 
-        capsize=5
+    color = 'steelblue' if i == 0 else 'indianred'
+    ax.errorbar(
+        x,
+        data_with_avg.iloc[i].values,
+        yerr=data_se_with_avg.iloc[i].values,
+        fmt='o',
+        mfc=color,
+        mec='black',
+        mew=1,
+        markersize=6,
+        ecolor='black',
+        elinewidth=1.2,
+        capsize=3,
+        zorder=10
     )
-    ax.set_ylim(-0.35, .5)
+    ax.axhline(0, color='black', lw=2, zorder=0)
+    ax.set_ylim(-0.35, 0.5)
     ax.set_yticks(yticks)
-    ax.axhline(y=0, color='black', lw=2)
-    ax.xaxis.grid(False)
+    ax.set_xlim(-0.5, len(labels) - 0.5)
+    ax.set_xticks(x)
     if i == 0:
         ax.set_ylabel('Average', rotation=0, ha='right', va='center')
         ax.set_xticklabels([])
     else:
         ax.set_ylabel(names_formatted[i - 1], rotation=0, ha='right', va='center')
-        ax.set_xticklabels([])  
-axes[-1].set_xticklabels(data_with_avg.columns, rotation=45, ha="right")
+        ax.set_xticklabels([])
+axes[-1].set_xticks(x)
+axes[-1].set_xticklabels(labels, rotation=45, ha="right")
 plt.suptitle('', y=0.97, fontsize=26, weight="bold")
 plt.tight_layout()
 plt.savefig("../plots/study2_study1_singlelangs.svg", format="svg", bbox_inches="tight")
