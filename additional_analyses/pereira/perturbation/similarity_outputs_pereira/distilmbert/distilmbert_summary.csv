@@ -1,0 +1,14 @@
+model,hf_id,layer,perturbation,n,mean_similarity,std_similarity,sem_similarity
+distilmbert,distilbert-base-multilingual-cased,4,contentwords,627,0.8943939805030823,0.021782483905553818,0.0008699086141445299
+distilmbert,distilbert-base-multilingual-cased,4,nouns,627,0.8697869777679443,0.021860381588339806,0.0008730195479375373
+distilmbert,distilbert-base-multilingual-cased,4,verbs,627,0.8452356457710266,0.028309179469943047,0.001130559728038546
+distilmbert,distilbert-base-multilingual-cased,4,nounsverbs,627,0.8888993859291077,0.022353846579790115,0.0008927266414307607
+distilmbert,distilbert-base-multilingual-cased,4,nounsverbsadj,627,0.8926639556884766,0.02265743352472782,0.0009048507361707456
+distilmbert,distilbert-base-multilingual-cased,4,functionwords,627,0.8167134523391724,0.027531331405043602,0.0010994954685589762
+distilmbert,distilbert-base-multilingual-cased,4,paraphrase,627,0.9064694046974182,0.02055620402097702,0.0008209357128183625
+distilmbert,distilbert-base-multilingual-cased,4,1LocalWordSwap,627,0.9205700159072876,0.03461959585547447,0.0013825734835135558
+distilmbert,distilbert-base-multilingual-cased,4,2LocalWordSwap,627,0.9191451668739319,0.03328302130103111,0.0013291958373553869
+distilmbert,distilbert-base-multilingual-cased,4,3LocalWordSwaps,627,0.9174800515174866,0.032267358154058456,0.0012886341583268816
+distilmbert,distilbert-base-multilingual-cased,4,4LocalWordSwaps,627,0.9169666767120361,0.032232366502285004,0.0012872367263612318
+distilmbert,distilbert-base-multilingual-cased,4,5LocalWordSwaps,627,0.9157399535179138,0.031804293394088745,0.0012701411331351258
+distilmbert,distilbert-base-multilingual-cased,4,Reversed,627,0.9005666375160217,0.02740706130862236,0.0010945325989511695

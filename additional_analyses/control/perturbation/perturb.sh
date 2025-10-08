@@ -2,9 +2,9 @@
 #SBATCH -p evlab
 #SBATCH --qos=evlab
 #SBATCH --mem=23G
-#SBATCH --gres=gpu:1
+#SBATCH --gres=shard:a100:1
 #SBATCH -c 1
-#SBATCH -t 10:00:00
+#SBATCH -t 100:00:00
 #SBATCH --output=perturb_output_%j.out
 #SBATCH --error=perturb_error_%j.err
 #SBATCH --chdir=/om2/user/devar_ag/multilingual-models-brain/additional_analyses/control
@@ -18,4 +18,5 @@ echo "PWD: $(pwd)"
 which python
 python --version
 
-python perturbation/perturbation_encoding.py
+# python perturbation/perturbation_encoding.py
+python perturbation/embeddings_sim_perturbation.py
