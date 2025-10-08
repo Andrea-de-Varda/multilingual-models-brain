@@ -3,7 +3,7 @@ import numpy.ma as ma
 import pandas as pd
 import os, pickle
 from tqdm import tqdm
-from scipy.stats import pearsonr
+from scipy.stats import pearsonr, norm
 import matplotlib.pyplot as plt
 import warnings
 import itertools
@@ -267,6 +267,8 @@ finally:
 
 per_model.to_csv(cache_per_model_path, index=False)
 
+################
+
 pert_labels = {
     "intact": "Intact",
     "contentwords": "Content words",
@@ -287,17 +289,173 @@ pert_labels = {
 
 pert_order = [
     'intact',
-    'contentwords', 'nounsverbsadj', 'nounsverbs', 'nouns', 'verbs', 'functionwords',
     'paraphrase',
+    'contentwords', 'nounsverbsadj', 'nounsverbs', 'nouns', 'verbs', 'functionwords',
     '1LocalWordSwap', '2LocalWordSwap', '3LocalWordSwaps', '4LocalWordSwaps', '5LocalWordSwaps', 'Reversed'
 ]
 
 groups = [
     ("Intact",        ['intact']),
-    ("Information loss", ['contentwords','nounsverbsadj','nounsverbs','nouns','verbs','functionwords']),
     ("Paraphrase",    ['paraphrase']),
+    ("Information loss", ['contentwords','nounsverbsadj','nounsverbs','nouns','verbs','functionwords']),
     ("Word order",    ['1LocalWordSwap','2LocalWordSwap','3LocalWordSwaps','4LocalWordSwaps','5LocalWordSwaps','Reversed'])
 ]
+
+############################
+# STATISTICAL SIGNIFICANCE #
+############################
+
+def r_to_z(r1, r2, n=130):
+    r1 = np.clip(r1, -0.999999, 0.999999)
+    r2 = np.clip(r2, -0.999999, 0.999999)
+    z1, z2 = np.arctanh(r1), np.arctanh(r2)
+    se = np.sqrt(2.0 / (n - 3))
+    z = (z1 - z2) / se
+    p_two = 2 * (1 - norm.cdf(abs(z)))
+    return z, p_two
+
+def combine_z_statistics(z_stats):
+    z_stats = np.asarray(z_stats, dtype=float)
+    z_comb = z_stats.sum() / np.sqrt(len(z_stats))
+    p_two = 2 * norm.cdf(-abs(z_comb))
+    p_lower = norm.cdf(z_comb)
+    return z_comb, p_two, p_lower
+
+inv_lang_map = {v: k for k, v in lang_map.items()}
+
+def build_pairs(results_df, level="language", n=130):
+    pairs = []
+    if level == "language":
+        for (dataset, model, language), grp in results_df.groupby(["dataset", "model", "language"]):
+            r_int = grp.loc[grp["perturb_type"] == "intact", "r_mean"]
+            if r_int.empty or not np.isfinite(r_int.iloc[0]): 
+                continue
+            r_int = float(r_int.iloc[0])
+
+            for pert, sub in grp.groupby("perturb_type"):
+                if pert == "intact":
+                    continue
+                r_pert = sub["r_mean"]
+                if r_pert.empty or not np.isfinite(r_pert.iloc[0]):
+                    continue
+                r_pert = float(r_pert.iloc[0])
+                z, p = r_to_z(r_pert, r_int, n=n)
+                pairs.append({
+                    "dataset": dataset, "model": model, "language": language,
+                    "perturb_type": pert, "level": "language", "z": z, "p_two": p
+                })
+
+    elif level == "passage":
+        long = results_df.melt(
+            id_vars=["dataset","perturb_type","model","language"],
+            value_vars=["r1","r2","r3"],
+            var_name="passage", value_name="r"
+        ).dropna(subset=["r"])
+        long["passage_idx"] = long["passage"].str.extract(r"r(\d)").astype(int)
+        def keep_passage(row):
+            code = inv_lang_map.get(row["language"], None)
+            if code is None: 
+                return True
+            allowed = set(keep.get(code, []))
+            return row["passage_idx"] in allowed if allowed else True
+        long = long[long.apply(keep_passage, axis=1)]
+        for keys, grp in long.groupby(["dataset","model","language","passage_idx"]):
+            dataset, model, language, passage_idx = keys
+            r_int = grp.loc[grp["perturb_type"] == "intact", "r"]
+            if r_int.empty or not np.isfinite(r_int.iloc[0]):
+                continue
+            r_int = float(r_int.iloc[0])
+            for pert, sub in grp.groupby("perturb_type"):
+                if pert == "intact":
+                    continue
+                r_pert = sub["r"]
+                if r_pert.empty or not np.isfinite(r_pert.iloc[0]):
+                    continue
+                r_pert = float(r_pert.iloc[0])
+                z, p = r_to_z(r_pert, r_int, n=n)
+                pairs.append({
+                    "dataset": dataset, "model": model, "language": language,
+                    "passage": passage_idx, "perturb_type": pert,
+                    "level": "passage", "z": z, "p_two": p
+                })
+    else:
+        raise ValueError("level must be 'language' or 'passage'")
+    return pd.DataFrame(pairs)
+
+def stouffer_summary(pairs_df):
+    rows = []
+    for pert, sub in pairs_df.groupby("perturb_type"):
+        zc, p2, pl = combine_z_statistics(sub["z"].values)
+        rows.append({"perturb_type": pert, "N": len(sub), "z_comb": zc, "p_two": p2, "p_lower": pl})
+    overall = pd.DataFrame(rows).sort_values("p_two")
+    m_overall = overall.shape[0]
+    overall["p_two_bonf"] = np.minimum(1.0, overall["p_two"] * m_overall)
+    rows = []
+    for (pert, dataset), sub in pairs_df.groupby(["perturb_type","dataset"]):
+        zc, p2, pl = combine_z_statistics(sub["z"].values)
+        rows.append({"perturb_type": pert, "dataset": dataset, "N": len(sub), "z_comb": zc, "p_two": p2, "p_lower": pl})
+    by_dataset = pd.DataFrame(rows)
+    by_dataset = by_dataset.sort_values(["dataset","p_two"]).reset_index(drop=True)
+    by_dataset["p_two_bonf"] = by_dataset.groupby("dataset")["p_two"].transform(
+        lambda s: np.minimum(1.0, s * s.size)
+    )
+    def bh(p):
+        p = np.asarray(p, float)
+        m = len(p)
+        order = np.argsort(p)
+        ranked = p[order]
+        q = ranked * m / (np.arange(m) + 1)
+        q = np.minimum.accumulate(q[::-1])[::-1]
+        out = np.empty_like(q)
+        out[order] = q
+        return out
+    overall = overall.sort_values("p_two")
+    overall["q_lower_BH"] = bh(overall["p_lower"].values)
+    by_dataset = by_dataset.sort_values(["perturb_type","p_lower"])
+    by_dataset["q_lower_BH"] = by_dataset.groupby("dataset")["p_lower"].transform(bh)
+    return overall, by_dataset
+
+def summarize_by_group(pairs_df):
+    df = pairs_df.copy()
+    df["group"] = df["perturb_type"].map(pert_to_group)
+    rows = []
+    for g, sub in df.groupby("group"):
+        zc, p2, pl = combine_z_statistics(sub["z"].values)
+        rows.append({"group": g, "N": len(sub), "z_comb": zc, "p_two": p2, "p_lower": pl})
+    out = pd.DataFrame(rows).sort_values("p_two").reset_index(drop=True)
+    m_groups = out.shape[0]
+    out["p_two_bonf"] = np.minimum(1.0, out["p_two"] * m_groups)
+    return out
+
+pairs_lang = build_pairs(results, level="language", n=130)
+overall_lang, by_dataset_lang = stouffer_summary(pairs_lang)
+print(overall_lang)
+
+pert_to_group = {}
+for gname, items in groups:
+    for p in items:
+        pert_to_group[p] = gname
+
+def summarize_by_group(pairs_df):
+    df = pairs_df.copy()
+    df["group"] = df["perturb_type"].map(pert_to_group)
+    rows = []
+    for g, sub in df.groupby("group"):
+        zc, p2, pl = combine_z_statistics(sub["z"].values)
+        rows.append({"group": g, "N": len(sub), "z_comb": zc, "p_two": p2, "p_lower": pl})
+    out = pd.DataFrame(rows).sort_values("p_lower")
+    return out
+
+by_group_lang = summarize_by_group(pairs_lang)
+print(by_group_lang)
+
+# alpha_sig = 0.05
+# sig_map = {
+#     row.perturb_type: (np.isfinite(row.p_two_bonf) and (row.p_two_bonf < alpha_sig))
+#     for _, row in overall_lang.iterrows()
+# }
+
+###############################################################################
 
 group_color = {
     "Intact": "tab:blue",
