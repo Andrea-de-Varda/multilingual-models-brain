@@ -250,3 +250,48 @@ for modelname in dict_bestlayer.keys():
     
         with open(f"../../confirmatory/registered_models/natstor/{modelname}_random_{random_idx}", 'wb') as handle:
             pickle.dump(reg_random, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+#######################
+# fROI-level encoding #
+#######################
+
+roi_short = {
+    "Lang_LH_IFGorb": "IFGorb",
+    "Lang_LH_IFG": "IFG",
+    "Lang_LH_MFG": "MFG",
+    "Lang_LH_AntTemp": "AntTemp",
+    "Lang_LH_PostTemp": "PostTemp",
+}
+
+# load per-ROI shifted responses
+d3_roi = {}
+for roi_long, short in roi_short.items():
+    with open(f"response/d_shift_3_{short}", "rb") as handle:
+        d3_roi[roi_long] = pickle.load(handle)
+
+for modelname in dict_bestlayer.keys():
+    print(f"Processing (per-ROI) with {modelname.upper()}...")
+    layernum = dict_bestlayer[modelname]
+    fmri_data = [preproc_align(story, load(f"{modelname}_{story}")[layernum]) for story in stories]
+    X_full = np.concatenate(fmri_data)
+    for roi_long in roi_short.keys():
+        roi_label = roi_short[roi_long]
+        y_full = np.concatenate([d3_roi[roi_long][story_n_dict[story]] for story in stories])
+        X_scaler = StandardScaler()
+        y_scaler = StandardScaler()
+        X_train = X_scaler.fit_transform(X_full)
+        y_train = y_scaler.fit_transform(y_full.reshape(-1, 1)).flatten()
+
+        reg = RidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
+        reg.fit(X_train, y_train)
+        out_base = f"../../confirmatory/registered_models/natstor/{modelname}_{roi_label}"
+        with open(out_base, "wb") as handle:
+            pickle.dump(reg, handle, protocol=pickle.HIGHEST_PROTOCOL)
+        with open(f"../../confirmatory/registered_models/natstor/normaliz_params/{modelname}_{roi_label}", "wb") as handle:
+            pickle.dump([X_scaler, y_scaler], handle, protocol=pickle.HIGHEST_PROTOCOL)
+        for random_idx, shift_val in enumerate([26, 52, 78, 104]):
+            y_train_random = np.roll(y_train, shift_val)
+            reg_random = RidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
+            reg_random.fit(X_train, y_train_random)
+            with open(f"{out_base}_random_{random_idx}", "wb") as handle:
+                pickle.dump(reg_random, handle, protocol=pickle.HIGHEST_PROTOCOL)

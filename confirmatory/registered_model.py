@@ -144,3 +144,62 @@ for model in model_names:
     # fit encoding
     multilingual_encoding_registered(langs, model)
     multilingual_encoding_registered(langs, model, random = True)
+
+######################################
+# fROI-level encoding and model save #
+######################################
+
+roi_short = {
+    "Lang_LH_IFGorb": "IFGorb",
+    "Lang_LH_IFG": "IFG",
+    "Lang_LH_MFG": "MFG",
+    "Lang_LH_AntTemp": "AntTemp",
+    "Lang_LH_PostTemp": "PostTemp",
+}
+
+
+with open("data/dict_fROI", "rb") as handle:
+    froi_d = pickle.load(handle)
+
+def multilingual_encoding_fROI(langs, model_prefix, random=False):
+    n = dict_bestlayer[model_prefix]
+    print(f"Processing fROI-level: {model_prefix.upper()} (layer {n})")
+    fmri_data = [preproc_align(lang, load(f"{model_prefix}_{lang}")[n]) for lang in langs]
+    X_full = np.concatenate(fmri_data)
+    y_names = langs
+
+    for roi_long, roi_label in roi_short.items():
+        print(f"  ROI: {roi_label}")
+        y_full = np.concatenate([
+            np.mean(
+                [froi_d[lang_code_dict[code]][subj][roi_long] 
+                 for subj in froi_d[lang_code_dict[code]].keys()],
+                axis=0)
+            for code in y_names
+        ])
+
+        X_scaler = StandardScaler()
+        y_scaler = StandardScaler()
+        X_train = X_scaler.fit_transform(X_full)
+        y_train = y_scaler.fit_transform(y_full.reshape(-1, 1)).flatten()
+
+        save([X_scaler, y_scaler], f"confirmatory/registered_models/main/normaliz_params/{model_prefix}_{roi_label}")
+
+        # fit ridge models
+        if random:
+            for random_idx, shift_val in enumerate([26, 52, 78, 104]):
+                y_train_random = np.roll(y_train, shift_val)
+                reg = RidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1,
+                                      1, 10, 100, 1000, 10000))
+                reg.fit(X_train, y_train_random)
+                save(reg, f"confirmatory/registered_models/main/{model_prefix}_{roi_label}_random_{random_idx}")
+        else:
+            reg = RidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1,
+                                  1, 10, 100, 1000, 10000))
+            reg.fit(X_train, y_train)
+            save(reg, f"confirmatory/registered_models/main/{model_prefix}_{roi_label}")
+
+for model in model_names:
+    langs = model_langs_dict[model]
+    multilingual_encoding_fROI(langs, model)
+    multilingual_encoding_fROI(langs, model, random=True)

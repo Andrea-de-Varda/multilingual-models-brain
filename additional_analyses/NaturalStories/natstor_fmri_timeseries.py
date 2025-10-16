@@ -192,3 +192,53 @@ names = ["d_shift_0", "d_shift_1", "d_shift_2", "d_shift_3", "d_shift_4"]
 
 for d, n in zip(dicts, names):
     save(d, f"response/{n}")
+
+
+##########################
+# fROI-level time series #
+##########################
+
+roi_short = {
+    "Lang_LH_IFGorb": "IFGorb",
+    "Lang_LH_IFG": "IFG",
+    "Lang_LH_MFG": "MFG",
+    "Lang_LH_AntTemp": "AntTemp",
+    "Lang_LH_PostTemp": "PostTemp",
+}
+
+d_timeseries_roi = {roi: {g: [] for g in d_story_groups.keys()} for roi in lang_rois}
+
+for story_group, story_list in d_story_groups.items():
+    temp_all = ns[(ns.Story.isin(story_list)) & (ns.ROI.isin(lang_rois))].copy().dropna(axis=1, how="all")
+    story_parts = temp_all.UID.unique()
+
+    for roi in lang_rois:
+        temp = temp_all[temp_all.ROI == roi]
+        for part in story_parts:
+            rows = temp[temp.UID == part]
+            if rows.empty:
+                continue
+            if story_group == "elvis":  # trim extra silence for this group
+                elvis_columns = ["T_" + str(n) for n in range(1, 152)]
+                ts = rows.filter(elvis_columns).mean(axis=0).to_numpy()
+            else:
+                ts = rows.filter(ns_tr_columns).mean(axis=0).to_numpy()
+            d_timeseries_roi[roi][story_group].append(ts)
+
+for roi in lang_rois:
+    for g in d_story_groups.keys():
+        d_timeseries_roi[roi][g] = np.array(d_timeseries_roi[roi][g])
+
+d_natstor_roi = {
+    roi: {g: arr.mean(axis=0) for g, arr in d_timeseries_roi[roi].items()}
+    for roi in lang_rois
+}
+
+# don't need to do all the shifts here...
+for roi in lang_rois:
+    short = roi_short[roi]
+    d_shift_0_r, d_shift_1_r, d_shift_2_r, d_shift_3_r, d_shift_4_r = {}, {}, {}, {}, {}
+    for n, name in story_n_dict.items():
+        ts = d_natstor_roi[roi][name]
+        d_shift_3_r[name] = ts[11 : -5]
+    save(d_shift_3_r, f"response/d_shift_3_{short}")

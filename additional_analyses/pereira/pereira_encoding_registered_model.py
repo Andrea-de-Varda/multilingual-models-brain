@@ -76,13 +76,36 @@ r_b, sd_b = splithalf(b)
 
 weighted = ((r_a * a.shape[0]) + (r_b * b.shape[0])) / (a.shape[0] + b.shape[0]) # 0.3483680578920199
 
-
 ############
 # GET DATA #
 ############
 
 y = grouped2["EffectSize"].to_numpy()
 sentences = grouped2["Sentence"].tolist()
+
+per_roi = (grouped.reset_index()
+           .assign(Sentence=lambda d: d["Sentence"].astype(str).str[1:-1])  # match grouped2's formatting
+           .groupby(["Sentence", "ROI"], as_index=False)
+           .agg(EffectSize=("EffectSize", "mean")))
+
+M = (per_roi
+     .pivot(index="Sentence", columns="ROI", values="EffectSize")
+     .reindex(sentences))
+
+y_roi = {roi: M[roi].to_numpy() for roi in lang_rois}
+
+roi_short = {
+    "Lang_LH_IFGorb": "IFGorb",
+    "Lang_LH_IFG": "IFG",
+    "Lang_LH_MFG": "MFG",
+    "Lang_LH_AntTemp": "AntTemp",
+    "Lang_LH_PostTemp": "PostTemp",
+}
+y_roi_short = {roi_short[roi]: M[roi].to_numpy() for roi in lang_rois}
+
+for k, v in y_roi_short.items():
+    r, p = pearsonr(v, y)
+    print(k, r)
 
 ##################
 # GET EMBEDDINGS #
@@ -434,3 +457,44 @@ for modelname in dict_bestlayer.keys():
     
         with open(f"../../confirmatory/registered_models/pereira/{modelname}_random_{seed}", 'wb') as handle:
             pickle.dump(reg_random, handle, protocol=pickle.HIGHEST_PROTOCOL)
+            
+            
+###########
+# by-fROI #
+###########
+
+roi_short = {"Lang_LH_IFGorb": "IFGorb",
+             "Lang_LH_IFG": "IFG",
+             "Lang_LH_MFG": "MFG",
+             "Lang_LH_AntTemp": "AntTemp",
+             "Lang_LH_PostTemp": "PostTemp"}
+
+for modelname in dict_bestlayer.keys():
+    print(f"Processing (per-ROI) with {modelname.upper()}...")
+    layernum = dict_bestlayer[modelname]
+    embeddings = load(modelname)
+    X = np.vstack([vec[layernum].mean(axis=0) for vec in embeddings])
+
+    for roi_long in lang_rois:
+        roi_label = roi_short[roi_long]
+        y_vec = y_roi[roi_long]
+        valid = ~np.isnan(y_vec)
+        X_scaler_r = StandardScaler()
+        y_scaler_r = StandardScaler()
+        X_train_r = X_scaler_r.fit_transform(X)[valid]
+        y_train_r = y_scaler_r.fit_transform(y_vec.reshape(-1, 1)).flatten()[valid]
+        reg_r = RidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
+        reg_r.fit(X_train_r, y_train_r)
+        out_base = f"../../confirmatory/registered_models/pereira/{modelname}_{roi_label}"
+        with open(out_base, 'wb') as handle:
+            pickle.dump(reg_r, handle, protocol=pickle.HIGHEST_PROTOCOL)
+        with open(f"../../confirmatory/registered_models/pereira/normaliz_params/{modelname}_{roi_label}", 'wb') as handle:
+            pickle.dump([X_scaler_r, y_scaler_r], handle, protocol=pickle.HIGHEST_PROTOCOL)
+        for seed in [0, 1, 2, 3]:
+            np.random.seed(seed)
+            y_train_shuf_r = y_train_r.copy()
+            np.random.shuffle(y_train_shuf_r)
+            reg_random_r = RidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
+            reg_random_r.fit(X_train_r, y_train_shuf_r)
+            with open(f"{out_base}_random_{seed}", 'wb') as handle:
+                pickle.dump(reg_random_r, handle, protocol=pickle.HIGHEST_PROTOCOL)
