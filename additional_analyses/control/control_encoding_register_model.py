@@ -22,15 +22,28 @@ chdir("/home/dev/Documents/PhD/Alice/additional_analyses/control")
 rois = ['lang_LH_IFGorb', 'lang_LH_IFG', 'lang_LH_MFG', 'lang_LH_AntTemp', 'lang_LH_PostTemp']
 control = pd.read_csv("data/brain-lang-data_participant_20230728.csv")
 
-#df1 = control[control["roi"] == "lang_LH_netw"].groupby("sentence").agg({"response_target" : "mean", "cond" : "max"})
-#df = control[control["roi"].isin(rois)].groupby("sentence").agg({"response_target" : "mean", "cond" : "max"})
-
 avg_1 = control[control["roi"].isin(rois)].groupby(["sentence", "target_UID"]).agg({"response_target" : "mean", "cond" : "first", "sentence" : "first"}).reset_index(drop=True) # first average across fROIs
 df = avg_1.groupby("sentence").agg({"response_target" : "mean", "cond" : "first"}) # then average across participants
 
 sentences = df.index.tolist()
 y = df["response_target"].to_numpy()
 is_baseline = (df["cond"] == "B").to_numpy()
+
+# asked in review: by-fROI analyses
+
+mask = control["roi"].isin(rois)
+per_roi = (control[mask]
+           .groupby(["sentence", "roi"], as_index=False)
+           .agg(response_target=("response_target", "mean"),
+                cond=("cond", "first")))
+M = (per_roi
+     .pivot(index="sentence", columns="roi", values="response_target")
+     .reindex(sentences))
+y_roi = {r: M[r].to_numpy() for r in rois}
+
+# check corrs
+corrs = {r: pearsonr(y_roi[r], y)[0] for r in rois}
+print(corrs) # ok
 
 ###############
 # reliability #
@@ -440,5 +453,51 @@ for modelname in dict_bestlayer.keys():
         reg_random.fit(X_train, y_train)
         with open(f"../../confirmatory/registered_models/control/{modelname}_random_{seed}", 'wb') as handle:
             pickle.dump(reg_random, handle, protocol=pickle.HIGHEST_PROTOCOL)
-        
 
+###########
+# by-fROI #
+###########
+
+roi_short = {
+    'lang_LH_IFGorb': 'IFGorb',
+    'lang_LH_IFG': 'IFG',
+    'lang_LH_MFG': 'MFG',
+    'lang_LH_AntTemp': 'AntTemp',
+    'lang_LH_PostTemp': 'PostTemp',
+}
+
+for modelname in dict_bestlayer.keys():
+    print(f"Processing with {modelname.upper()}...")
+    layernum = dict_bestlayer[modelname]
+    embeddings = load(modelname)
+    X = np.vstack([vec[layernum].mean(axis=0) for vec in embeddings])
+    for roi_long in rois:
+        roi_label = roi_short[roi_long]
+        y_vec = y_roi[roi_long]
+        valid = ~np.isnan(y_vec)
+        train_mask = is_baseline & valid
+
+        X_scaler_r = StandardScaler()
+        y_scaler_r = StandardScaler()
+
+        X_train_r = X_scaler_r.fit_transform(X)[train_mask]
+        y_train_r = y_scaler_r.fit_transform(y_vec.reshape(-1, 1)).flatten()[train_mask]
+
+        reg_r = RidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
+        reg_r.fit(X_train_r, y_train_r)
+
+        out_base = f"../../confirmatory/registered_models/control/{modelname}_{roi_label}"
+        with open(out_base, 'wb') as handle:
+            pickle.dump(reg_r, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+        with open(f"../../confirmatory/registered_models/control/normaliz_params/{modelname}_{roi_label}", 'wb') as handle:
+            pickle.dump([X_scaler_r, y_scaler_r], handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+        for seed in [0, 1, 2, 3]:
+            np.random.seed(seed)
+            y_train_shuf_r = y_train_r.copy()
+            np.random.shuffle(y_train_shuf_r)
+            reg_random_r = RidgeCV(alphas=(0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000))
+            reg_random_r.fit(X_train_r, y_train_shuf_r)
+            with open(f"{out_base}_random_{seed}", 'wb') as handle:
+                pickle.dump(reg_random_r, handle, protocol=pickle.HIGHEST_PROTOCOL)

@@ -46,7 +46,7 @@ pereira = pd.read_csv("additional_analyses/pereira/pereira_averaged.csv")["Sente
 control = pd.read_csv("additional_analyses/control/data/brain-lang-data_participant_20230728.csv")
 avg_1 = control.groupby(["sentence", "target_UID"]).agg({"response_target" : "mean", "cond" : "first", "sentence" : "first"}).reset_index(drop=True) # first average across fROIs
 control_avg = avg_1.groupby("sentence").agg({"response_target" : "mean", "cond" : "first"}) 
-control = control_avg.index.tolist()
+control = control_avg[control_avg["cond"] == "B"].index.tolist()
 
 ##############
 # dep length #

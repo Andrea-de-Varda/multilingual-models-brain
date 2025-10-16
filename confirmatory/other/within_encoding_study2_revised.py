@@ -424,7 +424,7 @@ plt.xticks(bar_positions, labels=df_main["Model"], rotation=45, ha='right', font
 plt.yticks([.1, .2, .3, .4, .5, .6, .7], fontsize=23)
 sns.despine()
 plt.tight_layout(rect=[0, 0, 0.85, 1])
-plt.savefig("../plots/study2_multi_multitrain.svg", format="svg", bbox_inches="tight")
+plt.savefig("../plots/within_encoding_study2.svg", format="svg", bbox_inches="tight")
 plt.show()
 
 ################

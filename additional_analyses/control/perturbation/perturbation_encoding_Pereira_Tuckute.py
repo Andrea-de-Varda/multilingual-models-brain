@@ -645,3 +645,151 @@ ax.set_ylim(None, None)
 plt.tight_layout()
 plt.savefig("../plots/perturb.svg", format="svg", bbox_inches="tight")
 plt.show()
+
+# =======================
+# similarity vs encoding
+# ======================
+
+SIMILARITY_DIRS = {
+    "Pereira2018": "/home/dev/Documents/PhD/Alice/additional_analyses/pereira/perturbation/similarity_outputs_pereira",
+    "Tuckute2024": "/home/dev/Documents/PhD/Alice/additional_analyses/control/perturbation/similarity_outputs", 
+}
+
+pert_use = [p for p in pert_order if p != "intact"]
+def load_similarity_summaries(sim_dirs):
+    rows = []
+    for dataset_label, base_dir in sim_dirs.items():
+        if (not os.path.isdir(base_dir)):
+            continue
+        for mk in os.listdir(base_dir):
+            mdir = os.path.join(base_dir, mk)
+            if not os.path.isdir(mdir):
+                continue
+            summ_files = [f for f in os.listdir(mdir) if f.endswith("_summary.csv")]
+            for sf in summ_files:
+                path = os.path.join(mdir, sf)
+                try:
+                    df = pd.read_csv(path)
+                except Exception:
+                    continue
+                if {"model","perturbation","mean_similarity","sem_similarity"}.issubset(df.columns):
+                    df = df[["model","perturbation","mean_similarity","sem_similarity"]].copy()
+                    df["dataset"] = dataset_label
+                    rows.append(df)
+    if not rows:
+        return pd.DataFrame(columns=["dataset","model","perturbation","mean_similarity","sem_similarity"])
+    out = pd.concat(rows, ignore_index=True)
+    out = out[out["perturbation"].isin(pert_use)]
+    out["model"] = out["model"].astype(str)
+    out.rename(columns={"perturbation":"perturb_type",
+                        "mean_similarity":"sim_mean",
+                        "sem_similarity":"sim_SE"}, inplace=True)
+    return out
+
+sim_df = load_similarity_summaries(SIMILARITY_DIRS)
+
+enc_df = per_model.copy()
+enc_df = enc_df[enc_df["perturb_type"].isin(pert_use)]
+enc_df["model"] = enc_df["model"].astype(str)
+
+merged = pd.merge(
+    sim_df,
+    enc_df[["dataset","perturb_type","model","r","SE"]],
+    on=["dataset","perturb_type","model"],
+    how="inner"
+)
+
+def _sem(x):
+    x = np.asarray(x, float)
+    x = x[np.isfinite(x)]
+    if x.size <= 1:
+        return np.nan
+    return x.std(ddof=1) / np.sqrt(x.size)
+
+agg = (merged.groupby(["dataset","perturb_type"])
+              .agg(sim_x=("sim_mean","mean"),
+                   sim_x_SE=("sim_mean", _sem),
+                   enc_y=("r","mean"),
+                   enc_y_SE=("r", _sem),
+                   n_models=("model","nunique"))
+              .reset_index())
+
+pert_to_group = {}
+for gname, items in groups:
+    for p in items:
+        pert_to_group[p] = gname
+agg["group"] = agg["perturb_type"].map(pert_to_group)
+agg["label"] = agg["perturb_type"].map(pert_labels)
+
+# Order points by your pert_order
+agg["pert_order_idx"] = agg["perturb_type"].apply(lambda p: pert_order.index(p) if p in pert_order else 1e9)
+agg = agg.sort_values(["dataset","pert_order_idx"]).reset_index(drop=True)
+
+
+agg2 = (agg.groupby("perturb_type")
+          .agg(sim_x=("sim_x","mean"),
+               sim_x_SE=("sim_x", _sem),
+               enc_y=("enc_y","mean"),
+               enc_y_SE=("enc_y", _sem),
+               n_datasets=("dataset","nunique"))
+          .reset_index())
+
+agg2["group"] = agg2["perturb_type"].map(pert_to_group)
+agg2["label"] = agg2["perturb_type"].map(pert_labels)
+agg2["pert_order_idx"] = agg2["perturb_type"].apply(lambda p: pert_order.index(p) if p in pert_order else 1e9)
+agg2 = agg2.sort_values("pert_order_idx").reset_index(drop=True)
+
+fig, ax = plt.subplots(dpi=400, figsize=(6.4, 4.2))
+ax.grid(axis="both", linestyle="--", alpha=0.35, zorder=1)
+ax.spines["top"].set_visible(False)
+ax.spines["right"].set_visible(False)
+
+for _, row in agg2.iterrows():
+    base_c = group_color.get(row["group"], "gray")
+    ax.errorbar(
+        row["sim_x"], row["enc_y"],
+        xerr=(0.0 if not np.isfinite(row["sim_x_SE"]) else row["sim_x_SE"]),
+        yerr=(0.0 if not np.isfinite(row["enc_y_SE"]) else row["enc_y_SE"]),
+        fmt="o", ms=6, mfc=base_c, mec="black",
+        ecolor="black", elinewidth=0.9, capsize=3, alpha=0.95, zorder=3
+    )
+    ax.text(row["sim_x"], row["enc_y"] + 0.003, row["label"],
+            ha="center", va="bottom", fontsize=8, color="black", alpha=0.9)
+
+mask = np.isfinite(agg2["sim_x"]) & np.isfinite(agg2["enc_y"])
+x = agg2.loc[mask, "sim_x"].to_numpy()
+y = agg2.loc[mask, "enc_y"].to_numpy()
+
+if x.size >= 2:
+    slope, intercept = np.polyfit(x, y, 1)
+    xline = np.linspace(x.min(), x.max(), 100)
+    yline = slope * xline + intercept
+    ax.plot(xline, yline, linewidth=1.5, zorder=2)
+
+    r, p = pearsonr(x, y)
+    ax.text(
+        0.02, 0.98,
+        f"r = {r:.2f},  p = {p:.3f}",
+        transform=ax.transAxes,
+        ha="left", va="top", fontsize=10,
+        bbox=dict(facecolor="white", edgecolor="black", boxstyle="round,pad=0.3", alpha=0.8)
+    )
+
+
+group_handles = [Line2D([0],[0], marker="o", linestyle="",
+                        color="black", markerfacecolor=group_color[g], label=g)
+                 for g,_ in groups]
+ax.legend(handles=group_handles, title="Perturbation group",
+          frameon=False, loc="upper left", bbox_to_anchor=(1.02, 1.0))
+
+ax.set_xlabel("Sentence-level similarity to Intact (cosine)")
+ax.set_ylabel("Encoding performance (R)")
+
+if np.isfinite(x).any():
+    ax.set_xlim(max(0.0, x.min()-0.02), min(1.0, x.max()+0.02))
+if np.isfinite(y).any():
+    ax.set_ylim(y.min()-0.02, y.max()+0.02)
+
+plt.tight_layout()
+plt.savefig("../plots/similarity_vs_encoding.svg", format="svg", bbox_inches="tight")
+plt.show()
