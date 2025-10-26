@@ -6,21 +6,21 @@ This is the **`revision`** branch, which contains all updates for the **Round 2*
 
 ## Brain encoding in 21 languages
 
-This repository contains the code and data to reproduce the article *Multilingual Computational Models Reveal Shared Brain Responses to 21 Languages*, currently under review.
+This repository contains the code and data to reproduce the article *Multilingual Computational Models Capture a Shared Meaning Component in Brain Responses across 21 Languages*, currently under review.
 
-The article includes two studies; Study I and Study II. Study I (12 languages) is based on previously collected data from Malik-Moraleda, Ayyash, et al. (2022), whereas Study II (9 languages) is based on newly collected data. 
+The article includes three studies. Study I (12 languages) is based on previously collected data from Malik-Moraleda, Ayyash, et al. (2022), Study II (9 languages) is based on newly collected data, and Study III uses targeted perturbations to identify what linguistic features drive cross-lingual transfer. 
 
 ### Study I
 Study I leverages existing fMRI data from a passage-listening task in 12 languages (Malik-Moraleda, Ayyash, et al., 2022). We trained fMRI encoding models to predict brain responses based on multiple languages and transferred them zero-shot to a new language on which they had not been trained.
 
 The methodology is as follows:
 
- 1. We extract fMRI responses from the language network (functionally defined; Fedorenko et al., 2010), averaging across voxels, fROIs, and lastly, across participants, to obtain one single time-series per language.
+ 1. We extract fMRI responses from the language network (functionally defined; Fedorenko et al., 2010) at the fROI level, analyzing both individual fROIs and network-level averages. We analyze five core left-hemisphere language fROIs: posterior temporal, anterior temporal, inferior frontal gyrus, orbital part of inferior frontal gyrus, and middle frontal gyrus.
  2. We obtain written transcriptions for the passages that participants listened to with Whisper-timestamped, which also outputs word-by-word timestamps.
  3. We extract embeddings of the text in the various languages with multilingual neural network language models (MNNLMs, n = 20).
  4. We fit encoding models to predict fMRI activity from the MNNLM embeddings
-    - In the *WITHIN* condition, we train and test the encoding models in each language.
-    - In the *ACROSS* condition, we train the encoding models in all languages but one, and test in that language.
+    - In the *WITHIN* condition, we train and test the encoding models in each language, ensuring generalization across participants.
+    - In the *ACROSS* condition, we train the encoding models in all languages but one, and test in that language, also ensuring generalization across participants.
 
 The **code and data** supporting Study I are in the "level 0" of this repository, which includes the following scripts:
 
@@ -29,10 +29,10 @@ The **code and data** supporting Study I are in the "level 0" of this repository
 - `whisper-timestamped.py` transcribes the audio (wav) files that were presented to the participants and produces csv files with all the words and timestamps. 
 - `get_model_embeddings.py` generates contextual word embeddings from the 20 MNNLMs we considered. Note that some models (XGLM, mGPT) are not tested in all the 20 languages because some of them were absent from the models' pre-training data.
     - To simulate an auto-regressive setup and prevent access to future tokens, bidirectional models are tested with a sliding window of 100 words.
-- `fit_encoding.py` fits linear encoding models (Ridge regression) predicting fMRI responses from the contextual word embeddings. To do so, it first aligns the embeddings with the fMRI responses based on the timestamps. Encoding models are either trained and tested within each language separately with cross-validation (*WITHIN* condition), or alternatively, the encoding models are fitted in all languages but one, and transferred zero-shot to that language (*ACROSS* condition). 
+- `fit_encoding.py` fits linear encoding models (Ridge regression) predicting fMRI responses from the contextual word embeddings. To do so, it first aligns the embeddings with the fMRI responses based on the timestamps. Encoding models are either trained and tested within each language separately with cross-validation (*WITHIN* condition), or alternatively, the encoding models are fitted in all languages but one, and transferred zero-shot to that language (*ACROSS* condition). Both conditions ensure generalization across participants.
     - This is done for each model × layer × language combination
-    - This is performed separately for the (standard) LH language areas, the homotropic RH language areas, and the MD network.
-- `fit_encoding_random.py` and `fit_encoding_chunk_context.py` do the same thing but either randomizing the response variable (this is done to calculate statistical significance) or re-setting the context at each fold boundary (this is for a control analysis in the Supplementary Information).
+    - This is performed separately for individual fROIs, the (standard) LH language areas, the homotropic RH language areas, and the MD network.
+- `fit_encoding_random.py` and `fit_encoding_chunk_context.py` do the same thing but either using circular shifts of the response variable (this is done to calculate statistical significance using multiple offsets to preserve autocorrelation) or re-setting the context at each fold boundary (this is for a control analysis in the Supplementary Information).
 - `plot_encoding_mono.py` and `plot_encoding_multi.py` calculate statistical significance, aggregate, and plot the results for the *WITHIN* and the *ACROSS* condition, respectively.
 
 #### Data
@@ -71,13 +71,37 @@ The code for training and storing the encoding models' weights is in the folder 
 The encoding models based on those separate datasets (together with the normalization parameters) are stored in `confirmatory/registered_models`, and they are then transferred zero-shot to the new data in `confirmatory/confirmatory_encoding.py`.
 
 ----------
+
+### Study III
+Study III uses targeted perturbations to identify what linguistic features drive cross-lingual transfer. We applied various perturbations to English stimuli (removing function words, scrambling word order, paraphrasing, etc.) and trained encoding models on embeddings of these perturbed sentences. We then measured transfer to the other nine languages of Study II. The results show that cross-lingual transfer depends primarily on lexical-semantic content: paraphrases and content-word-only inputs preserve transfer, whereas function-word-only inputs substantially reduce it.
+
+The **code and data** supporting Study III are split across two locations based on the training dataset used:
+
+**For Tuckute2024 (control) dataset:**
+- `additional_analyses/control/perturbation/` contains:
+  - `perturbation_encoding.py` - main script for training encoding models on perturbed stimuli
+  - `perturbation_materials.py` - code for generating the perturbed stimuli
+  - `registered_models/` - trained encoding models based on perturbed stimuli from Tuckute2024 dataset
+
+**For Pereira2018 dataset:**
+- `additional_analyses/pereira/perturbation/` contains:
+  - `perturbation_encoding.py` - script for training encoding models on perturbed Pereira stimuli
+  - `perturbation_materials.py` - code for generating the perturbed stimuli
+  - `perturbation/registered_models/` - trained encoding models based on perturbed stimuli from Pereira2018 dataset
+
+----------
 ### Additional analyses
-There are two core additional analyses in the paper: one where we evaluate if the MNNLM's next-word-prediction abilities explain the models' performance in each language, and another where we evaluate whether the extent to which representations are aligned across languages predicts transfer performance. 
+The `additional_analyses` folder contains code for training encoding models on additional datasets and supplementary analyses:
 
-The code for those analyses can be found at:
+- **control/**: Contains code for training encoding models on the control dataset and Study III perturbation analyses
+- **MECO/**: Contains code for training encoding models on the MECO dataset  
+- **NaturalStories/**: Contains code for training encoding models on the NaturalStories dataset
+- **pereira/**: Contains code for training encoding models on the Pereira2018 dataset
 
- - **Next-word prediction:** In the folder `perplexity`
- - **Alignment and transfer:** In the folder `other/synonyms`
+Additional supplementary analyses include:
+
+ - **Next-word prediction:** In the folder `perplexity` - evaluates if the MNNLM's next-word-prediction abilities explain the models' performance in each language
+ - **Low-level feature baselines:** In the folder `other/` - evaluates whether low-level features (word frequency, length, rate, onset) can account for the observed effects
 
 ----------
 

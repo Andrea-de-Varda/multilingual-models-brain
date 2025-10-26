@@ -25,6 +25,9 @@ confirmatory/embeddings/**
 **/old/**
 **/*.zip
 additional_analyses/**/TimeSeries_*.csv
+other/other/
+paper.txt
+response_to_reviews.txt
 
 # Pereira.parquet.gzip
 additional_analyses/pereira/Pereira.parquet.gzip
