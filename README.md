@@ -107,9 +107,9 @@ Additional supplementary analyses include:
 
 > ⚠️ Notes for reproducibility
 
-The code automatically sets the working directory to the script's location, so in principle there is no need to specify the paths. However, this doesn't work if the scripts are executed in interactive environments like IPython. The code was designed and ran in interactive environments; to run it this way, the working directories will need to be manually specified with `os.chdir("/path/to/your/wd")`
+The code was designed and ran in interactive environments; to run it this way, the working directories will need to be manually specified with `os.chdir("/path/to/your/wd")`
 
-This repository does **NOT** include all the embeddings used in all the studies, but embeddings for distilmbert are included to allow for fast experimentation and reproduction. Embeddings take up a lot of space (the full folder is ~200 GB) so the embeddings for the other models need to be recomputed (with `get_model_embeddings.py`).
+This repository does **NOT** include all the embeddings used in all the studies, but embeddings for distilmbert are included on OSF to allow for fast experimentation and reproduction. Embeddings take up a lot of space (the full folder is ~200 GB) so the embeddings for the other models need to be recomputed (with `get_model_embeddings.py`).
 
 The code was tested on a computer with Ubuntu 22.04.4 LTS. Python version: 3.9.7. No non-standard hardware is required. Installation only requires installing the required dependencies (see below) and should only take a few minutes. 
 
@@ -129,5 +129,5 @@ The code was tested on a computer with Ubuntu 22.04.4 LTS. Python version: 3.9.7
     
     whisper_timestamped: to be installed from https://github.com/linto-ai/whisper-timestamped
 
-A minimal working code for the Study I encoding approach (both "within" and "across") can be found in `encoding_demo.py`, where it's possible to fit encoding models based on distilmbert embeddings, which need not be recomputed and are already provided in the folder. The demo should take about 5 minutes or less to run. The expected output is provided in `demo_output.txt`.
+A minimal working code for the Study I encoding approach (both "within" and "across") can be found on OSF in `encoding_demo.py`, where it's possible to fit encoding models based on distilmbert embeddings, which need not be recomputed and are already provided in the folder. The demo should take about 5 minutes or less to run. The expected output is provided in `demo_output.txt`.
     
