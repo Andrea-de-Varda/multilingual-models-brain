@@ -1,8 +1,6 @@
 > ⚠️ Note for Reviewers (Round 2)
 
-This OSF repository corresponds to the first-round submission. For the second-round revision, all updated analyses have been moved to GitHub, where version control makes it easier to track changes. You can find the Round 2 repository [here](https://github.com/Andrea-de-Varda/multilingual-models-brain).
-
-All Round 1 materials will remain archived here on OSF for reference.
+This is the **`revision`** branch, which contains all updates for the **Round 2** revision of the manuscript. All changes relative to the Round 1 version (archived on OSF) can be tracked here through Git’s version history. All Round 1 materials will remain archived on OSF for reference.
 
 ***
 
