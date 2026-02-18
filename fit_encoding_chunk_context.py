@@ -12,7 +12,6 @@ from tqdm import tqdm
 from scipy.stats import pearsonr
 from math import sqrt
 import matplotlib.pyplot as plt
-from time import sleep
 
 chdir("/home/dev/Documents/PhD/Alice")
 
@@ -102,7 +101,6 @@ def monolingual_encoding_chunked(langs, model_prefix, n_layers, overwrite = Fals
             df = pd.DataFrame(zip(langs, m), columns=["lang", "m"])
             layerwise_dict[layer_n] = df
             #print(layerwise_dict)
-            sleep(10)
         save(layerwise_dict, f"results/split_context/monolingual_{model_prefix}")
     return layerwise_dict
 
