@@ -24,8 +24,10 @@ import os
 import pickle
 import re
 import string
+import threading
 import time
 import traceback
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import nltk
 import numpy as np
@@ -38,16 +40,16 @@ from tqdm import tqdm
 # Configuration
 # ---------------------------------------------------------------------------
 
-API_KEY    = "MASKED"
-MODEL      = "moonshotai/Kimi-K2.5"
+API_KEY    = "MASKED" # set your Together API key here
+MODEL      = "moonshotai/Kimi-K2-Instruct-0905"
 N_VARIANTS = 10
 TEMPERATURE = 0
 MAX_TOKENS  = 2000
 RETRY_MAX   = 3
 RETRY_DELAY = 2.0
-CALL_DELAY  = 0.5
-REGEN_MAX   = 2       # max re-generation attempts per failing variant
-BATCH_SIZE  = 5       # sentences per LLM quality-check call
+REGEN_MAX   = 2          # max re-generation attempts per failing variant
+BATCH_SIZE  = 5          # sentences per LLM quality-check call
+DEFAULT_WORKERS = 20
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -229,7 +231,6 @@ def run_llm_check(client: Together, batch: list[dict]) -> list[dict]:
         {"role": "user",   "content": prompt},
     ]
     raw = call_api(client, messages)
-    time.sleep(CALL_DELAY)
     return parse_json_array(raw)
 
 
@@ -245,17 +246,76 @@ def regenerate_variant(
     )
     messages = [{"role": "user", "content": prompt}]
     result = call_api(client, messages).strip()
-    time.sleep(CALL_DELAY)
-    # Strip numbering if model accidentally adds it
     result = re.sub(r'^\s*\d+[.):\-]\s*', '', result).strip()
     return result
 
 
-def step_llm(dataset: str) -> None:
+def _regen_one_variant(
+    client: Together,
+    sent_idx: int,
+    vi: int,
+    original: str,
+    cond_name: str,
+    initial_variant: str,
+    initial_failed: list[str],
+    initial_note: str,
+) -> dict:
+    """
+    Attempt up to REGEN_MAX re-generations for a single failing variant.
+    Returns a result dict with final_text, passes, regen_attempts, failed_criteria, note.
+    """
+    passes   = False
+    failed   = initial_failed
+    note     = initial_note
+    final_text = initial_variant
+    regen_attempts = 0
+
+    for _ in range(REGEN_MAX):
+        try:
+            new_variant = regenerate_variant(client, original, cond_name, failed, note)
+        except Exception as e:
+            tqdm.write(f"  [Regen error] sent {sent_idx} v{vi+1}: {e}")
+            break
+
+        regen_attempts += 1
+
+        mini_batch = [{
+            "sent_idx": sent_idx,
+            "original": original,
+            "condition": cond_name,
+            "variants": [new_variant],
+        }]
+        try:
+            mini_results = run_llm_check(client, mini_batch)
+            mr = mini_results[0] if mini_results else None
+        except Exception:
+            mr = None
+
+        final_text = new_variant
+        if mr and mr.get("passes", False):
+            passes = True
+            failed = []
+            note   = ""
+            break
+        elif mr:
+            failed = mr.get("failed_criteria", failed)
+            note   = mr.get("note", note)
+
+    return {
+        "passes": passes,
+        "failed_criteria": failed,
+        "note": note,
+        "regen_attempts": regen_attempts,
+        "final_text": final_text,
+        "needs_manual_review": not passes,
+    }
+
+
+def step_llm(dataset: str, workers: int = DEFAULT_WORKERS) -> None:
     out_dir = out_dir_for(dataset)
     ckpt_path = os.path.join(out_dir, "check_checkpoint.json")
     checkpoint = load_checkpoint(ckpt_path)
-    # checkpoint: {str(sent_idx): {condition: {str(vi): {passes, regen_attempts, ...}}}}
+    ck_lock = threading.Lock()
 
     para_pkl = os.path.join(out_dir, "paraphrase_dict.pkl")
     synt_pkl = os.path.join(out_dir, "syntactic_dict.pkl")
@@ -276,65 +336,80 @@ def step_llm(dataset: str) -> None:
     ]
 
     for cond_name, data in conditions:
-        print(f"\n=== LLM check: {cond_name} | dataset: {dataset} ===")
+        print(f"\n=== LLM check: {cond_name} | dataset: {dataset} | workers: {workers} ===")
         sent_indices = sorted(data.keys())
 
         # Build list of sentences needing checking
-        to_check = []
-        for sent_idx in sent_indices:
+        to_check = [
+            sent_idx for sent_idx in sent_indices
+            if any(
+                str(vi) not in checkpoint.get(str(sent_idx), {}).get(cond_name, {})
+                for vi in range(len(data[sent_idx].get("variants", [])))
+            )
+        ]
+        print(f"  Sentences needing first-pass check: {len(to_check)}/{len(sent_indices)}")
+
+        # ---------------------------------------------------------------
+        # PHASE 1: parallel first-pass batch checks
+        # ---------------------------------------------------------------
+        batches = []
+        for batch_start in range(0, len(to_check), BATCH_SIZE):
+            batch_indices = to_check[batch_start: batch_start + BATCH_SIZE]
+            batch = [
+                {
+                    "sent_idx": idx,
+                    "original": data[idx]["sentence"],
+                    "condition": cond_name,
+                    "variants": data[idx].get("variants", []),
+                }
+                for idx in batch_indices
+            ]
+            batches.append((batch_indices, batch))
+
+        # Maps (sent_idx, vi) → first-pass eval result
+        first_pass_results: dict[tuple, dict] = {}
+
+        def _check_batch(batch_indices_and_batch):
+            bidxs, bat = batch_indices_and_batch
+            try:
+                results = run_llm_check(client, bat)
+                return bidxs, results, None
+            except Exception as e:
+                return bidxs, [], e
+
+        with ThreadPoolExecutor(max_workers=workers) as executor:
+            futures = {executor.submit(_check_batch, b): b for b in batches}
+            with tqdm(total=len(batches), desc="Check batches") as pbar:
+                for future in as_completed(futures):
+                    batch_indices, eval_results, error = future.result()
+                    if error:
+                        tqdm.write(f"  [Error] batch {batch_indices[:2]}: {error}")
+                    else:
+                        for r in eval_results:
+                            key = (r.get("sentence_idx"), r.get("variant_idx", 1) - 1)
+                            first_pass_results[key] = r
+                    pbar.update(1)
+
+        # ---------------------------------------------------------------
+        # Populate checkpoint with first-pass results; collect failing variants
+        # ---------------------------------------------------------------
+        failing_tasks = []  # (sent_idx, vi, original, variant_text, failed, note)
+
+        for sent_idx in to_check:
             key = str(sent_idx)
             entry = data[sent_idx]
             variants = entry.get("variants", [])
-            ck_entry = checkpoint.get(key, {}).get(cond_name, {})
-
-            unchecked = [
-                vi for vi in range(len(variants))
-                if str(vi) not in ck_entry
-            ]
-            if unchecked:
-                to_check.append(sent_idx)
-
-        print(f"  Sentences needing check: {len(to_check)}/{len(sent_indices)}")
-
-        # Process in batches
-        for batch_start in tqdm(range(0, len(to_check), BATCH_SIZE), desc="Batches"):
-            batch_indices = to_check[batch_start: batch_start + BATCH_SIZE]
-            batch = []
-            for sent_idx in batch_indices:
-                entry = data[sent_idx]
-                batch.append({
-                    "sent_idx": sent_idx,
-                    "original": entry["sentence"],
-                    "condition": cond_name,
-                    "variants": entry.get("variants", []),
-                })
-
-            try:
-                eval_results = run_llm_check(client, batch)
-            except Exception as e:
-                print(f"  [Error] batch starting at {batch_start}: {e}")
-                traceback.print_exc()
-                continue
-
-            # Index results by (sent_idx, variant_idx)
-            result_map: dict[tuple, dict] = {}
-            for r in eval_results:
-                result_map[(r.get("sentence_idx"), r.get("variant_idx") - 1)] = r
-
-            for sent_idx in batch_indices:
-                key = str(sent_idx)
-                entry = data[sent_idx]
-                variants = entry.get("variants", [])
+            with ck_lock:
                 ck_entry = checkpoint.setdefault(key, {}).setdefault(cond_name, {})
 
-                for vi, variant_text in enumerate(variants):
-                    vi_key = str(vi)
-                    if vi_key in ck_entry:
-                        continue  # already evaluated
+            for vi, variant_text in enumerate(variants):
+                vi_key = str(vi)
+                if vi_key in ck_entry:
+                    continue
 
-                    r = result_map.get((sent_idx, vi), None)
-                    if r is None:
-                        # Model didn't return an entry for this variant – mark unknown
+                r = first_pass_results.get((sent_idx, vi))
+                if r is None:
+                    with ck_lock:
                         ck_entry[vi_key] = {
                             "passes": None,
                             "failed_criteria": ["response_missing"],
@@ -343,70 +418,51 @@ def step_llm(dataset: str) -> None:
                             "final_text": variant_text,
                             "needs_manual_review": True,
                         }
-                        continue
+                    continue
 
-                    passes = r.get("passes", False)
-                    failed = r.get("failed_criteria", [])
-                    note   = r.get("note", "")
+                passes = r.get("passes", False)
+                failed = r.get("failed_criteria", [])
+                note   = r.get("note", "")
 
-                    regen_attempts = 0
-                    final_text = variant_text
+                if passes:
+                    with ck_lock:
+                        ck_entry[vi_key] = {
+                            "passes": True, "failed_criteria": [], "note": "",
+                            "regen_attempts": 0, "final_text": variant_text,
+                            "needs_manual_review": False,
+                        }
+                else:
+                    # Defer regeneration
+                    failing_tasks.append((sent_idx, vi, entry["sentence"], variant_text, failed, note))
 
-                    if not passes:
-                        # Auto-regenerate up to REGEN_MAX times
-                        for regen_attempt in range(1, REGEN_MAX + 1):
-                            try:
-                                new_variant = regenerate_variant(
-                                    client,
-                                    entry["sentence"],
-                                    cond_name,
-                                    failed,
-                                    note,
-                                )
-                            except Exception as e:
-                                print(f"    [Regen error] sent {sent_idx} v{vi+1}: {e}")
-                                break
+        with ck_lock:
+            save_checkpoint(ckpt_path, checkpoint)
 
-                            regen_attempts += 1
+        # ---------------------------------------------------------------
+        # PHASE 2: parallel regeneration across all failing variants
+        # ---------------------------------------------------------------
+        print(f"  Failing variants to regenerate: {len(failing_tasks)}")
 
-                            # Quick re-check of the single regenerated variant
-                            mini_batch = [{
-                                "sent_idx": sent_idx,
-                                "original": entry["sentence"],
-                                "condition": cond_name,
-                                "variants": [new_variant],
-                            }]
-                            try:
-                                mini_results = run_llm_check(client, mini_batch)
-                                mr = mini_results[0] if mini_results else None
-                            except Exception:
-                                mr = None
+        def _regen_task(args):
+            sent_idx, vi, original, variant_text, failed, note = args
+            result = _regen_one_variant(
+                client, sent_idx, vi, original, cond_name, variant_text, failed, note
+            )
+            return sent_idx, vi, result
 
-                            if mr and mr.get("passes", False):
-                                passes = True
-                                failed = []
-                                note   = ""
-                                final_text = new_variant
-                                break
-                            else:
-                                # Keep best (latest) attempt even if still failing
-                                final_text = new_variant
-                                if mr:
-                                    failed = mr.get("failed_criteria", failed)
-                                    note   = mr.get("note", note)
+        with ThreadPoolExecutor(max_workers=workers) as executor:
+            futures = {executor.submit(_regen_task, t): t for t in failing_tasks}
+            with tqdm(total=len(failing_tasks), desc="Regenerating") as pbar:
+                for future in as_completed(futures):
+                    sent_idx, vi, result = future.result()
+                    key = str(sent_idx)
+                    # Update the variant text in data
+                    data[sent_idx]["variants"][vi] = result["final_text"]
+                    with ck_lock:
+                        checkpoint.setdefault(key, {}).setdefault(cond_name, {})[str(vi)] = result
+                    pbar.update(1)
 
-                        # Update the variant in the data dict with the final text
-                        data[sent_idx]["variants"][vi] = final_text
-
-                    ck_entry[vi_key] = {
-                        "passes": passes,
-                        "failed_criteria": failed,
-                        "note": note,
-                        "regen_attempts": regen_attempts,
-                        "final_text": final_text,
-                        "needs_manual_review": (not passes),
-                    }
-
+        with ck_lock:
             save_checkpoint(ckpt_path, checkpoint)
 
         # Persist updated pkl + CSV
@@ -560,9 +616,13 @@ if __name__ == "__main__":
         "--step", required=True, choices=["llm", "overlap", "all"],
         help="Which check step to run."
     )
+    parser.add_argument(
+        "--workers", type=int, default=DEFAULT_WORKERS,
+        help=f"Number of parallel API requests (default: {DEFAULT_WORKERS})."
+    )
     args = parser.parse_args()
 
     if args.step in ("llm", "all"):
-        step_llm(args.dataset)
+        step_llm(args.dataset, args.workers)
     if args.step in ("overlap", "all"):
         step_overlap(args.dataset)

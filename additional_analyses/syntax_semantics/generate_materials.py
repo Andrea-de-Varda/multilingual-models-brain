@@ -16,8 +16,10 @@ import json
 import os
 import pickle
 import re
+import threading
 import time
 import traceback
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import pandas as pd
 from together import Together
@@ -27,14 +29,14 @@ from tqdm import tqdm
 # Configuration
 # ---------------------------------------------------------------------------
 
-API_KEY = "MASKED"
-MODEL   = "moonshotai/Kimi-K2.5"
+API_KEY = "MASKED" # set your Together API key here
+MODEL   = "moonshotai/Kimi-K2-Instruct-0905"
 N_VARIANTS = 10
 TEMPERATURE = 0
 MAX_TOKENS  = 1200
-RETRY_MAX   = 3
-RETRY_DELAY = 2.0   # seconds, doubled on each retry
-CALL_DELAY  = 0.5   # seconds between calls
+RETRY_MAX    = 3
+RETRY_DELAY  = 2.0   # seconds, doubled on each retry
+DEFAULT_WORKERS = 20
 
 ROIS = [
     'lang_LH_IFGorb', 'lang_LH_IFG', 'lang_LH_MFG',
@@ -58,19 +60,22 @@ constructions across the {n} paraphrases: active→passive, topicalization, clef
 sentences ("It was X that..."), nominalization, existential constructions, relative \
 clauses as main clause, etc.
 3. Replace content words (nouns, verbs, adjectives, adverbs) with synonyms or \
-equivalent expressions – minimize lexical overlap with the original.
-4. Keep proper names (people, places) as they are – they are entity references, \
-not arbitrary words.
-5. Each sentence must be natural, fluent English.
-6. Target length: within ±4 words of the original.
+equivalent expressions – minimize lexical overlap with the original. Again, try \
+NOT to use words from the original sentence.
+4. Each sentence must be natural, fluent English.
+5. Target length: within ±4 words of the original.
 
 Examples of the syntactic variety expected:
-  Original: "John broke the vase."
-  → Passive:         "The vase was shattered by John."
-  → Topicalization:  "The ceramic vessel, John ended up smashing."
-  → Cleft:           "It was John who destroyed the vase."
-  → Nominalization:  "John's shattering of the ceramic container was accidental."
-  → Existential:     "There was an incident where John smashed the vessel."
+Original:        "The man broke the vase."
+→ Passive:       "A ceramic vessel was shattered by him."
+→ Topicalization:"That porcelain container, he ended up smashing."
+→ Cleft:         "It was him who destroyed a porcelain object."
+→ Nominalization:"His shattering of a ceramic container occurred accidentally."
+→ Existential:   "There was an incident where he smashed a porcelain vessel."
+
+Once again, it is important that you produce paraphrases that have the same \
+meaning as the original sentence but do not use words from the original sentence.
+You can use synonyms to achieve this. Try to use words that are not too rare.
 
 Original sentence: <<{sentence}>>
 
@@ -94,7 +99,9 @@ object NP, prepositional phrases, subordinate/relative clauses, adverbs – in t
    – Preserve function words (determiners, prepositions, conjunctions, auxiliaries) \
 in the same structural roles.
 2. Replace ALL content words (nouns, verbs, adjectives, adverbs) with completely \
-different words referring to entirely different entities, actions, or properties.
+different words referring to entirely different entities, actions, or properties. Again, \
+try to create sentences that use VERY DIFFERENT WORDS and VERY DIFFERENT CONCEPTS so that \
+the meaning is completely different from the original.
 3. Replace proper names with different proper names.
 4. The {n} sentences must be natural, plausible, fluent English.
 5. Target length: within ±2 words of the original.
@@ -109,8 +116,12 @@ Examples:
 
   Original: "The scientists discovered that the new compound was highly effective."
     Template: [Det+N] [past V] [that-clause: Det+Adj+N + past copula + Adv+Adj]
-  ✓ Good: "The engineers confirmed that the old bridge was structurally unsound."
-  ✓ Good: "The doctors noted that the experimental treatment was surprisingly successful."
+  ✓ Good: "The children sensed that the old house was strangely quiet."
+  ✓ Good: "The tourists realized that the narrow path was completely impassable."
+  ✓ Good: "The wolves knew that the frozen river was dangerously thin."
+
+Once again, it is important that you produce sentences that have VERY DIFFERENT MEANING \
+from the original sentence but follow the same syntactic template.
 
 Original sentence: <<{sentence}>>
 
@@ -202,8 +213,9 @@ def save_outputs(data: dict, out_dir: str, condition: str) -> None:
     rows = []
     for idx, entry in data.items():
         row = {"sentence_idx": idx, "original_sentence": entry["sentence"]}
-        for vi, v in enumerate(entry["variants"], start=1):
-            row[f"v{vi}"] = v
+        variants = entry.get("variants", [])
+        for vi in range(N_VARIANTS):
+            row[f"v{vi + 1}"] = variants[vi] if vi < len(variants) else ""
         rows.append(row)
 
     csv_path = os.path.join(out_dir, f"{condition}s.csv")
@@ -216,22 +228,43 @@ def save_outputs(data: dict, out_dir: str, condition: str) -> None:
 
 
 # ---------------------------------------------------------------------------
+# Worker function (runs in thread pool)
+# ---------------------------------------------------------------------------
+
+def _run_task(
+    client: Together,
+    sent_idx: int,
+    sentence: str,
+    cond_name: str,
+    prompt_template: str,
+) -> tuple:
+    """Return (sent_idx, cond_name, sentence, variants, error_or_None)."""
+    prompt = prompt_template.format(sentence=sentence, n=N_VARIANTS)
+    try:
+        raw = call_api(client, prompt)
+        variants = parse_numbered_list(raw, N_VARIANTS)
+        return sent_idx, cond_name, sentence, variants, None
+    except Exception as e:
+        return sent_idx, cond_name, sentence, [], e
+
+
+# ---------------------------------------------------------------------------
 # Main generation loop
 # ---------------------------------------------------------------------------
 
-def generate(dataset: str, max_sentences: int | None = None) -> None:
+def generate(dataset: str, max_sentences: int | None = None, workers: int = DEFAULT_WORKERS) -> None:
     out_dir = os.path.join(SCRIPT_DIR, dataset, "materials")
     os.makedirs(out_dir, exist_ok=True)
 
     ckpt_path = os.path.join(out_dir, "gen_checkpoint.json")
     checkpoint = load_checkpoint(ckpt_path)
-    # checkpoint structure: {str(sent_idx): {"sentence": ..., "paraphrase": [...], "syntactic": [...]}}
+    ck_lock = threading.Lock()
 
     sentences = load_sentences(dataset)
     if max_sentences is not None:
         sentences = sentences[:max_sentences]
 
-    print(f"Dataset: {dataset} | Sentences: {len(sentences)} | Model: {MODEL}")
+    print(f"Dataset: {dataset} | Sentences: {len(sentences)} | Model: {MODEL} | Workers: {workers}")
     done = sum(
         1 for v in checkpoint.values()
         if len(v.get("paraphrase", [])) == N_VARIANTS
@@ -246,42 +279,56 @@ def generate(dataset: str, max_sentences: int | None = None) -> None:
         "syntactic":  SYNTACTIC_PROMPT,
     }
 
-    for sent_idx, sentence in enumerate(tqdm(sentences, desc="Sentences")):
-        key = str(sent_idx)
-
-        # Check what's already done for this sentence
-        ck_entry = checkpoint.get(key, {"sentence": sentence, "paraphrase": [], "syntactic": []})
-
-        any_missing = False
+    # Build list of (sent_idx, sentence, cond_name, prompt_template) still needing work
+    tasks = []
+    for sent_idx, sentence in enumerate(sentences):
+        ck_entry = checkpoint.get(str(sent_idx), {})
         for cond_name, prompt_template in conditions.items():
-            if len(ck_entry.get(cond_name, [])) == N_VARIANTS:
-                continue  # already done
+            if len(ck_entry.get(cond_name, [])) < N_VARIANTS:
+                tasks.append((sent_idx, sentence, cond_name, prompt_template))
 
-            any_missing = True
-            prompt = prompt_template.format(sentence=sentence, n=N_VARIANTS)
+    print(f"Tasks remaining: {len(tasks)} (={len(tasks)//2} sentences × 2 conditions)")
 
-            try:
-                raw = call_api(client, prompt)
-                variants = parse_numbered_list(raw, N_VARIANTS)
+    if not tasks:
+        print("Nothing to do.")
+    else:
+        CKPT_EVERY = max(1, workers)  # checkpoint after every batch-worth of completions
+        completed_since_ckpt = 0
 
-                if len(variants) < N_VARIANTS:
-                    print(
-                        f"\n  [Warning] sent {sent_idx} ({cond_name}): "
-                        f"got {len(variants)}/{N_VARIANTS} items. Raw response:\n{raw[:300]}"
-                    )
+        with ThreadPoolExecutor(max_workers=workers) as executor:
+            futures = {
+                executor.submit(_run_task, client, *task): task
+                for task in tasks
+            }
 
-                ck_entry[cond_name] = variants
-                ck_entry["sentence"] = sentence
+            with tqdm(total=len(tasks), desc="Tasks") as pbar:
+                for future in as_completed(futures):
+                    sent_idx, cond_name, sentence, variants, error = future.result()
+                    key = str(sent_idx)
 
-            except Exception as e:
-                print(f"\n  [Error] sent {sent_idx} ({cond_name}): {e}")
-                traceback.print_exc()
-                ck_entry[cond_name] = ck_entry.get(cond_name, [])
+                    if error:
+                        tqdm.write(f"[Error] sent {sent_idx} ({cond_name}): {error}")
+                        traceback.print_exc()
+                    else:
+                        if len(variants) < N_VARIANTS:
+                            tqdm.write(
+                                f"[Warning] sent {sent_idx} ({cond_name}): "
+                                f"got {len(variants)}/{N_VARIANTS} items."
+                            )
+                        with ck_lock:
+                            ck_entry = checkpoint.setdefault(key, {"sentence": sentence})
+                            ck_entry["sentence"] = sentence
+                            ck_entry[cond_name] = variants
 
-            time.sleep(CALL_DELAY)
+                    pbar.update(1)
+                    completed_since_ckpt += 1
 
-        if any_missing:
-            checkpoint[key] = ck_entry
+                    if completed_since_ckpt >= CKPT_EVERY:
+                        with ck_lock:
+                            save_checkpoint(ckpt_path, checkpoint)
+                        completed_since_ckpt = 0
+
+        with ck_lock:
             save_checkpoint(ckpt_path, checkpoint)
 
     # -----------------------------------------------------------------------
@@ -332,5 +379,9 @@ if __name__ == "__main__":
         "--max_sentences", type=int, default=None,
         help="Cap number of sentences (for dry runs)."
     )
+    parser.add_argument(
+        "--workers", type=int, default=DEFAULT_WORKERS,
+        help=f"Number of parallel API requests (default: {DEFAULT_WORKERS})."
+    )
     args = parser.parse_args()
-    generate(args.dataset, args.max_sentences)
+    generate(args.dataset, args.max_sentences, args.workers)
