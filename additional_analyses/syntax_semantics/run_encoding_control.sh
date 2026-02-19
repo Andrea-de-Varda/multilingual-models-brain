@@ -3,7 +3,7 @@
 #SBATCH --gres=gpu:a100:1
 #SBATCH -t 24:00:00
 #SBATCH -c 1
-#SBATCH --mem=10G
+#SBATCH --mem=23G
 #SBATCH --job-name=syntsem_enc_control
 #SBATCH --output=logs/%x_%j.out
 #SBATCH --error=logs/%x_%j.err

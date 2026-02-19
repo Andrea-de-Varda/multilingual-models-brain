@@ -1,0 +1,84 @@
+Running on node3905
+PWD: /orcd/data/evelina9/001/USERS/devar_ag/multilingual-models-brain/additional_analyses/syntax_semantics
+/home/devar_ag/.conda/envs/modularity-conda/bin/python
+Python 3.10.19
+Dataset: pereira | Sentences: 627
+=== xlmr_large: all conditions already trained. Skipping.
+
+=== xglm_xl (facebook/xglm-4.5B) === | pending: ['paraphrase', 'syntactic']
+>> Training encoder for condition: paraphrase
+>> Training encoder for condition: syntactic
+
+=== xglm_large (facebook/xglm-2.9B) === | pending: ['paraphrase', 'syntactic']
+>> Training encoder for condition: paraphrase
+>> Training encoder for condition: syntactic
+
+=== xglm_med (facebook/xglm-1.7B) === | pending: ['paraphrase', 'syntactic']
+>> Training encoder for condition: paraphrase
+>> Training encoder for condition: syntactic
+
+=== xglm_small (facebook/xglm-564M) === | pending: ['paraphrase', 'syntactic']
+>> Training encoder for condition: paraphrase
+>> Training encoder for condition: syntactic
+
+=== bert_base (bert-base-multilingual-cased) === | pending: ['paraphrase', 'syntactic']
+>> Training encoder for condition: paraphrase
+>> Training encoder for condition: syntactic
+
+=== distilmbert (distilbert-base-multilingual-cased) === | pending: ['paraphrase', 'syntactic']
+>> Training encoder for condition: paraphrase
+>> Training encoder for condition: syntactic
+
+=== xlmr_base (xlm-roberta-base) === | pending: ['paraphrase', 'syntactic']
+>> Training encoder for condition: paraphrase
+>> Training encoder for condition: syntactic
+
+=== mt5_small (google/mt5-small) === | pending: ['paraphrase', 'syntactic']
+>> Training encoder for condition: paraphrase
+>> Training encoder for condition: syntactic
+
+=== mt5_base (google/mt5-base) === | pending: ['paraphrase', 'syntactic']
+>> Training encoder for condition: paraphrase
+>> Training encoder for condition: syntactic
+
+=== mt5_large (google/mt5-large) === | pending: ['paraphrase', 'syntactic']
+>> Training encoder for condition: paraphrase
+>> Training encoder for condition: syntactic
+
+=== mdeberta (microsoft/mdeberta-v3-base) === | pending: ['paraphrase', 'syntactic']
+>> Training encoder for condition: paraphrase
+>> Training encoder for condition: syntactic
+
+=== xlm_align (microsoft/xlm-align-base) === | pending: ['paraphrase', 'syntactic']
+>> Training encoder for condition: paraphrase
+>> Training encoder for condition: syntactic
+
+=== infoxlm_base (microsoft/infoxlm-base) === | pending: ['paraphrase', 'syntactic']
+>> Training encoder for condition: paraphrase
+>> Training encoder for condition: syntactic
+
+=== infoxlm_large (microsoft/infoxlm-large) === | pending: ['paraphrase', 'syntactic']
+>> Training encoder for condition: paraphrase
+>> Training encoder for condition: syntactic
+
+=== multiminilm (microsoft/Multilingual-MiniLM-L12-H384) === | pending: ['paraphrase', 'syntactic']
+>> Training encoder for condition: paraphrase
+>> Training encoder for condition: syntactic
+
+=== mgpt (ai-forever/mGPT) === | pending: ['paraphrase', 'syntactic']
+>> Training encoder for condition: paraphrase
+>> Training encoder for condition: syntactic
+
+=== nllb200_distilled_600M (facebook/nllb-200-distilled-600M) === | pending: ['paraphrase', 'syntactic']
+>> Training encoder for condition: paraphrase
+>> Training encoder for condition: syntactic
+
+=== nllb200_distilled_1B (facebook/nllb-200-distilled-1.3B) === | pending: ['paraphrase', 'syntactic']
+>> Training encoder for condition: paraphrase
+>> Training encoder for condition: syntactic
+
+=== nllb200_1B (facebook/nllb-200-1.3B) === | pending: ['paraphrase', 'syntactic']
+>> Training encoder for condition: paraphrase
+>> Training encoder for condition: syntactic
+
+Done. Outputs in: /orcd/data/evelina9/001/USERS/devar_ag/multilingual-models-brain/additional_analyses/syntax_semantics/pereira/materials/registered_models
