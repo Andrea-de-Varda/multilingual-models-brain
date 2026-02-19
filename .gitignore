@@ -25,6 +25,7 @@ confirmatory/embeddings/**
 **/old/**
 **/*.zip
 additional_analyses/**/TimeSeries_*.csv
+additional_analyses/residualize_info/glasgow_norms.csv
 other/other/
 paper.txt
 response_to_reviews.txt
