@@ -1,0 +1,252 @@
+Training sentences: 1000, y shape: (1000,)
+Semantic features: ['rating_imageability_mean', 'rating_others_thoughts_mean', 'rating_physical_mean', 'rating_places_mean', 'rating_valence_mean', 'rating_arousal_mean', 'rating_sense_mean']
+Syntactic features: ['log-prob-gpt2-xl_mean', 'rating_gram_mean', 'rating_frequency_mean', 'rating_conversational_mean', 'dep_length_mean', 'avg_word_freq_zipf', 'avg_word_length']
+
+=== xlmr_large (xlm-roberta-large) ===
+  Embeddings shape: (1000, 1024)
+
+  Running INLP for semantics...
+  [INLP semantics] Step 0 (no removal):
+    rating_imageability_mean: R²=0.9925
+    rating_others_thoughts_mean: R²=0.9930
+    rating_physical_mean: R²=0.9941
+    rating_places_mean: R²=0.9918
+    rating_valence_mean: R²=0.9895
+    rating_arousal_mean: R²=0.9902
+    rating_sense_mean: R²=0.9868
+  [INLP semantics] Step   1 | removed: rating_imageability_mean            | max_R²=0.9929
+  [INLP semantics] Step   2 | removed: rating_others_thoughts_mean         | max_R²=0.9875
+  [INLP semantics] Step   3 | removed: rating_physical_mean                | max_R²=0.9859
+  [INLP semantics] Step   4 | removed: rating_places_mean                  | max_R²=0.9856
+  [INLP semantics] Step   5 | removed: rating_valence_mean                 | max_R²=0.9816
+  [INLP semantics] Step   6 | removed: rating_arousal_mean                 | max_R²=0.9685
+  [INLP semantics] Step   7 | removed: rating_sense_mean                   | max_R²=0.9646
+  [INLP semantics] Step   8 | removed: rating_imageability_mean            | max_R²=0.9642
+  [INLP semantics] Step   9 | removed: rating_others_thoughts_mean         | max_R²=0.9620
+  [INLP semantics] Step  10 | removed: rating_physical_mean                | max_R²=0.9512
+  [INLP semantics] Step  11 | removed: rating_places_mean                  | max_R²=0.9398
+  [INLP semantics] Step  12 | removed: rating_valence_mean                 | max_R²=0.9389
+  [INLP semantics] Step  13 | removed: rating_arousal_mean                 | max_R²=0.9378
+  [INLP semantics] Step  14 | removed: rating_sense_mean                   | max_R²=0.9376
+  [INLP semantics] Step  15 | removed: rating_imageability_mean            | max_R²=0.9369
+  [INLP semantics] Step  16 | removed: rating_others_thoughts_mean         | max_R²=0.9356
+  [INLP semantics] Step  17 | removed: rating_physical_mean                | max_R²=0.9195
+  [INLP semantics] Step  18 | removed: rating_places_mean                  | max_R²=0.9192
+  [INLP semantics] Step  19 | removed: rating_valence_mean                 | max_R²=0.9192
+  [INLP semantics] Step  20 | removed: rating_arousal_mean                 | max_R²=0.9179
+  [INLP semantics] Step  21 | removed: rating_sense_mean                   | max_R²=0.9171
+  [INLP semantics] Step  22 | removed: rating_imageability_mean            | max_R²=0.9157
+  [INLP semantics] Step  23 | removed: rating_others_thoughts_mean         | max_R²=0.9141
+  [INLP semantics] Step  24 | removed: rating_physical_mean                | max_R²=0.8973
+  [INLP semantics] Step  25 | removed: rating_places_mean                  | max_R²=0.8972
+  [INLP semantics] Step  26 | removed: rating_valence_mean                 | max_R²=0.8972
+  [INLP semantics] Step  27 | removed: rating_arousal_mean                 | max_R²=0.8968
+  [INLP semantics] Step  28 | removed: rating_sense_mean                   | max_R²=0.8954
+  [INLP semantics] Step  29 | removed: rating_imageability_mean            | max_R²=0.8954
+  [INLP semantics] Step  30 | removed: rating_others_thoughts_mean         | max_R²=0.8932
+  [INLP semantics] Step  31 | removed: rating_physical_mean                | max_R²=0.8804
+  [INLP semantics] Step  32 | removed: rating_places_mean                  | max_R²=0.8802
+  [INLP semantics] Step  33 | removed: rating_valence_mean                 | max_R²=0.8801
+  [INLP semantics] Step  34 | removed: rating_arousal_mean                 | max_R²=0.8798
+  [INLP semantics] Step  35 | removed: rating_sense_mean                   | max_R²=0.8791
+  [INLP semantics] Step  36 | removed: rating_imageability_mean            | max_R²=0.8787
+  [INLP semantics] Step  37 | removed: rating_others_thoughts_mean         | max_R²=0.8764
+  [INLP semantics] Step  38 | removed: rating_physical_mean                | max_R²=0.8633
+  [INLP semantics] Step  39 | removed: rating_places_mean                  | max_R²=0.8633
+  [INLP semantics] Step  40 | removed: rating_valence_mean                 | max_R²=0.8633
+  [INLP semantics] Step  41 | removed: rating_arousal_mean                 | max_R²=0.8615
+  [INLP semantics] Step  42 | removed: rating_sense_mean                   | max_R²=0.8615
+  [INLP semantics] Step  43 | removed: rating_imageability_mean            | max_R²=0.8614
+  [INLP semantics] Step  44 | removed: rating_others_thoughts_mean         | max_R²=0.8593
+  [INLP semantics] Step  45 | removed: rating_physical_mean                | max_R²=0.8473
+  [INLP semantics] Step  46 | removed: rating_places_mean                  | max_R²=0.8473
+  [INLP semantics] Step  47 | removed: rating_valence_mean                 | max_R²=0.8473
+  [INLP semantics] Step  48 | removed: rating_arousal_mean                 | max_R²=0.8465
+  [INLP semantics] Step  49 | removed: rating_sense_mean                   | max_R²=0.8462
+  [INLP semantics] Step  50 | removed: rating_imageability_mean            | max_R²=0.8461
+  [INLP semantics] Step  51 | removed: rating_others_thoughts_mean         | max_R²=0.8427
+  [INLP semantics] Step  52 | removed: rating_physical_mean                | max_R²=0.8343
+  [INLP semantics] Step  53 | removed: rating_places_mean                  | max_R²=0.8343
+  [INLP semantics] Step  54 | removed: rating_valence_mean                 | max_R²=0.8342
+  [INLP semantics] Step  55 | removed: rating_arousal_mean                 | max_R²=0.8325
+  [INLP semantics] Step  56 | removed: rating_sense_mean                   | max_R²=0.8322
+  [INLP semantics] Step  57 | removed: rating_imageability_mean            | max_R²=0.8318
+  [INLP semantics] Step  58 | removed: rating_others_thoughts_mean         | max_R²=0.8210
+  [INLP semantics] Step  59 | removed: rating_physical_mean                | max_R²=0.8189
+  [INLP semantics] Step  60 | removed: rating_places_mean                  | max_R²=0.8188
+  [INLP semantics] Step  61 | removed: rating_valence_mean                 | max_R²=0.8186
+  [INLP semantics] Step  62 | removed: rating_arousal_mean                 | max_R²=0.8179
+  [INLP semantics] Step  63 | removed: rating_sense_mean                   | max_R²=0.8156
+  [INLP semantics] Step  64 | removed: rating_imageability_mean            | max_R²=0.8156
+  [INLP semantics] Step  65 | removed: rating_others_thoughts_mean         | max_R²=0.8040
+  [INLP semantics] Step  66 | removed: rating_physical_mean                | max_R²=0.8010
+  [INLP semantics] Step  67 | removed: rating_places_mean                  | max_R²=0.8008
+  [INLP semantics] Step  68 | removed: rating_valence_mean                 | max_R²=0.8008
+  [INLP semantics] Step  69 | removed: rating_arousal_mean                 | max_R²=0.7997
+  [INLP semantics] Step  70 | removed: rating_sense_mean                   | max_R²=0.7988
+  [INLP semantics] Step  71 | removed: rating_imageability_mean            | max_R²=0.7983
+  [INLP semantics] Step  72 | removed: rating_others_thoughts_mean         | max_R²=0.7863
+  [INLP semantics] Step  73 | removed: rating_physical_mean                | max_R²=0.7849
+  [INLP semantics] Step  74 | removed: rating_places_mean                  | max_R²=0.7848
+  [INLP semantics] Step  75 | removed: rating_valence_mean                 | max_R²=0.7848
+  [INLP semantics] Step  76 | removed: rating_arousal_mean                 | max_R²=0.7836
+  [INLP semantics] Step  77 | removed: rating_sense_mean                   | max_R²=0.7823
+  [INLP semantics] Step  78 | removed: rating_imageability_mean            | max_R²=0.7823
+  [INLP semantics] Step  79 | removed: rating_others_thoughts_mean         | max_R²=0.7692
+  [INLP semantics] Step  80 | removed: rating_physical_mean                | max_R²=0.7683
+  [INLP semantics] Step  81 | removed: rating_places_mean                  | max_R²=0.7683
+  [INLP semantics] Step  82 | removed: rating_valence_mean                 | max_R²=0.7683
+  [INLP semantics] Step  83 | removed: rating_arousal_mean                 | max_R²=0.7651
+  [INLP semantics] Step  84 | removed: rating_sense_mean                   | max_R²=0.7650
+  [INLP semantics] Step  85 | removed: rating_imageability_mean            | max_R²=0.7649
+  [INLP semantics] Step  86 | removed: rating_others_thoughts_mean         | max_R²=0.7540
+  [INLP semantics] Step  87 | removed: rating_physical_mean                | max_R²=0.7535
+  [INLP semantics] Step  88 | removed: rating_places_mean                  | max_R²=0.7535
+  [INLP semantics] Step  89 | removed: rating_valence_mean                 | max_R²=0.7530
+  [INLP semantics] Step  90 | removed: rating_arousal_mean                 | max_R²=0.7518
+  [INLP semantics] Step  91 | removed: rating_sense_mean                   | max_R²=0.7485
+  [INLP semantics] Step  92 | removed: rating_imageability_mean            | max_R²=0.7485
+  [INLP semantics] Step  93 | removed: rating_others_thoughts_mean         | max_R²=0.7358
+  [INLP semantics] Step  94 | removed: rating_physical_mean                | max_R²=0.7351
+  [INLP semantics] Step  95 | removed: rating_places_mean                  | max_R²=0.7350
+  [INLP semantics] Step  96 | removed: rating_valence_mean                 | max_R²=0.7348
+  [INLP semantics] Step  97 | removed: rating_arousal_mean                 | max_R²=0.7312
+  [INLP semantics] Step  98 | removed: rating_sense_mean                   | max_R²=0.7310
+  [INLP semantics] Step  99 | removed: rating_imageability_mean            | max_R²=0.7307
+  [INLP semantics] Step 100 | removed: rating_others_thoughts_mean         | max_R²=0.7231
+
+  WARNING [xlmr_large | semantics]: reached MAX_STEPS=100. Max R²=0.7231 still >= 0.01.
+  Features still decodable: ['rating_imageability_mean', 'rating_others_thoughts_mean', 'rating_physical_mean', 'rating_places_mean', 'rating_valence_mean', 'rating_arousal_mean', 'rating_sense_mean']
+  Saved semantics W_stack shape: (100, 1024)
+
+  Running INLP for syntax...
+  [INLP syntax] Step 0 (no removal):
+    log-prob-gpt2-xl_mean: R²=0.9903
+    rating_gram_mean: R²=0.9898
+    rating_frequency_mean: R²=0.9907
+    rating_conversational_mean: R²=0.9904
+    dep_length_mean: R²=0.9915
+    avg_word_freq_zipf: R²=0.9980
+    avg_word_length: R²=0.9973
+  [INLP syntax] Step   1 | removed: log-prob-gpt2-xl_mean               | max_R²=0.9980
+  [INLP syntax] Step   2 | removed: rating_gram_mean                    | max_R²=0.9979
+  [INLP syntax] Step   3 | removed: rating_frequency_mean               | max_R²=0.9975
+  [INLP syntax] Step   4 | removed: rating_conversational_mean          | max_R²=0.9975
+  [INLP syntax] Step   5 | removed: dep_length_mean                     | max_R²=0.9975
+  [INLP syntax] Step   6 | removed: avg_word_freq_zipf                  | max_R²=0.9964
+  [INLP syntax] Step   7 | removed: avg_word_length                     | max_R²=0.9848
+  [INLP syntax] Step   8 | removed: log-prob-gpt2-xl_mean               | max_R²=0.9847
+  [INLP syntax] Step   9 | removed: rating_gram_mean                    | max_R²=0.9847
+  [INLP syntax] Step  10 | removed: rating_frequency_mean               | max_R²=0.9836
+  [INLP syntax] Step  11 | removed: rating_conversational_mean          | max_R²=0.9833
+  [INLP syntax] Step  12 | removed: dep_length_mean                     | max_R²=0.9832
+  [INLP syntax] Step  13 | removed: avg_word_freq_zipf                  | max_R²=0.9805
+  [INLP syntax] Step  14 | removed: avg_word_length                     | max_R²=0.9707
+  [INLP syntax] Step  15 | removed: log-prob-gpt2-xl_mean               | max_R²=0.9707
+  [INLP syntax] Step  16 | removed: rating_gram_mean                    | max_R²=0.9704
+  [INLP syntax] Step  17 | removed: rating_frequency_mean               | max_R²=0.9700
+  [INLP syntax] Step  18 | removed: rating_conversational_mean          | max_R²=0.9688
+  [INLP syntax] Step  19 | removed: dep_length_mean                     | max_R²=0.9686
+  [INLP syntax] Step  20 | removed: avg_word_freq_zipf                  | max_R²=0.9664
+  [INLP syntax] Step  21 | removed: avg_word_length                     | max_R²=0.9576
+  [INLP syntax] Step  22 | removed: log-prob-gpt2-xl_mean               | max_R²=0.9576
+  [INLP syntax] Step  23 | removed: rating_gram_mean                    | max_R²=0.9574
+  [INLP syntax] Step  24 | removed: rating_frequency_mean               | max_R²=0.9569
+  [INLP syntax] Step  25 | removed: rating_conversational_mean          | max_R²=0.9564
+  [INLP syntax] Step  26 | removed: dep_length_mean                     | max_R²=0.9564
+  [INLP syntax] Step  27 | removed: avg_word_freq_zipf                  | max_R²=0.9484
+  [INLP syntax] Step  28 | removed: avg_word_length                     | max_R²=0.9433
+  [INLP syntax] Step  29 | removed: log-prob-gpt2-xl_mean               | max_R²=0.9430
+  [INLP syntax] Step  30 | removed: rating_gram_mean                    | max_R²=0.9428
+  [INLP syntax] Step  31 | removed: rating_frequency_mean               | max_R²=0.9425
+  [INLP syntax] Step  32 | removed: rating_conversational_mean          | max_R²=0.9419
+  [INLP syntax] Step  33 | removed: dep_length_mean                     | max_R²=0.9418
+  [INLP syntax] Step  34 | removed: avg_word_freq_zipf                  | max_R²=0.9309
+  [INLP syntax] Step  35 | removed: avg_word_length                     | max_R²=0.9281
+  [INLP syntax] Step  36 | removed: log-prob-gpt2-xl_mean               | max_R²=0.9280
+  [INLP syntax] Step  37 | removed: rating_gram_mean                    | max_R²=0.9280
+  [INLP syntax] Step  38 | removed: rating_frequency_mean               | max_R²=0.9271
+  [INLP syntax] Step  39 | removed: rating_conversational_mean          | max_R²=0.9257
+  [INLP syntax] Step  40 | removed: dep_length_mean                     | max_R²=0.9257
+  [INLP syntax] Step  41 | removed: avg_word_freq_zipf                  | max_R²=0.9119
+  [INLP syntax] Step  42 | removed: avg_word_length                     | max_R²=0.9101
+  [INLP syntax] Step  43 | removed: log-prob-gpt2-xl_mean               | max_R²=0.9101
+  [INLP syntax] Step  44 | removed: rating_gram_mean                    | max_R²=0.9101
+  [INLP syntax] Step  45 | removed: rating_frequency_mean               | max_R²=0.9094
+  [INLP syntax] Step  46 | removed: rating_conversational_mean          | max_R²=0.9080
+  [INLP syntax] Step  47 | removed: dep_length_mean                     | max_R²=0.9080
+  [INLP syntax] Step  48 | removed: avg_word_freq_zipf                  | max_R²=0.8961
+  [INLP syntax] Step  49 | removed: avg_word_length                     | max_R²=0.8952
+  [INLP syntax] Step  50 | removed: log-prob-gpt2-xl_mean               | max_R²=0.8948
+  [INLP syntax] Step  51 | removed: rating_gram_mean                    | max_R²=0.8948
+  [INLP syntax] Step  52 | removed: rating_frequency_mean               | max_R²=0.8939
+  [INLP syntax] Step  53 | removed: rating_conversational_mean          | max_R²=0.8926
+  [INLP syntax] Step  54 | removed: dep_length_mean                     | max_R²=0.8923
+  [INLP syntax] Step  55 | removed: avg_word_freq_zipf                  | max_R²=0.8820
+  [INLP syntax] Step  56 | removed: avg_word_length                     | max_R²=0.8806
+  [INLP syntax] Step  57 | removed: log-prob-gpt2-xl_mean               | max_R²=0.8805
+  [INLP syntax] Step  58 | removed: rating_gram_mean                    | max_R²=0.8799
+  [INLP syntax] Step  59 | removed: rating_frequency_mean               | max_R²=0.8786
+  [INLP syntax] Step  60 | removed: rating_conversational_mean          | max_R²=0.8785
+  [INLP syntax] Step  61 | removed: dep_length_mean                     | max_R²=0.8784
+  [INLP syntax] Step  62 | removed: avg_word_freq_zipf                  | max_R²=0.8641
+  [INLP syntax] Step  63 | removed: avg_word_length                     | max_R²=0.8603
+  [INLP syntax] Step  64 | removed: log-prob-gpt2-xl_mean               | max_R²=0.8600
+  [INLP syntax] Step  65 | removed: rating_gram_mean                    | max_R²=0.8600
+  [INLP syntax] Step  66 | removed: rating_frequency_mean               | max_R²=0.8594
+  [INLP syntax] Step  67 | removed: rating_conversational_mean          | max_R²=0.8587
+  [INLP syntax] Step  68 | removed: dep_length_mean                     | max_R²=0.8587
+  [INLP syntax] Step  69 | removed: avg_word_freq_zipf                  | max_R²=0.8455
+  [INLP syntax] Step  70 | removed: avg_word_length                     | max_R²=0.8420
+  [INLP syntax] Step  71 | removed: log-prob-gpt2-xl_mean               | max_R²=0.8409
+  [INLP syntax] Step  72 | removed: rating_gram_mean                    | max_R²=0.8407
+  [INLP syntax] Step  73 | removed: rating_frequency_mean               | max_R²=0.8400
+  [INLP syntax] Step  74 | removed: rating_conversational_mean          | max_R²=0.8385
+  [INLP syntax] Step  75 | removed: dep_length_mean                     | max_R²=0.8385
+  [INLP syntax] Step  76 | removed: avg_word_freq_zipf                  | max_R²=0.8252
+  [INLP syntax] Step  77 | removed: avg_word_length                     | max_R²=0.8210
+  [INLP syntax] Step  78 | removed: log-prob-gpt2-xl_mean               | max_R²=0.8210
+  [INLP syntax] Step  79 | removed: rating_gram_mean                    | max_R²=0.8207
+  [INLP syntax] Step  80 | removed: rating_frequency_mean               | max_R²=0.8195
+  [INLP syntax] Step  81 | removed: rating_conversational_mean          | max_R²=0.8191
+  [INLP syntax] Step  82 | removed: dep_length_mean                     | max_R²=0.8191
+  [INLP syntax] Step  83 | removed: avg_word_freq_zipf                  | max_R²=0.8065
+  [INLP syntax] Step  84 | removed: avg_word_length                     | max_R²=0.8038
+  [INLP syntax] Step  85 | removed: log-prob-gpt2-xl_mean               | max_R²=0.8034
+  [INLP syntax] Step  86 | removed: rating_gram_mean                    | max_R²=0.8034
+  [INLP syntax] Step  87 | removed: rating_frequency_mean               | max_R²=0.8027
+  [INLP syntax] Step  88 | removed: rating_conversational_mean          | max_R²=0.8021
+  [INLP syntax] Step  89 | removed: dep_length_mean                     | max_R²=0.8021
+  [INLP syntax] Step  90 | removed: avg_word_freq_zipf                  | max_R²=0.7840
+  [INLP syntax] Step  91 | removed: avg_word_length                     | max_R²=0.7824
+  [INLP syntax] Step  92 | removed: log-prob-gpt2-xl_mean               | max_R²=0.7823
+  [INLP syntax] Step  93 | removed: rating_gram_mean                    | max_R²=0.7822
+  [INLP syntax] Step  94 | removed: rating_frequency_mean               | max_R²=0.7807
+  [INLP syntax] Step  95 | removed: rating_conversational_mean          | max_R²=0.7803
+  [INLP syntax] Step  96 | removed: dep_length_mean                     | max_R²=0.7800
+  [INLP syntax] Step  97 | removed: avg_word_freq_zipf                  | max_R²=0.7681
+  [INLP syntax] Step  98 | removed: avg_word_length                     | max_R²=0.7662
+  [INLP syntax] Step  99 | removed: log-prob-gpt2-xl_mean               | max_R²=0.7644
+  [INLP syntax] Step 100 | removed: rating_gram_mean                    | max_R²=0.7633
+
+  WARNING [xlmr_large | syntax]: reached MAX_STEPS=100. Max R²=0.7633 still >= 0.01.
+  Features still decodable: ['log-prob-gpt2-xl_mean', 'rating_gram_mean', 'rating_frequency_mean', 'rating_conversational_mean', 'dep_length_mean', 'avg_word_freq_zipf', 'avg_word_length']
+  Saved syntax W_stack shape: (100, 1024)
+  >> intact: trained (alpha=1.00e+04)
+  >> semantics_ablated: trained (alpha=1.00e+04)
+  >> syntax_ablated: trained (alpha=1.00e+04)
+
+  Running 5-fold CV...
+    Fold 1/5 done. r_intact=0.358, r_sem=0.321, r_syn=0.292
+    Fold 2/5 done. r_intact=0.465, r_sem=0.424, r_syn=0.374
+    Fold 3/5 done. r_intact=0.441, r_sem=0.388, r_syn=0.366
+    Fold 4/5 done. r_intact=0.505, r_sem=0.460, r_syn=0.438
+    Fold 5/5 done. r_intact=0.316, r_sem=0.302, r_syn=0.288
+  CV results saved to /orcd/data/evelina9/001/USERS/devar_ag/multilingual-models-brain/additional_analyses/residualize_info/cv_results/xlmr_large_cv.pkl
+    intact: mean_r=0.417 ± 0.070
+    semantics_ablated: mean_r=0.379 ± 0.060
+    syntax_ablated: mean_r=0.352 ± 0.056
+=== xlmr_large complete ===
+
+
+=== xglm_xl (facebook/xglm-4.5B) ===

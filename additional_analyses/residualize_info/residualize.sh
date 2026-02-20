@@ -3,7 +3,7 @@
 #SBATCH --gres=gpu:a100:1
 #SBATCH -t 24:00:00
 #SBATCH -c 1
-#SBATCH --mem=40G
+#SBATCH --mem=23G
 #SBATCH --job-name=residualize
 #SBATCH --output=logs/%x_%j.out
 #SBATCH --error=logs/%x_%j.err
