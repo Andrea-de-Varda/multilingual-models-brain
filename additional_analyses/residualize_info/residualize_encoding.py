@@ -194,7 +194,7 @@ def r2_score_fast(X, y_col):
     return 1.0 - ss_res / ss_tot if ss_tot > 0 else 0.0
 
 def run_inlp(X_raw, Y_features, feature_names, model_key, condition_name,
-             max_steps=100, r2_threshold=0.01):
+             max_steps=10000, r2_threshold=0.01):
     """
     Runs INLP (regression variant) to remove all linear information about
     Y_features from X_raw.
