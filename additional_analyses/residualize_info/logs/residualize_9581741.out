@@ -1,0 +1,85 @@
+Training sentences: 1000, y shape: (1000,)
+Semantic features: ['rating_imageability_mean', 'rating_others_thoughts_mean', 'rating_physical_mean', 'rating_places_mean', 'rating_valence_mean', 'rating_arousal_mean', 'rating_sense_mean']
+Syntactic features: ['log-prob-gpt2-xl_mean', 'rating_gram_mean', 'rating_frequency_mean', 'rating_conversational_mean', 'dep_length_mean', 'avg_word_freq_zipf', 'avg_word_length']
+
+=== xlmr_large (xlm-roberta-large): computing cross-diagnostics only ===
+  [Cross-diag semantics→syntax] Computed R² for 7 cross-features at 65 steps
+  [Cross-diag syntax→semantics] Computed R² for 7 cross-features at 68 steps
+
+=== xglm_xl (facebook/xglm-4.5B): computing cross-diagnostics only ===
+  [Cross-diag semantics→syntax] Computed R² for 7 cross-features at 69 steps
+  [Cross-diag syntax→semantics] Computed R² for 7 cross-features at 72 steps
+
+=== xglm_large (facebook/xglm-2.9B): computing cross-diagnostics only ===
+  [Cross-diag semantics→syntax] Computed R² for 7 cross-features at 77 steps
+  [Cross-diag syntax→semantics] Computed R² for 7 cross-features at 77 steps
+
+=== xglm_med (facebook/xglm-1.7B): computing cross-diagnostics only ===
+  [Cross-diag semantics→syntax] Computed R² for 7 cross-features at 71 steps
+  [Cross-diag syntax→semantics] Computed R² for 7 cross-features at 67 steps
+
+=== xglm_small (facebook/xglm-564M): computing cross-diagnostics only ===
+  [Cross-diag semantics→syntax] Computed R² for 7 cross-features at 72 steps
+  [Cross-diag syntax→semantics] Computed R² for 7 cross-features at 71 steps
+
+=== bert_base (bert-base-multilingual-cased): computing cross-diagnostics only ===
+  [Cross-diag semantics→syntax] Computed R² for 7 cross-features at 59 steps
+  [Cross-diag syntax→semantics] Computed R² for 7 cross-features at 57 steps
+
+=== distilmbert (distilbert-base-multilingual-cased): computing cross-diagnostics only ===
+  [Cross-diag semantics→syntax] Computed R² for 7 cross-features at 58 steps
+  [Cross-diag syntax→semantics] Computed R² for 7 cross-features at 61 steps
+
+=== xlmr_base (xlm-roberta-base): computing cross-diagnostics only ===
+  [Cross-diag semantics→syntax] Computed R² for 7 cross-features at 47 steps
+  [Cross-diag syntax→semantics] Computed R² for 7 cross-features at 46 steps
+
+=== mt5_small (google/mt5-small): computing cross-diagnostics only ===
+  [Cross-diag semantics→syntax] Computed R² for 7 cross-features at 35 steps
+  [Cross-diag syntax→semantics] Computed R² for 7 cross-features at 35 steps
+
+=== mt5_base (google/mt5-base): computing cross-diagnostics only ===
+  [Cross-diag semantics→syntax] Computed R² for 7 cross-features at 91 steps
+  [Cross-diag syntax→semantics] Computed R² for 7 cross-features at 77 steps
+
+=== mt5_large (google/mt5-large): computing cross-diagnostics only ===
+  [Cross-diag semantics→syntax] Computed R² for 7 cross-features at 66 steps
+  [Cross-diag syntax→semantics] Computed R² for 7 cross-features at 65 steps
+
+=== mdeberta (microsoft/mdeberta-v3-base): computing cross-diagnostics only ===
+  [Cross-diag semantics→syntax] Computed R² for 7 cross-features at 43 steps
+  [Cross-diag syntax→semantics] Computed R² for 7 cross-features at 41 steps
+
+=== xlm_align (microsoft/xlm-align-base): computing cross-diagnostics only ===
+  [Cross-diag semantics→syntax] Computed R² for 7 cross-features at 44 steps
+  [Cross-diag syntax→semantics] Computed R² for 7 cross-features at 43 steps
+
+=== infoxlm_base (microsoft/infoxlm-base): computing cross-diagnostics only ===
+  [Cross-diag semantics→syntax] Computed R² for 7 cross-features at 47 steps
+  [Cross-diag syntax→semantics] Computed R² for 7 cross-features at 49 steps
+
+=== infoxlm_large (microsoft/infoxlm-large): computing cross-diagnostics only ===
+  [Cross-diag semantics→syntax] Computed R² for 7 cross-features at 62 steps
+  [Cross-diag syntax→semantics] Computed R² for 7 cross-features at 65 steps
+
+=== multiminilm (microsoft/Multilingual-MiniLM-L12-H384): computing cross-diagnostics only ===
+  [Cross-diag semantics→syntax] Computed R² for 7 cross-features at 34 steps
+  [Cross-diag syntax→semantics] Computed R² for 7 cross-features at 34 steps
+
+=== mgpt (ai-forever/mGPT): computing cross-diagnostics only ===
+  [Cross-diag semantics→syntax] Computed R² for 7 cross-features at 78 steps
+  [Cross-diag syntax→semantics] Computed R² for 7 cross-features at 74 steps
+
+=== nllb200_distilled_600M (facebook/nllb-200-distilled-600M): computing cross-diagnostics only ===
+  [Cross-diag semantics→syntax] Computed R² for 7 cross-features at 61 steps
+  [Cross-diag syntax→semantics] Computed R² for 7 cross-features at 64 steps
+
+=== nllb200_distilled_1B (facebook/nllb-200-distilled-1.3B): computing cross-diagnostics only ===
+  [Cross-diag semantics→syntax] Computed R² for 7 cross-features at 58 steps
+  [Cross-diag syntax→semantics] Computed R² for 7 cross-features at 61 steps
+
+=== nllb200_1B (facebook/nllb-200-1.3B): computing cross-diagnostics only ===
+  [Cross-diag semantics→syntax] Computed R² for 7 cross-features at 60 steps
+  [Cross-diag syntax→semantics] Computed R² for 7 cross-features at 63 steps
+
+All models processed.
