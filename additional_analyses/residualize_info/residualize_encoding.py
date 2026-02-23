@@ -309,10 +309,8 @@ def compute_cross_diagnostics(X_raw, W_stack, Y_cross, cross_feature_names,
         r2 = r2_score_fast(X_std, Y_std[:, j])
         diagnostics.append((0, fname, float(r2)))
 
-    # Evaluate at full-cycle boundaries (every 7th step = one complete round)
-    steps_to_eval = list(range(7, n_steps + 1, 7))
-
-    for k in steps_to_eval:
+    # Evaluate at every step (matches within-domain diagnostics)
+    for k in range(1, n_steps + 1):
         P_null = compute_nullspace_projection(W_stack[:k])
         X_proj = X_std @ P_null
         for j, fname in enumerate(cross_feature_names):
@@ -320,7 +318,7 @@ def compute_cross_diagnostics(X_raw, W_stack, Y_cross, cross_feature_names,
             diagnostics.append((k, fname, float(r2)))
 
     print(f"  [Cross-diag {condition_name}] Computed R² for {len(cross_feature_names)} "
-          f"cross-features at {len(steps_to_eval)+1} steps")
+          f"cross-features at {n_steps+1} steps")
     return diagnostics
 
 
