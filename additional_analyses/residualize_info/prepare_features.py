@@ -50,7 +50,7 @@ SEMANTIC_COLS = [
 ]
 
 SYNTAX_CSV_COLS = [
-    "log-prob-gpt2-xl_mean",
+    "log-prob-pcfg_mean",
     "rating_gram_mean",
     "rating_frequency_mean",
     "rating_conversational_mean",

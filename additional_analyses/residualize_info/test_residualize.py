@@ -578,7 +578,7 @@ FEAT_LABELS_SEM = {
     "rating_sense_mean":           "Plausibility",
 }
 FEAT_LABELS_SYN = {
-    "log-prob-gpt2-xl_mean":      "Surprisal",
+    "log-prob-pcfg_mean":          "Surprisal",
     "rating_gram_mean":           "Grammaticality",
     "rating_frequency_mean":      "Frequency (overall)",
     "rating_conversational_mean": "Frequency (conv)",

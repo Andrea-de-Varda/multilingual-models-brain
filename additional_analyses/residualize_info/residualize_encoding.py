@@ -194,20 +194,18 @@ def r2_score_fast(X, y_col):
     return 1.0 - ss_res / ss_tot if ss_tot > 0 else 0.0
 
 def run_inlp(X_raw, Y_features, feature_names, model_key, condition_name,
-             max_steps=10000, r2_threshold=0.01):
+             n_steps=400):
     """
     Runs INLP (regression variant) to remove all linear information about
-    Y_features from X_raw.
+    Y_features from X_raw.  Always runs exactly n_steps (no early stopping).
 
     Returns:
       W_stack     : numpy array (n_steps × d) — accumulated weight vectors
       diagnostics : list of (step, feature_name, r2) tuples
     """
-    # Standardize embeddings for the INLP step
     X_scaler = StandardScaler()
     X_std = X_scaler.fit_transform(X_raw).astype(np.float32)
 
-    # Standardize each feature independently
     Y_scalers = []
     Y_std = np.zeros_like(Y_features, dtype=np.float64)
     for j in range(Y_features.shape[1]):
@@ -218,10 +216,10 @@ def run_inlp(X_raw, Y_features, feature_names, model_key, condition_name,
     n, d = X_std.shape
     n_feats = Y_features.shape[1]
 
-    weight_vectors = []  # list of (d,) arrays
-    diagnostics = []     # list of (step, feature_name, r2)
+    weight_vectors = []
+    diagnostics = []
 
-    # ── Step 0: decodability from original embeddings ──
+    # Step 0: decodability from original embeddings
     print(f"  [INLP {condition_name}] Step 0 (no removal):")
     for j, fname in enumerate(feature_names):
         r2 = r2_score_fast(X_std, Y_std[:, j])
@@ -229,27 +227,22 @@ def run_inlp(X_raw, Y_features, feature_names, model_key, condition_name,
         print(f"    {fname}: R²={r2:.4f}")
 
     step = 0
-    last_r2s = [1.0] * n_feats  # initialise high to enter loop
-
-    while step < max_steps:
+    while step < n_steps:
         for j, fname in enumerate(feature_names):
             step += 1
 
-            # Recompute current projected X from original X_std using all w so far
             if len(weight_vectors) == 0:
                 X_curr = X_std
             else:
-                W = np.vstack(weight_vectors)  # (step-1, d)
+                W = np.vstack(weight_vectors)
                 P_null = compute_nullspace_projection(W)
                 X_curr = X_std @ P_null
 
-            # Train regressor for feature j
             reg = Ridge(alpha=1.0)
             reg.fit(X_curr, Y_std[:, j])
             w_j = reg.coef_.astype(np.float32)
             weight_vectors.append(w_j)
 
-            # Evaluate decodability of ALL features after this step
             W_full = np.vstack(weight_vectors)
             P_null_full = compute_nullspace_projection(W_full)
             X_eval = X_std @ P_null_full
@@ -259,26 +252,15 @@ def run_inlp(X_raw, Y_features, feature_names, model_key, condition_name,
                 r2 = r2_score_fast(X_eval, Y_std[:, jj])
                 diagnostics.append((step, fname2, float(r2)))
                 step_r2s.append(r2)
-            last_r2s = step_r2s
 
             print(f"  [INLP {condition_name}] Step {step:3d} | removed: {fname:35s} "
                   f"| max_R²={max(step_r2s):.4f}")
 
-            if step >= max_steps:
+            if step >= n_steps:
                 break
 
-        # Check convergence after full cycle through all features
-        if max(last_r2s) < r2_threshold:
-            print(f"  [INLP {condition_name}] Converged at step {step} "
-                  f"(max R²={max(last_r2s):.4f} < {r2_threshold})")
-            break
-
-    if step == max_steps and max(last_r2s) >= r2_threshold:
-        still_decodable = [feature_names[j] for j, r2 in enumerate(last_r2s)
-                           if r2 >= r2_threshold]
-        print(f"\n  WARNING [{model_key} | {condition_name}]: reached MAX_STEPS={max_steps}. "
-              f"Max R²={max(last_r2s):.4f} still >= {r2_threshold}.")
-        print(f"  Features still decodable: {still_decodable}")
+    print(f"  [INLP {condition_name}] Completed {step} steps. "
+          f"Final max R²={max(step_r2s):.4f}")
 
     W_stack = np.vstack(weight_vectors)  # (n_steps, d)
     return W_stack, diagnostics
