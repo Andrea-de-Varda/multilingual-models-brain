@@ -20,7 +20,7 @@ import numpy as np
 import numpy.ma as ma
 import pandas as pd
 from tqdm import tqdm
-from scipy.stats import pearsonr
+from scipy.stats import pearsonr, norm as scipy_norm
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 from matplotlib.lines import Line2D
@@ -258,33 +258,19 @@ print(f"Transfer results saved to {CACHE_PATH}")
 print(results.groupby("condition")["r_mean"].describe())
 
 # ──────────────────────────────────────────────
-# Aggregate transfer results per model
+# Aggregate transfer results per model (mean over languages)
 # ──────────────────────────────────────────────
 _old = np.seterr(invalid="raise", divide="raise")
 try:
     per_model = (results.groupby(["condition", "model"])
-                 .agg(r=("r_mean", "mean"),
-                      SE=("r_mean", lambda x: (x.std(ddof=1) / np.sqrt(x.notna().sum())
-                                               if x.notna().sum() > 1 else np.nan)))
+                 .agg(r=("r_mean", "mean"))
                  .reset_index())
 finally:
     np.seterr(**_old)
 
-# ──────────────────────────────────────────────
-# Normalization by intact condition (transfer)
-# ──────────────────────────────────────────────
-intact_r = (per_model[per_model["condition"] == "intact"]
-            .set_index("model")["r"])
-
-per_model["r_norm"] = per_model.apply(
-    lambda row: row["r"] / intact_r.get(row["model"], np.nan)
-    if row["condition"] != "intact" else 1.0,
-    axis=1
-)
-
 per_model.to_csv(os.path.join(RES_DIR, "test_results_per_model.csv"), index=False)
 print("\nTransfer per-model summary:")
-print(per_model.groupby("condition")[["r", "r_norm"]].mean().round(3))
+print(per_model.groupby("condition")["r"].describe().round(3))
 
 # ──────────────────────────────────────────────
 # CV results summary
@@ -295,127 +281,381 @@ for mk in available.keys():
     if not os.path.isfile(cv_path):
         continue
     cv_data = load_pickle(cv_path)
-    r_intact_mean = np.nanmean(cv_data.get("intact", [np.nan]))
     for cond, rs in cv_data.items():
-        rs = [r for r in rs if np.isfinite(r)]
-        if not rs:
+        rs_finite = [r for r in rs if np.isfinite(r)]
+        if not rs_finite:
             continue
-        mean_r = np.mean(rs)
-        se_r   = np.std(rs, ddof=1) / np.sqrt(len(rs)) if len(rs) > 1 else np.nan
-        norm_r = mean_r / r_intact_mean if r_intact_mean > 0 else np.nan
-        cv_rows.append({
-            "model":     mk,
-            "condition": cond,
-            "mean_r":    mean_r,
-            "se_r":      se_r,
-            "r_norm":    norm_r if cond != "intact" else 1.0,
-        })
+        mean_r = np.mean(rs_finite)
+        se_r   = np.std(rs_finite, ddof=1) / np.sqrt(len(rs_finite)) if len(rs_finite) > 1 else np.nan
+        cv_rows.append({"model": mk, "condition": cond, "mean_r": mean_r, "se_r": se_r})
 
 cv_summary = pd.DataFrame(cv_rows)
 cv_summary.to_csv(os.path.join(RES_DIR, "cv_results_summary.csv"), index=False)
 print("\nCV results summary:")
-print(cv_summary.groupby("condition")[["mean_r", "r_norm"]].mean().round(3))
+print(cv_summary.groupby("condition")["mean_r"].describe().round(3))
 
 # ──────────────────────────────────────────────
-# Plots
+# Statistical significance (Stouffer's method)
 # ──────────────────────────────────────────────
-def bar_means_se(pm, cond_order):
-    means = {}
-    ses   = {}
-    for c in cond_order:
-        vals = pm.loc[pm["condition"] == c, "r"].to_numpy()
+def r_to_z(r1, r2, n=130):
+    r1 = np.clip(r1, -0.999999, 0.999999)
+    r2 = np.clip(r2, -0.999999, 0.999999)
+    z1, z2 = np.arctanh(r1), np.arctanh(r2)
+    se = np.sqrt(2.0 / (n - 3))
+    z = (z1 - z2) / se
+    p_two = 2 * (1 - scipy_norm.cdf(abs(z)))
+    return z, p_two
+
+def combine_z_statistics(z_stats):
+    z_stats = np.asarray(z_stats, dtype=float)
+    z_comb = z_stats.sum() / np.sqrt(len(z_stats))
+    p_two = 2 * scipy_norm.cdf(-abs(z_comb))
+    p_lower = scipy_norm.cdf(z_comb)
+    return z_comb, p_two, p_lower
+
+def bh_correction(p_array):
+    p = np.asarray(p_array, float)
+    m = len(p)
+    order = np.argsort(p)
+    ranked = p[order]
+    q = ranked * m / (np.arange(m) + 1)
+    q = np.minimum.accumulate(q[::-1])[::-1]
+    out = np.empty_like(q)
+    out[order] = q
+    return out
+
+COMPARISONS = [
+    ("semantics_ablated", "intact"),
+    ("syntax_ablated",    "intact"),
+    ("semantics_ablated", "syntax_ablated"),
+]
+
+def build_pairs_transfer(results_df, comparisons=COMPARISONS, n=130):
+    """For each (model, language), compute z for each (cond_test, cond_ref) pair."""
+    pairs = []
+    for (model, language), grp in results_df.groupby(["model", "language"]):
+        r_by_cond = {}
+        for cond, sub in grp.groupby("condition"):
+            r_row = sub["r_mean"]
+            if not r_row.empty and np.isfinite(r_row.iloc[0]):
+                r_by_cond[cond] = float(r_row.iloc[0])
+
+        for cond_test, cond_ref in comparisons:
+            if cond_test not in r_by_cond or cond_ref not in r_by_cond:
+                continue
+            z, p = r_to_z(r_by_cond[cond_test], r_by_cond[cond_ref], n=n)
+            pairs.append({
+                "model": model, "language": language,
+                "comparison": f"{cond_test} vs {cond_ref}",
+                "r_test": r_by_cond[cond_test], "r_ref": r_by_cond[cond_ref],
+                "z": z, "p_two": p
+            })
+    return pd.DataFrame(pairs)
+
+def stouffer_summary_residualize(pairs_df, label="condition"):
+    rows = []
+    for cond, sub in pairs_df.groupby(label):
+        zc, p2, pl = combine_z_statistics(sub["z"].values)
+        rows.append({label: cond, "N": len(sub), "z_comb": zc, "p_two": p2, "p_lower": pl})
+    overall = pd.DataFrame(rows).sort_values("p_two").reset_index(drop=True)
+    m = overall.shape[0]
+    overall["p_two_bonf"] = np.minimum(1.0, overall["p_two"] * m)
+    overall["q_lower_BH"] = bh_correction(overall["p_lower"].values)
+    return overall
+
+# ── Transfer stats ──
+pairs_transfer = build_pairs_transfer(results, n=130)
+stats_transfer = stouffer_summary_residualize(pairs_transfer, label="comparison")
+
+print("\n" + "=" * 60)
+print("STATISTICAL SIGNIFICANCE — TRANSFER (Stouffer's method, n=130 TRs)")
+print("=" * 60)
+print(stats_transfer.to_string(index=False))
+print(f"\n  Pairs per comparison: {pairs_transfer.groupby('comparison').size().to_dict()}")
+
+stats_transfer.to_csv(os.path.join(RES_DIR, "stats_transfer.csv"), index=False)
+pairs_transfer.to_csv(os.path.join(RES_DIR, "stats_transfer_pairs.csv"), index=False)
+
+# ── CV stats (fold-level pairs, n ≈ 48 sentences per fold) ──
+cv_fold_rows = []
+for mk in available.keys():
+    cv_path = os.path.join(CV_BASE, f"{mk}_cv.pkl")
+    if not os.path.isfile(cv_path):
+        continue
+    cv_data = load_pickle(cv_path)
+    if "intact" not in cv_data:
+        continue
+    r_by_cond_folds = {cond: folds for cond, folds in cv_data.items()}
+    for cond_test, cond_ref in COMPARISONS:
+        if cond_test not in r_by_cond_folds or cond_ref not in r_by_cond_folds:
+            continue
+        for fold_i, (r_test_f, r_ref_f) in enumerate(
+                zip(r_by_cond_folds[cond_test], r_by_cond_folds[cond_ref])):
+            if not (np.isfinite(r_test_f) and np.isfinite(r_ref_f)):
+                continue
+            cv_fold_rows.append({
+                "model": mk, "fold": fold_i,
+                "comparison": f"{cond_test} vs {cond_ref}",
+                "r_test": r_test_f, "r_ref": r_ref_f
+            })
+
+if cv_fold_rows:
+    pairs_cv = pd.DataFrame(cv_fold_rows)
+    n_fold = 48  # ~240 training sentences / 5 folds
+    zp = pairs_cv.apply(
+        lambda row: pd.Series(r_to_z(row["r_test"], row["r_ref"], n=n_fold),
+                              index=["z", "p_two"]), axis=1
+    )
+    pairs_cv = pd.concat([pairs_cv, zp], axis=1)
+    stats_cv = stouffer_summary_residualize(pairs_cv, label="comparison")
+
+    print("\n" + "=" * 60)
+    print(f"STATISTICAL SIGNIFICANCE — CV (Stouffer's method, n≈{n_fold} sentences/fold)")
+    print("=" * 60)
+    print(stats_cv.to_string(index=False))
+    print(f"\n  Pairs per comparison: {pairs_cv.groupby('comparison').size().to_dict()}")
+
+    stats_cv.to_csv(os.path.join(RES_DIR, "stats_cv.csv"), index=False)
+    pairs_cv.to_csv(os.path.join(RES_DIR, "stats_cv_pairs.csv"), index=False)
+
+print(f"\nStats saved to {RES_DIR}")
+
+# ──────────────────────────────────────────────
+# Plotting — boxplots, two-panel figure
+# ──────────────────────────────────────────────
+cond_order       = ["intact", "syntax_ablated", "semantics_ablated"]
+cond_order_ablated = ["syntax_ablated", "semantics_ablated"]
+SPINE_LW = 2.0
+BOX_LW   = 1.1
+
+def style_boxplot(bp, color, alpha=1.0):
+    for box in bp['boxes']:
+        box.set(facecolor=color, alpha=alpha, edgecolor="black", linewidth=BOX_LW)
+    for item in bp['whiskers'] + bp['caps']:
+        item.set(color="black", linewidth=1.0)
+    for med in bp['medians']:
+        med.set(color="black", linewidth=1.2)
+
+def add_boxplot_panel(ax, data_dict, order, ylabel, xticklabels):
+    """
+    data_dict : {condition: 1-d array of values}
+    order     : list of condition keys to plot (left to right)
+    """
+    for i, cond in enumerate(order):
+        vals = data_dict.get(cond, np.array([]))
+        vals = np.asarray(vals, dtype=float)
         vals = vals[np.isfinite(vals)]
-        means[c] = np.mean(vals) if vals.size else np.nan
-        ses[c]   = (np.std(vals, ddof=1) / np.sqrt(vals.size)
-                    if vals.size > 1 else np.nan)
-    return means, ses
+        if vals.size == 0:
+            continue
+        bp = ax.boxplot(
+            [vals], positions=[i], widths=0.55,
+            showfliers=False, patch_artist=True,
+            whis=(5, 95), manage_ticks=False, zorder=2
+        )
+        style_boxplot(bp, GROUP_COLORS[cond])
+        jitter = np.random.default_rng(42).normal(0, 0.07, size=vals.size)
+        ax.scatter(i + jitter, vals, color="black", alpha=0.25, s=16, zorder=3)
 
-cond_order = CONDITIONS
-
-# ── Figure 1: Transfer (raw R) ──
-means, ses = bar_means_se(per_model, cond_order)
-
-fig, ax = plt.subplots(dpi=400, figsize=(6, 3.5))
-for i, cond in enumerate(cond_order):
-    yerr = ses[cond] if np.isfinite(ses[cond]) else 0.0
-    ax.bar(i, means[cond], yerr=yerr, capsize=5,
-           color=GROUP_COLORS[cond], edgecolor="black", linewidth=1.1, zorder=2)
-    vals = per_model.loc[per_model["condition"] == cond, "r"].to_numpy()
-    jitter = np.random.normal(0, 0.08, size=vals.size)
-    ax.scatter(i + jitter, vals, color="black", alpha=0.35, s=18, zorder=3)
-
-ax.set_xticks(range(len(cond_order)))
-ax.set_xticklabels([CONDITION_LABELS[c] for c in cond_order],
-                   fontsize=11, rotation=20, ha="right")
-ax.set_ylabel("R (transfer to new languages)", fontsize=11)
-ax.spines["top"].set_visible(False)
-ax.spines["right"].set_visible(False)
-ax.grid(axis="y", linestyle="--", alpha=0.5, zorder=1)
-plt.tight_layout()
-plt.savefig(os.path.join(PLOT_DIR, "transfer_raw.svg"), format="svg", bbox_inches="tight")
-plt.show()
-
-# ── Figure 2: Transfer (normalized by intact) ──
-means_n = {}
-ses_n   = {}
-for c in cond_order:
-    vals = per_model.loc[per_model["condition"] == c, "r_norm"].to_numpy()
-    vals = vals[np.isfinite(vals)]
-    means_n[c] = np.mean(vals) if vals.size else np.nan
-    ses_n[c]   = np.std(vals, ddof=1) / np.sqrt(vals.size) if vals.size > 1 else np.nan
-
-fig, ax = plt.subplots(dpi=400, figsize=(6, 3.5))
-ax.axhline(1.0, color="gray", linestyle="--", linewidth=1, zorder=1)
-for i, cond in enumerate(cond_order):
-    yerr = ses_n[cond] if np.isfinite(ses_n[cond]) else 0.0
-    ax.bar(i, means_n[cond], yerr=yerr, capsize=5,
-           color=GROUP_COLORS[cond], edgecolor="black", linewidth=1.1, zorder=2)
-    vals = per_model.loc[per_model["condition"] == cond, "r_norm"].to_numpy()
-    jitter = np.random.normal(0, 0.08, size=vals.size)
-    ax.scatter(i + jitter, vals, color="black", alpha=0.35, s=18, zorder=3)
-
-ax.set_xticks(range(len(cond_order)))
-ax.set_xticklabels([CONDITION_LABELS[c] for c in cond_order],
-                   fontsize=11, rotation=20, ha="right")
-ax.set_ylabel("Normalized R (÷ intact)", fontsize=11)
-ax.spines["top"].set_visible(False)
-ax.spines["right"].set_visible(False)
-ax.grid(axis="y", linestyle="--", alpha=0.5, zorder=1)
-plt.tight_layout()
-plt.savefig(os.path.join(PLOT_DIR, "transfer_normalized.svg"), format="svg", bbox_inches="tight")
-plt.show()
-
-# ── Figure 3: CV (normalized) ──
-if not cv_summary.empty:
-    cv_means_n = {}
-    cv_ses_n   = {}
-    for c in cond_order:
-        sub = cv_summary[cv_summary["condition"] == c]
-        vals = sub["r_norm"].to_numpy()
-        vals = vals[np.isfinite(vals)]
-        cv_means_n[c] = np.mean(vals) if vals.size else np.nan
-        cv_ses_n[c]   = np.std(vals, ddof=1) / np.sqrt(vals.size) if vals.size > 1 else np.nan
-
-    fig, ax = plt.subplots(dpi=400, figsize=(6, 3.5))
-    ax.axhline(1.0, color="gray", linestyle="--", linewidth=1, zorder=1)
-    for i, cond in enumerate(cond_order):
-        yerr = cv_ses_n[cond] if np.isfinite(cv_ses_n.get(cond, np.nan)) else 0.0
-        ax.bar(i, cv_means_n.get(cond, np.nan), yerr=yerr, capsize=5,
-               color=GROUP_COLORS[cond], edgecolor="black", linewidth=1.1, zorder=2)
-        sub = cv_summary[cv_summary["condition"] == cond]
-        vals = sub["r_norm"].to_numpy()
-        jitter = np.random.normal(0, 0.08, size=vals.size)
-        ax.scatter(i + jitter, vals, color="black", alpha=0.35, s=18, zorder=3)
-
-    ax.set_xticks(range(len(cond_order)))
-    ax.set_xticklabels([CONDITION_LABELS[c] for c in cond_order],
-                       fontsize=11, rotation=20, ha="right")
-    ax.set_ylabel("Normalized R, CV (÷ intact)", fontsize=11)
+    ax.set_xticks(range(len(order)))
+    ax.set_xticklabels(xticklabels, fontsize=10, rotation=25, ha="right")
+    ax.set_ylabel(ylabel, fontsize=11)
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
-    ax.grid(axis="y", linestyle="--", alpha=0.5, zorder=1)
+    ax.spines["left"].set_linewidth(SPINE_LW)
+    ax.spines["bottom"].set_linewidth(SPINE_LW)
+    ax.tick_params(axis="both", width=1.1, length=4)
+    ax.grid(axis="y", linestyle="--", alpha=0.45, zorder=1)
+    ax.set_xlim(-0.6, len(order) - 0.4)
+    ax.margins(x=0)
+
+xlabels_all     = [CONDITION_LABELS[c] for c in cond_order]
+xlabels_ablated = [CONDITION_LABELS[c] for c in cond_order_ablated]
+
+# ── Build data dicts ──
+transfer_data = {
+    cond: per_model.loc[per_model["condition"] == cond, "r"].to_numpy()
+    for cond in cond_order
+}
+cv_data_plot = {
+    cond: cv_summary.loc[cv_summary["condition"] == cond, "mean_r"].to_numpy()
+    for cond in cond_order
+} if not cv_summary.empty else {}
+
+# ── Per-model normalized values (ablated / intact, model-matched) ──
+pm_pivot = per_model.pivot(index="model", columns="condition", values="r")
+transfer_norm = {}
+for c in cond_order_ablated:
+    if c in pm_pivot.columns and "intact" in pm_pivot.columns:
+        transfer_norm[c] = (pm_pivot[c] / pm_pivot["intact"]).to_numpy()
+
+cv_norm = {}
+if not cv_summary.empty:
+    cv_pivot = cv_summary.pivot(index="model", columns="condition", values="mean_r")
+    for c in cond_order_ablated:
+        if c in cv_pivot.columns and "intact" in cv_pivot.columns:
+            cv_norm[c] = (cv_pivot[c] / cv_pivot["intact"]).to_numpy()
+
+# ── Figure 1: Transfer + CV (raw R), side-by-side ──
+fig, axes = plt.subplots(1, 2, dpi=400, figsize=(9 * 0.6, 3.7 * 0.8))
+add_boxplot_panel(axes[0], transfer_data, cond_order,
+                  ylabel="R", xticklabels=xlabels_all)
+axes[0].set_title("Transfer to new languages", fontsize=11, pad=6)
+if cv_data_plot:
+    add_boxplot_panel(axes[1], cv_data_plot, cond_order,
+                      ylabel="R", xticklabels=xlabels_all)
+    axes[1].set_title("Cross-validation (Tuckute2024)", fontsize=11, pad=6)
+plt.tight_layout()
+plt.savefig(os.path.join(PLOT_DIR, "residualize.svg"), format="svg", bbox_inches="tight")
+# plt.show()
+
+# ── Figure 2: Transfer only (standalone) ──
+fig, ax = plt.subplots(dpi=400, figsize=(4.5, 3.7 * 0.9))
+add_boxplot_panel(ax, transfer_data, cond_order,
+                  ylabel="R (zero-shot transfer)", xticklabels=xlabels_all)
+plt.tight_layout()
+plt.savefig(os.path.join(PLOT_DIR, "residualize_transfer.svg"), format="svg", bbox_inches="tight")
+# plt.show()
+
+# ── Figure 3: CV only (standalone) ──
+if cv_data_plot:
+    fig, ax = plt.subplots(dpi=400, figsize=(4.5, 3.7 * 0.9))
+    add_boxplot_panel(ax, cv_data_plot, cond_order,
+                      ylabel="R (5-fold CV)", xticklabels=xlabels_all)
     plt.tight_layout()
-    plt.savefig(os.path.join(PLOT_DIR, "cv_normalized.svg"), format="svg", bbox_inches="tight")
-    plt.show()
+    plt.savefig(os.path.join(PLOT_DIR, "residualize_cv.svg"), format="svg", bbox_inches="tight")
+    # plt.show()
+
+# ── Figure 4: Normalized (÷ intact per model), transfer + CV, side-by-side ──
+fig, axes = plt.subplots(1, 2, dpi=400, figsize=(7 * 0.9, 3.7 * 0.9))
+ax = axes[0]
+add_boxplot_panel(ax, transfer_norm, cond_order_ablated,
+                  ylabel="R / R(intact)", xticklabels=xlabels_ablated)
+ax.axhline(1.0, color="gray", linestyle="--", linewidth=1.0, zorder=1)
+ax.set_title("Transfer (normalized)", fontsize=11, pad=6)
+
+ax = axes[1]
+if cv_norm:
+    add_boxplot_panel(ax, cv_norm, cond_order_ablated,
+                      ylabel="R / R(intact)", xticklabels=xlabels_ablated)
+    ax.axhline(1.0, color="gray", linestyle="--", linewidth=1.0, zorder=1)
+    ax.set_title("CV (normalized)", fontsize=11, pad=6)
+plt.tight_layout()
+plt.savefig(os.path.join(PLOT_DIR, "residualize_normalized.svg"), format="svg", bbox_inches="tight")
+# plt.show()
+
+# ── Figure 5: Normalized transfer only (standalone) ──
+fig, ax = plt.subplots(dpi=400, figsize=(3.5, 3.7 * 0.9))
+add_boxplot_panel(ax, transfer_norm, cond_order_ablated,
+                  ylabel="R / R(intact)", xticklabels=xlabels_ablated)
+ax.axhline(1.0, color="gray", linestyle="--", linewidth=1.0, zorder=1)
+plt.tight_layout()
+plt.savefig(os.path.join(PLOT_DIR, "residualize_transfer_normalized.svg"), format="svg", bbox_inches="tight")
+# plt.show()
+
+# ── Figure 6: Normalized CV only (standalone) ──
+if cv_norm:
+    fig, ax = plt.subplots(dpi=400, figsize=(3.5, 3.7 * 0.9))
+    add_boxplot_panel(ax, cv_norm, cond_order_ablated,
+                      ylabel="R / R(intact)", xticklabels=xlabels_ablated)
+    ax.axhline(1.0, color="gray", linestyle="--", linewidth=1.0, zorder=1)
+    plt.tight_layout()
+    plt.savefig(os.path.join(PLOT_DIR, "residualize_cv_normalized.svg"), format="svg", bbox_inches="tight")
+    # plt.show()
+
+
+# ──────────────────────────────────────────────
+# Diagnostics plot — R² decodability across INLP steps
+# ──────────────────────────────────────────────
+DIAG_DIR = os.path.join(SCRIPT_DIR, "diagnostics")
+
+FEAT_LABELS_SEM = {
+    "rating_imageability_mean":    "Imageability",
+    "rating_others_thoughts_mean": "Others' thoughts",
+    "rating_physical_mean":        "Physical",
+    "rating_places_mean":          "Places",
+    "rating_valence_mean":         "Valence",
+    "rating_arousal_mean":         "Arousal",
+    "rating_sense_mean":           "Plausibility",
+}
+FEAT_LABELS_SYN = {
+    "log-prob-gpt2-xl_mean":      "Surprisal",
+    "rating_gram_mean":           "Grammaticality",
+    "rating_frequency_mean":      "Frequency (overall)",
+    "rating_conversational_mean": "Frequency (conv)",
+    "dep_length_mean":            "Dep. length",
+    "avg_word_freq_zipf":         "Word freq.",
+    "avg_word_length":            "Word length",
+}
+
+def load_diagnostics(condition_suffix):
+    frames = []
+    for mk in available.keys():
+        path = os.path.join(DIAG_DIR, f"{mk}_{condition_suffix}_diagnostics.csv")
+        if os.path.isfile(path):
+            df = pd.read_csv(path)
+            df["model"] = mk
+            frames.append(df)
+    return pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
+
+def plot_diagnostics_panel(ax, diag_df, feat_labels, title):
+    if diag_df.empty:
+        ax.set_visible(False)
+        return
+    features = list(feat_labels.keys())
+    palette  = plt.cm.tab10.colors
+    colors   = {f: palette[i % len(palette)] for i, f in enumerate(features)}
+
+    for feat in features:
+        sub = diag_df[diag_df["feature_name"] == feat]
+        color = colors[feat]
+        for _, grp in sub.groupby("model"):
+            grp_s = grp.sort_values("step")
+            ax.plot(grp_s["step"], grp_s["r2"],
+                    color=color, alpha=0.12, linewidth=0.7, zorder=2)
+        # invisible line just to register the label in the legend
+        ax.plot([], [], color=color, linewidth=1.5, label=feat_labels[feat])
+
+    ax.set_xlabel("INLP step", fontsize=10)
+    ax.set_ylabel("R² (decodability)", fontsize=10)
+    ax.set_title(title, fontsize=11, pad=6)
+    ax.set_ylim(bottom=0)
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.spines["left"].set_linewidth(SPINE_LW)
+    ax.spines["bottom"].set_linewidth(SPINE_LW)
+    ax.tick_params(axis="both", width=1.1, length=4, labelsize=9)
+    ax.legend(fontsize=8, frameon=False, loc="upper right",
+              handlelength=1.5, labelspacing=0.35)
+
+diag_sem = load_diagnostics("semantics")
+diag_syn = load_diagnostics("syntax")
+
+if not diag_sem.empty or not diag_syn.empty:
+    fig, axes = plt.subplots(1, 2, dpi=400, figsize=(11 * 0.6, 3.8 * 0.7))
+    plot_diagnostics_panel(axes[0], diag_sem, FEAT_LABELS_SEM, "Semantics ablation")
+    plot_diagnostics_panel(axes[1], diag_syn, FEAT_LABELS_SYN, "Syntax ablation")
+    plt.tight_layout()
+    plt.savefig(os.path.join(PLOT_DIR, "residualize_diagnostics.svg"),
+                format="svg", bbox_inches="tight")
+    # plt.show()
+
+# ──────────────────────────────────────────────
+# Cross-diagnostics plot — "other" features survive ablation
+# ──────────────────────────────────────────────
+# After semantics ablation → syntax still decodable (cross_semantics files)
+# After syntax ablation → semantics still decodable (cross_syntax files)
+cross_sem = load_diagnostics("cross_semantics")  # syntax features on sem-ablated embeddings
+cross_syn = load_diagnostics("cross_syntax")      # semantic features on syn-ablated embeddings
+
+if not cross_sem.empty or not cross_syn.empty:
+    fig, axes = plt.subplots(1, 2, dpi=400, figsize=(11 * 0.6, 3.8 * 0.7))
+    plot_diagnostics_panel(axes[0], cross_sem, FEAT_LABELS_SYN,
+                           "Semantics ablated → syntax preserved")
+    plot_diagnostics_panel(axes[1], cross_syn, FEAT_LABELS_SEM,
+                           "Syntax ablated → semantics preserved")
+    plt.tight_layout()
+    plt.savefig(os.path.join(PLOT_DIR, "residualize_cross_diagnostics.svg"),
+                format="svg", bbox_inches="tight")
+    # plt.show()
 
 print("\nDone. Plots saved to", PLOT_DIR)

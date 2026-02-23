@@ -283,6 +283,49 @@ def run_inlp(X_raw, Y_features, feature_names, model_key, condition_name,
     W_stack = np.vstack(weight_vectors)  # (n_steps, d)
     return W_stack, diagnostics
 
+
+def compute_cross_diagnostics(X_raw, W_stack, Y_cross, cross_feature_names,
+                               model_key, condition_name):
+    """
+    After INLP removed features in one condition, evaluate how well the
+    *other* set of features can still be decoded at each INLP step.
+
+    E.g., after semantics ablation, check syntax decodability (and vice versa).
+    Uses W_stack[:k] to reconstruct the projection at step k.
+    """
+    X_scaler = StandardScaler()
+    X_std = X_scaler.fit_transform(X_raw).astype(np.float32)
+
+    Y_std = np.zeros_like(Y_cross, dtype=np.float64)
+    for j in range(Y_cross.shape[1]):
+        sc = StandardScaler()
+        Y_std[:, j] = sc.fit_transform(Y_cross[:, j].reshape(-1, 1)).flatten()
+
+    n_steps = W_stack.shape[0]
+    diagnostics = []
+
+    # Step 0: no removal
+    for j, fname in enumerate(cross_feature_names):
+        r2 = r2_score_fast(X_std, Y_std[:, j])
+        diagnostics.append((0, fname, float(r2)))
+
+    # Subsample steps if many (every 7th = one full cycle, plus the final step)
+    steps_to_eval = list(range(1, n_steps + 1, 7))
+    if n_steps not in steps_to_eval:
+        steps_to_eval.append(n_steps)
+
+    for k in steps_to_eval:
+        P_null = compute_nullspace_projection(W_stack[:k])
+        X_proj = X_std @ P_null
+        for j, fname in enumerate(cross_feature_names):
+            r2 = r2_score_fast(X_proj, Y_std[:, j])
+            diagnostics.append((k, fname, float(r2)))
+
+    print(f"  [Cross-diag {condition_name}] Computed R² for {len(cross_feature_names)} "
+          f"cross-features at {len(steps_to_eval)+1} steps")
+    return diagnostics
+
+
 # ──────────────────────────────────────────────
 # Main loop
 # ──────────────────────────────────────────────
@@ -294,6 +337,8 @@ for model_key, Tok, Mdl, pid, sep, emb_start, emb_end in MODEL_SPECS:
     cv_path   = os.path.join(CV_OUT,   f"{model_key}_cv.pkl")
     diag_sem  = os.path.join(DIAG_OUT, f"{model_key}_semantics_diagnostics.csv")
     diag_syn  = os.path.join(DIAG_OUT, f"{model_key}_syntax_diagnostics.csv")
+    cross_diag_sem = os.path.join(DIAG_OUT, f"{model_key}_cross_semantics_diagnostics.csv")
+    cross_diag_syn = os.path.join(DIAG_OUT, f"{model_key}_cross_syntax_diagnostics.csv")
     for d in [out_dir, norm_dir, proj_dir]:
         os.makedirs(d, exist_ok=True)
 
@@ -307,8 +352,48 @@ for model_key, Tok, Mdl, pid, sep, emb_start, emb_end in MODEL_SPECS:
         os.path.isfile(os.path.join(proj_dir, "semantics_ablated")) and
         os.path.isfile(os.path.join(proj_dir, "syntax_ablated"))
     )
-    if cond_files_done and proj_done and os.path.isfile(cv_path):
+    cross_diag_done = (
+        os.path.isfile(cross_diag_sem) and os.path.isfile(cross_diag_syn)
+    )
+    if cond_files_done and proj_done and os.path.isfile(cv_path) and cross_diag_done:
         print(f"=== {model_key}: all outputs exist. Skipping.")
+        continue
+
+    # Fast path: only cross-diagnostics missing → reload projections, skip INLP + training
+    if cond_files_done and proj_done and os.path.isfile(cv_path) and not cross_diag_done:
+        print(f"\n=== {model_key} ({pid}): computing cross-diagnostics only ===")
+        tok = (Tok.from_pretrained(pid, add_prefix_space=True)
+               if model_key == "mgpt" else Tok.from_pretrained(pid))
+        mdl = Mdl.from_pretrained(pid).to(device).eval()
+        best_layer = dict_bestlayer[model_key]
+        X_rows = []
+        for sent in tqdm(sentences, desc=f"{model_key} embeddings", leave=False):
+            emb_dict = get_embeddings_tokens(
+                sent.split(), sep, tok, mdl,
+                cased=True, emb_start=emb_start, emb_end=emb_end
+            )
+            X_rows.append(emb_dict[best_layer].mean(axis=0))
+        X_raw = np.vstack(X_rows).astype(np.float32)
+        del mdl
+        torch.cuda.empty_cache()
+
+        with open(os.path.join(proj_dir, "semantics_ablated"), "rb") as h:
+            W_sem = pickle.load(h)
+        with open(os.path.join(proj_dir, "syntax_ablated"), "rb") as h:
+            W_syn = pickle.load(h)
+
+        cross_sem_rows = compute_cross_diagnostics(
+            X_raw, W_sem, Y_syn, syn_feature_names, model_key, "semantics→syntax"
+        )
+        pd.DataFrame(cross_sem_rows, columns=["step", "feature_name", "r2"]).to_csv(
+            cross_diag_sem, index=False
+        )
+        cross_syn_rows = compute_cross_diagnostics(
+            X_raw, W_syn, Y_sem, sem_feature_names, model_key, "syntax→semantics"
+        )
+        pd.DataFrame(cross_syn_rows, columns=["step", "feature_name", "r2"]).to_csv(
+            cross_diag_syn, index=False
+        )
         continue
 
     print(f"\n=== {model_key} ({pid}) ===")
@@ -350,6 +435,21 @@ for model_key, Tok, Mdl, pid, sep, emb_start, emb_end in MODEL_SPECS:
     with open(os.path.join(proj_dir, "syntax_ablated"), "wb") as h:
         pickle.dump(W_syn, h, protocol=pickle.HIGHEST_PROTOCOL)
     print(f"  Saved syntax W_stack shape: {W_syn.shape}")
+
+    # ── Cross-condition diagnostics ──
+    # After removing semantics, how well can syntax still be decoded? (and vice versa)
+    cross_sem_rows = compute_cross_diagnostics(
+        X_raw, W_sem, Y_syn, syn_feature_names, model_key, "semantics→syntax"
+    )
+    pd.DataFrame(cross_sem_rows, columns=["step", "feature_name", "r2"]).to_csv(
+        cross_diag_sem, index=False
+    )
+    cross_syn_rows = compute_cross_diagnostics(
+        X_raw, W_syn, Y_sem, sem_feature_names, model_key, "syntax→semantics"
+    )
+    pd.DataFrame(cross_syn_rows, columns=["step", "feature_name", "r2"]).to_csv(
+        cross_diag_syn, index=False
+    )
 
     # ── Compute ablated embeddings ──
     P_null_sem = compute_nullspace_projection(W_sem)
