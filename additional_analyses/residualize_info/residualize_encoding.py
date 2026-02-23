@@ -309,10 +309,8 @@ def compute_cross_diagnostics(X_raw, W_stack, Y_cross, cross_feature_names,
         r2 = r2_score_fast(X_std, Y_std[:, j])
         diagnostics.append((0, fname, float(r2)))
 
-    # Subsample steps if many (every 7th = one full cycle, plus the final step)
-    steps_to_eval = list(range(1, n_steps + 1, 7))
-    if n_steps not in steps_to_eval:
-        steps_to_eval.append(n_steps)
+    # Evaluate at full-cycle boundaries (every 7th step = one complete round)
+    steps_to_eval = list(range(7, n_steps + 1, 7))
 
     for k in steps_to_eval:
         P_null = compute_nullspace_projection(W_stack[:k])
