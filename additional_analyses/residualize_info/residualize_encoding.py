@@ -194,10 +194,12 @@ def r2_score_fast(X, y_col):
     return 1.0 - ss_res / ss_tot if ss_tot > 0 else 0.0
 
 def run_inlp(X_raw, Y_features, feature_names, model_key, condition_name,
-             n_steps=400):
+             max_steps=10000, r2_threshold=0.01):
     """
     Runs INLP (regression variant) to remove all linear information about
-    Y_features from X_raw.  Always runs exactly n_steps (no early stopping).
+    Y_features from X_raw.  Cycles through all features each round and stops
+    when max R² across all features drops below r2_threshold, or max_steps
+    is reached.
 
     Returns:
       W_stack     : numpy array (n_steps × d) — accumulated weight vectors
@@ -227,7 +229,8 @@ def run_inlp(X_raw, Y_features, feature_names, model_key, condition_name,
         print(f"    {fname}: R²={r2:.4f}")
 
     step = 0
-    while step < n_steps:
+    step_r2s = [1.0]  # initialise so convergence check works
+    while step < max_steps:
         for j, fname in enumerate(feature_names):
             step += 1
 
@@ -256,13 +259,26 @@ def run_inlp(X_raw, Y_features, feature_names, model_key, condition_name,
             print(f"  [INLP {condition_name}] Step {step:3d} | removed: {fname:35s} "
                   f"| max_R²={max(step_r2s):.4f}")
 
-            if step >= n_steps:
+            if step >= max_steps:
                 break
 
-    print(f"  [INLP {condition_name}] Completed {step} steps. "
-          f"Final max R²={max(step_r2s):.4f}")
+        # Check convergence after each full cycle through all features
+        if max(step_r2s) < r2_threshold:
+            print(f"  [INLP {condition_name}] Converged at step {step}: "
+                  f"all R² < {r2_threshold}")
+            break
 
-    W_stack = np.vstack(weight_vectors)  # (n_steps, d)
+    if step >= max_steps and max(step_r2s) >= r2_threshold:
+        print(f"  [INLP {condition_name}] WARNING: reached max_steps={max_steps}. "
+              f"Max R²={max(step_r2s):.4f} still >= {r2_threshold}.")
+        still_decodable = [fname for fname, r2 in zip(feature_names, step_r2s)
+                           if r2 >= r2_threshold]
+        print(f"  Features still decodable: {still_decodable}")
+    else:
+        print(f"  [INLP {condition_name}] Completed {step} steps. "
+              f"Final max R²={max(step_r2s):.4f}")
+
+    W_stack = np.vstack(weight_vectors)
     return W_stack, diagnostics
 
 
