@@ -70,8 +70,8 @@ keep = {'ar': [1,2,3], 'de': [2,3], 'hi': [2,3], 'it': [1,2,3],
 CONDITIONS        = ["intact", "semantics_ablated", "syntax_ablated"]
 CONDITION_LABELS  = {
     "intact":            "Intact",
-    "semantics_ablated": "Semantics ablated",
-    "syntax_ablated":    "Syntax ablated",
+    "semantics_ablated": "Meaning ablated",
+    "syntax_ablated":    "Form ablated",
 }
 GROUP_COLORS = {
     "intact":            "tab:blue",
@@ -637,8 +637,8 @@ diag_syn = load_diagnostics("syntax")
 
 if not diag_sem.empty or not diag_syn.empty:
     fig, axes = plt.subplots(1, 2, dpi=400, figsize=(11 * 0.6, 3.8 * 0.7))
-    plot_diagnostics_panel(axes[0], diag_sem, FEAT_LABELS_SEM, "Semantics ablation")
-    plot_diagnostics_panel(axes[1], diag_syn, FEAT_LABELS_SYN, "Syntax ablation")
+    plot_diagnostics_panel(axes[0], diag_sem, FEAT_LABELS_SEM, "Meaning ablation")
+    plot_diagnostics_panel(axes[1], diag_syn, FEAT_LABELS_SYN, "Form ablation")
     plt.tight_layout()
     plt.savefig(os.path.join(PLOT_DIR, "residualize_diagnostics.svg"),
                 format="svg", bbox_inches="tight")
