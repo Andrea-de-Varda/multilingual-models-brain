@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 from scipy.stats import pearsonr
 
+
 mpl.rcParams['svg.fonttype'] = 'none'
 mpl.rcParams['font.family'] = 'DejaVu Sans'
 
@@ -101,8 +102,8 @@ def plot_heatmap(mat, savepath):
         cbar_kws={"label": "r"},
         linewidths=0.3, linecolor="white",
     )
-    ax.set_xticklabels(pretty_labels, rotation=45, ha="right", fontsize=14)
-    ax.set_yticklabels(pretty_labels, rotation=0,  ha="right", fontsize=14)
+    ax.set_xticklabels(pretty_labels, rotation=45, ha="right", fontsize=16)
+    ax.set_yticklabels(pretty_labels, rotation=0,  ha="right", fontsize=16)
 
     for i in range(len(langs)):
         for j in range(i + 1):  # lower triangle including diagonal
@@ -175,7 +176,7 @@ def plot_reliability_vs_avg_transfer(mat, rel, savepath, title):
     x_line = np.linspace(min(xs), max(xs), 100)
 
     fig, ax = plt.subplots(figsize=(5, 4.5), dpi=300)
-    ax.scatter(xs, ys, s=40, color='steelblue', zorder=3)
+    ax.scatter(xs, ys, s=45, color='steelblue', zorder=3)
     ax.plot(x_line, m * x_line + b, color='firebrick', linewidth=1.5, zorder=2)
     for x, y, lbl in zip(xs, ys, lbls):
         ax.annotate(lbl, (x, y), fontsize=9.5, xytext=(4, 3), textcoords='offset points')
@@ -212,11 +213,11 @@ def plot_reliability_vs_pairwise_transfer(mat, rel, savepath, title):
     x_line = np.linspace(min(xs), max(xs), 100)
 
     fig, ax = plt.subplots(figsize=(5, 4.5), dpi=300)
-    ax.scatter(xs, ys, s=15, color='steelblue', alpha=0.6, zorder=3)
+    ax.scatter(xs, ys, s=20, color='steelblue', alpha=0.6, zorder=3)
     ax.plot(x_line, m * x_line + b, color='firebrick', linewidth=1.5, zorder=2)
     ax.axhline(0, color='gray', linestyle='--', linewidth=0.7)
-    ax.set_xlabel(r"Avg. split-half reliability ($L_i$, $L_j$)", fontsize=14)
-    ax.set_ylabel(r"Pairwise transfer ($L_i \to L_j$)", fontsize=14)
+    ax.set_xlabel(r"Avg. split-half reliability ($L_i$, $L_j$)", fontsize=16)
+    ax.set_ylabel(r"Pairwise transfer ($L_i \to L_j$)", fontsize=16)
     if title:
         ax.set_title(title, fontsize=11)
     _annotate_stats(ax, r_val, p_val)
@@ -231,3 +232,106 @@ plot_reliability_vs_avg_transfer(M_info, reliability, "plots/reliability_vs_tran
 plot_reliability_vs_pairwise_transfer(A,      reliability, "plots/reliability_vs_pairwise_all_models.svg",    "")
 plot_reliability_vs_pairwise_transfer(M_info, reliability, "plots/reliability_vs_pairwise_infoxlm_large.svg", "")
 
+# ── within vs. across scatter (infoxlm_large) ────────────────────────────────
+lang_nice_to_code = {v: k for k, v in lang_dict.items()}
+
+within_vals, across_vals, scatter_labels = [], [], []
+for nice_name, code in lang_nice_to_code.items():
+    idx = langs.index(code)
+    w = M_info[idx, idx]
+    row = M_info[idx, :].copy()
+    row[idx] = np.nan
+    a = np.nanmean(row)
+    within_vals.append(w)
+    across_vals.append(a)
+    scatter_labels.append(nice_name)
+
+within_vals = np.array(within_vals)
+across_vals = np.array(across_vals)
+
+fig, ax = plt.subplots(figsize=(6, 5.5), dpi=300)
+
+lo = min(within_vals.min(), across_vals.min()) - 0.06
+hi = max(within_vals.max(), across_vals.max()) + 0.06
+ax.fill_between([lo, hi], [lo, hi], [hi, hi], color='#ffe0e0', alpha=0.5, zorder=0)
+ax.fill_between([lo, hi], [lo, hi], [lo, lo], color='#e0e8ff', alpha=0.5, zorder=0)
+ax.plot([lo, hi], [lo, hi], color='gray', linestyle='--', linewidth=1, zorder=1)
+
+ax.scatter(within_vals, across_vals, s=55, color='steelblue', edgecolor='black',
+           linewidth=0.5, zorder=3)
+for x, y, lbl in zip(within_vals, across_vals, scatter_labels):
+    if lbl == "Romanian":
+        ax.annotate(lbl, (x-.12, y+.02), fontsize=11, xytext=(5, 4), textcoords='offset points')
+
+ax.set_xlabel("Within-language transfer ($r$)", fontsize=15)
+ax.set_ylabel("Avg. across-language transfer ($r$)", fontsize=15)
+ax.set_xlim(lo, hi)
+ax.set_ylim(lo, hi)
+ax.set_aspect('equal')
+ax.text(0.06, 0.92, "across > within", transform=ax.transAxes,
+        ha='left', va='top', fontsize=11, color='#b03030', fontstyle='italic')
+ax.text(0.97, 0.06, "within > across", transform=ax.transAxes,
+        ha='right', va='bottom', fontsize=11, color='#3050a0', fontstyle='italic')
+sns.despine()
+plt.tight_layout()
+plt.savefig("plots/within_vs_across_infoxlm.svg", format="svg", bbox_inches="tight")
+plt.show()
+
+# ── permutation test: are the observed flips (across > within) unusual? ───────
+# Null: for each language's row, randomly pick one of the 12 cells as "within"
+# and average the other 11 as "across." Count how many languages flip.
+# If the observed count falls within or below the null, the flips are just noise.
+n_langs_mat = len(langs)
+n_perm = 10000
+rng = np.random.default_rng(42)
+
+obs_diffs = np.array([
+    M_info[i, i] - np.nanmean(np.concatenate([M_info[i, :i], M_info[i, i+1:]]))
+    for i in range(n_langs_mat)
+])
+obs_n_flips = int(np.sum(obs_diffs < 0))
+
+perm_n_flips = np.zeros(n_perm, dtype=int)
+for p in range(n_perm):
+    n_flips = 0
+    for i in range(n_langs_mat):
+        row = M_info[i, :].copy()
+        valid = np.where(~np.isnan(row))[0]
+        fake_diag_idx = rng.choice(valid)
+        fake_within = row[fake_diag_idx]
+        row_off = np.delete(row, fake_diag_idx)
+        fake_across = np.nanmean(row_off)
+        if fake_within - fake_across < 0:
+            n_flips += 1
+    perm_n_flips[p] = n_flips
+
+null_mean = perm_n_flips.mean()
+print(f"\nPermutation test (infoxlm_large):")
+print(f"  Observed flips (across > within): {obs_n_flips} / {n_langs_mat}")
+print(f"  Null distribution mean: {null_mean:.1f}")
+print(f"  Observed is {'below' if obs_n_flips <= null_mean else 'above'} null expectation")
+
+# plot
+counts = np.bincount(perm_n_flips, minlength=n_langs_mat + 1)
+probs  = counts / n_perm
+active = np.where(probs > 0)[0]
+
+fig, ax = plt.subplots(figsize=(5.5, 4), dpi=300)
+colors_bar = ['#b03030' if x == obs_n_flips else 'steelblue' for x in active]
+ax.bar(active, probs[active], color=colors_bar, edgecolor='white', linewidth=0.5, zorder=2)
+ax.axvline(obs_n_flips, color='firebrick', linewidth=2, linestyle='--', zorder=3)
+ymax = ax.get_ylim()[1]
+ax.annotate(f"observed = {obs_n_flips}", xy=(obs_n_flips, probs[obs_n_flips] + ymax * 0.02),
+            fontsize=10, color='firebrick', ha='center',
+            arrowprops=dict(arrowstyle='->', color='firebrick', lw=1.2),
+            xytext=(obs_n_flips - 1.8, ymax * 0.85))
+ax.axvline(null_mean, color='gray', linewidth=1.5, linestyle=':', zorder=1)
+ax.text(null_mean + 0.2, ymax * 0.65, f"null mean\n= {null_mean:.1f}",
+        color='gray', fontsize=10, va='top')
+ax.set_xlabel("# languages with across > within", fontsize=14)
+ax.set_ylabel("Proportion", fontsize=14)
+ax.set_xticks(active)
+sns.despine()
+plt.tight_layout()
+plt.savefig("plots/permutation_within_vs_across.svg", format="svg", bbox_inches="tight")
+plt.show()
