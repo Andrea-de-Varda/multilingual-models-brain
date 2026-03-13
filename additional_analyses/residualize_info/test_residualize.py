@@ -376,7 +376,7 @@ print(f"\n  Pairs per comparison: {pairs_transfer.groupby('comparison').size().t
 stats_transfer.to_csv(os.path.join(RES_DIR, "stats_transfer.csv"), index=False)
 pairs_transfer.to_csv(os.path.join(RES_DIR, "stats_transfer_pairs.csv"), index=False)
 
-# ── CV stats (fold-level pairs, n ≈ 48 sentences per fold) ──
+# ── CV stats (fold-level pairs, n ≈ 200 sentences per fold) ──
 cv_fold_rows = []
 for mk in available.keys():
     cv_path = os.path.join(CV_BASE, f"{mk}_cv.pkl")
@@ -401,7 +401,7 @@ for mk in available.keys():
 
 if cv_fold_rows:
     pairs_cv = pd.DataFrame(cv_fold_rows)
-    n_fold = 48  # ~240 training sentences / 5 folds
+    n_fold = 200  # 1000 training sentences / 5 folds
     zp = pairs_cv.apply(
         lambda row: pd.Series(r_to_z(row["r_test"], row["r_ref"], n=n_fold),
                               index=["z", "p_two"]), axis=1
