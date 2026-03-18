@@ -509,16 +509,16 @@ plt.savefig(os.path.join(PLOT_DIR, "residualize.svg"), format="svg", bbox_inches
 # plt.show()
 
 # ── Figure 2: Transfer only (standalone) ──
-fig, ax = plt.subplots(dpi=400, figsize=(4.5, 3.7 * 0.9))
+fig, ax = plt.subplots(dpi=400, figsize=(3.0, 3.6))
 add_boxplot_panel(ax, transfer_data, cond_order,
-                  ylabel="R (zero-shot transfer)", xticklabels=xlabels_all)
+                  ylabel="R", xticklabels=xlabels_all)
 plt.tight_layout()
 plt.savefig(os.path.join(PLOT_DIR, "residualize_transfer.svg"), format="svg", bbox_inches="tight")
 # plt.show()
 
 # ── Figure 3: CV only (standalone) ──
 if cv_data_plot:
-    fig, ax = plt.subplots(dpi=400, figsize=(4.5, 3.7 * 0.9))
+    fig, ax = plt.subplots(dpi=400, figsize=(3.0, 3.6))
     add_boxplot_panel(ax, cv_data_plot, cond_order,
                       ylabel="R (5-fold CV)", xticklabels=xlabels_all)
     plt.tight_layout()
@@ -651,11 +651,14 @@ if not diag_sem.empty or not diag_syn.empty:
 cross_sem = load_diagnostics("cross_semantics")  # syntax feats on sem-ablated embs
 cross_syn = load_diagnostics("cross_syntax")      # semantic feats on syn-ablated embs
 
-COLOR_WITHIN  = "tab:red"
-COLOR_ACROSS  = "tab:blue"
+COLOR_MEANING = "tab:red"
+COLOR_FORM    = "tab:blue"
 
-def plot_within_across_panel(ax, within_df, across_df, title, n_feats=7):
-    """Plot within-domain (red) and across-domain (blue) R² lines."""
+def plot_within_across_panel(ax, within_df, across_df, title,
+                              color_within, color_across,
+                              label_within, label_across,
+                              show_legend=False, n_feats=7):
+    """Plot within-domain and across-domain R² lines with explicit colors."""
     if within_df.empty and across_df.empty:
         ax.set_visible(False)
         return
@@ -664,8 +667,8 @@ def plot_within_across_panel(ax, within_df, across_df, title, n_feats=7):
     within_filtered = within_df[within_df["step"] % n_feats == 0] if not within_df.empty else within_df
 
     # Thin lines: each (feature, model) combination
-    for df, color in [(within_filtered, COLOR_WITHIN),
-                       (across_df, COLOR_ACROSS)]:
+    for df, color in [(within_filtered, color_within),
+                       (across_df, color_across)]:
         if df.empty:
             continue
         for (feat, mk), grp in df.groupby(["feature_name", "model"]):
@@ -675,9 +678,8 @@ def plot_within_across_panel(ax, within_df, across_df, title, n_feats=7):
 
     # Bold average lines (mean across features and models at each step)
     # Only include steps with data from at least half the models
-    # (avoids spikes from per-model endpoint steps)
-    for df, color, label in [(within_filtered, COLOR_WITHIN, "Within-domain"),
-                              (across_df, COLOR_ACROSS, "Across-domain")]:
+    for df, color, label in [(within_filtered, color_within, label_within),
+                              (across_df, color_across, label_across)]:
         if df.empty:
             continue
         n_models = df["model"].nunique()
@@ -697,13 +699,29 @@ def plot_within_across_panel(ax, within_df, across_df, title, n_feats=7):
     ax.spines["left"].set_linewidth(SPINE_LW)
     ax.spines["bottom"].set_linewidth(SPINE_LW)
     ax.tick_params(axis="both", width=1.1, length=4, labelsize=9)
-    ax.legend(fontsize=9, frameon=False, loc="upper right")
+    if show_legend:
+        leg = ax.legend(fontsize=7.5, frameon=True, loc="upper right")
+        leg.get_frame().set_facecolor("white")
+        leg.get_frame().set_edgecolor("lightgray")
+        leg.get_frame().set_linewidth(0.8)
 
 has_cross = not cross_sem.empty or not cross_syn.empty
 if has_cross:
-    fig, axes = plt.subplots(1, 2, dpi=400, figsize=(11 * 0.6, 3.8 * 0.7))
-    plot_within_across_panel(axes[0], diag_sem, cross_sem, "Semantics ablation")
-    plot_within_across_panel(axes[1], diag_syn, cross_syn, "Syntax ablation")
+    fig, axes = plt.subplots(2, 1, dpi=400, figsize=(4, 3.6))
+    # Panel 1 (top): Meaning ablation — meaning=red (within), form=blue (across)
+    plot_within_across_panel(
+        axes[0], diag_sem, cross_sem, "Meaning ablation",
+        color_within=COLOR_MEANING, color_across=COLOR_FORM,
+        label_within="Meaning", label_across="Form",
+        show_legend=True,
+    )
+    # Panel 2 (bottom): Form ablation — form=blue (within), meaning=red (across)
+    plot_within_across_panel(
+        axes[1], diag_syn, cross_syn, "Form ablation",
+        color_within=COLOR_FORM, color_across=COLOR_MEANING,
+        label_within="Form", label_across="Meaning",
+        show_legend=False,
+    )
     plt.tight_layout()
     plt.savefig(os.path.join(PLOT_DIR, "residualize_cross_diagnostics.svg"),
                 format="svg", bbox_inches="tight")

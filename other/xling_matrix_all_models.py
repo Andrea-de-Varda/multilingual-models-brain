@@ -190,6 +190,7 @@ def plot_reliability_vs_avg_transfer(mat, rel, savepath, title):
     plt.tight_layout()
     plt.savefig(savepath, format="svg", bbox_inches="tight")
     plt.show()
+    return r_val, p_val, xs, ys, lbls
 
 def plot_reliability_vs_pairwise_transfer(mat, rel, savepath, title):
     """One dot per language pair: x=avg reliability of l_i & l_j, y=transfer value."""
@@ -225,12 +226,33 @@ def plot_reliability_vs_pairwise_transfer(mat, rel, savepath, title):
     plt.tight_layout()
     plt.savefig(savepath, format="svg", bbox_inches="tight")
     plt.show()
+    return r_val, p_val, len(xs)
 
-plot_reliability_vs_avg_transfer(A,      reliability, "plots/reliability_vs_transfer_all_models.svg",    "")
-plot_reliability_vs_avg_transfer(M_info, reliability, "plots/reliability_vs_transfer_infoxlm_large.svg", "")
+print("\n" + "="*60)
+print("RELIABILITY vs. TRANSFER CORRELATIONS")
+print("="*60)
 
-plot_reliability_vs_pairwise_transfer(A,      reliability, "plots/reliability_vs_pairwise_all_models.svg",    "")
-plot_reliability_vs_pairwise_transfer(M_info, reliability, "plots/reliability_vs_pairwise_infoxlm_large.svg", "")
+r, p, xs, ys, lbls = plot_reliability_vs_avg_transfer(
+    A, reliability, "plots/reliability_vs_transfer_all_models.svg", "")
+print(f"  [avg-transfer, all models]   r = {r:.3f}, p = {p:.4f}  (N={len(xs)} languages)")
+for lbl, x, y in sorted(zip(lbls, xs, ys), key=lambda t: t[1]):
+    print(f"    {lbl:<15}  reliability={x:.3f}  avg_transfer={y:.4f}")
+
+r, p, xs, ys, lbls = plot_reliability_vs_avg_transfer(
+    M_info, reliability, "plots/reliability_vs_transfer_infoxlm_large.svg", "")
+print(f"\n  [avg-transfer, infoxlm_large] r = {r:.3f}, p = {p:.4f}  (N={len(xs)} languages)")
+for lbl, x, y in sorted(zip(lbls, xs, ys), key=lambda t: t[1]):
+    print(f"    {lbl:<15}  reliability={x:.3f}  avg_transfer={y:.4f}")
+
+r, p, n = plot_reliability_vs_pairwise_transfer(
+    A, reliability, "plots/reliability_vs_pairwise_all_models.svg", "")
+print(f"\n  [pairwise-transfer, all models]   r = {r:.3f}, p = {p:.4f}  (N={n} pairs)")
+
+r, p, n = plot_reliability_vs_pairwise_transfer(
+    M_info, reliability, "plots/reliability_vs_pairwise_infoxlm_large.svg", "")
+print(f"  [pairwise-transfer, infoxlm_large] r = {r:.3f}, p = {p:.4f}  (N={n} pairs)")
+
+print("="*60 + "\n")
 
 # ── within vs. across scatter (infoxlm_large) ────────────────────────────────
 lang_nice_to_code = {v: k for k, v in lang_dict.items()}
@@ -305,29 +327,53 @@ for p in range(n_perm):
             n_flips += 1
     perm_n_flips[p] = n_flips
 
-null_mean = perm_n_flips.mean()
-print(f"\nPermutation test (infoxlm_large):")
-print(f"  Observed flips (across > within): {obs_n_flips} / {n_langs_mat}")
-print(f"  Null distribution mean: {null_mean:.1f}")
-print(f"  Observed is {'below' if obs_n_flips <= null_mean else 'above'} null expectation")
+null_mean   = perm_n_flips.mean()
+null_std    = perm_n_flips.std()
+p_val_exact = np.mean(perm_n_flips == obs_n_flips)
+p_val_leq   = np.mean(perm_n_flips <= obs_n_flips)
+n_exact     = int(np.sum(perm_n_flips == obs_n_flips))
 
-# plot
+# ── stats printout for reviewer response ─────────────────────────────────────
+print("\n" + "="*60)
+print("PERMUTATION TEST STATS (infoxlm_large, within vs. across)")
+print("="*60)
+print(f"  N languages in matrix           : {n_langs_mat}")
+print(f"  Observed flips (across > within): {obs_n_flips} / {n_langs_mat}")
+print(f"  Languages with across > within  : {[langs_nice[i] for i in range(n_langs_mat) if obs_diffs[i] < 0]}")
+print(f"  Languages with within > across  : {[langs_nice[i] for i in range(n_langs_mat) if obs_diffs[i] >= 0]}")
+print()
+print(f"  Null distribution ({n_perm} permutations):")
+print(f"    Mean  : {null_mean:.2f}")
+print(f"    SD    : {null_std:.2f}")
+print(f"    Range : [{perm_n_flips.min()}, {perm_n_flips.max()}]")
+print()
+print(f"  Simulations with exactly {obs_n_flips} flip(s): {n_exact} / {n_perm}  (p = {p_val_exact:.4f})")
+print(f"  Simulations with <= {obs_n_flips} flip(s)     : {int(np.sum(perm_n_flips <= obs_n_flips))} / {n_perm}  (one-tailed p = {p_val_leq:.4f})")
+print()
+print(f"  {'Language':<15} {'within':>8} {'across_mean':>12} {'diff (w-a)':>12} {'flip?':>6}")
+print("  " + "-"*55)
+for i in range(n_langs_mat):
+    w = M_info[i, i]
+    a = np.nanmean(np.concatenate([M_info[i, :i], M_info[i, i+1:]]))
+    d = w - a
+    print(f"  {langs_nice[i]:<15} {w:>8.4f} {a:>12.4f} {d:>12.4f} {'YES' if d < 0 else '':>6}")
+print("="*60 + "\n")
+
+# ── plot ──────────────────────────────────────────────────────────────────────
 counts = np.bincount(perm_n_flips, minlength=n_langs_mat + 1)
 probs  = counts / n_perm
 active = np.where(probs > 0)[0]
 
 fig, ax = plt.subplots(figsize=(5.5, 4), dpi=300)
-colors_bar = ['#b03030' if x == obs_n_flips else 'steelblue' for x in active]
+colors_bar = ['#b03030' if x == obs_n_flips else 'lightsteelblue' for x in active]
 ax.bar(active, probs[active], color=colors_bar, edgecolor='white', linewidth=0.5, zorder=2)
 ax.axvline(obs_n_flips, color='firebrick', linewidth=2, linestyle='--', zorder=3)
-ymax = ax.get_ylim()[1]
-ax.annotate(f"observed = {obs_n_flips}", xy=(obs_n_flips, probs[obs_n_flips] + ymax * 0.02),
-            fontsize=10, color='firebrick', ha='center',
-            arrowprops=dict(arrowstyle='->', color='firebrick', lw=1.2),
-            xytext=(obs_n_flips - 1.8, ymax * 0.85))
-ax.axvline(null_mean, color='gray', linewidth=1.5, linestyle=':', zorder=1)
-ax.text(null_mean + 0.2, ymax * 0.65, f"null mean\n= {null_mean:.1f}",
-        color='gray', fontsize=10, va='top')
+ymax = max(probs[active])
+ax.text(obs_n_flips + 0.2, ymax * 0.9, f"observed = {obs_n_flips}",
+        color='firebrick', fontsize=10, va='top', ha='left')
+p_str = f"p = {p_val_leq:.3f}" if p_val_leq >= 0.001 else "p < 0.001"
+ax.text(0.97, 0.95, p_str, transform=ax.transAxes, ha='right', va='top', fontsize=11,
+        bbox=dict(boxstyle='round,pad=0.4', facecolor='white', edgecolor='gray', alpha=0.85))
 ax.set_xlabel("# languages with across > within", fontsize=14)
 ax.set_ylabel("Proportion", fontsize=14)
 ax.set_xticks(active)
