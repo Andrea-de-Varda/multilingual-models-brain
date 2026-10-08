@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import re
 from os import chdir
+import os
 import pickle
 import matplotlib.pyplot as plt
 import glob
@@ -12,7 +13,9 @@ import matplotlib as mpl
 mpl.rcParams['svg.fonttype'] = 'none'
 mpl.rcParams['font.family'] = 'DejaVu Sans'
 
-chdir("/home/dev/Documents/PhD/Alice")
+if "__file__" in globals():  # run as a script: resolve paths relative to the repository
+    chdir(os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")))
+# when run interactively, set the working directory to <repo>/. before running
 
 # Specifying model names
 model_names = ["nllb200_distilled_600M", "nllb200_distilled_1B", "nllb200_1B", "xlm_align", "infoxlm_base", "infoxlm_large", "multiminilm", "xlmr_base", "xlmr_large", "distilmbert", "bert_base", "mdeberta", "mt5_small", "mt5_base", "mt5_large", "mgpt","xglm_small", "xglm_med", "xglm_large", "xglm_xl"]
@@ -60,7 +63,7 @@ out_all.replace({'mod':{'mbert':'bert_base'}, 'lang':{'it':'ita'}}, inplace = Tr
 model = LinearRegression()
 model.fit(out_all[["ppx_random"]], out_all["ppx"])
 out_all["ppx_residuals"] = out_all["ppx"] - model.predict(out_all[["ppx_random"]])
-out_all.to_csv("other/synonyms/perplexity_results.csv", index=False)
+out_all.to_csv("perplexity/perplexity_results_by_language.csv", index=False)  # per-language residual perplexity (used in SI S15)
 
 print(pearsonr(out_all["ppx_residuals"], out_all["ppx_random"])) # check
 
@@ -265,5 +268,5 @@ r_to_z(pearsonr(mono_multi['Score_multi'], mono_multi['ppx_mean'])[0], pearsonr(
 # # at the lang level #
 # #####################
 
-# out_all = pd.read_csv("other/synonyms/perplexity_results.csv")
+# out_all = pd.read_csv("perplexity/perplexity_results_by_language.csv")
 # out_all.columns

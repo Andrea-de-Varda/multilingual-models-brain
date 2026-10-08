@@ -15,6 +15,9 @@
     </clipPath>
     <bx:export>
       <bx:file format="png" excluded="true"/>
+      <bx:file format="pdf">
+        <bx:page/>
+      </bx:file>
     </bx:export>
     <clipPath id="p4dffb266a6">
       <rect x="54.596563" y="19.498535" width="377.5057" height="137.404318"/>
@@ -5800,7 +5803,7 @@
   <rect width="531.784" height="273.85" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); fill-opacity: 0; stroke-width: 2;" x="507.1" y="265.544"/>
   <g transform="matrix(1, 0, 0, 1, 565.099016, 292.730935)">
     <rect x="-50.599" y="-43.333" width="151.887" height="21.78" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 2px;"/>
-    <text style="font-family: Arial, sans-serif; font-weight: 700; white-space: pre;" x="-44.076" y="-27.24">B. Study IV results</text>
+    <text style="font-family: Arial, sans-serif; font-weight: 700; white-space: pre;" x="-44.076" y="-27.24">C. Study IV results</text>
   </g>
   <path style="fill: none; stroke: rgb(0, 0, 0); stroke-width: 1.676px; stroke-dasharray: 2;" d="M 908.533 416.01 L 908.533 422.366 L 952.461 422.366"/>
   <path style="fill: none; stroke: rgb(0, 0, 0); stroke-width: 1.676px; stroke-dasharray: 2;" d="M 952.033 422.4 L 952.033 416"/>

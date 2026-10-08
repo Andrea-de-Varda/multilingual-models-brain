@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from os import chdir
+import os
 from scipy.stats import pearsonr
 from math import atanh, tanh, sqrt
 import pickle
@@ -10,7 +11,8 @@ import matplotlib as mpl
 mpl.rcParams['svg.fonttype'] = 'none'
 mpl.rcParams['font.family'] = 'DejaVu Sans'
 
-dirName = "/home/dev/Documents/PhD/Alice"
+# repository-relative working directory (<repo>/.); set it manually when running interactively
+dirName = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".")) if "__file__" in globals() else os.getcwd()
 chdir(dirName)
 
 data = pd.read_csv("data/Alice_Story_TimeSeries.csv")

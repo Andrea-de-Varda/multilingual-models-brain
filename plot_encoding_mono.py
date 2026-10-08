@@ -28,7 +28,9 @@ import matplotlib as mpl
 mpl.rcParams['svg.fonttype'] = 'none'
 mpl.rcParams['font.family'] = 'DejaVu Sans'
 
-chdir("/home/dev/Documents/PhD/Alice")
+if "__file__" in globals():  # run as a script: resolve paths relative to the repository
+    chdir(os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".")))
+# when run interactively, set the working directory to <repo>/. before running
 
 all_langs = ['Spanish', 'Marathi', 'Afrikaans', 'Vietnamese', 'Tamil', 'Lithuanian', 'Turkish', 'Dutch', 'Norwegian', 'Farsi', 'French', 'Romanian']
 all_codes = ["es", "mr", "af", "vi", "ta", "lt", "tr", "nl", "no", "fa", "fr", "ro"]

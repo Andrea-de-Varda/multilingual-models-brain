@@ -24,7 +24,9 @@ nltk.help.upenn_tagset()
 #------------------------------------------------------------------------------
 # using Greta's data only
 
-chdir("/home/dev/Documents/PhD/Alice/additional_analyses/control")
+if "__file__" in globals():  # run as a script: resolve paths relative to the repository
+    chdir(os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")))
+# when run interactively, set the working directory to <repo>/additional_analyses/control before running
 
 #########################################
 # loading sentences and brain responses #

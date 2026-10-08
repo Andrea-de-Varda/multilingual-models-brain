@@ -19,7 +19,8 @@ warnings.filterwarnings("ignore", message="Mean of empty slice.")
 warnings.filterwarnings("ignore", category=DeprecationWarning, message="numpy.core.numeric is deprecated")
 np.seterr(invalid="warn", divide="warn")
 
-CONFIRM_BASE = "/home/dev/Documents/PhD/Alice/confirmatory"
+SCRIPT_DIR   = os.path.dirname(os.path.abspath(__file__))
+CONFIRM_BASE = os.path.normpath(os.path.join(SCRIPT_DIR, "../../../confirmatory"))
 EMB_DIR      = os.path.join(CONFIRM_BASE, "embeddings")
 TRANS_DIR    = os.path.join(CONFIRM_BASE, "transcribed")
 FMRI_DICT    = os.path.join(CONFIRM_BASE, "data/dict_fMRI")
@@ -27,12 +28,12 @@ os.chdir(CONFIRM_BASE)
 
 DATASETS = {
     "Tuckute2024": {
-        "REG_BASE":  "/home/dev/Documents/PhD/Alice/additional_analyses/control/perturbation/registered_models",
-        "NORM_BASE": "/home/dev/Documents/PhD/Alice/additional_analyses/control/perturbation/registered_models/normaliz_params",
+        "REG_BASE":  os.path.normpath(os.path.join(SCRIPT_DIR, "registered_models")),
+        "NORM_BASE": os.path.normpath(os.path.join(SCRIPT_DIR, "registered_models/normaliz_params")),
     },
     "Pereira2018": {
-        "REG_BASE":  "/home/dev/Documents/PhD/Alice/additional_analyses/pereira/perturbation/perturbation/registered_models",
-        "NORM_BASE": "/home/dev/Documents/PhD/Alice/additional_analyses/pereira/perturbation/perturbation/registered_models/normaliz_params",
+        "REG_BASE":  os.path.normpath(os.path.join(SCRIPT_DIR, "../../pereira/perturbation/perturbation/registered_models")),
+        "NORM_BASE": os.path.normpath(os.path.join(SCRIPT_DIR, "../../pereira/perturbation/perturbation/registered_models/normaliz_params")),
     },
 }
 
@@ -651,8 +652,8 @@ plt.show()
 # ======================
 
 SIMILARITY_DIRS = {
-    "Pereira2018": "/home/dev/Documents/PhD/Alice/additional_analyses/pereira/perturbation/similarity_outputs_pereira",
-    "Tuckute2024": "/home/dev/Documents/PhD/Alice/additional_analyses/control/perturbation/similarity_outputs", 
+    "Pereira2018": os.path.normpath(os.path.join(SCRIPT_DIR, "../../pereira/perturbation/similarity_outputs_pereira")),
+    "Tuckute2024": os.path.normpath(os.path.join(SCRIPT_DIR, "similarity_outputs")), 
 }
 
 pert_use = [p for p in pert_order if p != "intact"]

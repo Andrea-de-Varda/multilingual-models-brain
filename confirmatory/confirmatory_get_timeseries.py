@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from os import chdir
+import os
 from scipy.stats import pearsonr, beta
 import pickle
 from itertools import combinations
@@ -11,7 +12,8 @@ import matplotlib as mpl
 mpl.rcParams['svg.fonttype'] = 'none'
 mpl.rcParams['font.family'] = 'DejaVu Sans'
 
-dirName = "/home/dev/Documents/PhD/Alice/confirmatory"
+# repository-relative working directory (<repo>/confirmatory); set it manually when running interactively
+dirName = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".")) if "__file__" in globals() else os.getcwd()
 chdir(dirName)
 
 def calculate_p_value(r, N):

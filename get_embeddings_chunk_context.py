@@ -17,7 +17,9 @@ import pickle
 import math
 from tqdm import tqdm
 
-chdir("/home/dev/Documents/PhD/Alice")
+if "__file__" in globals():  # run as a script: resolve paths relative to the repository
+    chdir(os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".")))
+# when run interactively, set the working directory to <repo>/. before running
 
 def save(file, name):
     with open("embeddings/"+name, 'wb') as handle:

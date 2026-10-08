@@ -31,7 +31,7 @@ warnings.filterwarnings("ignore", message="Mean of empty slice.")
 np.seterr(invalid="warn", divide="warn")
 
 SCRIPT_DIR   = os.path.dirname(os.path.abspath(__file__))
-CONFIRM_BASE = "/home/andrea/Documents/PhD/Alice/confirmatory"
+CONFIRM_BASE = os.path.normpath(os.path.join(SCRIPT_DIR, "../../confirmatory"))
 EMB_DIR      = os.path.join(CONFIRM_BASE, "embeddings")
 TRANS_DIR    = os.path.join(CONFIRM_BASE, "transcribed")
 FMRI_DICT    = os.path.join(CONFIRM_BASE, "data/dict_fMRI")

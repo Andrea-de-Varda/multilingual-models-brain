@@ -19,7 +19,9 @@ warnings.filterwarnings("ignore", category=DeprecationWarning, message=".*numpy\
 import argparse
 import torch
 
-# chdir("/home/dev/Documents/PhD/Alice")
+if "__file__" in globals():  # run as a script: resolve paths relative to the repository root
+    chdir(os.path.dirname(os.path.abspath(__file__)))
+# when run interactively, set the working directory to the repository root before running
 
 # backend stuff
 DEVICE  = "cuda" if torch.cuda.is_available() else "cpu"
@@ -161,7 +163,7 @@ def monolingual_encoding(langs, model_prefix, n_layers, d, shuffle=False, prefix
                     part1, part2 = d[lang_code_dict[lang]].keys()
                     ts1, ts2 = d[lang_code_dict[lang]][part1][froi], d[lang_code_dict[lang]][part2][froi]
                     the_r1 = test_model_Ridge(fmri_data[idx], ts1, ts2, 10, saveto = f"{model_prefix}_{lang}_{froi}_part1_{n}", shuffle=shuffle, prefix = prefix) # trying in both directions
-                    the_r2 = test_model_Ridge(fmri_data[idx], ts2, ts1, 10, saveto = f"{model_prefix}_{lang}_{froi}_part1_{n}", shuffle=shuffle, prefix = prefix)
+                    the_r2 = test_model_Ridge(fmri_data[idx], ts2, ts1, 10, saveto = f"{model_prefix}_{lang}_{froi}_part2_{n}", shuffle=shuffle, prefix = prefix)
                     m1.append(the_r1)
                     m2.append(the_r2)
                 #########################

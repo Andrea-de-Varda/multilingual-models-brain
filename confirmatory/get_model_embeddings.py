@@ -18,7 +18,9 @@ import math
 from tqdm import tqdm
 from time import sleep
 
-chdir("/home/dev/Documents/PhD/Alice/confirmatory")
+if "__file__" in globals():  # run as a script: resolve paths relative to the repository
+    chdir(os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".")))
+# when run interactively, set the working directory to <repo>/confirmatory before running
 
 def save(file, name):
     with open("embeddings/"+name, 'wb') as handle:

@@ -21,7 +21,9 @@ nltk.download('averaged_perceptron_tagger_eng')
 nltk.download('punkt_tab')
 nltk.help.upenn_tagset()
 
-chdir("/home/dev/Documents/PhD/Alice/additional_analyses/pereira")
+if "__file__" in globals():  # run as a script: resolve paths relative to the repository
+    chdir(os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")))
+# when run interactively, set the working directory to <repo>/additional_analyses/pereira before running
 
 #########################################
 # loading sentences and brain responses #

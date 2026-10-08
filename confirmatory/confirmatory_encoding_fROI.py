@@ -2,6 +2,7 @@ import numpy as np
 import numpy.ma as ma
 import pandas as pd
 from os import chdir
+import os
 import pickle
 from sklearn.preprocessing import StandardScaler
 from tqdm import tqdm
@@ -16,7 +17,9 @@ import matplotlib as mpl
 mpl.rcParams['svg.fonttype'] = 'none'
 mpl.rcParams['font.family'] = 'DejaVu Sans'
 
-chdir("/home/dev/Documents/PhD/Alice/confirmatory")
+if "__file__" in globals():  # run as a script: resolve paths relative to the repository
+    chdir(os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".")))
+# when run interactively, set the working directory to <repo>/confirmatory before running
 
 def save(file, name):
     with open(name, 'wb') as handle:

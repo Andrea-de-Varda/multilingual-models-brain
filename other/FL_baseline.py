@@ -2,6 +2,7 @@ import numpy as np
 import numpy.ma as ma
 import pandas as pd
 from os import chdir
+import os
 import pickle
 from sklearn.linear_model import RidgeCV
 from sklearn.model_selection import KFold
@@ -10,7 +11,9 @@ import wordfreq
 from scipy.stats import pearsonr
 from tqdm import tqdm
 
-chdir("/home/dev/Documents/PhD/Alice")
+if "__file__" in globals():  # run as a script: resolve paths relative to the repository
+    chdir(os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")))
+# when run interactively, set the working directory to <repo>/. before running
 
 def imputate_na(array):
     return np.where(np.isnan(array), ma.array(array, mask=np.isnan(array)).mean(axis=0), array)
