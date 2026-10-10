@@ -127,45 +127,49 @@ for train_name in ["main", "pereira", "control", "natstor"]:
 
 d_passages_keep = {'ar' : [1, 2, 3], 'de' : [2, 3], 'hi' : [2, 3], 'it' : [1, 2, 3], 'ko' : [1], 'pt' : [1, 3], 'ru' : [1, 2, 3], 'zh' : [1, 2, 3], 'pl' : [1, 2, 3]}
 
-transf_results = []
-# main results
-for lang in lang_codes:
-    passages_keep = d_passages_keep[lang]
-    print("\n", lang_code_dict[lang])
-    for train_name in d_models.keys():
-        print("\n", train_name)
-        norm_params = d_models[train_name]["norm"]
-        models = d_models[train_name]["models"]
-        for regname, reg in models.items():
-            X_scaler, y_scaler = norm_params[regname] # previous norm parameters
-            X = [X_scaler.transform(preproc_align(lang, passage, load(f"{passage}/{regname}_{lang}")[dict_bestlayer[regname]])) for passage in passages]
-            predictions = [reg.predict(the_x) for the_x in X]
-            responses = [y_scaler.transform(d[passage][lang_code_dict[lang]].reshape(-1, 1)).flatten() for passage in passages]
-            rs = [pearsonr(pred, resp)[0] for pred, resp in zip(predictions, responses)]
-            print(regname, rs)
-            transf_results.append([train_name, "experimental", lang_code_dict[lang], regname, rs[0], rs[1], rs[2], np.mean([rs[i-1] for i in passages_keep]), np.std([rs[i-1] for i in passages_keep])])
-
-#random results
-for lang in lang_codes:
-    passages_keep = d_passages_keep[lang]
-    print("\n", lang_code_dict[lang])
-    for train_name in d_models.keys():
-        print("\n", train_name)
-        norm_params = d_models[train_name]["norm"]
-        models_random = d_models[train_name]["random"]
-        for regname, reg in models_random.items():
-            for random_idx in [0, 1, 2, 3]:
+# transfer of every registered model (and of its randomized baselines) to every passage of the new data;
+# needs the Study II embeddings. Cached in confirmatory_results.csv (delete it to recompute).
+if os.path.isfile("confirmatory_results.csv"):
+    transf_results = pd.read_csv("confirmatory_results.csv")
+else:
+    transf_results = []
+    # main results
+    for lang in lang_codes:
+        passages_keep = d_passages_keep[lang]
+        print("\n", lang_code_dict[lang])
+        for train_name in d_models.keys():
+            print("\n", train_name)
+            norm_params = d_models[train_name]["norm"]
+            models = d_models[train_name]["models"]
+            for regname, reg in models.items():
                 X_scaler, y_scaler = norm_params[regname] # previous norm parameters
                 X = [X_scaler.transform(preproc_align(lang, passage, load(f"{passage}/{regname}_{lang}")[dict_bestlayer[regname]])) for passage in passages]
-                predictions = [reg[random_idx].predict(the_x) for the_x in X]
+                predictions = [reg.predict(the_x) for the_x in X]
                 responses = [y_scaler.transform(d[passage][lang_code_dict[lang]].reshape(-1, 1)).flatten() for passage in passages]
                 rs = [pearsonr(pred, resp)[0] for pred, resp in zip(predictions, responses)]
                 print(regname, rs)
-                transf_results.append([train_name, f"random_{random_idx}", lang_code_dict[lang], regname, rs[0], rs[1], rs[2], np.mean([rs[i-1] for i in passages_keep]), np.std([rs[i-1] for i in passages_keep])])
+                transf_results.append([train_name, "experimental", lang_code_dict[lang], regname, rs[0], rs[1], rs[2], np.mean([rs[i-1] for i in passages_keep]), np.std([rs[i-1] for i in passages_keep])])
 
-transf_results = pd.DataFrame(transf_results, columns = ["train", "condition", "language", "model", "r1", "r2", "r3", "r_mean", "r_sd"])
-#transf_results.to_csv("confirmatory_results.csv", index=False)
-transf_results = pd.read_csv("confirmatory_results.csv")
+    #random results
+    for lang in lang_codes:
+        passages_keep = d_passages_keep[lang]
+        print("\n", lang_code_dict[lang])
+        for train_name in d_models.keys():
+            print("\n", train_name)
+            norm_params = d_models[train_name]["norm"]
+            models_random = d_models[train_name]["random"]
+            for regname, reg in models_random.items():
+                for random_idx in [0, 1, 2, 3]:
+                    X_scaler, y_scaler = norm_params[regname] # previous norm parameters
+                    X = [X_scaler.transform(preproc_align(lang, passage, load(f"{passage}/{regname}_{lang}")[dict_bestlayer[regname]])) for passage in passages]
+                    predictions = [reg[random_idx].predict(the_x) for the_x in X]
+                    responses = [y_scaler.transform(d[passage][lang_code_dict[lang]].reshape(-1, 1)).flatten() for passage in passages]
+                    rs = [pearsonr(pred, resp)[0] for pred, resp in zip(predictions, responses)]
+                    print(regname, rs)
+                    transf_results.append([train_name, f"random_{random_idx}", lang_code_dict[lang], regname, rs[0], rs[1], rs[2], np.mean([rs[i-1] for i in passages_keep]), np.std([rs[i-1] for i in passages_keep])])
+
+    transf_results = pd.DataFrame(transf_results, columns = ["train", "condition", "language", "model", "r1", "r2", "r3", "r_mean", "r_sd"])
+    transf_results.to_csv("confirmatory_results.csv", index=False)
 
 ###############################
 # checking stats significance #
@@ -231,9 +235,7 @@ for (model, corpus), df in results_sig.groupby(["model", "training"]):
         asterisk = ""
     combined_df.append([corpus, model, df["r_mean"].mean(), df["r_random"].mean(), df["r_mean"].std() / np.sqrt(len(df)), z_combined_full, p_combined_full, asterisk])
 combined_df = pd.DataFrame(combined_df, columns = ["train", "model", "r", "r_random", "SE", "z", "p", "sig"])
-# combined_df.to_csv("confirmatory_results_aggregated.csv")
-
-combined_df = pd.read_csv("confirmatory_results_aggregated.csv")
+combined_df.to_csv("confirmatory_results_aggregated.csv")
     
 ############
 # PLOTTING #

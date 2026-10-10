@@ -33,7 +33,7 @@ all_codes = ["af", "nl", "fa", "fr", "lt", "mr", "no", "ro", "es", "ta", "tr", "
 xglm_langs  = ["es", "vi", "ta", "tr", "fr"]
 mgpt_langs   = ["af", "fa", "fr", "lt", "mr", "ro", "es", "ta", "tr", "vi"]
 
-ppx = glob.glob("perplexity/*.pkl")
+ppx = sorted(glob.glob("perplexity/*.pkl"))
 
 out = []
 for filename in ppx:

@@ -119,8 +119,18 @@ def get_word_embeddings(sentence, tokenizer, model):
     return layer_embeddings
 
 
-def get_embeddings_tokens(tokens, sep, tokenizer, model, cased=True, emb_start = 0, emb_end = None):
-    layer_embs = get_word_embeddings(" ".join(tokens), tokenizer, model)
+def get_encoder_embeddings(sentence, tokenizer, model):
+    # encoder-decoder models (NLLB): hidden states of the encoder only (as in confirmatory/get_model_embeddings.py)
+    inputs = tokenizer(sentence, return_tensors='pt')
+    with torch.no_grad():
+        encoder_outputs = model.get_encoder()(**inputs, output_hidden_states=True)
+    return [hidden_state[0].cpu().numpy() for hidden_state in encoder_outputs.hidden_states]
+
+def get_embeddings_tokens(tokens, sep, tokenizer, model, cased=True, emb_start = 0, emb_end = None, is_seq2seq = False):
+    if is_seq2seq:
+        layer_embs = get_encoder_embeddings(" ".join(tokens), tokenizer, model)
+    else:
+        layer_embs = get_word_embeddings(" ".join(tokens), tokenizer, model)
     layer_embs = [emb[emb_start:emb_end] for emb in layer_embs] # discard embeddings for special chars
     toks = tok_maker(tokens, sep, tokenizer, cased)
     len_emb = layer_embs[0].shape[0]

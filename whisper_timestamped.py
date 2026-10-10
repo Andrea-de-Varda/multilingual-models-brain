@@ -44,11 +44,12 @@ def report(result, lang):
 
 model = whisper.load_model("large", device="cpu") # whisper large
 
-languages = ['Spanish', 'Marathi', 'Afrikaans', 'Vietnamese', 'Tamil', 'Lithuanian', 'Turkish', 'Dutch', 'Norwegian', 'Farsi', 'French', 'Romanian']
+# the 12 Study I languages, plus English (used only for the word-overlap measure of Figure 1C)
+languages = ['Spanish', 'Marathi', 'Afrikaans', 'Vietnamese', 'Tamil', 'Lithuanian', 'Turkish', 'Dutch', 'Norwegian', 'Farsi', 'French', 'Romanian', 'English']
 
 long_passages = [f'sound_data/{l}/{l}_Intact_Long/{l}.wav' for l in languages]
 
-lang_codes = ["es", "mr", "af", "vi", "ta", "lt", "tr", "nl", "no", "fa", "fr", "ro"]
+lang_codes = ["es", "mr", "af", "vi", "ta", "lt", "tr", "nl", "no", "fa", "fr", "ro", "en"]
 
 for file, lang in zip(long_passages, lang_codes):
     if os.path.isfile(f"transcribed/{lang}"):

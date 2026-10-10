@@ -45,10 +45,11 @@ def report(result, name):
 
 model = whisper.load_model("large", device="cpu") # whisper large
 
-stories = [f'sound_data/{str(n)}.wav' for n in range(1, 11)]
+story_numbers = [1, 2, 3, 4, 5, 6, 7, 9, 10]  # story 8 has no fMRI data
+stories = [f'sound_data/{n}.wav' for n in story_numbers]
 
-for idx, file in enumerate(stories):
-    idx = str(idx + 1)
+for story_n, file in zip(story_numbers, stories):
+    idx = str(story_n)
     if os.path.isfile(f"transcribed/{idx}"):
         print(f"Story {idx} already done")
     else:

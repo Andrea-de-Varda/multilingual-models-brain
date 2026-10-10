@@ -12,6 +12,10 @@ from transformers import (
 from sklearn.linear_model import RidgeCV
 from sklearn.preprocessing import StandardScaler
 
+if "__file__" in globals():  # run as a script: resolve paths relative to the repository
+    os.chdir(os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".")))
+# when run interactively, set the working directory to <repo>/additional_analyses/pereira/perturbation before running
+
 warnings.filterwarnings("ignore", message="Mean of empty slice")
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")

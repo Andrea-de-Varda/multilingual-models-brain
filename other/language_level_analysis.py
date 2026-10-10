@@ -1,15 +1,20 @@
-import pandas as pd
-from scipy.stats import pearsonr, norm
-import statsmodels.api as sm
-from os import chdir
+"""
+SI S15 (Language-level analyses): does next-word prediction ability (residual perplexity, from
+perplexity/plot_perplexity.py) predict differences in encoding performance across languages?
+For each language, encoding performance (best layer of each model, network-level 'all' fROI) and residual
+perplexity are averaged across the models that support that language, and the two are correlated (n = 12).
+"""
 import os
+import pickle
+from os import chdir
+
 import numpy as np
-from tqdm import tqdm
-from sklearn.linear_model import LinearRegression
+import pandas as pd
+from scipy.stats import pearsonr
 
 if "__file__" in globals():  # run as a script: resolve paths relative to the repository
     chdir(os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")))
-# when run interactively, set the working directory to <repo>/. before running
+# when run interactively, set the working directory to the repository root before running
 
 def patched_load(path):
     import sys
@@ -50,63 +55,38 @@ names_nice_dict = {name : nice for name, nice in zip(model_names, names_formatte
 
 ppx_res = pd.read_csv("perplexity/perplexity_results_by_language.csv")[["lang", "mod", "ppx_residuals"]] # per-language residual perplexity (from perplexity/plot_perplexity.py)
 
-multi_res = []
+within_res = []  # WITHIN condition (results/monolingual_*)
 for model in model_names:
     df = get_best_layerwise(load(model, froi="all", monol=True), colname = "m", give_all = True)[["lang", "m"]]
     df["mod"] = model
-    df.columns = ["lang", "r_multi", "mod"]
-    multi_res.append(df)
-    
-mono_res = []
+    df.columns = ["lang", "r_within", "mod"]
+    within_res.append(df)
+
+across_res = []  # ACROSS condition (results/multilingual_multitrain_*)
 for model in model_names:
     df = get_best_layerwise(load(model, froi="all", monol=False), colname = "r", give_all = True)
     df["mod"] = model
-    df.columns = ["lang", "r_mono", "mod"]
-    mono_res.append(df)
+    df.columns = ["lang", "r_across", "mod"]
+    across_res.append(df)
 
-mono_df = pd.concat(mono_res, ignore_index=True)
-multi_df = pd.concat(multi_res, ignore_index=True)
-    
-encoding_res = pd.merge(mono_df, multi_df, on = ["lang", "mod"])
+within_df = pd.concat(within_res, ignore_index=True)
+across_df = pd.concat(across_res, ignore_index=True)
+
+encoding_res = pd.merge(within_df, across_df, on = ["lang", "mod"])
 all_df = pd.merge(encoding_res, ppx_res, on = ["lang", "mod"])
 
-########
-# TEST #
-########
-
-def r_to_z_single(r, n):
-    z = np.arctanh(r)  # Fisher transformation
-    z_stat = z * np.sqrt(n - 3)  # Multiply by sqrt(n-3) directly
-    p_value = 2 * (1 - norm.cdf(abs(z_stat)))  # Two-tailed test
-    return z_stat, p_value
-
-# Combine z-statistics using Stouffer's method
-def combine_z_statistics(z_stats):
-    z_combined = np.sum(z_stats) / np.sqrt(len(z_stats))
-    combined_pvalue = 2 * norm.cdf(-abs(z_combined))
-    return z_combined, combined_pvalue
-
-
-res = []
-for modelname, df in all_df.groupby("mod"):
-    r_ppx_mono, _ = pearsonr(df["ppx_residuals"], df["r_mono"])
-    r_ppx_multi, _ = pearsonr(df["ppx_residuals"], df["r_multi"])
-    # z stats
-    n_langs = len(df)
-    z_ppx_mono, _ = r_to_z_single(r_ppx_mono, n_langs)
-    z_ppx_multi, _ = r_to_z_single(r_ppx_multi, n_langs)
-    res.append([modelname, r_ppx_mono, r_ppx_multi, z_ppx_mono, z_ppx_multi, n_langs])
-res = pd.DataFrame(res, columns = ["model", "ppx_mono", "ppx_multi", "z_ppx_mono", "z_ppx_multi", "n_langs"])
-print(res)
-
-print(combine_z_statistics(res["z_ppx_mono"]))
-print(combine_z_statistics(res["z_ppx_multi"]))
+##########################################################
+# Language level: average across models, then correlate #
+##########################################################
 
 tmp = all_df.drop_duplicates(subset=["lang", "mod"])
 avg_lang = (tmp.groupby("lang", as_index=False)
-              .agg(r_mono_mean=("r_mono", "mean"),
-                   r_multi_mean=("r_multi", "mean"),
+              .agg(r_within_mean=("r_within", "mean"),
+                   r_across_mean=("r_across", "mean"),
                    ppx_residuals=("ppx_residuals", "mean"),
                    n_models=("mod", "nunique")))
-pearsonr(avg_lang["ppx_residuals"], avg_lang["r_mono_mean"])
-pearsonr(avg_lang["ppx_residuals"], avg_lang["r_multi_mean"])
+print(avg_lang)
+r, p = pearsonr(avg_lang["ppx_residuals"], avg_lang["r_within_mean"])
+print(f"WITHIN: r = {r:.3f}, p = {p:.3f} (n = {len(avg_lang)} languages)")   # SI S15: r = -0.11, p = 0.73
+r, p = pearsonr(avg_lang["ppx_residuals"], avg_lang["r_across_mean"])
+print(f"ACROSS: r = {r:.3f}, p = {p:.3f} (n = {len(avg_lang)} languages)")   # SI S15: r = -0.07, p = 0.84

@@ -3,19 +3,14 @@ Credits: good portions of this script are adapted from https://github.com/carina
 """
 import re
 import os
-from together import Together
 import numpy as np
 import random
 import pickle
-import csv
-import subprocess
-import xarray as xr
 from os import chdir
 import pandas as pd
 import string
 import nltk
 from tqdm import tqdm
-import difflib
 nltk.download('tagsets_json')
 nltk.download('averaged_perceptron_tagger_eng')
 nltk.download('punkt_tab')
@@ -128,11 +123,19 @@ for perturb in perturb_types:
 # adding paraphrases #
 ######################
 
-key = "MASKED"
-client = Together(api_key=key)
-
+# Paraphrases were generated with Llama-4-Maverick through the Together API (greedy decoding). To regenerate them,
+# set the environment variable TOGETHER_API_KEY (and pip install together); otherwise the paraphrases stored in
+# perturbation/perturbation_dict (the ones used in the paper) are reused.
+key = os.environ.get("TOGETHER_API_KEY")
 paraphrases = []
-for sent in tqdm(sentences):
+if key is None:
+    with open("perturbation/perturbation_dict", "rb") as handle:
+        stored_paraphrases = pickle.load(handle)["paraphrase"]
+    print("TOGETHER_API_KEY not set: reusing the stored paraphrases")
+else:
+    from together import Together
+    client = Together(api_key=key)
+for sent in tqdm(sentences if key is not None else []):
     prompt = f"Paraphrase this sentence: <<{sent}>>. Just produce the paraphrase."
     response = client.chat.completions.create(
         model="meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8",
@@ -143,6 +146,8 @@ for sent in tqdm(sentences):
     content = response.choices[0].message.content
     paraphrases.append(content)
 
+if key is None:
+    paraphrases = stored_paraphrases
 perturbed_dict["paraphrase"] = paraphrases
 
 ##############

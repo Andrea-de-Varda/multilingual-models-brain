@@ -481,34 +481,7 @@ cv_data_plot = {
     for cond in cond_order
 } if not cv_summary.empty else {}
 
-# ── Per-model normalized values (ablated / intact, model-matched) ──
-pm_pivot = per_model.pivot(index="model", columns="condition", values="r")
-transfer_norm = {}
-for c in cond_order_ablated:
-    if c in pm_pivot.columns and "intact" in pm_pivot.columns:
-        transfer_norm[c] = (pm_pivot[c] / pm_pivot["intact"]).to_numpy()
-
-cv_norm = {}
-if not cv_summary.empty:
-    cv_pivot = cv_summary.pivot(index="model", columns="condition", values="mean_r")
-    for c in cond_order_ablated:
-        if c in cv_pivot.columns and "intact" in cv_pivot.columns:
-            cv_norm[c] = (cv_pivot[c] / cv_pivot["intact"]).to_numpy()
-
-# ── Figure 1: Transfer + CV (raw R), side-by-side ──
-fig, axes = plt.subplots(1, 2, dpi=400, figsize=(9 * 0.6, 3.7 * 0.8))
-add_boxplot_panel(axes[0], transfer_data, cond_order,
-                  ylabel="R", xticklabels=xlabels_all)
-axes[0].set_title("Transfer to new languages", fontsize=11, pad=6)
-if cv_data_plot:
-    add_boxplot_panel(axes[1], cv_data_plot, cond_order,
-                      ylabel="R", xticklabels=xlabels_all)
-    axes[1].set_title("Cross-validation (Tuckute2024)", fontsize=11, pad=6)
-plt.tight_layout()
-plt.savefig(os.path.join(PLOT_DIR, "residualize.svg"), format="svg", bbox_inches="tight")
-# plt.show()
-
-# ── Figure 2: Transfer only (standalone) ──
+# ── Figure 3C (right): transfer to the 9 Study II languages ──
 fig, ax = plt.subplots(dpi=400, figsize=(3.0, 3.6))
 add_boxplot_panel(ax, transfer_data, cond_order,
                   ylabel="R", xticklabels=xlabels_all)
@@ -516,7 +489,7 @@ plt.tight_layout()
 plt.savefig(os.path.join(PLOT_DIR, "residualize_transfer.svg"), format="svg", bbox_inches="tight")
 # plt.show()
 
-# ── Figure 3: CV only (standalone) ──
+# ── Supplementary Figure 11: 5-fold cross-validation within English (Tuckute2024) ──
 if cv_data_plot:
     fig, ax = plt.subplots(dpi=400, figsize=(3.0, 3.6))
     add_boxplot_panel(ax, cv_data_plot, cond_order,
@@ -524,44 +497,6 @@ if cv_data_plot:
     plt.tight_layout()
     plt.savefig(os.path.join(PLOT_DIR, "residualize_cv.svg"), format="svg", bbox_inches="tight")
     # plt.show()
-
-# ── Figure 4: Normalized (÷ intact per model), transfer + CV, side-by-side ──
-fig, axes = plt.subplots(1, 2, dpi=400, figsize=(7 * 0.9, 3.7 * 0.9))
-ax = axes[0]
-add_boxplot_panel(ax, transfer_norm, cond_order_ablated,
-                  ylabel="R / R(intact)", xticklabels=xlabels_ablated)
-ax.axhline(1.0, color="gray", linestyle="--", linewidth=1.0, zorder=1)
-ax.set_title("Transfer (normalized)", fontsize=11, pad=6)
-
-ax = axes[1]
-if cv_norm:
-    add_boxplot_panel(ax, cv_norm, cond_order_ablated,
-                      ylabel="R / R(intact)", xticklabels=xlabels_ablated)
-    ax.axhline(1.0, color="gray", linestyle="--", linewidth=1.0, zorder=1)
-    ax.set_title("CV (normalized)", fontsize=11, pad=6)
-plt.tight_layout()
-plt.savefig(os.path.join(PLOT_DIR, "residualize_normalized.svg"), format="svg", bbox_inches="tight")
-# plt.show()
-
-# ── Figure 5: Normalized transfer only (standalone) ──
-fig, ax = plt.subplots(dpi=400, figsize=(3.5, 3.7 * 0.9))
-add_boxplot_panel(ax, transfer_norm, cond_order_ablated,
-                  ylabel="R / R(intact)", xticklabels=xlabels_ablated)
-ax.axhline(1.0, color="gray", linestyle="--", linewidth=1.0, zorder=1)
-plt.tight_layout()
-plt.savefig(os.path.join(PLOT_DIR, "residualize_transfer_normalized.svg"), format="svg", bbox_inches="tight")
-# plt.show()
-
-# ── Figure 6: Normalized CV only (standalone) ──
-if cv_norm:
-    fig, ax = plt.subplots(dpi=400, figsize=(3.5, 3.7 * 0.9))
-    add_boxplot_panel(ax, cv_norm, cond_order_ablated,
-                      ylabel="R / R(intact)", xticklabels=xlabels_ablated)
-    ax.axhline(1.0, color="gray", linestyle="--", linewidth=1.0, zorder=1)
-    plt.tight_layout()
-    plt.savefig(os.path.join(PLOT_DIR, "residualize_cv_normalized.svg"), format="svg", bbox_inches="tight")
-    # plt.show()
-
 
 # ──────────────────────────────────────────────
 # Diagnostics plot — R² decodability across INLP steps
@@ -635,17 +570,9 @@ def plot_diagnostics_panel(ax, diag_df, feat_labels, title, n_feats=7):
 diag_sem = load_diagnostics("semantics")
 diag_syn = load_diagnostics("syntax")
 
-if not diag_sem.empty or not diag_syn.empty:
-    fig, axes = plt.subplots(1, 2, dpi=400, figsize=(11 * 0.6, 3.8 * 0.7))
-    plot_diagnostics_panel(axes[0], diag_sem, FEAT_LABELS_SEM, "Meaning ablation")
-    plot_diagnostics_panel(axes[1], diag_syn, FEAT_LABELS_SYN, "Form ablation")
-    plt.tight_layout()
-    plt.savefig(os.path.join(PLOT_DIR, "residualize_diagnostics.svg"),
-                format="svg", bbox_inches="tight")
-    # plt.show()
 
 # ──────────────────────────────────────────────
-# Combined diagnostics plot — within vs across domain
+# Figure 3C (left): decodability across INLP steps — targeted (within) vs non-targeted (across) features
 # ──────────────────────────────────────────────
 # Within (red): features being removed  |  Across (blue): features that should survive
 cross_sem = load_diagnostics("cross_semantics")  # syntax feats on sem-ablated embs

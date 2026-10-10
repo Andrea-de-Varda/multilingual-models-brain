@@ -1,8 +1,8 @@
 """
 Parameter counts of the 20 multilingual models (Table 1), read from the Hugging Face checkpoints.
 """
-from transformers import AutoModel
-import gc
+import torch
+from transformers import AutoConfig, AutoModel
 
 # List of model names
 model_names = [
@@ -29,15 +29,12 @@ model_names = [
 ]
 
 for model_name in model_names:
-    # Load the model
-    model = AutoModel.from_pretrained(model_name)
-    
-    # Get the number of parameters
-    num_parameters = model.num_parameters()
-    
-    print(f"The number of parameters in the {model_name} model is: {num_parameters}")
-    del model
-    gc.collect()
-    
-    
-    
+    # Build the model on PyTorch's "meta" device: only the configuration is downloaded, no weights.
+    with torch.device("meta"):
+        model = AutoModel.from_config(AutoConfig.from_pretrained(model_name))
+    total = model.num_parameters()
+    line = f"{model_name:45s} {total / 1e6:8.1f}M parameters"
+    if hasattr(model, "get_encoder"):  # encoder-decoder models (mT5, NLLB): only the encoder is used in the paper
+        encoder = sum(p.numel() for p in model.get_encoder().parameters())
+        line += f"  (encoder only, incl. shared embeddings: {encoder / 1e6:.1f}M)"
+    print(line)

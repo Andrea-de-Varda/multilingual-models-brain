@@ -290,6 +290,6 @@ for passage in ["Passage_1", "Passage_2", "Passage_3"]:
     word_overlap.append([passage, nat, per, con, s1])
     print(f"{passage:<10} - {s1:>7.2f} {nat:>7.2f} {con:>7.2f} {per:>7.2f}")
 word_overlap = pd.DataFrame(word_overlap, columns = ["passage", "nat", "per", "con", "s1"])
-word_overlap.mean()
+print(word_overlap.mean(numeric_only=True))
 
 # For figure: word overlap -- embedding distance/similarity

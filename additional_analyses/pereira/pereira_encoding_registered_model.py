@@ -20,15 +20,17 @@ if "__file__" in globals():  # run as a script: resolve paths relative to the re
     chdir(os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".")))
 # when run interactively, set the working directory to <repo>/additional_analyses/pereira before running
 
-df = pd.read_parquet("Pereira.parquet.gzip", columns=['UID', 'Sentence', 'ROI', 'EffectSize'])
+# voxel-level responses (Pereira.parquet.gzip, from the pereira2018_parquet.zip release asset); only the five
+# language fROIs are read, which keeps memory use low
+lang_rois = ["Lang_LH_IFGorb", "Lang_LH_IFG", "Lang_LH_MFG", "Lang_LH_AntTemp", "Lang_LH_PostTemp"]
+df = pd.read_parquet("Pereira.parquet.gzip", columns=['UID', 'Sentence', 'ROI', 'EffectSize'],
+                     filters=[("ROI", "in", lang_rois)])
 
 ###################
 # PREPROCESS DATA #
 ###################
 
-# filter language ROIs
-lang_rois = ["Lang_LH_IFGorb", "Lang_LH_IFG", "Lang_LH_MFG", "Lang_LH_AntTemp", "Lang_LH_PostTemp"]
-pereira = df[df.ROI.isin(lang_rois)]
+pereira = df[df.ROI.isin(lang_rois)].copy()
 pereira['ROI'] = pereira['ROI'].cat.remove_unused_categories()
 
 # get average sentence-level response
@@ -149,8 +151,18 @@ def get_word_embeddings(sentence, tokenizer, model):
     layer_embeddings = [hidden_state[0].cpu().numpy() for hidden_state in hidden_states]
     return layer_embeddings
 
-def get_embeddings_tokens(tokens, sep, tokenizer, model, cased=True, emb_start = 0, emb_end = None):
-    layer_embs = get_word_embeddings(" ".join(tokens), tokenizer, model)
+def get_encoder_embeddings(sentence, tokenizer, model):
+    # encoder-decoder models (NLLB): hidden states of the encoder only (as in confirmatory/get_model_embeddings.py)
+    inputs = tokenizer(sentence, return_tensors='pt')
+    with torch.no_grad():
+        encoder_outputs = model.get_encoder()(**inputs, output_hidden_states=True)
+    return [hidden_state[0].cpu().numpy() for hidden_state in encoder_outputs.hidden_states]
+
+def get_embeddings_tokens(tokens, sep, tokenizer, model, cased=True, emb_start = 0, emb_end = None, is_seq2seq = False):
+    if is_seq2seq:
+        layer_embs = get_encoder_embeddings(" ".join(tokens), tokenizer, model)
+    else:
+        layer_embs = get_word_embeddings(" ".join(tokens), tokenizer, model)
     layer_embs = [emb[emb_start:emb_end] for emb in layer_embs] # discard embeddings for special chars
     toks = tok_maker(tokens, sep, tokenizer, cased)
     len_emb = layer_embs[0].shape[0]

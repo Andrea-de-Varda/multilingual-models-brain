@@ -61,16 +61,3 @@ for Lang, lang in zip(languages, lang_codes):
             df = report(result)
             df.to_csv(f"transcribed/{pass_n}/"+lang+".csv", index=False)
             sleep(300)
-
-# IMPORTANT NOTE for REPRODUCIBILITY!
-# I had to remove some extra spaces from the french transcription, they were creating problems with the tokenization pipeline
-
-fr = pd.read_csv("transcribed/fr.csv")
-fr["text"] = fr["text"].str.replace(" ", "")
-fr.to_csv("transcribed/fr.csv", index=False)
-
-       
-
-
-
-    

@@ -6,6 +6,7 @@ from os import chdir
 import os
 from scipy.stats import pearsonr
 from math import atanh, tanh, sqrt
+from itertools import combinations
 import pickle
 import matplotlib as mpl
 mpl.rcParams['svg.fonttype'] = 'none'
@@ -27,8 +28,8 @@ for l in set(data["Language"]):
         part1 = temp[(temp.UID == sub1) & (temp.ROI.isin(rois))]
         part2 = temp[(temp.UID == sub2) & (temp.ROI.isin(rois))]
         
-        ts1 = list(part1.iloc[:, 7:].mean())[9:-3] # 12 sec of silence at the beginning and end (--> 130 TRs)
-        ts2 = list(part2.iloc[:, 7:].mean())[9:-3] # [6:-6]; then, shift by 3 TRs (lag in HRF)
+        ts1 = list(part1.iloc[:, 7:].mean(numeric_only=True))[9:-3] # 12 sec of silence at the beginning and end (--> 130 TRs)
+        ts2 = list(part2.iloc[:, 7:].mean(numeric_only=True))[9:-3] # [6:-6]; then, shift by 3 TRs (lag in HRF)
         lang_dict[l] = [ts1, ts2]
 
 corrs = []
@@ -39,7 +40,7 @@ for key, value in lang_dict.items():
     
 corrs = pd.DataFrame(corrs, columns = ["lang", "r", "p"])
 corrs = corrs.sort_values(by="r")
-#corrs.to_csv("results/correlations/correlation_participants.csv", index=False)
+corrs.to_csv("results/correlations/correlation_participants.csv", index=False)
 
 labels = corrs["lang"]
 values = corrs["r"]
@@ -103,7 +104,7 @@ for l in set(data["Language"]):
         p1_data = {}
         for roi in rois:
             roi_data = part1[part1.ROI == roi].iloc[:, 7:]
-            p1_data[roi] = roi_data.values[0][9:-3]  # row per ROI
+            p1_data[roi] = roi_data.values[0][9:-3].astype(float)  # row per ROI
         all_avg = np.mean(np.stack(list(p1_data.values())), axis=0)
         p1_data["all"] = all_avg
         froi_d[l][sub1] = p1_data
@@ -112,7 +113,7 @@ for l in set(data["Language"]):
         p2_data = {}
         for roi in rois:
             roi_data = part2[part2.ROI == roi].iloc[:, 7:]
-            p2_data[roi] = roi_data.values[0][9:-3]
+            p2_data[roi] = roi_data.values[0][9:-3].astype(float)
         all_avg = np.mean(np.stack(list(p2_data.values())), axis=0)
         p2_data["all"] = all_avg
         froi_d[l][sub2] = p2_data
@@ -378,8 +379,8 @@ for l in set(data["Language"]):
         part1 = temp[(temp.UID == sub1) & (temp.ROI.isin(rois_rh))]
         part2 = temp[(temp.UID == sub2) & (temp.ROI.isin(rois_rh))]
         
-        ts1 = list(part1.iloc[:, 7:].mean())[9:-3]
-        ts2 = list(part2.iloc[:, 7:].mean())[9:-3]
+        ts1 = list(part1.iloc[:, 7:].mean(numeric_only=True))[9:-3]
+        ts2 = list(part2.iloc[:, 7:].mean(numeric_only=True))[9:-3]
         lang_dict_rh[l] = [ts1, ts2]
 
 
@@ -411,7 +412,7 @@ for l in set(data["Language"]):
         p1_data = {}
         for roi in rois_rh:
             roi_data = part1[part1.ROI == roi].iloc[:, 7:]
-            p1_data[roi] = roi_data.values[0][9:-3]
+            p1_data[roi] = roi_data.values[0][9:-3].astype(float)
         all_avg = np.mean(np.stack(list(p1_data.values())), axis=0)
         p1_data["all"] = all_avg
         froi_d_rh[l][sub1] = p1_data
@@ -420,7 +421,7 @@ for l in set(data["Language"]):
         p2_data = {}
         for roi in rois_rh:
             roi_data = part2[part2.ROI == roi].iloc[:, 7:]
-            p2_data[roi] = roi_data.values[0][9:-3]
+            p2_data[roi] = roi_data.values[0][9:-3].astype(float)
         all_avg = np.mean(np.stack(list(p2_data.values())), axis=0)
         p2_data["all"] = all_avg
         froi_d_rh[l][sub2] = p2_data
@@ -436,7 +437,7 @@ for l in langs:
     corrs_rh.append([l, r, p])
 corrs_rh = pd.DataFrame(corrs_rh, columns = ["lang", "r", "p"])
 corrs_rh = corrs_rh.sort_values(by="r")
-corrs_rh.mean()
+print(corrs_rh.mean(numeric_only=True))
 
 labels = corrs_rh["lang"]
 values = corrs_rh["r"]
@@ -486,8 +487,8 @@ for l in set(data_md["Language"]):
         part1 = temp[(temp.UID == sub1) & (temp.ROI.isin(rois_md))]
         part2 = temp[(temp.UID == sub2) & (temp.ROI.isin(rois_md))]
         
-        ts1 = list(part1.iloc[:, 6:].mean())[9:-3] # 12 sec of silence at the beginning and end (--> 130 TRs)
-        ts2 = list(part2.iloc[:, 6:].mean())[9:-3]
+        ts1 = list(part1.iloc[:, 6:].mean(numeric_only=True))[9:-3] # 12 sec of silence at the beginning and end (--> 130 TRs)
+        ts2 = list(part2.iloc[:, 6:].mean(numeric_only=True))[9:-3]
         lang_dict_md[l] = [ts1, ts2]
 
 # create outcome variable (MD) to use in encoding
@@ -518,7 +519,7 @@ for l in set(data_md["Language"]):
         p1_data = {}
         for roi in rois_md:
             roi_data = part1[part1.ROI == roi].iloc[:, 6:]
-            p1_data[roi] = roi_data.values[0][9:-3]
+            p1_data[roi] = roi_data.values[0][9:-3].astype(float)
         all_avg = np.mean(np.stack(list(p1_data.values())), axis=0)
         p1_data["all"] = all_avg
         froi_d_md[l][sub1] = p1_data
@@ -527,7 +528,7 @@ for l in set(data_md["Language"]):
         p2_data = {}
         for roi in rois_md:
             roi_data = part2[part2.ROI == roi].iloc[:, 6:]
-            p2_data[roi] = roi_data.values[0][9:-3]
+            p2_data[roi] = roi_data.values[0][9:-3].astype(float)
         all_avg = np.mean(np.stack(list(p2_data.values())), axis=0)
         p2_data["all"] = all_avg
         froi_d_md[l][sub2] = p2_data
@@ -545,7 +546,7 @@ for l in langs:
     corrs_netw.append([l, r, p])
 corrs_netw = pd.DataFrame(corrs_netw, columns = ["lang", "r", "p"])
 corrs_netw = corrs_netw.sort_values(by="r")
-corrs_netw.mean()
+print(corrs_netw.mean(numeric_only=True))
 
 labels = corrs_netw["lang"]
 values = corrs_netw["r"]
@@ -648,7 +649,7 @@ for l in set(data_native["Language"]):
         p1_data = {}
         for roi in rois:
             roi_data = part1[part1.ROI == roi].iloc[:, 7:]
-            p1_data[roi] = roi_data.values[0][9:-3]  # row per ROI
+            p1_data[roi] = roi_data.values[0][9:-3].astype(float)  # row per ROI
         all_avg = np.mean(np.stack(list(p1_data.values())), axis=0)
         p1_data["all"] = all_avg
         froi_d_native[l][sub1] = p1_data
@@ -657,7 +658,7 @@ for l in set(data_native["Language"]):
         p2_data = {}
         for roi in rois:
             roi_data = part2[part2.ROI == roi].iloc[:, 7:]
-            p2_data[roi] = roi_data.values[0][9:-3]
+            p2_data[roi] = roi_data.values[0][9:-3].astype(float)
         all_avg = np.mean(np.stack(list(p2_data.values())), axis=0)
         p2_data["all"] = all_avg
         froi_d_native[l][sub2] = p2_data

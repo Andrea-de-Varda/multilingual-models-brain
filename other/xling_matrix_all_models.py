@@ -9,6 +9,10 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 from scipy.stats import pearsonr
 
+if "__file__" in globals():  # run as a script: resolve paths relative to the repository root
+    os.chdir(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# when run interactively, set the working directory to the repository root before running
+
 
 mpl.rcParams['svg.fonttype'] = 'none'
 mpl.rcParams['font.family'] = 'DejaVu Sans'

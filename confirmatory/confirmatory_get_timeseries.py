@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from os import chdir
 import os
-from scipy.stats import pearsonr, beta
+from scipy.stats import pearsonr, beta, norm
 import pickle
 from itertools import combinations
 from math import atanh, tanh, sqrt
@@ -224,6 +224,12 @@ plt.show()
 #################################
 # plot data with 3 participants #
 #################################
+
+def corr_ci(r, n, alpha=0.05):
+    """95% confidence interval of a Pearson correlation (Fisher z transformation)."""
+    z, se = atanh(r), 1 / sqrt(n - 3)
+    zc = norm.ppf(1 - alpha / 2)
+    return tanh(z - zc * se), tanh(z + zc * se)
 
 def plain_avg_ci(rs, alpha=0.05):
     rs = np.array(rs, dtype=float)

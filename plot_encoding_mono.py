@@ -333,68 +333,6 @@ plt.show()
 
 ###############################################################################
 
-colname = "m"
-sequential = True # change accordingly
-out_dfs = []
-for modelname in model_names:
-    name_nice = names_nice_dict[modelname]
-    model_class = class_dict[modelname]
-    results_dict = load(modelname)
-    layers = max(results_dict.keys())
-    res_layer = pd.DataFrame([[key / layers, value[colname].mean(), name_nice, model_class] for key, value in results_dict.items()], columns = ["l", "m", "Model", "Class"])
-    out_dfs.append(res_layer)
-out_dfs = pd.concat(out_dfs)
-#model_colors = {model: color for model, color in zip(['BERT', 'XGLM', 'XLM-R', 'mT5'], sns.color_palette("tab10", n_colors=4))}
-model_markers = {model: marker for model, marker in zip(names_nice_dict.values(), ['>', '1', '^', 's', 'o', '<', 'p', '*', 'h', 'H', 'D', 'X', ',', "8", "2", "v", "4", "3", "P", "."])}
-out_dfs['color'] = out_dfs['Class'].map(palette_d)
-out_dfs['marker'] = out_dfs['Model'].map(model_markers)
-
-sns.set_style('whitegrid')
-sns.set_context('talk')
-n_classes = out_dfs['Class'].nunique()
-palette = sns.color_palette("tab10", n_colors=n_classes)
-
-n_cols = 3
-n_rows = (n_classes + n_cols - 1) // n_cols
-
-# Create a figure with subplots
-fig, axes = plt.subplots(n_rows, n_cols, figsize=(9*1.2, 8*1.2), dpi=300)
-axes = axes.flatten() 
-
-class_order = ['NLLB', 'XLM-Align', 'InfoXLM', 'XLM-R', 'BERT', 'DeBERTa', 'mT5', 'mGPT', 'XGLM']
-for i, model_class in enumerate(class_order):
-    ax = axes[i]
-    group_data = out_dfs[out_dfs['Class'] == model_class]
-    for model in group_data['Model'].unique():
-        model_data = group_data[group_data['Model'] == model]
-        sns.lineplot(
-            data=model_data,
-            x='l', 
-            y='m',
-            color=model_data['color'].iloc[0],
-            marker=model_data['marker'].iloc[0],
-            label=model,
-            ax=ax
-        )
-    #ax.legend(title='Model', fontsize=13, title_fontsize=20, loc='upper left', bbox_to_anchor=(1, 1))
-    ax.set_title(model_class, fontsize=25)
-    ax.set_xlabel('')
-    ax.set_xticks([.2, .4, .6, .8])
-    ax.tick_params(axis='x', labelsize=20)
-    ax.tick_params(axis='y', labelsize=20)
-    ax.set_ylabel('')
-    ax.set_xlim([group_data['l'].min()-.02, group_data['l'].max()+.02])
-    ax.set_ylim(-.05, .40)
-    ax.get_legend().remove()
-fig.text(0.56, 0.04, 'Layer position', ha='center', va='center', fontsize=23)
-fig.text(0.04, 0.5, 'R', ha='center', va='center', rotation='vertical', fontsize=23)
-
-legend_handles = [Line2D([0], [0], color=palette_d[class_dict_nice[model]], marker=model_markers[model], label=model, linestyle='-', markersize=10) for model in out_dfs['Model'].unique()]
-
-fig.legend(handles=legend_handles, loc='upper right', fontsize=18, title_fontsize=24, title='Model', bbox_to_anchor=(1.25, .95))
-fig.tight_layout(rect=[0.05, 0.05, 1, 0.95])
-plt.show()
-
 ################################
 # Encoding results by language #
 ################################
@@ -410,15 +348,16 @@ for model in model_names:
     for lang in langs:
         try:
             therow = df[df.lang == lang]
-            r = therow.values[0][1]
+            r = therow["m"].iloc[0]  # mean of the two training directions
             r_lang[lang].append(r)
         except IndexError:
             r_lang[lang].append(0)
 
 data = pd.DataFrame(r_lang)
 
-data.loc['Mean'] = data.replace(0, np.nan).mean()
-y_err = data.replace(0, np.nan).std() / np.sqrt(20)
+models_per_lang = data.replace(0, np.nan)  # 0 = model not available for that language
+y_err = models_per_lang.std() / np.sqrt(models_per_lang.count())  # SE across the models available for each language (20, 16 or 15)
+data.loc['Mean'] = models_per_lang.mean()
 data = pd.concat([data.loc[['Mean']], data.drop('Mean')])
 
 fig_height = (24 + 1.2) * 0.9

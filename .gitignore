@@ -1,46 +1,38 @@
 # ---------------------------------------------------------------------------
-# Large or regenerable data that is not distributed through this repository
-# (see README, "What is not included"). Embeddings for one model are on OSF.
+# Large data not stored in git (see README, "Data")
 # ---------------------------------------------------------------------------
 
-# model embeddings (~200 GB in total; regenerate with the get_*embeddings*.py scripts)
+# model embeddings (~200 GB; recomputed with the get_*embeddings*.py scripts)
 **/embeddings/**
 **/embeddings_*/**
+demo/cache/
 
-# raw regression weights / per-fold dumps
-**/coefficients/**
-
-# audio stimuli (available on OSF)
+# audio stimuli and large source files: distributed as GitHub release assets (python download_data.py)
 sound_data/**
 confirmatory/sound_data/**
+additional_analyses/NaturalStories/sound_data/**
 *.wav
-
-# source fMRI datasets that must be obtained from the original studies
 additional_analyses/pereira/Pereira.parquet.gzip
 additional_analyses/NaturalStories/NaturalStories_TimeSeries_20220615.csv
-additional_analyses/**/TimeSeries_*.csv
+release_assets/
+.downloads/
 
-# analyses not reported in the paper (kept locally only)
-additional_analyses/MECO/
-additional_analyses/residualize_info/glasgow_norms.csv
+# per-fold regression weights written optionally by the encoding scripts
+**/coefficients/**
 
 # ---------------------------------------------------------------------------
-# Local scratch, archives, logs and editor/tool state
+# Local files that are never published
 # ---------------------------------------------------------------------------
+natneuro-final/
+.claude/
 **/old/**
-other/other/
 **/*.zip
 logs/
 *.out
 *.err
 __pycache__/
 *.pyc
+.ipynb_checkpoints/
 .Rhistory
+.DS_Store
 *(copy)*
-plt
-sns
-mpl
-.claude/
-paper.docx
-paper.txt
-response_to_reviews.txt

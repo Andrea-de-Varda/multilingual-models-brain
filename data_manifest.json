@@ -1,0 +1,311 @@
+{
+ "release_tag": "data-v1",
+ "base_url": "https://github.com/Andrea-de-Varda/multilingual-models-brain/releases/download/data-v1",
+ "assets": {
+  "audio_study1.zip": {
+   "description": "Study I audio stimuli: the Alice in Wonderland passage in each of the 12 languages analysed (plus the English version, used only for the word-overlap measure of Figure 1C). Data from Malik-Moraleda, Ayyash, et al. (2022).",
+   "bytes": 716132870,
+   "sha256": "3ae2c96f1497f4f9ed151e5f2d1a4be4c88cb648c7193ee31d3ce8aca04cdd45",
+   "files": [
+    {
+     "path": "sound_data/Afrikaans/Afrikaans_Intact_Long/Afrikaans.wav",
+     "bytes": 52422460,
+     "sha256": "a597d2a5e4df5d6a93de265a263ccdbe0512b8ed88b0a419915946b733f731a4"
+    },
+    {
+     "path": "sound_data/Dutch/Dutch_Intact_Long/Dutch.wav",
+     "bytes": 59393532,
+     "sha256": "c507e8880f848e52e5df40cdf4df8ecbf3515d26d26fd99bc9a90bf68dba5d17"
+    },
+    {
+     "path": "sound_data/Farsi/Farsi_Intact_Long/Farsi.wav",
+     "bytes": 46968876,
+     "sha256": "68df6d19f363a1bc0b44038dedcfddc8f01545d2dba2ebc1238bfbf309dc0345"
+    },
+    {
+     "path": "sound_data/French/French_Intact_Long/French.wav",
+     "bytes": 46014724,
+     "sha256": "f4dcfcc950e8ed2eb35c6bdecb90653b5f86d711f44b5db50c9c42f9528f8d73"
+    },
+    {
+     "path": "sound_data/Lithuanian/Lithuanian_Intact_Long/Lithuanian.wav",
+     "bytes": 55737004,
+     "sha256": "2d2e1fdf44a64b3b7d1ca88b3cdfe924e9da5e3eca83b8f60315982eaf89f96f"
+    },
+    {
+     "path": "sound_data/Marathi/Marathi_Intact_Long/Marathi.wav",
+     "bytes": 64171688,
+     "sha256": "07abec0f0399a297458515ab21def0fc36c0f6e2ad1a4b39f3c46b6b9f7b1e89"
+    },
+    {
+     "path": "sound_data/Norwegian/Norwegian_Intact_Long/Norwegian.wav",
+     "bytes": 56989072,
+     "sha256": "a945607217250f9306ff6ad5078be52b75f6dcefd7244b2e9961ff441a9a7b0a"
+    },
+    {
+     "path": "sound_data/Romanian/Romanian_Intact_Long/Romanian.wav",
+     "bytes": 53007592,
+     "sha256": "cba3a985be80d35c040fe5ab37d2104c729ff11fc51bfe296685bd898a1152d2"
+    },
+    {
+     "path": "sound_data/Spanish/Spanish_Intact_Long/Spanish.wav",
+     "bytes": 59958552,
+     "sha256": "6bf2c85361ccb2bf246e62d7c2dbdd1dfe31b8c5891ce286ffe2a104f5c20f50"
+    },
+    {
+     "path": "sound_data/Tamil/Tamil_Intact_Long/Tamil.wav",
+     "bytes": 69740536,
+     "sha256": "743a7879d0a49e0c06671f07b58a3c03774d532db86e0182b4a638d442c4c99b"
+    },
+    {
+     "path": "sound_data/Turkish/Turkish_Intact_Long/Turkish.wav",
+     "bytes": 52816836,
+     "sha256": "90b8e52d0f0f5845746d5cf2c4a7f21165b0e699291e4930ba98cb5506b9680b"
+    },
+    {
+     "path": "sound_data/Vietnamese/Vietnamese_Intact_Long/Vietnamese.wav",
+     "bytes": 51546220,
+     "sha256": "9c31cb0d445cefc4068291c719f0de36a06d56f08dad2e0b37ba86b3120e96de"
+    },
+    {
+     "path": "sound_data/English/English_Intact_Long/English.wav",
+     "bytes": 47363444,
+     "sha256": "93ba9508ceecdf282fa6f721bd85426d477335e49d4c3c233299e2283d66fdd1"
+    }
+   ]
+  },
+  "audio_study2.zip": {
+   "description": "Study II audio stimuli: three Alice in Wonderland passages in each of the 9 newly tested languages (plus English, used only for the word-overlap measure of Figure 1C).",
+   "bytes": 1371805978,
+   "sha256": "1a5171a4b41584ee98f2ed7535c9581d7db998d0203e71c1b8b4007f8da05e56",
+   "files": [
+    {
+     "path": "confirmatory/sound_data/Passage_1/Arabic.wav",
+     "bytes": 53060804,
+     "sha256": "5c404725df9e42143b8b4680980eb6ee3fe2f4ded6b27d578ceafc1fa4c32732"
+    },
+    {
+     "path": "confirmatory/sound_data/Passage_1/German.wav",
+     "bytes": 52104484,
+     "sha256": "43fcbce581208a05ac63fbacd109422325bee8d09c50f2849a73e388a5b86cb7"
+    },
+    {
+     "path": "confirmatory/sound_data/Passage_1/Hindi.wav",
+     "bytes": 70429804,
+     "sha256": "6a805117ffcbdec3888fad0d9a23cdd897b5fb5481011dadd39ca8ffae4c9163"
+    },
+    {
+     "path": "confirmatory/sound_data/Passage_1/Italian.wav",
+     "bytes": 39952924,
+     "sha256": "a13034f6d8382da796cbbbf147af62a58bf376757273023a6403fff259905091"
+    },
+    {
+     "path": "confirmatory/sound_data/Passage_1/Korean.wav",
+     "bytes": 24995674,
+     "sha256": "231a218dd0e2b2ee4213fa3fa5cca471865512037f88eb144bd1c2f0f2d478e3"
+    },
+    {
+     "path": "confirmatory/sound_data/Passage_1/Mandarin.wav",
+     "bytes": 51232764,
+     "sha256": "ca289be9c3ac29301b673f4d0907cd61df045959952ae668c32948fc837126b6"
+    },
+    {
+     "path": "confirmatory/sound_data/Passage_1/Polish.wav",
+     "bytes": 31067000,
+     "sha256": "520430843c0b7a7a868156e3705a77d9e47236c5f9f3714a104b8390dcaac661"
+    },
+    {
+     "path": "confirmatory/sound_data/Passage_1/Portuguese.wav",
+     "bytes": 27516286,
+     "sha256": "806169409cc5f14f341bec797486ed493c1080e0ce92531882e1b8bf0da5faa3"
+    },
+    {
+     "path": "confirmatory/sound_data/Passage_1/Russian.wav",
+     "bytes": 60415124,
+     "sha256": "b4b3e3ea593e24f19ad27447f4369160582226ddb962d846545e62cad8906b62"
+    },
+    {
+     "path": "confirmatory/sound_data/Passage_1/English.wav",
+     "bytes": 43581588,
+     "sha256": "43704f89a6fa2e1533035c12ed03f7a91beb800dce1f8fdfecefc1d317866d85"
+    },
+    {
+     "path": "confirmatory/sound_data/Passage_2/Arabic.wav",
+     "bytes": 50352632,
+     "sha256": "81d68fd4fce13c8492d69bb8c255e7185798007f6512c2775986b232781003af"
+    },
+    {
+     "path": "confirmatory/sound_data/Passage_2/German.wav",
+     "bytes": 57546856,
+     "sha256": "57b69cb56434da8c42e2dbb99167d3a9fb2f6ac21962acd748d7a2ef5d973af0"
+    },
+    {
+     "path": "confirmatory/sound_data/Passage_2/Hindi.wav",
+     "bytes": 66723680,
+     "sha256": "d8053f549bb90f88ba53855b782bec502ad67212bd9a3675f5b0aa80e4911e03"
+    },
+    {
+     "path": "confirmatory/sound_data/Passage_2/Italian.wav",
+     "bytes": 49946164,
+     "sha256": "84fbc6579c0facf36e3e8e12d45ef899ccc4c640585912516340e9155fe81dda"
+    },
+    {
+     "path": "confirmatory/sound_data/Passage_2/Korean.wav",
+     "bytes": 24487208,
+     "sha256": "0270c4bb04c411518d3cbb3c9f3cc7f1b437ded4d24a7a8621137adc45e439f1"
+    },
+    {
+     "path": "confirmatory/sound_data/Passage_2/Mandarin.wav",
+     "bytes": 58030692,
+     "sha256": "aa0d329d3300e9985592abd92784e6d318794ef56fb4b93c6847e517b0b0f78b"
+    },
+    {
+     "path": "confirmatory/sound_data/Passage_2/Polish.wav",
+     "bytes": 30960282,
+     "sha256": "88ccb26ea6356bbe2458e794028e3c3b8465bb1031516cc911e40459b9049226"
+    },
+    {
+     "path": "confirmatory/sound_data/Passage_2/Portuguese.wav",
+     "bytes": 27307642,
+     "sha256": "a494be56573e60a4f9adb17d302f0095faf00fd33db8884822411523c22129e7"
+    },
+    {
+     "path": "confirmatory/sound_data/Passage_2/Russian.wav",
+     "bytes": 46849276,
+     "sha256": "1e5f2ea9c3241bafab2470efe16527e4c609314d48b574900aea32989afc4e5a"
+    },
+    {
+     "path": "confirmatory/sound_data/Passage_2/English.wav",
+     "bytes": 44281256,
+     "sha256": "3a86cca4a15377a1a45a5ddcf54ccfd7e5cf47cd405d836167fcea6a7aaf8e5b"
+    },
+    {
+     "path": "confirmatory/sound_data/Passage_3/Arabic.wav",
+     "bytes": 50775608,
+     "sha256": "68b4dd0e606b9f8e535a21d4e36a94e8eda2bf204443e6a643dca5ba945a284c"
+    },
+    {
+     "path": "confirmatory/sound_data/Passage_3/German.wav",
+     "bytes": 62021056,
+     "sha256": "c45d2a9682d35eaf7853445ed8012de18b785a800e60ccb8f5922142408661f0"
+    },
+    {
+     "path": "confirmatory/sound_data/Passage_3/Hindi.wav",
+     "bytes": 59905228,
+     "sha256": "059227bfc2e322ccbfe4547ed7acfb7ffae81d62db2c1bd5b66105ac39400df2"
+    },
+    {
+     "path": "confirmatory/sound_data/Passage_3/Italian.wav",
+     "bytes": 50247416,
+     "sha256": "d01939396b7439a969cad2bfc1c41f193a04641a79e7dcd9230cd07cde6dcad3"
+    },
+    {
+     "path": "confirmatory/sound_data/Passage_3/Korean.wav",
+     "bytes": 24802612,
+     "sha256": "c701fe5a5b66caa502e646b6ee24e21aefed1fa41016b68ee825119cf589702e"
+    },
+    {
+     "path": "confirmatory/sound_data/Passage_3/Mandarin.wav",
+     "bytes": 57983020,
+     "sha256": "9f6be08c2f9387f0e54643df2dbe628eb88d3c34fa1bd19e3940b413c6fae272"
+    },
+    {
+     "path": "confirmatory/sound_data/Passage_3/Polish.wav",
+     "bytes": 30651258,
+     "sha256": "132ad813fe47dc7a052aa41390b2d8d534940c0d6b1f04add5ec516e96c3e710"
+    },
+    {
+     "path": "confirmatory/sound_data/Passage_3/Portuguese.wav",
+     "bytes": 27046350,
+     "sha256": "6ea7ef654249973abf01b524896361f4897d49041e5713bbbae897ce8cfba63d"
+    },
+    {
+     "path": "confirmatory/sound_data/Passage_3/Russian.wav",
+     "bytes": 50162856,
+     "sha256": "c870106bf1bd2c61dc55968cfaf6e3b23cb9602e718dac158ed64624547bf945"
+    },
+    {
+     "path": "confirmatory/sound_data/Passage_3/English.wav",
+     "bytes": 47363444,
+     "sha256": "93ba9508ceecdf282fa6f721bd85426d477335e49d4c3c233299e2283d66fdd1"
+    }
+   ]
+  },
+  "audio_natstories.zip": {
+   "description": "NatStories audio stimuli of the 9 analysed stories (numbering 1-7, 9, 10; story 8 has no fMRI data).",
+   "bytes": 266455994,
+   "sha256": "d3b630fd3c7e195f6b83674e53ae9997fe5131e1ab3e25694e215bf7d9f7df68",
+   "files": [
+    {
+     "path": "additional_analyses/NaturalStories/sound_data/1.wav",
+     "bytes": 26919516,
+     "sha256": "2d9db98ec4dd914ef1ae8047f73af66f1ab6e716aae3bf2a3ba700667aa6ec95"
+    },
+    {
+     "path": "additional_analyses/NaturalStories/sound_data/2.wav",
+     "bytes": 25195052,
+     "sha256": "f8ddbb52f2ed57776d959dd580f1a3e151ebe9eadb821f731bb80d426cba4f8b"
+    },
+    {
+     "path": "additional_analyses/NaturalStories/sound_data/3.wav",
+     "bytes": 31906092,
+     "sha256": "baca5ffd8c5169f3d3799a11aa9f4a6d8617b06eefbc6d2025c42f32f1d96ceb"
+    },
+    {
+     "path": "additional_analyses/NaturalStories/sound_data/4.wav",
+     "bytes": 31978540,
+     "sha256": "79e1fa4b6d04d31f0bbfab9edd91c614043789a1022895aeca015ebca7db5a42"
+    },
+    {
+     "path": "additional_analyses/NaturalStories/sound_data/5.wav",
+     "bytes": 23670038,
+     "sha256": "fcf5b2601a1cb9d1d6103912b16b15f49ccb2d0fdc54722c8877ab2cba060b04"
+    },
+    {
+     "path": "additional_analyses/NaturalStories/sound_data/6.wav",
+     "bytes": 33298988,
+     "sha256": "99344c60b1fbf34a4d7484b94a175ad79f0237d554cf7e6b7195b66012165467"
+    },
+    {
+     "path": "additional_analyses/NaturalStories/sound_data/7.wav",
+     "bytes": 27749676,
+     "sha256": "eb2454e0d7594f24af8d7fd8dd4700d83564b33a858263aa0de9d5fff45c54d4"
+    },
+    {
+     "path": "additional_analyses/NaturalStories/sound_data/9.wav",
+     "bytes": 31345382,
+     "sha256": "ea473b268d9bb9d196f52b538b496d6d7df4896260ca6b422d98ba299edfbc5c"
+    },
+    {
+     "path": "additional_analyses/NaturalStories/sound_data/10.wav",
+     "bytes": 34391084,
+     "sha256": "6fae1f5c672db8e1776210aa525e35bd4b90340a2fe0b5fedfcbe87efdbb5a95"
+    }
+   ]
+  },
+  "natstories_timeseries.zip": {
+   "description": "NatStories fMRI time series (language fROIs, all participants), input of additional_analyses/NaturalStories/natstor_fmri_timeseries.py.",
+   "bytes": 49878440,
+   "sha256": "272e2b79374eb4196d55b6e7ff32f6787f134beee0bd735450bc01b98d4dedd8",
+   "files": [
+    {
+     "path": "additional_analyses/NaturalStories/NaturalStories_TimeSeries_20220615.csv",
+     "bytes": 110244054,
+     "sha256": "ce40f4a3dcf365cb0377f430922150a10fbcdd0552f47136f929536bcaad5d73"
+    }
+   ]
+  },
+  "pereira2018_parquet.zip": {
+   "description": "Pereira2018 voxel-level effect sizes in the language fROIs (Experiments 2 and 3), input used to derive additional_analyses/pereira/pereira_averaged.csv.",
+   "bytes": 1807750717,
+   "sha256": "1229703c29266036cdde0d244a4f7630f7f1a6762b53296a78c72b72873b3355",
+   "files": [
+    {
+     "path": "additional_analyses/pereira/Pereira.parquet.gzip",
+     "bytes": 1807750523,
+     "sha256": "7b890e639692becd932c00df746c0eded9c9976992d25aff079cf371bd114d92"
+    }
+   ]
+  }
+ }
+}

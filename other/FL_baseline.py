@@ -331,6 +331,5 @@ for idx, lang in enumerate(lang_codes):
     for k, v in lang_res.items():
         all_res[k].append(v)
 all_res = pd.DataFrame(all_res)
-all_res.mean()
-
-all_res.std() / np.sqrt(len(all_res))
+print("Study II, mean r across languages:\n", all_res.mean())               # SI S6
+print("Study II, SE across languages:\n", all_res.std() / np.sqrt(len(all_res)))

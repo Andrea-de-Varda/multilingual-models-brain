@@ -178,7 +178,7 @@ def embeddings_chunked(lang, sep, tokenizer, model, saveto, special_replace=None
 tokenizer = XGLMTokenizer.from_pretrained("facebook/xglm-564M")
 model = XGLMForCausalLM.from_pretrained("facebook/xglm-564M")
 
-for story_n in range(1,11):
+for story_n in [1, 2, 3, 4, 5, 6, 7, 9, 10]:  # story 8 has no fMRI data
     story = embeddings(str(story_n), sep = "▁", tokenizer = tokenizer, model = model, saveto = "xglm_small", emb_start = 1, emb_end = None)
 
 ###############################################################################
@@ -186,7 +186,7 @@ for story_n in range(1,11):
 tokenizer = XGLMTokenizer.from_pretrained("facebook/xglm-1.7B")
 model = XGLMForCausalLM.from_pretrained("facebook/xglm-1.7B")
 
-for story_n in range(1,11):
+for story_n in [1, 2, 3, 4, 5, 6, 7, 9, 10]:  # story 8 has no fMRI data
     story = embeddings(str(story_n), sep = "▁", tokenizer = tokenizer, model = model, saveto = "xglm_med", emb_start = 1, emb_end = None)
 
 ###############################################################################
@@ -194,7 +194,7 @@ for story_n in range(1,11):
 tokenizer = XGLMTokenizer.from_pretrained("facebook/xglm-2.9B")
 model = XGLMForCausalLM.from_pretrained("facebook/xglm-2.9B")
 
-for story_n in range(1,11):
+for story_n in [1, 2, 3, 4, 5, 6, 7, 9, 10]:  # story 8 has no fMRI data
     story = embeddings(str(story_n), sep = "▁", tokenizer = tokenizer, model = model, saveto = "xglm_large", emb_start = 1, emb_end = None)
 
 ###############################################################################
@@ -202,7 +202,7 @@ for story_n in range(1,11):
 tokenizer = XGLMTokenizer.from_pretrained("facebook/xglm-4.5B")
 model = XGLMForCausalLM.from_pretrained("facebook/xglm-4.5B")
 
-for story_n in range(1,11):
+for story_n in [1, 2, 3, 4, 5, 6, 7, 9, 10]:  # story 8 has no fMRI data
     story = embeddings(str(story_n), sep = "▁", tokenizer = tokenizer, model = model, saveto = "xglm_xl", emb_start = 1, emb_end = None)
 
 ###############################################################################
@@ -210,7 +210,7 @@ for story_n in range(1,11):
 tokenizer = BertTokenizer.from_pretrained("bert-base-multilingual-cased")
 model = BertForMaskedLM.from_pretrained("bert-base-multilingual-cased")
 
-for story_n in range(1,11):
+for story_n in [1, 2, 3, 4, 5, 6, 7, 9, 10]:  # story 8 has no fMRI data
     story = embeddings_chunked(str(story_n), sep = "##", tokenizer = tokenizer, model = model, saveto = "bert_base", emb_start = 1, emb_end = -1)
 
 ###############################################################################
@@ -218,7 +218,7 @@ for story_n in range(1,11):
 tokenizer = DistilBertTokenizer.from_pretrained("distilbert-base-multilingual-cased")
 model = DistilBertModel.from_pretrained("distilbert-base-multilingual-cased")
 
-for story_n in range(1,11):
+for story_n in [1, 2, 3, 4, 5, 6, 7, 9, 10]:  # story 8 has no fMRI data
     story = embeddings_chunked(str(story_n), sep = "##", tokenizer = tokenizer, model = model, saveto = "distilmbert", emb_start = 1, emb_end = -1)
 
 ###############################################################################
@@ -226,7 +226,7 @@ for story_n in range(1,11):
 tokenizer = AutoTokenizer.from_pretrained("xlm-roberta-base")
 model = AutoModelForMaskedLM.from_pretrained("xlm-roberta-base")
 
-for story_n in range(1,11):
+for story_n in [1, 2, 3, 4, 5, 6, 7, 9, 10]:  # story 8 has no fMRI data
     story = embeddings_chunked(str(story_n), sep = "▁", tokenizer = tokenizer, model = model, saveto = "xlmr_base", emb_start = 1, emb_end = -1)
 
 ###############################################################################
@@ -235,7 +235,7 @@ for story_n in range(1,11):
 tokenizer = AutoTokenizer.from_pretrained("xlm-roberta-large")
 model = AutoModelForMaskedLM.from_pretrained("xlm-roberta-large")
 
-for story_n in range(1,11):
+for story_n in [1, 2, 3, 4, 5, 6, 7, 9, 10]:  # story 8 has no fMRI data
     story = embeddings_chunked(str(story_n), sep = "▁", tokenizer = tokenizer, model = model, saveto = "xlmr_large", emb_start = 1, emb_end = -1)
 
 ###############################################################################
@@ -244,7 +244,7 @@ for story_n in range(1,11):
 tokenizer = T5Tokenizer.from_pretrained("google/mt5-small")
 model = MT5EncoderModel.from_pretrained("google/mt5-small")
 
-for story_n in range(1,11):
+for story_n in [1, 2, 3, 4, 5, 6, 7, 9, 10]:  # story 8 has no fMRI data
     story = embeddings_chunked(str(story_n), sep = "▁", tokenizer = tokenizer, model = model, saveto = "mt5_small", emb_start = 0, emb_end = -1)
 
 ###############################################################################
@@ -253,7 +253,7 @@ for story_n in range(1,11):
 tokenizer = T5Tokenizer.from_pretrained("google/mt5-base")
 model = MT5EncoderModel.from_pretrained("google/mt5-base")
 
-for story_n in range(1,11):
+for story_n in [1, 2, 3, 4, 5, 6, 7, 9, 10]:  # story 8 has no fMRI data
     story = embeddings_chunked(str(story_n), sep = "▁", tokenizer = tokenizer, model = model, saveto = "mt5_base", emb_start = 0, emb_end = -1)
 
 ###############################################################################
@@ -262,7 +262,7 @@ for story_n in range(1,11):
 tokenizer = T5Tokenizer.from_pretrained("google/mt5-large")
 model = MT5EncoderModel.from_pretrained("google/mt5-large")
 
-for story_n in range(1,11):
+for story_n in [1, 2, 3, 4, 5, 6, 7, 9, 10]:  # story 8 has no fMRI data
     story = embeddings_chunked(str(story_n), sep = "▁", tokenizer = tokenizer, model = model, saveto = "mt5_large", emb_start = 0, emb_end = -1)
 
 ###############################################################################
@@ -271,7 +271,7 @@ for story_n in range(1,11):
 tokenizer = AutoTokenizer.from_pretrained("microsoft/mdeberta-v3-base")
 model = AutoModel.from_pretrained("microsoft/mdeberta-v3-base")
 
-for story_n in range(1,11):
+for story_n in [1, 2, 3, 4, 5, 6, 7, 9, 10]:  # story 8 has no fMRI data
     story = embeddings_chunked(str(story_n), sep = "▁", tokenizer = tokenizer, model = model, saveto = "mdeberta", emb_start = 1, emb_end = -1)
 
 ###############################################################################
@@ -280,7 +280,7 @@ for story_n in range(1,11):
 tokenizer = AutoTokenizer.from_pretrained("microsoft/xlm-align-base")
 model = AutoModel.from_pretrained("microsoft/xlm-align-base")
 
-for story_n in range(1,11):
+for story_n in [1, 2, 3, 4, 5, 6, 7, 9, 10]:  # story 8 has no fMRI data
     story = embeddings_chunked(str(story_n), sep = "▁", tokenizer = tokenizer, model = model, saveto = "xlm_align", emb_start = 1, emb_end = -1)
 
 ###############################################################################
@@ -289,7 +289,7 @@ for story_n in range(1,11):
 tokenizer = AutoTokenizer.from_pretrained("microsoft/infoxlm-base")
 model = AutoModel.from_pretrained("microsoft/infoxlm-base")
 
-for story_n in range(1,11):
+for story_n in [1, 2, 3, 4, 5, 6, 7, 9, 10]:  # story 8 has no fMRI data
     story = embeddings_chunked(str(story_n), sep = "▁", tokenizer = tokenizer, model = model, saveto = "infoxlm_base", emb_start = 1, emb_end = -1)
 
 ###############################################################################
@@ -297,7 +297,7 @@ for story_n in range(1,11):
 tokenizer = AutoTokenizer.from_pretrained("microsoft/infoxlm-large")
 model = AutoModel.from_pretrained("microsoft/infoxlm-large")
 
-for story_n in range(1,11):
+for story_n in [1, 2, 3, 4, 5, 6, 7, 9, 10]:  # story 8 has no fMRI data
     story = embeddings_chunked(str(story_n), sep = "▁", tokenizer = tokenizer, model = model, saveto = "infoxlm_large", emb_start = 1, emb_end = -1)
 
 ###############################################################################
@@ -305,7 +305,7 @@ for story_n in range(1,11):
 tokenizer = AutoTokenizer.from_pretrained("microsoft/Multilingual-MiniLM-L12-H384")
 model = AutoModel.from_pretrained("microsoft/Multilingual-MiniLM-L12-H384")
 
-for story_n in range(1,11):
+for story_n in [1, 2, 3, 4, 5, 6, 7, 9, 10]:  # story 8 has no fMRI data
     story = embeddings_chunked(str(story_n), sep = "▁", tokenizer = tokenizer, model = model, saveto = "multiminilm", emb_start = 1, emb_end = -1)
 
 ###############################################################################
@@ -313,7 +313,7 @@ for story_n in range(1,11):
 tokenizer = AutoTokenizer.from_pretrained("ai-forever/mGPT", add_prefix_space=True)
 model = AutoModel.from_pretrained("ai-forever/mGPT")
 
-for story_n in range(1,11):
+for story_n in [1, 2, 3, 4, 5, 6, 7, 9, 10]:  # story 8 has no fMRI data
     story = embeddings_chunked(str(story_n), sep = "Ġ", tokenizer = tokenizer, model = model, saveto = "mgpt")
 
 ###############################################################################
@@ -321,7 +321,7 @@ for story_n in range(1,11):
 tokenizer = AutoTokenizer.from_pretrained("facebook/nllb-200-distilled-600M")
 model = AutoModel.from_pretrained("facebook/nllb-200-distilled-600M")
 
-for story_n in range(1,11):
+for story_n in [1, 2, 3, 4, 5, 6, 7, 9, 10]:  # story 8 has no fMRI data
     story = embeddings_chunked(str(story_n), sep = "▁", tokenizer = tokenizer, model = model, saveto = "nllb200_distilled_600M", emb_start = 1, emb_end = -1, is_seq2seq = True)
 
 ###############################################################################
@@ -329,7 +329,7 @@ for story_n in range(1,11):
 tokenizer = AutoTokenizer.from_pretrained("facebook/nllb-200-distilled-1.3B")
 model = AutoModel.from_pretrained("facebook/nllb-200-distilled-1.3B")
 
-for story_n in range(1,11):
+for story_n in [1, 2, 3, 4, 5, 6, 7, 9, 10]:  # story 8 has no fMRI data
     story = embeddings_chunked(str(story_n), sep = "▁", tokenizer = tokenizer, model = model, saveto = "nllb200_distilled_1B", emb_start = 1, emb_end = -1, is_seq2seq = True)
 
 ###############################################################################
@@ -337,7 +337,7 @@ for story_n in range(1,11):
 tokenizer = AutoTokenizer.from_pretrained("facebook/nllb-200-1.3B")
 model = AutoModel.from_pretrained("facebook/nllb-200-1.3B")
 
-for story_n in range(1,11):
+for story_n in [1, 2, 3, 4, 5, 6, 7, 9, 10]:  # story 8 has no fMRI data
     story = embeddings_chunked(str(story_n), sep = "▁", tokenizer = tokenizer, model = model, saveto = "nllb200_1B", emb_start = 1, emb_end = -1, is_seq2seq = True)
     
     

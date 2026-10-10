@@ -58,7 +58,7 @@ def preproc_align(lang, embeddings):
     return embedded_words
 
 
-def cross_story_encoding(langs, model_prefix, n_layers, d, prefix = "", overwrite = True):
+def cross_story_encoding(langs, model_prefix, n_layers, d, prefix = "", overwrite = False):
     layerwise_dict = {}
     if os.path.isfile(f"results/cross_story_{prefix}{model_prefix}") and overwrite == False:
         print(f"Encoding for {model_prefix} already done")
