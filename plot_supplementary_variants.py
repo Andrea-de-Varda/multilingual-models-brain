@@ -7,8 +7,8 @@ Study I supplementary variants of Figure 2A (reads the results written by fit_en
 For each variant it prints the network-level and fROI-level means and the significance against the
 circular-shift baselines (same procedure as plot_encoding_mono.py / plot_encoding_multi.py: Fisher r-to-z per
 language, Stouffer across languages and then across the four shifts, with the layer selected in the same way for
-the real and the shifted results). No shifted (null) runs were computed for the native-language fROIs, so no
-significance is reported for them.
+the real and the shifted results). For the native-language fROIs, significance is reported once the circular-shift
+baselines have been computed with `python fit_encoding.py --mode native-random`.
 Figures: plots/SI_median_layer.svg, plots/SI_native_frois.svg, plots/SI_single_language_training.svg
 """
 import os
@@ -127,9 +127,13 @@ report("Median layer, WITHIN (SI S5)", med_w)
 report("Median layer, ACROSS (SI S5)", med_a)
 dotplot([("WITHIN", med_w), ("ACROSS", med_a)], "plots/SI_median_layer.svg")
 
-# Supplementary Figure 4 / SI S7: native-language fROIs (best layer; no null runs available)
-nat_w = summarise("results/monolingual_native_{m}_{f}", "m", best_layer)
-nat_a = summarise("results/multilingual_multitrain_native_{m}_{f}", "r", best_layer)
+# Supplementary Figure 4 / SI S7: native-language fROIs (best layer); significance only if the circular-shift
+# baselines have been computed (python fit_encoding.py --mode native-random)
+has_null = os.path.isfile("results/monolingual_native_distilmbert_all_circshift")
+nat_w = summarise("results/monolingual_native_{m}_{f}", "m", best_layer,
+                  "results/monolingual_native_{m}_{f}_circshift" if has_null else None)
+nat_a = summarise("results/multilingual_multitrain_native_{m}_{f}", "r", best_layer,
+                  "results/multilingual_multitrain_native_{m}_{f}_circshift" if has_null else None)
 report("Native-language fROIs, WITHIN (SI S7)", nat_w)
 report("Native-language fROIs, ACROSS (SI S7)", nat_a)
 dotplot([("WITHIN", nat_w), ("ACROSS", nat_a)], "plots/SI_native_frois.svg")

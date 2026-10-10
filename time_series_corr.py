@@ -635,6 +635,9 @@ rois = ['Lang_LH_AntTemp','Lang_LH_IFG','Lang_LH_IFGorb','Lang_LH_MFG','Lang_LH_
 part_dict_lang = {row["UID"] : row["Language"] for index, row in data.iterrows()}
 data_native["Language"] = data_native["UID"].map(part_dict_lang)
 
+# The native-localizer csv has no leading Language column, so columns are selected by name: volumes T_10..T_139
+# (12 s of silence removed and responses shifted by 3 TRs = 6 s), exactly as for the English-localizer time series.
+TR_COLUMNS = [f"T_{i}" for i in range(10, 140)]
 froi_d_native = {}
 for l in set(data_native["Language"]):
     temp = data_native[data_native.Language == l]
@@ -648,8 +651,8 @@ for l in set(data_native["Language"]):
         # participant 1
         p1_data = {}
         for roi in rois:
-            roi_data = part1[part1.ROI == roi].iloc[:, 7:]
-            p1_data[roi] = roi_data.values[0][9:-3].astype(float)  # row per ROI
+            roi_data = part1[part1.ROI == roi][TR_COLUMNS]  # volumes T_10..T_139, as for the English localizer
+            p1_data[roi] = roi_data.values[0].astype(float)
         all_avg = np.mean(np.stack(list(p1_data.values())), axis=0)
         p1_data["all"] = all_avg
         froi_d_native[l][sub1] = p1_data
@@ -657,8 +660,8 @@ for l in set(data_native["Language"]):
         # participant 2
         p2_data = {}
         for roi in rois:
-            roi_data = part2[part2.ROI == roi].iloc[:, 7:]
-            p2_data[roi] = roi_data.values[0][9:-3].astype(float)
+            roi_data = part2[part2.ROI == roi][TR_COLUMNS]  # volumes T_10..T_139, as for the English localizer
+            p2_data[roi] = roi_data.values[0].astype(float)
         all_avg = np.mean(np.stack(list(p2_data.values())), axis=0)
         p2_data["all"] = all_avg
         froi_d_native[l][sub2] = p2_data
