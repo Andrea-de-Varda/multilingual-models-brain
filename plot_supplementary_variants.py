@@ -9,7 +9,8 @@ circular-shift baselines (same procedure as plot_encoding_mono.py / plot_encodin
 language, Stouffer across languages and then across the four shifts, with the layer selected in the same way for
 the real and the shifted results). For the native-language fROIs, significance is reported once the circular-shift
 baselines have been computed with `python fit_encoding.py --mode native-random`.
-Figures: plots/SI_median_layer.svg, plots/SI_native_frois.svg, plots/SI_single_language_training.svg
+Figures (drawn exactly like the Figure 2A panels, one file per condition): plots/SI_median_layer_{within,across}.svg,
+plots/SI_native_frois_{within,across}.svg, plots/SI_single_language_training.svg
 """
 import os
 import pickle
@@ -98,23 +99,42 @@ def report(name, out):
         print(f"  {froi:18s} mean r = {df.r.mean():.3f} (range {df.r.min():.3f}-{df.r.max():.3f}, SE {df.se.min():.3f}-{df.se.max():.3f}); {sig}")
 
 
-def dotplot(panels, path):
-    fig, axes = plt.subplots(len(panels), 1, figsize=(24 * .7, 6 * .7 * len(panels)), dpi=300, sharex=True)
-    for ax, (label, out) in zip(np.atleast_1d(axes), panels):
-        main = out["all"]
+def figure_2a_panel(out, path, brackets):
+    """One panel drawn exactly like Figure 2A (plot_encoding_mono.py / plot_encoding_multi.py, "DEFINITIVE FINAL
+    PLOT"): network-level score per model with SE across languages (large dots) and the five fROIs (small markers).
+    The model-type brackets are drawn on the WITHIN (top) panel only, as in Figure 2A."""
+    import seaborn as sns
+    main = out["all"]
+    plt.figure(figsize=(24 * .7, 11.5 * .7), dpi=300)
+    sns.set_context("talk")
+    ax = plt.gca()
+    for i, (m, pos) in enumerate(zip(MODELS, POSITIONS)):
+        ax.errorbar(pos, main.r[m], yerr=main.se[m], fmt='o', color=PALETTE[FAMILY[i]],
+                    markersize=16, alpha=0.9, lw=3, capsize=5)
+    for froi in FROIS:
         for i, (m, pos) in enumerate(zip(MODELS, POSITIONS)):
-            alpha = 0.9 if (np.isnan(main.p[m]) or main.p[m] < .05) else 0.3  # semi-transparent: n.s.
-            ax.errorbar(pos, main.r[m], yerr=main.se[m], fmt="o", color=PALETTE[FAMILY[i]], markersize=14,
-                        alpha=alpha, lw=3, capsize=5)
-            for froi in FROIS:
-                ax.plot(pos, out[froi].r[m], marker=MARKERS[froi], color=PALETTE[FAMILY[i]], markersize=8, alpha=0.4, lw=0)
-        ax.set_ylabel("R")
-        ax.text(1.01, 0.5, label, transform=ax.transAxes, rotation=90, va="center", fontsize=16)
-        ax.grid(axis="y", linestyle="--", linewidth=1.5, alpha=0.3)
-        ax.spines[["top", "right"]].set_visible(False)
-    plt.xticks(POSITIONS, NICE, rotation=45, ha="right")
-    plt.xlabel("Model")
-    plt.tight_layout()
+            ax.plot(pos, out[froi].r[m], marker=MARKERS[froi], color=PALETTE[FAMILY[i]], markersize=9, alpha=0.4, lw=0)
+    if brackets:
+        def add_bracket(pos1, pos2, text, y_offset=0.05, weight="normal"):
+            y = main.r.max() + y_offset
+            ax.plot([pos1, pos1, pos2, pos2], [y, y + 0.02, y + 0.02, y], color='black', lw=2)
+            ax.text((pos1 + pos2) / 2, y + 0.03, text, ha='center', va='bottom', fontsize=19, weight=weight)
+        P = POSITIONS
+        add_bracket(P[0], P[2], 'translation', y_offset=-.07)
+        add_bracket(P[3], P[5], 'contrastive', y_offset=.02)
+        add_bracket(P[0], P[5], 'explicit', y_offset=.12, weight="bold")
+        add_bracket(P[6], P[11], 'masked LM', y_offset=-.03)
+        add_bracket(P[12], P[14], 'span corr.', y_offset=-.09)
+        add_bracket(P[15], P[19], 'causal LM', y_offset=.12)
+        add_bracket(P[6], P[19], 'implicit', y_offset=.21, weight="bold")
+    ax.grid(axis='y', linestyle='--', linewidth=1.5, alpha=0.3)
+    plt.xlabel('Model', fontsize=27, labelpad=20)
+    plt.ylabel('R', fontsize=27, labelpad=20)
+    plt.ylim(0, 0.75)
+    plt.xticks(POSITIONS, labels=NICE, rotation=45, ha='right', fontsize=22)
+    plt.yticks([.1, .2, .3, .4, .5, .6, .7], fontsize=23)
+    sns.despine()
+    plt.tight_layout(rect=[0, 0, 0.85, 1])
     plt.savefig(path, format="svg", bbox_inches="tight")
     plt.close()
 
@@ -125,7 +145,8 @@ med_a = summarise("results/multilingual_multitrain_{m}_{f}", "r", median_layer,
                   "results/multilingual_multitrain_{m}_{f}_circshift")
 report("Median layer, WITHIN (SI S5)", med_w)
 report("Median layer, ACROSS (SI S5)", med_a)
-dotplot([("WITHIN", med_w), ("ACROSS", med_a)], "plots/SI_median_layer.svg")
+figure_2a_panel(med_w, "plots/SI_median_layer_within.svg", brackets=True)
+figure_2a_panel(med_a, "plots/SI_median_layer_across.svg", brackets=False)
 
 # Supplementary Figure 4 / SI S7: native-language fROIs (best layer); significance only if the circular-shift
 # baselines have been computed (python fit_encoding.py --mode native-random)
@@ -136,9 +157,10 @@ nat_a = summarise("results/multilingual_multitrain_native_{m}_{f}", "r", best_la
                   "results/multilingual_multitrain_native_{m}_{f}_circshift" if has_null else None)
 report("Native-language fROIs, WITHIN (SI S7)", nat_w)
 report("Native-language fROIs, ACROSS (SI S7)", nat_a)
-dotplot([("WITHIN", nat_w), ("ACROSS", nat_a)], "plots/SI_native_frois.svg")
+figure_2a_panel(nat_w, "plots/SI_native_frois_within.svg", brackets=True)
+figure_2a_panel(nat_a, "plots/SI_native_frois_across.svg", brackets=False)
 
 # Supplementary Figure 10A / SI S14: training on a single language, testing on each of the others (best layer)
 single = summarise("results/multilingual_{m}_{f}", "r", best_layer, "results/multilingual_{m}_{f}_circshift")
 report("Single-language training (SI S14)", single)
-dotplot([("single-language training", single)], "plots/SI_single_language_training.svg")
+figure_2a_panel(single, "plots/SI_single_language_training.svg", brackets=False)

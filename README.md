@@ -171,9 +171,9 @@ INLP ablation of meaning- or form-related information from the embeddings (`addi
 | SI S2, Supplementary Figure 1A | `plot_encoding_mono.py`, `plot_encoding_multi.py` | `plots/all_languages_*.svg` |
 | SI S3, Supplementary Figure 1B | `confirmatory/confirmatory_encoding.py` | `plots/study2_all_langs_*.svg` |
 | SI S4, Supplementary Figure 2 | `confirmatory/other/within_encoding_study2.py` | `plots/within_encoding_study2.svg`, `plots/study2_study1_*.svg` |
-| SI S5, Supplementary Figure 3 | `plot_supplementary_variants.py` | `plots/SI_median_layer.svg` |
+| SI S5, Supplementary Figure 3 | `plot_supplementary_variants.py` | `plots/SI_median_layer_{within,across}.svg` |
 | SI S6 | `other/FL_baseline.py` | printed |
-| SI S7, Supplementary Figure 4 | `time_series_corr.py` (English vs native time series), `plot_encoding_multi.py` (model-wise correlations), `plot_supplementary_variants.py` | `plots/SI_native_frois.svg` |
+| SI S7, Supplementary Figure 4 | `time_series_corr.py` (English vs native time series), `plot_encoding_multi.py` (model-wise correlations), `plot_supplementary_variants.py` | `plots/SI_native_frois_{within,across}.svg` |
 | SI S8 | `plot_encoding_mono.py`, `plot_encoding_multi.py` (Study I); `confirmatory/confirmatory_encoding_fROI.py` (Study II) | `plots/study2_froi_*.svg` |
 | SI S9, Supplementary Figure 5 | `additional_analyses/NaturalStories/fit_encoding_natstor.py` | `results/cross_story_*` |
 | SI S10, Supplementary Figure 6 | `time_series_corr.py`, `confirmatory/confirmatory_get_timeseries.py` | |
