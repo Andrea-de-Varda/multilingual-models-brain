@@ -12,7 +12,7 @@ We fit encoding models that predict fMRI responses of the language network from 
 
 The fastest way to check the approach is the **replication demo** in [`demo/`](demo/): it recomputes, from the transcriptions and fMRI time series in this repository, the Study I WITHIN and ACROSS encoding results for one model (DistilmBERT) and compares them with the values in the paper (Figure 2A/B).
 
-- Interactive notebook: [`demo/encoding_demo.ipynb`](demo/encoding_demo.ipynb) (runs locally or on Google Colab, [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Andrea-de-Varda/multilingual-models-brain/blob/revision/demo/encoding_demo.ipynb)).
+- Interactive notebook: [`demo/encoding_demo.ipynb`](demo/encoding_demo.ipynb) (runs locally or on Google Colab, [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Andrea-de-Varda/multilingual-models-brain/blob/main/demo/encoding_demo.ipynb)).
 - Command line: `python demo/run_demo.py` (add `--full` to evaluate all layers in the ACROSS condition).
 
 It takes about 5 minutes on a laptop CPU to extract the embeddings and 1–10 minutes for the encoding models (GPU or CPU). Expected output: WITHIN mean r per layer 0.030, 0.084, 0.109, 0.131, 0.143, 0.156, 0.173 (best layer 6, Stouffer z = 3.32, p = 9.0e-04) and ACROSS r = 0.140 at layer 4, as in the paper (Source Data Fig. 2).
