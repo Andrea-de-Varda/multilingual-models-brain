@@ -154,6 +154,9 @@ INLP ablation of meaning- or form-related information from the embeddings (`addi
 
 ## Where each figure and supplementary analysis comes from
 
+<details>
+<summary>Click to show the table mapping every figure, table and SI section to its script and output.</summary>
+
 | Paper item | Script(s) | Output |
 |---|---|---|
 | Figure 1C, counts | `other/dataset_descriptives.py` | printed |
@@ -185,6 +188,8 @@ INLP ablation of meaning- or form-related information from the embeddings (`addi
 | SI S16, Supplementary Table 1 | `other/language_resources_mC4.py` | printed |
 | SI S17, Supplementary Figure 11 | `additional_analyses/residualize_info/test_residualize.py` | `residualize_info/plots/residualize_cv.svg` |
 
+</details>
+
 The published figures were assembled from these panels in a vector-graphics editor (`plots/final/`).
 
 ## Reproducibility notes
@@ -204,4 +209,12 @@ The published figures were assembled from these panels in a vector-graphics edit
 }
 ```
 
-Data sources: Malik-Moraleda, S., Ayyash, D., et al. (2022). An investigation across 45 languages and 12 language families reveals a universal language network. *Nature Neuroscience*, 25, 1014–1019. · Tuckute, G., et al. (2024). Driving and suppressing the human language network using large language models. *Nature Human Behaviour*, 8, 544–561. · Pereira, F., et al. (2018). Toward a universal decoder of linguistic meaning from brain activation. *Nature Communications*, 9, 963. · Blank, I., Kanwisher, N., & Fedorenko, E. (2014). A functional dissociation between language and multiple-demand systems revealed in patterns of BOLD signal fluctuations. *Journal of Neurophysiology*, 112, 1105–1118.
+**If you use any of the pre-existing datasets included here, please also cite the original studies that collected them:**
+
+- **Study I fMRI data:** Malik-Moraleda, S., Ayyash, D., et al. (2022). An investigation across 45 languages and 12 language families reveals a universal language network. *Nature Neuroscience*, 25, 1014–1019.
+- **Tuckute2024:** Tuckute, G., et al. (2024). Driving and suppressing the human language network using large language models. *Nature Human Behaviour*, 8, 544–561.
+- **Pereira2018:** Pereira, F., et al. (2018). Toward a universal decoder of linguistic meaning from brain activation. *Nature Communications*, 9, 963.
+- **NatStories:** Blank, I., Kanwisher, N., & Fedorenko, E. (2014). A functional dissociation between language and multiple-demand systems revealed in patterns of BOLD signal fluctuations. *Journal of Neurophysiology*, 112, 1105–1118; stimuli from Futrell, R., Gibson, E., Tily, H. J., Blank, I., Vishnevetsky, A., Piantadosi, S., & Fedorenko, E. (2018). The Natural Stories Corpus. *Proceedings of LREC 2018*.
+
+The Study II fMRI data were collected for this paper; please cite the paper above.
+
