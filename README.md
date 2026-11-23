@@ -6,7 +6,7 @@ Code and data for
 
 We fit encoding models that predict fMRI responses of the language network from the representations of 20 multilingual language models (MNNLMs), and show that these models transfer zero-shot to languages they were never trained on (21 languages in total). This repository contains everything needed to reproduce the analyses, figures and statistics of the paper: the processed fMRI time series, the stimulus transcriptions, the audio stimuli (downloaded separately, see [Data](#data)), all analysis code, the cached intermediate results, and the Source Data of the figures.
 
-**Contents:** [Quick start](#quick-start) · [Installation](#installation) · [Data](#data) · [Repository layout](#repository-layout) · [Study I](#study-i) · [Study II](#study-ii) · [Study III](#study-iii) · [Study IV](#study-iv) · [Where each figure and supplementary analysis comes from](#where-each-figure-and-supplementary-analysis-comes-from) · [Reproducibility notes](#reproducibility-notes) · [Citation](#citation)
+**Contents:** [Quick start](#quick-start) · [Installation](#installation) · [Data](#data) · [Repository layout](#repository-layout) · [Study I](#study-i) · [Study II](#study-ii) · [Study III](#study-iii) · [Study IV](#study-iv) · [Where each figure and supplementary analysis comes from](#where-each-figure-and-supplementary-analysis-comes-from) · [Reproducibility notes](#reproducibility-notes) · [License](#license) · [Citation](#citation)
 
 ## Quick start
 
@@ -197,6 +197,12 @@ The published figures were assembled from these panels in a vector-graphics edit
 - **Package versions.** `requirements.txt` lists the versions with which this repository was tested end to end (Python 3.11, numpy 2.2, pandas 2.2, scikit-learn 1.7.1, himalaya 0.4.6, transformers 4.45.2, torch 2.7.1). The stored models and results were produced with numpy 2 and scikit-learn 1.6–1.7 (Study I embeddings with transformers 4.45.2); a few early files were written with older versions. Some scripts include `sys.modules['numpy._core.numeric'] = np.core.numeric`, which allows reading these pickles with numpy 1.x. PyTorch 1.x does not load on recent Linux systems and does not support recent GPUs; any PyTorch ≥ 2.1 gives the same embeddings up to floating-point precision.
 - **Determinism.** Cross-validation splits are sequential and fixed; random procedures (shuffled baselines, swaps, bootstraps, permutations) are seeded. Recomputed embeddings match the stored ones up to float32 precision. The stored WITHIN (and single-language ACROSS) results were computed with himalaya's CPU (numpy) backend and are reproduced to ~1e-9 on CPU; with the GPU backend (the default of `fit_encoding.py` when a GPU is available) isolated folds can select a different alpha, so layer means agree to about 3 decimals. The stored N−1 ACROSS and split-context results were computed on GPU (float32). The demo reproduces the paper's DistilmBERT scores to 4 decimals. The INLP ablation (Study IV) runs in float32 and its ablated results vary slightly (|Δr| < 0.01) between runs.
 - **Optional extras.** Transcription: `pip install git+https://github.com/linto-ai/whisper-timestamped` and the audio archives. Paraphrase generation: `pip install together` and a Together API key. `wordfreq[cjk]` (in `requirements.txt`) is needed for Korean and Mandarin word frequencies (SI S6). NLTK downloads its tagger models on first use.
+
+## License
+
+- **Code** (all scripts and notebooks): MIT License, see [`LICENSE`](LICENSE).
+- **Data and figures generated in this study** (Study II fMRI data, transcriptions, encoding results, registered models, figures and Source Data): [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). You may reuse them for any purpose, provided you cite the paper.
+- **Pre-existing datasets** (Study I data from Malik-Moraleda, Ayyash, et al., 2022; Tuckute2024; Pereira2018; NatStories) are redistributed here in processed form only to make the analyses reproducible. They remain subject to the terms of their original releases; please cite the original studies (see [Citation](#citation)).
 
 ## Citation
 
